@@ -91,7 +91,7 @@ node_modules/
 # 由汇总脚本生成、可随时重建的表格
 metrics/*.csv
 
-# 实验输出默认不纳入版本控制；只保留冻结协议对应的 CrewAI 最终证据。
+# 实验输出默认不纳入版本控制；只保留冻结协议对应的最终证据。
 runs/*
 !runs/stage5-crewai/
 !runs/stage5-crewai-api/
@@ -100,3 +100,13 @@ runs/stage5-crewai/*
 runs/stage5-crewai-api/*
 !runs/stage5-crewai-api/deepseek-crewai-natural-3x1-v135-smoke/
 !runs/stage5-crewai-api/deepseek-crewai-natural-3x3-v136-confirmatory/
+!runs/stage5-n8n-sidecar/
+runs/stage5-n8n-sidecar/*
+!runs/stage5-n8n-sidecar/n8n-sidecar-local-ab-v6/
+!runs/stage5-n8n-sidecar/n8n-sidecar-full-lifecycle-v1/
+!runs/stage5-n8n-sidecar-api/
+runs/stage5-n8n-sidecar-api/*
+!runs/stage5-n8n-sidecar-api/deepseek-n8n-sidecar-3x1-smoke-v2/
+!runs/stage5-n8n-sidecar-api/deepseek-n8n-sidecar-3x3-confirmatory-v1/
+
+README.md

@@ -1,0 +1,166 @@
+{
+  "name": "Context-Pruner Sidecar A/B",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "0d44e3d2-7c62-4b89-a580-86e709f824a0",
+      "name": "Start",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const tasks = [\n  {\n    id: 'incident',\n    taskState: 'Preserve Aurora-17 and decide incident INC-2048.',\n    system: 'Hard constraint: preserve project Aurora-17.',\n    current: 'Current verified facts: incident INC-2048 affects Aurora-17 and the required decision is ROLLBACK.',\n  },\n  {\n    id: 'release',\n    taskState: 'Preserve Atlas-5 and decide the release gate.',\n    system: 'Hard constraint: preserve release Atlas-5.',\n    current: 'Current verified facts: Atlas-5 is BLOCKED because the security gate failed.',\n  },\n  {\n    id: 'migration',\n    taskState: 'Preserve Northstar migration facts.',\n    system: 'Hard constraint: preserve customer Northstar.',\n    current: 'Current verified facts: Northstar targets eu-central and the approved window starts at 02:00 UTC.',\n  },\n];\n\nconst cases = [];\nfor (const task of tasks) {\n  const messages = [{ role: 'system', content: task.system }];\n  for (let index = 0; index < 18; index += 1) {\n    messages.push({\n      role: 'assistant',\n      content: `Historical analysis ${index}: routine background notes that are no longer decision-relevant. `.repeat(3),\n    });\n    messages.push({\n      role: 'user',\n      content: `Historical request ${index}: investigate an obsolete option and retain no final decision. `.repeat(3),\n    });\n  }\n  messages.push({ role: 'user', content: task.current });\n  for (const method of ['none', 'pruner_v1']) {\n    cases.push({\n      json: {\n        task_id: task.id,\n        method,\n        session_id: `n8n:${task.id}:${method}`,\n        task_state: task.taskState,\n        messages,\n      },\n    });\n  }\n}\nreturn cases;"
+      },
+      "id": "61e02f96-9cab-46f0-b6a6-797b1d27d4fb",
+      "name": "Build A/B Cases",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        240,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ '__SIDECAR_URL__/v1/sessions/' + encodeURIComponent($json.session_id) + '/before-model' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer __SIDECAR_TOKEN__"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ messages: $json.messages, task_state: $json.task_state, method: $json.method, budget: { soft: 900, hard: 1200, target: 650 }, reserved_tokens: 120 }) }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          },
+          "timeout": 30000
+        }
+      },
+      "id": "78c8fd84-c06e-49df-a4b6-88ebd584a79c",
+      "name": "Context-Pruner Before Model",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "onError": "continueRegularOutput",
+      "position": [
+        500,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const envelope = $json;\nlet response = envelope.body && typeof envelope.body === 'object' ? envelope.body : envelope;\n\n// n8n 2.6.x 的 CLI 执行器可能把 HTTP 响应暴露为 IncomingMessage，\n// 此时响应 JSON 仍然完整保存在 _readableState.buffer 中。\nif (!Array.isArray(response.messages)) {\n  const chunks = envelope?._readableState?.buffer;\n  if (Array.isArray(chunks)) {\n    const bytes = [];\n    for (const chunk of chunks) {\n      const data = Array.isArray(chunk?.data) ? chunk.data : (Array.isArray(chunk) ? chunk : []);\n      bytes.push(...data);\n    }\n    if (bytes.length > 0) {\n      const decoded = typeof Buffer !== 'undefined'\n        ? Buffer.from(bytes).toString('utf8')\n        : String.fromCharCode(...bytes);\n      response = JSON.parse(decoded);\n    }\n  }\n}\n\nconst source = $('Build A/B Cases').item.json;\nconst taskId = String(source.task_id || '');\nconst method = String(source.method || '');\nconst required = {\n  incident: ['Aurora-17', 'INC-2048', 'ROLLBACK'],\n  release: ['Atlas-5', 'BLOCKED', 'security gate'],\n  migration: ['Northstar', 'eu-central', '02:00 UTC'],\n};\nconst rendered = JSON.stringify(response.messages || []);\nconst terms = required[taskId] || [];\nconst missing = terms.filter((term) => !rendered.includes(term));\nconst metrics = response.metrics || {};\nconst rawError = response.error || envelope.error;\nconst transportError = rawError ? String(rawError.message || rawError) : '';\nreturn {\n  json: {\n    task_id: taskId,\n    method,\n    session_id: response.session_id || source.session_id,\n    success: !transportError && missing.length === 0,\n    missing_terms: missing,\n    transport_error: transportError,\n    full_context_tokens: Number(metrics.last_full_context_tokens || 0),\n    served_context_tokens: Number(metrics.last_served_context_tokens || 0),\n    gross_input_savings_rate: Number(metrics.gross_input_savings_rate || 0),\n    model_input_budget_violation_count: Number(metrics.model_input_budget_violation_count || 0),\n    before_model_calls: Number(metrics.before_model_calls || 0),\n  },\n};"
+      },
+      "id": "77123b70-353a-448b-ae6c-e79340759442",
+      "name": "Validate Preserved Facts",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        760,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "__COLLECTOR_URL__/result",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer __COLLECTOR_TOKEN__"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "ff6d2dbe-37f7-41e7-be07-8e33ea9628a9",
+      "name": "Report Validation Result",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1020,
+        0
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Build A/B Cases",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build A/B Cases": {
+      "main": [
+        [
+          {
+            "node": "Context-Pruner Before Model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Context-Pruner Before Model": {
+      "main": [
+        [
+          {
+            "node": "Validate Preserved Facts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate Preserved Facts": {
+      "main": [
+        [
+          {
+            "node": "Report Validation Result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "36c15ec3-66f7-41d0-8631-d69428b1150b",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "id": "context-pruner-sidecar-ab-v1",
+  "tags": []
+}

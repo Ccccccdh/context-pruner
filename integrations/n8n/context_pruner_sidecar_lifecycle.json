@@ -1,0 +1,192 @@
+{
+  "name": "Context-Pruner Sidecar Lifecycle",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "7542e954-ac6a-4e92-b022-5f0b7926995e",
+      "name": "Start",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [0, 0]
+    },
+    {
+      "parameters": {
+        "jsCode": "const messages = [{ role: 'system', content: 'Hard constraint: preserve project Omega-42.' }];\nfor (let index = 0; index < 20; index += 1) {\n  const id = String(index).padStart(2, '0');\n  messages.push({ role: 'assistant', content: `Archived investigation ARCHIVE-${id}: obsolete branch evidence and superseded analysis. `.repeat(3) });\n  messages.push({ role: 'user', content: `Old request ${id}: inspect abandoned option ARCHIVE-${id}. `.repeat(3) });\n}\nmessages.push({ role: 'user', content: 'Current task: preserve Omega-42 and use fresh tool evidence only.' });\nreturn [{ json: {\n  source_session_id: 'n8n-lifecycle-source',\n  restored_session_id: 'n8n-lifecycle-restored',\n  messages,\n} }];"
+      },
+      "id": "638651ed-6cdd-490e-bdc4-854df6f90137",
+      "name": "Build Lifecycle Case",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [210, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ '__SIDECAR_URL__/v1/sessions/' + $json.source_session_id + '/before-model' }}",
+        "sendHeaders": true,
+        "headerParameters": {"parameters": [{"name": "Authorization", "value": "Bearer __SIDECAR_TOKEN__"}]},
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ messages: $json.messages, task_state: 'Preserve Omega-42 and use fresh tool evidence.', method: 'pruner_v1', budget: { soft: 700, hard: 900, target: 520 }, reserved_tokens: 120 }) }}",
+        "options": {"response": {"response": {"responseFormat": "json"}}, "timeout": 30000}
+      },
+      "id": "b7d881a4-6adc-4d7b-b092-67f19a3cded8",
+      "name": "Before Model",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [430, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "__SIDECAR_URL__/v1/sessions/n8n-lifecycle-source/after-tool",
+        "sendHeaders": true,
+        "headerParameters": {"parameters": [{"name": "Authorization", "value": "Bearer __SIDECAR_TOKEN__"}]},
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ output: { role: 'tool', tool_call_id: 'lookup-1', name: 'lookup_ticket', content: 'TOOL-908 severity=critical project=Omega-42' } }) }}",
+        "options": {"response": {"response": {"responseFormat": "json"}}, "timeout": 30000}
+      },
+      "id": "d0af6f02-8aa8-438c-813f-766042be9c06",
+      "name": "After Tool",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [650, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "__SIDECAR_URL__/v1/sessions/n8n-lifecycle-source/after-model",
+        "sendHeaders": true,
+        "headerParameters": {"parameters": [{"name": "Authorization", "value": "Bearer __SIDECAR_TOKEN__"}]},
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ output: { role: 'assistant', content: 'Recorded TOOL-908 for Omega-42.' } }) }}",
+        "options": {"response": {"response": {"responseFormat": "json"}}, "timeout": 30000}
+      },
+      "id": "801599d2-ee3b-47ed-982c-a5debf42a506",
+      "name": "After Model",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [870, 0]
+    },
+    {
+      "parameters": {
+        "url": "__SIDECAR_URL__/v1/sessions/n8n-lifecycle-source/state",
+        "sendHeaders": true,
+        "headerParameters": {"parameters": [{"name": "Authorization", "value": "Bearer __SIDECAR_TOKEN__"}]},
+        "options": {"response": {"response": {"responseFormat": "json"}}, "timeout": 30000}
+      },
+      "id": "4c2d1acd-58d6-48a3-a63e-87731b075680",
+      "name": "Export State",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1090, 0]
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "__SIDECAR_URL__/v1/sessions/n8n-lifecycle-restored/state",
+        "sendHeaders": true,
+        "headerParameters": {"parameters": [{"name": "Authorization", "value": "Bearer __SIDECAR_TOKEN__"}]},
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ lifecycle_state: $json.lifecycle_state, task_state: 'Restored Omega-42 lifecycle' }) }}",
+        "options": {"response": {"response": {"responseFormat": "json"}}, "timeout": 30000}
+      },
+      "id": "439cc6bc-117e-44a6-97af-237835c7e02c",
+      "name": "Restore State",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1310, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "__SIDECAR_URL__/v1/sessions/n8n-lifecycle-restored/error",
+        "sendHeaders": true,
+        "headerParameters": {"parameters": [{"name": "Authorization", "value": "Bearer __SIDECAR_TOKEN__"}]},
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ error: 'synthetic downstream retry', query: 'ARCHIVE-07', recover: true }) }}",
+        "options": {"response": {"response": {"responseFormat": "json"}}, "timeout": 30000}
+      },
+      "id": "97dfe4bf-0e45-4ea9-83c5-824fd8ead6da",
+      "name": "Recover On Error",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1530, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "__SIDECAR_URL__/v1/sessions/n8n-lifecycle-restored/finalize",
+        "sendHeaders": true,
+        "headerParameters": {"parameters": [{"name": "Authorization", "value": "Bearer __SIDECAR_TOKEN__"}]},
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ metadata: { host: 'n8n', validation: 'full-lifecycle' } }) }}",
+        "options": {"response": {"response": {"responseFormat": "json"}}, "timeout": 30000}
+      },
+      "id": "a4c1e9c0-d56f-4d1d-bb3d-5242cc595138",
+      "name": "Finalize Restored Session",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1750, 0]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const response = $json;\nconst metrics = response.metrics || {};\nconst state = response.lifecycle_state || {};\nconst serialized = JSON.stringify(state);\nconst result = {\n  success: Boolean(state?.plugin?.finalized) && Number(metrics.before_model_calls || 0) === 1 && Number(metrics.lifecycle_recovery_count || 0) >= 1 && serialized.includes('TOOL-908') && serialized.includes('Omega-42'),\n  finalized: Boolean(state?.plugin?.finalized),\n  before_model_calls: Number(metrics.before_model_calls || 0),\n  recovery_count: Number(metrics.lifecycle_recovery_count || 0),\n  lifecycle_event_count: Number(metrics.lifecycle_event_count || 0),\n  tool_fact_preserved: serialized.includes('TOOL-908'),\n  constraint_preserved: serialized.includes('Omega-42'),\n};\nreturn { json: result };"
+      },
+      "id": "d528576c-6169-4f78-9d37-1b44a683cfea",
+      "name": "Validate Lifecycle",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1970, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "__COLLECTOR_URL__/result",
+        "sendHeaders": true,
+        "headerParameters": {"parameters": [{"name": "Authorization", "value": "Bearer __COLLECTOR_TOKEN__"}]},
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "options": {"timeout": 30000}
+      },
+      "id": "0f53761f-9695-4374-8f5d-94a281342394",
+      "name": "Report Lifecycle Result",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [2190, 0]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Start": {"main": [[{"node": "Build Lifecycle Case", "type": "main", "index": 0}]]},
+    "Build Lifecycle Case": {"main": [[{"node": "Before Model", "type": "main", "index": 0}]]},
+    "Before Model": {"main": [[{"node": "After Tool", "type": "main", "index": 0}]]},
+    "After Tool": {"main": [[{"node": "After Model", "type": "main", "index": 0}]]},
+    "After Model": {"main": [[{"node": "Export State", "type": "main", "index": 0}]]},
+    "Export State": {"main": [[{"node": "Restore State", "type": "main", "index": 0}]]},
+    "Restore State": {"main": [[{"node": "Recover On Error", "type": "main", "index": 0}]]},
+    "Recover On Error": {"main": [[{"node": "Finalize Restored Session", "type": "main", "index": 0}]]},
+    "Finalize Restored Session": {"main": [[{"node": "Validate Lifecycle", "type": "main", "index": 0}]]},
+    "Validate Lifecycle": {"main": [[{"node": "Report Lifecycle Result", "type": "main", "index": 0}]]}
+  },
+  "active": false,
+  "settings": {"executionOrder": "v1"},
+  "versionId": "e739408e-9b4a-4095-8ea4-5bb4bf490c0c",
+  "meta": {"templateCredsSetupCompleted": true},
+  "id": "context-pruner-sidecar-lifecycle-v1",
+  "tags": []
+}

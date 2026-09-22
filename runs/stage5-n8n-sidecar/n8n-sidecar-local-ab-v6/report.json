@@ -1,0 +1,115 @@
+{
+  "protocol_version": "n8n-sidecar-local-ab-v1",
+  "context_pruner_version": "0.13.1",
+  "n8n_version": "2.6.4",
+  "workflow_sha256": "de396d0b3d9a56df80cb9383c851d89676bb77c0dfe6d0eba8488eb660b43a04",
+  "third_party_host": "n8n",
+  "model_api_requests": 0,
+  "synthetic_data_only": true,
+  "n8n_cli_serialization_workaround": false,
+  "summary": {
+    "case_count": 6,
+    "paired_n": 3,
+    "paired_token_n": 3,
+    "all_success": true,
+    "transport_error_count": 0,
+    "method_summary": {
+      "none": {
+        "n": 3,
+        "success_rate": 1.0,
+        "full_context_tokens_mean": 6648.666666666667,
+        "served_context_tokens_mean": 6648.666666666667,
+        "budget_violation_count": 3
+      },
+      "pruner_v1": {
+        "n": 3,
+        "success_rate": 1.0,
+        "full_context_tokens_mean": 6648.666666666667,
+        "served_context_tokens_mean": 523.0,
+        "budget_violation_count": 0
+      }
+    },
+    "paired_input_savings_rate_mean": 0.9213375102360045,
+    "paired_input_savings_win_rate": 1.0
+  },
+  "rows": [
+    {
+      "task_id": "incident",
+      "method": "none",
+      "session_id": "n8n:incident:none",
+      "success": true,
+      "missing_terms": [],
+      "transport_error": "",
+      "full_context_tokens": 6654,
+      "served_context_tokens": 6654,
+      "gross_input_savings_rate": 0,
+      "model_input_budget_violation_count": 1,
+      "before_model_calls": 1
+    },
+    {
+      "task_id": "incident",
+      "method": "pruner_v1",
+      "session_id": "n8n:incident:pruner_v1",
+      "success": true,
+      "missing_terms": [],
+      "transport_error": "",
+      "full_context_tokens": 6654,
+      "served_context_tokens": 523,
+      "gross_input_savings_rate": 0.9214006612563871,
+      "model_input_budget_violation_count": 0,
+      "before_model_calls": 1
+    },
+    {
+      "task_id": "release",
+      "method": "none",
+      "session_id": "n8n:release:none",
+      "success": true,
+      "missing_terms": [],
+      "transport_error": "",
+      "full_context_tokens": 6638,
+      "served_context_tokens": 6638,
+      "gross_input_savings_rate": 0,
+      "model_input_budget_violation_count": 1,
+      "before_model_calls": 1
+    },
+    {
+      "task_id": "release",
+      "method": "pruner_v1",
+      "session_id": "n8n:release:pruner_v1",
+      "success": true,
+      "missing_terms": [],
+      "transport_error": "",
+      "full_context_tokens": 6638,
+      "served_context_tokens": 523,
+      "gross_input_savings_rate": 0.9212112081952395,
+      "model_input_budget_violation_count": 0,
+      "before_model_calls": 1
+    },
+    {
+      "task_id": "migration",
+      "method": "none",
+      "session_id": "n8n:migration:none",
+      "success": true,
+      "missing_terms": [],
+      "transport_error": "",
+      "full_context_tokens": 6654,
+      "served_context_tokens": 6654,
+      "gross_input_savings_rate": 0,
+      "model_input_budget_violation_count": 1,
+      "before_model_calls": 1
+    },
+    {
+      "task_id": "migration",
+      "method": "pruner_v1",
+      "session_id": "n8n:migration:pruner_v1",
+      "success": true,
+      "missing_terms": [],
+      "transport_error": "",
+      "full_context_tokens": 6654,
+      "served_context_tokens": 523,
+      "gross_input_savings_rate": 0.9214006612563871,
+      "model_input_budget_violation_count": 0,
+      "before_model_calls": 1
+    }
+  ]
+}

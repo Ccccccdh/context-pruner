@@ -1,0 +1,188 @@
+{
+  "name": "Context-Pruner Sidecar DeepSeek A/B",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "73d61d66-d292-4d32-b04a-9c1634d2449a",
+      "name": "Start",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [0, 0]
+    },
+    {
+      "parameters": {
+        "jsCode": "const repeats = Number('__REPEATS__');\nconst tasks = [\n  {\n    id: 'incident_decision',\n    taskState: 'Apply the current incident rule and return the required one-line decision.',\n    system: 'Use only the latest verified dossier. Apply its decision rule exactly and return only the requested one-line contract.',\n    current: 'CURRENT DOSSIER: Incident INC-771 affects service Quartz-9. Verified rollback_trigger=true and customer_impact=confirmed. Rule: when both fields are true, action is ROLLBACK; otherwise action is MONITOR. Return exactly: DECISION incident=INC-771 action=<action>',\n    expected: ['INC-771', 'ROLLBACK'],\n  },\n  {\n    id: 'release_gate',\n    taskState: 'Evaluate the current release gates and return the required one-line status.',\n    system: 'Use only the latest verified release record. Apply its gate rule exactly and return only the requested one-line contract.',\n    current: 'CURRENT RELEASE: Atlas-12 has unit_tests=passed, integration_tests=passed, and security_gate=failed. Rule: every required gate must pass; any failed required gate makes the release BLOCKED. Return exactly: RELEASE name=Atlas-12 status=<status>',\n    expected: ['Atlas-12', 'BLOCKED'],\n  },\n  {\n    id: 'migration_plan',\n    taskState: 'Select the approved current migration target and window.',\n    system: 'Use only the latest approved migration record and return only the requested one-line contract.',\n    current: 'CURRENT MIGRATION: Customer Northstar approved region=eu-central and window=02:00 UTC. The approved record overrides all draft alternatives. Return exactly: MIGRATION customer=Northstar region=<region> window=<window>',\n    expected: ['Northstar', 'eu-central', '02:00 UTC'],\n  },\n];\n\nconst cases = [];\nfor (let repeat = 0; repeat < repeats; repeat += 1) {\n  for (const task of tasks) {\n    const messages = [{ role: 'system', content: task.system }];\n    for (let index = 0; index < 14; index += 1) {\n      messages.push({ role: 'assistant', content: `OBSOLETE DRAFT ${index}: a superseded record proposed an unrelated identifier, region, time, or action. Do not use it. `.repeat(2) });\n      messages.push({ role: 'user', content: `ARCHIVED REQUEST ${index}: compare an abandoned option that is no longer authorized. `.repeat(2) });\n    }\n    messages.push({ role: 'user', content: task.current });\n    for (const method of ['none', 'pruner_v1']) {\n      cases.push({ json: {\n        task_id: task.id,\n        repeat,\n        method,\n        session_id: `n8n-api:${task.id}:r${repeat}:${method}`,\n        task_state: task.taskState,\n        expected_terms: task.expected,\n        messages,\n      } });\n    }\n  }\n}\nreturn cases;"
+      },
+      "id": "3b085e73-e1f4-4813-9668-030481551841",
+      "name": "Build API Cases",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [220, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ '__SIDECAR_URL__/v1/sessions/' + encodeURIComponent($json.session_id) + '/before-model' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {"name": "Authorization", "value": "Bearer __SIDECAR_TOKEN__"}
+          ]
+        },
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ messages: $json.messages, task_state: $json.task_state, method: $json.method, budget: { soft: 900, hard: 1200, target: 650 }, reserved_tokens: 180 }) }}",
+        "options": {
+          "response": {"response": {"responseFormat": "json"}},
+          "timeout": 30000
+        }
+      },
+      "id": "b2642342-4d0d-4b06-90ca-5e6076575438",
+      "name": "Context-Pruner Before Model",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [450, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "__MODEL_BASE_URL__/chat/completions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {"name": "Authorization", "value": "Bearer __MODEL_API_KEY__"}
+          ]
+        },
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ model: '__MODEL_NAME__', messages: $json.messages, temperature: 0, max_tokens: 160, thinking: { type: 'disabled' } }) }}",
+        "options": {
+          "response": {"response": {"responseFormat": "json"}},
+          "timeout": 120000
+        }
+      },
+      "id": "21c5fd56-e408-4c27-b135-806c58ba77d6",
+      "name": "DeepSeek Chat Completion",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 1500,
+      "onError": "continueRegularOutput",
+      "position": [690, 0]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const response = $json;\nconst source = $('Build API Cases').item.json;\nconst choice = Array.isArray(response.choices) ? response.choices[0] : null;\nconst output = String(choice?.message?.content || '').trim();\nconst expected = Array.isArray(source.expected_terms) ? source.expected_terms : [];\nconst normalized = output.toLowerCase();\nconst missing = expected.filter((term) => !normalized.includes(String(term).toLowerCase()));\nconst rawError = response.error;\nconst transportError = rawError ? String(rawError.message || rawError) : '';\nconst usage = response.usage || {};\nreturn { json: {\n  task_id: source.task_id,\n  repeat: Number(source.repeat),\n  method: source.method,\n  session_id: source.session_id,\n  success: !transportError && output.length > 0 && missing.length === 0,\n  missing_terms: missing,\n  transport_error: transportError,\n  model_output: output,\n  prompt_tokens: Number(usage.prompt_tokens || 0),\n  completion_tokens: Number(usage.completion_tokens || 0),\n  total_tokens: Number(usage.total_tokens || 0),\n  finish_reason: String(choice?.finish_reason || ''),\n} };"
+      },
+      "id": "20e8f448-937d-480d-ae3d-85505a92359d",
+      "name": "Validate Model Answer",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [930, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ '__SIDECAR_URL__/v1/sessions/' + encodeURIComponent($json.session_id) + '/after-model' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {"name": "Authorization", "value": "Bearer __SIDECAR_TOKEN__"}
+          ]
+        },
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ output: { role: 'assistant', content: $json.model_output } }) }}",
+        "options": {
+          "response": {"response": {"responseFormat": "json"}},
+          "timeout": 30000
+        }
+      },
+      "id": "1f6c06a1-fe19-43a9-b98e-832864955029",
+      "name": "Context-Pruner After Model",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1170, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ '__SIDECAR_URL__/v1/sessions/' + encodeURIComponent($json.session_id) + '/finalize' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {"name": "Authorization", "value": "Bearer __SIDECAR_TOKEN__"}
+          ]
+        },
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ metadata: { host: 'n8n', experiment: 'sidecar-deepseek-ab' } }) }}",
+        "options": {
+          "response": {"response": {"responseFormat": "json"}},
+          "timeout": 30000
+        }
+      },
+      "id": "a2cc4cce-e4d4-4b08-b99e-d573107b424c",
+      "name": "Context-Pruner Finalize",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1410, 0]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const validation = $('Validate Model Answer').item.json;\nconst finalize = $json;\nconst metrics = finalize.metrics || {};\nreturn { json: {\n  ...validation,\n  full_context_tokens: Number(metrics.last_full_context_tokens || 0),\n  served_context_tokens: Number(metrics.last_served_context_tokens || 0),\n  gross_input_savings_rate: Number(metrics.gross_input_savings_rate || 0),\n  model_input_budget_violation_count: Number(metrics.model_input_budget_violation_count || 0),\n  before_model_calls: Number(metrics.before_model_calls || 0),\n  lifecycle_event_count: Number(metrics.lifecycle_event_count || 0),\n  finalized: Boolean(finalize.lifecycle_state?.plugin?.finalized),\n} };"
+      },
+      "id": "b0380b39-6d77-464b-8203-4c80e79d2aed",
+      "name": "Build Final Result",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1650, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "__COLLECTOR_URL__/result",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {"name": "Authorization", "value": "Bearer __COLLECTOR_TOKEN__"}
+          ]
+        },
+        "sendBody": true,
+        "contentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "options": {"timeout": 30000}
+      },
+      "id": "744b6f5a-8877-449e-9df6-2dd80be701cc",
+      "name": "Report Validation Result",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1890, 0]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Start": {"main": [[{"node": "Build API Cases", "type": "main", "index": 0}]]},
+    "Build API Cases": {"main": [[{"node": "Context-Pruner Before Model", "type": "main", "index": 0}]]},
+    "Context-Pruner Before Model": {"main": [[{"node": "DeepSeek Chat Completion", "type": "main", "index": 0}]]},
+    "DeepSeek Chat Completion": {"main": [[{"node": "Validate Model Answer", "type": "main", "index": 0}]]},
+    "Validate Model Answer": {"main": [[{"node": "Context-Pruner After Model", "type": "main", "index": 0}]]},
+    "Context-Pruner After Model": {"main": [[{"node": "Context-Pruner Finalize", "type": "main", "index": 0}]]},
+    "Context-Pruner Finalize": {"main": [[{"node": "Build Final Result", "type": "main", "index": 0}]]},
+    "Build Final Result": {"main": [[{"node": "Report Validation Result", "type": "main", "index": 0}]]}
+  },
+  "active": false,
+  "settings": {"executionOrder": "v1"},
+  "versionId": "7c5502e4-aa05-4a4e-8649-74609d4d5cac",
+  "meta": {"templateCredsSetupCompleted": true},
+  "id": "context-pruner-sidecar-deepseek-ab-v1",
+  "tags": []
+}

@@ -1,0 +1,34 @@
+{
+  "protocol_version": "crewai-natural-v131",
+  "runner_sha256": "0f8151b1e95d830c4b12139c22bc5e41959d2bf711d52130e7df698ab5ca66ad",
+  "context_pruner_version": "0.13.1",
+  "crewai_version": "1.15.22",
+  "openai_version": "2.54.0",
+  "mode": "mock",
+  "model": "ReplayCrewAILLM",
+  "base_url": null,
+  "task_file": "tasks\\stage5_autogen\\natural_tasks.json",
+  "task_sha256": "8d51add8e421f2cfd011e5417ca5c3d071073408ceab0c662b7fe2985a84e7f0",
+  "tasks": [
+    "incident_triage",
+    "release_readiness",
+    "customer_migration"
+  ],
+  "methods": [
+    "none",
+    "pruner_v1"
+  ],
+  "repeats": 3,
+  "budget": {
+    "soft": 1800,
+    "hard": 6000,
+    "target": 1500,
+    "fixed_reserved": 300
+  },
+  "max_output_tokens": 512,
+  "thinking_mode": "disabled",
+  "max_case_retries": 1,
+  "maximum_api_requests": 54,
+  "evaluation_answer_terms_disclosed": false,
+  "synthetic_disclosure": "Only synthetic conversations, identifiers, tool arguments, and synthetic tool results are sent. No workspace files or source code are read."
+}

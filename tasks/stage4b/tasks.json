@@ -1,0 +1,145 @@
+[
+  {
+    "task_id": "workspace_code_lifecycle_001",
+    "scenario": "stateful_code_lifecycle",
+    "question": "检查该 Python 项目，定位并修复求和、退避上限和敏感值脱敏三个缺陷，完成后运行测试；最终回答字段 TESTS、FILES、CHANGES、VERIFICATION。",
+    "workspace": "../stage4a/fixtures/workspace_code_repair_001",
+    "golden_facts": ["TESTS", "FILES", "CHANGES", "VERIFICATION", "src/calculator.py", "src/retry.py", "src/redaction.py", "PASS"],
+    "expected_tools": ["read", "replace_text", "run_tests"],
+    "answer_constraints": {
+      "required": ["TESTS", "FILES", "CHANGES", "VERIFICATION", "PASS"]
+    },
+    "workspace_expectations": {
+      "files": {
+        "src/calculator.py": {
+          "contains": ["return sum(values)"],
+          "absent": ["return max(values)"]
+        },
+        "src/retry.py": {
+          "contains": ["return min(base * (2 ** attempt), cap)"],
+          "absent": ["return max(base * (2 ** attempt), cap)"]
+        },
+        "src/redaction.py": {
+          "contains": ["return \"[REDACTED]\""],
+          "absent": ["return value"]
+        }
+      },
+      "tests_pass": true,
+      "required_tools": ["read", "replace_text", "run_tests"]
+    },
+    "metadata": {
+      "mock_final_answer": "TESTS=PASS；FILES=src/calculator.py,src/retry.py,src/redaction.py；CHANGES=3；VERIFICATION=两次阶段性失败后，最终全部 unittest 通过。",
+      "mock_plan": [
+        {"name": "list_files", "args": {"pattern": "**/*"}},
+        {"name": "read", "args": {"doc_id": "README.md"}},
+        {"name": "read", "args": {"doc_id": "docs/design.md"}},
+        {"name": "read", "args": {"doc_id": "docs/security.md"}},
+        {"name": "read", "args": {"doc_id": "docs/retry-policy.md"}},
+        {"name": "read", "args": {"doc_id": "src/calculator.py"}},
+        {"name": "read", "args": {"doc_id": "src/retry.py"}},
+        {"name": "read", "args": {"doc_id": "src/redaction.py"}},
+        {"name": "read", "args": {"doc_id": "tests/test_service.py"}},
+        {"name": "replace_text", "args": {"path": "src/calculator.py", "old": "return max(values)", "new": "return sum(values)"}},
+        {"name": "run_tests", "args": {}},
+        {"name": "read", "args": {"doc_id": "src/calculator.py"}},
+        {"name": "replace_text", "args": {"path": "src/retry.py", "old": "return max(base * (2 ** attempt), cap)", "new": "return min(base * (2 ** attempt), cap)"}},
+        {"name": "run_tests", "args": {}},
+        {"name": "read", "args": {"doc_id": "src/retry.py"}},
+        {"name": "replace_text", "args": {"path": "src/redaction.py", "old": "return value", "new": "return \"[REDACTED]\""}},
+        {"name": "run_tests", "args": {}}
+      ]
+    }
+  },
+  {
+    "task_id": "workspace_config_migration_001",
+    "scenario": "stateful_config_migration",
+    "question": "检查配置迁移项目，按照 v2 规范修复 HTTPS 地址、毫秒到秒转换和文本布尔值解析三个缺陷，完成后运行测试；最终回答字段 TESTS、FILES、CHANGES、VERIFICATION。",
+    "workspace": "fixtures/workspace_config_migration_001",
+    "golden_facts": ["TESTS", "FILES", "CHANGES", "VERIFICATION", "src/url_builder.py", "src/timeouts.py", "src/flags.py", "PASS"],
+    "expected_tools": ["read", "replace_text", "run_tests"],
+    "answer_constraints": {
+      "required": ["TESTS", "FILES", "CHANGES", "VERIFICATION", "PASS"]
+    },
+    "workspace_expectations": {
+      "files": {
+        "src/url_builder.py": {
+          "contains": ["return f\"https://{host}:{port}\""],
+          "absent": ["return f\"http://{host}:{port}\""]
+        },
+        "src/flags.py": {
+          "absent": ["return bool(value)"]
+        }
+      },
+      "tests_pass": true,
+      "required_tools": ["read", "replace_text", "run_tests"]
+    },
+    "metadata": {
+      "mock_final_answer": "TESTS=PASS；FILES=src/url_builder.py,src/timeouts.py,src/flags.py；CHANGES=3，其中地址已改为 HTTPS；VERIFICATION=最终全部 unittest 通过。",
+      "mock_plan": [
+        {"name": "list_files", "args": {"pattern": "**/*"}},
+        {"name": "read", "args": {"doc_id": "README.md"}},
+        {"name": "read", "args": {"doc_id": "docs/spec.md"}},
+        {"name": "read", "args": {"doc_id": "tests/test_config.py"}},
+        {"name": "read", "args": {"doc_id": "src/url_builder.py"}},
+        {"name": "read", "args": {"doc_id": "src/timeouts.py"}},
+        {"name": "read", "args": {"doc_id": "src/flags.py"}},
+        {"name": "replace_text", "args": {"path": "src/url_builder.py", "old": "return f\"http://{host}:{port}\"", "new": "return f\"https://{host}:{port}\""}},
+        {"name": "run_tests", "args": {}},
+        {"name": "read", "args": {"doc_id": "src/url_builder.py"}},
+        {"name": "replace_text", "args": {"path": "src/timeouts.py", "old": "return int(milliseconds)", "new": "return milliseconds // 1000"}},
+        {"name": "run_tests", "args": {}},
+        {"name": "read", "args": {"doc_id": "src/timeouts.py"}},
+        {"name": "replace_text", "args": {"path": "src/flags.py", "old": "return bool(value)", "new": "return str(value).strip().lower() in {\"1\", \"true\", \"yes\", \"on\"}"}},
+        {"name": "run_tests", "args": {}}
+      ]
+    }
+  },
+  {
+    "task_id": "workspace_data_pipeline_001",
+    "scenario": "stateful_data_pipeline",
+    "question": "检查数据清洗项目，按照合同修复标识符规范化、稳定去重和 active 记录筛选三个缺陷，完成后运行测试；最终回答字段 TESTS、FILES、CHANGES、VERIFICATION。",
+    "workspace": "fixtures/workspace_data_pipeline_001",
+    "golden_facts": ["TESTS", "FILES", "CHANGES", "VERIFICATION", "src/normalize.py", "src/deduplicate.py", "src/filtering.py", "PASS"],
+    "expected_tools": ["read", "replace_text", "run_tests"],
+    "answer_constraints": {
+      "required": ["TESTS", "FILES", "CHANGES", "VERIFICATION", "PASS"]
+    },
+    "workspace_expectations": {
+      "files": {
+        "src/normalize.py": {
+          "contains": ["return value.strip().lower()"],
+          "absent": ["return value.lower()"]
+        },
+        "src/deduplicate.py": {
+          "absent": ["return list(set(values))"]
+        },
+        "src/filtering.py": {
+          "contains": ["return [row for row in rows if row.get(\"active\") is True]"],
+          "absent": ["row.get(\"active\") is not False"]
+        }
+      },
+      "tests_pass": true,
+      "required_tools": ["read", "replace_text", "run_tests"]
+    },
+    "metadata": {
+      "mock_final_answer": "TESTS=PASS；FILES=src/normalize.py,src/deduplicate.py,src/filtering.py；CHANGES=3；VERIFICATION=最终全部 unittest 通过。",
+      "mock_plan": [
+        {"name": "list_files", "args": {"pattern": "**/*"}},
+        {"name": "read", "args": {"doc_id": "README.md"}},
+        {"name": "read", "args": {"doc_id": "docs/contract.md"}},
+        {"name": "read", "args": {"doc_id": "tests/test_pipeline.py"}},
+        {"name": "read", "args": {"doc_id": "src/normalize.py"}},
+        {"name": "read", "args": {"doc_id": "src/deduplicate.py"}},
+        {"name": "read", "args": {"doc_id": "src/filtering.py"}},
+        {"name": "replace_text", "args": {"path": "src/normalize.py", "old": "return value.lower()", "new": "return value.strip().lower()"}},
+        {"name": "run_tests", "args": {}},
+        {"name": "read", "args": {"doc_id": "src/normalize.py"}},
+        {"name": "replace_text", "args": {"path": "src/deduplicate.py", "old": "return list(set(values))", "new": "return list(dict.fromkeys(values))"}},
+        {"name": "run_tests", "args": {}},
+        {"name": "read", "args": {"doc_id": "src/deduplicate.py"}},
+        {"name": "replace_text", "args": {"path": "src/filtering.py", "old": "return [row for row in rows if row.get(\"active\") is not False]", "new": "return [row for row in rows if row.get(\"active\") is True]"}},
+        {"name": "run_tests", "args": {}}
+      ]
+    }
+  }
+]

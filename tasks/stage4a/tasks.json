@@ -1,0 +1,121 @@
+[
+  {
+    "task_id": "workspace_audit_001",
+    "scenario": "real_file_audit",
+    "question": "审计真实工作区并回答以下字段：PORT、RPO、RETENTION、OWNER、REGION、LOG_POLICY、ENCRYPTION。每项必须给出具体值和来源文件。",
+    "workspace": "fixtures/workspace_audit_001",
+    "golden_facts": ["PORT=8443", "RPO=15 分钟", "RETENTION=7 年", "OWNER=平台可靠性组", "REGION=ap-southeast-1", "LOG_POLICY=不得记录认证令牌", "ENCRYPTION=AES-256-GCM"],
+    "expected_tools": ["read"],
+    "answer_constraints": {
+      "required": ["config/service.toml", "docs/recovery.md", "docs/retention.md", "docs/ownership.md", "ops/deployment.md", "docs/security.md", "docs/storage.md"],
+      "forbidden": ["PORT=8080"]
+    },
+    "workspace_expectations": {
+      "required_tools": ["read"]
+    },
+    "metadata": {
+      "mock_final_answer": "PORT=8443（config/service.toml）；RPO=15 分钟（docs/recovery.md）；RETENTION=7 年（docs/retention.md）；OWNER=平台可靠性组（docs/ownership.md）；REGION=ap-southeast-1（ops/deployment.md）；LOG_POLICY=不得记录认证令牌（docs/security.md）；ENCRYPTION=AES-256-GCM（docs/storage.md）。",
+      "mock_plan": [
+        {"name": "list_files", "args": {"pattern": "**/*"}},
+        {"name": "search", "args": {"keyword": "PORT="}},
+        {"name": "read", "args": {"doc_id": "config/service.toml"}},
+        {"name": "search", "args": {"keyword": "RPO="}},
+        {"name": "read", "args": {"doc_id": "docs/recovery.md"}},
+        {"name": "search", "args": {"keyword": "RETENTION="}},
+        {"name": "read", "args": {"doc_id": "docs/retention.md"}},
+        {"name": "search", "args": {"keyword": "OWNER="}},
+        {"name": "read", "args": {"doc_id": "docs/ownership.md"}},
+        {"name": "search", "args": {"keyword": "REGION="}},
+        {"name": "read", "args": {"doc_id": "ops/deployment.md"}},
+        {"name": "search", "args": {"keyword": "LOG_POLICY="}},
+        {"name": "read", "args": {"doc_id": "docs/security.md"}},
+        {"name": "search", "args": {"keyword": "ENCRYPTION="}},
+        {"name": "read", "args": {"doc_id": "docs/storage.md"}}
+      ]
+    }
+  },
+  {
+    "task_id": "workspace_retrieval_001",
+    "scenario": "real_repository_retrieval",
+    "question": "调查事故资料并回答以下字段：INCIDENT_ID、ROOT_CAUSE、AFFECTED、FIX、DEADLINE、OWNER、STATUS。每项附来源文件，忽略已经废弃的草案。",
+    "workspace": "fixtures/workspace_retrieval_001",
+    "golden_facts": ["INCIDENT_ID=INC-2048", "ROOT_CAUSE=连接池泄漏", "AFFECTED=订单写入 API", "FIX=连接归还放入 finally", "DEADLINE=2026-10-01", "OWNER=Chen", "STATUS=已验证待发布"],
+    "expected_tools": ["read"],
+    "answer_constraints": {
+      "required": ["incidents/index.md", "incidents/root-cause.md", "services/impact.md", "patches/fix.md", "release/plan.md", "people/oncall.md", "validation/result.md"],
+      "forbidden": ["INC-1024", "增加连接池上限"]
+    },
+    "workspace_expectations": {
+      "required_tools": ["read"]
+    },
+    "metadata": {
+      "mock_final_answer": "INCIDENT_ID=INC-2048（incidents/index.md）；ROOT_CAUSE=连接池泄漏（incidents/root-cause.md）；AFFECTED=订单写入 API（services/impact.md）；FIX=连接归还放入 finally（patches/fix.md）；DEADLINE=2026-10-01（release/plan.md）；OWNER=Chen（people/oncall.md）；STATUS=已验证待发布（validation/result.md）。",
+      "mock_plan": [
+        {"name": "list_files", "args": {"pattern": "**/*.md"}},
+        {"name": "search", "args": {"keyword": "INCIDENT_ID="}},
+        {"name": "read", "args": {"doc_id": "incidents/index.md"}},
+        {"name": "search", "args": {"keyword": "ROOT_CAUSE="}},
+        {"name": "read", "args": {"doc_id": "incidents/root-cause.md"}},
+        {"name": "search", "args": {"keyword": "AFFECTED="}},
+        {"name": "read", "args": {"doc_id": "services/impact.md"}},
+        {"name": "search", "args": {"keyword": "FIX="}},
+        {"name": "read", "args": {"doc_id": "patches/fix.md"}},
+        {"name": "search", "args": {"keyword": "DEADLINE="}},
+        {"name": "read", "args": {"doc_id": "release/plan.md"}},
+        {"name": "search", "args": {"keyword": "OWNER="}},
+        {"name": "read", "args": {"doc_id": "people/oncall.md"}},
+        {"name": "search", "args": {"keyword": "STATUS="}},
+        {"name": "read", "args": {"doc_id": "validation/result.md"}}
+      ]
+    }
+  },
+  {
+    "task_id": "workspace_code_repair_001",
+    "scenario": "real_code_repair",
+    "question": "检查该 Python 项目，修复三个缺陷并运行测试。最终回答字段：TESTS、FILES、CHANGES。",
+    "workspace": "fixtures/workspace_code_repair_001",
+    "golden_facts": ["TESTS", "FILES", "CHANGES", "src/calculator.py", "src/retry.py", "src/redaction.py", "通过"],
+    "expected_tools": ["replace_text", "run_tests"],
+    "answer_constraints": {
+      "required": ["TESTS", "FILES", "CHANGES", "通过"]
+    },
+    "workspace_expectations": {
+      "files": {
+        "src/calculator.py": {
+          "contains": ["return sum(values)"],
+          "absent": ["return max(values)"]
+        },
+        "src/retry.py": {
+          "contains": ["return min(base * (2 ** attempt), cap)"],
+          "absent": ["return max(base * (2 ** attempt), cap)"]
+        },
+        "src/redaction.py": {
+          "contains": ["return \"[REDACTED]\""],
+          "absent": ["return value"]
+        }
+      },
+      "tests_pass": true,
+      "required_tools": ["replace_text", "run_tests"]
+    },
+    "metadata": {
+      "mock_final_answer": "TESTS=PASS；FILES=src/calculator.py,src/retry.py,src/redaction.py；CHANGES=3。修复了求和、退避上限和敏感值脱敏，并通过全部 unittest。",
+      "mock_plan": [
+        {"name": "list_files", "args": {"pattern": "**/*"}},
+        {"name": "read", "args": {"doc_id": "README.md"}},
+        {"name": "read", "args": {"doc_id": "docs/design.md"}},
+        {"name": "read", "args": {"doc_id": "docs/security.md"}},
+        {"name": "read", "args": {"doc_id": "docs/retry-policy.md"}},
+        {"name": "read", "args": {"doc_id": "src/__init__.py"}},
+        {"name": "read", "args": {"doc_id": "src/calculator.py"}},
+        {"name": "read", "args": {"doc_id": "src/retry.py"}},
+        {"name": "read", "args": {"doc_id": "src/redaction.py"}},
+        {"name": "read", "args": {"doc_id": "tests/test_service.py"}},
+        {"name": "read", "args": {"doc_id": "pyproject.toml"}},
+        {"name": "replace_text", "args": {"path": "src/calculator.py", "old": "return max(values)", "new": "return sum(values)"}},
+        {"name": "replace_text", "args": {"path": "src/retry.py", "old": "return max(base * (2 ** attempt), cap)", "new": "return min(base * (2 ** attempt), cap)"}},
+        {"name": "replace_text", "args": {"path": "src/redaction.py", "old": "return value", "new": "return \"[REDACTED]\""}},
+        {"name": "run_tests", "args": {}}
+      ]
+    }
+  }
+]

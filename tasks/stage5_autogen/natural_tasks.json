@@ -1,0 +1,32 @@
+[
+  {
+    "task_id": "incident_triage",
+    "title": "支付服务故障分诊",
+    "task": "值班群报告支付失败率突然升高。请结合当前运行状态和最近变更，判断最可能的原因并给出立即处置建议。回答中保留事件编号 INC-2048 和服务名 payments-api。",
+    "history_constraint": "事件编号 INC-2048 与服务名 payments-api 是当前工单的固定标识，不得改写。",
+    "history_topic": "过去数周的值班交接、容量观察、无关服务告警和已经关闭的调查记录",
+    "tools": ["get_service_health", "get_recent_deployment"],
+    "expected_terms": ["INC-2048", "payments-api", "degraded", "release-2026.09.17", "rollback"],
+    "decision": "ROLLBACK"
+  },
+  {
+    "task_id": "release_readiness",
+    "title": "版本发布准入判断",
+    "task": "发布负责人要在今晚决定 Atlas-2.4 是否可以进入生产。请核对最新测试结果和未关闭风险，给出 GO 或 NO-GO 结论，并简要说明证据。",
+    "history_constraint": "本次唯一有效的候选版本是 Atlas-2.4；旧版本 Atlas-2.3 的结论不能用于本次准入。",
+    "history_topic": "迭代评审、旧版回归测试、排期讨论、已解决缺陷和候选版本变更记录",
+    "tools": ["read_release_tests", "read_release_risks"],
+    "expected_terms": ["Atlas-2.4", "184", "0 failed", "migration lock", "NO-GO"],
+    "decision": "NO-GO"
+  },
+  {
+    "task_id": "customer_migration",
+    "title": "客户迁移窗口决策",
+    "task": "客户 Northstar 希望今晚迁移到目标区域。请核对生效方案和目标区域容量，判断能否按计划执行，并给出关键窗口信息。",
+    "history_constraint": "客户名称 Northstar 和目标区域 eu-west 必须原样保留；不要把历史讨论中的 us-east 当成当前目标。",
+    "history_topic": "客户沟通、旧区域评估、过期容量快照、演练记录和已撤销的迁移日期",
+    "tools": ["lookup_migration_plan", "check_region_capacity"],
+    "expected_terms": ["Northstar", "eu-west", "02:00 UTC", "28%", "PROCEED"],
+    "decision": "PROCEED"
+  }
+]

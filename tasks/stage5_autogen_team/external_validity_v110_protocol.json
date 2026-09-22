@@ -1,0 +1,65 @@
+{
+  "protocol_id": "autogen-team-domain-external-validity-role-fix-v110",
+  "preregistered": true,
+  "context_pruner_version": "0.10.3",
+  "task_file": "tasks/stage5_autogen_team/external_validity_v108_tasks.json",
+  "task_file_sha256": "649b4fb59a2dc0c474782debf8c99f1527c0e4c3c9f00aca06b64e212ab522ea",
+  "task_ids": [
+    "security_isolation_handoff",
+    "data_quarantine_handoff",
+    "compliance_approval_handoff",
+    "capacity_scale_handoff",
+    "refund_decision_handoff",
+    "disaster_failover_handoff"
+  ],
+  "methods": [
+    "none",
+    "pruner_v1"
+  ],
+  "model": "deepseek-flash",
+  "thinking_mode": "disabled",
+  "repeats": 3,
+  "expected_team_cases": 36,
+  "expected_pairs": 18,
+  "minimum_api_requests": 72,
+  "maximum_api_requests": 84,
+  "max_api_retries": 2,
+  "max_output_tokens": 512,
+  "max_visible_output_chars": 180,
+  "budget": {
+    "soft": 1500,
+    "hard": 3000,
+    "target": 1150,
+    "fixed_reserved": 300
+  },
+  "acceptance_gates": {
+    "incomplete_pairs_max": 0,
+    "success_rate_min": 0.95,
+    "model_input_privacy_rate_min": 1.0,
+    "handoff_preserved_rate_min": 1.0,
+    "handoff_target_only_rate_min": 1.0,
+    "state_roundtrip_rate_min": 1.0,
+    "output_contract_rate_min": 1.0,
+    "input_savings_ci_low_min": 0.5,
+    "total_token_savings_ci_low_min": 0.5,
+    "positive_savings_rate_min": 0.8,
+    "output_token_change_abs_max": 0.1,
+    "plugin_hard_budget_violations_max": 0
+  },
+  "latency_policy": "Report effect size and per-domain distribution; no directional latency gate is preregistered because latency was heterogeneous in v107.",
+  "estimated_peak_cost_cny_upper_bound": 0.25,
+  "pricing_snapshot": {
+    "checked_on": "2026-09-20",
+    "currency": "CNY",
+    "input_cache_miss_per_million_peak": 2.0,
+    "output_per_million_peak": 8.0,
+    "source": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/"
+  },
+  "supersedes_protocol": "autogen-team-domain-external-validity-repaired-v109",
+  "repair_scope": [
+    "normalize AutoGen UserMessage, AssistantMessage and SystemMessage type names to canonical roles",
+    "preserve the newest canonical user task losslessly under compression",
+    "retain the v109 equivalent structured-value matching rules"
+  ],
+  "smoke_evidence": "runs/stage5-autogen-team-api/deepseek-autogen-team-role-fix-smoke-4x1-v110"
+}

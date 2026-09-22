@@ -1,0 +1,572 @@
+[
+  {
+    "task_id": "long_context_001",
+    "scenario": "long_context",
+    "question": "汇总蓝鲸计划的关键参数，必须给出项目代号、预算和截止日期。",
+    "docs": {
+      "d1": "蓝鲸计划的项目代号是 Aurora-17，这是最终报告必须保留的早期约束。",
+      "d2": "蓝鲸计划批准预算为 42 万元，任何其他预算数字均为无关历史。",
+      "d3": "蓝鲸计划最终截止日期为 2026 年 11 月 18 日。",
+      "d4": "背景资料：团队曾讨论过旧项目海豚计划，但该项目已经终止，不应混入结论。",
+      "d5": "会议记录：界面颜色、字体和展示顺序尚未确定，这些信息与关键参数无关。",
+      "d6": "历史草案曾提出 35 万元预算，后来已被正式批准的 42 万元替代。",
+      "d7": "普通背景：团队每周二召开例会，会议地点可能变化。",
+      "d8": "普通背景：内部文档编号采用年份和流水号组合。"
+    },
+    "golden_facts": ["Aurora-17", "42 万元", "2026 年 11 月 18 日"],
+    "expected_tools": ["search", "read"],
+    "answer_constraints": {"required": ["Aurora-17", "42 万元", "2026 年 11 月 18 日"], "forbidden": ["35 万元"]},
+    "metadata": {"key_position": "early"}
+  },
+  {
+    "task_id": "long_context_002",
+    "scenario": "long_context",
+    "question": "给出 Orion 服务的最终连接规范，包含协议、端口和加密方式。",
+    "docs": {
+      "d1": "Orion 服务最终使用 gRPC 协议。",
+      "d2": "Orion 服务对外端口固定为 7443。",
+      "d3": "传输层必须采用 TLS 1.3。",
+      "d4": "旧版原型曾使用 HTTP/1.1 和 8080 端口，但已经弃用。",
+      "d5": "日志保存周期为七天，与连接规范无关。",
+      "d6": "服务图标暂定为蓝色圆形，不影响网络连接。",
+      "d7": "开发环境允许使用模拟数据。",
+      "d8": "项目会议纪要需要按月归档。"
+    },
+    "golden_facts": ["gRPC", "7443", "TLS 1.3"],
+    "expected_tools": ["search", "read"],
+    "answer_constraints": {"required": ["gRPC", "7443", "TLS 1.3"], "forbidden": ["8080"]},
+    "metadata": {"key_position": "early"}
+  },
+  {
+    "task_id": "long_context_003",
+    "scenario": "long_context",
+    "question": "复述文件处理任务的三个硬约束。",
+    "docs": {
+      "d1": "硬约束一：只能读取本地文件，禁止访问网络。",
+      "d2": "硬约束二：最终结果必须输出为 JSON。",
+      "d3": "硬约束三：不得覆盖任何原始文件。",
+      "d4": "可选建议：处理过程可以输出进度日志。",
+      "d5": "旧需求曾允许访问网络，但已被硬约束一替代。",
+      "d6": "界面展示不是本任务的验收内容。",
+      "d7": "临时文件命名没有强制要求。",
+      "d8": "运行平台可能是 Windows 或 Linux。"
+    },
+    "golden_facts": ["只能读取本地文件", "JSON", "不得覆盖任何原始文件"],
+    "expected_tools": ["search", "read"],
+    "answer_constraints": {"required": ["本地文件", "JSON", "不得覆盖"], "forbidden": ["允许访问网络"]},
+    "metadata": {"key_position": "early"}
+  },
+  {
+    "task_id": "long_context_004",
+    "scenario": "long_context",
+    "question": "报告训练实验最终使用的随机种子、批大小和学习率。",
+    "docs": {
+      "d1": "正式实验随机种子统一设置为 2026。",
+      "d2": "正式实验批大小为 32。",
+      "d3": "正式实验学习率为 0.0003。",
+      "d4": "预实验曾使用随机种子 42，仅用于调试。",
+      "d5": "旧批大小 16 已因吞吐不足被替换。",
+      "d6": "训练日志每五十步打印一次。",
+      "d7": "模型检查点保留最近三个版本。",
+      "d8": "图表颜色不影响实验配置。"
+    },
+    "golden_facts": ["2026", "32", "0.0003"],
+    "expected_tools": ["search", "read"],
+    "answer_constraints": {"required": ["2026", "32", "0.0003"], "forbidden": ["随机种子 42", "批大小 16"]},
+    "metadata": {"key_position": "early"}
+  },
+  {
+    "task_id": "long_context_005",
+    "scenario": "long_context",
+    "question": "总结 Harbor 部署的节点、区域和最小内存要求。",
+    "docs": {
+      "d1": "Harbor 的生产节点名称为 harbor-prod-3。",
+      "d2": "生产部署区域为 cn-east-2。",
+      "d3": "节点最小内存要求为 24 GB。",
+      "d4": "测试节点 harbor-test-1 只有 8 GB 内存，不能作为生产配置。",
+      "d5": "部署窗口通常安排在周末。",
+      "d6": "监控面板使用默认主题。",
+      "d7": "开发人员可以在本地运行模拟服务。",
+      "d8": "历史区域 cn-north-1 已停止使用。"
+    },
+    "golden_facts": ["harbor-prod-3", "cn-east-2", "24 GB"],
+    "expected_tools": ["search", "read"],
+    "answer_constraints": {"required": ["harbor-prod-3", "cn-east-2", "24 GB"], "forbidden": ["harbor-test-1", "cn-north-1"]},
+    "metadata": {"key_position": "early"}
+  },
+  {
+    "task_id": "tool_chain_001",
+    "scenario": "tool_chain",
+    "question": "综合六份资料，说明 Atlas 发布的版本、负责人和回滚条件。",
+    "docs": {
+      "d1": "Atlas 计划发布版本 v2.4.1。",
+      "d2": "本次发布负责人是 Lin。",
+      "d3": "若五分钟错误率超过 2%，必须触发回滚。",
+      "d4": "发布前需要完成数据库备份。",
+      "d5": "灰度阶段覆盖 10% 流量。",
+      "d6": "回滚后需要保存故障日志。"
+    },
+    "golden_facts": ["v2.4.1", "Lin", "错误率超过 2%"],
+    "expected_tools": ["search", "read"],
+    "answer_constraints": {"required": ["v2.4.1", "Lin", "2%"]}
+  },
+  {
+    "task_id": "tool_chain_002",
+    "scenario": "tool_chain",
+    "question": "综合资料给出数据流水线的输入格式、清洗规则和输出位置。",
+    "docs": {
+      "d1": "流水线输入格式为 UTF-8 编码的 JSONL。",
+      "d2": "清洗时必须删除重复记录。",
+      "d3": "缺失主键的记录必须隔离而不是补全。",
+      "d4": "合格输出写入 warehouse/clean。",
+      "d5": "隔离记录写入 warehouse/quarantine。",
+      "d6": "每批处理完成后生成校验和。"
+    },
+    "golden_facts": ["UTF-8", "JSONL", "删除重复记录", "warehouse/clean"],
+    "expected_tools": ["search", "read"],
+    "answer_constraints": {"required": ["UTF-8", "JSONL", "删除重复", "warehouse/clean"]}
+  },
+  {
+    "task_id": "tool_chain_003",
+    "scenario": "tool_chain",
+    "question": "根据资料给出审计流程的保留期限、审批角色和导出格式。",
+    "docs": {
+      "d1": "审计日志必须保留 180 天。",
+      "d2": "导出审计数据需要安全管理员审批。",
+      "d3": "标准导出格式为 CSV。",
+      "d4": "每次导出必须记录申请编号。",
+      "d5": "普通开发人员没有直接导出权限。",
+      "d6": "归档文件应计算 SHA-256 校验值。"
+    },
+    "golden_facts": ["180 天", "安全管理员", "CSV"],
+    "expected_tools": ["search", "read"],
+    "answer_constraints": {"required": ["180 天", "安全管理员", "CSV"]}
+  },
+  {
+    "task_id": "tool_chain_004",
+    "scenario": "tool_chain",
+    "question": "汇总告警策略的阈值、持续时间和通知渠道。",
+    "docs": {
+      "d1": "CPU 使用率超过 85% 才进入候选告警状态。",
+      "d2": "阈值必须连续超过 10 分钟才正式告警。",
+      "d3": "正式告警首先发送到 PagerDuty。",
+      "d4": "同时向值班群发送摘要。",
+      "d5": "恢复正常五分钟后关闭告警。",
+      "d6": "单次瞬时尖峰不触发正式告警。"
+    },
+    "golden_facts": ["85%", "10 分钟", "PagerDuty"],
+    "expected_tools": ["search", "read"],
+    "answer_constraints": {"required": ["85%", "10 分钟", "PagerDuty"]}
+  },
+  {
+    "task_id": "tool_chain_005",
+    "scenario": "tool_chain",
+    "question": "综合资料说明备份系统的完整/增量频率、保留份数，以及 RPO 和 RTO 两项恢复目标。",
+    "docs": {
+      "d1": "数据库每 6 小时执行一次增量备份。",
+      "d2": "完整备份每天执行一次。",
+      "d3": "系统保留最近 14 份完整备份。",
+      "d4": "恢复点目标 RPO 为 6 小时。",
+      "d5": "恢复时间目标 RTO 为 2 小时。",
+      "d6": "每月执行一次恢复演练。"
+    },
+    "golden_facts": ["每 6 小时", "14 份", "RPO", "6 小时", "RTO", "2 小时"],
+    "expected_tools": ["search", "read"],
+    "answer_constraints": {"required": ["6 小时", "14 份", "RPO", "RTO", "2 小时"]}
+  },
+  {
+    "task_id": "recovery_001",
+    "scenario": "recovery",
+    "question": "找出 Phoenix 迁移任务的目标集群和切换时间。",
+    "docs": {
+      "d1": "Phoenix 的最终目标集群是 cluster-zeta。",
+      "d2": "正式流量切换时间为 2026-10-09 02:00。",
+      "d3": "旧集群 cluster-alpha 只用于回滚。",
+      "d4": "迁移前需要完成数据校验。",
+      "d5": "切换后观察窗口为三十分钟。",
+      "d6": "普通测试流量不计入正式验收。"
+    },
+    "golden_facts": ["cluster-zeta", "2026-10-09 02:00"],
+    "expected_tools": ["search", "read"],
+    "answer_constraints": {"required": ["cluster-zeta", "2026-10-09 02:00"], "forbidden": ["目标集群是 cluster-alpha"]},
+    "recovery_targets": ["cluster-zeta", "2026-10-09 02:00"],
+    "fault_injection": {"type": "parse_error", "call": 7, "payload": "解析失败：请恢复 cluster-zeta 与 2026-10-09 02:00 的原始证据", "drop_terms": ["cluster-zeta", "2026-10-09 02:00"]}
+  },
+  {
+    "task_id": "recovery_002",
+    "scenario": "recovery",
+    "question": "确认 Mercury 密钥轮换的密钥编号和生效日期。",
+    "docs": {
+      "d1": "Mercury 新密钥编号为 key-8842。",
+      "d2": "新密钥生效日期是 2026-12-01。",
+      "d3": "旧密钥 key-1120 将在生效后撤销。",
+      "d4": "轮换前需要通知所有服务负责人。",
+      "d5": "测试环境可以提前一天切换。",
+      "d6": "密钥材料不得出现在普通日志中。"
+    },
+    "golden_facts": ["key-8842", "2026-12-01"],
+    "expected_tools": ["search", "read"],
+    "answer_constraints": {"required": ["key-8842", "2026-12-01"], "forbidden": ["新密钥编号为 key-1120"]},
+    "recovery_targets": ["key-8842", "2026-12-01"],
+    "fault_injection": {"type": "parse_error", "call": 7, "payload": "解析失败：请恢复 key-8842 与 2026-12-01 的原始证据", "drop_terms": ["key-8842", "2026-12-01"]}
+  },
+  {
+    "task_id": "recovery_003",
+    "scenario": "recovery",
+    "question": "确认 Vega 实验的主指标和最低验收值。",
+    "docs": {
+      "d1": "Vega 实验主指标是任务成功率。",
+      "d2": "最低验收值为 92%。",
+      "d3": "Token 节省率是次要效率指标。",
+      "d4": "旧草案使用 88% 阈值，已经失效。",
+      "d5": "实验需要报告置信区间。",
+      "d6": "失败样本必须单独保存。"
+    },
+    "golden_facts": ["任务成功率", "92%"],
+    "expected_tools": ["search", "read"],
+    "answer_constraints": {"required": ["任务成功率", "92%"], "forbidden": ["最低验收值为 88%"]},
+    "recovery_targets": ["任务成功率", "92%"],
+    "fault_injection": {"type": "parse_error", "call": 7, "payload": "解析失败：请恢复任务成功率与 92% 的原始证据", "drop_terms": ["任务成功率", "92%"]}
+  },
+  {
+    "task_id": "recovery_004",
+    "scenario": "recovery",
+    "question": "确认 Nova 数据删除策略的等待期和审批人。",
+    "docs": {
+      "d1": "Nova 数据删除前必须等待 30 天。",
+      "d2": "最终删除需要数据平台主管审批。",
+      "d3": "紧急请求也不能跳过审批。",
+      "d4": "旧流程等待期为 7 天，现已停用。",
+      "d5": "删除完成后生成审计记录。",
+      "d6": "备份副本按独立策略处理。"
+    },
+    "golden_facts": ["30 天", "数据平台主管"],
+    "expected_tools": ["search", "read"],
+    "answer_constraints": {"required": ["30 天", "数据平台主管"], "forbidden": ["等待 7 天"]},
+    "recovery_targets": ["30 天", "数据平台主管"],
+    "fault_injection": {"type": "parse_error", "call": 7, "payload": "解析失败：请恢复 30 天与数据平台主管的原始证据", "drop_terms": ["30 天", "数据平台主管"]}
+  },
+  {
+    "task_id": "recovery_005",
+    "scenario": "recovery",
+    "question": "确认 Sigma 发布冻结的开始时间和解除角色。",
+    "docs": {
+      "d1": "Sigma 发布冻结从 2026-11-20 18:00 开始。",
+      "d2": "只有发布委员会主席可以解除冻结。",
+      "d3": "普通项目经理不能单独解除冻结。",
+      "d4": "冻结期间允许修复最高优先级安全漏洞。",
+      "d5": "所有例外操作必须留下审计记录。",
+      "d6": "下一次常规发布窗口另行通知。"
+    },
+    "golden_facts": ["2026-11-20 18:00", "发布委员会主席"],
+    "expected_tools": ["search", "read"],
+    "answer_constraints": {"required": ["2026-11-20 18:00", "发布委员会主席"], "forbidden": ["项目经理可以解除"]},
+    "recovery_targets": ["2026-11-20 18:00", "发布委员会主席"],
+    "fault_injection": {"type": "parse_error", "call": 7, "payload": "解析失败：请恢复 2026-11-20 18:00 与发布委员会主席的原始证据", "drop_terms": ["2026-11-20 18:00", "发布委员会主席"]}
+  },
+  {
+    "task_id": "long_context_006",
+    "scenario": "long_context",
+    "question": "汇总 Polaris 归档策略的存储桶、保留期和加密算法。",
+    "docs": {
+      "d1": "Polaris 正式归档存储桶为 polaris-archive-prod。",
+      "d2": "合规数据必须保留 180 天。",
+      "d3": "归档对象统一使用 AES-256 加密。",
+      "d4": "早期测试桶 polaris-archive-dev 已停止写入。",
+      "d5": "旧草案要求保留 90 天，已被正式策略替代。",
+      "d6": "归档任务每天凌晨检查一次完整性。",
+      "d7": "控制台主题颜色与归档策略无关。",
+      "d8": "恢复演练由平台团队按季度安排。",
+      "d9": "测试对象可以在七天后清理，但不属于合规数据。",
+      "d10": "对象名称采用业务前缀和日期组合。"
+    },
+    "golden_facts": ["polaris-archive-prod", "180 天", "AES-256"],
+    "expected_tools": ["search", "read"],
+    "answer_constraints": {"required": ["polaris-archive-prod", "180 天", "AES-256"], "forbidden": ["polaris-archive-dev", "保留 90 天"]},
+    "metadata": {"key_position": "early", "expanded": true}
+  },
+  {
+    "task_id": "long_context_007",
+    "scenario": "long_context",
+    "question": "说明 Cedar 一级事故的级别、确认时限和升级负责人。",
+    "docs": {
+      "d1": "Cedar 最高等级事故统一标记为 P1。",
+      "d2": "P1 告警必须在 5 分钟内确认。",
+      "d3": "超过确认时限后升级给 SRE 值班负责人。",
+      "d4": "P2 事故允许在 20 分钟内确认。",
+      "d5": "旧手册曾把最高等级写为 S0，现已废止。",
+      "d6": "事故群名称需要包含日期。",
+      "d7": "复盘模板由质量团队维护。",
+      "d8": "普通工单不进入事故响应流程。",
+      "d9": "夜间告警声音可由值班人员设置。",
+      "d10": "事故关闭后七天内完成复盘。"
+    },
+    "golden_facts": ["P1", "5 分钟", "SRE 值班负责人"],
+    "expected_tools": ["search", "read"],
+    "answer_constraints": {"required": ["P1", "5 分钟", "SRE 值班负责人"], "forbidden": ["最高等级为 S0", "20 分钟内确认"]},
+    "metadata": {"key_position": "early", "expanded": true}
+  },
+  {
+    "task_id": "long_context_008",
+    "scenario": "long_context",
+    "question": "报告 Quasar 推理部署的检查点、区域和 GPU 配置。",
+    "docs": {
+      "d1": "Quasar 生产检查点为 qsr-2026-09-final。",
+      "d2": "推理服务部署区域为 ap-southeast-3。",
+      "d3": "每个实例配置 4 张 A100 GPU。",
+      "d4": "调试检查点 qsr-debug-42 不得用于生产。",
+      "d5": "旧区域 ap-southeast-1 已停止承载该服务。",
+      "d6": "CPU 节点只运行数据预处理。",
+      "d7": "监控采样周期为一分钟。",
+      "d8": "推理日志默认保存十四天。",
+      "d9": "模型卡需要记录训练数据版本。",
+      "d10": "预发布实例曾使用 2 张 GPU。"
+    },
+    "golden_facts": ["qsr-2026-09-final", "ap-southeast-3", "4 张 A100"],
+    "expected_tools": ["search", "read"],
+    "answer_constraints": {"required": ["qsr-2026-09-final", "ap-southeast-3", "4 张 A100"], "forbidden": ["qsr-debug-42", "ap-southeast-1"]},
+    "metadata": {"key_position": "early", "expanded": true}
+  },
+  {
+    "task_id": "long_context_009",
+    "scenario": "long_context",
+    "question": "总结 Lotus 审计数据的保存年限、存储模式和最终审批角色。",
+    "docs": {
+      "d1": "Lotus 审计数据必须保存 7 年。",
+      "d2": "归档介质必须使用 WORM 不可变存储。",
+      "d3": "销毁到期数据前由合规总监最终审批。",
+      "d4": "普通业务日志只保存 30 天。",
+      "d5": "旧制度规定保存 5 年，已经失效。",
+      "d6": "审计检索需要记录操作人。",
+      "d7": "报表可以导出为 PDF。",
+      "d8": "存储容量由平台自动扩展。",
+      "d9": "测试环境无需保存真实审计数据。",
+      "d10": "法务可以提出延长保存申请。"
+    },
+    "golden_facts": ["7 年", "WORM", "合规总监"],
+    "expected_tools": ["search", "read"],
+    "answer_constraints": {"required": ["7 年", "WORM", "合规总监"], "forbidden": ["保存 5 年", "只保存 30 天"]},
+    "metadata": {"key_position": "early", "expanded": true}
+  },
+  {
+    "task_id": "long_context_010",
+    "scenario": "long_context",
+    "question": "给出 Nimbus 内部 API 的正式地址、超时时间和最大重试次数。",
+    "docs": {
+      "d1": "Nimbus 正式内部 API 地址是 https://api.nimbus.internal/v3。",
+      "d2": "单次请求超时时间固定为 12 秒。",
+      "d3": "客户端最多重试 4 次。",
+      "d4": "旧版地址 https://nimbus.internal/v2 将于月底下线。",
+      "d5": "原型客户端超时时间为 30 秒。",
+      "d6": "健康检查每十秒执行一次。",
+      "d7": "请求日志不得记录认证令牌。",
+      "d8": "接口文档使用 OpenAPI 格式。",
+      "d9": "外部合作方不能访问内部域名。",
+      "d10": "压测环境允许额外重试一次。"
+    },
+    "golden_facts": ["https://api.nimbus.internal/v3", "12 秒", "4 次"],
+    "expected_tools": ["search", "read"],
+    "answer_constraints": {"required": ["api.nimbus.internal/v3", "12 秒", "4 次"], "forbidden": ["nimbus.internal/v2", "超时时间为 30 秒"]},
+    "metadata": {"key_position": "early", "expanded": true}
+  },
+  {
+    "task_id": "tool_chain_006",
+    "scenario": "tool_chain",
+    "question": "综合资料说明 Chronos 发布所需的服务版本、数据库迁移编号和最终放行角色。",
+    "docs": {
+      "d1": "Chronos 本次服务版本为 5.8.0。",
+      "d2": "对应数据库迁移编号是 mig-2741。",
+      "d3": "只有发布经理可以执行最终放行。",
+      "d4": "发布前必须完成回归测试。",
+      "d5": "旧服务版本 5.7.3 只用于紧急回滚。",
+      "d6": "开发负责人可以提交构建但不能最终放行。",
+      "d7": "迁移完成后检查表数量。",
+      "d8": "发布日志需要关联变更单。"
+    },
+    "golden_facts": ["5.8.0", "mig-2741", "发布经理"],
+    "expected_tools": ["search", "read"],
+    "answer_constraints": {"required": ["5.8.0", "mig-2741", "发布经理"], "forbidden": ["最终版本为 5.7.3", "开发负责人可以最终放行"]},
+    "metadata": {"expanded": true}
+  },
+  {
+    "task_id": "tool_chain_007",
+    "scenario": "tool_chain",
+    "question": "汇总 Delta 数据迁移的源表、校验算法和允许切流的条件。",
+    "docs": {
+      "d1": "Delta 迁移源表为 orders_v4。",
+      "d2": "迁移结果使用 SHA-256 校验。",
+      "d3": "只有校验差异率为 0% 才允许切流。",
+      "d4": "旧源表 orders_v3 已冻结。",
+      "d5": "抽样校验不能替代全量校验。",
+      "d6": "切流前需保存性能基线。",
+      "d7": "迁移任务使用批处理执行。",
+      "d8": "异常记录写入独立隔离表。"
+    },
+    "golden_facts": ["orders_v4", "SHA-256", "差异率为 0%"],
+    "expected_tools": ["search", "read"],
+    "answer_constraints": {"required": ["orders_v4", "SHA-256", "0%"], "forbidden": ["源表为 orders_v3", "允许非零差异"]},
+    "metadata": {"expanded": true}
+  },
+  {
+    "task_id": "tool_chain_008",
+    "scenario": "tool_chain",
+    "question": "根据资料给出 Echo 账单的结算币种、舍入规则和结算周期。",
+    "docs": {
+      "d1": "Echo 正式账单统一使用 CNY 结算。",
+      "d2": "金额保留两位小数并采用银行家舍入法。",
+      "d3": "账单按 T+1 周期结算。",
+      "d4": "展示页面可以同时显示 USD 估算值。",
+      "d5": "旧系统采用四舍五入，已经停用。",
+      "d6": "退款记录单独生成负向条目。",
+      "d7": "月末需要执行总账核对。",
+      "d8": "税率由地区配置决定。"
+    },
+    "golden_facts": ["CNY", "银行家舍入", "T+1"],
+    "expected_tools": ["search", "read"],
+    "answer_constraints": {"required": ["CNY", "银行家舍入", "T+1"], "forbidden": ["统一使用 USD", "采用四舍五入"]},
+    "metadata": {"expanded": true}
+  },
+  {
+    "task_id": "tool_chain_009",
+    "scenario": "tool_chain",
+    "question": "说明 Falcon 核心告警的严重级别、首选通知渠道和升级时限。",
+    "docs": {
+      "d1": "Falcon 核心告警严重级别为 critical。",
+      "d2": "首选通知渠道是 PagerDuty 加短信。",
+      "d3": "持续 10 分钟未恢复时升级给平台主管。",
+      "d4": "邮件只作为补充通知。",
+      "d5": "warning 级别不触发短信。",
+      "d6": "告警恢复后发送关闭消息。",
+      "d7": "静默窗口必须关联维护工单。",
+      "d8": "旧规则在 30 分钟后才升级，现已废止。"
+    },
+    "golden_facts": ["critical", "PagerDuty", "短信", "10 分钟"],
+    "expected_tools": ["search", "read"],
+    "answer_constraints": {"required": ["critical", "PagerDuty", "短信", "10 分钟"], "forbidden": ["30 分钟后升级", "仅使用邮件"]},
+    "metadata": {"expanded": true}
+  },
+  {
+    "task_id": "tool_chain_010",
+    "scenario": "tool_chain",
+    "question": "综合 Glacier 备份资料，给出增量频率、完整备份时间，以及 RPO 和 RTO 两项恢复目标。",
+    "docs": {
+      "d1": "Glacier 每 6 小时执行一次增量备份。",
+      "d2": "完整备份固定在每周日 02:00 执行。",
+      "d3": "恢复点目标 RPO 为 6 小时。",
+      "d4": "恢复时间目标 RTO 为 45 分钟。",
+      "d5": "旧方案的 RTO 为 2 小时，已经失效。",
+      "d6": "备份完成后执行校验。",
+      "d7": "月度恢复演练使用隔离环境。",
+      "d8": "失败任务在十分钟后重新调度。"
+    },
+    "golden_facts": ["每 6 小时", "每周日 02:00", "RPO", "6 小时", "RTO", "45 分钟"],
+    "expected_tools": ["search", "read"],
+    "answer_constraints": {"required": ["6 小时", "每周日 02:00", "RPO", "RTO", "45 分钟"], "forbidden": ["RTO 为 2 小时"]},
+    "metadata": {"expanded": true}
+  },
+  {
+    "task_id": "recovery_006",
+    "scenario": "recovery",
+    "question": "确认 Helios 故障切换的目标机房和最终批准人。",
+    "docs": {
+      "d1": "Helios 故障切换目标机房为 dc-west-4。",
+      "d2": "正式切换必须由当日值班总监批准。",
+      "d3": "备用机房 dc-east-1 仅用于演练。",
+      "d4": "普通工程师可以发起申请但不能批准。",
+      "d5": "切换前检查复制延迟。",
+      "d6": "切换后观察核心指标三十分钟。",
+      "d7": "演练记录每季度归档。",
+      "d8": "故障群由监控系统自动创建。"
+    },
+    "golden_facts": ["dc-west-4", "值班总监"],
+    "expected_tools": ["search", "read"],
+    "answer_constraints": {"required": ["dc-west-4", "值班总监"], "forbidden": ["目标机房为 dc-east-1", "工程师可以批准"]},
+    "recovery_targets": ["dc-west-4", "值班总监"],
+    "fault_injection": {"type": "parse_error", "call": 9, "payload": "解析失败：请恢复 dc-west-4 与值班总监的原始证据", "drop_terms": ["dc-west-4", "值班总监"]},
+    "metadata": {"expanded": true}
+  },
+  {
+    "task_id": "recovery_007",
+    "scenario": "recovery",
+    "question": "确认 Iris 新证书的序列号和到期日期。",
+    "docs": {
+      "d1": "Iris 新证书序列号为 cert-7309。",
+      "d2": "该证书到期日期为 2027-03-15。",
+      "d3": "旧证书 cert-1180 将在切换后吊销。",
+      "d4": "私钥只能存放在硬件安全模块中。",
+      "d5": "测试证书不允许接入生产入口。",
+      "d6": "证书更新后需要刷新网关。",
+      "d7": "到期前四十五天触发提醒。",
+      "d8": "审计日志不记录私钥内容。"
+    },
+    "golden_facts": ["cert-7309", "2027-03-15"],
+    "expected_tools": ["search", "read"],
+    "answer_constraints": {"required": ["cert-7309", "2027-03-15"], "forbidden": ["新证书为 cert-1180"]},
+    "recovery_targets": ["cert-7309", "2027-03-15"],
+    "fault_injection": {"type": "parse_error", "call": 9, "payload": "解析失败：请恢复 cert-7309 与 2027-03-15 的原始证据", "drop_terms": ["cert-7309", "2027-03-15"]},
+    "metadata": {"expanded": true}
+  },
+  {
+    "task_id": "recovery_008",
+    "scenario": "recovery",
+    "question": "确认 Juno 隐私发布的最小匿名阈值和审批角色。",
+    "docs": {
+      "d1": "Juno 数据发布要求最小匿名阈值 k=10。",
+      "d2": "正式发布由隐私官审批。",
+      "d3": "旧规则 k=5 已被替换。",
+      "d4": "产品经理只能查看聚合预览。",
+      "d5": "低于阈值的分组必须抑制。",
+      "d6": "审批记录保存到合规系统。",
+      "d7": "测试数据不包含真实用户标识。",
+      "d8": "发布前执行重新识别风险检查。"
+    },
+    "golden_facts": ["k=10", "隐私官"],
+    "expected_tools": ["search", "read"],
+    "answer_constraints": {"required": ["k=10", "隐私官"], "forbidden": ["阈值 k=5", "产品经理审批"]},
+    "recovery_targets": ["k=10", "隐私官"],
+    "fault_injection": {"type": "parse_error", "call": 9, "payload": "解析失败：请恢复 k=10 与隐私官的原始证据", "drop_terms": ["k=10", "隐私官"]},
+    "metadata": {"expanded": true}
+  },
+  {
+    "task_id": "recovery_009",
+    "scenario": "recovery",
+    "question": "确认 Kepler 变更冻结的结束时间和授权解除角色。",
+    "docs": {
+      "d1": "Kepler 变更冻结结束时间为 2026-12-15 09:00。",
+      "d2": "只有 CTO 授权代表可以提前解除冻结。",
+      "d3": "项目负责人无权单独解除。",
+      "d4": "冻结期间仅允许最高级别安全修复。",
+      "d5": "所有例外需要记录变更单。",
+      "d6": "旧通知写的是 2026-12-14，已经撤回。",
+      "d7": "冻结开始时间由另一份制度规定。",
+      "d8": "解除后需要广播通知全部团队。"
+    },
+    "golden_facts": ["2026-12-15 09:00", "CTO 授权代表"],
+    "expected_tools": ["search", "read"],
+    "answer_constraints": {"required": ["2026-12-15 09:00", "CTO 授权代表"], "forbidden": ["结束时间为 2026-12-14", "项目负责人可以解除"]},
+    "recovery_targets": ["2026-12-15 09:00", "CTO 授权代表"],
+    "fault_injection": {"type": "parse_error", "call": 9, "payload": "解析失败：请恢复 2026-12-15 09:00 与 CTO 授权代表的原始证据", "drop_terms": ["2026-12-15 09:00", "CTO 授权代表"]},
+    "metadata": {"expanded": true}
+  },
+  {
+    "task_id": "recovery_010",
+    "scenario": "recovery",
+    "question": "确认 Lyra 删除作业的批次编号和最终核验程序。",
+    "docs": {
+      "d1": "Lyra 本次删除作业批次编号为 batch-991。",
+      "d2": "删除结果由 audit-bot-v2 执行最终核验。",
+      "d3": "旧批次 batch-412 已经归档。",
+      "d4": "人工抽查不能替代最终自动核验。",
+      "d5": "失败记录进入隔离队列。",
+      "d6": "删除作业只能在维护窗口运行。",
+      "d7": "核验报告保存一年。",
+      "d8": "控制台会显示处理进度。"
+    },
+    "golden_facts": ["batch-991", "audit-bot-v2"],
+    "expected_tools": ["search", "read"],
+    "answer_constraints": {"required": ["batch-991", "audit-bot-v2"], "forbidden": ["本次批次为 batch-412", "人工抽查作为最终核验"]},
+    "recovery_targets": ["batch-991", "audit-bot-v2"],
+    "fault_injection": {"type": "parse_error", "call": 9, "payload": "解析失败：请恢复 batch-991 与 audit-bot-v2 的原始证据", "drop_terms": ["batch-991", "audit-bot-v2"]},
+    "metadata": {"expanded": true}
+  }
+]

@@ -1,0 +1,102 @@
+# Python 字节码、测试与静态检查缓存
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.pytype/
+.pyre/
+.pyright/
+.hypothesis/
+.tox/
+.nox/
+.cache/
+.ipynb_checkpoints/
+.dmypy.json
+dmypy.json
+
+# 本地虚拟环境与框架运行时目录
+.venv/
+.venv-*/
+venv/
+env/
+__pypackages__/
+.crewai-data/
+
+# 密钥、凭据与本地环境配置
+.env
+.env.*
+!.env.example
+.secrets/
+secrets.local.*
+credentials.local.*
+*.pem
+*.key
+*.p12
+*.pfx
+
+# 构建、安装与覆盖率产物
+build/
+dist/
+*.egg-info/
+*.egg
+*.whl
+.eggs/
+pip-wheel-metadata/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
+# 数据库、日志、分析器和临时文件
+*.sqlite
+*.sqlite3
+*.sqlite3-*
+*.db
+*.db-*
+*.log
+*.pid
+*.prof
+*.trace
+*.tmp
+*.temp
+*.bak
+*.swp
+*.orig
+*.rej
+*~
+tmp/
+temp/
+logs/
+output/
+outputs/
+artifacts/
+
+# 编辑器与操作系统元数据
+.idea/
+.vscode/
+.cursor/
+.codex/
+.agents/
+.claude/
+*.code-workspace
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# 若后续增加前端或 JavaScript 工具，不提交本地依赖
+node_modules/
+
+# 由汇总脚本生成、可随时重建的表格
+metrics/*.csv
+
+# 实验输出默认不纳入版本控制；只保留冻结协议对应的 CrewAI 最终证据。
+runs/*
+!runs/stage5-crewai/
+!runs/stage5-crewai-api/
+runs/stage5-crewai/*
+!runs/stage5-crewai/crewai-natural-mock-3x3-v131-textsafe-final/
+runs/stage5-crewai-api/*
+!runs/stage5-crewai-api/deepseek-crewai-natural-3x1-v135-smoke/
+!runs/stage5-crewai-api/deepseek-crewai-natural-3x3-v136-confirmatory/

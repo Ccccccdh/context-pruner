@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "context-pruner"
+version = "0.13.1"
+description = "Lifecycle-aware context compression middleware for long-running agents"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24"]
+
+[project.optional-dependencies]
+experiments = ["openai>=1.0", "tiktoken>=0.7"]
+langgraph = ["langgraph>=1.0,<2.0", "langchain-core>=1.0,<2.0"]
+openai-agents = ["openai-agents"]
+autogen = ["autogen-agentchat>=0.7,<0.8", "autogen-ext[openai]>=0.7,<0.8"]
+microsoft-agent-framework = [
+    "agent-framework-core>=1.19,<2",
+    "agent-framework-openai>=1.14.4,<2",
+]
+crewai = ["crewai>=1.15.22,<1.16"]
+
+[project.scripts]
+context-pruner = "context_pruner.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["context_pruner*"]

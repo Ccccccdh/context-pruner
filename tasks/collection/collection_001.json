@@ -1,0 +1,12 @@
+{
+  "task_id": "collection_001",
+  "scenario": "collection",
+  "question": "请调研大模型上下文压缩的代表方法，至少介绍 3 个，并给出总结。",
+  "docs": {
+    "d1": "LLMLingua：基于困惑度对 prompt 进行 token 级压缩，压缩率可达 20 倍。",
+    "d2": "LongLLMLingua：面向长文档的提示压缩方法，在长上下文任务中效果更好。",
+    "d3": "语义摘要：用 LLM 将历史对话概括为摘要，降低 token 消耗，但信息不可恢复。"
+  },
+  "golden_facts": ["LLMLingua", "困惑度", "LongLLMLingua", "语义摘要"],
+  "golden_answer": "LLMLingua、LongLLMLingua 与语义摘要三种方法。"
+}

@@ -72,6 +72,7 @@ class ContextPrunerMiddlewareTest(unittest.TestCase):
         rendered = json.dumps(result.messages, ensure_ascii=False)
 
         self.assertIn("Aurora-17", rendered)
+        self.assertNotIn("已归档", rendered)
 
 
 if __name__ == "__main__":

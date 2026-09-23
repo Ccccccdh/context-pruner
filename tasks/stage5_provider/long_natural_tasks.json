@@ -1,0 +1,74 @@
+[
+  {
+    "task_id": "incident_response_long_001",
+    "domain": "incident_response",
+    "system": "Use only verified tool evidence and the current decision rule. Return exactly one line in the requested contract.",
+    "request": "Investigate incident INC-930. Rule: choose ROLLBACK only when severity is critical and rollback_ready is yes; otherwise choose MONITOR. Include the approved window. Contract: INCIDENT id=INC-930 action=<action> window=<window>",
+    "final_prompt": "Using the verified tool evidence above, return the INCIDENT contract now.",
+    "tool_results": [
+      {"name": "incident_lookup", "content": "incident=INC-930 severity=critical affected_service=Solstice-2"},
+      {"name": "change_gate", "content": "incident=INC-930 rollback_ready=yes approved_window=01:40 UTC"}
+    ],
+    "expected_terms": ["INC-930", "ROLLBACK", "01:40 UTC"]
+  },
+  {
+    "task_id": "release_governance_long_001",
+    "domain": "release_governance",
+    "system": "Use only verified tool evidence and the current release policy. Return exactly one line in the requested contract.",
+    "request": "Evaluate release Nova-8. Policy: every required gate must pass; any failed gate makes the release BLOCKED. Include the owner of the failed gate. Contract: RELEASE name=Nova-8 status=<status> owner=<owner>",
+    "final_prompt": "Using the verified tool evidence above, return the RELEASE contract now.",
+    "tool_results": [
+      {"name": "test_matrix", "content": "release=Nova-8 unit=passed integration=passed performance=passed"},
+      {"name": "security_gate", "content": "release=Nova-8 security=failed owner=secops"}
+    ],
+    "expected_terms": ["Nova-8", "BLOCKED", "secops"]
+  },
+  {
+    "task_id": "migration_residency_long_001",
+    "domain": "migration_planning",
+    "system": "Use only verified tool evidence and the current residency rule. Return exactly one line in the requested contract.",
+    "request": "Plan migration for Orion. Rule: an EU_ONLY customer must use an approved EU region with available capacity. Include the approved window. Contract: MIGRATION customer=Orion region=<region> window=<window>",
+    "final_prompt": "Using the verified tool evidence above, return the MIGRATION contract now.",
+    "tool_results": [
+      {"name": "customer_policy", "content": "customer=Orion residency=EU_ONLY approved_window=04:15 UTC"},
+      {"name": "capacity_lookup", "content": "region=eu-west approved=yes capacity=available; region=us-east approved=no capacity=available"}
+    ],
+    "expected_terms": ["Orion", "eu-west", "04:15 UTC"]
+  },
+  {
+    "task_id": "support_sla_long_001",
+    "domain": "customer_support",
+    "system": "Use only verified tool evidence and the current SLA rule. Return exactly one line in the requested contract.",
+    "request": "Determine the response commitment for case CS-440. Rule: an escalated P1 platinum case has a 30 minute target. Contract: SUPPORT case=CS-440 priority=<priority> target=<target> status=<status>",
+    "final_prompt": "Using the verified tool evidence above, return the SUPPORT contract now.",
+    "tool_results": [
+      {"name": "case_lookup", "content": "case=CS-440 priority=P1 status=escalated"},
+      {"name": "contract_lookup", "content": "case=CS-440 customer_tier=platinum response_target=30 minutes"}
+    ],
+    "expected_terms": ["CS-440", "P1", "30 minutes", "escalated"]
+  },
+  {
+    "task_id": "compliance_transfer_long_001",
+    "domain": "compliance",
+    "system": "Use only verified tool evidence and the current transfer rule. Return exactly one line in the requested contract.",
+    "request": "Review transfer of Ledger-X. Rule: restricted data may transfer only to an approved destination using AES-256. Use the exact decision token APPROVE when permitted and REJECT otherwise. Contract: TRANSFER dataset=Ledger-X decision=<decision> destination=<destination> encryption=<encryption>",
+    "final_prompt": "Using the verified tool evidence above, return the TRANSFER contract now.",
+    "tool_results": [
+      {"name": "classification_lookup", "content": "dataset=Ledger-X classification=restricted"},
+      {"name": "destination_check", "content": "destination=sandbox-eu approved=yes encryption=AES-256"}
+    ],
+    "expected_terms": ["Ledger-X", "APPROVE", "sandbox-eu", "AES-256"]
+  },
+  {
+    "task_id": "capacity_routing_long_001",
+    "domain": "capacity_management",
+    "system": "Use only verified tool evidence and the current capacity rule. Return exactly one line in the requested contract.",
+    "request": "Choose capacity routing for cluster C-19. Rule: if current plus projected load exceeds the hard limit, route to an available burst pool. Contract: CAPACITY cluster=C-19 route=<route> pool=<pool>",
+    "final_prompt": "Using the verified tool evidence above, return the CAPACITY contract now.",
+    "tool_results": [
+      {"name": "load_forecast", "content": "cluster=C-19 current=82 projected_increase=21 hard_limit=90"},
+      {"name": "burst_capacity", "content": "pool=B-7 available=yes free_capacity=40"}
+    ],
+    "expected_terms": ["C-19", "BURST", "B-7"]
+  }
+]

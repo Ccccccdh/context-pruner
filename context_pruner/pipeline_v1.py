@@ -188,7 +188,8 @@ def _protected(chunk) -> bool:
 def _is_evidence(chunk) -> bool:
     text = chunk.text.lstrip().lower()
     return chunk.ctype == ContextType.TOOL_INTERACTION and (
-        text.startswith("观察：read 结果：")
+        text.startswith("verified tool result")
+        or text.startswith("观察：read 结果：")
         or text.startswith("read 结果：")
         or text.startswith("观察：search 证据：")
         or text.startswith("search 证据：")
@@ -213,6 +214,9 @@ def _build_task_memory(chunks, summarizer) -> ContextItem:
     for chunk in selected:
         text = (
             chunk.text
+            .replace("VERIFIED TOOL RESULT", "tool result")
+            .replace("Verified Tool Result", "tool result")
+            .replace("verified tool result", "tool result")
             .replace("观察：read 结果：", "")
             .replace("read 结果：", "")
             .replace("观察：search 证据：", "")
@@ -244,7 +248,7 @@ def _build_task_memory(chunks, summarizer) -> ContextItem:
         chunk_id=f"memory:{digest}",
         ctype=ContextType.LONG_TERM_MEMORY,
         text=(
-            "[已验证工具证据；每行来自成功 read 或带文件行号的 search，可直接据此作答，无需重新读取或遍历候选]\n"
+            "[已验证工具证据；每行来自成功工具结果、read 或带文件行号的 search，可直接据此作答，无需重新读取或遍历候选]\n"
             "[工作区状态规则：mutation 后的文件版本取代此前 read/search；只有最新 workspace_epoch 的 verification 才有效]\n"
             f"read 结果：\n{memory_text}"
         ),

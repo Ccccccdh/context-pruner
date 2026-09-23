@@ -40,6 +40,12 @@ class ParserV1Test(unittest.TestCase):
         )
         self.assertEqual(chunks[0].ctype, ContextType.TOOL_INTERACTION)
 
+    def test_rule_fallback_marks_generic_verified_result_as_tool(self):
+        chunks = parse_context_semantic(
+            [{"role": "user", "content": "VERIFIED TOOL RESULT [gate]: status=passed"}]
+        )
+        self.assertEqual(chunks[0].ctype, ContextType.TOOL_INTERACTION)
+
     def test_embedding_classifier_uses_embedding(self):
         clf = EmbeddingContextClassifier(fake_embed)
         self.assertEqual(
@@ -272,6 +278,33 @@ class LocalSemanticTest(unittest.TestCase):
 
         self.assertTrue(all(fact in memory.text for fact in facts))
         self.assertEqual(4, len(memory.source_event_ids))
+
+    def test_generic_verified_tool_results_become_protected_task_memory(self):
+        turns = [
+            {
+                "role": "user",
+                "content": "VERIFIED TOOL RESULT [incident_lookup]: severity=critical",
+                "_event_id": "evt_tool_1",
+            },
+            {
+                "role": "user",
+                "content": "VERIFIED TOOL RESULT [change_gate]: rollback_ready=yes",
+                "_event_id": "evt_tool_2",
+            },
+        ]
+
+        result = ContextPrunerV1().compress(
+            turns,
+            task_state="choose ROLLBACK only when severity is critical and rollback_ready is yes",
+            budget=ContextBudget(80, 120, 70),
+        )
+        memory = next(
+            chunk for chunk in result.chunks if chunk.metadata.get("structured_memory")
+        )
+
+        self.assertIn("severity=critical", memory.text)
+        self.assertIn("rollback_ready=yes", memory.text)
+        self.assertEqual(("evt_tool_1", "evt_tool_2"), memory.source_event_ids)
 
 
 if __name__ == "__main__":

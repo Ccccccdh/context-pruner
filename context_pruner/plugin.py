@@ -352,6 +352,14 @@ class ContextLifecyclePlugin:
 
         rendered: list[Any] = []
         for item in snapshot.chunks:
+            # Archive references are lifecycle provenance, not useful model input.
+            # Keeping dozens of ``[archived:event]`` markers can make smaller
+            # models echo a marker as the answer. The archive and source IDs stay
+            # available in lifecycle state and can still be selectively recovered.
+            if item.action == CompressionAction.ARCHIVE or item.metadata.get(
+                "archive_reference"
+            ):
+                continue
             if (
                 item.action == CompressionAction.KEEP
                 and item.status == ContextStatus.ACTIVE

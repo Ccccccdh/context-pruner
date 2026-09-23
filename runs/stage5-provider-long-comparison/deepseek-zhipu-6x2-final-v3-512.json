@@ -1,0 +1,48 @@
+{
+  "comparable": true,
+  "mismatches": [],
+  "raw_token_totals_compared_across_providers": false,
+  "reason": "Providers may use different tokenizers; compare within-provider paired rates and task quality.",
+  "protocol_version": "provider-long-natural-v1",
+  "task_sha256": "851f478f785fe7b55ba5116346993123b74cbc4c0e00931b645a97460d75a02a",
+  "providers": [
+    {
+      "provider": "deepseek",
+      "model": "deepseek-v4-flash",
+      "paired_n": 12,
+      "success_rate_none": 1,
+      "success_rate_pruner_v1": 1,
+      "success_delta_mean": 0.0,
+      "within_provider_input_savings_rate_mean": 0.7800909467055861,
+      "within_provider_input_savings_ci_low": 0.7675289284608213,
+      "within_provider_input_savings_ci_high": 0.7938075301115386,
+      "within_provider_total_token_savings_rate_mean": 0.7619809078276201,
+      "within_provider_total_token_savings_ci_low": 0.7529038213625816,
+      "within_provider_total_token_savings_ci_high": 0.771935687329501,
+      "completion_token_change_rate_mean": 0.13657407407407407,
+      "reasoning_tokens_delta_mean": 0.0,
+      "positive_savings_pairs": 12,
+      "budget_violations_none": 24,
+      "budget_violations_pruner_v1": 0
+    },
+    {
+      "provider": "zhipu",
+      "model": "GLM-5.3-Flash",
+      "paired_n": 12,
+      "success_rate_none": 1,
+      "success_rate_pruner_v1": 1,
+      "success_delta_mean": 0.0,
+      "within_provider_input_savings_rate_mean": 0.766006102767371,
+      "within_provider_input_savings_ci_low": 0.7519651013147713,
+      "within_provider_input_savings_ci_high": 0.7813251135184048,
+      "within_provider_total_token_savings_rate_mean": 0.6358061661209256,
+      "within_provider_total_token_savings_ci_low": 0.6075045610307958,
+      "within_provider_total_token_savings_ci_high": 0.6610390153757035,
+      "completion_token_change_rate_mean": 0.49389298232214435,
+      "reasoning_tokens_delta_mean": 40.75,
+      "positive_savings_pairs": 12,
+      "budget_violations_none": 24,
+      "budget_violations_pruner_v1": 0
+    }
+  ]
+}

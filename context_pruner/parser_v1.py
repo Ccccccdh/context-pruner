@@ -20,7 +20,9 @@ class RuleContextClassifier(ContextClassifier):
 
     def classify(self, role: str, content: str) -> ContextType:
         role = role.lower()
-        if content.startswith("观察："):
+        if content.startswith("观察：") or content.lstrip().lower().startswith(
+            "verified tool result"
+        ):
             return ContextType.TOOL_INTERACTION
         if role == "assistant" and _structured_action(content):
             return ContextType.TOOL_INTERACTION

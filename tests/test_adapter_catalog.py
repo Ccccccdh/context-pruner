@@ -62,7 +62,7 @@ class AdapterCatalogTest(unittest.TestCase):
         self.assertTrue(sidecar.implemented)
         self.assertEqual("real_api", sidecar.validation_level.value)
         self.assertTrue(any("GLM-5.3-Flash" in value for value in sidecar.limitations))
-        self.assertTrue(any("C# remains contract-level" in value for value in sidecar.limitations))
+        self.assertTrue(any("JavaScript, Java, and C# clients are executable" in value for value in sidecar.limitations))
         microsoft = get_adapter_descriptor("microsoft_agent_framework")
         self.assertTrue(microsoft.implemented)
         self.assertEqual("local_runner", microsoft.validation_level.value)

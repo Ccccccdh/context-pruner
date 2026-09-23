@@ -43,7 +43,7 @@ HTTP_SIDECAR_DESCRIPTOR = AdapterDescriptor(
         "this lifecycle API is not an OpenAI-compatible model proxy",
         "streaming model payload transformation is not implemented",
         "Sidecar host validation uses DeepSeek; provider-neutral core A/B also covers GLM-5.3-Flash",
-        "C# remains contract-level while JavaScript and Java have executable clients",
+        "JavaScript, Java, and C# clients are executable; Dify and Flowise remain contract-level",
     ),
 )
 

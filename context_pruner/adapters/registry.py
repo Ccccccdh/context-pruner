@@ -36,12 +36,13 @@ HTTP_SIDECAR_DESCRIPTOR = AdapterDescriptor(
         multi_agent_namespaces=False,
         server_managed_history_safe=False,
     ),
-    validation_level=ValidationLevel.LOCAL_RUNNER,
+    validation_level=ValidationLevel.REAL_API,
     implemented=True,
     limitations=(
         "can manage only history and events explicitly sent by the host platform",
         "this lifecycle API is not an OpenAI-compatible model proxy",
         "streaming model payload transformation is not implemented",
+        "real API validation currently covers only one model provider",
     ),
 )
 

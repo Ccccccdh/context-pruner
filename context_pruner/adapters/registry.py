@@ -42,7 +42,8 @@ HTTP_SIDECAR_DESCRIPTOR = AdapterDescriptor(
         "can manage only history and events explicitly sent by the host platform",
         "this lifecycle API is not an OpenAI-compatible model proxy",
         "streaming model payload transformation is not implemented",
-        "real API validation currently covers only one model provider",
+        "Sidecar host validation uses DeepSeek; provider-neutral core A/B also covers GLM-5.3-Flash",
+        "C# remains contract-level while JavaScript and Java have executable clients",
     ),
 )
 

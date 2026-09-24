@@ -1,0 +1,133 @@
+app:
+  description: Call one Context-Pruner lifecycle operation from a Dify workflow.
+  icon: 🧭
+  icon_background: '#E4F5EF'
+  mode: workflow
+  name: Context-Pruner Lifecycle Bridge
+  use_icon_as_answer_icon: false
+dependencies: []
+kind: app
+version: 0.5.0
+workflow:
+  conversation_variables: []
+  environment_variables:
+  - description: HTTPS URL reachable from the Dify worker; set after import.
+    id: 61cdb332-0b90-4e3d-81e3-157a6046a077
+    name: CONTEXT_PRUNER_BASE_URL
+    value: https://sidecar.example.invalid
+    value_type: string
+  - description: Sidecar bearer token; set after import and keep secret.
+    id: b09e19d4-3a1b-49bd-a53c-9590c618a3e7
+    name: CONTEXT_PRUNER_AUTH_TOKEN
+    value: ''
+    value_type: secret
+  features:
+    file_upload:
+      enabled: false
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    text_to_speech:
+      enabled: false
+  graph:
+    viewport: {x: 0, y: 0, zoom: 0.8}
+    nodes:
+    - id: start
+      type: custom
+      data:
+        type: start
+        title: Lifecycle Input
+        desc: One operation on one host-owned session.
+        variables:
+        - {variable: session_id, label: Session ID, type: text-input, required: true, max_length: 128}
+        - {variable: operation, label: Operation, type: text-input, required: true, max_length: 32}
+        - {variable: payload_json, label: JSON Payload, type: paragraph, required: true, max_length: 100000}
+      position: {x: 80, y: 200}
+      positionAbsolute: {x: 80, y: 200}
+      sourcePosition: right
+      targetPosition: left
+      width: 244
+      height: 160
+    - id: prepare
+      type: custom
+      data:
+        type: code
+        title: Prepare Safe JSON
+        desc: Parse the payload and serialize a valid Sidecar request.
+        code_language: python3
+        code: |
+          def main(operation: str, session_id: str, payload_json: str) -> dict:
+              import json
+              allowed = {
+                  'before_model', 'after_model', 'after_tool', 'on_error',
+                  'finalize', 'get_state', 'restore_state', 'delete_session',
+              }
+              if operation not in allowed:
+                  raise ValueError('unsupported lifecycle operation')
+              payload = json.loads(payload_json or '{}')
+              if not isinstance(payload, dict):
+                  raise ValueError('payload_json must be a JSON object')
+              return {'body': json.dumps({
+                  'operation': operation,
+                  'session_id': session_id,
+                  'payload': payload,
+              }, ensure_ascii=False, separators=(',', ':'))}
+        variables:
+        - {variable: operation, value_selector: [start, operation]}
+        - {variable: session_id, value_selector: [start, session_id]}
+        - {variable: payload_json, value_selector: [start, payload_json]}
+        outputs:
+          body: {type: string, children: null}
+      position: {x: 390, y: 200}
+      positionAbsolute: {x: 390, y: 200}
+      sourcePosition: right
+      targetPosition: left
+      width: 244
+      height: 96
+    - id: invoke
+      type: custom
+      data:
+        type: http-request
+        title: Call Sidecar
+        desc: Invoke the authenticated lifecycle endpoint.
+        variables: []
+        method: post
+        url: '{{#env.CONTEXT_PRUNER_BASE_URL#}}/v1/lifecycle'
+        authorization: {type: no-auth, config: null}
+        headers: "Authorization: Bearer {{#env.CONTEXT_PRUNER_AUTH_TOKEN#}}\nContent-Type: application/json"
+        params: ''
+        body:
+          type: raw-text
+          data: '{{#prepare.body#}}'
+        ssl_verify: true
+        timeout: {connect: 10, read: 60, write: 10, max_connect_timeout: 0, max_read_timeout: 0, max_write_timeout: 0}
+      position: {x: 700, y: 200}
+      positionAbsolute: {x: 700, y: 200}
+      sourcePosition: right
+      targetPosition: left
+      width: 244
+      height: 96
+    - id: end
+      type: custom
+      data:
+        type: end
+        title: Lifecycle Result
+        desc: The JSON response is returned to the caller.
+        outputs:
+        - {variable: response_json, value_selector: [invoke, body]}
+        selected: false
+      position: {x: 1010, y: 200}
+      positionAbsolute: {x: 1010, y: 200}
+      sourcePosition: right
+      targetPosition: left
+      width: 244
+      height: 96
+    edges:
+    - {id: start-source-prepare-target, source: start, target: prepare, sourceHandle: source, targetHandle: target, type: custom, data: {sourceType: start, targetType: code}}
+    - {id: prepare-source-invoke-target, source: prepare, target: invoke, sourceHandle: source, targetHandle: target, type: custom, data: {sourceType: code, targetType: http-request}}
+    - {id: invoke-source-end-target, source: invoke, target: end, sourceHandle: source, targetHandle: target, type: custom, data: {sourceType: http-request, targetType: end}}

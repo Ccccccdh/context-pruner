@@ -1,0 +1,325 @@
+app:
+  description: Paired DeepSeek answer-quality check with explicit Context-Pruner lifecycle hooks.
+  icon: 🧪
+  icon_background: '#E4F5EF'
+  mode: workflow
+  name: Context-Pruner DeepSeek A-B v2
+  use_icon_as_answer_icon: false
+dependencies: []
+kind: app
+version: 0.5.0
+workflow:
+  conversation_variables: []
+  environment_variables:
+  - description: HTTPS URL reachable from the Dify worker; set after import.
+    id: 3dc8bf60-30a1-4ec7-87a0-33826bb24077
+    name: CONTEXT_PRUNER_BASE_URL
+    value: https://sidecar.example.invalid
+    value_type: string
+  - description: Sidecar bearer token; set after import and keep secret.
+    id: e0d4789d-55cd-49b5-85c8-9c6cfef3550c
+    name: CONTEXT_PRUNER_AUTH_TOKEN
+    value: ''
+    value_type: secret
+  features:
+    file_upload: {enabled: false}
+    opening_statement: ''
+    retriever_resource: {enabled: false}
+    sensitive_word_avoidance: {enabled: false}
+    speech_to_text: {enabled: false}
+    suggested_questions: []
+    text_to_speech: {enabled: false}
+  graph:
+    viewport: {x: 0, y: 0, zoom: 0.65}
+    nodes:
+    - id: start
+      type: custom
+      data:
+        type: start
+        title: Paired Input
+        desc: Host-owned full history and method; no expected answer is passed to the model.
+        variables:
+        - {variable: session_id, label: Session ID, type: text-input, required: true, max_length: 128}
+        - {variable: method, label: Method, type: text-input, required: true, max_length: 32}
+        - {variable: task_state, label: Task State, type: paragraph, required: true, max_length: 4000}
+        - {variable: messages_json, label: Full History JSON, type: paragraph, required: true, max_length: 100000}
+      position: {x: 80, y: 200}
+      positionAbsolute: {x: 80, y: 200}
+      sourcePosition: right
+      targetPosition: left
+      width: 244
+      height: 180
+    - id: prepare_before
+      type: custom
+      data:
+        type: code
+        title: Prepare Before Model
+        code_language: python3
+        code: |
+          def main(session_id: str, method: str, task_state: str, messages_json: str) -> dict:
+              import json
+              if method not in ('none', 'pruner_v1'):
+                  raise ValueError('method must be none or pruner_v1')
+              messages = json.loads(messages_json)
+              if not isinstance(messages, list) or not messages:
+                  raise ValueError('messages_json must be a nonempty array')
+              if any(not isinstance(m, dict) or not isinstance(m.get('content'), str) for m in messages):
+                  raise ValueError('every message must have string content')
+              payload = {
+                  'messages': messages,
+                  'task_state': task_state,
+                  'method': method,
+                  'budget': {'soft': 900, 'hard': 1200, 'target': 650},
+                  'reserved_tokens': 180,
+              }
+              return {'body': json.dumps({
+                  'session_id': session_id, 'operation': 'before_model', 'payload': payload,
+              }, ensure_ascii=False, separators=(',', ':'))}
+        variables:
+        - {variable: session_id, value_selector: [start, session_id]}
+        - {variable: method, value_selector: [start, method]}
+        - {variable: task_state, value_selector: [start, task_state]}
+        - {variable: messages_json, value_selector: [start, messages_json]}
+        outputs: {body: {type: string, children: null}}
+      position: {x: 380, y: 200}
+      positionAbsolute: {x: 380, y: 200}
+      sourcePosition: right
+      targetPosition: left
+      width: 244
+      height: 100
+    - id: before
+      type: custom
+      data:
+        type: http-request
+        title: Sidecar Before Model
+        variables: []
+        method: post
+        url: '{{#env.CONTEXT_PRUNER_BASE_URL#}}/v1/lifecycle'
+        authorization: {type: no-auth, config: null}
+        headers: "Authorization: Bearer {{#env.CONTEXT_PRUNER_AUTH_TOKEN#}}\nContent-Type: application/json"
+        params: ''
+        body: {type: raw-text, data: '{{#prepare_before.body#}}'}
+        ssl_verify: true
+        retry_config: {retry_enabled: false, max_retries: 0, retry_interval: 0}
+        timeout: {connect: 10, read: 60, write: 10, max_connect_timeout: 0, max_read_timeout: 0, max_write_timeout: 0}
+      position: {x: 680, y: 200}
+      positionAbsolute: {x: 680, y: 200}
+      sourcePosition: right
+      targetPosition: left
+      width: 244
+      height: 100
+    - id: extract
+      type: custom
+      data:
+        type: code
+        title: Render Model View
+        code_language: python3
+        code: |
+          def main(response_json: str) -> dict:
+              import json
+              response = json.loads(response_json)
+              messages = response.get('messages')
+              if not isinstance(messages, list) or not messages:
+                  raise ValueError('Sidecar did not return messages')
+              lines = []
+              for message in messages:
+                  if not isinstance(message, dict):
+                      raise ValueError('invalid Sidecar message')
+                  role = message.get('role')
+                  content = message.get('content')
+                  if role not in ('system', 'developer', 'user', 'assistant', 'tool') or not isinstance(content, str):
+                      raise ValueError('unsupported message shape')
+                  lines.append('[' + role.upper() + ']\n' + content)
+              return {'prompt_text': '\n\n'.join(lines)}
+        variables:
+        - {variable: response_json, value_selector: [before, body]}
+        outputs: {prompt_text: {type: string, children: null}}
+      position: {x: 980, y: 200}
+      positionAbsolute: {x: 980, y: 200}
+      sourcePosition: right
+      targetPosition: left
+      width: 244
+      height: 100
+    - id: llm
+      type: custom
+      data:
+        type: llm
+        title: DeepSeek Answer
+        desc: Exactly one model call in each workflow run.
+        context: {enabled: false, variable_selector: []}
+        memory: {window: {enabled: false, size: 0}, role_prefix: {assistant: '', user: ''}}
+        model:
+          provider: langgenius/deepseek/deepseek
+          name: deepseek-v4-flash
+          mode: chat
+          completion_params: {temperature: 0, max_tokens: 512}
+        prompt_template:
+        - role: system
+          text: 'Use the latest verified user record. Treat obsolete drafts as superseded. Answer the final user request concisely; do not invent facts.'
+        - role: user
+          text: '{{#extract.prompt_text#}}'
+        variables: []
+        vision: {enabled: false}
+        retry_config: {retry_enabled: false, max_retries: 0, retry_interval: 0}
+      position: {x: 1280, y: 200}
+      positionAbsolute: {x: 1280, y: 200}
+      sourcePosition: right
+      targetPosition: left
+      width: 244
+      height: 100
+    - id: prepare_after
+      type: custom
+      data:
+        type: code
+        title: Prepare After Model
+        code_language: python3
+        code: |
+          def main(session_id: str, answer: str) -> dict:
+              import json
+              import re
+              answer = re.sub(r'\A\s*<think\b[^>]*>.*?</think>\s*', '', answer, count=1, flags=re.DOTALL | re.IGNORECASE)
+              if re.match(r'\A\s*<think\b', answer, flags=re.IGNORECASE):
+                  answer = ''
+              answer = answer.strip()
+              return {'body': json.dumps({
+                  'session_id': session_id, 'operation': 'after_model',
+                  'payload': {'output': {'role': 'assistant', 'content': answer}},
+              }, ensure_ascii=False, separators=(',', ':')), 'answer': answer}
+        variables:
+        - {variable: session_id, value_selector: [start, session_id]}
+        - {variable: answer, value_selector: [llm, text]}
+        outputs: {body: {type: string, children: null}, answer: {type: string, children: null}}
+      position: {x: 1580, y: 200}
+      positionAbsolute: {x: 1580, y: 200}
+      sourcePosition: right
+      targetPosition: left
+      width: 244
+      height: 100
+    - id: after
+      type: custom
+      data:
+        type: http-request
+        title: Sidecar After Model
+        variables: []
+        method: post
+        url: '{{#env.CONTEXT_PRUNER_BASE_URL#}}/v1/lifecycle'
+        authorization: {type: no-auth, config: null}
+        headers: "Authorization: Bearer {{#env.CONTEXT_PRUNER_AUTH_TOKEN#}}\nContent-Type: application/json"
+        params: ''
+        body: {type: raw-text, data: '{{#prepare_after.body#}}'}
+        ssl_verify: true
+        retry_config: {retry_enabled: false, max_retries: 0, retry_interval: 0}
+        timeout: {connect: 10, read: 60, write: 10, max_connect_timeout: 0, max_read_timeout: 0, max_write_timeout: 0}
+      position: {x: 1880, y: 200}
+      positionAbsolute: {x: 1880, y: 200}
+      sourcePosition: right
+      targetPosition: left
+      width: 244
+      height: 100
+    - id: final
+      type: custom
+      data:
+        type: http-request
+        title: Sidecar Finalize
+        variables: []
+        method: post
+        url: '{{#env.CONTEXT_PRUNER_BASE_URL#}}/v1/lifecycle'
+        authorization: {type: no-auth, config: null}
+        headers: "Authorization: Bearer {{#env.CONTEXT_PRUNER_AUTH_TOKEN#}}\nContent-Type: application/json"
+        params: ''
+        body: {type: raw-text, data: '{"session_id":"{{#start.session_id#}}","operation":"finalize","payload":{}}'}
+        ssl_verify: true
+        retry_config: {retry_enabled: false, max_retries: 0, retry_interval: 0}
+        timeout: {connect: 10, read: 60, write: 10, max_connect_timeout: 0, max_read_timeout: 0, max_write_timeout: 0}
+      position: {x: 2180, y: 200}
+      positionAbsolute: {x: 2180, y: 200}
+      sourcePosition: right
+      targetPosition: left
+      width: 244
+      height: 100
+    - id: delete
+      type: custom
+      data:
+        type: http-request
+        title: Sidecar Delete Session
+        variables: []
+        method: post
+        url: '{{#env.CONTEXT_PRUNER_BASE_URL#}}/v1/lifecycle'
+        authorization: {type: no-auth, config: null}
+        headers: "Authorization: Bearer {{#env.CONTEXT_PRUNER_AUTH_TOKEN#}}\nContent-Type: application/json"
+        params: ''
+        body: {type: raw-text, data: '{"session_id":"{{#start.session_id#}}","operation":"delete_session","payload":{}}'}
+        ssl_verify: true
+        retry_config: {retry_enabled: false, max_retries: 0, retry_interval: 0}
+        timeout: {connect: 10, read: 60, write: 10, max_connect_timeout: 0, max_read_timeout: 0, max_write_timeout: 0}
+      position: {x: 2480, y: 200}
+      positionAbsolute: {x: 2480, y: 200}
+      sourcePosition: right
+      targetPosition: left
+      width: 244
+      height: 100
+    - id: summarize
+      type: custom
+      data:
+        type: code
+        title: Compact Run Metrics
+        code_language: python3
+        code: |
+          def main(before_json: str, final_json: str, delete_json: str) -> dict:
+              import json
+              before = json.loads(before_json)
+              final = json.loads(final_json)
+              deleted = json.loads(delete_json)
+              metrics = before.get('metrics') or {}
+              return {
+                  'full_context_tokens': int(metrics.get('last_full_context_tokens') or 0),
+                  'served_context_tokens': int(metrics.get('last_served_context_tokens') or 0),
+                  'budget_violations': int(metrics.get('model_input_budget_violation_count') or 0),
+                  'finalized': bool(final.get('lifecycle_state', {}).get('plugin', {}).get('finalized')),
+                  'deleted': bool(deleted.get('deleted')),
+              }
+        variables:
+        - {variable: before_json, value_selector: [before, body]}
+        - {variable: final_json, value_selector: [final, body]}
+        - {variable: delete_json, value_selector: [delete, body]}
+        outputs:
+          full_context_tokens: {type: number, children: null}
+          served_context_tokens: {type: number, children: null}
+          budget_violations: {type: number, children: null}
+          finalized: {type: boolean, children: null}
+          deleted: {type: boolean, children: null}
+      position: {x: 2780, y: 200}
+      positionAbsolute: {x: 2780, y: 200}
+      sourcePosition: right
+      targetPosition: left
+      width: 244
+      height: 100
+    - id: end
+      type: custom
+      data:
+        type: end
+        title: Answer and Metrics
+        outputs:
+        - {variable: answer, value_selector: [prepare_after, answer]}
+        - {variable: full_context_tokens, value_selector: [summarize, full_context_tokens]}
+        - {variable: served_context_tokens, value_selector: [summarize, served_context_tokens]}
+        - {variable: budget_violations, value_selector: [summarize, budget_violations]}
+        - {variable: finalized, value_selector: [summarize, finalized]}
+        - {variable: deleted, value_selector: [summarize, deleted]}
+      position: {x: 3080, y: 200}
+      positionAbsolute: {x: 3080, y: 200}
+      sourcePosition: right
+      targetPosition: left
+      width: 244
+      height: 130
+    edges:
+    - {id: start-prepare_before, source: start, target: prepare_before, sourceHandle: source, targetHandle: target, type: custom, data: {sourceType: start, targetType: code}}
+    - {id: prepare_before-before, source: prepare_before, target: before, sourceHandle: source, targetHandle: target, type: custom, data: {sourceType: code, targetType: http-request}}
+    - {id: before-extract, source: before, target: extract, sourceHandle: source, targetHandle: target, type: custom, data: {sourceType: http-request, targetType: code}}
+    - {id: extract-llm, source: extract, target: llm, sourceHandle: source, targetHandle: target, type: custom, data: {sourceType: code, targetType: llm}}
+    - {id: llm-prepare_after, source: llm, target: prepare_after, sourceHandle: source, targetHandle: target, type: custom, data: {sourceType: llm, targetType: code}}
+    - {id: prepare_after-after, source: prepare_after, target: after, sourceHandle: source, targetHandle: target, type: custom, data: {sourceType: code, targetType: http-request}}
+    - {id: after-final, source: after, target: final, sourceHandle: source, targetHandle: target, type: custom, data: {sourceType: http-request, targetType: http-request}}
+    - {id: final-delete, source: final, target: delete, sourceHandle: source, targetHandle: target, type: custom, data: {sourceType: http-request, targetType: http-request}}
+    - {id: delete-summarize, source: delete, target: summarize, sourceHandle: source, targetHandle: target, type: custom, data: {sourceType: http-request, targetType: code}}
+    - {id: summarize-end, source: summarize, target: end, sourceHandle: source, targetHandle: target, type: custom, data: {sourceType: code, targetType: end}}

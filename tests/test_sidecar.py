@@ -55,6 +55,44 @@ def _config(**kwargs):
 
 
 class ContextSidecarServiceTest(unittest.TestCase):
+    def test_low_code_lifecycle_dispatch_preserves_state_and_rejects_invalid_operations(self):
+        service = ContextSidecarService(_config())
+        first = service.lifecycle({
+            "session_id": "low-code:source",
+            "operation": "before_model",
+            "payload": {"messages": _history(), "task_state": "Aurora-17"},
+        })
+        self.assertLess(len(first["messages"]), len(_history()))
+        state = service.lifecycle({"session_id": "low-code:source", "operation": "get_state"})
+        restored = service.lifecycle({
+            "session_id": "low-code:restored",
+            "operation": "restore_state",
+            "payload": {"lifecycle_state": state["lifecycle_state"], "task_state": "Aurora-17"},
+        })
+        self.assertEqual(1, restored["metrics"]["before_model_calls"])
+        service.lifecycle({
+            "session_id": "low-code:restored", "operation": "after_tool",
+            "payload": {"output": {"role": "tool", "content": "VERIFIED TOOL RESULT: Aurora-17"}},
+        })
+        recovered = service.lifecycle({
+            "session_id": "low-code:restored", "operation": "on_error",
+            "payload": {"error": "missing fact", "query": "Aurora-17", "recover": True},
+        })
+        self.assertIn("metrics", recovered)
+        service.lifecycle({
+            "session_id": "low-code:restored", "operation": "after_model",
+            "payload": {"output": {"role": "assistant", "content": "Aurora-17"}},
+        })
+        final = service.lifecycle({"session_id": "low-code:restored", "operation": "finalize"})
+        self.assertTrue(final["lifecycle_state"]["plugin"]["finalized"])
+        self.assertTrue(service.lifecycle({
+            "session_id": "low-code:source", "operation": "delete_session"
+        })["deleted"])
+        with self.assertRaisesRegex(SidecarRequestError, "unsupported lifecycle"):
+            service.lifecycle({"session_id": "low-code:x", "operation": "arbitrary"})
+        with self.assertRaisesRegex(SidecarRequestError, "payload must"):
+            service.lifecycle({"session_id": "low-code:x", "operation": "before_model", "payload": "{}"})
+
     def test_before_model_compresses_and_keeps_sessions_isolated(self):
         service = ContextSidecarService(_config(max_sessions=2))
 
@@ -245,6 +283,28 @@ class ContextSidecarHttpTest(unittest.TestCase):
         status, deleted = self.request("DELETE", "/v1/sessions/demo")
         self.assertEqual(200, status)
         self.assertTrue(deleted["deleted"])
+
+    def test_low_code_lifecycle_http_route_requires_auth_and_valid_json(self):
+        path = "/v1/lifecycle"
+        payload = {
+            "operation": "before_model",
+            "session_id": "dify:sample",
+            "payload": {"messages": _history(), "task_state": "Aurora-17"},
+        }
+        with self.assertRaises(urllib.error.HTTPError) as unauthorized:
+            self.request("POST", path, payload, token=None)
+        self.assertEqual(401, unauthorized.exception.code)
+        status, first = self.request("POST", path, payload)
+        self.assertEqual(200, status)
+        self.assertLess(len(first["messages"]), len(_history()))
+        status, final = self.request("POST", path, {
+            "operation": "finalize", "session_id": "dify:sample", "payload": {},
+        })
+        self.assertEqual(200, status)
+        self.assertTrue(final["lifecycle_state"]["plugin"]["finalized"])
+        with self.assertRaises(urllib.error.HTTPError) as invalid:
+            self.request("POST", path, {"operation": "before_model", "session_id": "bad/id"})
+        self.assertEqual(400, invalid.exception.code)
 
     def test_live_http_rejects_wrong_content_type_and_oversized_body(self):
         request = urllib.request.Request(

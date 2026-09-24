@@ -103,6 +103,7 @@ class ContextSidecarService:
             "schema_version": SIDECAR_SCHEMA_VERSION,
             "adapter": get_adapter_descriptor("http_sidecar").to_dict(),
             "routes": {
+                "lifecycle": "POST /v1/lifecycle",
                 "before_model": "POST /v1/sessions/{session_id}/before-model",
                 "after_model": "POST /v1/sessions/{session_id}/after-model",
                 "after_tool": "POST /v1/sessions/{session_id}/after-tool",
@@ -114,6 +115,34 @@ class ContextSidecarService:
             "authoritative_history_owner": "host",
             "streaming": False,
         }
+
+    def lifecycle(self, request: Mapping[str, Any]) -> dict[str, Any]:
+        """Dispatch one authenticated JSON request from low-code workflow nodes."""
+        session_id = request.get("session_id")
+        if not isinstance(session_id, str):
+            raise SidecarRequestError(400, "invalid_session_id", "session_id must be a string")
+        _validate_session_id(session_id)
+        operation = request.get("operation")
+        if not isinstance(operation, str):
+            raise SidecarRequestError(400, "invalid_operation", "operation must be a string")
+        payload = request.get("payload", {})
+        if not isinstance(payload, Mapping):
+            raise SidecarRequestError(400, "invalid_payload", "payload must be a JSON object")
+        handlers = {
+            "before_model": self.before_model,
+            "after_model": self.after_model,
+            "after_tool": self.after_tool,
+            "on_error": self.on_error,
+            "finalize": self.finalize,
+            "restore_state": self.restore,
+        }
+        if operation in handlers:
+            return handlers[operation](session_id, payload)
+        if operation == "get_state":
+            return self.state(session_id)
+        if operation == "delete_session":
+            return self.delete(session_id)
+        raise SidecarRequestError(400, "invalid_operation", "unsupported lifecycle operation")
 
     def before_model(self, session_id: str, payload: Mapping[str, Any]) -> dict[str, Any]:
         messages = payload.get("messages")
@@ -329,7 +358,11 @@ def _handler_factory(service: ContextSidecarService, config: SidecarServerConfig
             try:
                 self._authorize()
                 payload = self._json_body()
-                session_id, action = _session_route(urlsplit(self.path).path)
+                path = urlsplit(self.path).path
+                if path == "/v1/lifecycle":
+                    self._send(200, service.lifecycle(payload))
+                    return
+                session_id, action = _session_route(path)
                 handlers = {
                     "before-model": service.before_model,
                     "after-model": service.after_model,

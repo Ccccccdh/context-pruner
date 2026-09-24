@@ -20,6 +20,7 @@ from context_pruner.compressors import summarize
 from context_pruner.compressors import merge
 from context_pruner.evaluator import _cosine
 from context_pruner.parser_v1 import EmbeddingContextClassifier
+from context_pruner.pipeline_v1 import _protected
 from context_pruner.scheduler import detect_phase
 
 
@@ -63,6 +64,18 @@ class ParserV1Test(unittest.TestCase):
 
 
 class StructureSafetyTest(unittest.TestCase):
+    def test_descriptive_never_verified_is_not_an_instruction(self):
+        stale = ContextChunk(
+            "stale", ContextType.DIALOGUE,
+            "Historical planning note: this draft was never verified.", role="user",
+        )
+        directive = ContextChunk(
+            "directive", ContextType.DIALOGUE,
+            "This draft was never verified. Never delete the audit log.", role="user",
+        )
+        self.assertFalse(_protected(stale))
+        self.assertTrue(_protected(directive))
+
     def test_structured_action_is_compacted_without_breaking_json(self):
         original = ContextChunk(
             "action",

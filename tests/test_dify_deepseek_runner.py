@@ -87,6 +87,11 @@ class DifyDeepSeekRunnerTest(unittest.TestCase):
                 for fragment in evidence_by_id[task_id]:
                     self.assertIn(fragment, model_view, (task_id, method, fragment))
                 self.assertIn(messages[-1]["content"], model_view)
+                if method == "pruner_v1":
+                    self.assertEqual(0, response["metrics"]["model_input_budget_violation_count"], task_id)
+                    self.assertLessEqual(response["metrics"]["peak_model_input_tokens"], 1200, task_id)
+                    if task_id in {"two_source_join", "policy_filter"}:
+                        self.assertNotIn("this draft was never verified", model_view)
                 service.lifecycle({"session_id": session_id, "operation": "finalize"})
                 service.lifecycle({"session_id": session_id, "operation": "delete_session"})
         self.assertEqual(0, service.session_count)

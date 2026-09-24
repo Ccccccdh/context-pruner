@@ -171,6 +171,14 @@ def _protected(chunk) -> bool:
     if chunk.role != "user":
         return False
     padded = f" {text} "
+    # A past-tense status ("never verified") is not an instruction. Archived
+    # notes often contain this phrase and must remain eligible for eviction.
+    # Keep a separate imperative "Never ..." in the same message protected.
+    padded = re.sub(
+        r"\bnever\s+(?:been\s+)?(?:verified|validated|approved|confirmed)\b",
+        "unverified",
+        padded,
+    )
     return any(
         marker in padded
         for marker in (

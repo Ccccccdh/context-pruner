@@ -1,0 +1,17 @@
+....F......................................................              [100%]
+================================== FAILURES ===================================
+____________________ test_preserved[KEY=#literal-#literal] ____________________
+
+line = 'KEY=#literal', value = '#literal'
+
+    @pytest.mark.parametrize('line,value', [('KEY=#literal', '#literal'), ('KEY=a#b', 'a#b'), ('KEY=abc # note', 'abc'), ('KEY=" # literal"', ' # literal'), ("KEY=' # literal'", ' # literal'), ('KEY=', '')])
+    def test_preserved(line, value):
+>       assert dotenv_values(stream=io.StringIO(line))['KEY'] == value
+E       AssertionError: assert '' == '#literal'
+E         
+E         - #literal
+
+..\evaluation-first\test_acceptance.py:10: AssertionError
+=========================== short test summary info ===========================
+FAILED ..\evaluation-first\test_acceptance.py::test_preserved[KEY=#literal-#literal]
+1 failed, 58 passed in 0.44s

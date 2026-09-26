@@ -1,0 +1,1 @@
+set_key with quote_mode='always' or 'auto' must round-trip literal backslashes, including consecutive backslashes and apostrophes. Reading the written file with dotenv_values(interpolate=False) must reproduce the exact value. Preserve existing quote modes and export behavior.

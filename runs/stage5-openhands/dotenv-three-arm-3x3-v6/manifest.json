@@ -1,0 +1,72 @@
+{
+  "version": "openhands-dotenv-three-arm-v6",
+  "model": "openai/deepseek-v4-flash",
+  "temperature": 0,
+  "thinking": "disabled",
+  "api_retries": 0,
+  "source_commit": "eaf2a9129ccec6febda0f741eb3bb852c3f947bd",
+  "tasks": [
+    "quoted_roundtrip",
+    "empty_inline_comment",
+    "crlf_error_recovery"
+  ],
+  "arms": [
+    "none",
+    "native_summary",
+    "pruner_v1"
+  ],
+  "repeats": 3,
+  "trigger_input_tokens": 12000,
+  "pruner_target_tokens": 10000,
+  "pruner_hard_tokens": 16000,
+  "native_max_events": 240,
+  "max_agent_calls_per_sample": 14,
+  "max_summary_calls_per_sample": 5,
+  "max_output_tokens": 1536,
+  "max_single_estimated_input": 40000,
+  "max_total_estimated_input_per_sample": 300000,
+  "phase_plan": [
+    "read_and_diagnose_no_edit",
+    "implement",
+    "evaluate_and_correct"
+  ],
+  "tools": [
+    "scoped_editor",
+    "finish"
+  ],
+  "initial_read_ranges": {
+    "README.md": [
+      167,
+      210
+    ],
+    "src/dotenv/main.py": [
+      155,
+      230
+    ],
+    "src/dotenv/parser.py": [
+      1,
+      -1
+    ],
+    "tests/test_parser.py": [
+      1,
+      100
+    ]
+  },
+  "acceptance": "task-specific tests + unchanged upstream parser/variables tests + file boundary",
+  "upstream_test_limitation": "test_main.py uses POSIX-only sh; excluded on Windows",
+  "cost": "provider tokens include native summary overhead; money unknown, SDK model price not mapped",
+  "ordering": "rotate three arms by task and repeat; independent workspace and conversation per sample",
+  "data": "public MIT python-dotenv source; no private documents",
+  "versions": {
+    "openhands-sdk": "1.49.6",
+    "openhands-tools": "1.49.6",
+    "litellm": "1.93.2",
+    "context-pruner": "0.13.1",
+    "pytest": "9.1.1"
+  },
+  "source_hashes": {
+    "integrations\\openhands\\run_comparison.py": "6e9d346984b92c797634cf9797c51e2c352d8b1329111f92ba5f879c5a7b264f",
+    "integrations\\openhands\\task_suite.py": "2833045a088bc68fff2a4872076c492dd2c645659d66f15c080f2f52262c7619",
+    "context_pruner\\adapters\\openhands.py": "ee944eff56f07a20cc8775ee45026873eabe5985d1284b3fac030c9d97178024"
+  }
+}

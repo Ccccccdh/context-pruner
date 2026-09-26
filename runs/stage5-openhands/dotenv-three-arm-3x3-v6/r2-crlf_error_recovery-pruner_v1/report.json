@@ -1,0 +1,299 @@
+{
+  "task": "crlf_error_recovery",
+  "arm": "pruner_v1",
+  "repeat": 2,
+  "success": true,
+  "investigation_no_edits": true,
+  "first_evaluation": {
+    "passed": true,
+    "returncode": 0,
+    "summary": "58 passed in 0.28s"
+  },
+  "final_evaluation": {
+    "passed": true,
+    "returncode": 0,
+    "summary": "58 passed in 0.27s"
+  },
+  "changed_files": [
+    "src/dotenv/parser.py"
+  ],
+  "file_boundary_ok": true,
+  "elapsed_seconds": 13.430415999959223,
+  "events": [
+    {
+      "type": "SystemPromptEvent",
+      "id": "758919e3-ef41-40f2-8f68-51a017eb1520"
+    },
+    {
+      "type": "MessageEvent",
+      "id": "daacf818-15d7-487a-a1a5-df70fe96e3e2"
+    },
+    {
+      "type": "ActionEvent",
+      "id": "bac0111d-faf5-4a53-bc20-551b83f32054"
+    },
+    {
+      "type": "ActionEvent",
+      "id": "72690d14-c3cb-483d-bc03-20a0afa46488"
+    },
+    {
+      "type": "ActionEvent",
+      "id": "c62979cf-1fa6-4b57-b261-19e66ea6abfa"
+    },
+    {
+      "type": "ActionEvent",
+      "id": "c03664ee-ad4a-4d3a-a66a-5d943f2dab2e"
+    },
+    {
+      "type": "ActionEvent",
+      "id": "63df1427-646a-44d2-a195-ea7f5a2eb7bc"
+    },
+    {
+      "type": "ObservationEvent",
+      "id": "0eb0fdce-5ccd-4d61-8504-3399346f829d"
+    },
+    {
+      "type": "ObservationEvent",
+      "id": "9e8fb70d-9e56-4d42-8e37-d975ea958a63"
+    },
+    {
+      "type": "ObservationEvent",
+      "id": "bc67b922-baea-4326-970f-32dca8ffcb6b"
+    },
+    {
+      "type": "ObservationEvent",
+      "id": "1944f3f7-468c-4856-beff-932bcba41507"
+    },
+    {
+      "type": "ObservationEvent",
+      "id": "3e22db16-4c29-4216-b45c-7d761c1cab4e"
+    },
+    {
+      "type": "MessageEvent",
+      "id": "1c9b0dbd-df2a-4260-9367-d05428bb8934"
+    },
+    {
+      "type": "MessageEvent",
+      "id": "c0c55011-9877-47f9-83d7-4b6d2c27391d"
+    },
+    {
+      "type": "ActionEvent",
+      "id": "8ab811be-a7c8-4800-ad00-6627a3838eaa"
+    },
+    {
+      "type": "ObservationEvent",
+      "id": "52483a19-8934-4bba-8160-cd179572934c"
+    },
+    {
+      "type": "ActionEvent",
+      "id": "b4717bdc-4699-452b-b1cb-67b98ced285d"
+    },
+    {
+      "type": "ObservationEvent",
+      "id": "4d164604-26e7-43b1-a9ac-a34a886379dc"
+    },
+    {
+      "type": "MessageEvent",
+      "id": "9e80b293-c89a-4e0c-8d29-d4d2dcecfb42"
+    },
+    {
+      "type": "ActionEvent",
+      "id": "0d1e7442-cf30-4dbd-aeae-5bc8d0348241"
+    },
+    {
+      "type": "ObservationEvent",
+      "id": "bcb89e79-56aa-430c-9433-9ac68f45f6a0"
+    },
+    {
+      "type": "ActionEvent",
+      "id": "bd717c4f-aa24-4a58-833e-11ec4bf89d57"
+    },
+    {
+      "type": "ObservationEvent",
+      "id": "cca7a91d-a3a2-4d8f-bd1d-ceff09e36406"
+    }
+  ],
+  "ledger": {
+    "calls": [
+      {
+        "kind": "agent",
+        "estimated_input": 4771,
+        "structural_valid": true,
+        "status": "returned",
+        "latency_seconds": 2.700999299995601
+      },
+      {
+        "kind": "agent",
+        "estimated_input": 11060,
+        "structural_valid": true,
+        "status": "returned",
+        "latency_seconds": 1.5386834000237286
+      },
+      {
+        "kind": "agent",
+        "estimated_input": 11514,
+        "structural_valid": true,
+        "status": "returned",
+        "latency_seconds": 1.0448020999901928
+      },
+      {
+        "kind": "agent",
+        "estimated_input": 12198,
+        "structural_valid": true,
+        "status": "returned",
+        "latency_seconds": 1.7285101999877952
+      },
+      {
+        "kind": "agent",
+        "estimated_input": 13042,
+        "structural_valid": true,
+        "status": "returned",
+        "latency_seconds": 1.0996148999547586
+      },
+      {
+        "kind": "agent",
+        "estimated_input": 13790,
+        "structural_valid": true,
+        "status": "returned",
+        "latency_seconds": 1.8693010999704711
+      }
+    ],
+    "estimated_input": 66375
+  },
+  "agent_metrics": {
+    "model_name": "openai/deepseek-v4-flash",
+    "accumulated_cost": 0.0,
+    "max_budget_per_task": null,
+    "accumulated_token_usage": {
+      "model": "openai/deepseek-v4-flash",
+      "prompt_tokens": 59597,
+      "completion_tokens": 2109,
+      "cache_read_tokens": 52864,
+      "cache_write_tokens": 0,
+      "reasoning_tokens": 0,
+      "context_window": 1000000,
+      "per_turn_token": 12379,
+      "response_id": ""
+    },
+    "costs": [],
+    "response_latencies": [
+      {
+        "model": "openai/deepseek-v4-flash",
+        "latency": 2.6956253051757812,
+        "response_id": "ca2d8f62-6b0e-40ae-a89a-146a9e69052b"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "latency": 1.5339369773864746,
+        "response_id": "8d1efd85-dbe3-45b2-ab3d-436675cf36c1"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "latency": 1.0398449897766113,
+        "response_id": "4df5bf10-8cde-4742-bd4c-62a7cb414965"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "latency": 1.7237353324890137,
+        "response_id": "1e56b1d8-7f7f-4a44-9944-c15014552286"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "latency": 1.0940220355987549,
+        "response_id": "414ea45c-0c54-41ce-97d2-3e43c38db295"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "latency": 1.8640682697296143,
+        "response_id": "02cba81b-c3e8-4a21-84d9-ef0633903ca4"
+      }
+    ],
+    "token_usages": [
+      {
+        "model": "openai/deepseek-v4-flash",
+        "prompt_tokens": 5026,
+        "completion_tokens": 782,
+        "cache_read_tokens": 3840,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "context_window": 1000000,
+        "per_turn_token": 5808,
+        "response_id": "ca2d8f62-6b0e-40ae-a89a-146a9e69052b"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "prompt_tokens": 9955,
+        "completion_tokens": 280,
+        "cache_read_tokens": 5760,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "context_window": 1000000,
+        "per_turn_token": 10235,
+        "response_id": "8d1efd85-dbe3-45b2-ab3d-436675cf36c1"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "prompt_tokens": 10282,
+        "completion_tokens": 237,
+        "cache_read_tokens": 10112,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "context_window": 1000000,
+        "per_turn_token": 10519,
+        "response_id": "4df5bf10-8cde-4742-bd4c-62a7cb414965"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "prompt_tokens": 10840,
+        "completion_tokens": 309,
+        "cache_read_tokens": 10496,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "context_window": 1000000,
+        "per_turn_token": 11149,
+        "response_id": "1e56b1d8-7f7f-4a44-9944-c15014552286"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "prompt_tokens": 11446,
+        "completion_tokens": 170,
+        "cache_read_tokens": 11136,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "context_window": 1000000,
+        "per_turn_token": 11616,
+        "response_id": "414ea45c-0c54-41ce-97d2-3e43c38db295"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "prompt_tokens": 12048,
+        "completion_tokens": 331,
+        "cache_read_tokens": 11520,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "context_window": 1000000,
+        "per_turn_token": 12379,
+        "response_id": "02cba81b-c3e8-4a21-84d9-ef0633903ca4"
+      }
+    ]
+  },
+  "summary_metrics": {
+    "model_name": "openai/deepseek-v4-flash",
+    "accumulated_cost": 0.0,
+    "max_budget_per_task": null,
+    "accumulated_token_usage": {
+      "model": "openai/deepseek-v4-flash",
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "reasoning_tokens": 0,
+      "context_window": 0,
+      "per_turn_token": 0,
+      "response_id": ""
+    },
+    "costs": [],
+    "response_latencies": [],
+    "token_usages": []
+  }
+}

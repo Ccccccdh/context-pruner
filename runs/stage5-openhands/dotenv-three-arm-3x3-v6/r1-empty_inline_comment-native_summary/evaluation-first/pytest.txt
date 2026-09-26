@@ -1,0 +1,68 @@
+FFFF.......................................................              [100%]
+================================== FAILURES ===================================
+_______________________ test_empty_comment[KEY= # note] _______________________
+
+line = 'KEY= # note'
+
+    @pytest.mark.parametrize('line', ['KEY= # note', 'KEY=  # note', 'KEY=\t# note', 'export KEY = # note'])
+    def test_empty_comment(line):
+>       assert dotenv_values(stream=io.StringIO(line + '\nNEXT=yes\n')) == {'KEY': '', 'NEXT': 'yes'}
+E       AssertionError: assert OrderedDict({...NEXT': 'yes'}) == {'KEY': '', 'NEXT': 'yes'}
+E         
+E         Omitting 1 identical items, use -vv to show
+E         Differing items:
+E         {'KEY': '# note'} != {'KEY': ''}
+E         Use -v to get more diff
+
+..\evaluation-first\test_acceptance.py:7: AssertionError
+______________________ test_empty_comment[KEY=  # note] _______________________
+
+line = 'KEY=  # note'
+
+    @pytest.mark.parametrize('line', ['KEY= # note', 'KEY=  # note', 'KEY=\t# note', 'export KEY = # note'])
+    def test_empty_comment(line):
+>       assert dotenv_values(stream=io.StringIO(line + '\nNEXT=yes\n')) == {'KEY': '', 'NEXT': 'yes'}
+E       AssertionError: assert OrderedDict({...NEXT': 'yes'}) == {'KEY': '', 'NEXT': 'yes'}
+E         
+E         Omitting 1 identical items, use -vv to show
+E         Differing items:
+E         {'KEY': '# note'} != {'KEY': ''}
+E         Use -v to get more diff
+
+..\evaluation-first\test_acceptance.py:7: AssertionError
+______________________ test_empty_comment[KEY=\t# note] _______________________
+
+line = 'KEY=\t# note'
+
+    @pytest.mark.parametrize('line', ['KEY= # note', 'KEY=  # note', 'KEY=\t# note', 'export KEY = # note'])
+    def test_empty_comment(line):
+>       assert dotenv_values(stream=io.StringIO(line + '\nNEXT=yes\n')) == {'KEY': '', 'NEXT': 'yes'}
+E       AssertionError: assert OrderedDict({...NEXT': 'yes'}) == {'KEY': '', 'NEXT': 'yes'}
+E         
+E         Omitting 1 identical items, use -vv to show
+E         Differing items:
+E         {'KEY': '# note'} != {'KEY': ''}
+E         Use -v to get more diff
+
+..\evaluation-first\test_acceptance.py:7: AssertionError
+___________________ test_empty_comment[export KEY = # note] ___________________
+
+line = 'export KEY = # note'
+
+    @pytest.mark.parametrize('line', ['KEY= # note', 'KEY=  # note', 'KEY=\t# note', 'export KEY = # note'])
+    def test_empty_comment(line):
+>       assert dotenv_values(stream=io.StringIO(line + '\nNEXT=yes\n')) == {'KEY': '', 'NEXT': 'yes'}
+E       AssertionError: assert OrderedDict({...NEXT': 'yes'}) == {'KEY': '', 'NEXT': 'yes'}
+E         
+E         Omitting 1 identical items, use -vv to show
+E         Differing items:
+E         {'KEY': '# note'} != {'KEY': ''}
+E         Use -v to get more diff
+
+..\evaluation-first\test_acceptance.py:7: AssertionError
+=========================== short test summary info ===========================
+FAILED ..\evaluation-first\test_acceptance.py::test_empty_comment[KEY= # note]
+FAILED ..\evaluation-first\test_acceptance.py::test_empty_comment[KEY=  # note]
+FAILED ..\evaluation-first\test_acceptance.py::test_empty_comment[KEY=\t# note]
+FAILED ..\evaluation-first\test_acceptance.py::test_empty_comment[export KEY = # note]
+4 failed, 55 passed in 0.43s

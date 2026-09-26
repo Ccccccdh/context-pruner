@@ -1,0 +1,1 @@
+Parser recovery after an invalid binding must consume a CRLF as one complete newline. For an invalid first line followed by GOOD=ok, the invalid binding's original.string must include the whole CRLF and the valid binding must start at line 2 with original.string exactly GOOD=ok plus its newline. Preserve LF and CR behavior and repeated invalid lines.

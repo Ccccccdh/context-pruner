@@ -1,0 +1,1 @@
+An empty unquoted value followed by whitespace and an inline comment, e.g. KEY= # explanation, must parse as the empty string. Hash characters without preceding whitespace, e.g. KEY=#literal and KEY=a#b, remain literal. Preserve quoting, exports, and ordinary comments.

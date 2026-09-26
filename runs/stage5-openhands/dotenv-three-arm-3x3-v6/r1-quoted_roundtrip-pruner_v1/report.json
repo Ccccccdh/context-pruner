@@ -1,0 +1,303 @@
+{
+  "task": "quoted_roundtrip",
+  "arm": "pruner_v1",
+  "repeat": 1,
+  "success": true,
+  "investigation_no_edits": true,
+  "first_evaluation": {
+    "passed": true,
+    "returncode": 0,
+    "summary": "69 passed in 0.70s"
+  },
+  "final_evaluation": {
+    "passed": true,
+    "returncode": 0,
+    "summary": "69 passed in 0.69s"
+  },
+  "changed_files": [
+    "src/dotenv/main.py"
+  ],
+  "file_boundary_ok": true,
+  "elapsed_seconds": 15.237912499986123,
+  "events": [
+    {
+      "type": "SystemPromptEvent",
+      "id": "532d41ee-01f3-4ee2-8421-38ad611f2d22"
+    },
+    {
+      "type": "MessageEvent",
+      "id": "c91ad825-4130-492c-93f2-ce93094863e2"
+    },
+    {
+      "type": "ActionEvent",
+      "id": "368a12a1-62be-4978-88a1-9a1d7d0f17a6"
+    },
+    {
+      "type": "ActionEvent",
+      "id": "20a78323-fc02-4c04-9547-d0d7f78a8ce9"
+    },
+    {
+      "type": "ActionEvent",
+      "id": "4207f48b-6068-473b-a380-9efbf665e96a"
+    },
+    {
+      "type": "ActionEvent",
+      "id": "3ccddd2e-33d6-4d39-a4c9-a047027ee694"
+    },
+    {
+      "type": "ActionEvent",
+      "id": "681f4cff-0b78-4e98-9a40-55b9f38d4bf0"
+    },
+    {
+      "type": "ObservationEvent",
+      "id": "fefd2c5b-a86d-45e4-8f11-6000a42bcb39"
+    },
+    {
+      "type": "ObservationEvent",
+      "id": "463148e0-5f5a-4063-92c4-8d5415b64dd4"
+    },
+    {
+      "type": "ObservationEvent",
+      "id": "c14fcea0-1de3-412d-9ee2-9b3581e53167"
+    },
+    {
+      "type": "ObservationEvent",
+      "id": "63b55cd7-9121-45b6-8c36-d6bfb5100e1b"
+    },
+    {
+      "type": "ObservationEvent",
+      "id": "b07d3a85-96cd-44ac-a9a5-e51f69b2325e"
+    },
+    {
+      "type": "ActionEvent",
+      "id": "a2c9e102-b3d3-45f5-8569-1d27c49dcfbc"
+    },
+    {
+      "type": "ObservationEvent",
+      "id": "90ffc350-bb66-4b72-b87d-af0814f88b8e"
+    },
+    {
+      "type": "MessageEvent",
+      "id": "cf7e0229-d4ce-4745-a79f-5547b0c84f3d"
+    },
+    {
+      "type": "ActionEvent",
+      "id": "2728e135-eb3a-4ac8-995c-4510fca5791f"
+    },
+    {
+      "type": "ObservationEvent",
+      "id": "6a62b4b9-fa90-481e-974d-35051f69176a"
+    },
+    {
+      "type": "ActionEvent",
+      "id": "71931da5-993f-42c7-aa61-c3c3066bbeef"
+    },
+    {
+      "type": "ObservationEvent",
+      "id": "c1f89087-2549-4749-a2b1-029d748cb553"
+    },
+    {
+      "type": "MessageEvent",
+      "id": "82ad7874-fd2e-431c-a46f-dd735924982a"
+    },
+    {
+      "type": "ActionEvent",
+      "id": "0b2a8f58-20fe-415b-869b-f8a7883fd704"
+    },
+    {
+      "type": "ObservationEvent",
+      "id": "a27bd588-9aea-43a5-b810-f07778147277"
+    },
+    {
+      "type": "ActionEvent",
+      "id": "8b8f9a5f-1f16-4757-8c31-c377929014fa"
+    },
+    {
+      "type": "ObservationEvent",
+      "id": "a5f9c131-155c-4e19-a48e-7be8f8bd1c53"
+    }
+  ],
+  "ledger": {
+    "calls": [
+      {
+        "kind": "agent",
+        "estimated_input": 4752,
+        "structural_valid": true,
+        "status": "returned",
+        "latency_seconds": 2.49811399995815
+      },
+      {
+        "kind": "agent",
+        "estimated_input": 11009,
+        "structural_valid": true,
+        "status": "returned",
+        "latency_seconds": 2.496244700043462
+      },
+      {
+        "kind": "agent",
+        "estimated_input": 12208,
+        "structural_valid": true,
+        "status": "returned",
+        "latency_seconds": 1.4584118000348099
+      },
+      {
+        "kind": "agent",
+        "estimated_input": 12926,
+        "structural_valid": true,
+        "status": "returned",
+        "latency_seconds": 1.5185708000208251
+      },
+      {
+        "kind": "agent",
+        "estimated_input": 13640,
+        "structural_valid": true,
+        "status": "returned",
+        "latency_seconds": 1.2177691000397317
+      },
+      {
+        "kind": "agent",
+        "estimated_input": 14453,
+        "structural_valid": true,
+        "status": "returned",
+        "latency_seconds": 1.6621025999775156
+      }
+    ],
+    "estimated_input": 68988
+  },
+  "agent_metrics": {
+    "model_name": "openai/deepseek-v4-flash",
+    "accumulated_cost": 0.0,
+    "max_budget_per_task": null,
+    "accumulated_token_usage": {
+      "model": "openai/deepseek-v4-flash",
+      "prompt_tokens": 61512,
+      "completion_tokens": 2367,
+      "cache_read_tokens": 54656,
+      "cache_write_tokens": 0,
+      "reasoning_tokens": 0,
+      "context_window": 1000000,
+      "per_turn_token": 12744,
+      "response_id": ""
+    },
+    "costs": [],
+    "response_latencies": [
+      {
+        "model": "openai/deepseek-v4-flash",
+        "latency": 2.4937503337860107,
+        "response_id": "eaaf9cb0-fc2e-4f5f-90ec-4f39a479de81"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "latency": 2.4915456771850586,
+        "response_id": "29d305d2-67da-45ab-86d6-0a2bb2523956"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "latency": 1.4535908699035645,
+        "response_id": "68509577-68d9-4185-bc83-4a0cd03246c3"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "latency": 1.5130870342254639,
+        "response_id": "bf897cdf-57ee-446e-8309-549569f37c7b"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "latency": 1.2123425006866455,
+        "response_id": "802d4cd2-6f66-4a47-a957-e1712e043248"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "latency": 1.6560614109039307,
+        "response_id": "9fa2c45f-180a-4c69-a561-97eddb039e8a"
+      }
+    ],
+    "token_usages": [
+      {
+        "model": "openai/deepseek-v4-flash",
+        "prompt_tokens": 5011,
+        "completion_tokens": 781,
+        "cache_read_tokens": 3840,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "context_window": 1000000,
+        "per_turn_token": 5792,
+        "response_id": "eaaf9cb0-fc2e-4f5f-90ec-4f39a479de81"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "prompt_tokens": 9924,
+        "completion_tokens": 613,
+        "cache_read_tokens": 5760,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "context_window": 1000000,
+        "per_turn_token": 10537,
+        "response_id": "29d305d2-67da-45ab-86d6-0a2bb2523956"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "prompt_tokens": 10866,
+        "completion_tokens": 258,
+        "cache_read_tokens": 10496,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "context_window": 1000000,
+        "per_turn_token": 11124,
+        "response_id": "68509577-68d9-4185-bc83-4a0cd03246c3"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "prompt_tokens": 11401,
+        "completion_tokens": 232,
+        "cache_read_tokens": 11008,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "context_window": 1000000,
+        "per_turn_token": 11633,
+        "response_id": "bf897cdf-57ee-446e-8309-549569f37c7b"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "prompt_tokens": 11851,
+        "completion_tokens": 198,
+        "cache_read_tokens": 11520,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "context_window": 1000000,
+        "per_turn_token": 12049,
+        "response_id": "802d4cd2-6f66-4a47-a957-e1712e043248"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "prompt_tokens": 12459,
+        "completion_tokens": 285,
+        "cache_read_tokens": 12032,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "context_window": 1000000,
+        "per_turn_token": 12744,
+        "response_id": "9fa2c45f-180a-4c69-a561-97eddb039e8a"
+      }
+    ]
+  },
+  "summary_metrics": {
+    "model_name": "openai/deepseek-v4-flash",
+    "accumulated_cost": 0.0,
+    "max_budget_per_task": null,
+    "accumulated_token_usage": {
+      "model": "openai/deepseek-v4-flash",
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "reasoning_tokens": 0,
+      "context_window": 0,
+      "per_turn_token": 0,
+      "response_id": ""
+    },
+    "costs": [],
+    "response_latencies": [],
+    "token_usages": []
+  }
+}

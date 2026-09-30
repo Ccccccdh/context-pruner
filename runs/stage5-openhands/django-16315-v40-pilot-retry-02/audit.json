@@ -1,0 +1,208 @@
+{
+  "complete": true,
+  "expected_samples": 3,
+  "completed_samples": 3,
+  "arms": {
+    "none": {
+      "samples": 1,
+      "successes": 0,
+      "agent_input_tokens": 809208,
+      "summary_input_tokens": 0,
+      "total_input_tokens": 809208,
+      "total_output_tokens": 16318,
+      "model_calls": 36,
+      "summary_calls": 0,
+      "failed_calls": 0,
+      "peak_estimated_input": 44470,
+      "elapsed_seconds": 241.9125955000054,
+      "condensation_events": 0,
+      "artifact_successes": 0,
+      "call_or_token_limit_exhaustions": 0,
+      "pruner_hard_budget_exceeded": 0,
+      "agent_error_events": 0
+    },
+    "native_summary": {
+      "samples": 1,
+      "successes": 1,
+      "agent_input_tokens": 318744,
+      "summary_input_tokens": 0,
+      "total_input_tokens": 318744,
+      "total_output_tokens": 5595,
+      "model_calls": 20,
+      "summary_calls": 0,
+      "failed_calls": 0,
+      "peak_estimated_input": 27687,
+      "elapsed_seconds": 177.0846215999918,
+      "condensation_events": 0,
+      "artifact_successes": 1,
+      "call_or_token_limit_exhaustions": 0,
+      "pruner_hard_budget_exceeded": 0,
+      "agent_error_events": 0
+    },
+    "pruner_v40": {
+      "samples": 1,
+      "successes": 1,
+      "agent_input_tokens": 573873,
+      "summary_input_tokens": 0,
+      "total_input_tokens": 573873,
+      "total_output_tokens": 10474,
+      "model_calls": 35,
+      "summary_calls": 0,
+      "failed_calls": 0,
+      "peak_estimated_input": 24789,
+      "elapsed_seconds": 209.38059319999593,
+      "condensation_events": 4,
+      "artifact_successes": 1,
+      "call_or_token_limit_exhaustions": 0,
+      "pruner_hard_budget_exceeded": 0,
+      "agent_error_events": 0
+    }
+  },
+  "samples": [
+    {
+      "sample": "r1-django_bulk_create_db_column-native_summary",
+      "task": "django_bulk_create_db_column",
+      "repeat": 1,
+      "arm": "native_summary",
+      "normal_completion_success": true,
+      "artifact_success": true,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-16315-v40-pilot-retry-02\\r1-django_bulk_create_db_column-native_summary\\evaluation-audit\\host-workspace\\django'",
+        "Ran 51 tests in 0.229s"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 318744,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    },
+    {
+      "sample": "r1-django_bulk_create_db_column-none",
+      "task": "django_bulk_create_db_column",
+      "repeat": 1,
+      "arm": "none",
+      "normal_completion_success": false,
+      "artifact_success": false,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-16315-v40-pilot-retry-02\\r1-django_bulk_create_db_column-none\\evaluation-audit\\host-workspace\\django'",
+        "ERROR: test_update_conflicts_two_fields_unique_fields_both (bulk_create.tests.BulkCreateTests.test_update_conflicts_two_fields_unique_fields_both)",
+        "ERROR: test_update_conflicts_two_fields_unique_fields_first (bulk_create.tests.BulkCreateTests.test_update_conflicts_two_fields_unique_fields_first)",
+        "ERROR: test_update_conflicts_two_fields_unique_fields_second (bulk_create.tests.BulkCreateTests.test_update_conflicts_two_fields_unique_fields_second)",
+        "ERROR: test_update_conflicts_unique_fields (bulk_create.tests.BulkCreateTests.test_update_conflicts_unique_fields)",
+        "ERROR: test_update_conflicts_unique_fields_pk (bulk_create.tests.BulkCreateTests.test_update_conflicts_unique_fields_pk)",
+        "ERROR: test_update_conflicts_unique_fields_update_fields_db_column (bulk_create.tests.BulkCreateTests.test_update_conflicts_unique_fields_update_fields_db_column)",
+        "ERROR: test_update_conflicts_unique_two_fields_unique_fields_both (bulk_create.tests.BulkCreateTests.test_update_conflicts_unique_two_fields_unique_fields_both)",
+        "ERROR: test_update_conflicts_unique_two_fields_unique_fields_one (bulk_create.tests.BulkCreateTests.test_update_conflicts_unique_two_fields_unique_fields_one)",
+        "Ran 51 tests in 0.249s",
+        "FAILED (errors=8, skipped=7)"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 809208,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    },
+    {
+      "sample": "r1-django_bulk_create_db_column-pruner_v40",
+      "task": "django_bulk_create_db_column",
+      "repeat": 1,
+      "arm": "pruner_v40",
+      "normal_completion_success": true,
+      "artifact_success": true,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-16315-v40-pilot-retry-02\\r1-django_bulk_create_db_column-pruner_v40\\evaluation-audit\\host-workspace\\django'",
+        "Ran 51 tests in 0.211s"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 573873,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    }
+  ],
+  "paired": {
+    "native_summary": {
+      "pairs": [
+        {
+          "task": "django_bulk_create_db_column",
+          "repeat": 1,
+          "input_savings": 0.6061037458848653,
+          "baseline_input": 809208,
+          "method_input": 318744,
+          "baseline_success": false,
+          "method_success": true,
+          "api_ok": true
+        }
+      ],
+      "metrics": {
+        "all": {
+          "n": 1,
+          "mean": 0.6061037458848653,
+          "median": 0.6061037458848653,
+          "wins": 1
+        },
+        "api_ok": {
+          "n": 1,
+          "mean": 0.6061037458848653,
+          "median": 0.6061037458848653,
+          "wins": 1
+        },
+        "both_success_api_ok": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "wins": 0
+        }
+      }
+    },
+    "pruner_v40": {
+      "pairs": [
+        {
+          "task": "django_bulk_create_db_column",
+          "repeat": 1,
+          "input_savings": 0.29082139573508914,
+          "baseline_input": 809208,
+          "method_input": 573873,
+          "baseline_success": false,
+          "method_success": true,
+          "api_ok": true
+        }
+      ],
+      "metrics": {
+        "all": {
+          "n": 1,
+          "mean": 0.29082139573508914,
+          "median": 0.29082139573508914,
+          "wins": 1
+        },
+        "api_ok": {
+          "n": 1,
+          "mean": 0.29082139573508914,
+          "median": 0.29082139573508914,
+          "wins": 1
+        },
+        "both_success_api_ok": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "wins": 0
+        }
+      }
+    }
+  },
+  "credential_matches": 0,
+  "source_hashes_valid": true,
+  "note": "Failed request provider usage is unknown. All outcomes retained; subsets are sensitivity analyses."
+}

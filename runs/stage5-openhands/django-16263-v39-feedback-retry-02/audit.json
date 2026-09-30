@@ -1,0 +1,214 @@
+{
+  "complete": true,
+  "expected_samples": 3,
+  "completed_samples": 3,
+  "arms": {
+    "none": {
+      "samples": 1,
+      "successes": 0,
+      "agent_input_tokens": 986969,
+      "summary_input_tokens": 0,
+      "total_input_tokens": 986969,
+      "total_output_tokens": 17744,
+      "model_calls": 35,
+      "summary_calls": 0,
+      "failed_calls": 0,
+      "peak_estimated_input": 62056,
+      "elapsed_seconds": 253.28005449999182,
+      "condensation_events": 0,
+      "artifact_successes": 0,
+      "call_or_token_limit_exhaustions": 0,
+      "pruner_hard_budget_exceeded": 0,
+      "agent_error_events": 0
+    },
+    "native_summary": {
+      "samples": 1,
+      "successes": 0,
+      "agent_input_tokens": 621326,
+      "summary_input_tokens": 11055,
+      "total_input_tokens": 632381,
+      "total_output_tokens": 13768,
+      "model_calls": 38,
+      "summary_calls": 2,
+      "failed_calls": 0,
+      "peak_estimated_input": 30731,
+      "elapsed_seconds": 243.2741423999978,
+      "condensation_events": 2,
+      "artifact_successes": 0,
+      "call_or_token_limit_exhaustions": 0,
+      "pruner_hard_budget_exceeded": 0,
+      "agent_error_events": 0
+    },
+    "pruner_v39": {
+      "samples": 1,
+      "successes": 0,
+      "agent_input_tokens": 579887,
+      "summary_input_tokens": 0,
+      "total_input_tokens": 579887,
+      "total_output_tokens": 10341,
+      "model_calls": 35,
+      "summary_calls": 0,
+      "failed_calls": 0,
+      "peak_estimated_input": 24189,
+      "elapsed_seconds": 234.67894589999923,
+      "condensation_events": 6,
+      "artifact_successes": 0,
+      "call_or_token_limit_exhaustions": 0,
+      "pruner_hard_budget_exceeded": 0,
+      "agent_error_events": 0
+    }
+  },
+  "samples": [
+    {
+      "sample": "r1-django_count_annotation_pruning-native_summary",
+      "task": "django_count_annotation_pruning",
+      "repeat": 1,
+      "arm": "native_summary",
+      "normal_completion_success": false,
+      "artifact_success": false,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-16263-v39-feedback-retry-02\\r1-django_count_annotation_pruning-native_summary\\evaluation-audit\\host-workspace\\django'",
+        "ERROR: test_filtered_aggregate_on_annotate (aggregation.test_filter_argument.FilteredAggregateTests.test_filtered_aggregate_on_annotate)",
+        "ERROR: test_aggregate_over_complex_annotation (aggregation.tests.AggregateTestCase.test_aggregate_over_complex_annotation)",
+        "ERROR: test_coalesced_empty_result_set (aggregation.tests.AggregateTestCase.test_coalesced_empty_result_set)",
+        "ERROR: test_complex_values_aggregation (aggregation.tests.AggregateTestCase.test_complex_values_aggregation)",
+        "ERROR: test_empty_result_optimization (aggregation.tests.AggregateTestCase.test_empty_result_optimization)",
+        "ERROR: test_ticket11881 (aggregation.tests.AggregateTestCase.test_ticket11881)",
+        "ERROR: test_ticket12886 (aggregation.tests.AggregateTestCase.test_ticket12886)",
+        "ERROR: test_values_aggregation (aggregation.tests.AggregateTestCase.test_values_aggregation)",
+        "Ran 120 tests in 0.312s",
+        "FAILED (failures=9, errors=8)"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 632381,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    },
+    {
+      "sample": "r1-django_count_annotation_pruning-none",
+      "task": "django_count_annotation_pruning",
+      "repeat": 1,
+      "arm": "none",
+      "normal_completion_success": false,
+      "artifact_success": false,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-16263-v39-feedback-retry-02\\r1-django_count_annotation_pruning-none\\evaluation-audit\\host-workspace\\django'",
+        "Ran 120 tests in 0.304s",
+        "FAILED (failures=3)"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 986969,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    },
+    {
+      "sample": "r1-django_count_annotation_pruning-pruner_v39",
+      "task": "django_count_annotation_pruning",
+      "repeat": 1,
+      "arm": "pruner_v39",
+      "normal_completion_success": false,
+      "artifact_success": false,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-16263-v39-feedback-retry-02\\r1-django_count_annotation_pruning-pruner_v39\\evaluation-audit\\host-workspace\\django'",
+        "ERROR: test_filtered_aggregate_on_annotate (aggregation.test_filter_argument.FilteredAggregateTests.test_filtered_aggregate_on_annotate)",
+        "ERROR: test_aggregate_over_complex_annotation (aggregation.tests.AggregateTestCase.test_aggregate_over_complex_annotation)",
+        "ERROR: test_complex_values_aggregation (aggregation.tests.AggregateTestCase.test_complex_values_aggregation)",
+        "ERROR: test_values_aggregation (aggregation.tests.AggregateTestCase.test_values_aggregation)",
+        "Ran 120 tests in 0.335s",
+        "FAILED (failures=8, errors=4)"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 579887,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    }
+  ],
+  "paired": {
+    "native_summary": {
+      "pairs": [
+        {
+          "task": "django_count_annotation_pruning",
+          "repeat": 1,
+          "input_savings": 0.3592696427142088,
+          "baseline_input": 986969,
+          "method_input": 632381,
+          "baseline_success": false,
+          "method_success": false,
+          "api_ok": true
+        }
+      ],
+      "metrics": {
+        "all": {
+          "n": 1,
+          "mean": 0.3592696427142088,
+          "median": 0.3592696427142088,
+          "wins": 1
+        },
+        "api_ok": {
+          "n": 1,
+          "mean": 0.3592696427142088,
+          "median": 0.3592696427142088,
+          "wins": 1
+        },
+        "both_success_api_ok": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "wins": 0
+        }
+      }
+    },
+    "pruner_v39": {
+      "pairs": [
+        {
+          "task": "django_count_annotation_pruning",
+          "repeat": 1,
+          "input_savings": 0.4124567235647726,
+          "baseline_input": 986969,
+          "method_input": 579887,
+          "baseline_success": false,
+          "method_success": false,
+          "api_ok": true
+        }
+      ],
+      "metrics": {
+        "all": {
+          "n": 1,
+          "mean": 0.4124567235647726,
+          "median": 0.4124567235647726,
+          "wins": 1
+        },
+        "api_ok": {
+          "n": 1,
+          "mean": 0.4124567235647726,
+          "median": 0.4124567235647726,
+          "wins": 1
+        },
+        "both_success_api_ok": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "wins": 0
+        }
+      }
+    }
+  },
+  "credential_matches": 0,
+  "source_hashes_valid": true,
+  "note": "Failed request provider usage is unknown. All outcomes retained; subsets are sensitivity analyses."
+}

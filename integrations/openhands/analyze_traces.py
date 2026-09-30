@@ -101,6 +101,8 @@ def sample_trace(sample):
         phase_metrics[str(phase)] = {'calls': len(selected), 'input': sum(c['input'] for c in selected),
                                     'output': sum(c['output'] for c in selected)}
     state = load(sample / 'pruner-state.json') if report['arm'] == 'pruner_v1' else None
+    assert sum(c['input'] for c in calls) == report['agent_metrics']['accumulated_token_usage']['prompt_tokens']
+    assert all(c['phase'] in (1, 2, 3) for c in calls)
     return {'sample': sample.name, 'task': report['task'], 'arm': report['arm'], 'repeat': report['repeat'],
             'normal_success': report['success'], 'phases': phase_metrics, 'calls': calls,
             'agent_input': sum(c['input'] for c in calls),
@@ -181,6 +183,7 @@ def main():
               f'全部 {compression["empty_task_states"]} 个创建了中间件的插件样本，其导出 plugin.task_state 都为空字符串。适配器创建 ContextPrunerMiddleware 和调用 before_model 时没有传任务状态。当前用户目标虽保留在 SDK 模型视图中，但内核相关性评分不能使用同一目标。', '',
               '### 将整段 SDK JSON 当成语义内容', '',
               'prepared.content 直接 json.dumps(message.model_dump())；记忆含重复路径、tool_call ID、null 字段和嵌套转义。自然代码原来的换行被编码成 JSON 内的转义文本，现有文本分块与摘要策略无法直接得到原来的源码结构。原始 SDK 日志已经保存这些结构，派生记忆无需重复所有传输字段。', '',
+              '内核 pipeline_v1._build_task_memory 已针对以 `文件=` 开头的源码片段采用 1200 字的局部摘要阈值，普通文本阈值为 180 字。本适配器的 JSON 以 `{` 开头，绕过了已有的源码片段规则。这进一步支持先修正适配输入格式，而不是先调低预算。', '',
               '### 压缩后的记忆再次被 JSON 包装', '',
               '第一次记忆作为 CondensationSummaryEvent 进入下一轮，又作为普通消息 JSON 参与压缩。空值注释第 1 次的记忆字符数 5296 → 18742，第 3 次为 5239 → 16705；第二份内部含上一份记忆头及多层反斜杠。字符增长不是净 token 增长的等价证明，但结合七次 no_token_reduction 回退，说明这层包装需要修正。', '',
               '### 代码证据丢失与重新读取', '',
@@ -203,8 +206,8 @@ def main():
               '6. 零 API 门控通过后才冻结新协议：使用不暴露组名的工作区 ID，选择不同项目和更长的自然任务，小规模试运行后做三组重复。保持本轮 v6 原始证据与源文件不变，新适配器用新模块/版本保存。', '',
               '不建议为了数字直接降低触发阈值，也不建议重跑旧失败替换结果。现阶段优先修正语义投影与任务状态，然后控制完成策略，再观察端到端收益。', '',
               '## 证据', '',
-              '`trace-analysis.json` 含逐调用提供商输入/输出、三阶段分解、工具动作、同版本已覆盖读取、失败编辑、摘要摘要信息与九对精确核算。原始 `report.json`、SDK 事件和 `pruner-state.json` 未修改。文件内容覆盖度只按路径、行范围和成功编辑版本判断，不能断言所有重复读取都不必要。']
-    (out / 'TRACE_ANALYSIS.md').write_text('\n'.join(lines) + '\n', encoding='utf-8')
+              '`trace-analysis.json` 含逐调用提供商输入/输出、三阶段分解、工具动作、同版本已覆盖读取、失败编辑、摘要元信息与九对精确核算。逐调用输入合计已与原报告的提供商累计输入核对，三阶段归属全部有效，九对账面分解满足总差额恒等式。原始 `report.json`、SDK 事件和 `pruner-state.json` 未修改。文件内容覆盖度只按路径、行范围和成功编辑版本判断，不能断言所有重复读取都不必要。']
+    (out / 'TRACE_ANALYSIS.md').write_text('\n'.join(lines) + '\n', encoding='utf-8', newline='\n')
     print(json.dumps({'paired': comparisons,
                       'sample_summary': [{k: t[k] for k in ('sample', 'repeated_views', 'failed_edits', 'edit_count', 'view_count', 'phases')}
                                          for t in traces]}, indent=2))

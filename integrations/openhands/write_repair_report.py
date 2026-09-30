@@ -1,0 +1,75 @@
+"""Produce a truthful repair review from completed audited revisions."""
+import json
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+RUNS = ROOT / 'runs/stage5-openhands'
+FINAL = RUNS / 'dotenv-three-arm-3x3-v9-validation'
+
+
+def load(path):
+    return json.loads(path.read_text(encoding='utf-8'))
+
+
+def main():
+    audit = load(FINAL / 'audit.json')
+    analysis = load(FINAL / 'revision-analysis.json')
+    assert audit['complete'] and len(audit['samples']) == 27
+    metric = analysis['paired']['pruner_v4']['metrics']
+    arms = audit['arms']
+    lines = ['# OpenHands 修复、重跑与结论', '',
+             '原 v6 冻结源码及原报告保留。本轮执行三次修复迭代，并完成最新适配器的三组各三次验证。失败原报告均保留；一次零 API 的本地故障另存后重新准备该样本，其恢复过程另行说明。', '',
+             '## 最新完整验证', '',
+             '| 组别 | 正常完成 | 最终文件通过 | 总输入 token | 总输出 token | 模型请求 | 失败请求 |', '|---|---:|---:|---:|---:|---:|---:|']
+    for arm, row in arms.items():
+        lines.append(f"| {arm} | {row['successes']}/9 | {row['artifact_successes']}/9 | {row['total_input_tokens']} | {row['total_output_tokens']} | {row['model_calls']} | {row['failed_calls']} |")
+    fmt = lambda x: '不可计算' if x is None else f'{x:.2%}'
+    lines += ['', f"插件全配对平均输入节省：**{fmt(metric['all']['mean'])}**，可计算 {metric['all']['n']}/9 对。",
+              f"API 均正常的敏感性子集：{metric['api_ok']['n']} 对，平均 {fmt(metric['api_ok']['mean'])}。",
+              f"双方正常完成子集：{metric['both_normal_success']['n']} 对，平均 {fmt(metric['both_normal_success']['mean'])}。", '',
+              '正数代表节省，负数代表增加。全配对、任务通过子集及总输入加总比例不能相互替代；子集不能用来覆盖原始结果。', '',
+              '## 修复与验证', '',
+              '- 语义正文投影、代码小片段、任务与当前要求传入、旧摘要直接复用。',
+              '- 派生记忆压缩路径表示；同长度工作区 ID 不暴露组名。',
+              '- 已有记忆受保护；没有新历史时不再次单独压缩。',
+              '- 三组统一完成策略；通过宿主测试后直接 Finish。',
+              '- Windows 原子文件替换增加限定目录、限定次数的短重试；不增加模型自动重试。',
+              '- 专项 8 项通过。主环境 256 项通过（跳过 16 项）。冻结事件回放零 API；两个关键函数完整函数体逐行保留。', '',
+              '## 各轮结果均保留', '', '| 轮次 | 插件正常完成 | 插件文件通过 | 全配对平均输入节省 | API 正常子集 |', '|---|---:|---:|---:|---:|']
+    for name in ('dotenv-three-arm-v7-pilot', 'dotenv-three-arm-3x3-v8', 'dotenv-three-arm-v9-pilot', FINAL.name):
+        item = load(RUNS / name / 'audit.json')
+        detail = load(RUNS / name / 'revision-analysis.json')
+        arm = next(a for a in item['arms'] if a.startswith('pruner_'))
+        row, metrics = item['arms'][arm], detail['paired'][arm]['metrics']
+        lines.append(f"| {name} | {row['successes']}/{row['samples']} | {row['artifact_successes']}/{row['samples']} | {fmt(metrics['all']['mean'])} | {metrics['api_ok']['n']} 对，{fmt(metrics['api_ok']['mean'])} |")
+    lines += ['', 'v8 的连接失败显著影响账面输入，不能使用其表面收益证明算法有效。v9 试运行有一次零模型请求的本地权限故障，原样归档后重新准备该样本；重试记录另存。后续完整验证使用相同兼容入口运行所有组。', '',
+              '## 能写入结项材料的结论', '',
+              '已接入真实 OpenHands SDK，实际调用模型完成受限源码任务，并具备三组对照、冻结参数、独立工作区、原始事件保存、工具结构检查及宿主测试审计。原适配器的语义与任务状态缺陷已有修复和回放证据。', '',
+              '当前证据不足以证明普遍质量等价、稳定省输入或平均节省 30%。同库三个旧任务已用于开发，温度 0 的独立轨迹仍有波动。SDK 单次视图节省、全任务配对节省和总输入加总比例是不同指标。费用金额需供应商账单确认。', '',
+              '## 后续顺序', '',
+              '1. 固定最新版本与当前报告；把旧任务归为开发集，停止在这三项任务上追逐数字。',
+              '2. 完善文件版本与成功编辑后证据更新，再增加独立的恢复消融。保守保留旧记忆可能限制压缩空间。',
+              '3. 选择不同项目、至少两类自然长任务；先冻结成功标准、最大调用数、上下文预算与停止规则，再跑独立三组验证。只读查看完整代码与多轮修改应来自实际任务需求。',
+              '4. 对任务级配对收益、失败、调用数、峰值输入与恢复成本进行统一分析；服务故障与代码故障分别说明。',
+              '5. 依据学校结项模板整理技术报告、原始证据索引、代码说明、演示脚本和答辩 PPT。保留负结果及适用范围，不能把 30% 目标写成已完成指标。', '',
+              '## 证据位置', '',
+              f'- 最新完整证据：`runs/stage5-openhands/{FINAL.name}/`，包含 REPORT.md、REVISION_ANALYSIS.md、audit.json、逐样本原始事件/账目/工作区/测试日志。',
+              '- 修复细节：`integrations/openhands/FIX_LOG.md`。',
+              '- 回放：`runs/stage5-openhands/dotenv-three-arm-v7-check/replay-v4.json`。',
+              '- 最新适配器：`context_pruner/adapters/openhands_v4.py`。']
+    report = '\n'.join(lines) + '\n'
+    Path(__file__).with_name('REPAIR_REVIEW.md').write_text(report, encoding='utf-8', newline='\n')
+    marker = '\n## 9. 最新补充：修复迭代与完整复跑\n'
+    handoff = ROOT / 'runs/HANDOFF_NEXT_CHAT.md'
+    prior = handoff.read_text(encoding='utf-8').split(marker)[0]
+    handoff.write_text(prior.rstrip() + '\n' + marker + '\n' + report.replace('# OpenHands 修复、重跑与结论\n', '', 1), encoding='utf-8', newline='\n')
+    marker = '\n## 17. OpenHands 修复迭代与最新验证\n'
+    readme = ROOT / 'README.md'
+    prior = readme.read_text(encoding='utf-8').split(marker)[0]
+    readme.write_text(prior.rstrip() + '\n' + marker + '\n' +
+                     f"最新实现：`context_pruner/adapters/openhands_v4.py`；三组各三次验证已完成。插件正常完成 {arms['pruner_v4']['successes']}/9，最终文件通过 {arms['pruner_v4']['artifact_successes']}/9，配对平均输入节省 {fmt(metric['all']['mean'])}。结果不支持普遍稳定收益或已达 30% 的结论。\n\n完整修复与结果见 `integrations/openhands/REPAIR_REVIEW.md`、`FIX_LOG.md`，以及 `runs/stage5-openhands/{FINAL.name}/`。v6 冻结源码不改；所有迭代和失败另存。\n", encoding='utf-8', newline='\n')
+    print(json.dumps({'report': 'integrations/openhands/REPAIR_REVIEW.md', 'latest_metrics': metric}, indent=2))
+
+
+if __name__ == '__main__':
+    main()

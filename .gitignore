@@ -141,9 +141,32 @@ runs/stage5-csharp-custom-agent/*
 runs/stage5-csharp-custom-agent-api/*
 !runs/stage5-csharp-custom-agent-api/deepseek-csharp-custom-agent-3x3-v1-lifecycle/
 
-# OpenHands 最终三组证据；安装故障与预实验留在本地。
+# OpenHands：只放行已独立审计的近期批次；既有 v6 文件已跟踪，不受忽略规则影响。
 !runs/stage5-openhands/
 runs/stage5-openhands/*
-!runs/stage5-openhands/dotenv-three-arm-3x3-v6/
+!runs/stage5-openhands/django-16032-v43-pilot-01/
+!runs/stage5-openhands/django-15563-v45-pilot-02/
+!runs/stage5-openhands/django-15563-v46-pilot-02/
+!runs/stage5-openhands/django-17084-v47-pilot-02/
 
+# 保留报告、manifest、ledger、SDK 事件和测试日志；跳过可重建的完整源码副本。
+runs/stage5-*/**/workspaces/
+runs/stage5-*/**/baseline/
+runs/stage5-*/**/sdk-persistence/
+runs/stage5-openhands/**/.runtime-tmp/
+runs/stage5-openhands/**/.audit-tmp/
+runs/stage5-openhands/**/base/
+runs/stage5-openhands/**/base-host/
+runs/stage5-openhands/**/reference/
+runs/stage5-openhands/**/reference-host/
+**/oh_editor_history_*/
+upstream/
+
+# 本机环境排障与交接材料不属于实验提交。
+/HANDOFF_*.md
+/DSH_ENVIRONMENT_*.md
+/integrations/openhands/launch_normal_windows.ps1
+/integrations/openhands/AGENT_COLLABORATION_BUDGET.md
+
+# README 暂按既有项目约定留在本地。
 README.md

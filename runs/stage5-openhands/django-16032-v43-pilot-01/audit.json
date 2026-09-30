@@ -1,0 +1,205 @@
+{
+  "complete": true,
+  "expected_samples": 3,
+  "completed_samples": 3,
+  "arms": {
+    "none": {
+      "samples": 1,
+      "successes": 0,
+      "agent_input_tokens": 365862,
+      "summary_input_tokens": 0,
+      "total_input_tokens": 365862,
+      "total_output_tokens": 6449,
+      "model_calls": 24,
+      "summary_calls": 0,
+      "failed_calls": 0,
+      "peak_estimated_input": 28862,
+      "elapsed_seconds": 170.60810810000112,
+      "condensation_events": 0,
+      "artifact_successes": 0,
+      "call_or_token_limit_exhaustions": 0,
+      "pruner_hard_budget_exceeded": 0,
+      "agent_error_events": 0
+    },
+    "native_summary": {
+      "samples": 1,
+      "successes": 0,
+      "agent_input_tokens": 566749,
+      "summary_input_tokens": 9358,
+      "total_input_tokens": 576107,
+      "total_output_tokens": 21494,
+      "model_calls": 38,
+      "summary_calls": 2,
+      "failed_calls": 0,
+      "peak_estimated_input": 29165,
+      "elapsed_seconds": 218.94242629999644,
+      "condensation_events": 2,
+      "artifact_successes": 0,
+      "call_or_token_limit_exhaustions": 0,
+      "pruner_hard_budget_exceeded": 0,
+      "agent_error_events": 0
+    },
+    "pruner_v42": {
+      "samples": 1,
+      "successes": 1,
+      "agent_input_tokens": 328453,
+      "summary_input_tokens": 0,
+      "total_input_tokens": 328453,
+      "total_output_tokens": 17488,
+      "model_calls": 28,
+      "summary_calls": 0,
+      "failed_calls": 0,
+      "peak_estimated_input": 21202,
+      "elapsed_seconds": 205.6756960999919,
+      "condensation_events": 2,
+      "artifact_successes": 1,
+      "call_or_token_limit_exhaustions": 0,
+      "pruner_hard_budget_exceeded": 0,
+      "agent_error_events": 2
+    }
+  },
+  "samples": [
+    {
+      "sample": "r1-django_alias_in_subquery-native_summary",
+      "task": "django_alias_in_subquery",
+      "repeat": 1,
+      "arm": "native_summary",
+      "normal_completion_success": false,
+      "artifact_success": false,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-16032-v43-pilot-01\\r1-django_alias_in_subquery-native_summary\\evaluation-audit\\host-workspace\\django'",
+        "ERROR: test_annotation_and_alias_filter_in_subquery (annotations.tests.NonAggregateAnnotationTestCase.test_annotation_and_alias_filter_in_subquery)",
+        "ERROR: test_annotation_and_alias_filter_related_in_subquery (annotations.tests.NonAggregateAnnotationTestCase.test_annotation_and_alias_filter_related_in_subquery)",
+        "Ran 82 tests in 0.177s",
+        "FAILED (errors=2, skipped=3)"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 576107,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    },
+    {
+      "sample": "r1-django_alias_in_subquery-none",
+      "task": "django_alias_in_subquery",
+      "repeat": 1,
+      "arm": "none",
+      "normal_completion_success": false,
+      "artifact_success": false,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-16032-v43-pilot-01\\r1-django_alias_in_subquery-none\\evaluation-audit\\host-workspace\\django'",
+        "ERROR: test_annotation_and_alias_filter_in_subquery (annotations.tests.NonAggregateAnnotationTestCase.test_annotation_and_alias_filter_in_subquery)",
+        "ERROR: test_annotation_and_alias_filter_related_in_subquery (annotations.tests.NonAggregateAnnotationTestCase.test_annotation_and_alias_filter_related_in_subquery)",
+        "Ran 82 tests in 0.166s",
+        "FAILED (errors=2, skipped=3)"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 365862,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    },
+    {
+      "sample": "r1-django_alias_in_subquery-pruner_v42",
+      "task": "django_alias_in_subquery",
+      "repeat": 1,
+      "arm": "pruner_v42",
+      "normal_completion_success": true,
+      "artifact_success": true,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-16032-v43-pilot-01\\r1-django_alias_in_subquery-pruner_v42\\evaluation-audit\\host-workspace\\django'",
+        "Ran 82 tests in 0.205s"
+      ],
+      "agent_error_events": 2,
+      "total_input_tokens": 328453,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    }
+  ],
+  "paired": {
+    "native_summary": {
+      "pairs": [
+        {
+          "task": "django_alias_in_subquery",
+          "repeat": 1,
+          "input_savings": -0.5746565644969961,
+          "baseline_input": 365862,
+          "method_input": 576107,
+          "baseline_success": false,
+          "method_success": false,
+          "api_ok": true
+        }
+      ],
+      "metrics": {
+        "all": {
+          "n": 1,
+          "mean": -0.5746565644969961,
+          "median": -0.5746565644969961,
+          "wins": 0
+        },
+        "api_ok": {
+          "n": 1,
+          "mean": -0.5746565644969961,
+          "median": -0.5746565644969961,
+          "wins": 0
+        },
+        "both_success_api_ok": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "wins": 0
+        }
+      }
+    },
+    "pruner_v42": {
+      "pairs": [
+        {
+          "task": "django_alias_in_subquery",
+          "repeat": 1,
+          "input_savings": 0.10224893539093971,
+          "baseline_input": 365862,
+          "method_input": 328453,
+          "baseline_success": false,
+          "method_success": true,
+          "api_ok": true
+        }
+      ],
+      "metrics": {
+        "all": {
+          "n": 1,
+          "mean": 0.10224893539093971,
+          "median": 0.10224893539093971,
+          "wins": 1
+        },
+        "api_ok": {
+          "n": 1,
+          "mean": 0.10224893539093971,
+          "median": 0.10224893539093971,
+          "wins": 1
+        },
+        "both_success_api_ok": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "wins": 0
+        }
+      }
+    }
+  },
+  "credential_matches": 0,
+  "source_hashes_valid": true,
+  "note": "Failed request provider usage is unknown. All outcomes retained; subsets are sensitivity analyses."
+}

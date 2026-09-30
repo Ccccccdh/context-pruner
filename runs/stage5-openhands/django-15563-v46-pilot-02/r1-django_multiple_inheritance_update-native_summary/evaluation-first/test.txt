@@ -1,0 +1,45 @@
+Testing against Django installed in 'C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-15563-v46-pilot-02\r1-django_multiple_inheritance_update-native_summary\evaluation-first\host-workspace\django'
+Found 32 test(s).
+System check identified no issues (0 silenced).
+Creating test database for alias 'default'...
+
+.............x..........FF......
+======================================================================
+FAIL: test_mti_update_grand_parent_through_child (model_inheritance_regress.tests.ModelInheritanceTest.test_mti_update_grand_parent_through_child)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-15563-v46-pilot-02\r1-django_multiple_inheritance_update-native_summary\evaluation-first\host-workspace\tests\model_inheritance_regress\tests.py", line 681, in test_mti_update_grand_parent_through_child
+    self.assertEqual(Senator.objects.get().title, "senator 1")
+AssertionError: '' != 'senator 1'
++ senator 1
+
+
+======================================================================
+FAIL: test_mti_update_parent_through_child (model_inheritance_regress.tests.ModelInheritanceTest.test_mti_update_parent_through_child)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-15563-v46-pilot-02\r1-django_multiple_inheritance_update-native_summary\evaluation-first\host-workspace\tests\model_inheritance_regress\tests.py", line 675, in test_mti_update_parent_through_child
+    self.assertEqual(Congressman.objects.get().title, "senator 1")
+AssertionError: '' != 'senator 1'
++ senator 1
+
+
+----------------------------------------------------------------------
+Ran 32 tests in 0.089s
+
+FAILED (failures=2, expected failures=1)
+Destroying test database for alias 'default'...
+
+Exception ignored in atexit callback: <function rmtree at 0x000001C9C558C900>
+Traceback (most recent call last):
+  File "C:\Users\LENOVO\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 781, in rmtree
+    return _rmtree_unsafe(path, onexc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 623, in _rmtree_unsafe
+    for dirpath, dirnames, filenames in results:
+                                        ^^^^^^^
+  File "<frozen os>", line 369, in walk
+  File "C:\Users\LENOVO\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 621, in onerror
+    onexc(os.scandir, err.filename, err)
+  File "<frozen os>", line 366, in walk
+PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-15563-v46-pilot-02\\.runtime-tmp\\host-workspace\\django_x45jja9x'

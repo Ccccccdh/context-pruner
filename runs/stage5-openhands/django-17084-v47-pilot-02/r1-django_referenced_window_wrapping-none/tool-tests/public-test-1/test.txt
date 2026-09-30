@@ -1,0 +1,25 @@
+Testing against Django installed in 'C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-17084-v47-pilot-02\workspaces\w000\django'
+Found 124 test(s).
+System check identified no issues (0 silenced).
+Creating test database for alias 'default'...
+
+............................................................................................................................
+----------------------------------------------------------------------
+Ran 124 tests in 0.368s
+
+OK
+Destroying test database for alias 'default'...
+
+Exception ignored in atexit callback: <function rmtree at 0x00000218577CCA40>
+Traceback (most recent call last):
+  File "C:\Users\LENOVO\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 781, in rmtree
+    return _rmtree_unsafe(path, onexc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 623, in _rmtree_unsafe
+    for dirpath, dirnames, filenames in results:
+                                        ^^^^^^^
+  File "<frozen os>", line 369, in walk
+  File "C:\Users\LENOVO\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 621, in onerror
+    onexc(os.scandir, err.filename, err)
+  File "<frozen os>", line 366, in walk
+PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-17084-v47-pilot-02\\.runtime-tmp\\django_m79bw7s4'

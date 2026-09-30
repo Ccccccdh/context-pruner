@@ -1,0 +1,205 @@
+{
+  "complete": true,
+  "expected_samples": 3,
+  "completed_samples": 3,
+  "arms": {
+    "none": {
+      "samples": 1,
+      "successes": 0,
+      "agent_input_tokens": 122289,
+      "summary_input_tokens": 0,
+      "total_input_tokens": 122289,
+      "total_output_tokens": 17942,
+      "model_calls": 9,
+      "summary_calls": 0,
+      "failed_calls": 0,
+      "peak_estimated_input": 25543,
+      "elapsed_seconds": 174.8523630999989,
+      "condensation_events": 0,
+      "artifact_successes": 0,
+      "call_or_token_limit_exhaustions": 0,
+      "pruner_hard_budget_exceeded": 0,
+      "agent_error_events": 0
+    },
+    "native_summary": {
+      "samples": 1,
+      "successes": 0,
+      "agent_input_tokens": 248786,
+      "summary_input_tokens": 1906,
+      "total_input_tokens": 250692,
+      "total_output_tokens": 12233,
+      "model_calls": 16,
+      "summary_calls": 1,
+      "failed_calls": 0,
+      "peak_estimated_input": 28849,
+      "elapsed_seconds": 176.09080190000532,
+      "condensation_events": 1,
+      "artifact_successes": 0,
+      "call_or_token_limit_exhaustions": 0,
+      "pruner_hard_budget_exceeded": 0,
+      "agent_error_events": 1
+    },
+    "pruner_v42": {
+      "samples": 1,
+      "successes": 0,
+      "agent_input_tokens": 434242,
+      "summary_input_tokens": 0,
+      "total_input_tokens": 434242,
+      "total_output_tokens": 24283,
+      "model_calls": 30,
+      "summary_calls": 0,
+      "failed_calls": 0,
+      "peak_estimated_input": 26478,
+      "elapsed_seconds": 236.61665229999926,
+      "condensation_events": 2,
+      "artifact_successes": 0,
+      "call_or_token_limit_exhaustions": 0,
+      "pruner_hard_budget_exceeded": 0,
+      "agent_error_events": 4
+    }
+  },
+  "samples": [
+    {
+      "sample": "r1-django_multiple_inheritance_update-native_summary",
+      "task": "django_multiple_inheritance_update",
+      "repeat": 1,
+      "arm": "native_summary",
+      "normal_completion_success": false,
+      "artifact_success": false,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-15563-v45-pilot-02\\r1-django_multiple_inheritance_update-native_summary\\evaluation-audit\\host-workspace\\django'",
+        "ERROR: test_mti_update_grand_parent_through_child (model_inheritance_regress.tests.ModelInheritanceTest.test_mti_update_grand_parent_through_child)",
+        "ERROR: test_mti_update_parent_through_child (model_inheritance_regress.tests.ModelInheritanceTest.test_mti_update_parent_through_child)",
+        "ERROR: test_queryset_update_on_parent_model (model_inheritance_regress.tests.ModelInheritanceTest.test_queryset_update_on_parent_model)",
+        "Ran 32 tests in 0.082s",
+        "FAILED (errors=3, expected failures=1)"
+      ],
+      "agent_error_events": 1,
+      "total_input_tokens": 250692,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    },
+    {
+      "sample": "r1-django_multiple_inheritance_update-none",
+      "task": "django_multiple_inheritance_update",
+      "repeat": 1,
+      "arm": "none",
+      "normal_completion_success": false,
+      "artifact_success": false,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-15563-v45-pilot-02\\r1-django_multiple_inheritance_update-none\\evaluation-audit\\host-workspace\\django'",
+        "Ran 32 tests in 0.084s",
+        "FAILED (failures=2, expected failures=1)"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 122289,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    },
+    {
+      "sample": "r1-django_multiple_inheritance_update-pruner_v42",
+      "task": "django_multiple_inheritance_update",
+      "repeat": 1,
+      "arm": "pruner_v42",
+      "normal_completion_success": false,
+      "artifact_success": false,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-15563-v45-pilot-02\\r1-django_multiple_inheritance_update-pruner_v42\\evaluation-audit\\host-workspace\\django'",
+        "Ran 32 tests in 0.096s",
+        "FAILED (failures=2, expected failures=1)"
+      ],
+      "agent_error_events": 4,
+      "total_input_tokens": 434242,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    }
+  ],
+  "paired": {
+    "native_summary": {
+      "pairs": [
+        {
+          "task": "django_multiple_inheritance_update",
+          "repeat": 1,
+          "input_savings": -1.0499963201923315,
+          "baseline_input": 122289,
+          "method_input": 250692,
+          "baseline_success": false,
+          "method_success": false,
+          "api_ok": true
+        }
+      ],
+      "metrics": {
+        "all": {
+          "n": 1,
+          "mean": -1.0499963201923315,
+          "median": -1.0499963201923315,
+          "wins": 0
+        },
+        "api_ok": {
+          "n": 1,
+          "mean": -1.0499963201923315,
+          "median": -1.0499963201923315,
+          "wins": 0
+        },
+        "both_success_api_ok": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "wins": 0
+        }
+      }
+    },
+    "pruner_v42": {
+      "pairs": [
+        {
+          "task": "django_multiple_inheritance_update",
+          "repeat": 1,
+          "input_savings": -2.5509489815110107,
+          "baseline_input": 122289,
+          "method_input": 434242,
+          "baseline_success": false,
+          "method_success": false,
+          "api_ok": true
+        }
+      ],
+      "metrics": {
+        "all": {
+          "n": 1,
+          "mean": -2.5509489815110107,
+          "median": -2.5509489815110107,
+          "wins": 0
+        },
+        "api_ok": {
+          "n": 1,
+          "mean": -2.5509489815110107,
+          "median": -2.5509489815110107,
+          "wins": 0
+        },
+        "both_success_api_ok": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "wins": 0
+        }
+      }
+    }
+  },
+  "credential_matches": 0,
+  "source_hashes_valid": true,
+  "note": "Failed request provider usage is unknown. All outcomes retained; subsets are sensitivity analyses."
+}

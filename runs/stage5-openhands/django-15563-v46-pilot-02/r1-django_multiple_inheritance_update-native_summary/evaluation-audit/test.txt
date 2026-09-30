@@ -1,0 +1,50 @@
+Testing against Django installed in 'C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-15563-v46-pilot-02\r1-django_multiple_inheritance_update-native_summary\evaluation-audit\host-workspace\django'
+Found 32 test(s).
+System check identified no issues (0 silenced).
+Creating test database for alias 'default'...
+
+.............x..........E.......
+======================================================================
+ERROR: test_mti_update_grand_parent_through_child (model_inheritance_regress.tests.ModelInheritanceTest.test_mti_update_grand_parent_through_child)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-15563-v46-pilot-02\r1-django_multiple_inheritance_update-native_summary\evaluation-audit\host-workspace\tests\model_inheritance_regress\tests.py", line 680, in test_mti_update_grand_parent_through_child
+    Senator.objects.update(title="senator 1")
+  File "C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-15563-v46-pilot-02\r1-django_multiple_inheritance_update-native_summary\evaluation-audit\host-workspace\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-15563-v46-pilot-02\r1-django_multiple_inheritance_update-native_summary\evaluation-audit\host-workspace\django\db\models\query.py", line 995, in update
+    rows = query.get_compiler(self.db).execute_sql(CURSOR)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-15563-v46-pilot-02\r1-django_multiple_inheritance_update-native_summary\evaluation-audit\host-workspace\django\db\models\sql\compiler.py", line 1805, in execute_sql
+    cursor = super().execute_sql(result_type)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-15563-v46-pilot-02\r1-django_multiple_inheritance_update-native_summary\evaluation-audit\host-workspace\django\db\models\sql\compiler.py", line 1367, in execute_sql
+    sql, params = self.as_sql()
+                  ^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-15563-v46-pilot-02\r1-django_multiple_inheritance_update-native_summary\evaluation-audit\host-workspace\django\db\models\sql\compiler.py", line 1738, in as_sql
+    self.pre_sql_setup()
+  File "C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-15563-v46-pilot-02\r1-django_multiple_inheritance_update-native_summary\evaluation-audit\host-workspace\django\db\models\sql\compiler.py", line 1846, in pre_sql_setup
+    + [concrete_model._meta.parents[model].name for model in related_models]
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+KeyError: <class 'model_inheritance_regress.models.Politician'>
+
+----------------------------------------------------------------------
+Ran 32 tests in 0.120s
+
+FAILED (errors=1, expected failures=1)
+Destroying test database for alias 'default'...
+
+Exception ignored in atexit callback: <function rmtree at 0x0000019F5723C900>
+Traceback (most recent call last):
+  File "C:\Users\LENOVO\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 781, in rmtree
+    return _rmtree_unsafe(path, onexc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 623, in _rmtree_unsafe
+    for dirpath, dirnames, filenames in results:
+                                        ^^^^^^^
+  File "<frozen os>", line 369, in walk
+  File "C:\Users\LENOVO\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 621, in onerror
+    onexc(os.scandir, err.filename, err)
+  File "<frozen os>", line 366, in walk
+PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-15563-v46-pilot-02\\.audit-tmp\\host-workspace\\django_nnx3mge5'

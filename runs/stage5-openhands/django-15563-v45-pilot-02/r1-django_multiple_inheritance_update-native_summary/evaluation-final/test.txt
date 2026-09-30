@@ -1,0 +1,84 @@
+Testing against Django installed in 'C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-15563-v45-pilot-02\r1-django_multiple_inheritance_update-native_summary\evaluation-final\host-workspace\django'
+Found 32 test(s).
+System check identified no issues (0 silenced).
+Creating test database for alias 'default'...
+
+.............x..........EE..E...
+======================================================================
+ERROR: test_mti_update_grand_parent_through_child (model_inheritance_regress.tests.ModelInheritanceTest.test_mti_update_grand_parent_through_child)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-15563-v45-pilot-02\r1-django_multiple_inheritance_update-native_summary\evaluation-final\host-workspace\tests\model_inheritance_regress\tests.py", line 680, in test_mti_update_grand_parent_through_child
+    Senator.objects.update(title="senator 1")
+  File "C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-15563-v45-pilot-02\r1-django_multiple_inheritance_update-native_summary\evaluation-final\host-workspace\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-15563-v45-pilot-02\r1-django_multiple_inheritance_update-native_summary\evaluation-final\host-workspace\django\db\models\query.py", line 995, in update
+    rows = query.get_compiler(self.db).execute_sql(CURSOR)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-15563-v45-pilot-02\r1-django_multiple_inheritance_update-native_summary\evaluation-final\host-workspace\django\db\models\sql\compiler.py", line 1812, in execute_sql
+    for query in self.query.get_related_updates():
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-15563-v45-pilot-02\r1-django_multiple_inheritance_update-native_summary\evaluation-final\host-workspace\django\db\models\sql\subqueries.py", line 137, in get_related_updates
+    query.add_filter("pk__in", self.related_ids[model])
+                               ~~~~~~~~~~~~~~~~^^^^^^^
+TypeError: list indices must be integers or slices, not ModelBase
+
+======================================================================
+ERROR: test_mti_update_parent_through_child (model_inheritance_regress.tests.ModelInheritanceTest.test_mti_update_parent_through_child)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-15563-v45-pilot-02\r1-django_multiple_inheritance_update-native_summary\evaluation-final\host-workspace\tests\model_inheritance_regress\tests.py", line 674, in test_mti_update_parent_through_child
+    Congressman.objects.update(title="senator 1")
+  File "C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-15563-v45-pilot-02\r1-django_multiple_inheritance_update-native_summary\evaluation-final\host-workspace\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-15563-v45-pilot-02\r1-django_multiple_inheritance_update-native_summary\evaluation-final\host-workspace\django\db\models\query.py", line 995, in update
+    rows = query.get_compiler(self.db).execute_sql(CURSOR)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-15563-v45-pilot-02\r1-django_multiple_inheritance_update-native_summary\evaluation-final\host-workspace\django\db\models\sql\compiler.py", line 1812, in execute_sql
+    for query in self.query.get_related_updates():
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-15563-v45-pilot-02\r1-django_multiple_inheritance_update-native_summary\evaluation-final\host-workspace\django\db\models\sql\subqueries.py", line 137, in get_related_updates
+    query.add_filter("pk__in", self.related_ids[model])
+                               ~~~~~~~~~~~~~~~~^^^^^^^
+TypeError: list indices must be integers or slices, not ModelBase
+
+======================================================================
+ERROR: test_queryset_update_on_parent_model (model_inheritance_regress.tests.ModelInheritanceTest.test_queryset_update_on_parent_model)
+Regression test for #10362
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-15563-v45-pilot-02\r1-django_multiple_inheritance_update-native_summary\evaluation-final\host-workspace\tests\model_inheritance_regress\tests.py", line 329, in test_queryset_update_on_parent_model
+    update = ArticleWithAuthor.objects.filter(author="fred").update(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-15563-v45-pilot-02\r1-django_multiple_inheritance_update-native_summary\evaluation-final\host-workspace\django\db\models\query.py", line 995, in update
+    rows = query.get_compiler(self.db).execute_sql(CURSOR)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-15563-v45-pilot-02\r1-django_multiple_inheritance_update-native_summary\evaluation-final\host-workspace\django\db\models\sql\compiler.py", line 1812, in execute_sql
+    for query in self.query.get_related_updates():
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-15563-v45-pilot-02\r1-django_multiple_inheritance_update-native_summary\evaluation-final\host-workspace\django\db\models\sql\subqueries.py", line 137, in get_related_updates
+    query.add_filter("pk__in", self.related_ids[model])
+                               ~~~~~~~~~~~~~~~~^^^^^^^
+TypeError: list indices must be integers or slices, not ModelBase
+
+----------------------------------------------------------------------
+Ran 32 tests in 0.080s
+
+FAILED (errors=3, expected failures=1)
+Destroying test database for alias 'default'...
+
+Exception ignored in atexit callback: <function rmtree at 0x00000186A3EAC720>
+Traceback (most recent call last):
+  File "C:\Users\LENOVO\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 781, in rmtree
+    return _rmtree_unsafe(path, onexc)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 623, in _rmtree_unsafe
+    for dirpath, dirnames, filenames in results:
+                                        ^^^^^^^
+  File "<frozen os>", line 369, in walk
+  File "C:\Users\LENOVO\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\shutil.py", line 621, in onerror
+    onexc(os.scandir, err.filename, err)
+  File "<frozen os>", line 366, in walk
+PermissionError: [WinError 5] 拒绝访问。: 'C:\\Users\\LENOVO\\AppData\\Local\\Temp\\dsh-0Z2bzh\\django_murj4lcz'

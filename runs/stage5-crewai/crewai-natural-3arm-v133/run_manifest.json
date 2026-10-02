@@ -1,0 +1,46 @@
+{
+  "protocol_version": "crewai-natural-3arm-v132",
+  "runner_sha256": "cb92f948938843880725b3dc32da64dd43e196a2b5b159d324f5f3d86e8d8058",
+  "context_pruner_version": "0.13.1",
+  "crewai_version": "1.15.22",
+  "openai_version": "2.54.0",
+  "mode": "api",
+  "model": "deepseek-v4-flash",
+  "base_url": "https://api.deepseek.com",
+  "task_file": "tasks\\stage5_autogen\\natural_tasks.json",
+  "task_sha256": "8d51add8e421f2cfd011e5417ca5c3d071073408ceab0c662b7fe2985a84e7f0",
+  "tasks": [
+    "incident_triage",
+    "release_readiness",
+    "customer_migration"
+  ],
+  "methods": [
+    "none",
+    "pruner_v1",
+    "native_summary"
+  ],
+  "repeats": 1,
+  "budget": {
+    "soft": 1800,
+    "hard": 6000,
+    "target": 1500,
+    "fixed_reserved": 300
+  },
+  "native_summary_contract": {
+    "trigger": "pre-hook payload above the soft budget minus fixed reserve",
+    "retention": "most recent messages up to the target budget, verbatim",
+    "pinned": "leading system/task statement always kept verbatim",
+    "acceptance": "summary accepted only when the payload shrinks",
+    "failure_policy": "provider error leaves the messages untouched",
+    "accounting": "summary request charged to the same global request budget",
+    "adapter_state": "the Context-Pruner adapter stays detached in this arm"
+  },
+  "max_output_tokens": 512,
+  "max_summary_tokens": 1024,
+  "max_summary_calls": 16,
+  "thinking_mode": "disabled",
+  "max_case_retries": 1,
+  "maximum_api_requests": 90,
+  "evaluation_answer_terms_disclosed": false,
+  "synthetic_disclosure": "Only synthetic conversations, identifiers, tool arguments, and synthetic tool results are sent. No workspace files or source code are read."
+}

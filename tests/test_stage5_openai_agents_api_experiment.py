@@ -22,9 +22,40 @@ class Stage5OpenAIAgentsApiExperimentTest(unittest.TestCase):
         with patch.dict(os.environ, {}, clear=True), contextlib.redirect_stdout(output):
             self.assertEqual(0, main(["--plan"]))
         text = output.getvalue()
+        # Three arms x three scenarios x seven planned model calls.
+        self.assertIn("minimum_planned_model_requests=21", text)
+        self.assertIn("methods=none,pruner_v1,native_summary", text)
+        self.assertIn("hard_request_cap=60", text)
+        self.assertIn("No API request was sent", text)
+
+    def test_two_arm_plan_keeps_the_legacy_cap(self):
+        from experiments.runners.run_openai_agents_api_experiment import main
+
+        output = io.StringIO()
+        with patch.dict(os.environ, {}, clear=True), contextlib.redirect_stdout(output):
+            self.assertEqual(
+                0,
+                main(
+                    [
+                        "--plan",
+                        "--methods",
+                        "none,pruner_v1",
+                        "--max-api-requests",
+                        "24",
+                    ]
+                ),
+            )
+        text = output.getvalue()
         self.assertIn("minimum_planned_model_requests=14", text)
+        self.assertIn("summary_request_headroom=0", text)
         self.assertIn("hard_request_cap=24", text)
         self.assertIn("No API request was sent", text)
+
+    def test_unknown_method_is_rejected(self):
+        from experiments.runners.run_openai_agents_api_experiment import main
+
+        with self.assertRaisesRegex(SystemExit, "unknown methods"):
+            main(["--plan", "--methods", "none,pruner_v9"])
 
     def test_explicit_confirmation_is_required_before_key_lookup(self):
         from experiments.runners.run_openai_agents_api_experiment import main

@@ -1,0 +1,27 @@
+Testing against Django installed in 'C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-multitask-v49-pilot-01\workspaces\w003\django'
+Found 162 test(s).
+System check identified no issues (0 silenced).
+Creating test database for alias 'default'...
+
+...........................E......................................................................................................................................
+======================================================================
+ERROR: test_lookup_allowed_onetoone (modeladmin.tests.ModelAdminTests.test_lookup_allowed_onetoone)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-multitask-v49-pilot-01\workspaces\w003\django\test\utils.py", line 443, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-multitask-v49-pilot-01\workspaces\w003\tests\modeladmin\tests.py", line 150, in test_lookup_allowed_onetoone
+    ma.lookup_allowed("employee__employeeinfo__description", "test_value"), True
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-multitask-v49-pilot-01\workspaces\w003\django\contrib\admin\options.py", line 469, in lookup_allowed
+    and prev_field.remote_field.parent_link
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'OneToOneField' object has no attribute 'parent_link'
+
+----------------------------------------------------------------------
+Ran 162 tests in 0.195s
+
+FAILED (errors=1)
+Destroying test database for alias 'default'...
+

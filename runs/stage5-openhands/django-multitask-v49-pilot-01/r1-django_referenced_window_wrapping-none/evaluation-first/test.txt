@@ -1,0 +1,29 @@
+Testing against Django installed in 'C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-multitask-v49-pilot-01\r1-django_referenced_window_wrapping-none\evaluation-first\host-workspace\django'
+Found 125 test(s).
+System check identified no issues (0 silenced).
+Creating test database for alias 'default'...
+
+.....................E.......................................................................................................
+======================================================================
+ERROR: test_referenced_window_requires_wrapping (aggregation.tests.AggregateAnnotationPruningTests.test_referenced_window_requires_wrapping)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-multitask-v49-pilot-01\r1-django_referenced_window_wrapping-none\evaluation-first\host-workspace\django\test\testcases.py", line 1428, in skip_wrapper
+    return test_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-multitask-v49-pilot-01\r1-django_referenced_window_wrapping-none\evaluation-first\host-workspace\tests\aggregation\tests.py", line 2221, in test_referenced_window_requires_wrapping
+    aggregate = total_books_qs.aggregate(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-multitask-v49-pilot-01\r1-django_referenced_window_wrapping-none\evaluation-first\host-workspace\django\db\models\query.py", line 584, in aggregate
+    return self.query.chain().get_aggregation(self.db, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-multitask-v49-pilot-01\r1-django_referenced_window_wrapping-none\evaluation-first\host-workspace\django\db\models\sql\query.py", line 416, in get_aggregation
+    raise NotSupportedError(
+django.db.utils.NotSupportedError: Cannot use aggregate over a window function.
+
+----------------------------------------------------------------------
+Ran 125 tests in 0.298s
+
+FAILED (errors=1)
+Destroying test database for alias 'default'...
+

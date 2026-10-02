@@ -1,0 +1,283 @@
+{
+  "expected_samples": 27,
+  "completed_samples": 27,
+  "complete": true,
+  "arms": {
+    "none": {
+      "samples": 9,
+      "successes": 6,
+      "agent_input_tokens": 2420866,
+      "summary_input_tokens": 0,
+      "total_input_tokens": 2420866,
+      "total_output_tokens": 59545,
+      "model_calls": 157,
+      "summary_calls": 0,
+      "failed_calls": 0,
+      "peak_estimated_input": 38624,
+      "elapsed_seconds": 3306.743318500012,
+      "condensation_events": 0
+    },
+    "native_summary": {
+      "samples": 9,
+      "successes": 6,
+      "agent_input_tokens": 2183106,
+      "summary_input_tokens": 16383,
+      "total_input_tokens": 2199489,
+      "total_output_tokens": 63418,
+      "model_calls": 158,
+      "summary_calls": 4,
+      "failed_calls": 0,
+      "peak_estimated_input": 30873,
+      "elapsed_seconds": 3412.519558199987,
+      "condensation_events": 4
+    },
+    "pruner_v51": {
+      "samples": 9,
+      "successes": 6,
+      "agent_input_tokens": 2201840,
+      "summary_input_tokens": 0,
+      "total_input_tokens": 2201840,
+      "total_output_tokens": 68049,
+      "model_calls": 169,
+      "summary_calls": 0,
+      "failed_calls": 0,
+      "peak_estimated_input": 25453,
+      "elapsed_seconds": 3949.4856987000094,
+      "condensation_events": 6
+    }
+  },
+  "per_repeat_paired_savings": {
+    "native_summary": {
+      "django_referenced_window_wrapping": [
+        {
+          "repeat": 1,
+          "baseline_input_tokens": 141854,
+          "arm_input_tokens": 398507,
+          "paired_savings": -1.809276,
+          "both_success": true
+        },
+        {
+          "repeat": 2,
+          "baseline_input_tokens": 202905,
+          "arm_input_tokens": 92455,
+          "paired_savings": 0.544343,
+          "both_success": true
+        },
+        {
+          "repeat": 3,
+          "baseline_input_tokens": 92463,
+          "arm_input_tokens": 280242,
+          "paired_savings": -2.030856,
+          "both_success": true
+        }
+      ],
+      "django_lookup_allowed_foreign_primary": [
+        {
+          "repeat": 1,
+          "baseline_input_tokens": 682312,
+          "arm_input_tokens": 554010,
+          "paired_savings": 0.18804,
+          "both_success": false
+        },
+        {
+          "repeat": 2,
+          "baseline_input_tokens": 450619,
+          "arm_input_tokens": 148826,
+          "paired_savings": 0.66973,
+          "both_success": false
+        },
+        {
+          "repeat": 3,
+          "baseline_input_tokens": 702064,
+          "arm_input_tokens": 575969,
+          "paired_savings": 0.179606,
+          "both_success": false
+        }
+      ],
+      "django_list_editable_atomicity": [
+        {
+          "repeat": 1,
+          "baseline_input_tokens": 49786,
+          "arm_input_tokens": 49817,
+          "paired_savings": -0.000623,
+          "both_success": true
+        },
+        {
+          "repeat": 2,
+          "baseline_input_tokens": 49851,
+          "arm_input_tokens": 49838,
+          "paired_savings": 0.000261,
+          "both_success": true
+        },
+        {
+          "repeat": 3,
+          "baseline_input_tokens": 49012,
+          "arm_input_tokens": 49825,
+          "paired_savings": -0.016588,
+          "both_success": true
+        }
+      ]
+    },
+    "pruner_v51": {
+      "django_referenced_window_wrapping": [
+        {
+          "repeat": 1,
+          "baseline_input_tokens": 141854,
+          "arm_input_tokens": 139872,
+          "paired_savings": 0.013972,
+          "both_success": true
+        },
+        {
+          "repeat": 2,
+          "baseline_input_tokens": 202905,
+          "arm_input_tokens": 248190,
+          "paired_savings": -0.223183,
+          "both_success": true
+        },
+        {
+          "repeat": 3,
+          "baseline_input_tokens": 92463,
+          "arm_input_tokens": 155143,
+          "paired_savings": -0.677893,
+          "both_success": true
+        }
+      ],
+      "django_lookup_allowed_foreign_primary": [
+        {
+          "repeat": 1,
+          "baseline_input_tokens": 682312,
+          "arm_input_tokens": 463202,
+          "paired_savings": 0.321129,
+          "both_success": false
+        },
+        {
+          "repeat": 2,
+          "baseline_input_tokens": 450619,
+          "arm_input_tokens": 526168,
+          "paired_savings": -0.167656,
+          "both_success": false
+        },
+        {
+          "repeat": 3,
+          "baseline_input_tokens": 702064,
+          "arm_input_tokens": 519842,
+          "paired_savings": 0.259552,
+          "both_success": false
+        }
+      ],
+      "django_list_editable_atomicity": [
+        {
+          "repeat": 1,
+          "baseline_input_tokens": 49786,
+          "arm_input_tokens": 49817,
+          "paired_savings": -0.000623,
+          "both_success": true
+        },
+        {
+          "repeat": 2,
+          "baseline_input_tokens": 49851,
+          "arm_input_tokens": 49816,
+          "paired_savings": 0.000702,
+          "both_success": true
+        },
+        {
+          "repeat": 3,
+          "baseline_input_tokens": 49012,
+          "arm_input_tokens": 49790,
+          "paired_savings": -0.015874,
+          "both_success": true
+        }
+      ]
+    }
+  },
+  "dispersion": {
+    "native_summary": {
+      "django_referenced_window_wrapping": {
+        "repeats": 3,
+        "paired_savings": [
+          -1.809276,
+          0.544343,
+          -2.030856
+        ],
+        "mean": -1.098596,
+        "sample_stdev": 1.427134,
+        "min": -2.030856,
+        "max": 0.544343,
+        "both_success_repeats": 3,
+        "note": "sample stdev over repeats; not a confidence interval"
+      },
+      "django_lookup_allowed_foreign_primary": {
+        "repeats": 3,
+        "paired_savings": [
+          0.18804,
+          0.66973,
+          0.179606
+        ],
+        "mean": 0.345792,
+        "sample_stdev": 0.28057,
+        "min": 0.179606,
+        "max": 0.66973,
+        "both_success_repeats": 0,
+        "note": "sample stdev over repeats; not a confidence interval"
+      },
+      "django_list_editable_atomicity": {
+        "repeats": 3,
+        "paired_savings": [
+          -0.000623,
+          0.000261,
+          -0.016588
+        ],
+        "mean": -0.00565,
+        "sample_stdev": 0.009483,
+        "min": -0.016588,
+        "max": 0.000261,
+        "both_success_repeats": 3,
+        "note": "sample stdev over repeats; not a confidence interval"
+      }
+    },
+    "pruner_v51": {
+      "django_referenced_window_wrapping": {
+        "repeats": 3,
+        "paired_savings": [
+          0.013972,
+          -0.223183,
+          -0.677893
+        ],
+        "mean": -0.295701,
+        "sample_stdev": 0.351587,
+        "min": -0.677893,
+        "max": 0.013972,
+        "both_success_repeats": 3,
+        "note": "sample stdev over repeats; not a confidence interval"
+      },
+      "django_lookup_allowed_foreign_primary": {
+        "repeats": 3,
+        "paired_savings": [
+          0.321129,
+          -0.167656,
+          0.259552
+        ],
+        "mean": 0.137675,
+        "sample_stdev": 0.266211,
+        "min": -0.167656,
+        "max": 0.321129,
+        "both_success_repeats": 0,
+        "note": "sample stdev over repeats; not a confidence interval"
+      },
+      "django_list_editable_atomicity": {
+        "repeats": 3,
+        "paired_savings": [
+          -0.000623,
+          0.000702,
+          -0.015874
+        ],
+        "mean": -0.005265,
+        "sample_stdev": 0.009212,
+        "min": -0.015874,
+        "max": 0.000702,
+        "both_success_repeats": 3,
+        "note": "sample stdev over repeats; not a confidence interval"
+      }
+    }
+  }
+}

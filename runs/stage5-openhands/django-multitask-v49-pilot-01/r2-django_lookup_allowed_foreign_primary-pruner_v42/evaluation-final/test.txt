@@ -1,0 +1,23 @@
+Testing against Django installed in 'C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-multitask-v49-pilot-01\r2-django_lookup_allowed_foreign_primary-pruner_v42\evaluation-final\host-workspace\django'
+Found 163 test(s).
+System check identified no issues (0 silenced).
+Creating test database for alias 'default'...
+
+...........................F.......................................................................................................................................
+======================================================================
+FAIL: test_lookup_allowed_foreign_primary (modeladmin.tests.ModelAdminTests.test_lookup_allowed_foreign_primary)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-multitask-v49-pilot-01\r2-django_lookup_allowed_foreign_primary-pruner_v42\evaluation-final\host-workspace\django\test\utils.py", line 443, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-multitask-v49-pilot-01\r2-django_lookup_allowed_foreign_primary-pruner_v42\evaluation-final\host-workspace\tests\modeladmin\tests.py", line 178, in test_lookup_allowed_foreign_primary
+    self.assertIs(ma.lookup_allowed("restaurant__place__country", "1"), True)
+AssertionError: False is not True
+
+----------------------------------------------------------------------
+Ran 163 tests in 0.189s
+
+FAILED (failures=1)
+Destroying test database for alias 'default'...
+

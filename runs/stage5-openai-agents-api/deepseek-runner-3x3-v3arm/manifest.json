@@ -1,0 +1,51 @@
+{
+  "experiment_id": "deepseek-runner-3x3-v3arm",
+  "kind": "openai_agents_runner_real_api_paired",
+  "data_class": "synthetic_only",
+  "disclosure": "Only synthetic task history, codenames, tool arguments, and synthetic tool results are sent to the configured API endpoint. No workspace files are read.",
+  "sdk": "openai-agents",
+  "model": "deepseek-v4-flash",
+  "base_url": "https://api.deepseek.com",
+  "methods": [
+    "none",
+    "pruner_v1",
+    "native_summary"
+  ],
+  "scenarios": [
+    "single_tool",
+    "parallel_tools",
+    "multi_tool_chain"
+  ],
+  "repeats": 1,
+  "minimum_planned_requests": 69,
+  "maximum_api_requests": 80,
+  "max_api_retries": 2,
+  "max_turns": 6,
+  "max_output_tokens": 256,
+  "max_summary_tokens": 1024,
+  "max_summary_calls": 16,
+  "native_summary_contract": {
+    "trigger": "estimated input tokens > soft budget",
+    "retention": "last units up to target token budget, kept verbatim",
+    "pinned": "leading user statement always kept verbatim",
+    "boundary": "Responses groups are never split across a call/output pair",
+    "acceptance": "summary accepted only when it shrinks the payload",
+    "failure_policy": "provider error leaves the input untouched",
+    "accounting": "summary requests consume the same global request budget"
+  },
+  "final_output_contract": {
+    "prefix": "RESULT ",
+    "single_line": true,
+    "max_chars": 160
+  },
+  "budget": {
+    "soft": 1200,
+    "hard": 1800,
+    "target": 900,
+    "fixed_reserved_tokens": 512
+  },
+  "cost_rates_per_million": {
+    "input": 0.0,
+    "output": 0.0
+  }
+}

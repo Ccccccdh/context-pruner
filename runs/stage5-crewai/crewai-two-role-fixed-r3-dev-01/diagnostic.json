@@ -1,0 +1,181 @@
+{
+  "batch": "crewai-two-role-fixed-r3-dev-01",
+  "quality": {
+    "incident_triage": {
+      "none": {
+        "n": 3,
+        "exact_success": 3,
+        "strict_handoff_marker": 3,
+        "handoff_facts": 3,
+        "tool_pair_correct": 3
+      },
+      "native_summary": {
+        "n": 3,
+        "exact_success": 3,
+        "strict_handoff_marker": 3,
+        "handoff_facts": 3,
+        "tool_pair_correct": 3
+      },
+      "pruner_v1": {
+        "n": 3,
+        "exact_success": 2,
+        "strict_handoff_marker": 2,
+        "handoff_facts": 2,
+        "tool_pair_correct": 3
+      }
+    },
+    "release_readiness": {
+      "none": {
+        "n": 3,
+        "exact_success": 0,
+        "strict_handoff_marker": 0,
+        "handoff_facts": 3,
+        "tool_pair_correct": 3
+      },
+      "native_summary": {
+        "n": 3,
+        "exact_success": 0,
+        "strict_handoff_marker": 0,
+        "handoff_facts": 3,
+        "tool_pair_correct": 3
+      },
+      "pruner_v1": {
+        "n": 3,
+        "exact_success": 0,
+        "strict_handoff_marker": 0,
+        "handoff_facts": 3,
+        "tool_pair_correct": 3
+      }
+    },
+    "customer_migration": {
+      "none": {
+        "n": 3,
+        "exact_success": 0,
+        "strict_handoff_marker": 0,
+        "handoff_facts": 3,
+        "tool_pair_correct": 3
+      },
+      "native_summary": {
+        "n": 3,
+        "exact_success": 2,
+        "strict_handoff_marker": 2,
+        "handoff_facts": 3,
+        "tool_pair_correct": 3
+      },
+      "pruner_v1": {
+        "n": 3,
+        "exact_success": 1,
+        "strict_handoff_marker": 1,
+        "handoff_facts": 3,
+        "tool_pair_correct": 3
+      }
+    }
+  },
+  "paired_total_token_savings": {
+    "native_summary": {
+      "n": 9,
+      "mean": -0.29357324105951055,
+      "positive": 0,
+      "pairs": [
+        {
+          "task": "incident_triage",
+          "repeat": 0,
+          "savings": -0.296001986590514
+        },
+        {
+          "task": "incident_triage",
+          "repeat": 1,
+          "savings": -0.26643935703848026
+        },
+        {
+          "task": "incident_triage",
+          "repeat": 2,
+          "savings": -0.21963514162265962
+        },
+        {
+          "task": "release_readiness",
+          "repeat": 0,
+          "savings": -0.24276606179499755
+        },
+        {
+          "task": "release_readiness",
+          "repeat": 1,
+          "savings": -0.3630066700872242
+        },
+        {
+          "task": "release_readiness",
+          "repeat": 2,
+          "savings": -0.3030848329048843
+        },
+        {
+          "task": "customer_migration",
+          "repeat": 0,
+          "savings": -0.28005018820577166
+        },
+        {
+          "task": "customer_migration",
+          "repeat": 1,
+          "savings": -0.3421260881034028
+        },
+        {
+          "task": "customer_migration",
+          "repeat": 2,
+          "savings": -0.32904884318766064
+        }
+      ]
+    },
+    "pruner_v1": {
+      "n": 9,
+      "mean": 0.044634238068047755,
+      "positive": 8,
+      "pairs": [
+        {
+          "task": "incident_triage",
+          "repeat": 0,
+          "savings": 0.06704742984852248
+        },
+        {
+          "task": "incident_triage",
+          "repeat": 1,
+          "savings": 0.09936678032148076
+        },
+        {
+          "task": "incident_triage",
+          "repeat": 2,
+          "savings": 0.12650024003840615
+        },
+        {
+          "task": "release_readiness",
+          "repeat": 0,
+          "savings": 0.04757233938205002
+        },
+        {
+          "task": "release_readiness",
+          "repeat": 1,
+          "savings": 0.019497178040020522
+        },
+        {
+          "task": "release_readiness",
+          "repeat": 2,
+          "savings": 0.005398457583547558
+        },
+        {
+          "task": "customer_migration",
+          "repeat": 0,
+          "savings": 0.014052697616060227
+        },
+        {
+          "task": "customer_migration",
+          "repeat": 1,
+          "savings": -0.013716697441308361
+        },
+        {
+          "task": "customer_migration",
+          "repeat": 2,
+          "savings": 0.03598971722365039
+        }
+      ]
+    }
+  },
+  "interpretation": "Post-run mechanism diagnosis only; frozen exact_success remains primary quality gate."
+}

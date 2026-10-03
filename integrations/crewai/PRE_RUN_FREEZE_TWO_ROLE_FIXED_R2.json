@@ -1,0 +1,20 @@
+{
+  "batch": "crewai-two-role-fixed-r2-pilot-01",
+  "prior_batch": "crewai-two-role-fixed-r1-pilot-02",
+  "samples": 3,
+  "task": "incident_triage",
+  "repeats": 1,
+  "methods": [
+    "none",
+    "native_summary",
+    "pruner_v1"
+  ],
+  "max_api_requests": 48,
+  "zero_api_gate": "9/9 mock samples, 3/3 unit tests, independent audit errors=0",
+  "hashes": {
+    "integrations/crewai/PILOT_PROTOCOL_TWO_ROLE_FIXED_R2.md": "bf189e01517a18b3771c7e9d730581cf99edcdb204a0521463c4b79a334c9f9f",
+    "experiments/runners/run_crewai_handoff.py": "e1e1de3070d0d7ebcf256ee589559803992661624e105c217e80f01db4f1bbec",
+    "experiments/audits/audit_crewai_handoff.py": "eb9be6ea8a4453809101eb56d6c6b84f375aec410c1750ea09f04c7698cca3b3",
+    "tasks/stage5_autogen/natural_tasks.json": "8d51add8e421f2cfd011e5417ca5c3d071073408ceab0c662b7fe2985a84e7f0"
+  }
+}

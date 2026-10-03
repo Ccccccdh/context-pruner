@@ -1,0 +1,34 @@
+{
+  "protocol": "crewai-two-role-fixed-r3-balanced",
+  "runner_sha256": "20a983b4dd0b35f7f83e6104d25c781f5fe357839cc790c1d0b81c50e77c1e3c",
+  "task_sha256": "8d51add8e421f2cfd011e5417ca5c3d071073408ceab0c662b7fe2985a84e7f0",
+  "tasks": [
+    "incident_triage",
+    "release_readiness",
+    "customer_migration"
+  ],
+  "methods": [
+    "none",
+    "native_summary",
+    "pruner_v1"
+  ],
+  "repeats": 3,
+  "model": "deepseek-v4-flash",
+  "mode": "api",
+  "budget": {
+    "host": "crewai",
+    "calibration_ratio_provider_per_estimated": 0.389,
+    "provider_tokens": {
+      "soft": 1200,
+      "hard": 3000,
+      "target": 900
+    },
+    "estimated_tokens": {
+      "soft": 3085,
+      "hard": 7712,
+      "target": 2314
+    },
+    "note": "Budgets are declared in provider tokens and converted with a measured ratio."
+  },
+  "max_api_requests": 180
+}

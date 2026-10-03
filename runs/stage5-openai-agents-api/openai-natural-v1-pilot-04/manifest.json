@@ -1,0 +1,68 @@
+{
+  "experiment_id": "openai-natural-v1-pilot-04",
+  "kind": "openai_agents_runner_real_api_paired",
+  "data_class": "synthetic_only",
+  "disclosure": "Curated simulated operational tasks, fixed histories, tool arguments, and tool results are sent to the configured API endpoint. No workspace files or expected answers are sent. The repeat index changes only arm order.",
+  "sdk": "openai-agents",
+  "model": "deepseek-v4-flash",
+  "base_url": "https://api.deepseek.com",
+  "methods": [
+    "none",
+    "pruner_v1",
+    "native_summary"
+  ],
+  "scenarios": [
+    "incident_triage",
+    "invoice_reconcile",
+    "release_gate"
+  ],
+  "repeats": 1,
+  "minimum_planned_requests": 84,
+  "maximum_api_requests": 120,
+  "max_api_retries": 2,
+  "max_turns": 6,
+  "max_output_tokens": 1024,
+  "max_summary_tokens": 1024,
+  "max_summary_calls": 16,
+  "trigger_policy": "symmetric_budget",
+  "native_summary_contract": {
+    "trigger": "estimated input tokens > soft budget",
+    "retention": "last units up to target token budget, kept verbatim",
+    "pinned": "leading user statement always kept verbatim",
+    "boundary": "Responses groups are never split across a call/output pair",
+    "acceptance": "summary accepted only when it shrinks the payload",
+    "failure_policy": "provider error leaves the input untouched",
+    "accounting": "summary requests consume the same global request budget",
+    "regrowth_rule": "an already-summarised payload is not summarised again until it grows 25%"
+  },
+  "final_output_contract": {
+    "prefix": "RESULT ",
+    "single_line": true,
+    "max_chars": 160
+  },
+  "budget": {
+    "soft": 3261,
+    "hard": 8152,
+    "target": 2446,
+    "fixed_reserved_tokens": 512
+  },
+  "budget_calibration": {
+    "host": "openai_agents",
+    "calibration_ratio_provider_per_estimated": 0.368,
+    "provider_tokens": {
+      "soft": 1200,
+      "hard": 3000,
+      "target": 900
+    },
+    "estimated_tokens": {
+      "soft": 3261,
+      "hard": 8152,
+      "target": 2446
+    },
+    "note": "Budgets are declared in provider tokens and converted with a measured ratio."
+  },
+  "cost_rates_per_million": {
+    "input": 0.0,
+    "output": 0.0
+  }
+}

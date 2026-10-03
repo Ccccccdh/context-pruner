@@ -1,0 +1,23 @@
+{
+  "experiment_id": "openai-natural-v1-pilot-04",
+  "scenarios": [
+    "incident_triage",
+    "invoice_reconcile",
+    "release_gate"
+  ],
+  "repeats": 1,
+  "methods": [
+    "none",
+    "pruner_v1",
+    "native_summary"
+  ],
+  "max_api_requests": 120,
+  "source_sha256": {
+    "experiments/runners/run_openai_agents_api_experiment.py": "1cafd67b5b4d649381c737ff2e97d15d7cbba95709311d3516ccdb266c7e8708",
+    "experiments/runners/openai_agents_native_summary.py": "2b05db2560ab80d8eca9aaee5828209f9439d0682d200cf8e6a7f01ab5f7fccd",
+    "experiments/audits/audit_openai_agents_natural_v1.py": "ce650985c9eb8fac7eed24a12516cfb1d059c8fb149d6dce620ca00f2d335acc",
+    "experiments/runners/run_openai_agents_natural_v1.py": "969d3acd3649207cb65226bf1f8592dfb8c7795e2d18171d93c789680abbc022",
+    "experiments/runners/token_policy.py": "e1d3c0de34c1ba55a3400a24ca71ea514363b7c9cdcf0ca4e8449382a58474cb",
+    "experiments/runners/trigger_gate.py": "931fd869733029f2f47604f6d99fdaef5da542840c6cb8c806360870cb3c5b23"
+  }
+}

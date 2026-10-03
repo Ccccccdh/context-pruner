@@ -1,0 +1,31 @@
+{
+  "batch": "openai-natural-v1-r3-dev-01",
+  "scenarios": [
+    "incident_triage",
+    "invoice_reconcile",
+    "release_gate"
+  ],
+  "tasks": [
+    "incident_triage",
+    "invoice_reconcile",
+    "release_gate"
+  ],
+  "methods": [
+    "none",
+    "pruner_v1",
+    "native_summary"
+  ],
+  "repeats": 3,
+  "samples": 27,
+  "max_api_requests": 300,
+  "max_output_tokens": 1024,
+  "source_sha256": {
+    "experiments/runners/run_openai_agents_api_experiment.py": "1cafd67b5b4d649381c737ff2e97d15d7cbba95709311d3516ccdb266c7e8708",
+    "experiments/runners/run_openai_agents_natural_v1.py": "969d3acd3649207cb65226bf1f8592dfb8c7795e2d18171d93c789680abbc022",
+    "experiments/runners/openai_agents_native_summary.py": "2b05db2560ab80d8eca9aaee5828209f9439d0682d200cf8e6a7f01ab5f7fccd",
+    "experiments/runners/token_policy.py": "e1d3c0de34c1ba55a3400a24ca71ea514363b7c9cdcf0ca4e8449382a58474cb",
+    "experiments/runners/trigger_gate.py": "931fd869733029f2f47604f6d99fdaef5da542840c6cb8c806360870cb3c5b23",
+    "experiments/audits/audit_openai_agents_natural_v1.py": "5484597c455230521436044a48cff2a32bacfd56d034a4312bebdfbfabf99ae0",
+    "integrations/openai_agents/NATURAL_V1_R3_DEV_PROTOCOL.md": "d6e4a0a9f3b9809fc05f4f3eaf2846a6f4542fab32d0a8fb983f0f700f4cbcc2"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "complete": true,
+  "source_batch": "runs/stage5-openhands/django-multitask-v52-pilot-01",
+  "samples": [
+    {
+      "sample": "r1-django_list_editable_atomicity-native_summary",
+      "test_equivalent": true,
+      "passed": true,
+      "ran": 75,
+      "full_map_matches_serial_checkpoint": true,
+      "files": 19939,
+      "parallel_hash_seconds": 11.773,
+      "prior_serial_scan_segment_seconds": 212.87
+    },
+    {
+      "sample": "r1-django_lookup_allowed_foreign_primary-native_summary",
+      "test_equivalent": true,
+      "passed": false,
+      "ran": 163,
+      "full_map_matches_serial_checkpoint": true,
+      "files": 19972,
+      "parallel_hash_seconds": 11.55,
+      "prior_serial_scan_segment_seconds": 226.95
+    }
+  ],
+  "audit_sources": {
+    "integrations/openhands/audit_validation_v53_fast.py": "edc218f559f1b3a83364606cb2e57b37644f1028f206cf82fd4fec058bd2021c",
+    "integrations/openhands/audit_v53_fast_core.py": "69b5943be3660fbfcb7006233e787891d9d294155eca10a72d46231fe4131c25"
+  },
+  "note": "Host evaluator unchanged after two-sample acceptance check. Parallel hash maps equal previously captured serial maps byte-for-byte in digest; timing is sequential descriptive observation, not a randomized performance benchmark."
+}

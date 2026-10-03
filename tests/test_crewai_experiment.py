@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import importlib.util
+import asyncio
 import io
 import json
 import os
@@ -10,6 +11,7 @@ import tempfile
 import unittest
 from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
+from types import SimpleNamespace
 
 
 _CREWAI_TEST_STORAGE = Path(tempfile.gettempdir()) / "context-pruner-crewai-tests"
@@ -130,6 +132,168 @@ class CrewAIExperimentTest(unittest.TestCase):
             budget.consume()
         with self.assertRaisesRegex(ValueError, "existing API requests"):
             runner.RequestBudget(2, used=3)
+
+    def test_native_summary_charges_global_budget_and_reserves_agent_call(self) -> None:
+        class Completions:
+            def __init__(self) -> None:
+                self.calls = 0
+
+            async def create(self, **kwargs):
+                self.calls += 1
+                return SimpleNamespace(
+                    choices=[SimpleNamespace(message=SimpleNamespace(content="facts"))],
+                    usage=SimpleNamespace(prompt_tokens=17, completion_tokens=3),
+                )
+
+        completions = Completions()
+        client = SimpleNamespace(chat=SimpleNamespace(completions=completions))
+        messages = [
+            {"role": "system", "content": "Task identity."},
+            {"role": "user", "content": "Old observation " * 50},
+            {"role": "assistant", "content": "Old analysis " * 50},
+            {"role": "user", "content": "Recent observation " * 20},
+        ]
+
+        def make_llm(limit: int):
+            return runner.NativeSummaryCrewAILLM(
+                client=None,
+                model="test-model",
+                request_budget=runner.RequestBudget(limit),
+                max_output_tokens=512,
+                thinking_mode="disabled",
+                summary_client=client,
+                summary_model="test-model",
+                soft_limit_tokens=20,
+                hard_limit_tokens=1000,
+                target_tokens=100,
+                retention_tokens=100,
+            )
+
+        reserved = make_llm(1)
+        try:
+            _, summary = reserved._compact(messages)
+            self.assertIsNone(summary)
+            self.assertEqual("global_request_budget_reserved_for_agent", reserved.skipped_reason)
+            self.assertEqual(0, reserved.request_budget.used)
+            self.assertEqual(0, completions.calls)
+        finally:
+            reserved.close_summary_transport()
+
+        charged = make_llm(2)
+        try:
+            charged._compact(messages)
+            self.assertEqual(1, completions.calls)
+            self.assertEqual(1, charged.request_budget.used)
+            charged.request_budget.consume()  # the following agent request
+            self.assertEqual(2, charged.request_budget.used)
+            with self.assertRaisesRegex(RuntimeError, "global API request limit"):
+                charged.request_budget.consume()
+        finally:
+            charged.close_summary_transport()
+
+    def test_native_summary_attempt_cap_includes_failed_transport(self) -> None:
+        class FailingCompletions:
+            def __init__(self) -> None:
+                self.calls = 0
+
+            async def create(self, **kwargs):
+                self.calls += 1
+                raise ConnectionError("synthetic summary transport failure")
+
+        completions = FailingCompletions()
+        client = SimpleNamespace(chat=SimpleNamespace(completions=completions))
+        llm = runner.NativeSummaryCrewAILLM(
+            client=None,
+            model="test-model",
+            request_budget=runner.RequestBudget(5),
+            max_output_tokens=512,
+            thinking_mode="disabled",
+            summary_client=client,
+            summary_model="test-model",
+            soft_limit_tokens=20,
+            hard_limit_tokens=1000,
+            target_tokens=100,
+            retention_tokens=100,
+            max_summary_calls=1,
+        )
+        messages = [
+            {"role": "system", "content": "Task identity."},
+            {"role": "user", "content": "Old observation " * 50},
+            {"role": "assistant", "content": "Old analysis " * 50},
+            {"role": "user", "content": "Recent observation " * 20},
+        ]
+        try:
+            llm._compact(messages)
+            self.assertEqual(1, llm.summary_attempts)
+            self.assertEqual(1, llm.ledger.failures)
+            self.assertEqual(0, llm.ledger.calls)
+            self.assertEqual(1, llm.request_budget.used)
+            llm._compact(messages)
+            self.assertEqual("summary_call_limit_reached", llm.skipped_reason)
+            self.assertEqual(1, completions.calls)
+            self.assertEqual(1, llm.request_budget.used)
+        finally:
+            llm.close_summary_transport()
+
+    def test_native_summary_factory_uses_and_closes_each_case_loop(self) -> None:
+        created = []
+        closed = []
+        messages = [
+            {"role": "system", "content": "Task identity."},
+            {"role": "user", "content": "Old observation " * 50},
+            {"role": "assistant", "content": "Old analysis " * 50},
+            {"role": "user", "content": "Recent observation " * 20},
+        ]
+
+        def factory():
+            own_loop = asyncio.get_running_loop()
+            created.append(own_loop)
+
+            class Completions:
+                async def create(self, **kwargs):
+                    self_loop = asyncio.get_running_loop()
+                    if self_loop is not own_loop:
+                        raise AssertionError("summary request used another loop")
+                    return SimpleNamespace(
+                        choices=[SimpleNamespace(message=SimpleNamespace(content="facts"))],
+                        usage=SimpleNamespace(prompt_tokens=17, completion_tokens=3),
+                    )
+
+            class Client:
+                def __init__(self) -> None:
+                    self.chat = SimpleNamespace(completions=Completions())
+
+                async def close(self) -> None:
+                    if asyncio.get_running_loop() is not own_loop:
+                        raise AssertionError("client closed on another loop")
+                    closed.append(own_loop)
+
+            return Client()
+
+        for _ in range(2):
+            llm = runner.NativeSummaryCrewAILLM(
+                client=None,
+                model="test-model",
+                request_budget=runner.RequestBudget(3),
+                max_output_tokens=512,
+                thinking_mode="disabled",
+                summary_client_factory=factory,
+                summary_model="test-model",
+                soft_limit_tokens=20,
+                hard_limit_tokens=1000,
+                target_tokens=100,
+                retention_tokens=100,
+            )
+            try:
+                llm._compact(messages)
+                self.assertEqual(1, llm.summary_attempts)
+                self.assertEqual(1, llm.ledger.calls)
+            finally:
+                llm.close_summary_transport()
+            self.assertEqual("", llm.summary_close_error)
+        self.assertEqual(2, len(created))
+        self.assertIsNot(created[0], created[1])
+        self.assertEqual(created, closed)
 
     def test_react_normalizer_keeps_only_first_real_tool_action(self) -> None:
         raw = (

@@ -22,9 +22,10 @@ from typing import Any, Sequence
 from context_pruner import ContextBudget, ContextPluginConfig
 from context_pruner.adapters import OpenAIAgentsContextFilter
 from context_pruner.types import estimate_tokens
-from experiments.runners.openai_agents_native_summary import (
-    NativeSummaryInputFilter,
-)
+from experiments.runners import token_policy
+from experiments.runners.native_summary_common import SummaryCallLedger  # noqa: F401
+from experiments.runners.openai_agents_native_summary import NativeSummaryInputFilter
+from experiments.runners.trigger_gate import BudgetTriggeredFilter
 from experiments.runners.run_openai_agents_runner_experiment import (
     check_policy,
     lookup_project,
@@ -447,6 +448,25 @@ async def run_case(
     }
 
 
+def resolve_budget(args) -> tuple[ContextBudget, "Thresholds"]:
+    """Build the arm budget, declared in provider tokens and converted per host.
+
+    Estimator-unit overrides (``--soft``/``--hard``/``--target`` > 0) exist only to
+    reproduce older batches; the default path is the calibrated one, so a frozen
+    manifest always states the physical budget as well as the local one.
+    """
+    thresholds = token_policy.thresholds(
+        "openai_agents",
+        soft_provider=args.provider_soft,
+        hard_provider=args.provider_hard,
+        target_provider=args.provider_target,
+    )
+    soft = args.soft or thresholds.soft_estimated
+    hard = args.hard or thresholds.hard_estimated
+    target = args.target or thresholds.target_estimated
+    return ContextBudget(soft, hard, target), thresholds
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser()
     parser.add_argument("--plan", action="store_true")
@@ -459,9 +479,22 @@ def build_parser() -> argparse.ArgumentParser:
         "--base-url",
         default=os.getenv("OPENAI_BASE_URL", "https://api.deepseek.com"),
     )
-    parser.add_argument("--soft", type=int, default=1200)
-    parser.add_argument("--hard", type=int, default=1800)
-    parser.add_argument("--target", type=int, default=900)
+    parser.add_argument(
+        "--provider-soft", type=int, default=1200,
+        help="Soft budget in provider tokens (the unit the vendor bills).",
+    )
+    parser.add_argument("--provider-hard", type=int, default=3000)
+    parser.add_argument("--provider-target", type=int, default=900)
+    parser.add_argument(
+        "--soft", type=int, default=0,
+        help="Override the soft budget in estimator units (0 = derive from provider tokens).",
+    )
+    parser.add_argument("--hard", type=int, default=0)
+    parser.add_argument("--target", type=int, default=0)
+    parser.add_argument(
+        "--trigger-policy", choices=("symmetric_budget", "always"), default="symmetric_budget",
+        help="symmetric_budget gates every arm on the same soft budget; always is the v1 behaviour.",
+    )
     parser.add_argument("--fixed-reserved-tokens", type=int, default=512)
     parser.add_argument("--max-turns", type=int, default=6)
     parser.add_argument("--max-output-tokens", type=int, default=256)
@@ -484,7 +517,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     scenarios = _parse_scenarios(args.scenarios)
     methods = _parse_methods(args.methods)
-    _validate_args(args, scenarios)
+    budget, thresholds = resolve_budget(args)
+    _validate_args(args, scenarios, budget)
     minimum_model_requests = args.repeats * len(methods) * sum(
         build_case(scenario, 0).expected_model_calls for scenario in scenarios
     )
@@ -525,6 +559,7 @@ async def _run_experiment(
 ) -> int:
     root = Path(args.out) / args.experiment_id
     samples_path = root / "samples.jsonl"
+    budget, thresholds = resolve_budget(args)
     manifest = {
         "experiment_id": args.experiment_id,
         "kind": "openai_agents_runner_real_api_paired",
@@ -543,6 +578,7 @@ async def _run_experiment(
         "max_output_tokens": args.max_output_tokens,
         "max_summary_tokens": args.max_summary_tokens,
         "max_summary_calls": args.max_summary_calls,
+        "trigger_policy": args.trigger_policy,
         "native_summary_contract": {
             "trigger": "estimated input tokens > soft budget",
             "retention": "last units up to target token budget, kept verbatim",
@@ -551,6 +587,7 @@ async def _run_experiment(
             "acceptance": "summary accepted only when it shrinks the payload",
             "failure_policy": "provider error leaves the input untouched",
             "accounting": "summary requests consume the same global request budget",
+            "regrowth_rule": "an already-summarised payload is not summarised again until it grows 25%",
         },
         "final_output_contract": {
             "prefix": "RESULT ",
@@ -558,11 +595,12 @@ async def _run_experiment(
             "max_chars": 160,
         },
         "budget": {
-            "soft": args.soft,
-            "hard": args.hard,
-            "target": args.target,
+            "soft": budget.soft_limit_tokens,
+            "hard": budget.hard_limit_tokens,
+            "target": budget.target_tokens,
             "fixed_reserved_tokens": args.fixed_reserved_tokens,
         },
+        "budget_calibration": thresholds.as_manifest(),
         "cost_rates_per_million": {
             "input": args.input_cost_per_million,
             "output": args.output_cost_per_million,
@@ -585,7 +623,6 @@ async def _run_experiment(
         for row in samples
         if not args.retry_failed or bool(row.get("success"))
     }
-    budget = ContextBudget(args.soft, args.hard, args.target)
     request_budget = RequestBudget(args.max_api_requests)
     client = AsyncOpenAI(
         api_key=api_key,
@@ -613,6 +650,7 @@ async def _run_experiment(
                         max_summary_calls=args.max_summary_calls,
                         timeout=args.timeout,
                         request_budget=request_budget,
+                        trigger_policy=args.trigger_policy,
                     )
                     sample = await run_case(
                         case,
@@ -680,19 +718,23 @@ def _build_filter(
     max_summary_calls: int,
     timeout: float,
     request_budget: RequestBudget,
+    trigger_policy: str = "symmetric_budget",
 ) -> Any | None:
     """Build the per-arm ``call_model_input_filter``.
 
     ``none`` installs no filter at all, which is the literal no-compression
     baseline. ``native_summary`` installs the host-native summariser and
     ``pruner_v1`` installs the Context-Pruner adapter. Both non-baseline arms
-    receive the same derived recent-window budget (the plugin's target tokens),
-    so the comparison is not decided by a different retention policy.
+    receive the same derived recent-window budget (the plugin's target tokens) and
+    - under the default ``symmetric_budget`` policy - the same trigger: the arm
+    acts only above the soft budget. Without that gate the plugin compresses on
+    every call while the native arm waits for the threshold, which would make the
+    two arms incomparable for reasons unrelated to the compression mechanism.
     """
     if method == "none":
         return None
     if method == "native_summary":
-        return NativeSummaryInputFilter(
+        arm_filter: Any = NativeSummaryInputFilter(
             # A fresh async client per summary request: an AsyncOpenAI built on
             # one event loop cannot be awaited on another, and the SDK awaits the
             # filter inside its own Runner loop.
@@ -716,13 +758,19 @@ def _build_filter(
             # reasoning and return an empty message, silently disabling the arm.
             extra_body={"thinking": {"type": "disabled"}},
         )
-    if method == "pruner_v1":
-        return OpenAIAgentsContextFilter(
+    elif method == "pruner_v1":
+        arm_filter = OpenAIAgentsContextFilter(
             ContextPluginConfig(method="pruner_v1", budget=budget),
             task_state=f"Complete {case.scenario} for {case.codename}",
             fixed_reserved_tokens=fixed_reserved_tokens,
         )
-    raise ValueError(f"unsupported method: {method}")
+    else:
+        raise ValueError(f"unsupported method: {method}")
+    if trigger_policy == "always":
+        return arm_filter
+    return BudgetTriggeredFilter(
+        arm_filter, soft_limit_tokens=budget.soft_limit_tokens
+    )
 
 
 def _arm_order(methods: Sequence[str], offset: int) -> tuple[str, ...]:
@@ -896,10 +944,18 @@ def _parse_scenarios(raw: str) -> tuple[str, ...]:
     return values
 
 
-def _validate_args(args, scenarios: Sequence[str]) -> None:
+def _validate_args(
+    args, scenarios: Sequence[str], budget: ContextBudget | None = None
+) -> None:
     if args.repeats <= 0:
         raise SystemExit("--repeats must be positive")
-    if not (0 < args.target <= args.soft <= args.hard):
+    effective = budget or resolve_budget(args)[0]
+    if not (
+        0
+        < effective.target_tokens
+        <= effective.soft_limit_tokens
+        <= effective.hard_limit_tokens
+    ):
         raise SystemExit("budget must satisfy 0 < target <= soft <= hard")
     if args.max_api_requests <= 0 or args.max_turns <= 0:
         raise SystemExit("request and turn limits must be positive")
@@ -934,6 +990,19 @@ def _print_plan(
     print(f"summary_request_headroom={summary_headroom}")
     print(f"minimum_planned_requests={minimum_requests}")
     print(f"hard_request_cap={args.max_api_requests}")
+    budget, thresholds = resolve_budget(args)
+    print(
+        "budget_provider_tokens="
+        f"soft:{thresholds.soft_provider},hard:{thresholds.hard_provider},"
+        f"target:{thresholds.target_provider}"
+    )
+    print(
+        "budget_estimated_tokens="
+        f"soft:{budget.soft_limit_tokens},hard:{budget.hard_limit_tokens},"
+        f"target:{budget.target_tokens}"
+    )
+    print(f"calibration_ratio={thresholds.ratio}")
+    print(f"trigger_policy={args.trigger_policy}")
     print(f"arm_order_rotation=rotate_by_(repeat_index + scenario_index)_mod_{len(methods)}")
     print("No API request was sent in --plan mode.")
 

@@ -151,14 +151,20 @@ runs/stage5-openhands/*
 !runs/stage5-openhands/django-17084-v48-pilot-01/
 !runs/stage5-openhands/django-multitask-v49-pilot-01/
 !runs/stage5-openhands/django-multitask-v52-pilot-01/
+!runs/stage5-openhands/django-multitask-v53-pilot-03/
 
 # 新主机三臂批次：只放行最终结果批次，中间/演练批次不入库。
 !runs/stage5-openai-agents-api/
 runs/stage5-openai-agents-api/*
 !runs/stage5-openai-agents-api/deepseek-runner-3x3-v3arm/
+!runs/stage5-openai-agents-api/deepseek-runner-3x3-v2cal/
+!runs/stage5-openai-agents-api/deepseek-runner-3x3-v2cal-r3-stability/
 !runs/stage5-crewai/
 runs/stage5-crewai/*
 !runs/stage5-crewai/crewai-natural-3arm-v133/
+!runs/stage5-crewai/crewai-natural-3arm-v2cal/
+!runs/stage5-crewai/crewai-natural-3arm-v2cal-rep2-01/
+!runs/stage5-crewai/crewai-natural-3arm-v2cal-r2fix-01/
 
 # 保留报告、manifest、ledger、SDK 事件和测试日志；跳过可重建的完整源码副本。
 runs/stage5-*/**/workspaces/
@@ -168,6 +174,12 @@ runs/stage5-openhands/**/.runtime-tmp/
 runs/stage5-openhands/**/.audit-tmp/
 runs/stage5-openhands/**/evaluation-audit/
 runs/stage5-openhands/**/.audit-checkpoint.json
+runs/stage5-openhands/**/.audit-fast-checkpoint.json
+runs/stage5-openhands/**/audit-fast.pid
+runs/stage5-openhands/**/audit-fast.stdout.log
+runs/stage5-openhands/**/audit-fast.stderr.log
+runs/stage5-openhands/**/host-workspace/
+runs/stage5-openhands/**/evaluation-audit-fast-stale-*/
 runs/_audit-splits/
 runs/stage5-openhands/**/base/
 runs/stage5-openhands/**/base-host/

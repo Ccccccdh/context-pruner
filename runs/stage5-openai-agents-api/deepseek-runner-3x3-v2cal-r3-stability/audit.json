@@ -1,0 +1,80 @@
+{
+  "complete": true,
+  "issues": [],
+  "raw_rows": 27,
+  "unique_samples": 27,
+  "source_hashes": {
+    "experiments/runners/run_openai_agents_api_experiment.py": "cbb47df340603beaf6f44d5fb7cc8345041293f82e15ec196f551d82a7f69bfc",
+    "experiments/runners/token_policy.py": "e1d3c0de34c1ba55a3400a24ca71ea514363b7c9cdcf0ca4e8449382a58474cb",
+    "experiments/runners/trigger_gate.py": "931fd869733029f2f47604f6d99fdaef5da542840c6cb8c806360870cb3c5b23",
+    "experiments/runners/openai_agents_native_summary.py": "2b05db2560ab80d8eca9aaee5828209f9439d0682d200cf8e6a7f01ab5f7fccd"
+  },
+  "api_request_attempts": 84,
+  "methods": {
+    "none": {
+      "samples": 9,
+      "success": 9,
+      "structure_safe": 9,
+      "summary_calls": 0,
+      "compression_events": 0
+    },
+    "pruner_v1": {
+      "samples": 9,
+      "success": 9,
+      "structure_safe": 9,
+      "summary_calls": 0,
+      "compression_events": 21
+    },
+    "native_summary": {
+      "samples": 9,
+      "success": 9,
+      "structure_safe": 9,
+      "summary_calls": 21,
+      "compression_events": 21
+    }
+  },
+  "paired": {
+    "pruner_v1": {
+      "n": 9,
+      "input_mean": 0.5793732836698007,
+      "all_arm_mean": 0.5541165558034028,
+      "all_arm_positive_pairs": 9,
+      "paired_success_agreement": 9,
+      "by_scenario": {
+        "single_tool": {
+          "n": 3,
+          "all_arm_mean": 0.584005570029242
+        },
+        "parallel_tools": {
+          "n": 3,
+          "all_arm_mean": 0.5505963312118558
+        },
+        "multi_tool_chain": {
+          "n": 3,
+          "all_arm_mean": 0.5277477661691108
+        }
+      }
+    },
+    "native_summary": {
+      "n": 9,
+      "input_mean": 0.32674165710420255,
+      "all_arm_mean": -0.33873808149003526,
+      "all_arm_positive_pairs": 0,
+      "paired_success_agreement": 9,
+      "by_scenario": {
+        "single_tool": {
+          "n": 3,
+          "all_arm_mean": -0.3544234894159663
+        },
+        "parallel_tools": {
+          "n": 3,
+          "all_arm_mean": -0.36408624347375107
+        },
+        "multi_tool_chain": {
+          "n": 3,
+          "all_arm_mean": -0.2977045115803885
+        }
+      }
+    }
+  }
+}

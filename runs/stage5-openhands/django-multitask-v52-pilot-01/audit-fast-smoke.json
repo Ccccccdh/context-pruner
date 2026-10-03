@@ -1,0 +1,200 @@
+{
+  "complete": false,
+  "expected_samples": 27,
+  "completed_samples": 2,
+  "arms": {
+    "none": {
+      "samples": 9,
+      "successes": 0,
+      "agent_input_tokens": 2420866,
+      "summary_input_tokens": 0,
+      "total_input_tokens": 2420866,
+      "total_output_tokens": 59545,
+      "model_calls": 157,
+      "summary_calls": 0,
+      "failed_calls": 0,
+      "peak_estimated_input": 38624,
+      "elapsed_seconds": 3306.743318500012,
+      "condensation_events": 0,
+      "artifact_successes": 0,
+      "call_or_token_limit_exhaustions": 0,
+      "pruner_hard_budget_exceeded": 0,
+      "agent_error_events": 0
+    },
+    "native_summary": {
+      "samples": 9,
+      "successes": 1,
+      "agent_input_tokens": 2183106,
+      "summary_input_tokens": 16383,
+      "total_input_tokens": 2199489,
+      "total_output_tokens": 63418,
+      "model_calls": 158,
+      "summary_calls": 4,
+      "failed_calls": 0,
+      "peak_estimated_input": 30873,
+      "elapsed_seconds": 3412.519558199987,
+      "condensation_events": 4,
+      "artifact_successes": 1,
+      "call_or_token_limit_exhaustions": 0,
+      "pruner_hard_budget_exceeded": 0,
+      "agent_error_events": 0
+    },
+    "pruner_v51": {
+      "samples": 9,
+      "successes": 0,
+      "agent_input_tokens": 2201840,
+      "summary_input_tokens": 0,
+      "total_input_tokens": 2201840,
+      "total_output_tokens": 68049,
+      "model_calls": 169,
+      "summary_calls": 0,
+      "failed_calls": 0,
+      "peak_estimated_input": 25453,
+      "elapsed_seconds": 3949.4856987000094,
+      "condensation_events": 6,
+      "artifact_successes": 0,
+      "call_or_token_limit_exhaustions": 0,
+      "pruner_hard_budget_exceeded": 0,
+      "agent_error_events": 0
+    }
+  },
+  "samples": [
+    {
+      "sample": "r1-django_list_editable_atomicity-native_summary",
+      "task": "django_list_editable_atomicity",
+      "repeat": 1,
+      "arm": "native_summary",
+      "normal_completion_success": true,
+      "artifact_success": true,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v52-pilot-01\\r1-django_list_editable_atomicity-native_summary\\evaluation-audit-fast\\host-workspace\\django'",
+        "Ran 75 tests in 1.891s"
+      ],
+      "evaluation_passed": true,
+      "evaluation_ran": 75,
+      "evaluation_returncode": 0,
+      "evaluation_selection": [
+        "admin_changelist"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 49817,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    },
+    {
+      "sample": "r1-django_lookup_allowed_foreign_primary-native_summary",
+      "task": "django_lookup_allowed_foreign_primary",
+      "repeat": 1,
+      "arm": "native_summary",
+      "normal_completion_success": false,
+      "artifact_success": false,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v52-pilot-01\\r1-django_lookup_allowed_foreign_primary-native_summary\\evaluation-audit-fast\\host-workspace\\django'",
+        "Ran 163 tests in 0.249s",
+        "FAILED (failures=1)"
+      ],
+      "evaluation_passed": false,
+      "evaluation_ran": 163,
+      "evaluation_returncode": 1,
+      "evaluation_selection": [
+        "modeladmin"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 554010,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    }
+  ],
+  "paired": {
+    "native_summary": {
+      "pairs": [],
+      "metrics": {
+        "all": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "wins": 0
+        },
+        "api_ok": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "wins": 0
+        },
+        "both_success_api_ok": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "wins": 0
+        }
+      }
+    },
+    "pruner_v51": {
+      "pairs": [],
+      "metrics": {
+        "all": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "wins": 0
+        },
+        "api_ok": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "wins": 0
+        },
+        "both_success_api_ok": {
+          "n": 0,
+          "mean": null,
+          "median": null,
+          "wins": 0
+        }
+      }
+    }
+  },
+  "credential_matches": 0,
+  "credential_scan_performed": true,
+  "source_hashes_valid": true,
+  "frozen_source_hashes_checked": 105,
+  "accelerated_auditor_source_hashes": {
+    "integrations\\openhands\\audit_validation_v53_fast.py": "bab3319829d16503475e41964d0cf86222c26490c567f9d82055d11ad7900c27",
+    "integrations\\openhands\\audit_v53_fast_core.py": "29ed2f391964fac3d0544f10c9d03bacae0b3d5b02d265051464a1b0eaa5dd5c"
+  },
+  "credential_scan": {
+    "mode": "pruned_with_changed_workspace_files",
+    "files_scanned": 1398,
+    "workspace_files_scanned": 4,
+    "seconds": 19.59
+  },
+  "timing": {
+    "segments_seconds": {
+      "evaluate_copy_patch_test": 190.07,
+      "post_evaluate_full_boundary_scan": 439.81,
+      "pre_evaluate_check": 1.82
+    },
+    "per_sample_seconds": {
+      "r1-django_list_editable_atomicity-native_summary": {
+        "pre_evaluate_check": 0.35,
+        "evaluate_copy_patch_test": 98.43,
+        "post_evaluate_full_boundary_scan": 212.87
+      },
+      "r1-django_lookup_allowed_foreign_primary-native_summary": {
+        "pre_evaluate_check": 1.47,
+        "evaluate_copy_patch_test": 91.64,
+        "post_evaluate_full_boundary_scan": 226.95
+      }
+    }
+  },
+  "note": "Failed request provider usage is unknown. All outcomes retained; subsets are sensitivity analyses."
+}

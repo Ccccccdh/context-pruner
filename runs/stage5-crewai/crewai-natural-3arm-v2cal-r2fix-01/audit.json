@@ -1,0 +1,149 @@
+{
+  "complete": true,
+  "errors": [],
+  "sample_count": 18,
+  "request_budget_slots_used": 69,
+  "request_budget_slots_cap": 96,
+  "success_by_arm": {
+    "native_summary": 6,
+    "none": 6,
+    "pruner_v1": 6
+  },
+  "summary_calls": 15,
+  "summary_attempts": 15,
+  "summary_failures": 0,
+  "summary_failure_details": [],
+  "agent_attempts": 54,
+  "auxiliary_budget_reservations": 15,
+  "auxiliary_reservations_without_usage": 0,
+  "comparisons": {
+    "pruner_v1": {
+      "n": 6,
+      "input_savings_mean": 0.13272732409387647,
+      "total_savings_mean": 0.11977173872830349,
+      "peak_savings_mean": 0.14801824121667045,
+      "positive_input_pairs": 6,
+      "positive_total_pairs": 6,
+      "pairs": [
+        {
+          "task": "customer_migration",
+          "repeat": 0,
+          "base_success": true,
+          "arm_success": true,
+          "input_savings": 0.02227221597300333,
+          "total_savings": 0.014615547553484376,
+          "peak_savings": 0.040557667934093766
+        },
+        {
+          "task": "customer_migration",
+          "repeat": 1,
+          "base_success": true,
+          "arm_success": true,
+          "input_savings": 0.0326155132761865,
+          "total_savings": 0.022817460317460347,
+          "peak_savings": 0.05660377358490565
+        },
+        {
+          "task": "incident_triage",
+          "repeat": 0,
+          "base_success": true,
+          "arm_success": true,
+          "input_savings": 0.33407622019166483,
+          "total_savings": 0.31679544530296866,
+          "peak_savings": 0.33914125700062225
+        },
+        {
+          "task": "incident_triage",
+          "repeat": 1,
+          "base_success": true,
+          "arm_success": true,
+          "input_savings": 0.35112593828190164,
+          "total_savings": 0.32507739938080493,
+          "peak_savings": 0.3547632963179427
+        },
+        {
+          "task": "release_readiness",
+          "repeat": 0,
+          "base_success": true,
+          "arm_success": true,
+          "input_savings": 0.02174877940523745,
+          "total_savings": 0.011247656738179512,
+          "peak_savings": 0.03855721393034828
+        },
+        {
+          "task": "release_readiness",
+          "repeat": 1,
+          "base_success": true,
+          "arm_success": true,
+          "input_savings": 0.03452527743526512,
+          "total_savings": 0.02807692307692311,
+          "peak_savings": 0.0584862385321101
+        }
+      ]
+    },
+    "native_summary": {
+      "n": 6,
+      "input_savings_mean": 0.03360569288914796,
+      "total_savings_mean": -0.4213674349560261,
+      "peak_savings_mean": 0.020100076230890107,
+      "positive_input_pairs": 5,
+      "positive_total_pairs": 0,
+      "pairs": [
+        {
+          "task": "customer_migration",
+          "repeat": 0,
+          "base_success": true,
+          "arm_success": true,
+          "input_savings": 0.04296962879640043,
+          "total_savings": -0.5155687354374072,
+          "peak_savings": 0.06083650190114065
+        },
+        {
+          "task": "customer_migration",
+          "repeat": 1,
+          "base_success": true,
+          "arm_success": true,
+          "input_savings": 0.0303157014426092,
+          "total_savings": -0.32579365079365075,
+          "peak_savings": -0.002948113207547065
+        },
+        {
+          "task": "incident_triage",
+          "repeat": 0,
+          "base_success": true,
+          "arm_success": true,
+          "input_savings": 0.010474704702473803,
+          "total_savings": -0.27653517690117924,
+          "peak_savings": -0.013067828251400071
+        },
+        {
+          "task": "incident_triage",
+          "repeat": 1,
+          "base_success": true,
+          "arm_success": true,
+          "input_savings": 0.0796497080900751,
+          "total_savings": -0.5174148606811146,
+          "peak_savings": 0.06545879602571592
+        },
+        {
+          "task": "release_readiness",
+          "repeat": 0,
+          "base_success": true,
+          "arm_success": true,
+          "input_savings": 0.0,
+          "total_savings": -0.5790460320766506,
+          "peak_savings": 0.0
+        },
+        {
+          "task": "release_readiness",
+          "repeat": 1,
+          "base_success": true,
+          "arm_success": true,
+          "input_savings": 0.038224414303329235,
+          "total_savings": -0.3138461538461539,
+          "peak_savings": 0.010321100917431214
+        }
+      ]
+    }
+  }
+}

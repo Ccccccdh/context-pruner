@@ -1,0 +1,1209 @@
+{
+  "complete": true,
+  "expected_samples": 27,
+  "completed_samples": 27,
+  "arms": {
+    "none": {
+      "samples": 9,
+      "successes": 6,
+      "agent_input_tokens": 2099421,
+      "summary_input_tokens": 0,
+      "total_input_tokens": 2099421,
+      "total_output_tokens": 49648,
+      "model_calls": 151,
+      "summary_calls": 0,
+      "failed_calls": 0,
+      "peak_estimated_input": 38473,
+      "elapsed_seconds": 2798.4673707999755,
+      "condensation_events": 0,
+      "artifact_successes": 6,
+      "call_or_token_limit_exhaustions": 0,
+      "pruner_hard_budget_exceeded": 0,
+      "agent_error_events": 0
+    },
+    "native_summary": {
+      "samples": 9,
+      "successes": 8,
+      "agent_input_tokens": 1718676,
+      "summary_input_tokens": 0,
+      "total_input_tokens": 1718676,
+      "total_output_tokens": 44420,
+      "model_calls": 131,
+      "summary_calls": 0,
+      "failed_calls": 0,
+      "peak_estimated_input": 36630,
+      "elapsed_seconds": 2883.0482210000628,
+      "condensation_events": 0,
+      "artifact_successes": 8,
+      "call_or_token_limit_exhaustions": 0,
+      "pruner_hard_budget_exceeded": 0,
+      "agent_error_events": 0
+    },
+    "pruner_v51": {
+      "samples": 9,
+      "successes": 8,
+      "agent_input_tokens": 1987269,
+      "summary_input_tokens": 0,
+      "total_input_tokens": 1987269,
+      "total_output_tokens": 46031,
+      "model_calls": 140,
+      "summary_calls": 0,
+      "failed_calls": 0,
+      "peak_estimated_input": 34144,
+      "elapsed_seconds": 2959.019858600019,
+      "condensation_events": 2,
+      "artifact_successes": 8,
+      "call_or_token_limit_exhaustions": 0,
+      "pruner_hard_budget_exceeded": 0,
+      "agent_error_events": 0
+    }
+  },
+  "samples": [
+    {
+      "sample": "r1-django_list_editable_atomicity-native_summary",
+      "task": "django_list_editable_atomicity",
+      "repeat": 1,
+      "arm": "native_summary",
+      "normal_completion_success": true,
+      "artifact_success": true,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v53-pilot-03\\r1-django_list_editable_atomicity-native_summary\\evaluation-audit-fast\\host-workspace\\django'",
+        "Ran 75 tests in 2.366s"
+      ],
+      "evaluation_passed": true,
+      "evaluation_ran": 75,
+      "evaluation_returncode": 0,
+      "evaluation_selection": [
+        "admin_changelist"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 49822,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    },
+    {
+      "sample": "r1-django_list_editable_atomicity-none",
+      "task": "django_list_editable_atomicity",
+      "repeat": 1,
+      "arm": "none",
+      "normal_completion_success": true,
+      "artifact_success": true,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v53-pilot-03\\r1-django_list_editable_atomicity-none\\evaluation-audit-fast\\host-workspace\\django'",
+        "Ran 75 tests in 1.846s"
+      ],
+      "evaluation_passed": true,
+      "evaluation_ran": 75,
+      "evaluation_returncode": 0,
+      "evaluation_selection": [
+        "admin_changelist"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 49821,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    },
+    {
+      "sample": "r1-django_list_editable_atomicity-pruner_v51",
+      "task": "django_list_editable_atomicity",
+      "repeat": 1,
+      "arm": "pruner_v51",
+      "normal_completion_success": true,
+      "artifact_success": true,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v53-pilot-03\\r1-django_list_editable_atomicity-pruner_v51\\evaluation-audit-fast\\host-workspace\\django'",
+        "Ran 75 tests in 1.867s"
+      ],
+      "evaluation_passed": true,
+      "evaluation_ran": 75,
+      "evaluation_returncode": 0,
+      "evaluation_selection": [
+        "admin_changelist"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 49816,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    },
+    {
+      "sample": "r1-django_lookup_allowed_foreign_primary-native_summary",
+      "task": "django_lookup_allowed_foreign_primary",
+      "repeat": 1,
+      "arm": "native_summary",
+      "normal_completion_success": false,
+      "artifact_success": false,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v53-pilot-03\\r1-django_lookup_allowed_foreign_primary-native_summary\\evaluation-audit-fast\\host-workspace\\django'",
+        "Ran 163 tests in 0.228s",
+        "FAILED (failures=1)"
+      ],
+      "evaluation_passed": false,
+      "evaluation_ran": 163,
+      "evaluation_returncode": 1,
+      "evaluation_selection": [
+        "modeladmin"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 649118,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    },
+    {
+      "sample": "r1-django_lookup_allowed_foreign_primary-none",
+      "task": "django_lookup_allowed_foreign_primary",
+      "repeat": 1,
+      "arm": "none",
+      "normal_completion_success": false,
+      "artifact_success": false,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v53-pilot-03\\r1-django_lookup_allowed_foreign_primary-none\\evaluation-audit-fast\\host-workspace\\django'",
+        "Ran 163 tests in 0.219s",
+        "FAILED (failures=1)"
+      ],
+      "evaluation_passed": false,
+      "evaluation_ran": 163,
+      "evaluation_returncode": 1,
+      "evaluation_selection": [
+        "modeladmin"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 650750,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    },
+    {
+      "sample": "r1-django_lookup_allowed_foreign_primary-pruner_v51",
+      "task": "django_lookup_allowed_foreign_primary",
+      "repeat": 1,
+      "arm": "pruner_v51",
+      "normal_completion_success": false,
+      "artifact_success": false,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v53-pilot-03\\r1-django_lookup_allowed_foreign_primary-pruner_v51\\evaluation-audit-fast\\host-workspace\\django'",
+        "Ran 163 tests in 0.242s",
+        "FAILED (failures=1)"
+      ],
+      "evaluation_passed": false,
+      "evaluation_ran": 163,
+      "evaluation_returncode": 1,
+      "evaluation_selection": [
+        "modeladmin"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 149996,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    },
+    {
+      "sample": "r1-django_referenced_window_wrapping-native_summary",
+      "task": "django_referenced_window_wrapping",
+      "repeat": 1,
+      "arm": "native_summary",
+      "normal_completion_success": true,
+      "artifact_success": true,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v53-pilot-03\\r1-django_referenced_window_wrapping-native_summary\\evaluation-audit-fast\\host-workspace\\django'",
+        "Ran 125 tests in 0.357s",
+        "OK"
+      ],
+      "evaluation_passed": true,
+      "evaluation_ran": 125,
+      "evaluation_returncode": 0,
+      "evaluation_selection": [
+        "aggregation"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 160033,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    },
+    {
+      "sample": "r1-django_referenced_window_wrapping-none",
+      "task": "django_referenced_window_wrapping",
+      "repeat": 1,
+      "arm": "none",
+      "normal_completion_success": true,
+      "artifact_success": true,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v53-pilot-03\\r1-django_referenced_window_wrapping-none\\evaluation-audit-fast\\host-workspace\\django'",
+        "Ran 125 tests in 0.344s",
+        "OK"
+      ],
+      "evaluation_passed": true,
+      "evaluation_ran": 125,
+      "evaluation_returncode": 0,
+      "evaluation_selection": [
+        "aggregation"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 231296,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    },
+    {
+      "sample": "r1-django_referenced_window_wrapping-pruner_v51",
+      "task": "django_referenced_window_wrapping",
+      "repeat": 1,
+      "arm": "pruner_v51",
+      "normal_completion_success": true,
+      "artifact_success": true,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v53-pilot-03\\r1-django_referenced_window_wrapping-pruner_v51\\evaluation-audit-fast\\host-workspace\\django'",
+        "Ran 125 tests in 0.352s",
+        "OK"
+      ],
+      "evaluation_passed": true,
+      "evaluation_ran": 125,
+      "evaluation_returncode": 0,
+      "evaluation_selection": [
+        "aggregation"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 457698,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    },
+    {
+      "sample": "r2-django_list_editable_atomicity-native_summary",
+      "task": "django_list_editable_atomicity",
+      "repeat": 2,
+      "arm": "native_summary",
+      "normal_completion_success": true,
+      "artifact_success": true,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v53-pilot-03\\r2-django_list_editable_atomicity-native_summary\\evaluation-audit-fast\\host-workspace\\django'",
+        "Ran 75 tests in 2.017s"
+      ],
+      "evaluation_passed": true,
+      "evaluation_ran": 75,
+      "evaluation_returncode": 0,
+      "evaluation_selection": [
+        "admin_changelist"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 51662,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    },
+    {
+      "sample": "r2-django_list_editable_atomicity-none",
+      "task": "django_list_editable_atomicity",
+      "repeat": 2,
+      "arm": "none",
+      "normal_completion_success": true,
+      "artifact_success": true,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v53-pilot-03\\r2-django_list_editable_atomicity-none\\evaluation-audit-fast\\host-workspace\\django'",
+        "Ran 75 tests in 1.961s"
+      ],
+      "evaluation_passed": true,
+      "evaluation_ran": 75,
+      "evaluation_returncode": 0,
+      "evaluation_selection": [
+        "admin_changelist"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 49824,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    },
+    {
+      "sample": "r2-django_list_editable_atomicity-pruner_v51",
+      "task": "django_list_editable_atomicity",
+      "repeat": 2,
+      "arm": "pruner_v51",
+      "normal_completion_success": true,
+      "artifact_success": true,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v53-pilot-03\\r2-django_list_editable_atomicity-pruner_v51\\evaluation-audit-fast\\host-workspace\\django'",
+        "Ran 75 tests in 1.828s"
+      ],
+      "evaluation_passed": true,
+      "evaluation_ran": 75,
+      "evaluation_returncode": 0,
+      "evaluation_selection": [
+        "admin_changelist"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 49822,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    },
+    {
+      "sample": "r2-django_lookup_allowed_foreign_primary-native_summary",
+      "task": "django_lookup_allowed_foreign_primary",
+      "repeat": 2,
+      "arm": "native_summary",
+      "normal_completion_success": true,
+      "artifact_success": true,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v53-pilot-03\\r2-django_lookup_allowed_foreign_primary-native_summary\\evaluation-audit-fast\\host-workspace\\django'",
+        "Ran 163 tests in 0.181s",
+        "OK"
+      ],
+      "evaluation_passed": true,
+      "evaluation_ran": 163,
+      "evaluation_returncode": 0,
+      "evaluation_selection": [
+        "modeladmin"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 230445,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    },
+    {
+      "sample": "r2-django_lookup_allowed_foreign_primary-none",
+      "task": "django_lookup_allowed_foreign_primary",
+      "repeat": 2,
+      "arm": "none",
+      "normal_completion_success": false,
+      "artifact_success": false,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": "TypeError",
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v53-pilot-03\\r2-django_lookup_allowed_foreign_primary-none\\evaluation-audit-fast\\host-workspace\\django'"
+      ],
+      "evaluation_passed": false,
+      "evaluation_ran": null,
+      "evaluation_returncode": 1,
+      "evaluation_selection": [
+        "modeladmin"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 366530,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    },
+    {
+      "sample": "r2-django_lookup_allowed_foreign_primary-pruner_v51",
+      "task": "django_lookup_allowed_foreign_primary",
+      "repeat": 2,
+      "arm": "pruner_v51",
+      "normal_completion_success": true,
+      "artifact_success": true,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v53-pilot-03\\r2-django_lookup_allowed_foreign_primary-pruner_v51\\evaluation-audit-fast\\host-workspace\\django'",
+        "Ran 163 tests in 0.206s",
+        "OK"
+      ],
+      "evaluation_passed": true,
+      "evaluation_ran": 163,
+      "evaluation_returncode": 0,
+      "evaluation_selection": [
+        "modeladmin"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 288662,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    },
+    {
+      "sample": "r2-django_referenced_window_wrapping-native_summary",
+      "task": "django_referenced_window_wrapping",
+      "repeat": 2,
+      "arm": "native_summary",
+      "normal_completion_success": true,
+      "artifact_success": true,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v53-pilot-03\\r2-django_referenced_window_wrapping-native_summary\\evaluation-audit-fast\\host-workspace\\django'",
+        "Ran 125 tests in 0.329s",
+        "OK"
+      ],
+      "evaluation_passed": true,
+      "evaluation_ran": 125,
+      "evaluation_returncode": 0,
+      "evaluation_selection": [
+        "aggregation"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 127818,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    },
+    {
+      "sample": "r2-django_referenced_window_wrapping-none",
+      "task": "django_referenced_window_wrapping",
+      "repeat": 2,
+      "arm": "none",
+      "normal_completion_success": true,
+      "artifact_success": true,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v53-pilot-03\\r2-django_referenced_window_wrapping-none\\evaluation-audit-fast\\host-workspace\\django'",
+        "Ran 125 tests in 0.359s",
+        "OK"
+      ],
+      "evaluation_passed": true,
+      "evaluation_ran": 125,
+      "evaluation_returncode": 0,
+      "evaluation_selection": [
+        "aggregation"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 172858,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    },
+    {
+      "sample": "r2-django_referenced_window_wrapping-pruner_v51",
+      "task": "django_referenced_window_wrapping",
+      "repeat": 2,
+      "arm": "pruner_v51",
+      "normal_completion_success": true,
+      "artifact_success": true,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v53-pilot-03\\r2-django_referenced_window_wrapping-pruner_v51\\evaluation-audit-fast\\host-workspace\\django'",
+        "Ran 125 tests in 0.348s",
+        "OK"
+      ],
+      "evaluation_passed": true,
+      "evaluation_ran": 125,
+      "evaluation_returncode": 0,
+      "evaluation_selection": [
+        "aggregation"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 203256,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    },
+    {
+      "sample": "r3-django_list_editable_atomicity-native_summary",
+      "task": "django_list_editable_atomicity",
+      "repeat": 3,
+      "arm": "native_summary",
+      "normal_completion_success": true,
+      "artifact_success": true,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v53-pilot-03\\r3-django_list_editable_atomicity-native_summary\\evaluation-audit-fast\\host-workspace\\django'",
+        "Ran 75 tests in 1.950s"
+      ],
+      "evaluation_passed": true,
+      "evaluation_ran": 75,
+      "evaluation_returncode": 0,
+      "evaluation_selection": [
+        "admin_changelist"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 49832,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    },
+    {
+      "sample": "r3-django_list_editable_atomicity-none",
+      "task": "django_list_editable_atomicity",
+      "repeat": 3,
+      "arm": "none",
+      "normal_completion_success": true,
+      "artifact_success": true,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v53-pilot-03\\r3-django_list_editable_atomicity-none\\evaluation-audit-fast\\host-workspace\\django'",
+        "Ran 75 tests in 1.995s"
+      ],
+      "evaluation_passed": true,
+      "evaluation_ran": 75,
+      "evaluation_returncode": 0,
+      "evaluation_selection": [
+        "admin_changelist"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 49646,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    },
+    {
+      "sample": "r3-django_list_editable_atomicity-pruner_v51",
+      "task": "django_list_editable_atomicity",
+      "repeat": 3,
+      "arm": "pruner_v51",
+      "normal_completion_success": true,
+      "artifact_success": true,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v53-pilot-03\\r3-django_list_editable_atomicity-pruner_v51\\evaluation-audit-fast\\host-workspace\\django'",
+        "Ran 75 tests in 1.995s"
+      ],
+      "evaluation_passed": true,
+      "evaluation_ran": 75,
+      "evaluation_returncode": 0,
+      "evaluation_selection": [
+        "admin_changelist"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 49815,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    },
+    {
+      "sample": "r3-django_lookup_allowed_foreign_primary-native_summary",
+      "task": "django_lookup_allowed_foreign_primary",
+      "repeat": 3,
+      "arm": "native_summary",
+      "normal_completion_success": true,
+      "artifact_success": true,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v53-pilot-03\\r3-django_lookup_allowed_foreign_primary-native_summary\\evaluation-audit-fast\\host-workspace\\django'",
+        "Ran 163 tests in 0.279s",
+        "OK"
+      ],
+      "evaluation_passed": true,
+      "evaluation_ran": 163,
+      "evaluation_returncode": 0,
+      "evaluation_selection": [
+        "modeladmin"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 245917,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    },
+    {
+      "sample": "r3-django_lookup_allowed_foreign_primary-none",
+      "task": "django_lookup_allowed_foreign_primary",
+      "repeat": 3,
+      "arm": "none",
+      "normal_completion_success": false,
+      "artifact_success": false,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v53-pilot-03\\r3-django_lookup_allowed_foreign_primary-none\\evaluation-audit-fast\\host-workspace\\django'",
+        "Ran 163 tests in 0.186s",
+        "FAILED (failures=1)"
+      ],
+      "evaluation_passed": false,
+      "evaluation_ran": 163,
+      "evaluation_returncode": 1,
+      "evaluation_selection": [
+        "modeladmin"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 400590,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    },
+    {
+      "sample": "r3-django_lookup_allowed_foreign_primary-pruner_v51",
+      "task": "django_lookup_allowed_foreign_primary",
+      "repeat": 3,
+      "arm": "pruner_v51",
+      "normal_completion_success": true,
+      "artifact_success": true,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v53-pilot-03\\r3-django_lookup_allowed_foreign_primary-pruner_v51\\evaluation-audit-fast\\host-workspace\\django'",
+        "Ran 163 tests in 0.226s",
+        "OK"
+      ],
+      "evaluation_passed": true,
+      "evaluation_ran": 163,
+      "evaluation_returncode": 0,
+      "evaluation_selection": [
+        "modeladmin"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 127332,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    },
+    {
+      "sample": "r3-django_referenced_window_wrapping-native_summary",
+      "task": "django_referenced_window_wrapping",
+      "repeat": 3,
+      "arm": "native_summary",
+      "normal_completion_success": true,
+      "artifact_success": true,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v53-pilot-03\\r3-django_referenced_window_wrapping-native_summary\\evaluation-audit-fast\\host-workspace\\django'",
+        "Ran 125 tests in 0.323s",
+        "OK"
+      ],
+      "evaluation_passed": true,
+      "evaluation_ran": 125,
+      "evaluation_returncode": 0,
+      "evaluation_selection": [
+        "aggregation"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 154029,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    },
+    {
+      "sample": "r3-django_referenced_window_wrapping-none",
+      "task": "django_referenced_window_wrapping",
+      "repeat": 3,
+      "arm": "none",
+      "normal_completion_success": true,
+      "artifact_success": true,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v53-pilot-03\\r3-django_referenced_window_wrapping-none\\evaluation-audit-fast\\host-workspace\\django'",
+        "Ran 125 tests in 0.313s",
+        "OK"
+      ],
+      "evaluation_passed": true,
+      "evaluation_ran": 125,
+      "evaluation_returncode": 0,
+      "evaluation_selection": [
+        "aggregation"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 128106,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    },
+    {
+      "sample": "r3-django_referenced_window_wrapping-pruner_v51",
+      "task": "django_referenced_window_wrapping",
+      "repeat": 3,
+      "arm": "pruner_v51",
+      "normal_completion_success": true,
+      "artifact_success": true,
+      "file_boundary_ok": true,
+      "api_ok": true,
+      "error_type": null,
+      "summary": [
+        "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v53-pilot-03\\r3-django_referenced_window_wrapping-pruner_v51\\evaluation-audit-fast\\host-workspace\\django'",
+        "Ran 125 tests in 0.325s",
+        "OK"
+      ],
+      "evaluation_passed": true,
+      "evaluation_ran": 125,
+      "evaluation_returncode": 0,
+      "evaluation_selection": [
+        "aggregation"
+      ],
+      "agent_error_events": 0,
+      "total_input_tokens": 610872,
+      "unknown_failed_request_usage": false,
+      "call_or_token_limit_exhausted": false,
+      "pruner_hard_budget_exceeded": 0,
+      "source_references_valid": true
+    }
+  ],
+  "paired": {
+    "native_summary": {
+      "pairs": [
+        {
+          "task": "django_referenced_window_wrapping",
+          "repeat": 1,
+          "input_savings": 0.3081030368013282,
+          "baseline_input": 231296,
+          "method_input": 160033,
+          "baseline_success": true,
+          "method_success": true,
+          "api_ok": true
+        },
+        {
+          "task": "django_referenced_window_wrapping",
+          "repeat": 2,
+          "input_savings": 0.26056069143458793,
+          "baseline_input": 172858,
+          "method_input": 127818,
+          "baseline_success": true,
+          "method_success": true,
+          "api_ok": true
+        },
+        {
+          "task": "django_referenced_window_wrapping",
+          "repeat": 3,
+          "input_savings": -0.20235586155215213,
+          "baseline_input": 128106,
+          "method_input": 154029,
+          "baseline_success": true,
+          "method_success": true,
+          "api_ok": true
+        },
+        {
+          "task": "django_lookup_allowed_foreign_primary",
+          "repeat": 1,
+          "input_savings": 0.002507875528236614,
+          "baseline_input": 650750,
+          "method_input": 649118,
+          "baseline_success": false,
+          "method_success": false,
+          "api_ok": true
+        },
+        {
+          "task": "django_lookup_allowed_foreign_primary",
+          "repeat": 2,
+          "input_savings": 0.37127929500995827,
+          "baseline_input": 366530,
+          "method_input": 230445,
+          "baseline_success": false,
+          "method_success": true,
+          "api_ok": true
+        },
+        {
+          "task": "django_lookup_allowed_foreign_primary",
+          "repeat": 3,
+          "input_savings": 0.38611298334955935,
+          "baseline_input": 400590,
+          "method_input": 245917,
+          "baseline_success": false,
+          "method_success": true,
+          "api_ok": true
+        },
+        {
+          "task": "django_list_editable_atomicity",
+          "repeat": 1,
+          "input_savings": -2.0071857248948888e-05,
+          "baseline_input": 49821,
+          "method_input": 49822,
+          "baseline_success": true,
+          "method_success": true,
+          "api_ok": true
+        },
+        {
+          "task": "django_list_editable_atomicity",
+          "repeat": 2,
+          "input_savings": -0.036889852280025615,
+          "baseline_input": 49824,
+          "method_input": 51662,
+          "baseline_success": true,
+          "method_success": true,
+          "api_ok": true
+        },
+        {
+          "task": "django_list_editable_atomicity",
+          "repeat": 3,
+          "input_savings": -0.00374652539983078,
+          "baseline_input": 49646,
+          "method_input": 49832,
+          "baseline_success": true,
+          "method_success": true,
+          "api_ok": true
+        }
+      ],
+      "metrics": {
+        "all": {
+          "n": 9,
+          "mean": 0.12061684122604588,
+          "median": 0.002507875528236614,
+          "wins": 5
+        },
+        "api_ok": {
+          "n": 9,
+          "mean": 0.12061684122604588,
+          "median": 0.002507875528236614,
+          "wins": 5
+        },
+        "both_success_api_ok": {
+          "n": 6,
+          "mean": 0.05427523619110978,
+          "median": -0.0018832986285398645,
+          "wins": 2
+        }
+      }
+    },
+    "pruner_v51": {
+      "pairs": [
+        {
+          "task": "django_referenced_window_wrapping",
+          "repeat": 1,
+          "input_savings": -0.9788409656889874,
+          "baseline_input": 231296,
+          "method_input": 457698,
+          "baseline_success": true,
+          "method_success": true,
+          "api_ok": true
+        },
+        {
+          "task": "django_referenced_window_wrapping",
+          "repeat": 2,
+          "input_savings": -0.17585532633722467,
+          "baseline_input": 172858,
+          "method_input": 203256,
+          "baseline_success": true,
+          "method_success": true,
+          "api_ok": true
+        },
+        {
+          "task": "django_referenced_window_wrapping",
+          "repeat": 3,
+          "input_savings": -3.7684885953819496,
+          "baseline_input": 128106,
+          "method_input": 610872,
+          "baseline_success": true,
+          "method_success": true,
+          "api_ok": true
+        },
+        {
+          "task": "django_lookup_allowed_foreign_primary",
+          "repeat": 1,
+          "input_savings": 0.7695028812908182,
+          "baseline_input": 650750,
+          "method_input": 149996,
+          "baseline_success": false,
+          "method_success": false,
+          "api_ok": true
+        },
+        {
+          "task": "django_lookup_allowed_foreign_primary",
+          "repeat": 2,
+          "input_savings": 0.2124464573159086,
+          "baseline_input": 366530,
+          "method_input": 288662,
+          "baseline_success": false,
+          "method_success": true,
+          "api_ok": true
+        },
+        {
+          "task": "django_lookup_allowed_foreign_primary",
+          "repeat": 3,
+          "input_savings": 0.682138845203325,
+          "baseline_input": 400590,
+          "method_input": 127332,
+          "baseline_success": false,
+          "method_success": true,
+          "api_ok": true
+        },
+        {
+          "task": "django_list_editable_atomicity",
+          "repeat": 1,
+          "input_savings": 0.00010035928624474444,
+          "baseline_input": 49821,
+          "method_input": 49816,
+          "baseline_success": true,
+          "method_success": true,
+          "api_ok": true
+        },
+        {
+          "task": "django_list_editable_atomicity",
+          "repeat": 2,
+          "input_savings": 4.0141297366735884e-05,
+          "baseline_input": 49824,
+          "method_input": 49822,
+          "baseline_success": true,
+          "method_success": true,
+          "api_ok": true
+        },
+        {
+          "task": "django_list_editable_atomicity",
+          "repeat": 3,
+          "input_savings": -0.003404101035330065,
+          "baseline_input": 49646,
+          "method_input": 49815,
+          "baseline_success": true,
+          "method_success": true,
+          "api_ok": true
+        }
+      ],
+      "metrics": {
+        "all": {
+          "n": 9,
+          "mean": -0.3624844782277587,
+          "median": 4.0141297366735884e-05,
+          "wins": 5
+        },
+        "api_ok": {
+          "n": 9,
+          "mean": -0.3624844782277587,
+          "median": 4.0141297366735884e-05,
+          "wins": 5
+        },
+        "both_success_api_ok": {
+          "n": 6,
+          "mean": -0.8210747479766467,
+          "median": -0.08962971368627737,
+          "wins": 2
+        }
+      }
+    }
+  },
+  "credential_matches": 0,
+  "credential_scan_performed": true,
+  "source_hashes_valid": true,
+  "frozen_source_hashes_checked": 105,
+  "accelerated_auditor_source_hashes": {
+    "integrations\\openhands\\audit_validation_v53_fast.py": "edc218f559f1b3a83364606cb2e57b37644f1028f206cf82fd4fec058bd2021c",
+    "integrations\\openhands\\audit_v53_fast_core.py": "69b5943be3660fbfcb7006233e787891d9d294155eca10a72d46231fe4131c25"
+  },
+  "credential_scan": {
+    "mode": "pruned_with_changed_workspace_files",
+    "files_scanned": 11459,
+    "workspace_files_scanned": 54,
+    "verified_workspace_dirs_pruned": [
+      "workspaces/w000",
+      "workspaces/w001",
+      "workspaces/w002",
+      "workspaces/w003",
+      "workspaces/w004",
+      "workspaces/w005",
+      "workspaces/w006",
+      "workspaces/w007",
+      "workspaces/w008",
+      "workspaces/w009",
+      "workspaces/w010",
+      "workspaces/w011",
+      "workspaces/w012",
+      "workspaces/w013",
+      "workspaces/w014",
+      "workspaces/w015",
+      "workspaces/w016",
+      "workspaces/w017",
+      "workspaces/w018",
+      "workspaces/w019",
+      "workspaces/w020",
+      "workspaces/w021",
+      "workspaces/w022",
+      "workspaces/w023",
+      "workspaces/w024",
+      "workspaces/w025",
+      "workspaces/w026"
+    ],
+    "seconds": 92.99
+  },
+  "timing": {
+    "segments_seconds": {
+      "evaluate_copy_patch_test": 1970.15,
+      "post_evaluate_full_boundary_scan": 543.67,
+      "pre_evaluate_check": 10.86,
+      "resume_full_boundary_scan": 263.19
+    },
+    "per_sample_seconds": {
+      "r1-django_list_editable_atomicity-native_summary": {
+        "resume_full_boundary_scan": 29.83
+      },
+      "r1-django_list_editable_atomicity-none": {
+        "resume_full_boundary_scan": 27.85
+      },
+      "r1-django_list_editable_atomicity-pruner_v51": {
+        "resume_full_boundary_scan": 27.84
+      },
+      "r1-django_lookup_allowed_foreign_primary-native_summary": {
+        "resume_full_boundary_scan": 29.16
+      },
+      "r1-django_lookup_allowed_foreign_primary-none": {
+        "resume_full_boundary_scan": 28.64
+      },
+      "r1-django_lookup_allowed_foreign_primary-pruner_v51": {
+        "resume_full_boundary_scan": 27.75
+      },
+      "r1-django_referenced_window_wrapping-native_summary": {
+        "resume_full_boundary_scan": 29.66
+      },
+      "r1-django_referenced_window_wrapping-none": {
+        "resume_full_boundary_scan": 31.08
+      },
+      "r1-django_referenced_window_wrapping-pruner_v51": {
+        "resume_full_boundary_scan": 31.38
+      },
+      "r2-django_list_editable_atomicity-native_summary": {
+        "pre_evaluate_check": 0.34,
+        "evaluate_copy_patch_test": 93.33,
+        "post_evaluate_full_boundary_scan": 26.9
+      },
+      "r2-django_list_editable_atomicity-none": {
+        "pre_evaluate_check": 0.32,
+        "evaluate_copy_patch_test": 92.02,
+        "post_evaluate_full_boundary_scan": 28.11
+      },
+      "r2-django_list_editable_atomicity-pruner_v51": {
+        "pre_evaluate_check": 0.33,
+        "evaluate_copy_patch_test": 105.82,
+        "post_evaluate_full_boundary_scan": 30.06
+      },
+      "r2-django_lookup_allowed_foreign_primary-native_summary": {
+        "pre_evaluate_check": 0.79,
+        "evaluate_copy_patch_test": 111.24,
+        "post_evaluate_full_boundary_scan": 28.2
+      },
+      "r2-django_lookup_allowed_foreign_primary-none": {
+        "pre_evaluate_check": 0.8,
+        "evaluate_copy_patch_test": 97.8,
+        "post_evaluate_full_boundary_scan": 29.49
+      },
+      "r2-django_lookup_allowed_foreign_primary-pruner_v51": {
+        "pre_evaluate_check": 0.8,
+        "evaluate_copy_patch_test": 108.09,
+        "post_evaluate_full_boundary_scan": 29.3
+      },
+      "r2-django_referenced_window_wrapping-native_summary": {
+        "pre_evaluate_check": 0.73,
+        "evaluate_copy_patch_test": 117.42,
+        "post_evaluate_full_boundary_scan": 30.42
+      },
+      "r2-django_referenced_window_wrapping-none": {
+        "pre_evaluate_check": 0.66,
+        "evaluate_copy_patch_test": 125.34,
+        "post_evaluate_full_boundary_scan": 30.21
+      },
+      "r2-django_referenced_window_wrapping-pruner_v51": {
+        "pre_evaluate_check": 0.64,
+        "evaluate_copy_patch_test": 110.83,
+        "post_evaluate_full_boundary_scan": 30.8
+      },
+      "r3-django_list_editable_atomicity-native_summary": {
+        "pre_evaluate_check": 0.36,
+        "evaluate_copy_patch_test": 122.89,
+        "post_evaluate_full_boundary_scan": 28.38
+      },
+      "r3-django_list_editable_atomicity-none": {
+        "pre_evaluate_check": 0.33,
+        "evaluate_copy_patch_test": 113.21,
+        "post_evaluate_full_boundary_scan": 29.32
+      },
+      "r3-django_list_editable_atomicity-pruner_v51": {
+        "pre_evaluate_check": 0.35,
+        "evaluate_copy_patch_test": 113.05,
+        "post_evaluate_full_boundary_scan": 34.75
+      },
+      "r3-django_lookup_allowed_foreign_primary-native_summary": {
+        "pre_evaluate_check": 0.79,
+        "evaluate_copy_patch_test": 114.26,
+        "post_evaluate_full_boundary_scan": 28.2
+      },
+      "r3-django_lookup_allowed_foreign_primary-none": {
+        "pre_evaluate_check": 0.84,
+        "evaluate_copy_patch_test": 102.1,
+        "post_evaluate_full_boundary_scan": 31.05
+      },
+      "r3-django_lookup_allowed_foreign_primary-pruner_v51": {
+        "pre_evaluate_check": 0.5,
+        "evaluate_copy_patch_test": 106.68,
+        "post_evaluate_full_boundary_scan": 30.57
+      },
+      "r3-django_referenced_window_wrapping-native_summary": {
+        "pre_evaluate_check": 0.52,
+        "evaluate_copy_patch_test": 112.63,
+        "post_evaluate_full_boundary_scan": 32.1
+      },
+      "r3-django_referenced_window_wrapping-none": {
+        "pre_evaluate_check": 0.51,
+        "evaluate_copy_patch_test": 108.98,
+        "post_evaluate_full_boundary_scan": 33.11
+      },
+      "r3-django_referenced_window_wrapping-pruner_v51": {
+        "pre_evaluate_check": 1.25,
+        "evaluate_copy_patch_test": 114.46,
+        "post_evaluate_full_boundary_scan": 32.71
+      }
+    }
+  },
+  "note": "Failed request provider usage is unknown. All outcomes retained; subsets are sensitivity analyses."
+}

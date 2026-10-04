@@ -152,6 +152,14 @@ runs/stage5-openhands/*
 !runs/stage5-openhands/django-multitask-v49-pilot-01/
 !runs/stage5-openhands/django-multitask-v52-pilot-01/
 !runs/stage5-openhands/django-multitask-v53-pilot-03/
+!runs/stage5-openhands/django-multitask-v54-prefix-fork-01/
+# v55/v56 按冻结规则判定“机制未触发”，v57 前缀触发但分叉被正确拒绝，
+# v58 跑通完整同前缀分叉；四批都是结论本身，全部保留。
+!runs/stage5-openhands/django-multitask-v55-prefix-fork-01/
+!runs/stage5-openhands/django-multitask-v56-prefix-fork-01/
+!runs/stage5-openhands/django-multitask-v57-prefix-fork-01/
+!runs/stage5-openhands/django-multitask-v58-prefix-fork-01/
+# v53-pilot-01 / -02 是各只有 1 个样本的中断/演练目录，不作为结果入库。
 
 # 新主机三臂批次：只放行最终结果批次，中间/演练批次不入库。
 !runs/stage5-openai-agents-api/
@@ -161,6 +169,12 @@ runs/stage5-openai-agents-api/*
 !runs/stage5-openai-agents-api/deepseek-runner-3x3-v2cal-r3-stability/
 !runs/stage5-openai-agents-api/openai-natural-v1-pilot-04/
 !runs/stage5-openai-agents-api/openai-natural-v1-r3-dev-01/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v1-pilot-02/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v1-dev-01/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v2-evidence-dev-01/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v3-task-anchor-pilot-01/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v4-selective-retention-pilot-01/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v5-evidence-safe-retention-pilot-01/
 !runs/stage5-crewai/
 runs/stage5-crewai/*
 !runs/stage5-crewai/crewai-natural-3arm-v133/
@@ -169,6 +183,20 @@ runs/stage5-crewai/*
 !runs/stage5-crewai/crewai-natural-3arm-v2cal-r2fix-01/
 !runs/stage5-crewai/crewai-two-role-fixed-r2-pilot-01/
 !runs/stage5-crewai/crewai-two-role-fixed-r3-dev-01/
+!runs/stage5-crewai/crewai-two-role-r4-pilot-01/
+!runs/stage5-crewai/crewai-two-role-r4-multitask-dev-01/
+!runs/stage5-crewai/crewai-two-role-r4-multitask-mock-01/
+!runs/stage5-crewai/crewai-two-role-r4-mock-pilot-freeze-gate-01/
+!runs/stage5-crewai/crewai-two-role-r5-multitask-mock-01/
+!runs/stage5-crewai/crewai-two-role-r5-multitask-01/
+!runs/stage5-crewai/crewai-two-role-r6-multitask-01/
+!runs/stage5-crewai/crewai-two-role-r6-multitask-mock-01/
+!runs/stage5-crewai/crewai-two-role-r7-multitask-01/
+!runs/stage5-crewai/crewai-two-role-r7-multitask-mock-01/
+!runs/stage5-crewai/crewai-two-role-r8-multitask-mock-01/
+!runs/stage5-crewai/crewai-two-role-r8-multitask-01/
+!runs/stage5-crewai/crewai-two-role-r9-multitask-mock-01/
+!runs/stage5-crewai/crewai-two-role-r9-multitask-01/
 
 # 保留报告、manifest、ledger、SDK 事件和测试日志；跳过可重建的完整源码副本。
 runs/stage5-*/**/workspaces/
@@ -177,6 +205,10 @@ runs/stage5-*/**/sdk-persistence/
 runs/stage5-openhands/**/.runtime-tmp/
 runs/stage5-openhands/**/.audit-tmp/
 runs/stage5-openhands/**/evaluation-audit/
+runs/stage5-openhands/**/evaluation-audit-stale-*/
+# v54 同前缀分叉：只读工作区快照是可重建的整棵 Django 树（约 40 MB / 6672 文件），
+# 与 workspaces/ 同类，作为可重建副本排除；前缀的账本、报告与哈希清单仍会入库。
+runs/stage5-openhands/**/prefix-snapshot/
 runs/stage5-openhands/**/.audit-checkpoint.json
 runs/stage5-openhands/**/.audit-fast-checkpoint.json
 runs/stage5-openhands/**/audit-fast.pid

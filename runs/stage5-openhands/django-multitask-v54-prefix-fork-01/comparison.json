@@ -1,0 +1,106 @@
+{
+  "prefix": {
+    "complete_total_tokens": 247769,
+    "host_test_passed": true,
+    "prefix_needs_correction": false,
+    "agent_requests": 18,
+    "summary_requests": 0,
+    "condensation_events": 0,
+    "elapsed_seconds": 71.36,
+    "timing_seconds": {
+      "prepare_reuse_verify_seconds": 11.16,
+      "prefix_model_wait_seconds": 71.33
+    }
+  },
+  "branches": {
+    "none": {
+      "arm": "none",
+      "position": 0,
+      "post_fork_tokens": 73817,
+      "whole_run_tokens_shared_prefix_counted_once": 321586,
+      "final_host_passed": true,
+      "artifact_success": true,
+      "file_boundary_ok": true,
+      "post_fork_agent_requests": 3,
+      "post_fork_total_requests": 3,
+      "carried_over_agent_requests": 18,
+      "condensation_events": 0,
+      "mechanism_triggered": false,
+      "restore_hash_equal": true,
+      "error_type": null
+    },
+    "native_summary": {
+      "arm": "native_summary",
+      "position": 1,
+      "post_fork_tokens": 107660,
+      "whole_run_tokens_shared_prefix_counted_once": 355429,
+      "final_host_passed": true,
+      "artifact_success": true,
+      "file_boundary_ok": true,
+      "post_fork_agent_requests": 4,
+      "post_fork_total_requests": 4,
+      "carried_over_agent_requests": 18,
+      "condensation_events": 0,
+      "mechanism_triggered": false,
+      "restore_hash_equal": true,
+      "error_type": null,
+      "post_fork_savings_vs_none": -0.458472,
+      "whole_run_savings_vs_none": -0.105238
+    },
+    "pruner_v1": {
+      "arm": "pruner_v1",
+      "position": 2,
+      "post_fork_tokens": 105773,
+      "whole_run_tokens_shared_prefix_counted_once": 353542,
+      "final_host_passed": true,
+      "artifact_success": true,
+      "file_boundary_ok": true,
+      "post_fork_agent_requests": 4,
+      "post_fork_total_requests": 4,
+      "carried_over_agent_requests": 18,
+      "condensation_events": 0,
+      "mechanism_triggered": false,
+      "restore_hash_equal": true,
+      "error_type": null,
+      "post_fork_savings_vs_none": -0.432908,
+      "whole_run_savings_vs_none": -0.09937
+    }
+  },
+  "branch_order": [
+    "none",
+    "native_summary",
+    "pruner_v1"
+  ],
+  "timing_seconds": {
+    "prefix_seconds": {
+      "prepare_reuse_verify_seconds": 11.16,
+      "prefix_model_wait_seconds": 71.33
+    },
+    "branches_seconds": {
+      "restore_workspace_seconds": 682.9,
+      "restore_hash_verify_seconds": 86.74,
+      "branch_model_wait_seconds": 274.4,
+      "host_test_seconds": 775.03
+    },
+    "total_seconds": {
+      "prepare_reuse_verify_seconds": 11.16,
+      "prefix_model_wait_seconds": 71.33,
+      "restore_workspace_seconds": 682.9,
+      "restore_hash_verify_seconds": 86.74,
+      "branch_model_wait_seconds": 274.4,
+      "host_test_seconds": 775.03
+    },
+    "wall_clock_seconds": {
+      "prefix_sample_seconds": 71.36,
+      "branch_samples_seconds": 524.56
+    }
+  },
+  "mechanism_triggered_plugin": false,
+  "note": "post-fork totals are the branch-local provider total including every summary/native request; whole-run totals add the shared prefix once, so no prefix cost is duplicated across arms and no arm is credited with it twice",
+  "timing": {
+    "restore_workspace_seconds": 341.47,
+    "restore_hash_verify_seconds": 43.36,
+    "branch_model_wait_seconds": 137.63,
+    "host_test_seconds": 386.91
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "task": "django_referenced_window_wrapping",
+  "allowed": [
+    "django/db/models/sql/query.py"
+  ],
+  "reference_patch_files": [
+    "django/db/models/sql/query.py"
+  ],
+  "public_regression": {
+    "passed": true,
+    "returncode": 0,
+    "ran": 124,
+    "failures": null,
+    "summary": [
+      "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v54-prefix-fork-01\\workspaces\\prefix\\django'",
+      "Ran 124 tests in 0.275s",
+      "OK"
+    ],
+    "elapsed_seconds": 3.53,
+    "host_tests_applied": false,
+    "selection": [
+      "aggregation"
+    ],
+    "workspace_unchanged_by_test": true
+  },
+  "host_acceptance": {
+    "passed": false,
+    "returncode": 1,
+    "ran": 125,
+    "failures": "errors=1",
+    "summary": [
+      "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v54-prefix-fork-01\\baseline\\evaluation\\host-workspace\\django'",
+      "ERROR: test_referenced_window_requires_wrapping (aggregation.tests.AggregateAnnotationPruningTests.test_referenced_window_requires_wrapping)",
+      "Ran 125 tests in 0.316s",
+      "FAILED (errors=1)"
+    ],
+    "elapsed_seconds": 6.98,
+    "host_tests_applied": true,
+    "selection": [
+      "aggregation"
+    ],
+    "workspace_unchanged_by_test": true
+  },
+  "baseline_hashes_digest": "016880a8461fb228b1d2a9989786dd71804ffc73c11858f8e53d663d87a264aa",
+  "workspace_file_count": 20128
+}

@@ -8,6 +8,7 @@ import pytest
 
 from integrations.openhands.same_prefix_fork_v54 import (
     attach_branch_callback,
+    branch_ledger_from_prefix,
     capture_workspace,
     fork_to_isolated_workspace,
     fork_with_agent,
@@ -139,6 +140,44 @@ def test_branch_rejects_shared_agent(tmp_path: Path):
             fork_with_agent(source, agent)
     finally:
         source.close()
+
+
+def test_branch_ledger_preserves_consumed_budget_without_sharing_mutations():
+    """A branch ledger carries the prefix's consumption, not its rows.
+
+    Updated when the formal v54 runner was built: copying the prefix's request
+    rows into every branch double-counted them, because the branch policy also
+    adds the carried consumption.  The ledger therefore starts empty and the
+    carry-over is explicit; no paid v54 batch existed under the old shape.
+    """
+    prefix = {'calls': [{'kind': 'agent', 'status': 'returned'} for _ in range(24)],
+              'estimated_input': 12345}
+    left = branch_ledger_from_prefix(prefix)
+    right = branch_ledger_from_prefix(prefix)
+    assert left['shared_prefix_call_count'] == right['shared_prefix_call_count'] == 24
+    assert left['shared_prefix_estimated_input'] == right['shared_prefix_estimated_input'] == 12345
+    assert left['shared_prefix_agent_requests'] == 24
+    assert left['calls'] == [] and right['calls'] == []
+    assert left['estimated_input'] == right['estimated_input'] == 0
+    # the two branches never share a ledger object
+    assert left is not right and left['calls'] is not right['calls']
+    left['calls'].append({'kind': 'agent', 'status': 'returned'})
+    left['estimated_input'] = 7
+    assert len(prefix['calls']) == 24 and right['calls'] == []
+    assert right['estimated_input'] == 0
+    with pytest.raises(ValueError, match='itself'):
+        branch_ledger_from_prefix(left)
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'integrations' / 'openhands'))
+    from budget_policy_v30 import BudgetPolicy
+    # A branch that has spent nothing still sees the prefix's position: with the
+    # shared 26-call ceiling already used up by the prefix, its first request
+    # lands in the verification phase, not in fresh work capacity.
+    policy = BudgetPolicy(lambda: 'revision', max_agent_calls=26)
+    used = right['shared_prefix_agent_requests'] + sum(
+        call['kind'] == 'agent' for call in right['calls'])
+    assert policy.decide(used, right['shared_prefix_estimated_input'], 1000).phase == 'verify'
+    with pytest.raises(ValueError, match='missing'):
+        branch_ledger_from_prefix({'calls': []})
 
 
 def test_same_path_snapshot_restores_added_modified_and_deleted_files(tmp_path: Path):

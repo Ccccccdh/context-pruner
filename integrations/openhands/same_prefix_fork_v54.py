@@ -10,6 +10,7 @@ continues.
 from __future__ import annotations
 
 from concurrent.futures import ThreadPoolExecutor
+import copy
 import hashlib
 import os
 from pathlib import Path
@@ -170,6 +171,39 @@ def fork_with_agent(source: Any, agent: Any) -> Any:
     fork._agent_ready = False
     fork._bind_conversation_context(agent.llm)
     return fork
+
+
+def branch_ledger_from_prefix(prefix_ledger: dict[str, Any]) -> dict[str, Any]:
+    """Start an independent branch ledger that carries the prefix's spending.
+
+    The branch ledger holds **only the branch's own requests**: the prefix's
+    requests are already in the prefix ledger, and copying them into every
+    branch would double-count them in the budget policy (once as ledger rows,
+    once as the carried counters the policy adds) and would also inflate the
+    estimated-input total.  What the branch really inherits is the prefix's
+    *consumption*, recorded here as ``shared_prefix_*`` so the policy and the
+    audit can continue the same 36-request / 2M-input ceiling.
+    """
+    if not isinstance(prefix_ledger.get('calls'), list):
+        raise ValueError('prefix ledger calls missing')
+    estimated = prefix_ledger.get('estimated_input')
+    if not isinstance(estimated, int) or estimated < 0:
+        raise ValueError('prefix estimated input missing')
+    if any(not isinstance(call, dict) or call.get('kind') not in {'agent', 'summary'}
+           for call in prefix_ledger['calls']):
+        raise ValueError('prefix ledger has unknown request kind')
+    if 'shared_prefix_call_count' in prefix_ledger:
+        raise ValueError('prefix ledger is itself a branch ledger')
+    return {
+        'calls': [],
+        'estimated_input': 0,
+        'shared_prefix_call_count': len(prefix_ledger['calls']),
+        'shared_prefix_estimated_input': estimated,
+        'shared_prefix_agent_requests': sum(call['kind'] == 'agent'
+                                            for call in prefix_ledger['calls']),
+        'shared_prefix_summary_requests': sum(call['kind'] == 'summary'
+                                              for call in prefix_ledger['calls']),
+    }
 
 
 def attach_branch_callback(fork: Any, callback: Any) -> None:

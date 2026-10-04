@@ -1,0 +1,85 @@
+{
+  "verified": [
+    {
+      "sample": "branch-0-none",
+      "arm": "none",
+      "restore_hash_equal": true,
+      "workspace_file_count": 20128,
+      "changed_files": [],
+      "final_files": {
+        "django/db/models/sql/query.py": "76e6ef806bf54e5f10636b4f3c21b836eea9ea148ca387dba15356ddece5e043"
+      },
+      "archive": "branch-final-files\\branch-0-none",
+      "host_evaluation": {
+        "passed": true,
+        "returncode": 0,
+        "ran": 125,
+        "failures": null,
+        "summary": [
+          "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v54-prefix-fork-01\\branch-0-none\\evaluation-audit\\host-workspace\\django'",
+          "Ran 125 tests in 0.369s",
+          "OK"
+        ],
+        "elapsed_seconds": 7.55,
+        "host_tests_applied": true,
+        "selection": [
+          "aggregation"
+        ],
+        "workspace_unchanged_by_test": true
+      },
+      "recorded_host_passed": true,
+      "host_evaluation_scope": "branch ended byte-identical to the frozen prefix"
+    },
+    {
+      "sample": "branch-1-native_summary",
+      "arm": "native_summary",
+      "restore_hash_equal": true,
+      "workspace_file_count": 20128,
+      "changed_files": [],
+      "final_files": {
+        "django/db/models/sql/query.py": "76e6ef806bf54e5f10636b4f3c21b836eea9ea148ca387dba15356ddece5e043"
+      },
+      "archive": "branch-final-files\\branch-1-native_summary",
+      "host_evaluation": {
+        "passed": true,
+        "returncode": 0,
+        "ran": 125,
+        "failures": null,
+        "summary": [
+          "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v54-prefix-fork-01\\branch-1-native_summary\\evaluation-audit\\host-workspace\\django'",
+          "Ran 125 tests in 0.317s",
+          "OK"
+        ],
+        "elapsed_seconds": 7.08,
+        "host_tests_applied": true,
+        "selection": [
+          "aggregation"
+        ],
+        "workspace_unchanged_by_test": true
+      },
+      "recorded_host_passed": true,
+      "host_evaluation_scope": "branch ended byte-identical to the frozen prefix"
+    }
+  ],
+  "unreconstructable": [
+    {
+      "sample": "branch-2-pruner_v1",
+      "arm": "pruner_v1",
+      "changed_files": [
+        "django/db/models/sql/query.py"
+      ],
+      "archive": "branch-final-files\\branch-2-pruner_v1",
+      "final_files": {
+        "django/db/models/sql/query.py": "76e6ef806bf54e5f10636b4f3c21b836eea9ea148ca387dba15356ddece5e043"
+      },
+      "reason": "the frozen runner did not persist this branch's final bytes; they are recoverable only while this branch is the one on the shared path, so its host verdict is the recorded run verdict and cannot be re-run from an independent byte source"
+    }
+  ],
+  "timings_seconds": {
+    "branch-0-none_restore_seconds": 126.98,
+    "branch-0-none_host_test_seconds": 128.86,
+    "branch-1-native_summary_restore_seconds": 94.78,
+    "branch-1-native_summary_host_test_seconds": 131.8,
+    "branch-2-pruner_v1_restore_seconds": 96.79
+  }
+}

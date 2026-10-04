@@ -1,0 +1,93 @@
+{
+  "calls": [
+    {
+      "kind": "agent",
+      "estimated_input": 16641,
+      "structural_valid": true,
+      "status": "returned",
+      "budget": {
+        "phase": "work",
+        "remaining_requests": 36,
+        "remaining_work_requests": 2,
+        "remaining_estimated_input": 2000000,
+        "public_verification": "not_currently_verified",
+        "reason": "work_capacity_available"
+      },
+      "budget_notice": "HOST RUNTIME BUDGET (remaining requests INCLUDE this request; estimated input is not a bill): {\"phase\": \"work\", \"public_verification\": \"not_currently_verified\", \"reason\": \"work_capacity_available\", \"remaining_estimated_input\": 2000000, \"remaining_requests\": 36, \"remaining_work_requests\": 2}\nPlan within remaining work requests. Reserve verification and Finish. Once ready code passes scoped_tests, finish promptly. Public regression success does not imply host feature acceptance. Later edits invalidate verification.",
+      "allowed_tools": [
+        "scoped_editor",
+        "scoped_symbols",
+        "scoped_tests"
+      ],
+      "budget_response_valid": true,
+      "latency_seconds": 1.4088887000107206
+    },
+    {
+      "kind": "agent",
+      "estimated_input": 17820,
+      "structural_valid": true,
+      "status": "returned",
+      "budget": {
+        "phase": "work",
+        "remaining_requests": 35,
+        "remaining_work_requests": 1,
+        "remaining_estimated_input": 1983359,
+        "public_verification": "not_currently_verified",
+        "reason": "work_capacity_available"
+      },
+      "budget_notice": "HOST RUNTIME BUDGET (remaining requests INCLUDE this request; estimated input is not a bill): {\"phase\": \"work\", \"public_verification\": \"not_currently_verified\", \"reason\": \"work_capacity_available\", \"remaining_estimated_input\": 1983359, \"remaining_requests\": 35, \"remaining_work_requests\": 1}\nPlan within remaining work requests. Reserve verification and Finish. Once ready code passes scoped_tests, finish promptly. Public regression success does not imply host feature acceptance. Later edits invalidate verification.",
+      "allowed_tools": [
+        "scoped_editor",
+        "scoped_symbols",
+        "scoped_tests"
+      ],
+      "budget_response_valid": true,
+      "latency_seconds": 3.8246110000036424
+    },
+    {
+      "kind": "agent",
+      "estimated_input": 18619,
+      "structural_valid": true,
+      "status": "returned",
+      "budget": {
+        "phase": "verify",
+        "remaining_requests": 34,
+        "remaining_work_requests": 0,
+        "remaining_estimated_input": 1965539,
+        "public_verification": "not_currently_verified",
+        "reason": "correction_phase_reserve"
+      },
+      "budget_notice": "HOST RUNTIME BUDGET (remaining requests INCLUDE this request; estimated input is not a bill): {\"phase\": \"verify\", \"public_verification\": \"not_currently_verified\", \"reason\": \"correction_phase_reserve\", \"remaining_estimated_input\": 1965539, \"remaining_requests\": 34, \"remaining_work_requests\": 0}\nWork budget is closed. Call scoped_tests now. Reading and editing are unavailable in this reserved request. Public regression success does not imply host feature acceptance. Later edits invalidate verification.",
+      "allowed_tools": [
+        "scoped_tests"
+      ],
+      "budget_response_valid": true,
+      "latency_seconds": 0.625407700004871
+    },
+    {
+      "kind": "agent",
+      "estimated_input": 19058,
+      "structural_valid": true,
+      "status": "returned",
+      "budget": {
+        "phase": "finish",
+        "remaining_requests": 33,
+        "remaining_work_requests": 0,
+        "remaining_estimated_input": 1946920,
+        "public_verification": "passed_current",
+        "reason": "correction_phase_reserve"
+      },
+      "budget_notice": "HOST RUNTIME BUDGET (remaining requests INCLUDE this request; estimated input is not a bill): {\"phase\": \"finish\", \"public_verification\": \"passed_current\", \"reason\": \"correction_phase_reserve\", \"remaining_estimated_input\": 1946920, \"remaining_requests\": 33, \"remaining_work_requests\": 0}\nCall finish now. No reading, editing or testing is available. If public verification is not passed_current, explain incomplete/failed verification honestly. Public regression success does not imply host feature acceptance. Later edits invalidate verification.",
+      "allowed_tools": [
+        "finish"
+      ],
+      "budget_response_valid": true,
+      "latency_seconds": 2.5404818000097293
+    }
+  ],
+  "estimated_input": 72138,
+  "shared_prefix_call_count": 32,
+  "shared_prefix_estimated_input": 671133,
+  "shared_prefix_agent_requests": 32,
+  "shared_prefix_summary_requests": 0
+}

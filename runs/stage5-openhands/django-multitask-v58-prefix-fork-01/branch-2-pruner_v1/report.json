@@ -1,0 +1,466 @@
+{
+  "sample": "branch-2-pruner_v1",
+  "kind": "branch",
+  "task": "django_lookup_allowed_foreign_primary",
+  "arm": "pruner_v1",
+  "condenser": "ContextPrunerCondenserV51",
+  "position": 2,
+  "success": false,
+  "prefix_needs_correction": true,
+  "restore_hash_equal": true,
+  "prefix_policy_in_correction": true,
+  "prefix_event_count": 71,
+  "shared_prefix_calls": 32,
+  "shared_prefix_estimated_input": 671133,
+  "conversation_id": "c773d343-a853-4d3c-8a8d-63216aa7654a",
+  "correction_boundary_after_begin": 36,
+  "trigger_prediction_at_fork": {
+    "trigger_input_tokens": 28000,
+    "view_event_count": 72,
+    "measured_view_tokens": 29490,
+    "measured_margin_tokens": 1490,
+    "required_measured_margin_tokens": 0,
+    "measured_ok": true,
+    "ledger_last_estimated_input": 36254,
+    "required_ledger_margin_tokens": 2000,
+    "ledger_ok": true,
+    "condenser_replay_result": "Condensation",
+    "condenser_replay_audit": [
+      {
+        "before": 29490,
+        "after": 15124,
+        "forgotten_ids": [
+          "009b01b0-f228-45f2-8d5b-55699bcbf3cc",
+          "022b642d-8914-499a-8a72-5a283bb9dc68",
+          "061c93d1-267f-4710-8250-7c8c7293997c",
+          "10bac9ee-0c96-4c78-983d-49381723cfd6",
+          "124bbc79-64fa-4aa0-8032-a5dcaeb44efa",
+          "128a292e-f3db-4cbf-a4fc-ff7b224c742d",
+          "14d26ee0-b3b9-4c20-97ad-2ffecb2cfbc1",
+          "18dfc34a-7ff8-424d-9581-cde6551d33c5",
+          "1f61cc74-67d6-4232-a045-4a1f0f7e6411",
+          "22527a52-7dd1-4e28-abf3-5155929adee2",
+          "24c9175a-26f2-49c9-86e3-8f80637e793c",
+          "25751197-25b7-4843-bf51-6033f199f1f7",
+          "26f46b50-0d2b-4b78-bf06-48faea7d165c",
+          "2c38fc6a-3806-4b47-b11b-5dc7c1f53366",
+          "2fbdc535-df1e-442f-a34f-6f68366fd637",
+          "34e95756-a085-45b4-a86d-a383a38cfb1f",
+          "43e58146-0363-4ca3-9c4e-959d3feb3ef1",
+          "4691e25e-6148-4d3d-9c19-b13dddd4f62d",
+          "4757cf70-9dac-4788-9d4a-b2267865fe2a",
+          "4a3be8b6-b3fb-4b75-9608-9aef6d9637f3",
+          "4c397024-5d95-4309-ad82-859ade66370f",
+          "527e56ad-9fe5-4fd0-b4d6-68606974c053",
+          "56d9a61e-6ae7-46d4-844f-0b1b7c226c57",
+          "5bb28b04-5877-44f0-a687-65a23851cc00",
+          "5c1a6d1e-af97-4a9d-9254-41d7efe3ed16",
+          "5c9e83ca-5a01-4309-911f-f33e243917e0",
+          "5e323e74-dce6-44fe-9fff-0260cdd93de8",
+          "5e9ad819-8918-4bf7-bb3e-acd6a240a6e7",
+          "65c9b20b-6122-424d-81d9-7b33ffe7b75b",
+          "6a20bdad-481d-4a36-9e6a-9d568e175dd5",
+          "6ba96018-4893-405f-8b25-416f5e2dba05",
+          "6e5deed3-1b57-4d64-bea9-b84c860f3d41",
+          "733d906c-f2a4-4000-b851-dfc9a68a200a",
+          "7555e853-b2ff-4e16-841a-acffe7a8a606",
+          "75597f10-55e6-4d97-a782-9361c8e88aa5",
+          "7a7d3904-b8de-4aa9-a006-1342d26a7bbe",
+          "8029e0af-4612-48ca-9909-fb59586dddee",
+          "86022b76-54fc-4fb3-92ec-4349c16db1a8",
+          "8ae40d6d-1b47-41ac-b396-d713138b4ce7",
+          "930222d2-d7d2-440b-970b-c65cd9e1e20a",
+          "9457ce55-f12e-403b-8a81-2fac05bbf9d8",
+          "9a12246e-f45e-41f5-bcf6-8fa75f0f5a49",
+          "9a4ca6d1-94a5-45a0-821a-bd0b9d99892d",
+          "a6f3fb65-97c4-4ffd-813c-1919bfe8360a",
+          "a7b4d0c2-d30f-493c-a3be-e6ab67433276",
+          "ab37f365-72ac-4f9d-8f6a-76d5ac0cc93e",
+          "b0db3478-8b2a-44b1-8b81-4e360f4e81ef",
+          "b1dd41ea-c5b0-44fd-9920-6d2cef30e0aa",
+          "b367d91c-cf74-440f-a8c7-0d25e403913b",
+          "b6d48af8-edc0-48b7-858a-934f0c94b62c",
+          "c07d3d42-9ba0-4e63-b2cc-660d862affc1",
+          "c2d4c991-3ee8-4b66-acc2-1ca708cf6d86",
+          "cf44b642-8895-456f-a11c-55ba48aaeb5d",
+          "d3da3980-bfef-41b0-9318-e2208a177ffb",
+          "d690ccdd-1f19-4243-a818-8e9fd6aef8a8",
+          "d7f95ae5-ca33-4124-9f58-a1cff9481596",
+          "ed96135d-f256-41fb-bd0e-6030d806cda5",
+          "efafd209-3bf0-4fed-bd3e-4f116cc92a48",
+          "fb07802b-79a6-4442-9d7e-eb93e5a72d0d",
+          "fc0e0fd3-2c11-4144-8d52-911572d210cc"
+        ],
+        "retained_ids": [
+          "3b7bb683-8bfe-4cce-b33e-2f26a09675e4",
+          "bc4f4d82-e77c-4dc5-b818-e083e6dd4f03",
+          "0fff1f9d-b6ba-4407-b6a0-fb00e32c3837",
+          "bfbf0f7a-bb1e-4e6a-899a-df067142716c",
+          "74d04b22-0a90-4bd8-986e-575e0ffb96e5",
+          "a5c8d306-a20f-497c-8641-76612c162c2b",
+          "8096c711-9915-4023-951b-7de912bc2eed",
+          "ffe3f03c-a5ee-4c8f-95e9-c5ab2bfd888c",
+          "c89e8199-0b58-413c-b484-618d76e98502",
+          "16d85105-0af0-4d1c-b559-c59831d0e77e",
+          "87d12c7e-c17b-4a56-ac09-af8ed6714cde",
+          "d31aa533-fd8f-4080-b5a4-37a80e74cce8"
+        ],
+        "hard_budget_exceeded": false,
+        "protected_tokens": 11486,
+        "task_contract_chars": 2257,
+        "selected_units": 54,
+        "omitted_units": 184,
+        "selection_limit": 22400,
+        "confirmed_edit_notes": 8,
+        "reference_only_chars": 22667,
+        "body_chars_avoided": 29051,
+        "available_code_tokens": 10914,
+        "superseded_observations": 12,
+        "duplicate_read_lines": 158,
+        "file_versions": {
+          "C:/Users/LENOVO/Desktop/AI Agent/code/runs/stage5-openhands/django-multitask-v58-prefix-fork-01/workspaces/prefix/django/contrib/admin/options.py": 8,
+          "C:/Users/LENOVO/Desktop/AI Agent/code/runs/stage5-openhands/django-multitask-v58-prefix-fork-01/workspaces/prefix/django/db/models/fields/related.py": 0
+        }
+      }
+    ],
+    "triggered": true,
+    "reasons": [],
+    "method": "View.from_events(prefix events + the frozen correction user message), then the real configured condenser is run on that view with a throwaway LLM used only for token counting; no provider request is issued",
+    "sample": "branch-2-pruner_v1"
+  },
+  "trigger_prediction_matches_freeze": true,
+  "sdk_status": "finished",
+  "error_type": "ConversationRunError",
+  "diagnostic": "Traceback (most recent call last):\n  File \"C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\.venv-openhands\\Lib\\site-packages\\openhands\\sdk\\conversation\\impl\\local_conversation.py\", line 1992, in run\n    self.agent.step(\n    ~~~~~~~~~~~~~~~^\n        self, on_event=self._on_event, on_token=self._on_token\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\.venv-openhands\\Lib\\site-packages\\openhands\\sdk\\observability\\laminar.py\", line 210, in sync_wrapper\n    return func(*args, **fkwargs)\n  File \"C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\.venv-openhands\\Lib\\site-packages\\openhands\\sdk\\agent\\agent.py\", line 643, in step\n    self._step(conversation, on_event, stream)\n    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\.venv-openhands\\Lib\\site-packages\\openhands\\sdk\\agent\\agent.py\", line 728, in _step\n    llm_response = self.llm.generate(\n        messages=_messages,\n    ...<4 lines>...\n        call_context=call_context,\n    )\n  File \"C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\.venv-openhands\\Lib\\site-packages\\openhands\\sdk\\llm\\llm.py\", line 1603, in generate\n    return self.completion(\n           ~~~~~~~~~~~~~~~^\n        messages=messages,\n        ^^^^^^^^^^^^^^^^^^\n    ...<4 lines>...\n        **kwargs,\n        ^^^^^^^^^\n    )\n    ^\n  File \"C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\integrations\\openhands\\bounded_llm_v30.py\", line 61, in completion\n    decision=self._policy.decide(agent_used,ledger['estimated_input'],estimated)\n  File \"C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\integrations\\openhands\\budget_policy_v54.py\", line 109, in decide\n    self.check_ceiling(used_agent_calls)\n    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\integrations\\openhands\\budget_policy_v54.py\", line 102, in check_ceiling\n    raise RuntimeError('Frozen experiment call/token limit')\nRuntimeError: Frozen experiment call/token limit\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\integrations\\openhands\\run_validation_v58.py\", line 1144, in run_branch\n    fork.run()\n    ~~~~~~~~^^\n  File \"C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\.venv-openhands\\Lib\\site-packages\\openhands\\sdk\\observability\\laminar.py\", line 210, in sync_wrapper\n    return func(*args, **fkwargs)\n  File \"C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\.venv-openhands\\Lib\\site-packages\\openhands\\sdk\\conversation\\impl\\local_conversation.py\", line 2078, in run\n    raise ConversationRunError(\n    ...<6 lines>...\n    ) from e\nopenhands.sdk.conversation.exceptions.ConversationRunError: Conversation run failed for id=c773d343-a853-4d3c-8a8d-63216aa7654a: Frozen experiment call/token limit\n\nConversation logs are stored at: C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v58-prefix-fork-01\\sdk-persistence\\prefix\\c773d343a8534d3c8a8d63216aa7654a\n\nTo help debug this issue, please file a bug report at:\n  https://github.com/OpenHands/software-agent-sdk/issues/new\nand attach the conversation logs from the directory above.\n",
+  "elapsed_seconds": 175.18,
+  "timing_seconds": {
+    "prepare_reuse_verify_seconds": 119.54,
+    "prefix_model_wait_seconds": 202.8,
+    "host_test_seconds": 878.28,
+    "prepare_copy_hash_seconds": 312.01,
+    "trigger_prediction_seconds": 2.49,
+    "prefix_snapshot_seconds": 81.66,
+    "snapshot_verify_seconds": 14.63,
+    "restore_workspace_seconds": 342.13,
+    "restore_hash_verify_seconds": 44.39,
+    "branch_model_wait_seconds": 147.77,
+    "branch_persist_seconds": 40.52
+  },
+  "events": [
+    {
+      "type": "MessageEvent",
+      "id": "b76823fd-7fe0-495b-b675-5b45fdf597ed"
+    },
+    {
+      "type": "Condensation",
+      "id": "322a2091-460a-4974-b3df-0db73ee54698"
+    },
+    {
+      "type": "ActionEvent",
+      "id": "45791a2e-6b7d-4f2f-be07-61f06d399451"
+    },
+    {
+      "type": "ObservationEvent",
+      "id": "359f0d4a-ab2c-49f2-8140-9df4e1c17df3"
+    },
+    {
+      "type": "ActionEvent",
+      "id": "02ab70c9-f5af-4548-8d8e-d49ad22f3804"
+    },
+    {
+      "type": "ObservationEvent",
+      "id": "46220850-f5ad-4a62-a64b-979d0107072d"
+    },
+    {
+      "type": "ActionEvent",
+      "id": "e578ac18-df79-4527-8980-e73195998d9f"
+    },
+    {
+      "type": "ObservationEvent",
+      "id": "f0a44ef8-b20b-4dc1-bc63-28c6f259aec4"
+    },
+    {
+      "type": "ActionEvent",
+      "id": "45c42c1c-b529-4880-b58f-90d081f36d38"
+    },
+    {
+      "type": "ObservationEvent",
+      "id": "a92e6aea-411c-4e3a-8a04-370a525633f3"
+    },
+    {
+      "type": "MessageEvent",
+      "id": "f4ea3351-b13c-447e-8a25-eb7364737437"
+    },
+    {
+      "type": "ConversationErrorEvent",
+      "id": "c7f0cfb3-9738-4cee-8627-57c555ed76e0"
+    }
+  ],
+  "branch_event_ids": [
+    "b76823fd-7fe0-495b-b675-5b45fdf597ed",
+    "322a2091-460a-4974-b3df-0db73ee54698",
+    "45791a2e-6b7d-4f2f-be07-61f06d399451",
+    "359f0d4a-ab2c-49f2-8140-9df4e1c17df3",
+    "02ab70c9-f5af-4548-8d8e-d49ad22f3804",
+    "46220850-f5ad-4a62-a64b-979d0107072d",
+    "e578ac18-df79-4527-8980-e73195998d9f",
+    "f0a44ef8-b20b-4dc1-bc63-28c6f259aec4",
+    "45c42c1c-b529-4880-b58f-90d081f36d38",
+    "a92e6aea-411c-4e3a-8a04-370a525633f3",
+    "f4ea3351-b13c-447e-8a25-eb7364737437",
+    "c7f0cfb3-9738-4cee-8627-57c555ed76e0"
+  ],
+  "branch_events_persisted_match_observation": true,
+  "source_prefix_unchanged": true,
+  "ledger": {
+    "total_requests": 4,
+    "agent_requests": 4,
+    "summary_requests": 0,
+    "estimated_input": 72138,
+    "post_fork_agent_requests": 4,
+    "post_fork_summary_requests": 0,
+    "post_fork_total_requests": 4,
+    "post_fork_estimated_input": 72138,
+    "carried_over_agent_requests": 32,
+    "carried_over_estimated_input": 671133,
+    "shared_prefix_agent_requests": 32,
+    "shared_prefix_summary_requests": 0,
+    "failed_requests": [],
+    "calls": [
+      {
+        "kind": "agent",
+        "estimated_input": 16641,
+        "structural_valid": true,
+        "status": "returned",
+        "budget": {
+          "phase": "work",
+          "remaining_requests": 36,
+          "remaining_work_requests": 2,
+          "remaining_estimated_input": 2000000,
+          "public_verification": "not_currently_verified",
+          "reason": "work_capacity_available"
+        },
+        "budget_notice": "HOST RUNTIME BUDGET (remaining requests INCLUDE this request; estimated input is not a bill): {\"phase\": \"work\", \"public_verification\": \"not_currently_verified\", \"reason\": \"work_capacity_available\", \"remaining_estimated_input\": 2000000, \"remaining_requests\": 36, \"remaining_work_requests\": 2}\nPlan within remaining work requests. Reserve verification and Finish. Once ready code passes scoped_tests, finish promptly. Public regression success does not imply host feature acceptance. Later edits invalidate verification.",
+        "allowed_tools": [
+          "scoped_editor",
+          "scoped_symbols",
+          "scoped_tests"
+        ],
+        "budget_response_valid": true,
+        "latency_seconds": 1.4088887000107206
+      },
+      {
+        "kind": "agent",
+        "estimated_input": 17820,
+        "structural_valid": true,
+        "status": "returned",
+        "budget": {
+          "phase": "work",
+          "remaining_requests": 35,
+          "remaining_work_requests": 1,
+          "remaining_estimated_input": 1983359,
+          "public_verification": "not_currently_verified",
+          "reason": "work_capacity_available"
+        },
+        "budget_notice": "HOST RUNTIME BUDGET (remaining requests INCLUDE this request; estimated input is not a bill): {\"phase\": \"work\", \"public_verification\": \"not_currently_verified\", \"reason\": \"work_capacity_available\", \"remaining_estimated_input\": 1983359, \"remaining_requests\": 35, \"remaining_work_requests\": 1}\nPlan within remaining work requests. Reserve verification and Finish. Once ready code passes scoped_tests, finish promptly. Public regression success does not imply host feature acceptance. Later edits invalidate verification.",
+        "allowed_tools": [
+          "scoped_editor",
+          "scoped_symbols",
+          "scoped_tests"
+        ],
+        "budget_response_valid": true,
+        "latency_seconds": 3.8246110000036424
+      },
+      {
+        "kind": "agent",
+        "estimated_input": 18619,
+        "structural_valid": true,
+        "status": "returned",
+        "budget": {
+          "phase": "verify",
+          "remaining_requests": 34,
+          "remaining_work_requests": 0,
+          "remaining_estimated_input": 1965539,
+          "public_verification": "not_currently_verified",
+          "reason": "correction_phase_reserve"
+        },
+        "budget_notice": "HOST RUNTIME BUDGET (remaining requests INCLUDE this request; estimated input is not a bill): {\"phase\": \"verify\", \"public_verification\": \"not_currently_verified\", \"reason\": \"correction_phase_reserve\", \"remaining_estimated_input\": 1965539, \"remaining_requests\": 34, \"remaining_work_requests\": 0}\nWork budget is closed. Call scoped_tests now. Reading and editing are unavailable in this reserved request. Public regression success does not imply host feature acceptance. Later edits invalidate verification.",
+        "allowed_tools": [
+          "scoped_tests"
+        ],
+        "budget_response_valid": true,
+        "latency_seconds": 0.625407700004871
+      },
+      {
+        "kind": "agent",
+        "estimated_input": 19058,
+        "structural_valid": true,
+        "status": "returned",
+        "budget": {
+          "phase": "finish",
+          "remaining_requests": 33,
+          "remaining_work_requests": 0,
+          "remaining_estimated_input": 1946920,
+          "public_verification": "passed_current",
+          "reason": "correction_phase_reserve"
+        },
+        "budget_notice": "HOST RUNTIME BUDGET (remaining requests INCLUDE this request; estimated input is not a bill): {\"phase\": \"finish\", \"public_verification\": \"passed_current\", \"reason\": \"correction_phase_reserve\", \"remaining_estimated_input\": 1946920, \"remaining_requests\": 33, \"remaining_work_requests\": 0}\nCall finish now. No reading, editing or testing is available. If public verification is not passed_current, explain incomplete/failed verification honestly. Public regression success does not imply host feature acceptance. Later edits invalidate verification.",
+        "allowed_tools": [
+          "finish"
+        ],
+        "budget_response_valid": true,
+        "latency_seconds": 2.5404818000097293
+      }
+    ]
+  },
+  "agent_metrics": {
+    "model_name": "openai/deepseek-v4-flash",
+    "accumulated_cost": 0.0,
+    "max_budget_per_task": null,
+    "accumulated_token_usage": {
+      "model": "openai/deepseek-v4-flash",
+      "prompt_tokens": 69711,
+      "completion_tokens": 1758,
+      "cache_read_tokens": 30336,
+      "cache_write_tokens": 0,
+      "reasoning_tokens": 0,
+      "context_window": 1000000,
+      "per_turn_token": 18240,
+      "response_id": ""
+    },
+    "costs": [],
+    "response_latencies": [
+      {
+        "model": "openai/deepseek-v4-flash",
+        "latency": 1.4029514789581299,
+        "response_id": "0f6f4d6e-c8f0-44fb-8154-21cc16c9f565"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "latency": 3.817432165145874,
+        "response_id": "a5943c96-fe92-48c2-b6b4-b4e4db051676"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "latency": 0.6213536262512207,
+        "response_id": "164b3d1e-f7db-46bc-af3e-c8b43206b488"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "latency": 2.5375547409057617,
+        "response_id": "69e543ad-0fa0-4659-ac5d-237b55945d0f"
+      }
+    ],
+    "token_usages": [
+      {
+        "model": "openai/deepseek-v4-flash",
+        "prompt_tokens": 16741,
+        "completion_tokens": 141,
+        "cache_read_tokens": 5504,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "context_window": 1000000,
+        "per_turn_token": 16882,
+        "response_id": "0f6f4d6e-c8f0-44fb-8154-21cc16c9f565"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "prompt_tokens": 17672,
+        "completion_tokens": 1126,
+        "cache_read_tokens": 16384,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "context_window": 1000000,
+        "per_turn_token": 18798,
+        "response_id": "a5943c96-fe92-48c2-b6b4-b4e4db051676"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "prompt_tokens": 17504,
+        "completion_tokens": 45,
+        "cache_read_tokens": 4224,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "context_window": 1000000,
+        "per_turn_token": 17549,
+        "response_id": "164b3d1e-f7db-46bc-af3e-c8b43206b488"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "prompt_tokens": 17794,
+        "completion_tokens": 446,
+        "cache_read_tokens": 4224,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "context_window": 1000000,
+        "per_turn_token": 18240,
+        "response_id": "69e543ad-0fa0-4659-ac5d-237b55945d0f"
+      }
+    ]
+  },
+  "summary_metrics": {
+    "model_name": "openai/deepseek-v4-flash",
+    "accumulated_cost": 0.0,
+    "max_budget_per_task": null,
+    "accumulated_token_usage": {
+      "model": "openai/deepseek-v4-flash",
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "reasoning_tokens": 0,
+      "context_window": 0,
+      "per_turn_token": 0,
+      "response_id": ""
+    },
+    "costs": [],
+    "response_latencies": [],
+    "token_usages": []
+  },
+  "complete_total_tokens": 71469,
+  "post_fork_agent_requests": 4,
+  "post_fork_total_requests": 4,
+  "condensation_events": 1,
+  "condensation_counted_from_suffix": 1,
+  "mechanism_triggered": true,
+  "workflow_verification_ok": true,
+  "budget_state": {
+    "correction_stop_at": 36,
+    "closing_reason": "correction_phase_reserve",
+    "in_correction": true
+  },
+  "final_host_passed": false,
+  "changed_files": [],
+  "file_boundary_ok": true,
+  "final_source_digest": "8dadef8457d87e1dcf65e19aa2fe2f9003c64a76d62ac2b1ba440b8f42260b01",
+  "branch_artifacts": {
+    "artifact_version": "openhands-v55-branch-artifacts-1",
+    "sample": "branch-2-pruner_v1",
+    "task": "django_lookup_allowed_foreign_primary",
+    "arm": "pruner_v1",
+    "position": 2,
+    "allowed": [
+      "django/contrib/admin/options.py"
+    ],
+    "changed_files": [],
+    "file_boundary_ok": true,
+    "workspace_file_count": 19972,
+    "final_source_digest": "8dadef8457d87e1dcf65e19aa2fe2f9003c64a76d62ac2b1ba440b8f42260b01",
+    "final_files_dir": "final-files",
+    "final_files": {
+      "django/contrib/admin/options.py": "bde6fb9b7401436d2cbfa6e7ff188a30f9f78b09b17c603220e9d991bd7690f5"
+    },
+    "final_files_digest": "668c0e573b953d10c221c6ffbe72b098b9e4e957ae02bcc22abfe20ad36d1bb3",
+    "final_hashes_file": "final-hashes.json",
+    "events_file": "events.json",
+    "events_digest": "a1eb252a3ceaf70cade7fd2e0985c782bbf5cbd378312f2713e59fcb913e215d",
+    "branch_event_digest": "a1eb252a3ceaf70cade7fd2e0985c782bbf5cbd378312f2713e59fcb913e215d",
+    "conversation_id": "c773d343-a853-4d3c-8a8d-63216aa7654a",
+    "prefix_event_count": 71,
+    "reconstruction_rule": "restore the frozen read-only snapshot, overlay this branch's persisted final files, then compare the cache-free full-file hash map with final-hashes.json; the host target test is re-run on those bytes",
+    "final_host_passed": false,
+    "condensation_events": 1
+  },
+  "artifact_success": false,
+  "disk_free_gb_after": 6.25
+}

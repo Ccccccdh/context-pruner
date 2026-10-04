@@ -1,0 +1,190 @@
+{
+  "complete": true,
+  "expected_branches": 3,
+  "completed_branches": 3,
+  "selected_task": "django_lookup_allowed_foreign_primary",
+  "selected_rung": 0,
+  "selection": {
+    "attempts": 2,
+    "all_attempts_tokens_counted_once": 851019,
+    "per_attempt": [
+      {
+        "sample": "attempt-1-django_referenced_window_wrapping-rung0",
+        "task": "django_referenced_window_wrapping",
+        "rung": 0,
+        "host_passed": true,
+        "trigger_prediction_triggered": false,
+        "measured_view_tokens": null,
+        "agent_requests": 19,
+        "complete_total_tokens": 255774
+      },
+      {
+        "sample": "attempt-2-django_lookup_allowed_foreign_primary-rung0",
+        "task": "django_lookup_allowed_foreign_primary",
+        "rung": 0,
+        "host_passed": false,
+        "trigger_prediction_triggered": true,
+        "measured_view_tokens": 29490,
+        "agent_requests": 32,
+        "complete_total_tokens": 595245
+      }
+    ],
+    "order_reproduced": true,
+    "rule_fingerprint": "447fd51c37e7616151c5431d909dcdf1d0edaff4bd308884e18f61baea2649e7"
+  },
+  "prefix": {
+    "complete_total_tokens": 595245,
+    "host_test_passed": false,
+    "prefix_needs_correction": true,
+    "agent_requests": 32,
+    "summary_requests": 0,
+    "event_count": 71,
+    "measured_view_tokens": 29490,
+    "measured_margin_tokens": 1490,
+    "ledger_last_estimated_input": 36254,
+    "trigger_prediction_recomputed": {
+      "triggered": true,
+      "measured_view_tokens": 29490,
+      "condenser_replay_result": "Condensation",
+      "view_event_count": 72
+    },
+    "trigger_prediction_note": "recomputed offline from the persisted prefix event log; the frozen event-ID list is available, so the token counting input is rebuilt from the live SDK events during the run and compared here by digest",
+    "offline_replay_released": true
+  },
+  "branches": [
+    {
+      "sample": "branch-0-none",
+      "arm": "none",
+      "position": 0,
+      "post_fork_tokens": 133071,
+      "post_fork_agent_requests": 4,
+      "post_fork_total_requests": 4,
+      "carried_over_agent_requests": 32,
+      "carried_over_estimated_input": 671133,
+      "final_host_passed": false,
+      "artifact_success": false,
+      "file_boundary_ok": true,
+      "host_verdict_source": "audit rebuilt this branch's own persisted bytes and re-ran the host target test on them; the branch itself has NO recorded host round (it hit the shared 36-request ceiling inside its first round)",
+      "host_verdict_measured": false,
+      "host_rounds": 0,
+      "condensation_events": 0,
+      "mechanism_triggered": false,
+      "changed_files": [],
+      "final_source_digest": "8dadef8457d87e1dcf65e19aa2fe2f9003c64a76d62ac2b1ba440b8f42260b01",
+      "persisted_files": 1,
+      "restore_hash_equal": true,
+      "error_type": "ConversationRunError"
+    },
+    {
+      "sample": "branch-1-native_summary",
+      "arm": "native_summary",
+      "position": 1,
+      "post_fork_tokens": 133087,
+      "post_fork_agent_requests": 4,
+      "post_fork_total_requests": 4,
+      "carried_over_agent_requests": 32,
+      "carried_over_estimated_input": 671133,
+      "final_host_passed": false,
+      "artifact_success": false,
+      "file_boundary_ok": true,
+      "host_verdict_source": "audit rebuilt this branch's own persisted bytes and re-ran the host target test on them; the branch itself has NO recorded host round (it hit the shared 36-request ceiling inside its first round)",
+      "host_verdict_measured": false,
+      "host_rounds": 0,
+      "condensation_events": 0,
+      "mechanism_triggered": false,
+      "changed_files": [],
+      "final_source_digest": "8dadef8457d87e1dcf65e19aa2fe2f9003c64a76d62ac2b1ba440b8f42260b01",
+      "persisted_files": 1,
+      "restore_hash_equal": true,
+      "error_type": "ConversationRunError"
+    },
+    {
+      "sample": "branch-2-pruner_v1",
+      "arm": "pruner_v1",
+      "position": 2,
+      "post_fork_tokens": 71469,
+      "post_fork_agent_requests": 4,
+      "post_fork_total_requests": 4,
+      "carried_over_agent_requests": 32,
+      "carried_over_estimated_input": 671133,
+      "final_host_passed": false,
+      "artifact_success": false,
+      "file_boundary_ok": true,
+      "host_verdict_source": "audit rebuilt this branch's own persisted bytes and re-ran the host target test on them; the branch itself has NO recorded host round (it hit the shared 36-request ceiling inside its first round)",
+      "host_verdict_measured": false,
+      "host_rounds": 0,
+      "condensation_events": 1,
+      "mechanism_triggered": true,
+      "changed_files": [],
+      "final_source_digest": "8dadef8457d87e1dcf65e19aa2fe2f9003c64a76d62ac2b1ba440b8f42260b01",
+      "persisted_files": 1,
+      "restore_hash_equal": true,
+      "error_type": "ConversationRunError"
+    }
+  ],
+  "paired": {
+    "native_summary": {
+      "post_fork_savings": -0.00012023656544250813,
+      "whole_run_savings": -1.6258675527644828e-05,
+      "arm_post_fork_tokens": 133087,
+      "none_post_fork_tokens": 133071,
+      "arm_whole_run_tokens": 984106,
+      "none_whole_run_tokens": 984090,
+      "both_artifact_success": false
+    },
+    "pruner_v1": {
+      "post_fork_savings": 0.4629258065243366,
+      "whole_run_savings": 0.06259793311587354,
+      "arm_post_fork_tokens": 71469,
+      "none_post_fork_tokens": 133071,
+      "arm_whole_run_tokens": 922488,
+      "none_whole_run_tokens": 984090,
+      "both_artifact_success": false
+    }
+  },
+  "mechanism_triggered_plugin": true,
+  "plugin_compaction_count": 1,
+  "mechanical_claim": "the plugin arm condensed after the fork; the post-fork difference is a compression difference",
+  "cross_checks": {
+    "source_hashes_valid": true,
+    "post_gate_tooling_edits_recorded": [
+      "integrations/openhands/audit_validation_v58.py"
+    ],
+    "frozen_snapshot_valid": true,
+    "selection_rule_order_reproduced": true,
+    "trigger_prediction_reproduced_offline": true,
+    "branch_restores_hash_equal": true,
+    "branch_bytes_rebuilt_from_own_artifacts": true,
+    "branch_host_tests_independently_reproduced": true,
+    "branch_host_verdicts_measured": false,
+    "file_boundary_violations": 0,
+    "failed_branch_requests": 0,
+    "shared_ceiling_respected": true
+  },
+  "credential_matches": 0,
+  "credential_scan": {
+    "mode": "targeted_generated_artifacts",
+    "files_scanned": 440,
+    "files_skipped": 20508,
+    "skipped_trees": [
+      "baseline",
+      "prefix-select",
+      "prefix-snapshot",
+      "workspaces"
+    ]
+  },
+  "frozen_experiment_sources_valid": false,
+  "timings_seconds": {
+    "frozen_snapshot_verification": 13.72,
+    "selection_rule_recheck": 0.0,
+    "trigger_prediction_replay": 1.62,
+    "prefix_host_test": 128.25,
+    "branch_artifact_verification": 0.48,
+    "branch_ledger_checks": 0.0,
+    "branch_reconstruction": 405.5,
+    "branch_host_test": 383.74,
+    "credential_scan": 18.61,
+    "total_seconds": 977.75
+  },
+  "note": "Post-fork totals are branch-local provider totals including every summary request; whole-run totals add every prefix-selection attempt exactly once. A single prefix cannot estimate the plugin average effect on any task population."
+}

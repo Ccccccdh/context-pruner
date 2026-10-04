@@ -1,0 +1,154 @@
+{
+  "complete": true,
+  "expected_branches": 3,
+  "completed_branches": 3,
+  "prefix": {
+    "complete_total_tokens": 247769,
+    "host_test_passed": true,
+    "prefix_needs_correction": false,
+    "agent_requests": 18,
+    "summary_requests": 0,
+    "condensation_events": 0,
+    "event_count": 60,
+    "workspace_file_count": 20128
+  },
+  "branches": [
+    {
+      "sample": "branch-0-none",
+      "arm": "none",
+      "position": 0,
+      "post_fork_tokens": 73817,
+      "post_fork_agent_requests": 3,
+      "post_fork_total_requests": 3,
+      "carried_over_agent_requests": 18,
+      "carried_over_estimated_input": 279842,
+      "final_host_passed": true,
+      "artifact_success": true,
+      "file_boundary_ok": true,
+      "host_verdict_source": "audit re-ran the host target test on the restored branch bytes",
+      "host_rounds": 1,
+      "condensation_events": 0,
+      "mechanism_triggered": false,
+      "changed_files": [],
+      "restore_hash_equal": true,
+      "error_type": null
+    },
+    {
+      "sample": "branch-1-native_summary",
+      "arm": "native_summary",
+      "position": 1,
+      "post_fork_tokens": 107660,
+      "post_fork_agent_requests": 4,
+      "post_fork_total_requests": 4,
+      "carried_over_agent_requests": 18,
+      "carried_over_estimated_input": 279842,
+      "final_host_passed": true,
+      "artifact_success": true,
+      "file_boundary_ok": true,
+      "host_verdict_source": "audit re-ran the host target test on the restored branch bytes",
+      "host_rounds": 1,
+      "condensation_events": 0,
+      "mechanism_triggered": false,
+      "changed_files": [],
+      "restore_hash_equal": true,
+      "error_type": null
+    },
+    {
+      "sample": "branch-2-pruner_v1",
+      "arm": "pruner_v1",
+      "position": 2,
+      "post_fork_tokens": 105773,
+      "post_fork_agent_requests": 4,
+      "post_fork_total_requests": 4,
+      "carried_over_agent_requests": 18,
+      "carried_over_estimated_input": 279842,
+      "final_host_passed": true,
+      "artifact_success": true,
+      "file_boundary_ok": true,
+      "host_verdict_source": "RECORDED branch verdict only: the frozen batch does not persist this branch's final bytes, so it cannot be re-scored from an independent byte source",
+      "host_rounds": 1,
+      "condensation_events": 0,
+      "mechanism_triggered": false,
+      "changed_files": [
+        "django/db/models/sql/query.py"
+      ],
+      "restore_hash_equal": true,
+      "error_type": null
+    }
+  ],
+  "paired": {
+    "native_summary": {
+      "post_fork_savings": -0.45847162577726,
+      "whole_run_savings": -0.1052377902023098,
+      "arm_post_fork_tokens": 107660,
+      "none_post_fork_tokens": 73817,
+      "arm_whole_run_tokens": 355429,
+      "none_whole_run_tokens": 321586,
+      "both_artifact_success": true
+    },
+    "pruner_v1": {
+      "post_fork_savings": -0.4329084086321579,
+      "whole_run_savings": -0.09936999745013775,
+      "arm_post_fork_tokens": 105773,
+      "none_post_fork_tokens": 73817,
+      "arm_whole_run_tokens": 353542,
+      "none_whole_run_tokens": 321586,
+      "both_artifact_success": true
+    }
+  },
+  "mechanism_triggered_plugin": false,
+  "cross_checks": {
+    "source_hashes_valid": true,
+    "frozen_snapshot_valid": true,
+    "branch_restores_hash_equal": true,
+    "branch_host_tests_independently_reproduced": true,
+    "file_boundary_violations": 0,
+    "failed_branch_requests": 0,
+    "shared_ceiling_respected": true
+  },
+  "credential_matches": 0,
+  "credential_scan": {
+    "mode": "targeted_generated_artifacts",
+    "files_scanned": 317,
+    "files_skipped": 10288,
+    "skipped_trees": [
+      "prefix-snapshot"
+    ]
+  },
+  "frozen_experiment_sources_valid": true,
+  "audit_tooling_sources_repaired_after_gate": {
+    "integrations/openhands/audit_validation_v54.py": {
+      "frozen": "cc0226ac69c9264f8036568fcbc48fe0d86823a6c1a63222ea8d92a6be738c71",
+      "current": "311de424e658149c0c3c086aa824d07af6688b2ac266b860b6b1d48aa4b30c1c"
+    }
+  },
+  "post_gate_tooling_edits_recorded": {
+    "integrations/openhands/run_validation_v54.py": {
+      "frozen": "ea134840adcab89c9f3d4013537020acf443a9d28084787fd223767e1e18dfd7",
+      "current": "1dc6f902dccb374b2979891800ee8a770a12703a809951da670ccbc03bce058d"
+    },
+    "integrations/openhands/fork_tools_v54.py": {
+      "frozen": "9144f81115a341968811560edfcb63451e0797584972899396c2bd764d762d7f",
+      "current": "54f9fd2b11f27d6be77ad911929e64b8c2761ffeb55b07d7f59041b54b5476e0"
+    },
+    "integrations/openhands/budget_policy_v54.py": {
+      "frozen": "d1f2332472529ee9812007f863a4116facdeebc5d4ee63d84388393dd7fb9fa4",
+      "current": "5d6dee14e9a821405dbdf552867c2ceaa3c18bba6949511369fe6dc5b102fd6a"
+    },
+    "tests/test_openhands_v54_formal_runner_gate.py": {
+      "frozen": "bdc77495d88bd03e69504561d949dc8dc73d05c7da2cba41adb21c98effa2f40",
+      "current": "377a447f5a31b77240ad759539da56e9396f1bc1924a673e56dd29c3425bd0a5"
+    }
+  },
+  "post_gate_equivalence_note": "the tool-surface refactor after this gate run is asserted equivalent for this batch by tests/test_openhands_v54_formal_runner_gate.py (same three tool names, same allow-list, same ledger carry-over, same fork flow); the paid run itself executed the frozen revision",
+  "timings_seconds": {
+    "prefix_snapshot_verification": 32.23,
+    "prefix_host_test": 133.48,
+    "branch_ledger_checks": 0.0,
+    "branch_bytes_reverification": 0.06,
+    "branch_workspace_restore": 0.06,
+    "credential_scan": 8.73,
+    "total_seconds": 175.39
+  },
+  "note": "Post-fork totals are branch-local provider totals including every summary request; whole-run totals add the shared prefix exactly once. A single prefix cannot estimate the plugin average effect on any task population."
+}

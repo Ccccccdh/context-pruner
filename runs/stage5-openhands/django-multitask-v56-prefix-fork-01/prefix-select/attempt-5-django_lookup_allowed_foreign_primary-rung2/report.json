@@ -1,0 +1,245 @@
+{
+  "sample": "attempt-5-django_lookup_allowed_foreign_primary-rung2",
+  "kind": "prefix_attempt",
+  "task": "django_lookup_allowed_foreign_primary",
+  "arm": "none",
+  "rung": 2,
+  "work_cap": 28,
+  "phase1_request_ceiling": 30,
+  "condenser": "NoOpCondenser",
+  "success": false,
+  "index": 5,
+  "sdk_status": "finished",
+  "elapsed_seconds": 31.08,
+  "timing_seconds": {
+    "prepare_reuse_verify_seconds": 37.49,
+    "prefix_model_wait_seconds": 230.0,
+    "host_test_seconds": 511.65,
+    "prepare_copy_hash_seconds": 849.39,
+    "trigger_prediction_seconds": 0.1
+  },
+  "agent_requests": 3,
+  "summary_requests": 0,
+  "estimated_input": 18927,
+  "condensation_events": 0,
+  "event_count": 9,
+  "event_id_digest": "13d58ad120a9b5779572ed603ddbf61ed6e0cbdd38ceeca17fc312c5876a8353",
+  "ledger": {
+    "calls": [
+      {
+        "kind": "agent",
+        "estimated_input": 5438,
+        "structural_valid": true,
+        "status": "returned",
+        "budget": {
+          "phase": "work",
+          "remaining_requests": 36,
+          "remaining_work_requests": 28,
+          "remaining_estimated_input": 2000000,
+          "public_verification": "not_currently_verified",
+          "reason": "work_capacity_available"
+        },
+        "budget_notice": "HOST RUNTIME BUDGET (remaining requests INCLUDE this request; estimated input is not a bill): {\"phase\": \"work\", \"public_verification\": \"not_currently_verified\", \"reason\": \"work_capacity_available\", \"remaining_estimated_input\": 2000000, \"remaining_requests\": 36, \"remaining_work_requests\": 28}\nPlan within remaining work requests. Reserve verification and Finish. Once ready code passes scoped_tests, finish promptly. Public regression success does not imply host feature acceptance. Later edits invalidate verification.",
+        "allowed_tools": [
+          "scoped_editor",
+          "scoped_symbols",
+          "scoped_tests"
+        ],
+        "budget_response_valid": true,
+        "latency_seconds": 1.4682442000048468
+      },
+      {
+        "kind": "agent",
+        "estimated_input": 6036,
+        "structural_valid": true,
+        "status": "returned",
+        "budget": {
+          "phase": "work",
+          "remaining_requests": 35,
+          "remaining_work_requests": 27,
+          "remaining_estimated_input": 1994562,
+          "public_verification": "not_currently_verified",
+          "reason": "work_capacity_available"
+        },
+        "budget_notice": "HOST RUNTIME BUDGET (remaining requests INCLUDE this request; estimated input is not a bill): {\"phase\": \"work\", \"public_verification\": \"not_currently_verified\", \"reason\": \"work_capacity_available\", \"remaining_estimated_input\": 1994562, \"remaining_requests\": 35, \"remaining_work_requests\": 27}\nPlan within remaining work requests. Reserve verification and Finish. Once ready code passes scoped_tests, finish promptly. Public regression success does not imply host feature acceptance. Later edits invalidate verification.",
+        "allowed_tools": [
+          "scoped_editor",
+          "scoped_symbols",
+          "scoped_tests"
+        ],
+        "budget_response_valid": true,
+        "latency_seconds": 0.8189779000094859
+      },
+      {
+        "kind": "agent",
+        "estimated_input": 7453,
+        "structural_valid": true,
+        "status": "returned",
+        "budget": {
+          "phase": "work",
+          "remaining_requests": 34,
+          "remaining_work_requests": 26,
+          "remaining_estimated_input": 1988526,
+          "public_verification": "not_currently_verified",
+          "reason": "work_capacity_available"
+        },
+        "budget_notice": "HOST RUNTIME BUDGET (remaining requests INCLUDE this request; estimated input is not a bill): {\"phase\": \"work\", \"public_verification\": \"not_currently_verified\", \"reason\": \"work_capacity_available\", \"remaining_estimated_input\": 1988526, \"remaining_requests\": 34, \"remaining_work_requests\": 26}\nPlan within remaining work requests. Reserve verification and Finish. Once ready code passes scoped_tests, finish promptly. Public regression success does not imply host feature acceptance. Later edits invalidate verification.",
+        "allowed_tools": [
+          "scoped_editor",
+          "scoped_symbols",
+          "scoped_tests"
+        ],
+        "budget_response_valid": true,
+        "latency_seconds": 28.50286999999662
+      }
+    ],
+    "estimated_input": 18927,
+    "agent_requests": 3,
+    "summary_requests": 0,
+    "final_call_estimated_input": 7453
+  },
+  "agent_metrics": {
+    "model_name": "openai/deepseek-v4-flash",
+    "accumulated_cost": 0.0,
+    "max_budget_per_task": null,
+    "accumulated_token_usage": {
+      "model": "openai/deepseek-v4-flash",
+      "prompt_tokens": 19429,
+      "completion_tokens": 8576,
+      "cache_read_tokens": 16768,
+      "cache_write_tokens": 0,
+      "reasoning_tokens": 0,
+      "context_window": 1000000,
+      "per_turn_token": 15557,
+      "response_id": ""
+    },
+    "costs": [],
+    "response_latencies": [
+      {
+        "model": "openai/deepseek-v4-flash",
+        "latency": 1.4631807804107666,
+        "response_id": "644706e8-1e76-4789-a76c-ec4b5158e421"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "latency": 0.8134095668792725,
+        "response_id": "30be4935-264f-49dd-a867-8905f39035c3"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "latency": 28.496885776519775,
+        "response_id": "33e83060-9973-45cb-8bd8-7da21694e189"
+      }
+    ],
+    "token_usages": [
+      {
+        "model": "openai/deepseek-v4-flash",
+        "prompt_tokens": 5832,
+        "completion_tokens": 257,
+        "cache_read_tokens": 5376,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "context_window": 1000000,
+        "per_turn_token": 6089,
+        "response_id": "644706e8-1e76-4789-a76c-ec4b5158e421"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "prompt_tokens": 6232,
+        "completion_tokens": 127,
+        "cache_read_tokens": 5504,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "context_window": 1000000,
+        "per_turn_token": 6359,
+        "response_id": "30be4935-264f-49dd-a867-8905f39035c3"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "prompt_tokens": 7365,
+        "completion_tokens": 8192,
+        "cache_read_tokens": 5888,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "context_window": 1000000,
+        "per_turn_token": 15557,
+        "response_id": "33e83060-9973-45cb-8bd8-7da21694e189"
+      }
+    ]
+  },
+  "summary_metrics": {
+    "model_name": "openai/deepseek-v4-flash",
+    "accumulated_cost": 0.0,
+    "max_budget_per_task": null,
+    "accumulated_token_usage": {
+      "model": "openai/deepseek-v4-flash",
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "reasoning_tokens": 0,
+      "context_window": 0,
+      "per_turn_token": 0,
+      "response_id": ""
+    },
+    "costs": [],
+    "response_latencies": [],
+    "token_usages": []
+  },
+  "complete_total_tokens": 28005,
+  "first_phase_within_budget": true,
+  "workspace_preparation": {
+    "reused_gate_workspace": true,
+    "file_count": 19972,
+    "task": "django_lookup_allowed_foreign_primary"
+  },
+  "host_evaluation": {
+    "passed": false,
+    "returncode": 1,
+    "ran": 163,
+    "failures": "failures=1",
+    "summary": [
+      "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v56-prefix-fork-01\\prefix-select\\attempt-5-django_lookup_allowed_foreign_primary-rung2\\evaluation-host\\host-workspace\\django'",
+      "Ran 163 tests in 0.208s",
+      "FAILED (failures=1)"
+    ],
+    "elapsed_seconds": 6.15,
+    "host_tests_applied": true,
+    "selection": [
+      "modeladmin"
+    ],
+    "workspace_unchanged_by_test": true
+  },
+  "host_passed": false,
+  "needs_correction": true,
+  "attempt_timing_seconds": {
+    "prepare_reuse_verify_seconds": 37.49,
+    "prefix_model_wait_seconds": 230.0,
+    "host_test_seconds": 638.41,
+    "prepare_copy_hash_seconds": 849.39,
+    "trigger_prediction_seconds": 0.1
+  },
+  "disk_free_gb_after": 6.969,
+  "attempt_dir": "prefix-select\\attempt-5-django_lookup_allowed_foreign_primary-rung2",
+  "trigger_prediction": {
+    "trigger_input_tokens": 28000,
+    "view_event_count": 10,
+    "measured_view_tokens": 14552,
+    "measured_margin_tokens": -13448,
+    "required_measured_margin_tokens": 0,
+    "measured_ok": false,
+    "ledger_last_estimated_input": 7453,
+    "required_ledger_margin_tokens": 2000,
+    "ledger_ok": false,
+    "condenser_replay_result": "View",
+    "condenser_replay_audit": [],
+    "triggered": false,
+    "reasons": [
+      "replayed condenser returned View, not a Condensation",
+      "view tokens 14552 < trigger 28000 + margin 0",
+      "ledger final estimated input 7453 < trigger 28000 + margin 2000"
+    ],
+    "method": "View.from_events(prefix events + the frozen correction user message), then the real configured condenser is run on that view with a throwaway LLM used only for token counting; no provider request is issued",
+    "sample": "attempt-5-django_lookup_allowed_foreign_primary-rung2"
+  }
+}

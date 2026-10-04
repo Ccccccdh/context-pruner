@@ -1,0 +1,168 @@
+{
+  "tasks": {
+    "django_list_editable_atomicity": {
+      "task": "django_list_editable_atomicity",
+      "allowed": [
+        "django/contrib/admin/options.py"
+      ],
+      "reference_patch_files": [
+        "django/contrib/admin/options.py"
+      ],
+      "public_regression": {
+        "passed": true,
+        "returncode": 0,
+        "ran": 74,
+        "failures": null,
+        "summary": [
+          "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v55-prefix-fork-01\\workspaces\\prefix\\django'",
+          "Ran 74 tests in 1.328s"
+        ],
+        "elapsed_seconds": 6.49,
+        "host_tests_applied": false,
+        "selection": [
+          "admin_changelist"
+        ],
+        "workspace_unchanged_by_test": true
+      },
+      "host_acceptance": {
+        "passed": false,
+        "returncode": 1,
+        "ran": 75,
+        "failures": "failures=1, skipped=7",
+        "summary": [
+          "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v55-prefix-fork-01\\baseline\\django_list_editable_atomicity\\evaluation\\host-workspace\\django'",
+          "Ran 75 tests in 1.803s",
+          "FAILED (failures=1, skipped=7)"
+        ],
+        "elapsed_seconds": 8.79,
+        "host_tests_applied": true,
+        "selection": [
+          "admin_changelist"
+        ],
+        "workspace_unchanged_by_test": true
+      },
+      "baseline_hashes_digest": "af3f37ace8fc057add6d21ba49a36262c289cf1d69553f3055f9a9daf6505f34",
+      "baseline_file_count": 19939
+    },
+    "django_lookup_allowed_foreign_primary": {
+      "task": "django_lookup_allowed_foreign_primary",
+      "allowed": [
+        "django/contrib/admin/options.py"
+      ],
+      "reference_patch_files": [
+        "django/contrib/admin/options.py"
+      ],
+      "public_regression": {
+        "passed": true,
+        "returncode": 0,
+        "ran": 162,
+        "failures": null,
+        "summary": [
+          "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v55-prefix-fork-01\\workspaces\\prefix\\django'",
+          "Ran 162 tests in 0.175s",
+          "OK"
+        ],
+        "elapsed_seconds": 3.34,
+        "host_tests_applied": false,
+        "selection": [
+          "modeladmin"
+        ],
+        "workspace_unchanged_by_test": true
+      },
+      "host_acceptance": {
+        "passed": false,
+        "returncode": 1,
+        "ran": 163,
+        "failures": "failures=1",
+        "summary": [
+          "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v55-prefix-fork-01\\baseline\\django_lookup_allowed_foreign_primary\\evaluation\\host-workspace\\django'",
+          "Ran 163 tests in 0.256s",
+          "FAILED (failures=1)"
+        ],
+        "elapsed_seconds": 7.02,
+        "host_tests_applied": true,
+        "selection": [
+          "modeladmin"
+        ],
+        "workspace_unchanged_by_test": true
+      },
+      "baseline_hashes_digest": "ed5311353bdd5cb0891e06b9f438d182778b7dfc13bcbf2f067360dcf28fd6b6",
+      "baseline_file_count": 19972
+    },
+    "django_referenced_window_wrapping": {
+      "task": "django_referenced_window_wrapping",
+      "allowed": [
+        "django/db/models/sql/query.py"
+      ],
+      "reference_patch_files": [
+        "django/db/models/sql/query.py"
+      ],
+      "public_regression": {
+        "passed": true,
+        "returncode": 0,
+        "ran": 124,
+        "failures": null,
+        "summary": [
+          "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v55-prefix-fork-01\\workspaces\\prefix\\django'",
+          "Ran 124 tests in 0.290s",
+          "OK"
+        ],
+        "elapsed_seconds": 3.64,
+        "host_tests_applied": false,
+        "selection": [
+          "aggregation"
+        ],
+        "workspace_unchanged_by_test": true
+      },
+      "host_acceptance": {
+        "passed": false,
+        "returncode": 1,
+        "ran": 125,
+        "failures": "errors=1",
+        "summary": [
+          "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v55-prefix-fork-01\\baseline\\django_referenced_window_wrapping\\evaluation\\host-workspace\\django'",
+          "ERROR: test_referenced_window_requires_wrapping (aggregation.tests.AggregateAnnotationPruningTests.test_referenced_window_requires_wrapping)",
+          "Ran 125 tests in 0.365s",
+          "FAILED (errors=1)"
+        ],
+        "elapsed_seconds": 9.04,
+        "host_tests_applied": true,
+        "selection": [
+          "aggregation"
+        ],
+        "workspace_unchanged_by_test": true
+      },
+      "baseline_hashes_digest": "016880a8461fb228b1d2a9989786dd71804ffc73c11858f8e53d663d87a264aa",
+      "baseline_file_count": 20128
+    }
+  },
+  "check_order": [
+    "django_list_editable_atomicity",
+    "django_lookup_allowed_foreign_primary",
+    "django_referenced_window_wrapping"
+  ],
+  "frozen_expectations": {
+    "django_referenced_window_wrapping": {
+      "public_passed": true,
+      "public_ran": 124,
+      "public_failures": null,
+      "host_ran": 125,
+      "host_failures": "errors=1"
+    },
+    "django_lookup_allowed_foreign_primary": {
+      "public_passed": true,
+      "public_ran": 162,
+      "public_failures": null,
+      "host_ran": 163,
+      "host_failures": "failures=1"
+    },
+    "django_list_editable_atomicity": {
+      "public_passed": true,
+      "public_ran": 74,
+      "public_failures": null,
+      "host_ran": 75,
+      "host_failures": "failures=1, skipped=7"
+    }
+  },
+  "disk_free_gb_after": 7.14
+}

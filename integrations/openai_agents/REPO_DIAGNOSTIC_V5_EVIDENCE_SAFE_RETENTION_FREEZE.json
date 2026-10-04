@@ -1,0 +1,134 @@
+{
+  "batch": "openai-repo-diagnostic-v5-evidence-safe-retention-pilot-01",
+  "mechanism": "evidence_safe_retention_v5",
+  "registry_schema": "openai_agents_literal_registry_v5",
+  "scenarios": [
+    "django_count_annotations"
+  ],
+  "methods": [
+    "none",
+    "pruner_v1",
+    "native_summary"
+  ],
+  "repeats": 3,
+  "samples": 9,
+  "max_api_requests": 100,
+  "max_output_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "base_url": "https://api.deepseek.com",
+  "provider_budget_tokens": {
+    "soft": 2000,
+    "hard": 6000,
+    "target": 1500
+  },
+  "bytes_per_estimated_token": 4,
+  "filter_hard_bytes": 65216,
+  "filter_hard_bytes_derivation": "provider_hard 6000 / measured provider-per-estimated ratio 0.368 = 16304 estimated tokens * 4 bytes per estimated token = 65216 bytes",
+  "data_class": "public_source_diagnostic",
+  "registry_fingerprints": {
+    "django_count_annotations": "e536b9c64da1ffef42c6f69b28bfc7d84ee5d38f8624e1a08e3c00d8aea657ef"
+  },
+  "registered_literal_labels": {
+    "django_count_annotations": {
+      "filter_references": [
+        "filter"
+      ],
+      "other_annotation_references": [
+        "other annotations"
+      ],
+      "ordering_references": [
+        "ordering"
+      ],
+      "aggregation_decision": [
+        "existing_annotations"
+      ]
+    }
+  },
+  "constraint_carrier_tools": {
+    "django_count_annotations": {
+      "read_django_aggregation": [
+        "ordering_references",
+        "aggregation_decision"
+      ],
+      "read_django_count_call": [
+        "filter_references"
+      ]
+    }
+  },
+  "persisted_retention_fields": [
+    "task_anchor_restore_failures",
+    "selective_retention_restore_failures",
+    "task_restore_fallbacks",
+    "budget_fallbacks",
+    "restore_failures_by_model_call",
+    "restore_fallbacks_by_model_call",
+    "budget_fallbacks_by_model_call",
+    "restore_failure_is_whole_prefix_fallback",
+    "input_evidence_task_anchor_restore_failures",
+    "selective_retention_compacted_calls",
+    "selective_retention_compacted_tool_outputs",
+    "selective_retention_duplicate_units_dropped",
+    "selective_retention_saved_bytes_total",
+    "selective_retention_task_unit_count",
+    "selective_retention_literal_unit_count",
+    "selective_retention_literal_text_count",
+    "selective_retention_constraint_unit_count",
+    "selective_retention_protected_unit_count",
+    "selective_retention_protected_group_count",
+    "selective_retention_pinned_outputs",
+    "selective_retention_pinned_by_reason",
+    "selective_retention_elided_outputs",
+    "selective_retention_notes_with_source_pointer",
+    "selective_retention_pointer_coverage",
+    "selective_retention_recent_group_items_kept",
+    "selective_retention_recent_group_kept_in_full",
+    "selective_retention_literal_guard_fallbacks",
+    "selective_retention_registry_fingerprint",
+    "selective_retention_fallback_reasons",
+    "selective_retention_last_fallback_reason",
+    "evidence_registered_literals_present_final",
+    "evidence_registered_literal_counts_final",
+    "evidence_constraint_carrying_outputs_final",
+    "evidence_pinned_outputs_final",
+    "evidence_outputs_replaced_by_note_final",
+    "evidence_note_pointer_coverage_final",
+    "evidence_most_recent_tool_group_kept_in_full_final",
+    "evidence_output_manifest_final"
+  ],
+  "pre_registered_acceptance": "plugin strict quality >= baseline AND paired mean complete-total-token saving > 0",
+  "source_sha256": {
+    "experiments/runners/run_openai_agents_api_experiment.py": "1cafd67b5b4d649381c737ff2e97d15d7cbba95709311d3516ccdb266c7e8708",
+    "experiments/runners/run_openai_agents_repo_diagnostic_v1.py": "bc6134ec953214277c4ba3cb877313f164ec54013d54d5907629bc3851928ccf",
+    "experiments/runners/token_policy.py": "e1d3c0de34c1ba55a3400a24ca71ea514363b7c9cdcf0ca4e8449382a58474cb",
+    "experiments/runners/trigger_gate.py": "931fd869733029f2f47604f6d99fdaef5da542840c6cb8c806360870cb3c5b23",
+    "experiments/runners/openai_agents_native_summary.py": "2b05db2560ab80d8eca9aaee5828209f9439d0682d200cf8e6a7f01ab5f7fccd",
+    "experiments/runners/openai_agents_input_evidence_v2.py": "9eb505e284e17aa6f2a1f58bd7c1fc84b83bb6d57e644cc3b8225909a2dc709a",
+    "experiments/runners/openai_agents_task_anchor_v3.py": "e53f63a38dcaf10e6f6ebee424566c61d430c5e9a41d59f425878750e473b6ee",
+    "experiments/runners/openai_agents_selective_retention_v4.py": "eb0b7d6f6886ca6f7e0020c06536c88bcb5b76a2d2846ea807c46739f0a79431",
+    "experiments/runners/openai_agents_evidence_v4.py": "54d2edaf629a5ea1cf767201d4d8829e257ffe2e93a7e24245c802474bc04a1d",
+    "experiments/runners/run_openai_agents_repo_diagnostic_v4.py": "4e430e6ad7870f0ccb1f690f279c7d3a5f0ae6e6f0bbe47ca91d6c42134fdb5f",
+    "experiments/runners/openai_agents_literal_registry_v5.py": "b36052fd0ef32849c8e191903a794424a590c7e2d2125721ad4ada38092f7d3b",
+    "experiments/runners/openai_agents_evidence_safe_retention_v5.py": "8b67133f8780fa03e562dbf1052e8a95b19a90ff042cf293c1b1cb17e2426e56",
+    "experiments/runners/openai_agents_evidence_v5.py": "16e2b70aa1f9496485d9f82aa69e3274f5dd07026051f877ced029c952333046",
+    "experiments/runners/run_openai_agents_repo_diagnostic_v5.py": "b1974fb0d76381a5dd286a0b05057e8a8b69f4eee4d015876e87708ea94726ea",
+    "experiments/audits/audit_openai_agents_repo_diagnostic_v2.py": "874ec6c89053fd0c73ab85598843b4390cd74a3f751f51025551c9c7b370f5bb",
+    "experiments/audits/audit_openai_agents_repo_diagnostic_v4.py": "fe4fa425972493a62812b5d93aa568b54b640752ac2961c818b1408f3994bc02",
+    "experiments/audits/audit_openai_agents_repo_diagnostic_v5.py": "9c0344bcb4f123368e2dbd05ecb944dc27e13c331296d6835960735495f09a12",
+    "tests/test_openai_agents_repo_diagnostic_v1.py": "928f9af64f598f6a76e5e13db7fb4f80792b0ce2696165a7ecb058638bc6a1fb",
+    "tests/test_openai_agents_input_evidence_v2.py": "689e294c40979355c213de2cb4c3c79b38a3a40dfcf92377d843f921894563c4",
+    "tests/test_openai_agents_repo_diagnostic_v2.py": "4720340ab65de0cc427a608d5de0523fb1988603b0dea5551730e2f8d5cc267f",
+    "tests/test_openai_agents_task_anchor_v3.py": "cce3dbe60273d634f38302158b8457ead980b8b668dd0a88411cd816a6439943",
+    "tests/test_openai_agents_selective_retention_v4.py": "4145b9e7bde9622c2bdc336e0097e03cf4967cc1c7ff2a3c4d570058f606281e",
+    "tests/test_openai_agents_evidence_safe_retention_v5.py": "cc70b68739d1cd369e544675b29104402481e7a06f3c0af49ed36409b26588c5",
+    "integrations/openai_agents/REPO_DIAGNOSTIC_V1_PROTOCOL.md": "616898deee6d6f417f8b2b4d9ab16d463fab537e1d6af4519e52ad9aab914aea",
+    "integrations/openai_agents/REPO_DIAGNOSTIC_V2_PROTOCOL.md": "eb8fd74af24be5b1e58386d551aa9bbd3016088a58616930c81260fab291873d",
+    "integrations/openai_agents/REPO_DIAGNOSTIC_V3_TASK_ANCHOR_PROTOCOL.md": "785270baef97a16d2dc58af5bd075ec97e0a2716ffca88f285e3e989e6495ff3",
+    "integrations/openai_agents/REPO_DIAGNOSTIC_V4_SELECTIVE_RETENTION_PROTOCOL.md": "0ab31f3132faa908cb9d9c63a7b09c4079798175986e160c9ac99354e608c64f",
+    "integrations/openai_agents/REPO_DIAGNOSTIC_V5_EVIDENCE_SAFE_RETENTION_PROTOCOL.md": "6c80552090c23e72111bead51bef9620f2a58dfc67985b058af794d30c17f23a"
+  },
+  "public_input_sha256": {
+    ".tooling/swebench-verified/django-16263/instance.json": "dc9b3b68d4ec74dcd68aad5e1699377781d58bc34152db074eebeb50dce2bb66",
+    ".tooling/upstream/django-16263/django/db/models/query.py": "01df683d1cb1407298081ed147bb9bd7f261e1db2b51ce1173ef8e23ca586116",
+    ".tooling/upstream/django-16263/django/db/models/sql/query.py": "e8e8149c1994e52f53bd4e774c3d4ec6e8d79d1cba3661a2d594629e5b474fc2"
+  }
+}

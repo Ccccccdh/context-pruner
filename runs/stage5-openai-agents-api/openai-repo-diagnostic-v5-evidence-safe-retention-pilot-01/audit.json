@@ -1,0 +1,48 @@
+{
+  "complete": true,
+  "issues": [],
+  "batch": "openai-repo-diagnostic-v5-evidence-safe-retention-pilot-01",
+  "expected_batch": "openai-repo-diagnostic-v5-evidence-safe-retention-pilot-01",
+  "freeze": "integrations\\openai_agents\\REPO_DIAGNOSTIC_V5_EVIDENCE_SAFE_RETENTION_FREEZE.json",
+  "mechanism": "evidence_safe_retention_v5",
+  "registry_schema": "openai_agents_literal_registry_v5",
+  "samples": 9,
+  "attempts": 24,
+  "evidence_checked": 9,
+  "successes": {
+    "none": 3,
+    "pruner_v1": 3,
+    "native_summary": 3
+  },
+  "failures": {
+    "none": 0,
+    "pruner_v1": 0,
+    "native_summary": 0
+  },
+  "task_anchor_restore_failures": {
+    "none": 0,
+    "pruner_v1": 3,
+    "native_summary": 0
+  },
+  "samples_with_a_missing_registered_literal": {
+    "none": 0,
+    "pruner_v1": 0,
+    "native_summary": 0
+  },
+  "paired": {
+    "pruner_v1": {
+      "paired_n": 3,
+      "actual_input_savings_mean": -0.8139642774298307,
+      "complete_total_savings_mean": -0.7978843124015306,
+      "complete_total_savings_positive": 0,
+      "success_delta_mean": 0.0
+    },
+    "native_summary": {
+      "paired_n": 3,
+      "actual_input_savings_mean": 0.0,
+      "complete_total_savings_mean": -0.14078325455773127,
+      "complete_total_savings_positive": 0,
+      "success_delta_mean": 0.0
+    }
+  }
+}

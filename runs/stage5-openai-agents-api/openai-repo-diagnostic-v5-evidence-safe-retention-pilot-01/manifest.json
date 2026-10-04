@@ -1,0 +1,129 @@
+{
+  "experiment_id": "openai-repo-diagnostic-v5-evidence-safe-retention-pilot-01",
+  "kind": "openai_agents_runner_real_api_paired_evidence_safe_retention",
+  "data_class": "public_source_diagnostic",
+  "disclosure": "Public SWE-bench issue statements and selected public baseline source ranges are sent through real SDK tools. No reference patches, host test patches, local secrets, or expected answers are sent. The plugin arm pins every registered literal constraint - including those that appear only inside a source-code tool output - verbatim in the final model input, keeps the most recent tool group in full, and only ever replaces an already delivered, pointer-addressable tool output text with a note that states its file path and line range.",
+  "sdk": "openai-agents",
+  "model": "deepseek-v4-flash",
+  "base_url": "https://api.deepseek.com",
+  "methods": [
+    "none",
+    "pruner_v1",
+    "native_summary"
+  ],
+  "scenarios": [
+    "django_count_annotations"
+  ],
+  "repeats": 3,
+  "minimum_planned_requests": 84,
+  "maximum_api_requests": 100,
+  "max_api_retries": 2,
+  "max_turns": 6,
+  "max_output_tokens": 1024,
+  "max_summary_tokens": 1024,
+  "max_summary_calls": 16,
+  "trigger_policy": "symmetric_budget",
+  "native_summary_contract": {
+    "trigger": "estimated input tokens > soft budget",
+    "retention": "last units up to target token budget, kept verbatim",
+    "pinned": "leading user statement always kept verbatim",
+    "boundary": "Responses groups are never split across a call/output pair",
+    "acceptance": "summary accepted only when it shrinks the payload",
+    "failure_policy": "provider error leaves the input untouched",
+    "accounting": "summary requests consume the same global request budget",
+    "regrowth_rule": "an already-summarised payload is not summarised again until it grows 25%"
+  },
+  "final_output_contract": {
+    "prefix": "RESULT ",
+    "single_line": true,
+    "max_chars": 160
+  },
+  "budget": {
+    "soft": 5435,
+    "hard": 16304,
+    "target": 4076,
+    "fixed_reserved_tokens": 512
+  },
+  "budget_calibration": {
+    "host": "openai_agents",
+    "calibration_ratio_provider_per_estimated": 0.368,
+    "provider_tokens": {
+      "soft": 2000,
+      "hard": 6000,
+      "target": 1500
+    },
+    "estimated_tokens": {
+      "soft": 5435,
+      "hard": 16304,
+      "target": 4076
+    },
+    "note": "Budgets are declared in provider tokens and converted with a measured ratio."
+  },
+  "cost_rates_per_million": {
+    "input": 0.0,
+    "output": 0.0
+  },
+  "mechanism": {
+    "arm": "pruner_v1",
+    "name": "evidence_safe_retention_v5",
+    "registry": "openai_agents_literal_registry_v5",
+    "eligibility": "registered literal set first: a tool output carrying a registered literal constraint is pinned verbatim; then the most recent tool group; then already-delivered text with a parseable path/line pointer",
+    "protected": "registered literal units and literal-carrying tool outputs, the most recent tool group, and every Responses tool group boundary",
+    "reduction": "exact-duplicate units; an already-delivered non-constraint tool output with a registered path/line range replaced by a pointer note",
+    "fallback": "whole-payload fallback for the model call, counted in task_anchor_restore_failures (hard) or budget_fallbacks (budget)",
+    "deterministic": "no model, no randomness, no text rewriting"
+  },
+  "shared_runner_disclosure_amended": true,
+  "persisted_retention_fields": [
+    "task_anchor_restore_failures",
+    "selective_retention_restore_failures",
+    "task_restore_fallbacks",
+    "budget_fallbacks",
+    "restore_failures_by_model_call",
+    "restore_fallbacks_by_model_call",
+    "budget_fallbacks_by_model_call",
+    "restore_failure_is_whole_prefix_fallback",
+    "input_evidence_task_anchor_restore_failures",
+    "selective_retention_compacted_calls",
+    "selective_retention_compacted_tool_outputs",
+    "selective_retention_duplicate_units_dropped",
+    "selective_retention_saved_bytes_total",
+    "selective_retention_task_unit_count",
+    "selective_retention_literal_unit_count",
+    "selective_retention_literal_text_count",
+    "selective_retention_constraint_unit_count",
+    "selective_retention_protected_unit_count",
+    "selective_retention_protected_group_count",
+    "selective_retention_pinned_outputs",
+    "selective_retention_pinned_by_reason",
+    "selective_retention_elided_outputs",
+    "selective_retention_notes_with_source_pointer",
+    "selective_retention_pointer_coverage",
+    "selective_retention_recent_group_items_kept",
+    "selective_retention_recent_group_kept_in_full",
+    "selective_retention_literal_guard_fallbacks",
+    "selective_retention_registry_fingerprint",
+    "selective_retention_fallback_reasons",
+    "selective_retention_last_fallback_reason",
+    "evidence_registered_literals_present_final",
+    "evidence_registered_literal_counts_final",
+    "evidence_constraint_carrying_outputs_final",
+    "evidence_pinned_outputs_final",
+    "evidence_outputs_replaced_by_note_final",
+    "evidence_note_pointer_coverage_final",
+    "evidence_most_recent_tool_group_kept_in_full_final",
+    "evidence_output_manifest_final"
+  ],
+  "filter_hard_bytes": 65216,
+  "bytes_per_estimated_token": 4,
+  "filter_hard_bytes_derivation": "provider_hard / measured provider-per-estimated ratio (0.368) * 4 bytes per estimated token",
+  "literal_registry": {
+    "schema": "openai_agents_literal_registry_v5",
+    "fingerprints": {
+      "django_count_annotations": "e536b9c64da1ffef42c6f69b28bfc7d84ee5d38f8624e1a08e3c00d8aea657ef",
+      "pylint_regex_csv": "9eb23cc0334748e60d2ab0f0cfd5285e0ab171e02abd632c16cf95b9b048f5a1",
+      "pytest_mro": "aac7a257f92c86a3425c046b5f5b651c9c99e9df6d836a3232b3494bbfbadb34"
+    },
+    "problems": []
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "batch": "openai-repo-diagnostic-v4-selective-retention-pilot-01",
+  "mechanism": "selective_retention_v4",
+  "scenarios": [
+    "django_count_annotations"
+  ],
+  "methods": [
+    "none",
+    "pruner_v1",
+    "native_summary"
+  ],
+  "repeats": 3,
+  "samples": 9,
+  "max_api_requests": 100,
+  "max_output_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "base_url": "https://api.deepseek.com",
+  "provider_budget_tokens": {
+    "soft": 2000,
+    "hard": 6000,
+    "target": 1500
+  },
+  "data_class": "public_source_diagnostic",
+  "persisted_retention_fields": [
+    "task_anchor_restore_failures",
+    "selective_retention_restore_failures",
+    "task_restore_fallbacks",
+    "restore_failures_by_model_call",
+    "restore_fallbacks_by_model_call",
+    "restore_failure_is_whole_prefix_fallback",
+    "input_evidence_task_anchor_restore_failures",
+    "selective_retention_compacted_calls",
+    "selective_retention_compacted_tool_outputs",
+    "selective_retention_duplicate_units_dropped",
+    "selective_retention_saved_bytes_total",
+    "selective_retention_task_unit_count",
+    "selective_retention_constraint_unit_count",
+    "selective_retention_protected_unit_count",
+    "selective_retention_protected_group_count",
+    "selective_retention_fallback_reasons",
+    "selective_retention_last_fallback_reason"
+  ],
+  "source_sha256": {
+    "experiments/runners/run_openai_agents_api_experiment.py": "1cafd67b5b4d649381c737ff2e97d15d7cbba95709311d3516ccdb266c7e8708",
+    "experiments/runners/run_openai_agents_repo_diagnostic_v1.py": "bc6134ec953214277c4ba3cb877313f164ec54013d54d5907629bc3851928ccf",
+    "experiments/runners/token_policy.py": "e1d3c0de34c1ba55a3400a24ca71ea514363b7c9cdcf0ca4e8449382a58474cb",
+    "experiments/runners/trigger_gate.py": "931fd869733029f2f47604f6d99fdaef5da542840c6cb8c806360870cb3c5b23",
+    "experiments/runners/openai_agents_native_summary.py": "2b05db2560ab80d8eca9aaee5828209f9439d0682d200cf8e6a7f01ab5f7fccd",
+    "experiments/runners/openai_agents_input_evidence_v2.py": "9eb505e284e17aa6f2a1f58bd7c1fc84b83bb6d57e644cc3b8225909a2dc709a",
+    "experiments/runners/openai_agents_task_anchor_v3.py": "e53f63a38dcaf10e6f6ebee424566c61d430c5e9a41d59f425878750e473b6ee",
+    "experiments/runners/run_openai_agents_repo_diagnostic_v2.py": "83569a2629eff0cda15d6643f3173491b580bea54bd9104bf8152061b606b9a5",
+    "experiments/runners/openai_agents_selective_retention_v4.py": "eb0b7d6f6886ca6f7e0020c06536c88bcb5b76a2d2846ea807c46739f0a79431",
+    "experiments/runners/openai_agents_evidence_v4.py": "54d2edaf629a5ea1cf767201d4d8829e257ffe2e93a7e24245c802474bc04a1d",
+    "experiments/runners/run_openai_agents_repo_diagnostic_v4.py": "4e430e6ad7870f0ccb1f690f279c7d3a5f0ae6e6f0bbe47ca91d6c42134fdb5f",
+    "experiments/audits/audit_openai_agents_repo_diagnostic_v4.py": "fe4fa425972493a62812b5d93aa568b54b640752ac2961c818b1408f3994bc02",
+    "tests/test_openai_agents_selective_retention_v4.py": "4145b9e7bde9622c2bdc336e0097e03cf4967cc1c7ff2a3c4d570058f606281e",
+    "integrations/openai_agents/REPO_DIAGNOSTIC_V1_PROTOCOL.md": "616898deee6d6f417f8b2b4d9ab16d463fab537e1d6af4519e52ad9aab914aea",
+    "integrations/openai_agents/REPO_DIAGNOSTIC_V2_PROTOCOL.md": "eb8fd74af24be5b1e58386d551aa9bbd3016088a58616930c81260fab291873d",
+    "integrations/openai_agents/REPO_DIAGNOSTIC_V3_TASK_ANCHOR_PROTOCOL.md": "785270baef97a16d2dc58af5bd075ec97e0a2716ffca88f285e3e989e6495ff3",
+    "integrations/openai_agents/REPO_DIAGNOSTIC_V4_SELECTIVE_RETENTION_PROTOCOL.md": "0ab31f3132faa908cb9d9c63a7b09c4079798175986e160c9ac99354e608c64f"
+  },
+  "public_input_sha256": {
+    ".tooling/swebench-verified/django-16263/instance.json": "dc9b3b68d4ec74dcd68aad5e1699377781d58bc34152db074eebeb50dce2bb66",
+    ".tooling/upstream/django-16263/django/db/models/query.py": "01df683d1cb1407298081ed147bb9bd7f261e1db2b51ce1173ef8e23ca586116",
+    ".tooling/upstream/django-16263/django/db/models/sql/query.py": "e8e8149c1994e52f53bd4e774c3d4ec6e8d79d1cba3661a2d594629e5b474fc2"
+  }
+}

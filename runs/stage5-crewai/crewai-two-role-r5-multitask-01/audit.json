@@ -1,0 +1,96 @@
+{
+  "complete": true,
+  "freeze_checked": true,
+  "dry_run_mock": false,
+  "rows": 27,
+  "expected_rows": 27,
+  "request_attempts": 177,
+  "quality": {
+    "none": {
+      "n": 9,
+      "strict_success": 3,
+      "semantic_success": 6,
+      "first_pass_facts": 9,
+      "recovered": 0,
+      "recovery_failed": 0,
+      "complete_total_tokens": 74445,
+      "compression_events": 0,
+      "failed_or_limited": 6,
+      "summary_attempts": 0
+    },
+    "pruner_v1": {
+      "n": 9,
+      "strict_success": 0,
+      "semantic_success": 0,
+      "first_pass_facts": 0,
+      "recovered": 9,
+      "recovery_failed": 0,
+      "complete_total_tokens": 54437,
+      "compression_events": 36,
+      "failed_or_limited": 9,
+      "summary_attempts": 0
+    },
+    "native_summary": {
+      "n": 9,
+      "strict_success": 3,
+      "semantic_success": 6,
+      "first_pass_facts": 9,
+      "recovered": 0,
+      "recovery_failed": 0,
+      "complete_total_tokens": 94858,
+      "compression_events": 0,
+      "failed_or_limited": 6,
+      "summary_attempts": 24
+    }
+  },
+  "complete_total_tokens_by_method": {
+    "none": 74445,
+    "native_summary": 94858,
+    "pruner_v1": 54437
+  },
+  "paired": {
+    "queue_backlog_replay": {
+      "pruner_paired_mean_saving_percent": 43.1257,
+      "pruner_paired_positive": 3,
+      "paired_n": 3,
+      "per_repeat": [
+        36.3313,
+        45.1427,
+        47.9031
+      ]
+    },
+    "region_failover": {
+      "pruner_paired_mean_saving_percent": 18.969,
+      "pruner_paired_positive": 3,
+      "paired_n": 3,
+      "per_repeat": [
+        21.9964,
+        17.2595,
+        17.6512
+      ]
+    },
+    "schema_migration": {
+      "pruner_paired_mean_saving_percent": 17.4065,
+      "pruner_paired_positive": 3,
+      "paired_n": 3,
+      "per_repeat": [
+        19.3764,
+        12.1911,
+        20.6521
+      ]
+    }
+  },
+  "plugin_paired_mean_saving_percent": 26.5004,
+  "plugin_inter_task_dispersion_percentage_points": 25.7192,
+  "errors": [
+    "queue_backlog_replay/0/pruner_v1: wrong number of role outputs",
+    "queue_backlog_replay/1/pruner_v1: wrong number of role outputs",
+    "queue_backlog_replay/2/pruner_v1: wrong number of role outputs",
+    "region_failover/0/pruner_v1: wrong number of role outputs",
+    "region_failover/1/pruner_v1: wrong number of role outputs",
+    "region_failover/2/pruner_v1: wrong number of role outputs",
+    "schema_migration/0/pruner_v1: wrong number of role outputs",
+    "schema_migration/1/pruner_v1: wrong number of role outputs",
+    "schema_migration/2/pruner_v1: wrong number of role outputs"
+  ]
+}

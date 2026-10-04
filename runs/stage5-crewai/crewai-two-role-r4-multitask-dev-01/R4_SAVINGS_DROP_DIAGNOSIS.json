@@ -1,0 +1,4392 @@
+{
+  "batch": "crewai-two-role-r4-multitask-dev-01",
+  "manifest_runner_sha256": "393d1dff8f16d0001cd09a54887678b156e5d5cc6bd6d38bc0cfb229c70d84d1",
+  "manifest_task_sha256": "8d51add8e421f2cfd011e5417ca5c3d071073408ceab0c662b7fe2985a84e7f0",
+  "results_sha256": "ca9d3787faccd0b469d7b2e9ed6087b25844d560e90c54b402810c20ca84f70e",
+  "samples": 27,
+  "budget": {
+    "host": "crewai",
+    "calibration_ratio_provider_per_estimated": 0.389,
+    "provider_tokens": {
+      "soft": 1200,
+      "hard": 3000,
+      "target": 900
+    },
+    "estimated_tokens": {
+      "soft": 3085,
+      "hard": 7712,
+      "target": 2314
+    },
+    "note": "Budgets are declared in provider tokens and converted with a measured ratio."
+  },
+  "limits": {
+    "fixed_reserved_tokens": 300,
+    "max_output_tokens": 512,
+    "max_summary_tokens": 1024,
+    "max_summary_calls": 4
+  },
+  "max_api_requests": 200,
+  "request_attempts": 126,
+  "samples_rows": [
+    {
+      "task_id": "incident_triage",
+      "repeat": 0,
+      "method": "none",
+      "success": true,
+      "error": "",
+      "model_calls": 4,
+      "calls": [
+        {
+          "call_index": 0,
+          "provider_input_tokens": 1216,
+          "provider_output_tokens": 181,
+          "status": "success",
+          "message_count": 20,
+          "content_characters": 2800
+        },
+        {
+          "call_index": 1,
+          "provider_input_tokens": 1344,
+          "provider_output_tokens": 33,
+          "status": "success",
+          "message_count": 22,
+          "content_characters": 3231
+        },
+        {
+          "call_index": 2,
+          "provider_input_tokens": 492,
+          "provider_output_tokens": 170,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 1966
+        },
+        {
+          "call_index": 3,
+          "provider_input_tokens": 621,
+          "provider_output_tokens": 76,
+          "status": "success",
+          "message_count": 6,
+          "content_characters": 2466
+        }
+      ],
+      "provider_input_tokens": 3673,
+      "provider_output_tokens": 460,
+      "summary_input_tokens": 0,
+      "summary_output_tokens": 0,
+      "complete_total_tokens": 4133,
+      "compression_events": 0,
+      "roles": [
+        {
+          "role": "Evidence investigator",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "Operations decision maker",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "handoff_recovery",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 0,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        }
+      ],
+      "role_compression_events": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "observed_payload_vs_gate": [
+        {
+          "role": "Evidence investigator",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        },
+        {
+          "role": "Operations decision maker",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        }
+      ],
+      "compression_delta": {},
+      "remedy": {
+        "handoff_first_pass_facts_present": true,
+        "handoff_first_pass_strict_marker": true,
+        "recovery_invocations": 0,
+        "recovery_api_attempts": 0,
+        "summary_attempts": 0,
+        "summary_failures": 0,
+        "api_request_attempts": 4
+      }
+    },
+    {
+      "task_id": "incident_triage",
+      "repeat": 0,
+      "method": "native_summary",
+      "success": true,
+      "error": "",
+      "model_calls": 4,
+      "calls": [
+        {
+          "call_index": 0,
+          "provider_input_tokens": 1216,
+          "provider_output_tokens": 166,
+          "status": "success",
+          "message_count": 20,
+          "content_characters": 2800
+        },
+        {
+          "call_index": 1,
+          "provider_input_tokens": 1333,
+          "provider_output_tokens": 104,
+          "status": "success",
+          "message_count": 21,
+          "content_characters": 3281
+        },
+        {
+          "call_index": 2,
+          "provider_input_tokens": 493,
+          "provider_output_tokens": 151,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 2000
+        },
+        {
+          "call_index": 3,
+          "provider_input_tokens": 608,
+          "provider_output_tokens": 75,
+          "status": "success",
+          "message_count": 6,
+          "content_characters": 2424
+        }
+      ],
+      "provider_input_tokens": 3650,
+      "provider_output_tokens": 496,
+      "summary_input_tokens": 984,
+      "summary_output_tokens": 55,
+      "complete_total_tokens": 5185,
+      "compression_events": 0,
+      "roles": [
+        {
+          "role": "Evidence investigator",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "Operations decision maker",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "handoff_recovery",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 0,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        }
+      ],
+      "role_compression_events": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "observed_payload_vs_gate": [
+        {
+          "role": "Evidence investigator",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        },
+        {
+          "role": "Operations decision maker",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        }
+      ],
+      "compression_delta": {},
+      "remedy": {
+        "handoff_first_pass_facts_present": true,
+        "handoff_first_pass_strict_marker": true,
+        "recovery_invocations": 0,
+        "recovery_api_attempts": 0,
+        "summary_attempts": 2,
+        "summary_failures": 0,
+        "api_request_attempts": 6
+      }
+    },
+    {
+      "task_id": "incident_triage",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "success": true,
+      "error": "",
+      "model_calls": 4,
+      "calls": [
+        {
+          "call_index": 0,
+          "provider_input_tokens": 1216,
+          "provider_output_tokens": 151,
+          "status": "success",
+          "message_count": 20,
+          "content_characters": 2800
+        },
+        {
+          "call_index": 1,
+          "provider_input_tokens": 778,
+          "provider_output_tokens": 156,
+          "status": "success",
+          "message_count": 6,
+          "content_characters": 2276
+        },
+        {
+          "call_index": 2,
+          "provider_input_tokens": 553,
+          "provider_output_tokens": 41,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 2086
+        },
+        {
+          "call_index": 3,
+          "provider_input_tokens": 668,
+          "provider_output_tokens": 70,
+          "status": "success",
+          "message_count": 6,
+          "content_characters": 2510
+        }
+      ],
+      "provider_input_tokens": 3215,
+      "provider_output_tokens": 418,
+      "summary_input_tokens": 0,
+      "summary_output_tokens": 0,
+      "complete_total_tokens": 3633,
+      "compression_events": 1,
+      "roles": [
+        {
+          "role": "Evidence investigator",
+          "compression_count": 1,
+          "crewai_compressed_calls": 1,
+          "trigger_gate_triggered_calls": 1,
+          "trigger_gate_passthrough_calls": 1,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 3293,
+          "full_context_tokens_total": 2547,
+          "served_context_tokens_total": 1616,
+          "gross_input_tokens_saved": 931,
+          "gross_input_savings_rate": 0.365528,
+          "peak_model_input_tokens": 2120,
+          "peak_reserved_tokens": 504,
+          "reserved_tokens_total": 504,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 17,
+          "enabled": true
+        },
+        {
+          "role": "Operations decision maker",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 2,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 2020,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": true
+        },
+        {
+          "role": "handoff_recovery",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 0,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        }
+      ],
+      "role_compression_events": 1,
+      "trigger_gate_triggered_calls": 1,
+      "trigger_gate_passthrough_calls": 3,
+      "observed_payload_vs_gate": [
+        {
+          "role": "Evidence investigator",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 3293,
+          "crossed_gate": true,
+          "peak_model_input_tokens": 2120
+        },
+        {
+          "role": "Operations decision maker",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 2020,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        }
+      ],
+      "compression_delta": {
+        "step": "call1_vs_call2",
+        "characters_removed": 190,
+        "provider_tokens_removed": 225,
+        "messages_removed": 2,
+        "first_call": {
+          "call_index": 1,
+          "provider_input_tokens": 778,
+          "provider_output_tokens": 156,
+          "status": "success",
+          "message_count": 6,
+          "content_characters": 2276
+        },
+        "later_call": {
+          "call_index": 2,
+          "provider_input_tokens": 553,
+          "provider_output_tokens": 41,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 2086
+        }
+      },
+      "remedy": {
+        "handoff_first_pass_facts_present": true,
+        "handoff_first_pass_strict_marker": true,
+        "recovery_invocations": 0,
+        "recovery_api_attempts": 0,
+        "summary_attempts": 0,
+        "summary_failures": 0,
+        "api_request_attempts": 4
+      }
+    },
+    {
+      "task_id": "incident_triage",
+      "repeat": 1,
+      "method": "native_summary",
+      "success": true,
+      "error": "",
+      "model_calls": 4,
+      "calls": [
+        {
+          "call_index": 0,
+          "provider_input_tokens": 1216,
+          "provider_output_tokens": 166,
+          "status": "success",
+          "message_count": 20,
+          "content_characters": 2800
+        },
+        {
+          "call_index": 1,
+          "provider_input_tokens": 1330,
+          "provider_output_tokens": 91,
+          "status": "success",
+          "message_count": 21,
+          "content_characters": 3265
+        },
+        {
+          "call_index": 2,
+          "provider_input_tokens": 493,
+          "provider_output_tokens": 52,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 2000
+        },
+        {
+          "call_index": 3,
+          "provider_input_tokens": 608,
+          "provider_output_tokens": 75,
+          "status": "success",
+          "message_count": 6,
+          "content_characters": 2424
+        }
+      ],
+      "provider_input_tokens": 3647,
+      "provider_output_tokens": 384,
+      "summary_input_tokens": 984,
+      "summary_output_tokens": 52,
+      "complete_total_tokens": 5067,
+      "compression_events": 0,
+      "roles": [
+        {
+          "role": "Evidence investigator",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "Operations decision maker",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "handoff_recovery",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 0,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        }
+      ],
+      "role_compression_events": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "observed_payload_vs_gate": [
+        {
+          "role": "Evidence investigator",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        },
+        {
+          "role": "Operations decision maker",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        }
+      ],
+      "compression_delta": {},
+      "remedy": {
+        "handoff_first_pass_facts_present": true,
+        "handoff_first_pass_strict_marker": true,
+        "recovery_invocations": 0,
+        "recovery_api_attempts": 0,
+        "summary_attempts": 2,
+        "summary_failures": 0,
+        "api_request_attempts": 6
+      }
+    },
+    {
+      "task_id": "incident_triage",
+      "repeat": 1,
+      "method": "pruner_v1",
+      "success": true,
+      "error": "",
+      "model_calls": 4,
+      "calls": [
+        {
+          "call_index": 0,
+          "provider_input_tokens": 1216,
+          "provider_output_tokens": 151,
+          "status": "success",
+          "message_count": 20,
+          "content_characters": 2800
+        },
+        {
+          "call_index": 1,
+          "provider_input_tokens": 778,
+          "provider_output_tokens": 142,
+          "status": "success",
+          "message_count": 6,
+          "content_characters": 2276
+        },
+        {
+          "call_index": 2,
+          "provider_input_tokens": 543,
+          "provider_output_tokens": 131,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 2073
+        },
+        {
+          "call_index": 3,
+          "provider_input_tokens": 658,
+          "provider_output_tokens": 79,
+          "status": "success",
+          "message_count": 6,
+          "content_characters": 2497
+        }
+      ],
+      "provider_input_tokens": 3195,
+      "provider_output_tokens": 503,
+      "summary_input_tokens": 0,
+      "summary_output_tokens": 0,
+      "complete_total_tokens": 3698,
+      "compression_events": 1,
+      "roles": [
+        {
+          "role": "Evidence investigator",
+          "compression_count": 1,
+          "crewai_compressed_calls": 1,
+          "trigger_gate_triggered_calls": 1,
+          "trigger_gate_passthrough_calls": 1,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 3293,
+          "full_context_tokens_total": 2547,
+          "served_context_tokens_total": 1616,
+          "gross_input_tokens_saved": 931,
+          "gross_input_savings_rate": 0.365528,
+          "peak_model_input_tokens": 2120,
+          "peak_reserved_tokens": 504,
+          "reserved_tokens_total": 504,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 17,
+          "enabled": true
+        },
+        {
+          "role": "Operations decision maker",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 2,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 2008,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": true
+        },
+        {
+          "role": "handoff_recovery",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 0,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        }
+      ],
+      "role_compression_events": 1,
+      "trigger_gate_triggered_calls": 1,
+      "trigger_gate_passthrough_calls": 3,
+      "observed_payload_vs_gate": [
+        {
+          "role": "Evidence investigator",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 3293,
+          "crossed_gate": true,
+          "peak_model_input_tokens": 2120
+        },
+        {
+          "role": "Operations decision maker",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 2008,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        }
+      ],
+      "compression_delta": {
+        "step": "call1_vs_call2",
+        "characters_removed": 203,
+        "provider_tokens_removed": 235,
+        "messages_removed": 2,
+        "first_call": {
+          "call_index": 1,
+          "provider_input_tokens": 778,
+          "provider_output_tokens": 142,
+          "status": "success",
+          "message_count": 6,
+          "content_characters": 2276
+        },
+        "later_call": {
+          "call_index": 2,
+          "provider_input_tokens": 543,
+          "provider_output_tokens": 131,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 2073
+        }
+      },
+      "remedy": {
+        "handoff_first_pass_facts_present": true,
+        "handoff_first_pass_strict_marker": true,
+        "recovery_invocations": 0,
+        "recovery_api_attempts": 0,
+        "summary_attempts": 0,
+        "summary_failures": 0,
+        "api_request_attempts": 4
+      }
+    },
+    {
+      "task_id": "incident_triage",
+      "repeat": 1,
+      "method": "none",
+      "success": true,
+      "error": "",
+      "model_calls": 4,
+      "calls": [
+        {
+          "call_index": 0,
+          "provider_input_tokens": 1216,
+          "provider_output_tokens": 151,
+          "status": "success",
+          "message_count": 20,
+          "content_characters": 2800
+        },
+        {
+          "call_index": 1,
+          "provider_input_tokens": 1344,
+          "provider_output_tokens": 46,
+          "status": "success",
+          "message_count": 22,
+          "content_characters": 3231
+        },
+        {
+          "call_index": 2,
+          "provider_input_tokens": 504,
+          "provider_output_tokens": 172,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 2011
+        },
+        {
+          "call_index": 3,
+          "provider_input_tokens": 646,
+          "provider_output_tokens": 79,
+          "status": "success",
+          "message_count": 6,
+          "content_characters": 2567
+        }
+      ],
+      "provider_input_tokens": 3710,
+      "provider_output_tokens": 448,
+      "summary_input_tokens": 0,
+      "summary_output_tokens": 0,
+      "complete_total_tokens": 4158,
+      "compression_events": 0,
+      "roles": [
+        {
+          "role": "Evidence investigator",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "Operations decision maker",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "handoff_recovery",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 0,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        }
+      ],
+      "role_compression_events": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "observed_payload_vs_gate": [
+        {
+          "role": "Evidence investigator",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        },
+        {
+          "role": "Operations decision maker",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        }
+      ],
+      "compression_delta": {},
+      "remedy": {
+        "handoff_first_pass_facts_present": true,
+        "handoff_first_pass_strict_marker": true,
+        "recovery_invocations": 0,
+        "recovery_api_attempts": 0,
+        "summary_attempts": 0,
+        "summary_failures": 0,
+        "api_request_attempts": 4
+      }
+    },
+    {
+      "task_id": "incident_triage",
+      "repeat": 2,
+      "method": "pruner_v1",
+      "success": true,
+      "error": "",
+      "model_calls": 4,
+      "calls": [
+        {
+          "call_index": 0,
+          "provider_input_tokens": 1216,
+          "provider_output_tokens": 52,
+          "status": "success",
+          "message_count": 20,
+          "content_characters": 2800
+        },
+        {
+          "call_index": 1,
+          "provider_input_tokens": 779,
+          "provider_output_tokens": 119,
+          "status": "success",
+          "message_count": 6,
+          "content_characters": 2277
+        },
+        {
+          "call_index": 2,
+          "provider_input_tokens": 516,
+          "provider_output_tokens": 197,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 2028
+        },
+        {
+          "call_index": 3,
+          "provider_input_tokens": 649,
+          "provider_output_tokens": 79,
+          "status": "success",
+          "message_count": 6,
+          "content_characters": 2556
+        }
+      ],
+      "provider_input_tokens": 3160,
+      "provider_output_tokens": 447,
+      "summary_input_tokens": 0,
+      "summary_output_tokens": 0,
+      "complete_total_tokens": 3607,
+      "compression_events": 1,
+      "roles": [
+        {
+          "role": "Evidence investigator",
+          "compression_count": 1,
+          "crewai_compressed_calls": 1,
+          "trigger_gate_triggered_calls": 1,
+          "trigger_gate_passthrough_calls": 1,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 3294,
+          "full_context_tokens_total": 2547,
+          "served_context_tokens_total": 1616,
+          "gross_input_tokens_saved": 931,
+          "gross_input_savings_rate": 0.365528,
+          "peak_model_input_tokens": 2121,
+          "peak_reserved_tokens": 505,
+          "reserved_tokens_total": 505,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 17,
+          "enabled": true
+        },
+        {
+          "role": "Operations decision maker",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 2,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 2045,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": true
+        },
+        {
+          "role": "handoff_recovery",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 0,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        }
+      ],
+      "role_compression_events": 1,
+      "trigger_gate_triggered_calls": 1,
+      "trigger_gate_passthrough_calls": 3,
+      "observed_payload_vs_gate": [
+        {
+          "role": "Evidence investigator",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 3294,
+          "crossed_gate": true,
+          "peak_model_input_tokens": 2121
+        },
+        {
+          "role": "Operations decision maker",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 2045,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        }
+      ],
+      "compression_delta": {
+        "step": "call1_vs_call2",
+        "characters_removed": 249,
+        "provider_tokens_removed": 263,
+        "messages_removed": 2,
+        "first_call": {
+          "call_index": 1,
+          "provider_input_tokens": 779,
+          "provider_output_tokens": 119,
+          "status": "success",
+          "message_count": 6,
+          "content_characters": 2277
+        },
+        "later_call": {
+          "call_index": 2,
+          "provider_input_tokens": 516,
+          "provider_output_tokens": 197,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 2028
+        }
+      },
+      "remedy": {
+        "handoff_first_pass_facts_present": true,
+        "handoff_first_pass_strict_marker": true,
+        "recovery_invocations": 0,
+        "recovery_api_attempts": 0,
+        "summary_attempts": 0,
+        "summary_failures": 0,
+        "api_request_attempts": 4
+      }
+    },
+    {
+      "task_id": "incident_triage",
+      "repeat": 2,
+      "method": "none",
+      "success": true,
+      "error": "",
+      "model_calls": 4,
+      "calls": [
+        {
+          "call_index": 0,
+          "provider_input_tokens": 1216,
+          "provider_output_tokens": 165,
+          "status": "success",
+          "message_count": 20,
+          "content_characters": 2800
+        },
+        {
+          "call_index": 1,
+          "provider_input_tokens": 1343,
+          "provider_output_tokens": 33,
+          "status": "success",
+          "message_count": 22,
+          "content_characters": 3229
+        },
+        {
+          "call_index": 2,
+          "provider_input_tokens": 492,
+          "provider_output_tokens": 188,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 1966
+        },
+        {
+          "call_index": 3,
+          "provider_input_tokens": 607,
+          "provider_output_tokens": 73,
+          "status": "success",
+          "message_count": 6,
+          "content_characters": 2390
+        }
+      ],
+      "provider_input_tokens": 3658,
+      "provider_output_tokens": 459,
+      "summary_input_tokens": 0,
+      "summary_output_tokens": 0,
+      "complete_total_tokens": 4117,
+      "compression_events": 0,
+      "roles": [
+        {
+          "role": "Evidence investigator",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "Operations decision maker",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "handoff_recovery",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 0,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        }
+      ],
+      "role_compression_events": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "observed_payload_vs_gate": [
+        {
+          "role": "Evidence investigator",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        },
+        {
+          "role": "Operations decision maker",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        }
+      ],
+      "compression_delta": {},
+      "remedy": {
+        "handoff_first_pass_facts_present": true,
+        "handoff_first_pass_strict_marker": true,
+        "recovery_invocations": 0,
+        "recovery_api_attempts": 0,
+        "summary_attempts": 0,
+        "summary_failures": 0,
+        "api_request_attempts": 4
+      }
+    },
+    {
+      "task_id": "incident_triage",
+      "repeat": 2,
+      "method": "native_summary",
+      "success": true,
+      "error": "",
+      "model_calls": 4,
+      "calls": [
+        {
+          "call_index": 0,
+          "provider_input_tokens": 1216,
+          "provider_output_tokens": 170,
+          "status": "success",
+          "message_count": 20,
+          "content_characters": 2800
+        },
+        {
+          "call_index": 1,
+          "provider_input_tokens": 1344,
+          "provider_output_tokens": 112,
+          "status": "success",
+          "message_count": 22,
+          "content_characters": 3231
+        },
+        {
+          "call_index": 2,
+          "provider_input_tokens": 497,
+          "provider_output_tokens": 159,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 2014
+        },
+        {
+          "call_index": 3,
+          "provider_input_tokens": 612,
+          "provider_output_tokens": 79,
+          "status": "success",
+          "message_count": 6,
+          "content_characters": 2438
+        }
+      ],
+      "provider_input_tokens": 3669,
+      "provider_output_tokens": 520,
+      "summary_input_tokens": 984,
+      "summary_output_tokens": 58,
+      "complete_total_tokens": 5231,
+      "compression_events": 0,
+      "roles": [
+        {
+          "role": "Evidence investigator",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "Operations decision maker",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "handoff_recovery",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 0,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        }
+      ],
+      "role_compression_events": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "observed_payload_vs_gate": [
+        {
+          "role": "Evidence investigator",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        },
+        {
+          "role": "Operations decision maker",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        }
+      ],
+      "compression_delta": {},
+      "remedy": {
+        "handoff_first_pass_facts_present": true,
+        "handoff_first_pass_strict_marker": true,
+        "recovery_invocations": 0,
+        "recovery_api_attempts": 0,
+        "summary_attempts": 2,
+        "summary_failures": 0,
+        "api_request_attempts": 6
+      }
+    },
+    {
+      "task_id": "release_readiness",
+      "repeat": 0,
+      "method": "native_summary",
+      "success": true,
+      "error": "",
+      "model_calls": 4,
+      "calls": [
+        {
+          "call_index": 0,
+          "provider_input_tokens": 1231,
+          "provider_output_tokens": 54,
+          "status": "success",
+          "message_count": 20,
+          "content_characters": 2806
+        },
+        {
+          "call_index": 1,
+          "provider_input_tokens": 1352,
+          "provider_output_tokens": 87,
+          "status": "success",
+          "message_count": 22,
+          "content_characters": 3185
+        },
+        {
+          "call_index": 2,
+          "provider_input_tokens": 490,
+          "provider_output_tokens": 23,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 1947
+        },
+        {
+          "call_index": 3,
+          "provider_input_tokens": 600,
+          "provider_output_tokens": 60,
+          "status": "success",
+          "message_count": 6,
+          "content_characters": 2342
+        }
+      ],
+      "provider_input_tokens": 3673,
+      "provider_output_tokens": 224,
+      "summary_input_tokens": 970,
+      "summary_output_tokens": 181,
+      "complete_total_tokens": 5048,
+      "compression_events": 0,
+      "roles": [
+        {
+          "role": "Evidence investigator",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "Operations decision maker",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "handoff_recovery",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 0,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        }
+      ],
+      "role_compression_events": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "observed_payload_vs_gate": [
+        {
+          "role": "Evidence investigator",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        },
+        {
+          "role": "Operations decision maker",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        }
+      ],
+      "compression_delta": {},
+      "remedy": {
+        "handoff_first_pass_facts_present": true,
+        "handoff_first_pass_strict_marker": false,
+        "recovery_invocations": 0,
+        "recovery_api_attempts": 0,
+        "summary_attempts": 2,
+        "summary_failures": 0,
+        "api_request_attempts": 6
+      }
+    },
+    {
+      "task_id": "release_readiness",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "success": false,
+      "error": "",
+      "model_calls": 4,
+      "calls": [
+        {
+          "call_index": 0,
+          "provider_input_tokens": 1231,
+          "provider_output_tokens": 54,
+          "status": "success",
+          "message_count": 20,
+          "content_characters": 2806
+        },
+        {
+          "call_index": 1,
+          "provider_input_tokens": 1236,
+          "provider_output_tokens": 98,
+          "status": "success",
+          "message_count": 7,
+          "content_characters": 2949
+        },
+        {
+          "call_index": 2,
+          "provider_input_tokens": 490,
+          "provider_output_tokens": 71,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 1918
+        },
+        {
+          "call_index": 3,
+          "provider_input_tokens": 610,
+          "provider_output_tokens": 54,
+          "status": "success",
+          "message_count": 6,
+          "content_characters": 2355
+        }
+      ],
+      "provider_input_tokens": 3567,
+      "provider_output_tokens": 277,
+      "summary_input_tokens": 0,
+      "summary_output_tokens": 0,
+      "complete_total_tokens": 3844,
+      "compression_events": 1,
+      "roles": [
+        {
+          "role": "Evidence investigator",
+          "compression_count": 1,
+          "crewai_compressed_calls": 1,
+          "trigger_gate_triggered_calls": 1,
+          "trigger_gate_passthrough_calls": 1,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 3262,
+          "full_context_tokens_total": 2553,
+          "served_context_tokens_total": 2314,
+          "gross_input_tokens_saved": 239,
+          "gross_input_savings_rate": 0.093615,
+          "peak_model_input_tokens": 2781,
+          "peak_reserved_tokens": 467,
+          "reserved_tokens_total": 467,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 17,
+          "enabled": true
+        },
+        {
+          "role": "Operations decision maker",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 2,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 1900,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": true
+        },
+        {
+          "role": "handoff_recovery",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 0,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        }
+      ],
+      "role_compression_events": 1,
+      "trigger_gate_triggered_calls": 1,
+      "trigger_gate_passthrough_calls": 3,
+      "observed_payload_vs_gate": [
+        {
+          "role": "Evidence investigator",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 3262,
+          "crossed_gate": true,
+          "peak_model_input_tokens": 2781
+        },
+        {
+          "role": "Operations decision maker",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 1900,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        }
+      ],
+      "compression_delta": {
+        "step": "call1_vs_call2",
+        "characters_removed": 1031,
+        "provider_tokens_removed": 746,
+        "messages_removed": 3,
+        "first_call": {
+          "call_index": 1,
+          "provider_input_tokens": 1236,
+          "provider_output_tokens": 98,
+          "status": "success",
+          "message_count": 7,
+          "content_characters": 2949
+        },
+        "later_call": {
+          "call_index": 2,
+          "provider_input_tokens": 490,
+          "provider_output_tokens": 71,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 1918
+        }
+      },
+      "remedy": {
+        "handoff_first_pass_facts_present": true,
+        "handoff_first_pass_strict_marker": false,
+        "recovery_invocations": 0,
+        "recovery_api_attempts": 0,
+        "summary_attempts": 0,
+        "summary_failures": 0,
+        "api_request_attempts": 4
+      }
+    },
+    {
+      "task_id": "release_readiness",
+      "repeat": 0,
+      "method": "none",
+      "success": true,
+      "error": "",
+      "model_calls": 4,
+      "calls": [
+        {
+          "call_index": 0,
+          "provider_input_tokens": 1231,
+          "provider_output_tokens": 62,
+          "status": "success",
+          "message_count": 20,
+          "content_characters": 2806
+        },
+        {
+          "call_index": 1,
+          "provider_input_tokens": 1360,
+          "provider_output_tokens": 82,
+          "status": "success",
+          "message_count": 22,
+          "content_characters": 3191
+        },
+        {
+          "call_index": 2,
+          "provider_input_tokens": 490,
+          "provider_output_tokens": 196,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 1947
+        },
+        {
+          "call_index": 3,
+          "provider_input_tokens": 631,
+          "provider_output_tokens": 56,
+          "status": "success",
+          "message_count": 6,
+          "content_characters": 2482
+        }
+      ],
+      "provider_input_tokens": 3712,
+      "provider_output_tokens": 396,
+      "summary_input_tokens": 0,
+      "summary_output_tokens": 0,
+      "complete_total_tokens": 4108,
+      "compression_events": 0,
+      "roles": [
+        {
+          "role": "Evidence investigator",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "Operations decision maker",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "handoff_recovery",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 0,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        }
+      ],
+      "role_compression_events": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "observed_payload_vs_gate": [
+        {
+          "role": "Evidence investigator",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        },
+        {
+          "role": "Operations decision maker",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        }
+      ],
+      "compression_delta": {},
+      "remedy": {
+        "handoff_first_pass_facts_present": true,
+        "handoff_first_pass_strict_marker": false,
+        "recovery_invocations": 0,
+        "recovery_api_attempts": 0,
+        "summary_attempts": 0,
+        "summary_failures": 0,
+        "api_request_attempts": 4
+      }
+    },
+    {
+      "task_id": "release_readiness",
+      "repeat": 1,
+      "method": "pruner_v1",
+      "success": true,
+      "error": "",
+      "model_calls": 4,
+      "calls": [
+        {
+          "call_index": 0,
+          "provider_input_tokens": 1231,
+          "provider_output_tokens": 62,
+          "status": "success",
+          "message_count": 20,
+          "content_characters": 2806
+        },
+        {
+          "call_index": 1,
+          "provider_input_tokens": 1244,
+          "provider_output_tokens": 96,
+          "status": "success",
+          "message_count": 7,
+          "content_characters": 2955
+        },
+        {
+          "call_index": 2,
+          "provider_input_tokens": 508,
+          "provider_output_tokens": 57,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 1967
+        },
+        {
+          "call_index": 3,
+          "provider_input_tokens": 618,
+          "provider_output_tokens": 49,
+          "status": "success",
+          "message_count": 6,
+          "content_characters": 2362
+        }
+      ],
+      "provider_input_tokens": 3601,
+      "provider_output_tokens": 264,
+      "summary_input_tokens": 0,
+      "summary_output_tokens": 0,
+      "complete_total_tokens": 3865,
+      "compression_events": 1,
+      "roles": [
+        {
+          "role": "Evidence investigator",
+          "compression_count": 1,
+          "crewai_compressed_calls": 1,
+          "trigger_gate_triggered_calls": 1,
+          "trigger_gate_passthrough_calls": 1,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 3270,
+          "full_context_tokens_total": 2553,
+          "served_context_tokens_total": 2314,
+          "gross_input_tokens_saved": 239,
+          "gross_input_savings_rate": 0.093615,
+          "peak_model_input_tokens": 2790,
+          "peak_reserved_tokens": 476,
+          "reserved_tokens_total": 476,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 17,
+          "enabled": true
+        },
+        {
+          "role": "Operations decision maker",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 2,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 1912,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": true
+        },
+        {
+          "role": "handoff_recovery",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 0,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        }
+      ],
+      "role_compression_events": 1,
+      "trigger_gate_triggered_calls": 1,
+      "trigger_gate_passthrough_calls": 3,
+      "observed_payload_vs_gate": [
+        {
+          "role": "Evidence investigator",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 3270,
+          "crossed_gate": true,
+          "peak_model_input_tokens": 2790
+        },
+        {
+          "role": "Operations decision maker",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 1912,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        }
+      ],
+      "compression_delta": {
+        "step": "call1_vs_call2",
+        "characters_removed": 988,
+        "provider_tokens_removed": 736,
+        "messages_removed": 3,
+        "first_call": {
+          "call_index": 1,
+          "provider_input_tokens": 1244,
+          "provider_output_tokens": 96,
+          "status": "success",
+          "message_count": 7,
+          "content_characters": 2955
+        },
+        "later_call": {
+          "call_index": 2,
+          "provider_input_tokens": 508,
+          "provider_output_tokens": 57,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 1967
+        }
+      },
+      "remedy": {
+        "handoff_first_pass_facts_present": true,
+        "handoff_first_pass_strict_marker": false,
+        "recovery_invocations": 0,
+        "recovery_api_attempts": 0,
+        "summary_attempts": 0,
+        "summary_failures": 0,
+        "api_request_attempts": 4
+      }
+    },
+    {
+      "task_id": "release_readiness",
+      "repeat": 1,
+      "method": "none",
+      "success": true,
+      "error": "",
+      "model_calls": 4,
+      "calls": [
+        {
+          "call_index": 0,
+          "provider_input_tokens": 1231,
+          "provider_output_tokens": 62,
+          "status": "success",
+          "message_count": 20,
+          "content_characters": 2806
+        },
+        {
+          "call_index": 1,
+          "provider_input_tokens": 1360,
+          "provider_output_tokens": 95,
+          "status": "success",
+          "message_count": 22,
+          "content_characters": 3191
+        },
+        {
+          "call_index": 2,
+          "provider_input_tokens": 497,
+          "provider_output_tokens": 62,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 1947
+        },
+        {
+          "call_index": 3,
+          "provider_input_tokens": 607,
+          "provider_output_tokens": 59,
+          "status": "success",
+          "message_count": 6,
+          "content_characters": 2342
+        }
+      ],
+      "provider_input_tokens": 3695,
+      "provider_output_tokens": 278,
+      "summary_input_tokens": 0,
+      "summary_output_tokens": 0,
+      "complete_total_tokens": 3973,
+      "compression_events": 0,
+      "roles": [
+        {
+          "role": "Evidence investigator",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "Operations decision maker",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "handoff_recovery",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 0,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        }
+      ],
+      "role_compression_events": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "observed_payload_vs_gate": [
+        {
+          "role": "Evidence investigator",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        },
+        {
+          "role": "Operations decision maker",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        }
+      ],
+      "compression_delta": {},
+      "remedy": {
+        "handoff_first_pass_facts_present": true,
+        "handoff_first_pass_strict_marker": false,
+        "recovery_invocations": 0,
+        "recovery_api_attempts": 0,
+        "summary_attempts": 0,
+        "summary_failures": 0,
+        "api_request_attempts": 4
+      }
+    },
+    {
+      "task_id": "release_readiness",
+      "repeat": 1,
+      "method": "native_summary",
+      "success": true,
+      "error": "",
+      "model_calls": 4,
+      "calls": [
+        {
+          "call_index": 0,
+          "provider_input_tokens": 1231,
+          "provider_output_tokens": 54,
+          "status": "success",
+          "message_count": 20,
+          "content_characters": 2806
+        },
+        {
+          "call_index": 1,
+          "provider_input_tokens": 1352,
+          "provider_output_tokens": 97,
+          "status": "success",
+          "message_count": 22,
+          "content_characters": 3185
+        },
+        {
+          "call_index": 2,
+          "provider_input_tokens": 504,
+          "provider_output_tokens": 68,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 1972
+        },
+        {
+          "call_index": 3,
+          "provider_input_tokens": 614,
+          "provider_output_tokens": 61,
+          "status": "success",
+          "message_count": 6,
+          "content_characters": 2367
+        }
+      ],
+      "provider_input_tokens": 3701,
+      "provider_output_tokens": 280,
+      "summary_input_tokens": 970,
+      "summary_output_tokens": 26,
+      "complete_total_tokens": 4977,
+      "compression_events": 0,
+      "roles": [
+        {
+          "role": "Evidence investigator",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "Operations decision maker",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "handoff_recovery",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 0,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        }
+      ],
+      "role_compression_events": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "observed_payload_vs_gate": [
+        {
+          "role": "Evidence investigator",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        },
+        {
+          "role": "Operations decision maker",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        }
+      ],
+      "compression_delta": {},
+      "remedy": {
+        "handoff_first_pass_facts_present": true,
+        "handoff_first_pass_strict_marker": false,
+        "recovery_invocations": 0,
+        "recovery_api_attempts": 0,
+        "summary_attempts": 2,
+        "summary_failures": 0,
+        "api_request_attempts": 6
+      }
+    },
+    {
+      "task_id": "release_readiness",
+      "repeat": 2,
+      "method": "none",
+      "success": true,
+      "error": "",
+      "model_calls": 4,
+      "calls": [
+        {
+          "call_index": 0,
+          "provider_input_tokens": 1231,
+          "provider_output_tokens": 62,
+          "status": "success",
+          "message_count": 20,
+          "content_characters": 2806
+        },
+        {
+          "call_index": 1,
+          "provider_input_tokens": 1360,
+          "provider_output_tokens": 85,
+          "status": "success",
+          "message_count": 22,
+          "content_characters": 3191
+        },
+        {
+          "call_index": 2,
+          "provider_input_tokens": 482,
+          "provider_output_tokens": 65,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 1920
+        },
+        {
+          "call_index": 3,
+          "provider_input_tokens": 592,
+          "provider_output_tokens": 58,
+          "status": "success",
+          "message_count": 6,
+          "content_characters": 2315
+        }
+      ],
+      "provider_input_tokens": 3665,
+      "provider_output_tokens": 270,
+      "summary_input_tokens": 0,
+      "summary_output_tokens": 0,
+      "complete_total_tokens": 3935,
+      "compression_events": 0,
+      "roles": [
+        {
+          "role": "Evidence investigator",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "Operations decision maker",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "handoff_recovery",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 0,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        }
+      ],
+      "role_compression_events": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "observed_payload_vs_gate": [
+        {
+          "role": "Evidence investigator",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        },
+        {
+          "role": "Operations decision maker",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        }
+      ],
+      "compression_delta": {},
+      "remedy": {
+        "handoff_first_pass_facts_present": true,
+        "handoff_first_pass_strict_marker": false,
+        "recovery_invocations": 0,
+        "recovery_api_attempts": 0,
+        "summary_attempts": 0,
+        "summary_failures": 0,
+        "api_request_attempts": 4
+      }
+    },
+    {
+      "task_id": "release_readiness",
+      "repeat": 2,
+      "method": "native_summary",
+      "success": true,
+      "error": "",
+      "model_calls": 4,
+      "calls": [
+        {
+          "call_index": 0,
+          "provider_input_tokens": 1231,
+          "provider_output_tokens": 62,
+          "status": "success",
+          "message_count": 20,
+          "content_characters": 2806
+        },
+        {
+          "call_index": 1,
+          "provider_input_tokens": 1342,
+          "provider_output_tokens": 44,
+          "status": "success",
+          "message_count": 21,
+          "content_characters": 3239
+        },
+        {
+          "call_index": 2,
+          "provider_input_tokens": 490,
+          "provider_output_tokens": 61,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 1947
+        },
+        {
+          "call_index": 3,
+          "provider_input_tokens": 600,
+          "provider_output_tokens": 64,
+          "status": "success",
+          "message_count": 6,
+          "content_characters": 2342
+        }
+      ],
+      "provider_input_tokens": 3663,
+      "provider_output_tokens": 231,
+      "summary_input_tokens": 999,
+      "summary_output_tokens": 66,
+      "complete_total_tokens": 4959,
+      "compression_events": 0,
+      "roles": [
+        {
+          "role": "Evidence investigator",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "Operations decision maker",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "handoff_recovery",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 0,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        }
+      ],
+      "role_compression_events": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "observed_payload_vs_gate": [
+        {
+          "role": "Evidence investigator",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        },
+        {
+          "role": "Operations decision maker",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        }
+      ],
+      "compression_delta": {},
+      "remedy": {
+        "handoff_first_pass_facts_present": true,
+        "handoff_first_pass_strict_marker": false,
+        "recovery_invocations": 0,
+        "recovery_api_attempts": 0,
+        "summary_attempts": 2,
+        "summary_failures": 0,
+        "api_request_attempts": 6
+      }
+    },
+    {
+      "task_id": "release_readiness",
+      "repeat": 2,
+      "method": "pruner_v1",
+      "success": true,
+      "error": "",
+      "model_calls": 4,
+      "calls": [
+        {
+          "call_index": 0,
+          "provider_input_tokens": 1231,
+          "provider_output_tokens": 57,
+          "status": "success",
+          "message_count": 20,
+          "content_characters": 2806
+        },
+        {
+          "call_index": 1,
+          "provider_input_tokens": 1239,
+          "provider_output_tokens": 85,
+          "status": "success",
+          "message_count": 7,
+          "content_characters": 2948
+        },
+        {
+          "call_index": 2,
+          "provider_input_tokens": 498,
+          "provider_output_tokens": 48,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 1951
+        },
+        {
+          "call_index": 3,
+          "provider_input_tokens": 608,
+          "provider_output_tokens": 58,
+          "status": "success",
+          "message_count": 6,
+          "content_characters": 2346
+        }
+      ],
+      "provider_input_tokens": 3576,
+      "provider_output_tokens": 248,
+      "summary_input_tokens": 0,
+      "summary_output_tokens": 0,
+      "complete_total_tokens": 3824,
+      "compression_events": 1,
+      "roles": [
+        {
+          "role": "Evidence investigator",
+          "compression_count": 1,
+          "crewai_compressed_calls": 1,
+          "trigger_gate_triggered_calls": 1,
+          "trigger_gate_passthrough_calls": 1,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 3263,
+          "full_context_tokens_total": 2553,
+          "served_context_tokens_total": 2314,
+          "gross_input_tokens_saved": 239,
+          "gross_input_savings_rate": 0.093615,
+          "peak_model_input_tokens": 2783,
+          "peak_reserved_tokens": 469,
+          "reserved_tokens_total": 469,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 17,
+          "enabled": true
+        },
+        {
+          "role": "Operations decision maker",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 2,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 1894,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": true
+        },
+        {
+          "role": "handoff_recovery",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 0,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        }
+      ],
+      "role_compression_events": 1,
+      "trigger_gate_triggered_calls": 1,
+      "trigger_gate_passthrough_calls": 3,
+      "observed_payload_vs_gate": [
+        {
+          "role": "Evidence investigator",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 3263,
+          "crossed_gate": true,
+          "peak_model_input_tokens": 2783
+        },
+        {
+          "role": "Operations decision maker",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 1894,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        }
+      ],
+      "compression_delta": {
+        "step": "call1_vs_call2",
+        "characters_removed": 997,
+        "provider_tokens_removed": 741,
+        "messages_removed": 3,
+        "first_call": {
+          "call_index": 1,
+          "provider_input_tokens": 1239,
+          "provider_output_tokens": 85,
+          "status": "success",
+          "message_count": 7,
+          "content_characters": 2948
+        },
+        "later_call": {
+          "call_index": 2,
+          "provider_input_tokens": 498,
+          "provider_output_tokens": 48,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 1951
+        }
+      },
+      "remedy": {
+        "handoff_first_pass_facts_present": true,
+        "handoff_first_pass_strict_marker": false,
+        "recovery_invocations": 0,
+        "recovery_api_attempts": 0,
+        "summary_attempts": 0,
+        "summary_failures": 0,
+        "api_request_attempts": 4
+      }
+    },
+    {
+      "task_id": "customer_migration",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "success": true,
+      "error": "",
+      "model_calls": 4,
+      "calls": [
+        {
+          "call_index": 0,
+          "provider_input_tokens": 1227,
+          "provider_output_tokens": 55,
+          "status": "success",
+          "message_count": 20,
+          "content_characters": 2831
+        },
+        {
+          "call_index": 1,
+          "provider_input_tokens": 1236,
+          "provider_output_tokens": 95,
+          "status": "success",
+          "message_count": 7,
+          "content_characters": 3015
+        },
+        {
+          "call_index": 2,
+          "provider_input_tokens": 499,
+          "provider_output_tokens": 145,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 1989
+        },
+        {
+          "call_index": 3,
+          "provider_input_tokens": 616,
+          "provider_output_tokens": 58,
+          "status": "success",
+          "message_count": 6,
+          "content_characters": 2463
+        }
+      ],
+      "provider_input_tokens": 3578,
+      "provider_output_tokens": 353,
+      "summary_input_tokens": 0,
+      "summary_output_tokens": 0,
+      "complete_total_tokens": 3931,
+      "compression_events": 1,
+      "roles": [
+        {
+          "role": "Evidence investigator",
+          "compression_count": 1,
+          "crewai_compressed_calls": 1,
+          "trigger_gate_triggered_calls": 1,
+          "trigger_gate_passthrough_calls": 1,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 3311,
+          "full_context_tokens_total": 2571,
+          "served_context_tokens_total": 2332,
+          "gross_input_tokens_saved": 239,
+          "gross_input_savings_rate": 0.09296,
+          "peak_model_input_tokens": 2832,
+          "peak_reserved_tokens": 500,
+          "reserved_tokens_total": 500,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 17,
+          "enabled": true
+        },
+        {
+          "role": "Operations decision maker",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 2,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 1985,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": true
+        },
+        {
+          "role": "handoff_recovery",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 0,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        }
+      ],
+      "role_compression_events": 1,
+      "trigger_gate_triggered_calls": 1,
+      "trigger_gate_passthrough_calls": 3,
+      "observed_payload_vs_gate": [
+        {
+          "role": "Evidence investigator",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 3311,
+          "crossed_gate": true,
+          "peak_model_input_tokens": 2832
+        },
+        {
+          "role": "Operations decision maker",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 1985,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        }
+      ],
+      "compression_delta": {
+        "step": "call1_vs_call2",
+        "characters_removed": 1026,
+        "provider_tokens_removed": 737,
+        "messages_removed": 3,
+        "first_call": {
+          "call_index": 1,
+          "provider_input_tokens": 1236,
+          "provider_output_tokens": 95,
+          "status": "success",
+          "message_count": 7,
+          "content_characters": 3015
+        },
+        "later_call": {
+          "call_index": 2,
+          "provider_input_tokens": 499,
+          "provider_output_tokens": 145,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 1989
+        }
+      },
+      "remedy": {
+        "handoff_first_pass_facts_present": true,
+        "handoff_first_pass_strict_marker": false,
+        "recovery_invocations": 0,
+        "recovery_api_attempts": 0,
+        "summary_attempts": 0,
+        "summary_failures": 0,
+        "api_request_attempts": 4
+      }
+    },
+    {
+      "task_id": "customer_migration",
+      "repeat": 0,
+      "method": "none",
+      "success": true,
+      "error": "",
+      "model_calls": 4,
+      "calls": [
+        {
+          "call_index": 0,
+          "provider_input_tokens": 1227,
+          "provider_output_tokens": 61,
+          "status": "success",
+          "message_count": 20,
+          "content_characters": 2831
+        },
+        {
+          "call_index": 1,
+          "provider_input_tokens": 1358,
+          "provider_output_tokens": 27,
+          "status": "success",
+          "message_count": 22,
+          "content_characters": 3268
+        },
+        {
+          "call_index": 2,
+          "provider_input_tokens": 473,
+          "provider_output_tokens": 115,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 1957
+        },
+        {
+          "call_index": 3,
+          "provider_input_tokens": 591,
+          "provider_output_tokens": 54,
+          "status": "success",
+          "message_count": 6,
+          "content_characters": 2438
+        }
+      ],
+      "provider_input_tokens": 3649,
+      "provider_output_tokens": 257,
+      "summary_input_tokens": 0,
+      "summary_output_tokens": 0,
+      "complete_total_tokens": 3906,
+      "compression_events": 0,
+      "roles": [
+        {
+          "role": "Evidence investigator",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "Operations decision maker",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "handoff_recovery",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 0,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        }
+      ],
+      "role_compression_events": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "observed_payload_vs_gate": [
+        {
+          "role": "Evidence investigator",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        },
+        {
+          "role": "Operations decision maker",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        }
+      ],
+      "compression_delta": {},
+      "remedy": {
+        "handoff_first_pass_facts_present": true,
+        "handoff_first_pass_strict_marker": false,
+        "recovery_invocations": 0,
+        "recovery_api_attempts": 0,
+        "summary_attempts": 0,
+        "summary_failures": 0,
+        "api_request_attempts": 4
+      }
+    },
+    {
+      "task_id": "customer_migration",
+      "repeat": 0,
+      "method": "native_summary",
+      "success": true,
+      "error": "",
+      "model_calls": 4,
+      "calls": [
+        {
+          "call_index": 0,
+          "provider_input_tokens": 1227,
+          "provider_output_tokens": 55,
+          "status": "success",
+          "message_count": 20,
+          "content_characters": 2831
+        },
+        {
+          "call_index": 1,
+          "provider_input_tokens": 1352,
+          "provider_output_tokens": 25,
+          "status": "success",
+          "message_count": 22,
+          "content_characters": 3251
+        },
+        {
+          "call_index": 2,
+          "provider_input_tokens": 470,
+          "provider_output_tokens": 140,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 1936
+        },
+        {
+          "call_index": 3,
+          "provider_input_tokens": 591,
+          "provider_output_tokens": 47,
+          "status": "success",
+          "message_count": 6,
+          "content_characters": 2425
+        }
+      ],
+      "provider_input_tokens": 3640,
+      "provider_output_tokens": 267,
+      "summary_input_tokens": 994,
+      "summary_output_tokens": 229,
+      "complete_total_tokens": 5130,
+      "compression_events": 0,
+      "roles": [
+        {
+          "role": "Evidence investigator",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "Operations decision maker",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "handoff_recovery",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 0,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        }
+      ],
+      "role_compression_events": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "observed_payload_vs_gate": [
+        {
+          "role": "Evidence investigator",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        },
+        {
+          "role": "Operations decision maker",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        }
+      ],
+      "compression_delta": {},
+      "remedy": {
+        "handoff_first_pass_facts_present": true,
+        "handoff_first_pass_strict_marker": false,
+        "recovery_invocations": 0,
+        "recovery_api_attempts": 0,
+        "summary_attempts": 2,
+        "summary_failures": 0,
+        "api_request_attempts": 6
+      }
+    },
+    {
+      "task_id": "customer_migration",
+      "repeat": 1,
+      "method": "none",
+      "success": true,
+      "error": "",
+      "model_calls": 4,
+      "calls": [
+        {
+          "call_index": 0,
+          "provider_input_tokens": 1227,
+          "provider_output_tokens": 55,
+          "status": "success",
+          "message_count": 20,
+          "content_characters": 2831
+        },
+        {
+          "call_index": 1,
+          "provider_input_tokens": 1352,
+          "provider_output_tokens": 25,
+          "status": "success",
+          "message_count": 22,
+          "content_characters": 3251
+        },
+        {
+          "call_index": 2,
+          "provider_input_tokens": 470,
+          "provider_output_tokens": 139,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 1936
+        },
+        {
+          "call_index": 3,
+          "provider_input_tokens": 591,
+          "provider_output_tokens": 47,
+          "status": "success",
+          "message_count": 6,
+          "content_characters": 2425
+        }
+      ],
+      "provider_input_tokens": 3640,
+      "provider_output_tokens": 266,
+      "summary_input_tokens": 0,
+      "summary_output_tokens": 0,
+      "complete_total_tokens": 3906,
+      "compression_events": 0,
+      "roles": [
+        {
+          "role": "Evidence investigator",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "Operations decision maker",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "handoff_recovery",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 0,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        }
+      ],
+      "role_compression_events": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "observed_payload_vs_gate": [
+        {
+          "role": "Evidence investigator",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        },
+        {
+          "role": "Operations decision maker",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        }
+      ],
+      "compression_delta": {},
+      "remedy": {
+        "handoff_first_pass_facts_present": true,
+        "handoff_first_pass_strict_marker": false,
+        "recovery_invocations": 0,
+        "recovery_api_attempts": 0,
+        "summary_attempts": 0,
+        "summary_failures": 0,
+        "api_request_attempts": 4
+      }
+    },
+    {
+      "task_id": "customer_migration",
+      "repeat": 1,
+      "method": "native_summary",
+      "success": false,
+      "error": "",
+      "model_calls": 4,
+      "calls": [
+        {
+          "call_index": 0,
+          "provider_input_tokens": 1227,
+          "provider_output_tokens": 191,
+          "status": "success",
+          "message_count": 20,
+          "content_characters": 2831
+        },
+        {
+          "call_index": 1,
+          "provider_input_tokens": 1344,
+          "provider_output_tokens": 32,
+          "status": "success",
+          "message_count": 22,
+          "content_characters": 3227
+        },
+        {
+          "call_index": 2,
+          "provider_input_tokens": 477,
+          "provider_output_tokens": 41,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 1942
+        },
+        {
+          "call_index": 3,
+          "provider_input_tokens": 573,
+          "provider_output_tokens": 36,
+          "status": "success",
+          "message_count": 6,
+          "content_characters": 2312
+        }
+      ],
+      "provider_input_tokens": 3621,
+      "provider_output_tokens": 300,
+      "summary_input_tokens": 994,
+      "summary_output_tokens": 210,
+      "complete_total_tokens": 5125,
+      "compression_events": 0,
+      "roles": [
+        {
+          "role": "Evidence investigator",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "Operations decision maker",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "handoff_recovery",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 0,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        }
+      ],
+      "role_compression_events": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "observed_payload_vs_gate": [
+        {
+          "role": "Evidence investigator",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        },
+        {
+          "role": "Operations decision maker",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        }
+      ],
+      "compression_delta": {},
+      "remedy": {
+        "handoff_first_pass_facts_present": true,
+        "handoff_first_pass_strict_marker": false,
+        "recovery_invocations": 0,
+        "recovery_api_attempts": 0,
+        "summary_attempts": 2,
+        "summary_failures": 0,
+        "api_request_attempts": 6
+      }
+    },
+    {
+      "task_id": "customer_migration",
+      "repeat": 1,
+      "method": "pruner_v1",
+      "success": true,
+      "error": "",
+      "model_calls": 4,
+      "calls": [
+        {
+          "call_index": 0,
+          "provider_input_tokens": 1227,
+          "provider_output_tokens": 55,
+          "status": "success",
+          "message_count": 20,
+          "content_characters": 2831
+        },
+        {
+          "call_index": 1,
+          "provider_input_tokens": 1236,
+          "provider_output_tokens": 91,
+          "status": "success",
+          "message_count": 7,
+          "content_characters": 3015
+        },
+        {
+          "call_index": 2,
+          "provider_input_tokens": 495,
+          "provider_output_tokens": 88,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 1981
+        },
+        {
+          "call_index": 3,
+          "provider_input_tokens": 606,
+          "provider_output_tokens": 49,
+          "status": "success",
+          "message_count": 6,
+          "content_characters": 2432
+        }
+      ],
+      "provider_input_tokens": 3564,
+      "provider_output_tokens": 283,
+      "summary_input_tokens": 0,
+      "summary_output_tokens": 0,
+      "complete_total_tokens": 3847,
+      "compression_events": 1,
+      "roles": [
+        {
+          "role": "Evidence investigator",
+          "compression_count": 1,
+          "crewai_compressed_calls": 1,
+          "trigger_gate_triggered_calls": 1,
+          "trigger_gate_passthrough_calls": 1,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 3311,
+          "full_context_tokens_total": 2571,
+          "served_context_tokens_total": 2332,
+          "gross_input_tokens_saved": 239,
+          "gross_input_savings_rate": 0.09296,
+          "peak_model_input_tokens": 2832,
+          "peak_reserved_tokens": 500,
+          "reserved_tokens_total": 500,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 17,
+          "enabled": true
+        },
+        {
+          "role": "Operations decision maker",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 2,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 1962,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": true
+        },
+        {
+          "role": "handoff_recovery",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 0,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        }
+      ],
+      "role_compression_events": 1,
+      "trigger_gate_triggered_calls": 1,
+      "trigger_gate_passthrough_calls": 3,
+      "observed_payload_vs_gate": [
+        {
+          "role": "Evidence investigator",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 3311,
+          "crossed_gate": true,
+          "peak_model_input_tokens": 2832
+        },
+        {
+          "role": "Operations decision maker",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 1962,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        }
+      ],
+      "compression_delta": {
+        "step": "call1_vs_call2",
+        "characters_removed": 1034,
+        "provider_tokens_removed": 741,
+        "messages_removed": 3,
+        "first_call": {
+          "call_index": 1,
+          "provider_input_tokens": 1236,
+          "provider_output_tokens": 91,
+          "status": "success",
+          "message_count": 7,
+          "content_characters": 3015
+        },
+        "later_call": {
+          "call_index": 2,
+          "provider_input_tokens": 495,
+          "provider_output_tokens": 88,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 1981
+        }
+      },
+      "remedy": {
+        "handoff_first_pass_facts_present": true,
+        "handoff_first_pass_strict_marker": false,
+        "recovery_invocations": 0,
+        "recovery_api_attempts": 0,
+        "summary_attempts": 0,
+        "summary_failures": 0,
+        "api_request_attempts": 4
+      }
+    },
+    {
+      "task_id": "customer_migration",
+      "repeat": 2,
+      "method": "native_summary",
+      "success": true,
+      "error": "",
+      "model_calls": 4,
+      "calls": [
+        {
+          "call_index": 0,
+          "provider_input_tokens": 1227,
+          "provider_output_tokens": 55,
+          "status": "success",
+          "message_count": 20,
+          "content_characters": 2831
+        },
+        {
+          "call_index": 1,
+          "provider_input_tokens": 1352,
+          "provider_output_tokens": 25,
+          "status": "success",
+          "message_count": 22,
+          "content_characters": 3251
+        },
+        {
+          "call_index": 2,
+          "provider_input_tokens": 470,
+          "provider_output_tokens": 138,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 1936
+        },
+        {
+          "call_index": 3,
+          "provider_input_tokens": 590,
+          "provider_output_tokens": 54,
+          "status": "success",
+          "message_count": 6,
+          "content_characters": 2415
+        }
+      ],
+      "provider_input_tokens": 3639,
+      "provider_output_tokens": 272,
+      "summary_input_tokens": 994,
+      "summary_output_tokens": 133,
+      "complete_total_tokens": 5038,
+      "compression_events": 0,
+      "roles": [
+        {
+          "role": "Evidence investigator",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "Operations decision maker",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "handoff_recovery",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 0,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        }
+      ],
+      "role_compression_events": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "observed_payload_vs_gate": [
+        {
+          "role": "Evidence investigator",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        },
+        {
+          "role": "Operations decision maker",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        }
+      ],
+      "compression_delta": {},
+      "remedy": {
+        "handoff_first_pass_facts_present": true,
+        "handoff_first_pass_strict_marker": false,
+        "recovery_invocations": 0,
+        "recovery_api_attempts": 0,
+        "summary_attempts": 2,
+        "summary_failures": 0,
+        "api_request_attempts": 6
+      }
+    },
+    {
+      "task_id": "customer_migration",
+      "repeat": 2,
+      "method": "pruner_v1",
+      "success": true,
+      "error": "",
+      "model_calls": 4,
+      "calls": [
+        {
+          "call_index": 0,
+          "provider_input_tokens": 1227,
+          "provider_output_tokens": 55,
+          "status": "success",
+          "message_count": 20,
+          "content_characters": 2831
+        },
+        {
+          "call_index": 1,
+          "provider_input_tokens": 1236,
+          "provider_output_tokens": 93,
+          "status": "success",
+          "message_count": 7,
+          "content_characters": 3015
+        },
+        {
+          "call_index": 2,
+          "provider_input_tokens": 499,
+          "provider_output_tokens": 116,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 1989
+        },
+        {
+          "call_index": 3,
+          "provider_input_tokens": 595,
+          "provider_output_tokens": 58,
+          "status": "success",
+          "message_count": 6,
+          "content_characters": 2359
+        }
+      ],
+      "provider_input_tokens": 3557,
+      "provider_output_tokens": 322,
+      "summary_input_tokens": 0,
+      "summary_output_tokens": 0,
+      "complete_total_tokens": 3879,
+      "compression_events": 1,
+      "roles": [
+        {
+          "role": "Evidence investigator",
+          "compression_count": 1,
+          "crewai_compressed_calls": 1,
+          "trigger_gate_triggered_calls": 1,
+          "trigger_gate_passthrough_calls": 1,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 3311,
+          "full_context_tokens_total": 2571,
+          "served_context_tokens_total": 2332,
+          "gross_input_tokens_saved": 239,
+          "gross_input_savings_rate": 0.09296,
+          "peak_model_input_tokens": 2832,
+          "peak_reserved_tokens": 500,
+          "reserved_tokens_total": 500,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 17,
+          "enabled": true
+        },
+        {
+          "role": "Operations decision maker",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 2,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 1912,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": true
+        },
+        {
+          "role": "handoff_recovery",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 0,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        }
+      ],
+      "role_compression_events": 1,
+      "trigger_gate_triggered_calls": 1,
+      "trigger_gate_passthrough_calls": 3,
+      "observed_payload_vs_gate": [
+        {
+          "role": "Evidence investigator",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 3311,
+          "crossed_gate": true,
+          "peak_model_input_tokens": 2832
+        },
+        {
+          "role": "Operations decision maker",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 1912,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        }
+      ],
+      "compression_delta": {
+        "step": "call1_vs_call2",
+        "characters_removed": 1026,
+        "provider_tokens_removed": 737,
+        "messages_removed": 3,
+        "first_call": {
+          "call_index": 1,
+          "provider_input_tokens": 1236,
+          "provider_output_tokens": 93,
+          "status": "success",
+          "message_count": 7,
+          "content_characters": 3015
+        },
+        "later_call": {
+          "call_index": 2,
+          "provider_input_tokens": 499,
+          "provider_output_tokens": 116,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 1989
+        }
+      },
+      "remedy": {
+        "handoff_first_pass_facts_present": true,
+        "handoff_first_pass_strict_marker": false,
+        "recovery_invocations": 0,
+        "recovery_api_attempts": 0,
+        "summary_attempts": 0,
+        "summary_failures": 0,
+        "api_request_attempts": 4
+      }
+    },
+    {
+      "task_id": "customer_migration",
+      "repeat": 2,
+      "method": "none",
+      "success": true,
+      "error": "",
+      "model_calls": 4,
+      "calls": [
+        {
+          "call_index": 0,
+          "provider_input_tokens": 1227,
+          "provider_output_tokens": 55,
+          "status": "success",
+          "message_count": 20,
+          "content_characters": 2831
+        },
+        {
+          "call_index": 1,
+          "provider_input_tokens": 1352,
+          "provider_output_tokens": 25,
+          "status": "success",
+          "message_count": 22,
+          "content_characters": 3251
+        },
+        {
+          "call_index": 2,
+          "provider_input_tokens": 470,
+          "provider_output_tokens": 137,
+          "status": "success",
+          "message_count": 4,
+          "content_characters": 1936
+        },
+        {
+          "call_index": 3,
+          "provider_input_tokens": 591,
+          "provider_output_tokens": 53,
+          "status": "success",
+          "message_count": 6,
+          "content_characters": 2417
+        }
+      ],
+      "provider_input_tokens": 3640,
+      "provider_output_tokens": 270,
+      "summary_input_tokens": 0,
+      "summary_output_tokens": 0,
+      "complete_total_tokens": 3910,
+      "compression_events": 0,
+      "roles": [
+        {
+          "role": "Evidence investigator",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "Operations decision maker",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        },
+        {
+          "role": "handoff_recovery",
+          "compression_count": 0,
+          "crewai_compressed_calls": 0,
+          "trigger_gate_triggered_calls": 0,
+          "trigger_gate_passthrough_calls": 0,
+          "trigger_gate_soft_limit_tokens": 0,
+          "trigger_gate_last_estimated_tokens": 0,
+          "full_context_tokens_total": 0,
+          "served_context_tokens_total": 0,
+          "gross_input_tokens_saved": 0,
+          "gross_input_savings_rate": 0.0,
+          "peak_model_input_tokens": 0,
+          "peak_reserved_tokens": 0,
+          "reserved_tokens_total": 0,
+          "model_input_budget_violation_count": 0,
+          "archive_count": 0,
+          "enabled": false
+        }
+      ],
+      "role_compression_events": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "observed_payload_vs_gate": [
+        {
+          "role": "Evidence investigator",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        },
+        {
+          "role": "Operations decision maker",
+          "trigger_gate_soft_limit_tokens": 3085,
+          "trigger_gate_last_estimated_tokens": 0,
+          "crossed_gate": false,
+          "peak_model_input_tokens": 0
+        }
+      ],
+      "compression_delta": {},
+      "remedy": {
+        "handoff_first_pass_facts_present": true,
+        "handoff_first_pass_strict_marker": false,
+        "recovery_invocations": 0,
+        "recovery_api_attempts": 0,
+        "summary_attempts": 0,
+        "summary_failures": 0,
+        "api_request_attempts": 4
+      }
+    }
+  ],
+  "aggregate": {
+    "tasks": [
+      "customer_migration",
+      "incident_triage",
+      "release_readiness"
+    ],
+    "repeats": [
+      0,
+      1,
+      2
+    ],
+    "arms": [
+      "none",
+      "native_summary",
+      "pruner_v1"
+    ],
+    "by_task": {
+      "customer_migration": {
+        "arms": {
+          "none": {
+            "n": 3,
+            "successes": 3,
+            "mean_model_calls": 4.0,
+            "mean_complete_total_tokens": 3907.33,
+            "sum_complete_total_tokens": 11722,
+            "mean_provider_input_tokens": 3643.0,
+            "mean_provider_output_tokens": 264.33,
+            "compression_events": 0,
+            "trigger_gate_triggered_calls": 0,
+            "trigger_gate_passthrough_calls": 0,
+            "recovery_invocations": 0,
+            "summary_attempts": 0,
+            "crossed_gate_samples": 0
+          },
+          "native_summary": {
+            "n": 3,
+            "successes": 2,
+            "mean_model_calls": 4.0,
+            "mean_complete_total_tokens": 5097.67,
+            "sum_complete_total_tokens": 15293,
+            "mean_provider_input_tokens": 3633.33,
+            "mean_provider_output_tokens": 279.67,
+            "compression_events": 0,
+            "trigger_gate_triggered_calls": 0,
+            "trigger_gate_passthrough_calls": 0,
+            "recovery_invocations": 0,
+            "summary_attempts": 6,
+            "crossed_gate_samples": 0,
+            "paired_mean_saving_percent": -30.4646,
+            "paired_positive": 0,
+            "paired_n": 3
+          },
+          "pruner_v1": {
+            "n": 3,
+            "successes": 3,
+            "mean_model_calls": 4.0,
+            "mean_complete_total_tokens": 3885.67,
+            "sum_complete_total_tokens": 11657,
+            "mean_provider_input_tokens": 3566.33,
+            "mean_provider_output_tokens": 319.33,
+            "compression_events": 3,
+            "trigger_gate_triggered_calls": 3,
+            "trigger_gate_passthrough_calls": 9,
+            "recovery_invocations": 0,
+            "summary_attempts": 0,
+            "crossed_gate_samples": 3,
+            "paired_mean_saving_percent": 0.5544,
+            "paired_positive": 2,
+            "paired_n": 3
+          }
+        },
+        "pairs": [
+          {
+            "repeat": 0,
+            "none": 3906,
+            "native_summary": 5130,
+            "pruner_v1": 3931,
+            "pruner_saving_percent": -0.64,
+            "native_saving_percent": -31.3364
+          },
+          {
+            "repeat": 1,
+            "none": 3906,
+            "native_summary": 5125,
+            "pruner_v1": 3847,
+            "pruner_saving_percent": 1.5105,
+            "native_saving_percent": -31.2084
+          },
+          {
+            "repeat": 2,
+            "none": 3910,
+            "native_summary": 5038,
+            "pruner_v1": 3879,
+            "pruner_saving_percent": 0.7928,
+            "native_saving_percent": -28.8491
+          }
+        ],
+        "compression_delta": {
+          "mean_characters_removed": 1028.67,
+          "mean_provider_tokens_removed": 738.33,
+          "mean_messages_removed": 3.0,
+          "per_sample": [
+            {
+              "step": "call1_vs_call2",
+              "characters_removed": 1026,
+              "provider_tokens_removed": 737,
+              "messages_removed": 3,
+              "first_call": {
+                "call_index": 1,
+                "provider_input_tokens": 1236,
+                "provider_output_tokens": 95,
+                "status": "success",
+                "message_count": 7,
+                "content_characters": 3015
+              },
+              "later_call": {
+                "call_index": 2,
+                "provider_input_tokens": 499,
+                "provider_output_tokens": 145,
+                "status": "success",
+                "message_count": 4,
+                "content_characters": 1989
+              }
+            },
+            {
+              "step": "call1_vs_call2",
+              "characters_removed": 1034,
+              "provider_tokens_removed": 741,
+              "messages_removed": 3,
+              "first_call": {
+                "call_index": 1,
+                "provider_input_tokens": 1236,
+                "provider_output_tokens": 91,
+                "status": "success",
+                "message_count": 7,
+                "content_characters": 3015
+              },
+              "later_call": {
+                "call_index": 2,
+                "provider_input_tokens": 495,
+                "provider_output_tokens": 88,
+                "status": "success",
+                "message_count": 4,
+                "content_characters": 1981
+              }
+            },
+            {
+              "step": "call1_vs_call2",
+              "characters_removed": 1026,
+              "provider_tokens_removed": 737,
+              "messages_removed": 3,
+              "first_call": {
+                "call_index": 1,
+                "provider_input_tokens": 1236,
+                "provider_output_tokens": 93,
+                "status": "success",
+                "message_count": 7,
+                "content_characters": 3015
+              },
+              "later_call": {
+                "call_index": 2,
+                "provider_input_tokens": 499,
+                "provider_output_tokens": 116,
+                "status": "success",
+                "message_count": 4,
+                "content_characters": 1989
+              }
+            }
+          ]
+        },
+        "plugin_compression_events": 3,
+        "plugin_samples_with_compression": 3,
+        "plugin_samples_crossing_gate": 3,
+        "plugin_recovery_invocations": 0
+      },
+      "incident_triage": {
+        "arms": {
+          "none": {
+            "n": 3,
+            "successes": 3,
+            "mean_model_calls": 4.0,
+            "mean_complete_total_tokens": 4136.0,
+            "sum_complete_total_tokens": 12408,
+            "mean_provider_input_tokens": 3680.33,
+            "mean_provider_output_tokens": 455.67,
+            "compression_events": 0,
+            "trigger_gate_triggered_calls": 0,
+            "trigger_gate_passthrough_calls": 0,
+            "recovery_invocations": 0,
+            "summary_attempts": 0,
+            "crossed_gate_samples": 0
+          },
+          "native_summary": {
+            "n": 3,
+            "successes": 3,
+            "mean_model_calls": 4.0,
+            "mean_complete_total_tokens": 5161.0,
+            "sum_complete_total_tokens": 15483,
+            "mean_provider_input_tokens": 3655.33,
+            "mean_provider_output_tokens": 466.67,
+            "compression_events": 0,
+            "trigger_gate_triggered_calls": 0,
+            "trigger_gate_passthrough_calls": 0,
+            "recovery_invocations": 0,
+            "summary_attempts": 6,
+            "crossed_gate_samples": 0,
+            "paired_mean_saving_percent": -24.7912,
+            "paired_positive": 0,
+            "paired_n": 3
+          },
+          "pruner_v1": {
+            "n": 3,
+            "successes": 3,
+            "mean_model_calls": 4.0,
+            "mean_complete_total_tokens": 3646.0,
+            "sum_complete_total_tokens": 10938,
+            "mean_provider_input_tokens": 3190.0,
+            "mean_provider_output_tokens": 456.0,
+            "compression_events": 3,
+            "trigger_gate_triggered_calls": 3,
+            "trigger_gate_passthrough_calls": 9,
+            "recovery_invocations": 0,
+            "summary_attempts": 0,
+            "crossed_gate_samples": 3,
+            "paired_mean_saving_percent": 11.8495,
+            "paired_positive": 3,
+            "paired_n": 3
+          }
+        },
+        "pairs": [
+          {
+            "repeat": 0,
+            "none": 4133,
+            "native_summary": 5185,
+            "pruner_v1": 3633,
+            "pruner_saving_percent": 12.0977,
+            "native_saving_percent": -25.4537
+          },
+          {
+            "repeat": 1,
+            "none": 4158,
+            "native_summary": 5067,
+            "pruner_v1": 3698,
+            "pruner_saving_percent": 11.063,
+            "native_saving_percent": -21.8615
+          },
+          {
+            "repeat": 2,
+            "none": 4117,
+            "native_summary": 5231,
+            "pruner_v1": 3607,
+            "pruner_saving_percent": 12.3877,
+            "native_saving_percent": -27.0585
+          }
+        ],
+        "compression_delta": {
+          "mean_characters_removed": 214.0,
+          "mean_provider_tokens_removed": 241.0,
+          "mean_messages_removed": 2.0,
+          "per_sample": [
+            {
+              "step": "call1_vs_call2",
+              "characters_removed": 190,
+              "provider_tokens_removed": 225,
+              "messages_removed": 2,
+              "first_call": {
+                "call_index": 1,
+                "provider_input_tokens": 778,
+                "provider_output_tokens": 156,
+                "status": "success",
+                "message_count": 6,
+                "content_characters": 2276
+              },
+              "later_call": {
+                "call_index": 2,
+                "provider_input_tokens": 553,
+                "provider_output_tokens": 41,
+                "status": "success",
+                "message_count": 4,
+                "content_characters": 2086
+              }
+            },
+            {
+              "step": "call1_vs_call2",
+              "characters_removed": 203,
+              "provider_tokens_removed": 235,
+              "messages_removed": 2,
+              "first_call": {
+                "call_index": 1,
+                "provider_input_tokens": 778,
+                "provider_output_tokens": 142,
+                "status": "success",
+                "message_count": 6,
+                "content_characters": 2276
+              },
+              "later_call": {
+                "call_index": 2,
+                "provider_input_tokens": 543,
+                "provider_output_tokens": 131,
+                "status": "success",
+                "message_count": 4,
+                "content_characters": 2073
+              }
+            },
+            {
+              "step": "call1_vs_call2",
+              "characters_removed": 249,
+              "provider_tokens_removed": 263,
+              "messages_removed": 2,
+              "first_call": {
+                "call_index": 1,
+                "provider_input_tokens": 779,
+                "provider_output_tokens": 119,
+                "status": "success",
+                "message_count": 6,
+                "content_characters": 2277
+              },
+              "later_call": {
+                "call_index": 2,
+                "provider_input_tokens": 516,
+                "provider_output_tokens": 197,
+                "status": "success",
+                "message_count": 4,
+                "content_characters": 2028
+              }
+            }
+          ]
+        },
+        "plugin_compression_events": 3,
+        "plugin_samples_with_compression": 3,
+        "plugin_samples_crossing_gate": 3,
+        "plugin_recovery_invocations": 0
+      },
+      "release_readiness": {
+        "arms": {
+          "none": {
+            "n": 3,
+            "successes": 3,
+            "mean_model_calls": 4.0,
+            "mean_complete_total_tokens": 4005.33,
+            "sum_complete_total_tokens": 12016,
+            "mean_provider_input_tokens": 3690.67,
+            "mean_provider_output_tokens": 314.67,
+            "compression_events": 0,
+            "trigger_gate_triggered_calls": 0,
+            "trigger_gate_passthrough_calls": 0,
+            "recovery_invocations": 0,
+            "summary_attempts": 0,
+            "crossed_gate_samples": 0
+          },
+          "native_summary": {
+            "n": 3,
+            "successes": 3,
+            "mean_model_calls": 4.0,
+            "mean_complete_total_tokens": 4994.67,
+            "sum_complete_total_tokens": 14984,
+            "mean_provider_input_tokens": 3679.0,
+            "mean_provider_output_tokens": 245.0,
+            "compression_events": 0,
+            "trigger_gate_triggered_calls": 0,
+            "trigger_gate_passthrough_calls": 0,
+            "recovery_invocations": 0,
+            "summary_attempts": 6,
+            "crossed_gate_samples": 0,
+            "paired_mean_saving_percent": -24.7252,
+            "paired_positive": 0,
+            "paired_n": 3
+          },
+          "pruner_v1": {
+            "n": 3,
+            "successes": 2,
+            "mean_model_calls": 4.0,
+            "mean_complete_total_tokens": 3844.33,
+            "sum_complete_total_tokens": 11533,
+            "mean_provider_input_tokens": 3581.33,
+            "mean_provider_output_tokens": 263.0,
+            "compression_events": 3,
+            "trigger_gate_triggered_calls": 3,
+            "trigger_gate_passthrough_calls": 9,
+            "recovery_invocations": 0,
+            "summary_attempts": 0,
+            "crossed_gate_samples": 3,
+            "paired_mean_saving_percent": 3.9885,
+            "paired_positive": 3,
+            "paired_n": 3
+          }
+        },
+        "pairs": [
+          {
+            "repeat": 0,
+            "none": 4108,
+            "native_summary": 5048,
+            "pruner_v1": 3844,
+            "pruner_saving_percent": 6.4265,
+            "native_saving_percent": -22.8822
+          },
+          {
+            "repeat": 1,
+            "none": 3973,
+            "native_summary": 4977,
+            "pruner_v1": 3865,
+            "pruner_saving_percent": 2.7183,
+            "native_saving_percent": -25.2706
+          },
+          {
+            "repeat": 2,
+            "none": 3935,
+            "native_summary": 4959,
+            "pruner_v1": 3824,
+            "pruner_saving_percent": 2.8208,
+            "native_saving_percent": -26.0229
+          }
+        ],
+        "compression_delta": {
+          "mean_characters_removed": 1005.33,
+          "mean_provider_tokens_removed": 741.0,
+          "mean_messages_removed": 3.0,
+          "per_sample": [
+            {
+              "step": "call1_vs_call2",
+              "characters_removed": 1031,
+              "provider_tokens_removed": 746,
+              "messages_removed": 3,
+              "first_call": {
+                "call_index": 1,
+                "provider_input_tokens": 1236,
+                "provider_output_tokens": 98,
+                "status": "success",
+                "message_count": 7,
+                "content_characters": 2949
+              },
+              "later_call": {
+                "call_index": 2,
+                "provider_input_tokens": 490,
+                "provider_output_tokens": 71,
+                "status": "success",
+                "message_count": 4,
+                "content_characters": 1918
+              }
+            },
+            {
+              "step": "call1_vs_call2",
+              "characters_removed": 988,
+              "provider_tokens_removed": 736,
+              "messages_removed": 3,
+              "first_call": {
+                "call_index": 1,
+                "provider_input_tokens": 1244,
+                "provider_output_tokens": 96,
+                "status": "success",
+                "message_count": 7,
+                "content_characters": 2955
+              },
+              "later_call": {
+                "call_index": 2,
+                "provider_input_tokens": 508,
+                "provider_output_tokens": 57,
+                "status": "success",
+                "message_count": 4,
+                "content_characters": 1967
+              }
+            },
+            {
+              "step": "call1_vs_call2",
+              "characters_removed": 997,
+              "provider_tokens_removed": 741,
+              "messages_removed": 3,
+              "first_call": {
+                "call_index": 1,
+                "provider_input_tokens": 1239,
+                "provider_output_tokens": 85,
+                "status": "success",
+                "message_count": 7,
+                "content_characters": 2948
+              },
+              "later_call": {
+                "call_index": 2,
+                "provider_input_tokens": 498,
+                "provider_output_tokens": 48,
+                "status": "success",
+                "message_count": 4,
+                "content_characters": 1951
+              }
+            }
+          ]
+        },
+        "plugin_compression_events": 3,
+        "plugin_samples_with_compression": 3,
+        "plugin_samples_crossing_gate": 3,
+        "plugin_recovery_invocations": 0
+      }
+    },
+    "plugin_paired_mean_saving_percent_overall": 5.4641,
+    "plugin_inter_task_dispersion_percentage_points": 11.2951,
+    "plugin_samples_with_compression": 9,
+    "plugin_samples_crossing_gate": 9,
+    "plugin_samples": 9,
+    "remedy_calls_total": 0
+  }
+}

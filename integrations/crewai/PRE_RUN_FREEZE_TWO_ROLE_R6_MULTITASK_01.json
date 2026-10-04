@@ -1,0 +1,60 @@
+{
+  "batch": "crewai-two-role-r6-multitask-01",
+  "samples": 27,
+  "manifest": {
+    "protocol": "crewai-two-role-r6-handoff-semantic-quality",
+    "runner_sha256": "6c152d9776653c0d30f50c5e2cdd0dc94734b00451d3c1e269d18b4894d37429",
+    "task_sha256": "40591d8475be95123d85e5d6043aaa563c3ce5534779a0032f8d0c7e1595bf01",
+    "judge_sha256": "9b43d365a3a6800d32e12f1a3da3f558d1590e11e4adca74bb0d735ef7ae6f45",
+    "tasks": [
+      "queue_backlog_replay",
+      "region_failover",
+      "schema_migration"
+    ],
+    "methods": [
+      "none",
+      "pruner_v1",
+      "native_summary"
+    ],
+    "repeats": 3,
+    "model": "deepseek-v4-flash",
+    "mode": "api",
+    "base_url": "https://api.deepseek.com",
+    "budget": {
+      "host": "crewai",
+      "calibration_ratio_provider_per_estimated": 0.389,
+      "provider_tokens": {
+        "soft": 1200,
+        "hard": 3000,
+        "target": 900
+      },
+      "estimated_tokens": {
+        "soft": 3085,
+        "hard": 7712,
+        "target": 2314
+      },
+      "note": "Budgets are declared in provider tokens and converted with a measured ratio."
+    },
+    "limits": {
+      "fixed_reserved_tokens": 300,
+      "max_output_tokens": 512,
+      "max_summary_tokens": 1024,
+      "max_summary_calls": 4
+    },
+    "max_api_requests": 200,
+    "quality_gates": [
+      "strict",
+      "semantic"
+    ],
+    "failure_policy": "preserve sample failure and continue unless provider unavailable or request cap"
+  },
+  "source_sha256": {
+    "experiments/audits/audit_crewai_handoff_v6.py": "83fe75bfcc90d9de9ae2abf094d2076271bb6ce0dd8294c1c26a96313d9b11b3",
+    "experiments/runners/crewai_semantic_equivalence_v6.py": "9b43d365a3a6800d32e12f1a3da3f558d1590e11e4adca74bb0d735ef7ae6f45",
+    "experiments/runners/run_crewai_experiment.py": "0c0cd1d3e30ea837b323e1318321804433c20f8c9fdcd3a40b42deb1849554f1",
+    "experiments/runners/run_crewai_handoff_v4.py": "8aa75353bd7a5b4cffea5bd0233a82583d5c4ac34d83c2bac0672117edd078cf",
+    "experiments/runners/run_crewai_handoff_v6.py": "6c152d9776653c0d30f50c5e2cdd0dc94734b00451d3c1e269d18b4894d37429",
+    "integrations/crewai/PILOT_PROTOCOL_TWO_ROLE_R6_MULTITASK_01.md": "5b926f084f3f55b2c565703572efd02e8d407c5bfc70cf2d04c04d418a4bb854",
+    "tasks/stage5_autogen/natural_tasks_r6.json": "40591d8475be95123d85e5d6043aaa563c3ce5534779a0032f8d0c7e1595bf01"
+  }
+}

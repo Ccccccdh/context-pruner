@@ -1,0 +1,47 @@
+{
+  "protocol": "crewai-two-role-r5-handoff-semantic-quality",
+  "runner_sha256": "a7937cc64612e51d712f61246246fc2815313131b5e157e99843296d382eb811",
+  "task_sha256": "1ccf408252dd58b3d6cad815ccaf35a800d9c8e09f17936b881be3029128da84",
+  "judge_sha256": "97d9c0bae316024ff2b4fba08e7f822b6e4c5c47bb08b97482d1402b37c46a50",
+  "tasks": [
+    "queue_backlog_replay",
+    "region_failover",
+    "schema_migration"
+  ],
+  "methods": [
+    "none",
+    "pruner_v1",
+    "native_summary"
+  ],
+  "repeats": 3,
+  "model": "deepseek-v4-flash",
+  "mode": "api",
+  "base_url": "https://api.deepseek.com",
+  "budget": {
+    "host": "crewai",
+    "calibration_ratio_provider_per_estimated": 0.389,
+    "provider_tokens": {
+      "soft": 1200,
+      "hard": 3000,
+      "target": 900
+    },
+    "estimated_tokens": {
+      "soft": 3085,
+      "hard": 7712,
+      "target": 2314
+    },
+    "note": "Budgets are declared in provider tokens and converted with a measured ratio."
+  },
+  "limits": {
+    "fixed_reserved_tokens": 300,
+    "max_output_tokens": 512,
+    "max_summary_tokens": 1024,
+    "max_summary_calls": 4
+  },
+  "max_api_requests": 200,
+  "quality_gates": [
+    "strict",
+    "semantic"
+  ],
+  "failure_policy": "preserve sample failure and continue unless provider unavailable or request cap"
+}

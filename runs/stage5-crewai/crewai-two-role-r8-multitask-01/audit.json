@@ -1,0 +1,86 @@
+{
+  "complete": true,
+  "freeze_checked": true,
+  "dry_run_mock": false,
+  "rows": 27,
+  "expected_rows": 27,
+  "request_attempts": 190,
+  "quality": {
+    "none": {
+      "n": 9,
+      "strict_success": 6,
+      "semantic_success": 9,
+      "first_pass_facts": 9,
+      "recovered": 0,
+      "recovery_failed": 0,
+      "complete_total_tokens": 75191,
+      "compression_events": 0,
+      "failed_or_limited": 3,
+      "summary_attempts": 0
+    },
+    "pruner_v1": {
+      "n": 9,
+      "strict_success": 6,
+      "semantic_success": 9,
+      "first_pass_facts": 3,
+      "recovered": 6,
+      "recovery_failed": 0,
+      "complete_total_tokens": 66625,
+      "compression_events": 36,
+      "failed_or_limited": 3,
+      "summary_attempts": 0
+    },
+    "native_summary": {
+      "n": 9,
+      "strict_success": 6,
+      "semantic_success": 9,
+      "first_pass_facts": 9,
+      "recovered": 0,
+      "recovery_failed": 0,
+      "complete_total_tokens": 91284,
+      "compression_events": 0,
+      "failed_or_limited": 3,
+      "summary_attempts": 22
+    }
+  },
+  "complete_total_tokens_by_method": {
+    "none": 75191,
+    "native_summary": 91284,
+    "pruner_v1": 66625
+  },
+  "paired": {
+    "queue_backlog_replay": {
+      "pruner_paired_mean_saving_percent": 29.7751,
+      "pruner_paired_positive": 3,
+      "paired_n": 3,
+      "per_repeat": [
+        30.9908,
+        23.9162,
+        34.4183
+      ]
+    },
+    "region_failover": {
+      "pruner_paired_mean_saving_percent": 0.5329,
+      "pruner_paired_positive": 1,
+      "paired_n": 3,
+      "per_repeat": [
+        -0.2964,
+        3.7682,
+        -1.873
+      ]
+    },
+    "schema_migration": {
+      "pruner_paired_mean_saving_percent": 2.6507,
+      "pruner_paired_positive": 3,
+      "paired_n": 3,
+      "per_repeat": [
+        0.0389,
+        2.6009,
+        5.3122
+      ]
+    }
+  },
+  "plugin_paired_mean_saving_percent": 10.9862,
+  "plugin_inter_task_dispersion_percentage_points": 29.2422,
+  "errors": []
+}

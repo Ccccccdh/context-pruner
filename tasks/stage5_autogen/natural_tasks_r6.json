@@ -1,0 +1,240 @@
+[
+  {
+    "task_id": "queue_backlog_replay",
+    "title": "队列积压重放决策",
+    "task": "数据管道 PIPE-3391 的分区延迟告警。请核对当前积压、死信队列和日志投递状态，判断是否可以安全重放，并给出当前区域与必须保留的事实。",
+    "history_constraint": "管道编号 PIPE-3391 与数据流 orders-cdc 是当前工单的固定标识，不得改写；历史讨论里的 us-east-1 不是当前区域。",
+    "history_topic": "跨区域复制演练、旧批次重放记录、已关闭的积压告警和容量申请讨论",
+    "tools": [
+      {
+        "name": "check_pipeline_status",
+        "call": {
+          "pipeline_id": "PIPE-3391"
+        },
+        "result": {
+          "pipeline_id": "PIPE-3391",
+          "region": "us-west-2",
+          "pending_records": 12400,
+          "consumer_lag_minutes": 37,
+          "status": "stalled"
+        },
+        "evidence_parts": [
+          "\"pipeline_id\": \"PIPE-3391\"",
+          "\"region\": \"us-west-2\"",
+          "\"pending_records\": 12400",
+          "\"status\": \"stalled\""
+        ]
+      },
+      {
+        "name": "inspect_dead_letter_queue",
+        "call": {
+          "pipeline_id": "PIPE-3391"
+        },
+        "result": {
+          "pipeline_id": "PIPE-3391",
+          "dlq_records": 0,
+          "poison_messages": 0,
+          "blocking_error": "none"
+        },
+        "evidence_parts": [
+          "\"dlq_records\": 0",
+          "\"poison_messages\": 0",
+          "\"blocking_error\": \"none\""
+        ]
+      },
+      {
+        "name": "verify_queue_replay",
+        "call": {
+          "pipeline_id": "PIPE-3391"
+        },
+        "result": {
+          "pipeline_id": "PIPE-3391",
+          "region": "us-west-2",
+          "pending_records": 12400,
+          "replay_safe": true
+        },
+        "evidence_parts": [
+          "\"region\": \"us-west-2\"",
+          "\"pending_records\": 12400"
+        ]
+      }
+    ],
+    "decision": "REPLAY",
+    "handle_facts": [
+      "PIPE-3391",
+      "us-west-2",
+      "12400"
+    ],
+    "answer_facts": [
+      "\"pending_records\": 12400",
+      "us-west-2"
+    ],
+    "forbidden_facts": [
+      "us-east-1"
+    ],
+    "region_fact": "us-west-2",
+    "version_fact": "",
+    "expected_terms": [
+      "PIPE-3391",
+      "us-west-2",
+      "12400",
+      "REPLAY"
+    ]
+  },
+  {
+    "task_id": "region_failover",
+    "title": "缓存集群故障转移决策",
+    "task": "缓存集群 apollo-cache-9 的可用性下降，团队在讨论是否切到备用区域。请核对集群健康、备用区域排空状态与容量余量，给出结论并保留关键事实。",
+    "history_constraint": "集群名 apollo-cache-9 是当前唯一受影响的集群；历史讨论中的 eu-central-1 不是本次备用区域。",
+    "history_topic": "跨区容量预留、旧集群退役记录、演练复盘和已取消的切换窗口",
+    "tools": [
+      {
+        "name": "get_cluster_health",
+        "call": {
+          "cluster": "apollo-cache-9"
+        },
+        "result": {
+          "cluster": "apollo-cache-9",
+          "availability": "degraded",
+          "primary_region": "us-west-2",
+          "open_incident": "INC-7f31"
+        },
+        "evidence_parts": [
+          "\"cluster\": \"apollo-cache-9\"",
+          "\"availability\": \"degraded\"",
+          "\"primary_region\": \"us-west-2\"",
+          "\"open_incident\": \"INC-7f31\""
+        ]
+      },
+      {
+        "name": "check_region_drain",
+        "call": {
+          "region": "ap-south-1"
+        },
+        "result": {
+          "region": "ap-south-1",
+          "drain_state": "complete",
+          "sessions_forcibly_closed": 0,
+          "replication_lag_seconds": 0
+        },
+        "evidence_parts": [
+          "\"region\": \"ap-south-1\"",
+          "\"drain_state\": \"complete\"",
+          "\"replication_lag_seconds\": 0"
+        ]
+      },
+      {
+        "name": "verify_capacity_headroom",
+        "call": {
+          "region": "ap-south-1"
+        },
+        "result": {
+          "region": "ap-south-1",
+          "headroom": "45%",
+          "capacity": "available"
+        },
+        "evidence_parts": [
+          "\"region\": \"ap-south-1\"",
+          "\"headroom\": \"45%\""
+        ]
+      }
+    ],
+    "decision": "FAILOVER",
+    "handle_facts": [
+      "apollo-cache-9",
+      "ap-south-1",
+      "45%"
+    ],
+    "answer_facts": [
+      "ap-south-1",
+      "45%"
+    ],
+    "forbidden_facts": [
+      "eu-central-1"
+    ],
+    "region_fact": "ap-south-1",
+    "version_fact": "",
+    "expected_terms": [
+      "apollo-cache-9",
+      "ap-south-1",
+      "45%",
+      "FAILOVER"
+    ]
+  },
+  {
+    "task_id": "schema_migration",
+    "title": "数据库模式迁移准入判断",
+    "task": "团队要在今晚把 schema-42 推到生产。请核对漂移检查与合同测试结果，判断是否可以开始迁移，并给出窗口与回滚依据。",
+    "history_constraint": "唯一允许迁移的目标版本是 schema-42；历史讨论里的 schema-41 已下线，不得作为本次目标。",
+    "history_topic": "旧版本回滚记录、评审排期、已完成的演练和过期漂移报告",
+    "tools": [
+      {
+        "name": "inspect_schema_drift",
+        "call": {
+          "schema_version": "schema-42"
+        },
+        "result": {
+          "schema_version": "schema-42",
+          "unapplied_migrations": 0,
+          "drift_objects": 0,
+          "target_tables": 18
+        },
+        "evidence_parts": [
+          "\"schema_version\": \"schema-42\"",
+          "\"unapplied_migrations\": 0",
+          "\"drift_objects\": 0"
+        ]
+      },
+      {
+        "name": "run_contract_tests",
+        "call": {
+          "schema_version": "schema-42"
+        },
+        "result": {
+          "schema_version": "schema-42",
+          "passed": 312,
+          "failed": 0,
+          "coverage_percent": 96
+        },
+        "evidence_parts": [
+          "\"passed\": 312",
+          "\"failed\": 0"
+        ]
+      },
+      {
+        "name": "verify_schema_target",
+        "call": {
+          "schema_version": "schema-42"
+        },
+        "result": {
+          "schema_version": "schema-42",
+          "failed": 0,
+          "applicable": true
+        },
+        "evidence_parts": [
+          "\"schema_version\": \"schema-42\"",
+          "\"failed\": 0"
+        ]
+      }
+    ],
+    "decision": "GO",
+    "handle_facts": [
+      "schema-42",
+      "failed 0"
+    ],
+    "answer_facts": [
+      "schema-42",
+      "\"failed\": 0"
+    ],
+    "forbidden_facts": [
+      "schema-41"
+    ],
+    "version_fact": "schema-42",
+    "region_fact": "",
+    "expected_terms": [
+      "schema-42",
+      "failed 0",
+      "GO"
+    ]
+  }
+]

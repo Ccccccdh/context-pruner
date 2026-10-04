@@ -1,0 +1,86 @@
+{
+  "complete": true,
+  "freeze_checked": true,
+  "dry_run_mock": false,
+  "rows": 27,
+  "expected_rows": 27,
+  "request_attempts": 192,
+  "quality": {
+    "none": {
+      "n": 9,
+      "strict_success": 3,
+      "semantic_success": 3,
+      "first_pass_facts": 9,
+      "recovered": 0,
+      "recovery_failed": 0,
+      "complete_total_tokens": 73809,
+      "compression_events": 0,
+      "failed_or_limited": 6,
+      "summary_attempts": 0
+    },
+    "pruner_v1": {
+      "n": 9,
+      "strict_success": 5,
+      "semantic_success": 5,
+      "first_pass_facts": 3,
+      "recovered": 6,
+      "recovery_failed": 6,
+      "complete_total_tokens": 65310,
+      "compression_events": 36,
+      "failed_or_limited": 4,
+      "summary_attempts": 0
+    },
+    "native_summary": {
+      "n": 9,
+      "strict_success": 3,
+      "semantic_success": 3,
+      "first_pass_facts": 9,
+      "recovered": 0,
+      "recovery_failed": 0,
+      "complete_total_tokens": 93020,
+      "compression_events": 0,
+      "failed_or_limited": 6,
+      "summary_attempts": 24
+    }
+  },
+  "complete_total_tokens_by_method": {
+    "none": 73809,
+    "native_summary": 93020,
+    "pruner_v1": 65310
+  },
+  "paired": {
+    "queue_backlog_replay": {
+      "pruner_paired_mean_saving_percent": 30.4386,
+      "pruner_paired_positive": 3,
+      "paired_n": 3,
+      "per_repeat": [
+        30.0546,
+        29.613,
+        31.6483
+      ]
+    },
+    "region_failover": {
+      "pruner_paired_mean_saving_percent": 1.5414,
+      "pruner_paired_positive": 3,
+      "paired_n": 3,
+      "per_repeat": [
+        0.7359,
+        2.4994,
+        1.3889
+      ]
+    },
+    "schema_migration": {
+      "pruner_paired_mean_saving_percent": 1.8703,
+      "pruner_paired_positive": 3,
+      "paired_n": 3,
+      "per_repeat": [
+        2.5526,
+        2.1163,
+        0.942
+      ]
+    }
+  },
+  "plugin_paired_mean_saving_percent": 11.2834,
+  "plugin_inter_task_dispersion_percentage_points": 28.8972,
+  "errors": []
+}

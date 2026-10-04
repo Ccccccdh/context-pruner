@@ -1,0 +1,3419 @@
+{
+  "batch": "crewai-two-role-r8-multitask-01",
+  "protocol": "crewai-two-role-r8-handoff-semantic-quality",
+  "rows": 27,
+  "expected_rows": 27,
+  "required_handoff_literals": {
+    "queue_backlog_replay": [
+      "PIPE-3391",
+      "us-west-2",
+      "12400"
+    ],
+    "region_failover": [
+      "apollo-cache-9",
+      "ap-south-1",
+      "45%"
+    ],
+    "schema_migration": [
+      "schema-42",
+      "failed 0"
+    ]
+  },
+  "verdict": {
+    "first_pass_complete_by_method": {
+      "none": "9/9",
+      "pruner_v1": "3/9",
+      "native_summary": "9/9"
+    },
+    "remedy_calls_by_method": {
+      "none": 0,
+      "pruner_v1": 6,
+      "native_summary": 0
+    },
+    "lossy_samples_only_in": [
+      "pruner_v1"
+    ],
+    "lossy_fact_slots": 14,
+    "lossy_fact_slots_present_in_decisive_model_view": 14,
+    "lossy_fact_slots_absent_from_authoritative_history": 0,
+    "lossy_samples_without_task_statement_in_decisive_view": 6,
+    "lossy_samples_without_handoff_contract_in_decisive_view": 5,
+    "lossy_samples_with_sanitized_decisive_response": 6,
+    "non_lossy_samples_with_contract_in_view": 21,
+    "non_lossy_sample_count": 21,
+    "non_lossy_samples_with_sanitized_decisive_response": 18,
+    "non_lossy_decisive_output_tokens": [
+      61,
+      64,
+      64,
+      64,
+      73,
+      75,
+      81,
+      87,
+      87,
+      90,
+      90,
+      98,
+      98,
+      101,
+      104,
+      104,
+      118,
+      126,
+      127,
+      156,
+      185
+    ],
+    "lossy_decisive_output_tokens": [
+      232,
+      235,
+      265,
+      279,
+      310,
+      313
+    ],
+    "pinned_tool_evidence_protected_by_adapter": true,
+    "cause": "facts_present_in_the_compressed_view__loss_happened_at_the_model_call"
+  },
+  "verdict_detail": {
+    "compression_before_decisive_call_in_all_lossy_samples": true,
+    "lossy_facts_present_in_first_model_call": 5,
+    "note": "The decisive call is the last first-role model call recorded before the handoff verdict; a fact present in its view was available to the model when it produced the lossy handoff."
+  },
+  "by_method": {
+    "none": {
+      "summary": {
+        "samples": 9,
+        "first_pass_complete": 9,
+        "remedy_calls": 0,
+        "lossy_samples": 0,
+        "lossy_facts_available_in_authoritative_history": 0,
+        "lossy_facts_available_in_decisive_view": 0,
+        "lossy_facts_dropped_by_compression_step": 0,
+        "lossy_logic": "no first-pass loss in this arm"
+      },
+      "samples": [
+        {
+          "task_id": "queue_backlog_replay",
+          "repeat": 0,
+          "method": "none",
+          "first_pass_handoff": "HANDOFF: PIPE-3391 / orders-cdc / region us-west-2 — check_pipeline_status: status=stalled, consumer_lag_minutes=37, pending_records=12400; inspect_dead_letter_queue: dlq_records=0, poison_messages=0, blocking_error=none; verify_queue_replay: replay_safe=true, pending_records=12400.",
+          "first_pass_missing_facts": [],
+          "first_pass_missing_count": 0,
+          "first_pass_complete": true,
+          "stage0_model_calls": 4,
+          "compression_events": 0,
+          "first_role_compression_events": 0,
+          "first_role_triggered_calls": 0,
+          "first_role_passthrough_calls": 0,
+          "compression_ran_before_decisive_call": false,
+          "decisive_view_message_count": 26,
+          "decisive_view_characters": 4674,
+          "decisive_input_tokens": 1729,
+          "decisive_output_tokens": 87,
+          "decisive_raw_response_characters": 283,
+          "decisive_normalized_characters": 283,
+          "decisive_sanitizer_discarded_characters": 0,
+          "task_statement_in_decisive_view": true,
+          "handoff_contract_in_decisive_view": true,
+          "recovery_invocations": 0,
+          "recovery_output": "",
+          "recovery_metrics": {},
+          "facts": [
+            {
+              "literal": "PIPE-3391",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 0,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "us-west-2",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 1,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "12400",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 1,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            }
+          ],
+          "tool_evidence": [
+            {
+              "fragment": "\"pipeline_id\": \"PIPE-3391\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"region\": \"us-west-2\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"pending_records\": 12400",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"status\": \"stalled\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"dlq_records\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"poison_messages\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"blocking_error\": \"none\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            }
+          ],
+          "remedy_supplied_all_facts": false,
+          "complete_total_tokens": 8438,
+          "api_request_attempts": 6,
+          "error": ""
+        },
+        {
+          "task_id": "queue_backlog_replay",
+          "repeat": 1,
+          "method": "none",
+          "first_pass_handoff": "HANDOFF: PIPE-3391 / orders-cdc / region us-west-2; check_pipeline_status: status=stalled, consumer_lag_minutes=37, pending_records=12400; inspect_dead_letter_queue: dlq_records=0, poison_messages=0, blocking_error=none; verify_queue_replay: replay_safe=true, pending_records=12400.",
+          "first_pass_missing_facts": [],
+          "first_pass_missing_count": 0,
+          "first_pass_complete": true,
+          "stage0_model_calls": 4,
+          "compression_events": 0,
+          "first_role_compression_events": 0,
+          "first_role_triggered_calls": 0,
+          "first_role_passthrough_calls": 0,
+          "compression_ran_before_decisive_call": false,
+          "decisive_view_message_count": 28,
+          "decisive_view_characters": 4749,
+          "decisive_input_tokens": 1817,
+          "decisive_output_tokens": 87,
+          "decisive_raw_response_characters": 282,
+          "decisive_normalized_characters": 282,
+          "decisive_sanitizer_discarded_characters": 0,
+          "task_statement_in_decisive_view": true,
+          "handoff_contract_in_decisive_view": true,
+          "recovery_invocations": 0,
+          "recovery_output": "",
+          "recovery_metrics": {},
+          "facts": [
+            {
+              "literal": "PIPE-3391",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 0,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "us-west-2",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 1,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "12400",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 1,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            }
+          ],
+          "tool_evidence": [
+            {
+              "fragment": "\"pipeline_id\": \"PIPE-3391\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"region\": \"us-west-2\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"pending_records\": 12400",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"status\": \"stalled\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"dlq_records\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"poison_messages\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"blocking_error\": \"none\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            }
+          ],
+          "remedy_supplied_all_facts": false,
+          "complete_total_tokens": 8396,
+          "api_request_attempts": 6,
+          "error": ""
+        },
+        {
+          "task_id": "queue_backlog_replay",
+          "repeat": 2,
+          "method": "none",
+          "first_pass_handoff": "HANDOFF PIPE-3391 orders-cdc region=us-west-2 status=stalled consumer_lag_minutes=37 pending_records=12400 dlq_records=0 poison_messages=0 blocking_error=none replay_safe=true",
+          "first_pass_missing_facts": [],
+          "first_pass_missing_count": 0,
+          "first_pass_complete": true,
+          "stage0_model_calls": 4,
+          "compression_events": 0,
+          "first_role_compression_events": 0,
+          "first_role_triggered_calls": 0,
+          "first_role_passthrough_calls": 0,
+          "compression_ran_before_decisive_call": false,
+          "decisive_view_message_count": 30,
+          "decisive_view_characters": 4990,
+          "decisive_input_tokens": 1937,
+          "decisive_output_tokens": 64,
+          "decisive_raw_response_characters": 226,
+          "decisive_normalized_characters": 189,
+          "decisive_sanitizer_discarded_characters": 37,
+          "task_statement_in_decisive_view": true,
+          "handoff_contract_in_decisive_view": true,
+          "recovery_invocations": 0,
+          "recovery_output": "",
+          "recovery_metrics": {},
+          "facts": [
+            {
+              "literal": "PIPE-3391",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 0,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "us-west-2",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 1,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "12400",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 1,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            }
+          ],
+          "tool_evidence": [
+            {
+              "fragment": "\"pipeline_id\": \"PIPE-3391\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"region\": \"us-west-2\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"pending_records\": 12400",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"status\": \"stalled\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"dlq_records\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"poison_messages\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"blocking_error\": \"none\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            }
+          ],
+          "remedy_supplied_all_facts": false,
+          "complete_total_tokens": 9094,
+          "api_request_attempts": 6,
+          "error": ""
+        },
+        {
+          "task_id": "region_failover",
+          "repeat": 0,
+          "method": "none",
+          "first_pass_handoff": "HANDOFF cluster=apollo-cache-9 availability=degraded open_incident=INC-7f31 primary_region=us-west-2 drain_region=ap-south-1 drain_state=complete replication_lag_seconds=0 sessions_forcibly_closed=0 capacity_region=ap-south-1 capacity=available headroom=45%",
+          "first_pass_missing_facts": [],
+          "first_pass_missing_count": 0,
+          "first_pass_complete": true,
+          "stage0_model_calls": 4,
+          "compression_events": 0,
+          "first_role_compression_events": 0,
+          "first_role_triggered_calls": 0,
+          "first_role_passthrough_calls": 0,
+          "compression_ran_before_decisive_call": false,
+          "decisive_view_message_count": 26,
+          "decisive_view_characters": 4761,
+          "decisive_input_tokens": 1720,
+          "decisive_output_tokens": 90,
+          "decisive_raw_response_characters": 308,
+          "decisive_normalized_characters": 271,
+          "decisive_sanitizer_discarded_characters": 37,
+          "task_statement_in_decisive_view": true,
+          "handoff_contract_in_decisive_view": true,
+          "recovery_invocations": 0,
+          "recovery_output": "",
+          "recovery_metrics": {},
+          "facts": [
+            {
+              "literal": "apollo-cache-9",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 0,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "ap-south-1",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 2,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "45%",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 3,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            }
+          ],
+          "tool_evidence": [
+            {
+              "fragment": "\"cluster\": \"apollo-cache-9\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"availability\": \"degraded\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"primary_region\": \"us-west-2\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"open_incident\": \"INC-7f31\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"region\": \"ap-south-1\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"drain_state\": \"complete\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"replication_lag_seconds\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"headroom\": \"45%\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            }
+          ],
+          "remedy_supplied_all_facts": false,
+          "complete_total_tokens": 7760,
+          "api_request_attempts": 6,
+          "error": ""
+        },
+        {
+          "task_id": "region_failover",
+          "repeat": 1,
+          "method": "none",
+          "first_pass_handoff": "HANDOFF cluster=apollo-cache-9 availability=degraded open_incident=INC-7f31 primary_region=us-west-2 | drain_region=ap-south-1 drain_state=complete replication_lag_seconds=0 sessions_forcibly_closed=0 | capacity_region=ap-south-1 capacity=available headroom=45% | note=eu-central-1 not the standby region; no decision made",
+          "first_pass_missing_facts": [],
+          "first_pass_missing_count": 0,
+          "first_pass_complete": true,
+          "stage0_model_calls": 4,
+          "compression_events": 0,
+          "first_role_compression_events": 0,
+          "first_role_triggered_calls": 0,
+          "first_role_passthrough_calls": 0,
+          "compression_ran_before_decisive_call": false,
+          "decisive_view_message_count": 28,
+          "decisive_view_characters": 4630,
+          "decisive_input_tokens": 1779,
+          "decisive_output_tokens": 127,
+          "decisive_raw_response_characters": 394,
+          "decisive_normalized_characters": 336,
+          "decisive_sanitizer_discarded_characters": 58,
+          "task_statement_in_decisive_view": true,
+          "handoff_contract_in_decisive_view": true,
+          "recovery_invocations": 0,
+          "recovery_output": "",
+          "recovery_metrics": {},
+          "facts": [
+            {
+              "literal": "apollo-cache-9",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 0,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "ap-south-1",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 2,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "45%",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 3,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            }
+          ],
+          "tool_evidence": [
+            {
+              "fragment": "\"cluster\": \"apollo-cache-9\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"availability\": \"degraded\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"primary_region\": \"us-west-2\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"open_incident\": \"INC-7f31\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"region\": \"ap-south-1\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"drain_state\": \"complete\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"replication_lag_seconds\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"headroom\": \"45%\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            }
+          ],
+          "remedy_supplied_all_facts": false,
+          "complete_total_tokens": 8386,
+          "api_request_attempts": 6,
+          "error": ""
+        },
+        {
+          "task_id": "region_failover",
+          "repeat": 2,
+          "method": "none",
+          "first_pass_handoff": "HANDOFF cluster=apollo-cache-9 availability=degraded open_incident=INC-7f31 primary_region=us-west-2 drain_region=ap-south-1 drain_state=complete replication_lag_seconds=0 sessions_forcibly_closed=0 capacity=available headroom=45% capacity_region=ap-south-1",
+          "first_pass_missing_facts": [],
+          "first_pass_missing_count": 0,
+          "first_pass_complete": true,
+          "stage0_model_calls": 4,
+          "compression_events": 0,
+          "first_role_compression_events": 0,
+          "first_role_triggered_calls": 0,
+          "first_role_passthrough_calls": 0,
+          "compression_ran_before_decisive_call": false,
+          "decisive_view_message_count": 30,
+          "decisive_view_characters": 4784,
+          "decisive_input_tokens": 1878,
+          "decisive_output_tokens": 104,
+          "decisive_raw_response_characters": 319,
+          "decisive_normalized_characters": 271,
+          "decisive_sanitizer_discarded_characters": 48,
+          "task_statement_in_decisive_view": true,
+          "handoff_contract_in_decisive_view": true,
+          "recovery_invocations": 0,
+          "recovery_output": "",
+          "recovery_metrics": {},
+          "facts": [
+            {
+              "literal": "apollo-cache-9",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 0,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "ap-south-1",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 2,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "45%",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 3,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            }
+          ],
+          "tool_evidence": [
+            {
+              "fragment": "\"cluster\": \"apollo-cache-9\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"availability\": \"degraded\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"primary_region\": \"us-west-2\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"open_incident\": \"INC-7f31\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"region\": \"ap-south-1\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"drain_state\": \"complete\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"replication_lag_seconds\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"headroom\": \"45%\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            }
+          ],
+          "remedy_supplied_all_facts": false,
+          "complete_total_tokens": 8489,
+          "api_request_attempts": 6,
+          "error": ""
+        },
+        {
+          "task_id": "schema_migration",
+          "repeat": 0,
+          "method": "none",
+          "first_pass_handoff": "HANDOFF id=schema-42 | inspect_schema_drift: drift_objects=0, schema_version=schema-42, target_tables=18, unapplied_migrations=0 | run_contract_tests: coverage_percent=96, failed=0, passed=312, schema_version=schema-42 | verify_schema_target: applicable=true, failed=0, schema_version=schema-42",
+          "first_pass_missing_facts": [],
+          "first_pass_missing_count": 0,
+          "first_pass_complete": true,
+          "stage0_model_calls": 4,
+          "compression_events": 0,
+          "first_role_compression_events": 0,
+          "first_role_triggered_calls": 0,
+          "first_role_passthrough_calls": 0,
+          "compression_ran_before_decisive_call": false,
+          "decisive_view_message_count": 26,
+          "decisive_view_characters": 4528,
+          "decisive_input_tokens": 1653,
+          "decisive_output_tokens": 98,
+          "decisive_raw_response_characters": 345,
+          "decisive_normalized_characters": 308,
+          "decisive_sanitizer_discarded_characters": 37,
+          "task_statement_in_decisive_view": true,
+          "handoff_contract_in_decisive_view": true,
+          "recovery_invocations": 0,
+          "recovery_output": "",
+          "recovery_metrics": {},
+          "facts": [
+            {
+              "literal": "schema-42",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 0,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "failed 0",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 2,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            }
+          ],
+          "tool_evidence": [
+            {
+              "fragment": "\"schema_version\": \"schema-42\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"unapplied_migrations\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"drift_objects\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"passed\": 312",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"failed\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            }
+          ],
+          "remedy_supplied_all_facts": false,
+          "complete_total_tokens": 7703,
+          "api_request_attempts": 6,
+          "error": ""
+        },
+        {
+          "task_id": "schema_migration",
+          "repeat": 1,
+          "method": "none",
+          "first_pass_handoff": "HANDOFF target=schema-42 | inspect_schema_drift: schema_version=schema-42, drift_objects=0, unapplied_migrations=0, target_tables=18 | run_contract_tests: schema_version=schema-42, passed=312, failed=0, coverage_percent=96 | verify_schema_target: schema_version=schema-42, applicable=true, failed=0 | 历史交接仅作背景，未用于替代当前工具事实；未给出最终 decision。",
+          "first_pass_missing_facts": [],
+          "first_pass_missing_count": 0,
+          "first_pass_complete": true,
+          "stage0_model_calls": 4,
+          "compression_events": 0,
+          "first_role_compression_events": 0,
+          "first_role_triggered_calls": 0,
+          "first_role_passthrough_calls": 0,
+          "compression_ran_before_decisive_call": false,
+          "decisive_view_message_count": 28,
+          "decisive_view_characters": 4644,
+          "decisive_input_tokens": 1774,
+          "decisive_output_tokens": 118,
+          "decisive_raw_response_characters": 388,
+          "decisive_normalized_characters": 351,
+          "decisive_sanitizer_discarded_characters": 37,
+          "task_statement_in_decisive_view": true,
+          "handoff_contract_in_decisive_view": true,
+          "recovery_invocations": 0,
+          "recovery_output": "",
+          "recovery_metrics": {},
+          "facts": [
+            {
+              "literal": "schema-42",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 0,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "failed 0",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 2,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            }
+          ],
+          "tool_evidence": [
+            {
+              "fragment": "\"schema_version\": \"schema-42\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"unapplied_migrations\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"drift_objects\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"passed\": 312",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"failed\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            }
+          ],
+          "remedy_supplied_all_facts": false,
+          "complete_total_tokens": 8228,
+          "api_request_attempts": 6,
+          "error": ""
+        },
+        {
+          "task_id": "schema_migration",
+          "repeat": 2,
+          "method": "none",
+          "first_pass_handoff": "HANDOFF target=schema-42 | inspect_schema_drift: drift_objects=0, unapplied_migrations=0, target_tables=18, schema_version=schema-42 | run_contract_tests: passed=312, failed=0, coverage_percent=96, schema_version=schema-42 | verify_schema_target: applicable=true, failed=0, schema_version=schema-42 | note: schema-41 已下线，不得作为目标；历史交接仅作背景，不替代当前工具事实；未作最终 decision。",
+          "first_pass_missing_facts": [],
+          "first_pass_missing_count": 0,
+          "first_pass_complete": true,
+          "stage0_model_calls": 4,
+          "compression_events": 0,
+          "first_role_compression_events": 0,
+          "first_role_triggered_calls": 0,
+          "first_role_passthrough_calls": 0,
+          "compression_ran_before_decisive_call": false,
+          "decisive_view_message_count": 30,
+          "decisive_view_characters": 4798,
+          "decisive_input_tokens": 1874,
+          "decisive_output_tokens": 156,
+          "decisive_raw_response_characters": 456,
+          "decisive_normalized_characters": 375,
+          "decisive_sanitizer_discarded_characters": 81,
+          "task_statement_in_decisive_view": true,
+          "handoff_contract_in_decisive_view": true,
+          "recovery_invocations": 0,
+          "recovery_output": "",
+          "recovery_metrics": {},
+          "facts": [
+            {
+              "literal": "schema-42",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 0,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "failed 0",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 2,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            }
+          ],
+          "tool_evidence": [
+            {
+              "fragment": "\"schema_version\": \"schema-42\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"unapplied_migrations\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"drift_objects\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"passed\": 312",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"failed\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            }
+          ],
+          "remedy_supplied_all_facts": false,
+          "complete_total_tokens": 8697,
+          "api_request_attempts": 6,
+          "error": ""
+        }
+      ]
+    },
+    "pruner_v1": {
+      "summary": {
+        "samples": 9,
+        "first_pass_complete": 3,
+        "remedy_calls": 6,
+        "lossy_samples": 6,
+        "lossy_fact_slots": 14,
+        "lossy_facts_available_in_authoritative_history": 14,
+        "lossy_facts_available_in_decisive_view": 14,
+        "lossy_facts_dropped_by_compression_step": 0,
+        "lossy_facts_with_contract_absent_from_decisive_view": 5,
+        "lossy_samples_with_task_statement_absent": 6,
+        "lossy_samples_with_sanitizer_discard": 6,
+        "lossy_decisive_output_tokens": [
+          232,
+          310,
+          265,
+          235,
+          313,
+          279
+        ],
+        "lossy_logic": "facts_survived_compression_loss_is_not_compression"
+      },
+      "samples": [
+        {
+          "task_id": "queue_backlog_replay",
+          "repeat": 0,
+          "method": "pruner_v1",
+          "first_pass_handoff": "HANDOFF PIPE-3391 orders-cdc | check_pipeline_status: status=stalled, consumer_lag_minutes=37, pending_records=12400, region=us-west-2 | inspect_dead_letter_queue: dlq_records=0, poison_messages=0, blocking_error=none | verify_queue_replay: replay_safe=true, pending_records=12400, region=us-west-2",
+          "first_pass_missing_facts": [],
+          "first_pass_missing_count": 0,
+          "first_pass_complete": true,
+          "stage0_model_calls": 4,
+          "compression_events": 4,
+          "first_role_compression_events": 4,
+          "first_role_triggered_calls": 4,
+          "first_role_passthrough_calls": 0,
+          "compression_ran_before_decisive_call": true,
+          "decisive_view_message_count": 9,
+          "decisive_view_characters": 3514,
+          "decisive_input_tokens": 1157,
+          "decisive_output_tokens": 185,
+          "decisive_raw_response_characters": 545,
+          "decisive_normalized_characters": 312,
+          "decisive_sanitizer_discarded_characters": 233,
+          "task_statement_in_decisive_view": true,
+          "handoff_contract_in_decisive_view": true,
+          "recovery_invocations": 0,
+          "recovery_output": "",
+          "recovery_metrics": {},
+          "facts": [
+            {
+              "literal": "PIPE-3391",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 0,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "us-west-2",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 1,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "12400",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 1,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            }
+          ],
+          "tool_evidence": [
+            {
+              "fragment": "\"pipeline_id\": \"PIPE-3391\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"region\": \"us-west-2\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"pending_records\": 12400",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"status\": \"stalled\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"dlq_records\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"poison_messages\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"blocking_error\": \"none\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            }
+          ],
+          "remedy_supplied_all_facts": false,
+          "complete_total_tokens": 5823,
+          "api_request_attempts": 6,
+          "error": ""
+        },
+        {
+          "task_id": "queue_backlog_replay",
+          "repeat": 1,
+          "method": "pruner_v1",
+          "first_pass_handoff": "HANDOFF PIPE-3391 orders-cdc region=us-west-2 status=stalled consumer_lag_minutes=37 pending_records=12400 dlq_records=0 poison_messages=0 blocking_error=none replay_safe=true",
+          "first_pass_missing_facts": [],
+          "first_pass_missing_count": 0,
+          "first_pass_complete": true,
+          "stage0_model_calls": 4,
+          "compression_events": 4,
+          "first_role_compression_events": 4,
+          "first_role_triggered_calls": 4,
+          "first_role_passthrough_calls": 0,
+          "compression_ran_before_decisive_call": true,
+          "decisive_view_message_count": 9,
+          "decisive_view_characters": 3628,
+          "decisive_input_tokens": 1195,
+          "decisive_output_tokens": 64,
+          "decisive_raw_response_characters": 226,
+          "decisive_normalized_characters": 189,
+          "decisive_sanitizer_discarded_characters": 37,
+          "task_statement_in_decisive_view": true,
+          "handoff_contract_in_decisive_view": true,
+          "recovery_invocations": 0,
+          "recovery_output": "",
+          "recovery_metrics": {},
+          "facts": [
+            {
+              "literal": "PIPE-3391",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 0,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "us-west-2",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 1,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "12400",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 1,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            }
+          ],
+          "tool_evidence": [
+            {
+              "fragment": "\"pipeline_id\": \"PIPE-3391\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"region\": \"us-west-2\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"pending_records\": 12400",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"status\": \"stalled\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"dlq_records\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"poison_messages\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"blocking_error\": \"none\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            }
+          ],
+          "remedy_supplied_all_facts": false,
+          "complete_total_tokens": 6388,
+          "api_request_attempts": 6,
+          "error": ""
+        },
+        {
+          "task_id": "queue_backlog_replay",
+          "repeat": 2,
+          "method": "pruner_v1",
+          "first_pass_handoff": "HANDOFF PIPE-3391 orders-cdc region=us-west-2 status=stalled consumer_lag_minutes=37 pending_records=12400 dlq_records=0 poison_messages=0 blocking_error=none replay_safe=true",
+          "first_pass_missing_facts": [],
+          "first_pass_missing_count": 0,
+          "first_pass_complete": true,
+          "stage0_model_calls": 4,
+          "compression_events": 4,
+          "first_role_compression_events": 4,
+          "first_role_triggered_calls": 4,
+          "first_role_passthrough_calls": 0,
+          "compression_ran_before_decisive_call": true,
+          "decisive_view_message_count": 9,
+          "decisive_view_characters": 3655,
+          "decisive_input_tokens": 1239,
+          "decisive_output_tokens": 73,
+          "decisive_raw_response_characters": 228,
+          "decisive_normalized_characters": 189,
+          "decisive_sanitizer_discarded_characters": 39,
+          "task_statement_in_decisive_view": true,
+          "handoff_contract_in_decisive_view": true,
+          "recovery_invocations": 0,
+          "recovery_output": "",
+          "recovery_metrics": {},
+          "facts": [
+            {
+              "literal": "PIPE-3391",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 0,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "us-west-2",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 1,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "12400",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 1,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            }
+          ],
+          "tool_evidence": [
+            {
+              "fragment": "\"pipeline_id\": \"PIPE-3391\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"region\": \"us-west-2\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"pending_records\": 12400",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"status\": \"stalled\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"dlq_records\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"poison_messages\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"blocking_error\": \"none\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            }
+          ],
+          "remedy_supplied_all_facts": false,
+          "complete_total_tokens": 5964,
+          "api_request_attempts": 6,
+          "error": ""
+        },
+        {
+          "task_id": "region_failover",
+          "repeat": 0,
+          "method": "pruner_v1",
+          "first_pass_handoff": "HANDOFF（事实，不含决策）",
+          "first_pass_missing_facts": [
+            "apollo-cache-9",
+            "ap-south-1",
+            "45%"
+          ],
+          "first_pass_missing_count": 3,
+          "first_pass_complete": false,
+          "stage0_model_calls": 4,
+          "compression_events": 4,
+          "first_role_compression_events": 4,
+          "first_role_triggered_calls": 4,
+          "first_role_passthrough_calls": 0,
+          "compression_ran_before_decisive_call": true,
+          "decisive_view_message_count": 8,
+          "decisive_view_characters": 3812,
+          "decisive_input_tokens": 1449,
+          "decisive_output_tokens": 232,
+          "decisive_raw_response_characters": 564,
+          "decisive_normalized_characters": 30,
+          "decisive_sanitizer_discarded_characters": 534,
+          "task_statement_in_decisive_view": false,
+          "handoff_contract_in_decisive_view": true,
+          "recovery_invocations": 1,
+          "recovery_output": "HANDOFF: cluster apollo-cache-9 is the only currently affected cluster, availability degraded, open incident INC-7f31, primary region us-west-2; ap-south-1 drain_state complete, replication_lag_seconds 0, sessions_forcibly_closed 0, capacity available with 45% headroom; eu-central-1 is not the standby region for this incident.",
+          "recovery_metrics": {
+            "before_model_calls": 0,
+            "full_context_tokens_total": 0,
+            "served_context_tokens_total": 0,
+            "gross_input_tokens_saved": 0,
+            "peak_full_context_tokens": 0,
+            "peak_served_context_tokens": 0,
+            "compression_count": 0,
+            "recovery_count": 0,
+            "budget_pressure_count": 0,
+            "budget_violation_count": 0,
+            "resync_count": 0,
+            "stale_evidence_filtered_count": 0,
+            "workspace_mutation_epoch": 0,
+            "last_full_context_tokens": 0,
+            "last_served_context_tokens": 0,
+            "enabled": true,
+            "method": "pruner_v1",
+            "gross_input_savings_rate": 0.0,
+            "archive_count": 0,
+            "lifecycle_recovery_count": 0,
+            "checkpoint_count": 0,
+            "lifecycle_event_count": 2,
+            "runtime_event_count": 1,
+            "reserved_tokens_total": 0,
+            "peak_reserved_tokens": 0,
+            "peak_model_input_tokens": 0,
+            "model_input_budget_violation_count": 0,
+            "crewai_before_llm_calls": 0,
+            "crewai_after_llm_calls": 1,
+            "crewai_after_tool_calls": 0,
+            "crewai_compressed_calls": 0,
+            "crewai_filtered_calls": 0,
+            "crewai_pending_reconciliations": 0,
+            "crewai_authoritative_resync_count": 0,
+            "crewai_protected_group_count": 0,
+            "crewai_protected_message_count": 0,
+            "crewai_unmatched_call_count": 0,
+            "crewai_opaque_reserved_tokens_total": 0,
+            "crewai_group_restore_failure_count": 0,
+            "crewai_active_pending_view_count": 0,
+            "crewai_registered": false,
+            "trigger_gate_passthrough_calls": 1,
+            "trigger_gate_triggered_calls": 0,
+            "trigger_gate_soft_limit_tokens": 3085,
+            "trigger_gate_last_estimated_tokens": 968
+          },
+          "facts": [
+            {
+              "literal": "apollo-cache-9",
+              "in_first_pass_handoff": false,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 0,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": true
+            },
+            {
+              "literal": "ap-south-1",
+              "in_first_pass_handoff": false,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 2,
+              "in_decisive_view": true,
+              "in_remedy_input": true,
+              "missing_from_first_pass": true
+            },
+            {
+              "literal": "45%",
+              "in_first_pass_handoff": false,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 3,
+              "in_decisive_view": true,
+              "in_remedy_input": true,
+              "missing_from_first_pass": true
+            }
+          ],
+          "tool_evidence": [
+            {
+              "fragment": "\"cluster\": \"apollo-cache-9\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"availability\": \"degraded\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"primary_region\": \"us-west-2\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"open_incident\": \"INC-7f31\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"region\": \"ap-south-1\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"drain_state\": \"complete\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"replication_lag_seconds\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"headroom\": \"45%\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            }
+          ],
+          "remedy_supplied_all_facts": true,
+          "complete_total_tokens": 7783,
+          "api_request_attempts": 7,
+          "error": ""
+        },
+        {
+          "task_id": "region_failover",
+          "repeat": 1,
+          "method": "pruner_v1",
+          "first_pass_handoff": "事实性 HANDOFF：",
+          "first_pass_missing_facts": [
+            "apollo-cache-9",
+            "ap-south-1",
+            "45%"
+          ],
+          "first_pass_missing_count": 3,
+          "first_pass_complete": false,
+          "stage0_model_calls": 4,
+          "compression_events": 4,
+          "first_role_compression_events": 4,
+          "first_role_triggered_calls": 4,
+          "first_role_passthrough_calls": 0,
+          "compression_ran_before_decisive_call": true,
+          "decisive_view_message_count": 8,
+          "decisive_view_characters": 3954,
+          "decisive_input_tokens": 1543,
+          "decisive_output_tokens": 310,
+          "decisive_raw_response_characters": 690,
+          "decisive_normalized_characters": 26,
+          "decisive_sanitizer_discarded_characters": 664,
+          "task_statement_in_decisive_view": false,
+          "handoff_contract_in_decisive_view": false,
+          "recovery_invocations": 1,
+          "recovery_output": "HANDOFF: 集群 apollo-cache-9 可用性 degraded，未结事件 INC-7f31，主区域 us-west-2；ap-south-1 排空状态 complete，复制延迟 0 秒，强制关闭会话 0，容量 available，余量 45%；apollo-cache-9 是当前唯一受影响集群，历史讨论中的 eu-central-1 不是本次备用区域。",
+          "recovery_metrics": {
+            "before_model_calls": 0,
+            "full_context_tokens_total": 0,
+            "served_context_tokens_total": 0,
+            "gross_input_tokens_saved": 0,
+            "peak_full_context_tokens": 0,
+            "peak_served_context_tokens": 0,
+            "compression_count": 0,
+            "recovery_count": 0,
+            "budget_pressure_count": 0,
+            "budget_violation_count": 0,
+            "resync_count": 0,
+            "stale_evidence_filtered_count": 0,
+            "workspace_mutation_epoch": 0,
+            "last_full_context_tokens": 0,
+            "last_served_context_tokens": 0,
+            "enabled": true,
+            "method": "pruner_v1",
+            "gross_input_savings_rate": 0.0,
+            "archive_count": 0,
+            "lifecycle_recovery_count": 0,
+            "checkpoint_count": 0,
+            "lifecycle_event_count": 2,
+            "runtime_event_count": 1,
+            "reserved_tokens_total": 0,
+            "peak_reserved_tokens": 0,
+            "peak_model_input_tokens": 0,
+            "model_input_budget_violation_count": 0,
+            "crewai_before_llm_calls": 0,
+            "crewai_after_llm_calls": 1,
+            "crewai_after_tool_calls": 0,
+            "crewai_compressed_calls": 0,
+            "crewai_filtered_calls": 0,
+            "crewai_pending_reconciliations": 0,
+            "crewai_authoritative_resync_count": 0,
+            "crewai_protected_group_count": 0,
+            "crewai_protected_message_count": 0,
+            "crewai_unmatched_call_count": 0,
+            "crewai_opaque_reserved_tokens_total": 0,
+            "crewai_group_restore_failure_count": 0,
+            "crewai_active_pending_view_count": 0,
+            "crewai_registered": false,
+            "trigger_gate_passthrough_calls": 1,
+            "trigger_gate_triggered_calls": 0,
+            "trigger_gate_soft_limit_tokens": 3085,
+            "trigger_gate_last_estimated_tokens": 965
+          },
+          "facts": [
+            {
+              "literal": "apollo-cache-9",
+              "in_first_pass_handoff": false,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 0,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": true
+            },
+            {
+              "literal": "ap-south-1",
+              "in_first_pass_handoff": false,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 2,
+              "in_decisive_view": true,
+              "in_remedy_input": true,
+              "missing_from_first_pass": true
+            },
+            {
+              "literal": "45%",
+              "in_first_pass_handoff": false,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 3,
+              "in_decisive_view": true,
+              "in_remedy_input": true,
+              "missing_from_first_pass": true
+            }
+          ],
+          "tool_evidence": [
+            {
+              "fragment": "\"cluster\": \"apollo-cache-9\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"availability\": \"degraded\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"primary_region\": \"us-west-2\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"open_incident\": \"INC-7f31\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"region\": \"ap-south-1\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"drain_state\": \"complete\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"replication_lag_seconds\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"headroom\": \"45%\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            }
+          ],
+          "remedy_supplied_all_facts": true,
+          "complete_total_tokens": 8070,
+          "api_request_attempts": 7,
+          "error": ""
+        },
+        {
+          "task_id": "region_failover",
+          "repeat": 2,
+          "method": "pruner_v1",
+          "first_pass_handoff": "当前工具事实如下：",
+          "first_pass_missing_facts": [
+            "apollo-cache-9",
+            "ap-south-1",
+            "45%"
+          ],
+          "first_pass_missing_count": 3,
+          "first_pass_complete": false,
+          "stage0_model_calls": 4,
+          "compression_events": 4,
+          "first_role_compression_events": 4,
+          "first_role_triggered_calls": 4,
+          "first_role_passthrough_calls": 0,
+          "compression_ran_before_decisive_call": true,
+          "decisive_view_message_count": 8,
+          "decisive_view_characters": 4156,
+          "decisive_input_tokens": 1657,
+          "decisive_output_tokens": 265,
+          "decisive_raw_response_characters": 538,
+          "decisive_normalized_characters": 23,
+          "decisive_sanitizer_discarded_characters": 515,
+          "task_statement_in_decisive_view": false,
+          "handoff_contract_in_decisive_view": false,
+          "recovery_invocations": 1,
+          "recovery_output": "HANDOFF: cluster apollo-cache-9 is the only currently affected cluster, availability degraded, open incident INC-7f31, primary region us-west-2; ap-south-1 drain_state complete, replication_lag_seconds 0, sessions_forcibly_closed 0, capacity available with 45% headroom; eu-central-1 is not the standby region for this incident.",
+          "recovery_metrics": {
+            "before_model_calls": 0,
+            "full_context_tokens_total": 0,
+            "served_context_tokens_total": 0,
+            "gross_input_tokens_saved": 0,
+            "peak_full_context_tokens": 0,
+            "peak_served_context_tokens": 0,
+            "compression_count": 0,
+            "recovery_count": 0,
+            "budget_pressure_count": 0,
+            "budget_violation_count": 0,
+            "resync_count": 0,
+            "stale_evidence_filtered_count": 0,
+            "workspace_mutation_epoch": 0,
+            "last_full_context_tokens": 0,
+            "last_served_context_tokens": 0,
+            "enabled": true,
+            "method": "pruner_v1",
+            "gross_input_savings_rate": 0.0,
+            "archive_count": 0,
+            "lifecycle_recovery_count": 0,
+            "checkpoint_count": 0,
+            "lifecycle_event_count": 2,
+            "runtime_event_count": 1,
+            "reserved_tokens_total": 0,
+            "peak_reserved_tokens": 0,
+            "peak_model_input_tokens": 0,
+            "model_input_budget_violation_count": 0,
+            "crewai_before_llm_calls": 0,
+            "crewai_after_llm_calls": 1,
+            "crewai_after_tool_calls": 0,
+            "crewai_compressed_calls": 0,
+            "crewai_filtered_calls": 0,
+            "crewai_pending_reconciliations": 0,
+            "crewai_authoritative_resync_count": 0,
+            "crewai_protected_group_count": 0,
+            "crewai_protected_message_count": 0,
+            "crewai_unmatched_call_count": 0,
+            "crewai_opaque_reserved_tokens_total": 0,
+            "crewai_group_restore_failure_count": 0,
+            "crewai_active_pending_view_count": 0,
+            "crewai_registered": false,
+            "trigger_gate_passthrough_calls": 1,
+            "trigger_gate_triggered_calls": 0,
+            "trigger_gate_soft_limit_tokens": 3085,
+            "trigger_gate_last_estimated_tokens": 964
+          },
+          "facts": [
+            {
+              "literal": "apollo-cache-9",
+              "in_first_pass_handoff": false,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 0,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": true
+            },
+            {
+              "literal": "ap-south-1",
+              "in_first_pass_handoff": false,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 2,
+              "in_decisive_view": true,
+              "in_remedy_input": true,
+              "missing_from_first_pass": true
+            },
+            {
+              "literal": "45%",
+              "in_first_pass_handoff": false,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 3,
+              "in_decisive_view": true,
+              "in_remedy_input": true,
+              "missing_from_first_pass": true
+            }
+          ],
+          "tool_evidence": [
+            {
+              "fragment": "\"cluster\": \"apollo-cache-9\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"availability\": \"degraded\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"primary_region\": \"us-west-2\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"open_incident\": \"INC-7f31\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"region\": \"ap-south-1\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"drain_state\": \"complete\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"replication_lag_seconds\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"headroom\": \"45%\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            }
+          ],
+          "remedy_supplied_all_facts": true,
+          "complete_total_tokens": 8648,
+          "api_request_attempts": 7,
+          "error": ""
+        },
+        {
+          "task_id": "schema_migration",
+          "repeat": 0,
+          "method": "pruner_v1",
+          "first_pass_handoff": "当前工具事实如下：",
+          "first_pass_missing_facts": [
+            "schema-42",
+            "failed 0"
+          ],
+          "first_pass_missing_count": 2,
+          "first_pass_complete": false,
+          "stage0_model_calls": 4,
+          "compression_events": 4,
+          "first_role_compression_events": 4,
+          "first_role_triggered_calls": 4,
+          "first_role_passthrough_calls": 0,
+          "compression_ran_before_decisive_call": true,
+          "decisive_view_message_count": 9,
+          "decisive_view_characters": 3815,
+          "decisive_input_tokens": 1444,
+          "decisive_output_tokens": 235,
+          "decisive_raw_response_characters": 556,
+          "decisive_normalized_characters": 23,
+          "decisive_sanitizer_discarded_characters": 533,
+          "task_statement_in_decisive_view": false,
+          "handoff_contract_in_decisive_view": false,
+          "recovery_invocations": 1,
+          "recovery_output": "HANDOFF: schema_version=schema-42; target_tables=18; drift_objects=0; unapplied_migrations=0; tests passed=312, failed=0, coverage_percent=96; applicable=true; 唯一允许迁移的目标版本是 schema-42，schema-41 已下线不得作为目标。",
+          "recovery_metrics": {
+            "before_model_calls": 0,
+            "full_context_tokens_total": 0,
+            "served_context_tokens_total": 0,
+            "gross_input_tokens_saved": 0,
+            "peak_full_context_tokens": 0,
+            "peak_served_context_tokens": 0,
+            "compression_count": 0,
+            "recovery_count": 0,
+            "budget_pressure_count": 0,
+            "budget_violation_count": 0,
+            "resync_count": 0,
+            "stale_evidence_filtered_count": 0,
+            "workspace_mutation_epoch": 0,
+            "last_full_context_tokens": 0,
+            "last_served_context_tokens": 0,
+            "enabled": true,
+            "method": "pruner_v1",
+            "gross_input_savings_rate": 0.0,
+            "archive_count": 0,
+            "lifecycle_recovery_count": 0,
+            "checkpoint_count": 0,
+            "lifecycle_event_count": 2,
+            "runtime_event_count": 1,
+            "reserved_tokens_total": 0,
+            "peak_reserved_tokens": 0,
+            "peak_model_input_tokens": 0,
+            "model_input_budget_violation_count": 0,
+            "crewai_before_llm_calls": 0,
+            "crewai_after_llm_calls": 1,
+            "crewai_after_tool_calls": 0,
+            "crewai_compressed_calls": 0,
+            "crewai_filtered_calls": 0,
+            "crewai_pending_reconciliations": 0,
+            "crewai_authoritative_resync_count": 0,
+            "crewai_protected_group_count": 0,
+            "crewai_protected_message_count": 0,
+            "crewai_unmatched_call_count": 0,
+            "crewai_opaque_reserved_tokens_total": 0,
+            "crewai_group_restore_failure_count": 0,
+            "crewai_active_pending_view_count": 0,
+            "crewai_registered": false,
+            "trigger_gate_passthrough_calls": 1,
+            "trigger_gate_triggered_calls": 0,
+            "trigger_gate_soft_limit_tokens": 3085,
+            "trigger_gate_last_estimated_tokens": 878
+          },
+          "facts": [
+            {
+              "literal": "schema-42",
+              "in_first_pass_handoff": false,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 0,
+              "in_decisive_view": true,
+              "in_remedy_input": true,
+              "missing_from_first_pass": true
+            },
+            {
+              "literal": "failed 0",
+              "in_first_pass_handoff": false,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 2,
+              "in_decisive_view": true,
+              "in_remedy_input": true,
+              "missing_from_first_pass": true
+            }
+          ],
+          "tool_evidence": [
+            {
+              "fragment": "\"schema_version\": \"schema-42\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"unapplied_migrations\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"drift_objects\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"passed\": 312",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"failed\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            }
+          ],
+          "remedy_supplied_all_facts": true,
+          "complete_total_tokens": 7700,
+          "api_request_attempts": 7,
+          "error": ""
+        },
+        {
+          "task_id": "schema_migration",
+          "repeat": 1,
+          "method": "pruner_v1",
+          "first_pass_handoff": "当前工具事实（均针对 schema-42，唯一允许的迁移目标）：",
+          "first_pass_missing_facts": [
+            "failed 0"
+          ],
+          "first_pass_missing_count": 1,
+          "first_pass_complete": false,
+          "stage0_model_calls": 4,
+          "compression_events": 4,
+          "first_role_compression_events": 4,
+          "first_role_triggered_calls": 4,
+          "first_role_passthrough_calls": 0,
+          "compression_ran_before_decisive_call": true,
+          "decisive_view_message_count": 9,
+          "decisive_view_characters": 3974,
+          "decisive_input_tokens": 1545,
+          "decisive_output_tokens": 313,
+          "decisive_raw_response_characters": 692,
+          "decisive_normalized_characters": 46,
+          "decisive_sanitizer_discarded_characters": 646,
+          "task_statement_in_decisive_view": false,
+          "handoff_contract_in_decisive_view": false,
+          "recovery_invocations": 1,
+          "recovery_output": "HANDOFF schema_version=schema-42 target_tables=18 drift_objects=0 unapplied_migrations=0 tests_passed=312 tests_failed=0 coverage_percent=96 applicable=true",
+          "recovery_metrics": {
+            "before_model_calls": 0,
+            "full_context_tokens_total": 0,
+            "served_context_tokens_total": 0,
+            "gross_input_tokens_saved": 0,
+            "peak_full_context_tokens": 0,
+            "peak_served_context_tokens": 0,
+            "compression_count": 0,
+            "recovery_count": 0,
+            "budget_pressure_count": 0,
+            "budget_violation_count": 0,
+            "resync_count": 0,
+            "stale_evidence_filtered_count": 0,
+            "workspace_mutation_epoch": 0,
+            "last_full_context_tokens": 0,
+            "last_served_context_tokens": 0,
+            "enabled": true,
+            "method": "pruner_v1",
+            "gross_input_savings_rate": 0.0,
+            "archive_count": 0,
+            "lifecycle_recovery_count": 0,
+            "checkpoint_count": 0,
+            "lifecycle_event_count": 2,
+            "runtime_event_count": 1,
+            "reserved_tokens_total": 0,
+            "peak_reserved_tokens": 0,
+            "peak_model_input_tokens": 0,
+            "model_input_budget_violation_count": 0,
+            "crewai_before_llm_calls": 0,
+            "crewai_after_llm_calls": 1,
+            "crewai_after_tool_calls": 0,
+            "crewai_compressed_calls": 0,
+            "crewai_filtered_calls": 0,
+            "crewai_pending_reconciliations": 0,
+            "crewai_authoritative_resync_count": 0,
+            "crewai_protected_group_count": 0,
+            "crewai_protected_message_count": 0,
+            "crewai_unmatched_call_count": 0,
+            "crewai_opaque_reserved_tokens_total": 0,
+            "crewai_group_restore_failure_count": 0,
+            "crewai_active_pending_view_count": 0,
+            "crewai_registered": false,
+            "trigger_gate_passthrough_calls": 1,
+            "trigger_gate_triggered_calls": 0,
+            "trigger_gate_soft_limit_tokens": 3085,
+            "trigger_gate_last_estimated_tokens": 897
+          },
+          "facts": [
+            {
+              "literal": "schema-42",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 0,
+              "in_decisive_view": true,
+              "in_remedy_input": true,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "failed 0",
+              "in_first_pass_handoff": false,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 2,
+              "in_decisive_view": true,
+              "in_remedy_input": true,
+              "missing_from_first_pass": true
+            }
+          ],
+          "tool_evidence": [
+            {
+              "fragment": "\"schema_version\": \"schema-42\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"unapplied_migrations\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"drift_objects\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"passed\": 312",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"failed\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            }
+          ],
+          "remedy_supplied_all_facts": true,
+          "complete_total_tokens": 8014,
+          "api_request_attempts": 7,
+          "error": ""
+        },
+        {
+          "task_id": "schema_migration",
+          "repeat": 2,
+          "method": "pruner_v1",
+          "first_pass_handoff": "当前工具事实（优先于历史讨论）：",
+          "first_pass_missing_facts": [
+            "schema-42",
+            "failed 0"
+          ],
+          "first_pass_missing_count": 2,
+          "first_pass_complete": false,
+          "stage0_model_calls": 4,
+          "compression_events": 4,
+          "first_role_compression_events": 4,
+          "first_role_triggered_calls": 4,
+          "first_role_passthrough_calls": 0,
+          "compression_ran_before_decisive_call": true,
+          "decisive_view_message_count": 9,
+          "decisive_view_characters": 4263,
+          "decisive_input_tokens": 1649,
+          "decisive_output_tokens": 279,
+          "decisive_raw_response_characters": 635,
+          "decisive_normalized_characters": 30,
+          "decisive_sanitizer_discarded_characters": 605,
+          "task_statement_in_decisive_view": false,
+          "handoff_contract_in_decisive_view": false,
+          "recovery_invocations": 1,
+          "recovery_output": "HANDOFF schema_version=schema-42; target_tables=18; drift_objects=0; unapplied_migrations=0; passed=312; failed=0; coverage_percent=96; applicable=true.",
+          "recovery_metrics": {
+            "before_model_calls": 0,
+            "full_context_tokens_total": 0,
+            "served_context_tokens_total": 0,
+            "gross_input_tokens_saved": 0,
+            "peak_full_context_tokens": 0,
+            "peak_served_context_tokens": 0,
+            "compression_count": 0,
+            "recovery_count": 0,
+            "budget_pressure_count": 0,
+            "budget_violation_count": 0,
+            "resync_count": 0,
+            "stale_evidence_filtered_count": 0,
+            "workspace_mutation_epoch": 0,
+            "last_full_context_tokens": 0,
+            "last_served_context_tokens": 0,
+            "enabled": true,
+            "method": "pruner_v1",
+            "gross_input_savings_rate": 0.0,
+            "archive_count": 0,
+            "lifecycle_recovery_count": 0,
+            "checkpoint_count": 0,
+            "lifecycle_event_count": 2,
+            "runtime_event_count": 1,
+            "reserved_tokens_total": 0,
+            "peak_reserved_tokens": 0,
+            "peak_model_input_tokens": 0,
+            "model_input_budget_violation_count": 0,
+            "crewai_before_llm_calls": 0,
+            "crewai_after_llm_calls": 1,
+            "crewai_after_tool_calls": 0,
+            "crewai_compressed_calls": 0,
+            "crewai_filtered_calls": 0,
+            "crewai_pending_reconciliations": 0,
+            "crewai_authoritative_resync_count": 0,
+            "crewai_protected_group_count": 0,
+            "crewai_protected_message_count": 0,
+            "crewai_unmatched_call_count": 0,
+            "crewai_opaque_reserved_tokens_total": 0,
+            "crewai_group_restore_failure_count": 0,
+            "crewai_active_pending_view_count": 0,
+            "crewai_registered": false,
+            "trigger_gate_passthrough_calls": 1,
+            "trigger_gate_triggered_calls": 0,
+            "trigger_gate_soft_limit_tokens": 3085,
+            "trigger_gate_last_estimated_tokens": 885
+          },
+          "facts": [
+            {
+              "literal": "schema-42",
+              "in_first_pass_handoff": false,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 0,
+              "in_decisive_view": true,
+              "in_remedy_input": true,
+              "missing_from_first_pass": true
+            },
+            {
+              "literal": "failed 0",
+              "in_first_pass_handoff": false,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 2,
+              "in_decisive_view": true,
+              "in_remedy_input": true,
+              "missing_from_first_pass": true
+            }
+          ],
+          "tool_evidence": [
+            {
+              "fragment": "\"schema_version\": \"schema-42\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"unapplied_migrations\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"drift_objects\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"passed\": 312",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"failed\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            }
+          ],
+          "remedy_supplied_all_facts": true,
+          "complete_total_tokens": 8235,
+          "api_request_attempts": 7,
+          "error": ""
+        }
+      ]
+    },
+    "native_summary": {
+      "summary": {
+        "samples": 9,
+        "first_pass_complete": 9,
+        "remedy_calls": 0,
+        "lossy_samples": 0,
+        "lossy_facts_available_in_authoritative_history": 0,
+        "lossy_facts_available_in_decisive_view": 0,
+        "lossy_facts_dropped_by_compression_step": 0,
+        "lossy_logic": "no first-pass loss in this arm"
+      },
+      "samples": [
+        {
+          "task_id": "queue_backlog_replay",
+          "repeat": 0,
+          "method": "native_summary",
+          "first_pass_handoff": "HANDOFF PIPE-3391 orders-cdc region=us-west-2 status=stalled consumer_lag_minutes=37 pending_records=12400 dlq_records=0 poison_messages=0 blocking_error=none replay_safe=true",
+          "first_pass_missing_facts": [],
+          "first_pass_missing_count": 0,
+          "first_pass_complete": true,
+          "stage0_model_calls": 4,
+          "compression_events": 0,
+          "first_role_compression_events": 0,
+          "first_role_triggered_calls": 0,
+          "first_role_passthrough_calls": 0,
+          "compression_ran_before_decisive_call": false,
+          "decisive_view_message_count": 26,
+          "decisive_view_characters": 4595,
+          "decisive_input_tokens": 1740,
+          "decisive_output_tokens": 81,
+          "decisive_raw_response_characters": 243,
+          "decisive_normalized_characters": 189,
+          "decisive_sanitizer_discarded_characters": 54,
+          "task_statement_in_decisive_view": true,
+          "handoff_contract_in_decisive_view": true,
+          "recovery_invocations": 0,
+          "recovery_output": "",
+          "recovery_metrics": {},
+          "facts": [
+            {
+              "literal": "PIPE-3391",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 0,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "us-west-2",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 1,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "12400",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 1,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            }
+          ],
+          "tool_evidence": [
+            {
+              "fragment": "\"pipeline_id\": \"PIPE-3391\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"region\": \"us-west-2\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"pending_records\": 12400",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"status\": \"stalled\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"dlq_records\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"poison_messages\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"blocking_error\": \"none\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            }
+          ],
+          "remedy_supplied_all_facts": false,
+          "complete_total_tokens": 10092,
+          "api_request_attempts": 9,
+          "error": ""
+        },
+        {
+          "task_id": "queue_backlog_replay",
+          "repeat": 1,
+          "method": "native_summary",
+          "first_pass_handoff": "HANDOFF PIPE-3391 orders-cdc region=us-west-2 status=stalled consumer_lag_minutes=37 pending_records=12400 dlq_records=0 poison_messages=0 blocking_error=none replay_safe=true",
+          "first_pass_missing_facts": [],
+          "first_pass_missing_count": 0,
+          "first_pass_complete": true,
+          "stage0_model_calls": 4,
+          "compression_events": 0,
+          "first_role_compression_events": 0,
+          "first_role_triggered_calls": 0,
+          "first_role_passthrough_calls": 0,
+          "compression_ran_before_decisive_call": false,
+          "decisive_view_message_count": 28,
+          "decisive_view_characters": 4831,
+          "decisive_input_tokens": 1833,
+          "decisive_output_tokens": 64,
+          "decisive_raw_response_characters": 226,
+          "decisive_normalized_characters": 189,
+          "decisive_sanitizer_discarded_characters": 37,
+          "task_statement_in_decisive_view": true,
+          "handoff_contract_in_decisive_view": true,
+          "recovery_invocations": 0,
+          "recovery_output": "",
+          "recovery_metrics": {},
+          "facts": [
+            {
+              "literal": "PIPE-3391",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 0,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "us-west-2",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 1,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "12400",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 1,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            }
+          ],
+          "tool_evidence": [
+            {
+              "fragment": "\"pipeline_id\": \"PIPE-3391\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"region\": \"us-west-2\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"pending_records\": 12400",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"status\": \"stalled\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"dlq_records\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"poison_messages\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"blocking_error\": \"none\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            }
+          ],
+          "remedy_supplied_all_facts": false,
+          "complete_total_tokens": 10090,
+          "api_request_attempts": 8,
+          "error": ""
+        },
+        {
+          "task_id": "queue_backlog_replay",
+          "repeat": 2,
+          "method": "native_summary",
+          "first_pass_handoff": "HANDOFF PIPE-3391 region=us-west-2 status=stalled consumer_lag_minutes=37 pending_records=12400 dlq_records=0 poison_messages=0 blocking_error=none replay_safe=true",
+          "first_pass_missing_facts": [],
+          "first_pass_missing_count": 0,
+          "first_pass_complete": true,
+          "stage0_model_calls": 4,
+          "compression_events": 0,
+          "first_role_compression_events": 0,
+          "first_role_triggered_calls": 0,
+          "first_role_passthrough_calls": 0,
+          "compression_ran_before_decisive_call": false,
+          "decisive_view_message_count": 18,
+          "decisive_view_characters": 4560,
+          "decisive_input_tokens": 1417,
+          "decisive_output_tokens": 61,
+          "decisive_raw_response_characters": 215,
+          "decisive_normalized_characters": 178,
+          "decisive_sanitizer_discarded_characters": 37,
+          "task_statement_in_decisive_view": true,
+          "handoff_contract_in_decisive_view": true,
+          "recovery_invocations": 0,
+          "recovery_output": "",
+          "recovery_metrics": {},
+          "facts": [
+            {
+              "literal": "PIPE-3391",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 0,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "us-west-2",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 1,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "12400",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 1,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            }
+          ],
+          "tool_evidence": [
+            {
+              "fragment": "\"pipeline_id\": \"PIPE-3391\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"region\": \"us-west-2\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"pending_records\": 12400",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"status\": \"stalled\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"dlq_records\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"poison_messages\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"blocking_error\": \"none\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            }
+          ],
+          "remedy_supplied_all_facts": false,
+          "complete_total_tokens": 10300,
+          "api_request_attempts": 8,
+          "error": ""
+        },
+        {
+          "task_id": "region_failover",
+          "repeat": 0,
+          "method": "native_summary",
+          "first_pass_handoff": "HANDOFF cluster=apollo-cache-9 availability=degraded open_incident=INC-7f31 primary_region=us-west-2 drain_region=ap-south-1 drain_state=complete replication_lag_seconds=0 sessions_forcibly_closed=0 capacity_region=ap-south-1 capacity=available headroom=45%",
+          "first_pass_missing_facts": [],
+          "first_pass_missing_count": 0,
+          "first_pass_complete": true,
+          "stage0_model_calls": 4,
+          "compression_events": 0,
+          "first_role_compression_events": 0,
+          "first_role_triggered_calls": 0,
+          "first_role_passthrough_calls": 0,
+          "compression_ran_before_decisive_call": false,
+          "decisive_view_message_count": 26,
+          "decisive_view_characters": 4762,
+          "decisive_input_tokens": 1720,
+          "decisive_output_tokens": 90,
+          "decisive_raw_response_characters": 308,
+          "decisive_normalized_characters": 271,
+          "decisive_sanitizer_discarded_characters": 37,
+          "task_statement_in_decisive_view": true,
+          "handoff_contract_in_decisive_view": true,
+          "recovery_invocations": 0,
+          "recovery_output": "",
+          "recovery_metrics": {},
+          "facts": [
+            {
+              "literal": "apollo-cache-9",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 0,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "ap-south-1",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 2,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "45%",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 3,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            }
+          ],
+          "tool_evidence": [
+            {
+              "fragment": "\"cluster\": \"apollo-cache-9\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"availability\": \"degraded\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"primary_region\": \"us-west-2\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"open_incident\": \"INC-7f31\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"region\": \"ap-south-1\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"drain_state\": \"complete\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"replication_lag_seconds\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"headroom\": \"45%\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            }
+          ],
+          "remedy_supplied_all_facts": false,
+          "complete_total_tokens": 9992,
+          "api_request_attempts": 9,
+          "error": ""
+        },
+        {
+          "task_id": "region_failover",
+          "repeat": 1,
+          "method": "native_summary",
+          "first_pass_handoff": "HANDOFF cluster=apollo-cache-9 primary_region=us-west-2 availability=degraded open_incident=INC-7f31; check_region_drain region=ap-south-1 drain_state=complete replication_lag_seconds=0 sessions_forcibly_closed=0; verify_capacity_headroom region=ap-south-1 capacity=available headroom=45%; historical eu-central-1 not the standby region; no decision made.",
+          "first_pass_missing_facts": [],
+          "first_pass_missing_count": 0,
+          "first_pass_complete": true,
+          "stage0_model_calls": 4,
+          "compression_events": 0,
+          "first_role_compression_events": 0,
+          "first_role_triggered_calls": 0,
+          "first_role_passthrough_calls": 0,
+          "compression_ran_before_decisive_call": false,
+          "decisive_view_message_count": 28,
+          "decisive_view_characters": 4667,
+          "decisive_input_tokens": 1758,
+          "decisive_output_tokens": 101,
+          "decisive_raw_response_characters": 355,
+          "decisive_normalized_characters": 355,
+          "decisive_sanitizer_discarded_characters": 0,
+          "task_statement_in_decisive_view": true,
+          "handoff_contract_in_decisive_view": true,
+          "recovery_invocations": 0,
+          "recovery_output": "",
+          "recovery_metrics": {},
+          "facts": [
+            {
+              "literal": "apollo-cache-9",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 0,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "ap-south-1",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 2,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "45%",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 3,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            }
+          ],
+          "tool_evidence": [
+            {
+              "fragment": "\"cluster\": \"apollo-cache-9\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"availability\": \"degraded\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"primary_region\": \"us-west-2\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"open_incident\": \"INC-7f31\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"region\": \"ap-south-1\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"drain_state\": \"complete\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"replication_lag_seconds\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"headroom\": \"45%\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            }
+          ],
+          "remedy_supplied_all_facts": false,
+          "complete_total_tokens": 9481,
+          "api_request_attempts": 8,
+          "error": ""
+        },
+        {
+          "task_id": "region_failover",
+          "repeat": 2,
+          "method": "native_summary",
+          "first_pass_handoff": "HANDOFF cluster=apollo-cache-9 availability=degraded open_incident=INC-7f31 primary_region=us-west-2 drain_region=ap-south-1 drain_state=complete replication_lag_seconds=0 sessions_forcibly_closed=0 capacity=available headroom=45% capacity_region=ap-south-1",
+          "first_pass_missing_facts": [],
+          "first_pass_missing_count": 0,
+          "first_pass_complete": true,
+          "stage0_model_calls": 4,
+          "compression_events": 0,
+          "first_role_compression_events": 0,
+          "first_role_triggered_calls": 0,
+          "first_role_passthrough_calls": 0,
+          "compression_ran_before_decisive_call": false,
+          "decisive_view_message_count": 30,
+          "decisive_view_characters": 4784,
+          "decisive_input_tokens": 1878,
+          "decisive_output_tokens": 104,
+          "decisive_raw_response_characters": 319,
+          "decisive_normalized_characters": 271,
+          "decisive_sanitizer_discarded_characters": 48,
+          "task_statement_in_decisive_view": true,
+          "handoff_contract_in_decisive_view": true,
+          "recovery_invocations": 0,
+          "recovery_output": "",
+          "recovery_metrics": {},
+          "facts": [
+            {
+              "literal": "apollo-cache-9",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 0,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "ap-south-1",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 2,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "45%",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 3,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            }
+          ],
+          "tool_evidence": [
+            {
+              "fragment": "\"cluster\": \"apollo-cache-9\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"availability\": \"degraded\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"primary_region\": \"us-west-2\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"open_incident\": \"INC-7f31\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"region\": \"ap-south-1\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"drain_state\": \"complete\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"replication_lag_seconds\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"headroom\": \"45%\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            }
+          ],
+          "remedy_supplied_all_facts": false,
+          "complete_total_tokens": 10380,
+          "api_request_attempts": 8,
+          "error": ""
+        },
+        {
+          "task_id": "schema_migration",
+          "repeat": 0,
+          "method": "native_summary",
+          "first_pass_handoff": "HANDOFF schema-42 | inspect_schema_drift: drift_objects=0, target_tables=18, unapplied_migrations=0 | run_contract_tests: passed=312, failed=0, coverage_percent=96 | verify_schema_target: applicable=true, failed=0",
+          "first_pass_missing_facts": [],
+          "first_pass_missing_count": 0,
+          "first_pass_complete": true,
+          "stage0_model_calls": 4,
+          "compression_events": 0,
+          "first_role_compression_events": 0,
+          "first_role_triggered_calls": 0,
+          "first_role_passthrough_calls": 0,
+          "compression_ran_before_decisive_call": false,
+          "decisive_view_message_count": 26,
+          "decisive_view_characters": 4645,
+          "decisive_input_tokens": 1691,
+          "decisive_output_tokens": 75,
+          "decisive_raw_response_characters": 264,
+          "decisive_normalized_characters": 227,
+          "decisive_sanitizer_discarded_characters": 37,
+          "task_statement_in_decisive_view": true,
+          "handoff_contract_in_decisive_view": true,
+          "recovery_invocations": 0,
+          "recovery_output": "",
+          "recovery_metrics": {},
+          "facts": [
+            {
+              "literal": "schema-42",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 0,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "failed 0",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 2,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            }
+          ],
+          "tool_evidence": [
+            {
+              "fragment": "\"schema_version\": \"schema-42\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": false
+            },
+            {
+              "fragment": "\"unapplied_migrations\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"drift_objects\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"passed\": 312",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"failed\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            }
+          ],
+          "remedy_supplied_all_facts": false,
+          "complete_total_tokens": 10061,
+          "api_request_attempts": 9,
+          "error": ""
+        },
+        {
+          "task_id": "schema_migration",
+          "repeat": 1,
+          "method": "native_summary",
+          "first_pass_handoff": "HANDOFF target=schema-42 | inspect_schema_drift: schema_version=schema-42, target_tables=18, drift_objects=0, unapplied_migrations=0 | run_contract_tests: schema_version=schema-42, passed=312, failed=0, coverage_percent=96 | verify_schema_target: schema_version=schema-42, applicable=true, failed=0",
+          "first_pass_missing_facts": [],
+          "first_pass_missing_count": 0,
+          "first_pass_complete": true,
+          "stage0_model_calls": 4,
+          "compression_events": 0,
+          "first_role_compression_events": 0,
+          "first_role_triggered_calls": 0,
+          "first_role_passthrough_calls": 0,
+          "compression_ran_before_decisive_call": false,
+          "decisive_view_message_count": 28,
+          "decisive_view_characters": 4645,
+          "decisive_input_tokens": 1775,
+          "decisive_output_tokens": 126,
+          "decisive_raw_response_characters": 392,
+          "decisive_normalized_characters": 312,
+          "decisive_sanitizer_discarded_characters": 80,
+          "task_statement_in_decisive_view": true,
+          "handoff_contract_in_decisive_view": true,
+          "recovery_invocations": 0,
+          "recovery_output": "",
+          "recovery_metrics": {},
+          "facts": [
+            {
+              "literal": "schema-42",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 0,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "failed 0",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 2,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            }
+          ],
+          "tool_evidence": [
+            {
+              "fragment": "\"schema_version\": \"schema-42\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"unapplied_migrations\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"drift_objects\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"passed\": 312",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"failed\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            }
+          ],
+          "remedy_supplied_all_facts": false,
+          "complete_total_tokens": 10692,
+          "api_request_attempts": 9,
+          "error": ""
+        },
+        {
+          "task_id": "schema_migration",
+          "repeat": 2,
+          "method": "native_summary",
+          "first_pass_handoff": "HANDOFF id=schema-42 | inspect_schema_drift: drift_objects=0, unapplied_migrations=0, target_tables=18, schema_version=schema-42 | run_contract_tests: passed=312, failed=0, coverage_percent=96, schema_version=schema-42 | verify_schema_target: applicable=true, failed=0, schema_version=schema-42",
+          "first_pass_missing_facts": [],
+          "first_pass_missing_count": 0,
+          "first_pass_complete": true,
+          "stage0_model_calls": 4,
+          "compression_events": 0,
+          "first_role_compression_events": 0,
+          "first_role_triggered_calls": 0,
+          "first_role_passthrough_calls": 0,
+          "compression_ran_before_decisive_call": false,
+          "decisive_view_message_count": 30,
+          "decisive_view_characters": 4810,
+          "decisive_input_tokens": 1843,
+          "decisive_output_tokens": 98,
+          "decisive_raw_response_characters": 345,
+          "decisive_normalized_characters": 308,
+          "decisive_sanitizer_discarded_characters": 37,
+          "task_statement_in_decisive_view": true,
+          "handoff_contract_in_decisive_view": true,
+          "recovery_invocations": 0,
+          "recovery_output": "",
+          "recovery_metrics": {},
+          "facts": [
+            {
+              "literal": "schema-42",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 0,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            },
+            {
+              "literal": "failed 0",
+              "in_first_pass_handoff": true,
+              "in_authoritative_history": true,
+              "first_call_index_in_view": 2,
+              "in_decisive_view": true,
+              "in_remedy_input": false,
+              "missing_from_first_pass": false
+            }
+          ],
+          "tool_evidence": [
+            {
+              "fragment": "\"schema_version\": \"schema-42\"",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"unapplied_migrations\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"drift_objects\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"passed\": 312",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            },
+            {
+              "fragment": "\"failed\": 0",
+              "in_decisive_view": true,
+              "in_first_pass_handoff": true
+            }
+          ],
+          "remedy_supplied_all_facts": false,
+          "complete_total_tokens": 10196,
+          "api_request_attempts": 8,
+          "error": ""
+        }
+      ]
+    }
+  },
+  "first_pass_table": [
+    {
+      "task_id": "queue_backlog_replay",
+      "repeat": 0,
+      "method": "none",
+      "first_pass_complete": true,
+      "first_pass_missing_facts": [],
+      "compression_events": 0,
+      "in_decisive_view": [
+        "PIPE-3391",
+        "us-west-2",
+        "12400"
+      ],
+      "in_authoritative_history": [
+        "PIPE-3391",
+        "us-west-2",
+        "12400"
+      ]
+    },
+    {
+      "task_id": "queue_backlog_replay",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "first_pass_complete": true,
+      "first_pass_missing_facts": [],
+      "compression_events": 4,
+      "in_decisive_view": [
+        "PIPE-3391",
+        "us-west-2",
+        "12400"
+      ],
+      "in_authoritative_history": [
+        "PIPE-3391",
+        "us-west-2",
+        "12400"
+      ]
+    },
+    {
+      "task_id": "queue_backlog_replay",
+      "repeat": 0,
+      "method": "native_summary",
+      "first_pass_complete": true,
+      "first_pass_missing_facts": [],
+      "compression_events": 0,
+      "in_decisive_view": [
+        "PIPE-3391",
+        "us-west-2",
+        "12400"
+      ],
+      "in_authoritative_history": [
+        "PIPE-3391",
+        "us-west-2",
+        "12400"
+      ]
+    },
+    {
+      "task_id": "queue_backlog_replay",
+      "repeat": 1,
+      "method": "pruner_v1",
+      "first_pass_complete": true,
+      "first_pass_missing_facts": [],
+      "compression_events": 4,
+      "in_decisive_view": [
+        "PIPE-3391",
+        "us-west-2",
+        "12400"
+      ],
+      "in_authoritative_history": [
+        "PIPE-3391",
+        "us-west-2",
+        "12400"
+      ]
+    },
+    {
+      "task_id": "queue_backlog_replay",
+      "repeat": 1,
+      "method": "native_summary",
+      "first_pass_complete": true,
+      "first_pass_missing_facts": [],
+      "compression_events": 0,
+      "in_decisive_view": [
+        "PIPE-3391",
+        "us-west-2",
+        "12400"
+      ],
+      "in_authoritative_history": [
+        "PIPE-3391",
+        "us-west-2",
+        "12400"
+      ]
+    },
+    {
+      "task_id": "queue_backlog_replay",
+      "repeat": 1,
+      "method": "none",
+      "first_pass_complete": true,
+      "first_pass_missing_facts": [],
+      "compression_events": 0,
+      "in_decisive_view": [
+        "PIPE-3391",
+        "us-west-2",
+        "12400"
+      ],
+      "in_authoritative_history": [
+        "PIPE-3391",
+        "us-west-2",
+        "12400"
+      ]
+    },
+    {
+      "task_id": "queue_backlog_replay",
+      "repeat": 2,
+      "method": "native_summary",
+      "first_pass_complete": true,
+      "first_pass_missing_facts": [],
+      "compression_events": 0,
+      "in_decisive_view": [
+        "PIPE-3391",
+        "us-west-2",
+        "12400"
+      ],
+      "in_authoritative_history": [
+        "PIPE-3391",
+        "us-west-2",
+        "12400"
+      ]
+    },
+    {
+      "task_id": "queue_backlog_replay",
+      "repeat": 2,
+      "method": "none",
+      "first_pass_complete": true,
+      "first_pass_missing_facts": [],
+      "compression_events": 0,
+      "in_decisive_view": [
+        "PIPE-3391",
+        "us-west-2",
+        "12400"
+      ],
+      "in_authoritative_history": [
+        "PIPE-3391",
+        "us-west-2",
+        "12400"
+      ]
+    },
+    {
+      "task_id": "queue_backlog_replay",
+      "repeat": 2,
+      "method": "pruner_v1",
+      "first_pass_complete": true,
+      "first_pass_missing_facts": [],
+      "compression_events": 4,
+      "in_decisive_view": [
+        "PIPE-3391",
+        "us-west-2",
+        "12400"
+      ],
+      "in_authoritative_history": [
+        "PIPE-3391",
+        "us-west-2",
+        "12400"
+      ]
+    },
+    {
+      "task_id": "region_failover",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "first_pass_complete": false,
+      "first_pass_missing_facts": [
+        "apollo-cache-9",
+        "ap-south-1",
+        "45%"
+      ],
+      "compression_events": 4,
+      "in_decisive_view": [
+        "apollo-cache-9",
+        "ap-south-1",
+        "45%"
+      ],
+      "in_authoritative_history": [
+        "apollo-cache-9",
+        "ap-south-1",
+        "45%"
+      ]
+    },
+    {
+      "task_id": "region_failover",
+      "repeat": 0,
+      "method": "native_summary",
+      "first_pass_complete": true,
+      "first_pass_missing_facts": [],
+      "compression_events": 0,
+      "in_decisive_view": [
+        "apollo-cache-9",
+        "ap-south-1",
+        "45%"
+      ],
+      "in_authoritative_history": [
+        "apollo-cache-9",
+        "ap-south-1",
+        "45%"
+      ]
+    },
+    {
+      "task_id": "region_failover",
+      "repeat": 0,
+      "method": "none",
+      "first_pass_complete": true,
+      "first_pass_missing_facts": [],
+      "compression_events": 0,
+      "in_decisive_view": [
+        "apollo-cache-9",
+        "ap-south-1",
+        "45%"
+      ],
+      "in_authoritative_history": [
+        "apollo-cache-9",
+        "ap-south-1",
+        "45%"
+      ]
+    },
+    {
+      "task_id": "region_failover",
+      "repeat": 1,
+      "method": "native_summary",
+      "first_pass_complete": true,
+      "first_pass_missing_facts": [],
+      "compression_events": 0,
+      "in_decisive_view": [
+        "apollo-cache-9",
+        "ap-south-1",
+        "45%"
+      ],
+      "in_authoritative_history": [
+        "apollo-cache-9",
+        "ap-south-1",
+        "45%"
+      ]
+    },
+    {
+      "task_id": "region_failover",
+      "repeat": 1,
+      "method": "none",
+      "first_pass_complete": true,
+      "first_pass_missing_facts": [],
+      "compression_events": 0,
+      "in_decisive_view": [
+        "apollo-cache-9",
+        "ap-south-1",
+        "45%"
+      ],
+      "in_authoritative_history": [
+        "apollo-cache-9",
+        "ap-south-1",
+        "45%"
+      ]
+    },
+    {
+      "task_id": "region_failover",
+      "repeat": 1,
+      "method": "pruner_v1",
+      "first_pass_complete": false,
+      "first_pass_missing_facts": [
+        "apollo-cache-9",
+        "ap-south-1",
+        "45%"
+      ],
+      "compression_events": 4,
+      "in_decisive_view": [
+        "apollo-cache-9",
+        "ap-south-1",
+        "45%"
+      ],
+      "in_authoritative_history": [
+        "apollo-cache-9",
+        "ap-south-1",
+        "45%"
+      ]
+    },
+    {
+      "task_id": "region_failover",
+      "repeat": 2,
+      "method": "none",
+      "first_pass_complete": true,
+      "first_pass_missing_facts": [],
+      "compression_events": 0,
+      "in_decisive_view": [
+        "apollo-cache-9",
+        "ap-south-1",
+        "45%"
+      ],
+      "in_authoritative_history": [
+        "apollo-cache-9",
+        "ap-south-1",
+        "45%"
+      ]
+    },
+    {
+      "task_id": "region_failover",
+      "repeat": 2,
+      "method": "pruner_v1",
+      "first_pass_complete": false,
+      "first_pass_missing_facts": [
+        "apollo-cache-9",
+        "ap-south-1",
+        "45%"
+      ],
+      "compression_events": 4,
+      "in_decisive_view": [
+        "apollo-cache-9",
+        "ap-south-1",
+        "45%"
+      ],
+      "in_authoritative_history": [
+        "apollo-cache-9",
+        "ap-south-1",
+        "45%"
+      ]
+    },
+    {
+      "task_id": "region_failover",
+      "repeat": 2,
+      "method": "native_summary",
+      "first_pass_complete": true,
+      "first_pass_missing_facts": [],
+      "compression_events": 0,
+      "in_decisive_view": [
+        "apollo-cache-9",
+        "ap-south-1",
+        "45%"
+      ],
+      "in_authoritative_history": [
+        "apollo-cache-9",
+        "ap-south-1",
+        "45%"
+      ]
+    },
+    {
+      "task_id": "schema_migration",
+      "repeat": 0,
+      "method": "native_summary",
+      "first_pass_complete": true,
+      "first_pass_missing_facts": [],
+      "compression_events": 0,
+      "in_decisive_view": [
+        "schema-42",
+        "failed 0"
+      ],
+      "in_authoritative_history": [
+        "schema-42",
+        "failed 0"
+      ]
+    },
+    {
+      "task_id": "schema_migration",
+      "repeat": 0,
+      "method": "none",
+      "first_pass_complete": true,
+      "first_pass_missing_facts": [],
+      "compression_events": 0,
+      "in_decisive_view": [
+        "schema-42",
+        "failed 0"
+      ],
+      "in_authoritative_history": [
+        "schema-42",
+        "failed 0"
+      ]
+    },
+    {
+      "task_id": "schema_migration",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "first_pass_complete": false,
+      "first_pass_missing_facts": [
+        "schema-42",
+        "failed 0"
+      ],
+      "compression_events": 4,
+      "in_decisive_view": [
+        "schema-42",
+        "failed 0"
+      ],
+      "in_authoritative_history": [
+        "schema-42",
+        "failed 0"
+      ]
+    },
+    {
+      "task_id": "schema_migration",
+      "repeat": 1,
+      "method": "none",
+      "first_pass_complete": true,
+      "first_pass_missing_facts": [],
+      "compression_events": 0,
+      "in_decisive_view": [
+        "schema-42",
+        "failed 0"
+      ],
+      "in_authoritative_history": [
+        "schema-42",
+        "failed 0"
+      ]
+    },
+    {
+      "task_id": "schema_migration",
+      "repeat": 1,
+      "method": "pruner_v1",
+      "first_pass_complete": false,
+      "first_pass_missing_facts": [
+        "failed 0"
+      ],
+      "compression_events": 4,
+      "in_decisive_view": [
+        "schema-42",
+        "failed 0"
+      ],
+      "in_authoritative_history": [
+        "schema-42",
+        "failed 0"
+      ]
+    },
+    {
+      "task_id": "schema_migration",
+      "repeat": 1,
+      "method": "native_summary",
+      "first_pass_complete": true,
+      "first_pass_missing_facts": [],
+      "compression_events": 0,
+      "in_decisive_view": [
+        "schema-42",
+        "failed 0"
+      ],
+      "in_authoritative_history": [
+        "schema-42",
+        "failed 0"
+      ]
+    },
+    {
+      "task_id": "schema_migration",
+      "repeat": 2,
+      "method": "pruner_v1",
+      "first_pass_complete": false,
+      "first_pass_missing_facts": [
+        "schema-42",
+        "failed 0"
+      ],
+      "compression_events": 4,
+      "in_decisive_view": [
+        "schema-42",
+        "failed 0"
+      ],
+      "in_authoritative_history": [
+        "schema-42",
+        "failed 0"
+      ]
+    },
+    {
+      "task_id": "schema_migration",
+      "repeat": 2,
+      "method": "native_summary",
+      "first_pass_complete": true,
+      "first_pass_missing_facts": [],
+      "compression_events": 0,
+      "in_decisive_view": [
+        "schema-42",
+        "failed 0"
+      ],
+      "in_authoritative_history": [
+        "schema-42",
+        "failed 0"
+      ]
+    },
+    {
+      "task_id": "schema_migration",
+      "repeat": 2,
+      "method": "none",
+      "first_pass_complete": true,
+      "first_pass_missing_facts": [],
+      "compression_events": 0,
+      "in_decisive_view": [
+        "schema-42",
+        "failed 0"
+      ],
+      "in_authoritative_history": [
+        "schema-42",
+        "failed 0"
+      ]
+    }
+  ]
+}

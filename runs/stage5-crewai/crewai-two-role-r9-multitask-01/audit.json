@@ -1,0 +1,128 @@
+{
+  "complete": true,
+  "freeze_checked": true,
+  "dry_run_mock": false,
+  "rows": 27,
+  "expected_rows": 27,
+  "request_attempts": 185,
+  "quality": {
+    "none": {
+      "n": 9,
+      "strict_success": 6,
+      "semantic_success": 9,
+      "first_pass_facts": 9,
+      "first_pass_missing_slots": 0,
+      "recovered": 0,
+      "recovery_failed": 0,
+      "complete_total_tokens": 73556,
+      "compression_events": 0,
+      "failed_or_limited": 3,
+      "summary_attempts": 0,
+      "pinned_events": 0,
+      "pinned_messages": 0,
+      "pinned_characters": 0,
+      "whole_prefix_fallbacks": 0
+    },
+    "pruner_v1": {
+      "n": 9,
+      "strict_success": 6,
+      "semantic_success": 9,
+      "first_pass_facts": 9,
+      "first_pass_missing_slots": 0,
+      "recovered": 0,
+      "recovery_failed": 0,
+      "complete_total_tokens": 67487,
+      "compression_events": 36,
+      "failed_or_limited": 3,
+      "summary_attempts": 0,
+      "pinned_events": 36,
+      "pinned_messages": 66,
+      "pinned_characters": 10911,
+      "whole_prefix_fallbacks": 0
+    },
+    "native_summary": {
+      "n": 9,
+      "strict_success": 6,
+      "semantic_success": 9,
+      "first_pass_facts": 9,
+      "first_pass_missing_slots": 0,
+      "recovered": 0,
+      "recovery_failed": 0,
+      "complete_total_tokens": 91888,
+      "compression_events": 0,
+      "failed_or_limited": 3,
+      "summary_attempts": 23,
+      "pinned_events": 0,
+      "pinned_messages": 0,
+      "pinned_characters": 0,
+      "whole_prefix_fallbacks": 0
+    }
+  },
+  "pin_rules": {
+    "queue_backlog_replay": [
+      "PIPE-3391",
+      "us-west-2",
+      "12400"
+    ],
+    "region_failover": [
+      "apollo-cache-9",
+      "ap-south-1",
+      "45%"
+    ],
+    "schema_migration": [
+      "schema-42",
+      "failed 0"
+    ]
+  },
+  "first_pass_gate": {
+    "name": "first_pass_facts",
+    "definition": "the first-role HANDOFF line emitted before any remedy call carries every literal of the frozen handle_facts list of its task under the frozen semantic judge, is single-line and within the 450-character contract",
+    "plugin_first_pass_facts": 9,
+    "baseline_first_pass_facts": 9,
+    "plugin_remedy_calls": 0,
+    "baseline_remedy_calls": 0,
+    "plugin_whole_prefix_fallbacks": 0
+  },
+  "quality_non_inferior": true,
+  "first_pass_non_inferior": true,
+  "complete_total_tokens_by_method": {
+    "none": 73556,
+    "native_summary": 91888,
+    "pruner_v1": 67487
+  },
+  "paired": {
+    "queue_backlog_replay": {
+      "pruner_paired_mean_saving_percent": 22.2466,
+      "pruner_paired_positive": 3,
+      "paired_n": 3,
+      "per_repeat": [
+        18.8234,
+        21.0776,
+        26.8389
+      ]
+    },
+    "region_failover": {
+      "pruner_paired_mean_saving_percent": -0.2557,
+      "pruner_paired_positive": 2,
+      "paired_n": 3,
+      "per_repeat": [
+        0.6055,
+        1.0236,
+        -2.3963
+      ]
+    },
+    "schema_migration": {
+      "pruner_paired_mean_saving_percent": 2.036,
+      "pruner_paired_positive": 3,
+      "paired_n": 3,
+      "per_repeat": [
+        1.7415,
+        2.6074,
+        1.7592
+      ]
+    }
+  },
+  "plugin_paired_mean_saving_percent": 8.009,
+  "plugin_inter_task_dispersion_percentage_points": 22.5023,
+  "errors": []
+}

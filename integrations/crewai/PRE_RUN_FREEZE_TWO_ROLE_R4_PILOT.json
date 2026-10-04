@@ -1,0 +1,51 @@
+{
+  "batch": "crewai-two-role-r4-pilot-01",
+  "samples": 9,
+  "manifest": {
+    "protocol": "crewai-two-role-r4-handoff-quality",
+    "runner_sha256": "8aa75353bd7a5b4cffea5bd0233a82583d5c4ac34d83c2bac0672117edd078cf",
+    "task_sha256": "8d51add8e421f2cfd011e5417ca5c3d071073408ceab0c662b7fe2985a84e7f0",
+    "tasks": [
+      "incident_triage"
+    ],
+    "methods": [
+      "none",
+      "native_summary",
+      "pruner_v1"
+    ],
+    "repeats": 3,
+    "model": "deepseek-v4-flash",
+    "mode": "api",
+    "base_url": "https://api.deepseek.com",
+    "budget": {
+      "host": "crewai",
+      "calibration_ratio_provider_per_estimated": 0.389,
+      "provider_tokens": {
+        "soft": 1200,
+        "hard": 3000,
+        "target": 900
+      },
+      "estimated_tokens": {
+        "soft": 3085,
+        "hard": 7712,
+        "target": 2314
+      },
+      "note": "Budgets are declared in provider tokens and converted with a measured ratio."
+    },
+    "limits": {
+      "fixed_reserved_tokens": 300,
+      "max_output_tokens": 512,
+      "max_summary_tokens": 1024,
+      "max_summary_calls": 4
+    },
+    "max_api_requests": 60
+  },
+  "source_sha256": {
+    "experiments/runners/run_crewai_handoff_v4.py": "8aa75353bd7a5b4cffea5bd0233a82583d5c4ac34d83c2bac0672117edd078cf",
+    "experiments/runners/crewai_handoff_quality_v4.py": "7444c9a807d4ea935766b77b3e8b3b6bf821d0d32887ba7c00bc809ab41768f0",
+    "experiments/runners/run_crewai_experiment.py": "0c0cd1d3e30ea837b323e1318321804433c20f8c9fdcd3a40b42deb1849554f1",
+    "experiments/audits/audit_crewai_handoff_v4.py": "c85d094393d070edae751e4754d853531f04730d1e502910d671590ecc54b55d",
+    "tasks/stage5_autogen/natural_tasks.json": "8d51add8e421f2cfd011e5417ca5c3d071073408ceab0c662b7fe2985a84e7f0",
+    "integrations/crewai/PILOT_PROTOCOL_TWO_ROLE_R4_DRAFT.md": "53cd6035446c05107d46281e3232e7e091b69c6f0b9108b22fdc565afc8862dd"
+  }
+}

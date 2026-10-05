@@ -1,0 +1,157 @@
+{
+  "experiment_id": "openai-repo-diagnostic-v6-pointer-retention-pilot-01",
+  "kind": "openai_agents_runner_real_api_paired_pointer_retention",
+  "data_class": "public_source_diagnostic",
+  "disclosure": "Public SWE-bench issue statements and selected public baseline source ranges are sent through real SDK tools. No reference patches, host test patches, local secrets, or expected answers are sent. The plugin arm keeps the lines of a registered source range that carry the registered literal constraints verbatim, replaces every omitted run of lines with a deterministic note that states the repository path and the exact omitted line intervals, and keeps the most recent tool group in full.",
+  "sdk": "openai-agents",
+  "model": "deepseek-v4-flash",
+  "base_url": "https://api.deepseek.com",
+  "methods": [
+    "none",
+    "pruner_v1",
+    "native_summary"
+  ],
+  "scenarios": [
+    "django_count_annotations"
+  ],
+  "repeats": 3,
+  "minimum_planned_requests": 84,
+  "maximum_api_requests": 100,
+  "max_api_retries": 2,
+  "max_turns": 6,
+  "max_output_tokens": 1024,
+  "max_summary_tokens": 1024,
+  "max_summary_calls": 16,
+  "trigger_policy": "symmetric_budget",
+  "native_summary_contract": {
+    "trigger": "estimated input tokens > soft budget",
+    "retention": "last units up to target token budget, kept verbatim",
+    "pinned": "leading user statement always kept verbatim",
+    "boundary": "Responses groups are never split across a call/output pair",
+    "acceptance": "summary accepted only when it shrinks the payload",
+    "failure_policy": "provider error leaves the input untouched",
+    "accounting": "summary requests consume the same global request budget",
+    "regrowth_rule": "an already-summarised payload is not summarised again until it grows 25%"
+  },
+  "final_output_contract": {
+    "prefix": "RESULT ",
+    "single_line": true,
+    "max_chars": 160
+  },
+  "budget": {
+    "soft": 5435,
+    "hard": 16304,
+    "target": 4076,
+    "fixed_reserved_tokens": 512
+  },
+  "budget_calibration": {
+    "host": "openai_agents",
+    "calibration_ratio_provider_per_estimated": 0.368,
+    "provider_tokens": {
+      "soft": 2000,
+      "hard": 6000,
+      "target": 1500
+    },
+    "estimated_tokens": {
+      "soft": 5435,
+      "hard": 16304,
+      "target": 4076
+    },
+    "note": "Budgets are declared in provider tokens and converted with a measured ratio."
+  },
+  "cost_rates_per_million": {
+    "input": 0.0,
+    "output": 0.0
+  },
+  "mechanism": {
+    "arm": "pruner_v1",
+    "name": "span_retention_v6",
+    "schema": "openai_agents_span_retention_v6",
+    "registry": "openai_agents_literal_registry_v6",
+    "context_lines": 0,
+    "eligibility": "the most recent tool group first; then whether the exact output text was already delivered verbatim; then whether the tool has a registered source range whose path and line range match the delivered text",
+    "protected": "the line numbers of a registered range that carry a registered literal constraint (kept verbatim inside a reduced output), registered literal units, the most recent tool group, and every Responses tool group boundary",
+    "reduction": "line-range elision of an already-delivered registered source view: the literal-carrying lines are retained, every omitted run of lines is replaced by a dated pointer stating path, omitted intervals, retained lines and omitted characters; non-carrier outputs are elided in full",
+    "fallback": "whole-payload fallback for the model call, counted in task_anchor_restore_failures (hard) or budget_fallbacks (budget)",
+    "group_baseline": "taken only from observations the mechanism did not rewrite, compared on the common item prefix (fixes the v5 false positive)",
+    "deterministic": "no model, no randomness, no text rewriting"
+  },
+  "shared_runner_disclosure_amended": true,
+  "persisted_retention_fields": [
+    "task_anchor_restore_failures",
+    "selective_retention_restore_failures",
+    "task_restore_fallbacks",
+    "budget_fallbacks",
+    "restore_failures_by_model_call",
+    "restore_fallbacks_by_model_call",
+    "budget_fallbacks_by_model_call",
+    "restore_failure_is_whole_prefix_fallback",
+    "input_evidence_task_anchor_restore_failures",
+    "selective_retention_compacted_calls",
+    "selective_retention_compacted_tool_outputs",
+    "selective_retention_duplicate_units_dropped",
+    "selective_retention_saved_bytes_total",
+    "selective_retention_task_unit_count",
+    "selective_retention_literal_unit_count",
+    "selective_retention_literal_text_count",
+    "selective_retention_constraint_unit_count",
+    "selective_retention_protected_unit_count",
+    "selective_retention_protected_group_count",
+    "selective_retention_pinned_outputs",
+    "selective_retention_pinned_by_reason",
+    "selective_retention_elided_outputs",
+    "selective_retention_notes_with_source_pointer",
+    "selective_retention_pointer_coverage",
+    "selective_retention_recent_group_items_kept",
+    "selective_retention_recent_group_kept_in_full",
+    "selective_retention_literal_guard_fallbacks",
+    "selective_retention_registry_fingerprint",
+    "selective_retention_fallback_reasons",
+    "selective_retention_last_fallback_reason",
+    "pointer_retention_registry_schema",
+    "pointer_retention_registry_fingerprint",
+    "pointer_retention_base_registry_fingerprint",
+    "pointer_retention_registry_problems",
+    "pointer_retention_context_lines",
+    "pointer_retention_elided_sources",
+    "pointer_retention_elided_lines",
+    "pointer_retention_kept_lines",
+    "pointer_retention_kept_literal_lines",
+    "pointer_retention_span_notes_with_omitted_intervals",
+    "pointer_retention_group_baseline_groups",
+    "evidence_registered_literals_present_final",
+    "evidence_registered_literal_counts_final",
+    "evidence_registered_literal_counts_by_boundary",
+    "evidence_constraint_carrying_outputs_final",
+    "evidence_outputs_elided_final",
+    "evidence_elided_output_manifest_final",
+    "evidence_span_elision_records",
+    "evidence_output_manifest_final",
+    "evidence_pointer_coverage_final",
+    "evidence_pointer_completeness_final",
+    "evidence_most_recent_tool_group_kept_in_full_final",
+    "evidence_omitted_lines_final",
+    "evidence_retained_literal_lines_final",
+    "evidence_elision_note_count_final",
+    "evidence_input_bytes_by_boundary"
+  ],
+  "filter_hard_bytes": 65216,
+  "bytes_per_estimated_token": 4,
+  "filter_hard_bytes_derivation": "provider_hard / measured provider-per-estimated ratio (0.368) * 4 bytes per estimated token",
+  "literal_registry": {
+    "schema": "openai_agents_literal_registry_v6",
+    "base_schema": "openai_agents_literal_registry_v5",
+    "fingerprints": {
+      "django_count_annotations": "27079f66e76911a86fcab6e501a4e82380a2656576a48660010e4dc812fcd892",
+      "pylint_regex_csv": "ffdd36e91a49896b578155d7d2c0cd8d9fa17341de699644072dc3d1ecf0f4ec",
+      "pytest_mro": "333e00f97daf96b061856f64f7be2319baa6bf73e95f9fcb734ce9a705972c8b"
+    },
+    "base_fingerprints": {
+      "django_count_annotations": "e536b9c64da1ffef42c6f69b28bfc7d84ee5d38f8624e1a08e3c00d8aea657ef",
+      "pylint_regex_csv": "9eb23cc0334748e60d2ab0f0cfd5285e0ab171e02abd632c16cf95b9b048f5a1",
+      "pytest_mro": "aac7a257f92c86a3425c046b5f5b651c9c99e9df6d836a3232b3494bbfbadb34"
+    },
+    "context_lines": 0,
+    "problems": []
+  }
+}

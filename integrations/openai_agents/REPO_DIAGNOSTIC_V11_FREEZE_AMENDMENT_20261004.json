@@ -1,0 +1,175 @@
+{
+  "amendment_schema": "openai_agents_freeze_amendment_v1",
+  "date": "20261004",
+  "policy": "A freeze file is written once and never edited. Every later change is recorded here with the field, the reason and both SHA256 values, and every batch manifest records the freeze file's own SHA256 so an after-the-fact edit is detectable from the batch alone.",
+  "amendments": [
+    {
+      "version": "v11",
+      "freeze": "integrations/openai_agents/REPO_DIAGNOSTIC_V11_ELISION_RATIO_FREEZE.json",
+      "freeze_sha256_unchanged": true,
+      "note": "The v11 freeze itself was not edited. Three family-helper files were repaired after it was written, because the first paid attempt aborted on a helper reference (the batch produced no rows). The freeze's recorded hashes for those three files therefore differ from the working tree; the batch ran with the repaired helpers, and the manifest's freeze_sha256 proves the freeze file itself is byte-identical to what was frozen.",
+      "files": [
+        {
+          "path": "experiments/runners/run_openai_agents_repo_diagnostic_v11.py",
+          "field": "source_sha256",
+          "reason": "the manifest amendment was chained to a non-existent helper (v9 has no _amend_manifest; the function lives in v8), which aborted the first paid attempt before any sample ran",
+          "old_sha256": "07b8ab4a1b0a2d1b0dbbbd0cb31e91a0b0cba2a8d0b56ac4d3f07f9fb27c8e5a",
+          "new_sha256": "3a7ec53a4f30de730942b7c6f3c35b5b5a912595dc6ba7ec4f87776c9606c26c",
+          "frozen_sha256_in_freeze": "4ee929fea7a4943128762a14220c2ce168217152992c8a7fe3c741205c52024c",
+          "changed": true,
+          "recorded_at": "20261004 final",
+          "record_policy": "this hash is the file's state when the amendment was written; later edits are recorded by re-writing this entry with the new hash and a fresh note, and the batch's manifest.freeze_sha256 always pins the freeze file itself"
+        },
+        {
+          "path": "experiments/audits/audit_openai_agents_repo_diagnostic_v11.py",
+          "field": "source_sha256",
+          "reason": "the audit's inherited freeze-hash check is now amendment-aware (it accepts a frozen path only when it still matches the freeze or matches a digest the amendment records), and its blunt per-path-class suppression of experiments/ and tests/ mismatches was replaced by that check",
+          "old_sha256": "PRE_FIX",
+          "new_sha256": "0f6b0f2edb6195e8e292b899890e2f8ae0ca4d72c0f82bcb143fae70a67f399f",
+          "frozen_sha256_in_freeze": "bdb550726633cc373f058119be1864d7647f55c78f5c228cc5f592000d414ab6",
+          "changed": true,
+          "recorded_at": "20261004 amendment v2",
+          "record_policy": "this hash is the file's state when the amendment was written; later edits are recorded by re-writing this entry with the new hash and a fresh note, and the batch's manifest.freeze_sha256 always pins the freeze file itself"
+        },
+        {
+          "path": "tests/test_openai_agents_elision_ratio_v11.py",
+          "field": "source_sha256",
+          "reason": "the gate referenced the v10 filter class through the wrong module path",
+          "old_sha256": "PRE_FIX",
+          "new_sha256": "0c76d5cd8ecbf58facbe57374981c6ca472c522d1b30921e031178ba5ccc422d",
+          "frozen_sha256_in_freeze": "869704f6011a63e055e7df538fea4d321cc3bc22bdebbd78d0e196dbaa28493b",
+          "changed": true,
+          "recorded_at": "20261004 final",
+          "record_policy": "this hash is the file's state when the amendment was written; later edits are recorded by re-writing this entry with the new hash and a fresh note, and the batch's manifest.freeze_sha256 always pins the freeze file itself"
+        },
+        {
+          "path": "integrations/openai_agents/PLUGIN_APPLICABILITY_BOUNDARY.md",
+          "field": "source_sha256",
+          "reason": "the applicability-boundary document was updated from its v10 closing version to the v11 closing version (adds the v11 row, the empty-safe-boundary proposition and the unmeasured items); it is a reporting artifact, not an input to the mechanism, and the v11 batch numbers are unchanged",
+          "old_sha256": "5b50e4596af2",
+          "new_sha256": "cffd528d4b622b14ad8d8b654e3d8da7df2c3fbf9afd77d88683c66816a6e6c2",
+          "frozen_sha256_in_freeze": "5b50e4596af21331545beb5d535153832dd1a7aa08a60533783fd064131e7bc2",
+          "changed": true,
+          "recorded_at": "20261004 amendment v2",
+          "record_policy": "this hash is the file's state when the amendment was written; later edits are recorded by re-writing this entry with the new hash and a fresh note, and the batch's manifest.freeze_sha256 always pins the freeze file itself"
+        }
+      ],
+      "files_changed_after_freeze": 4,
+      "freeze_sha256": "4f3159cf6b349e089635a003eaeb809256b87b9b16cfca15d4c1bf7bf93098b3",
+      "additional_files_edited_after_freeze": [
+        {
+          "path": "experiments/runners/openai_agents_evidence_v10.py",
+          "reason": "the v10 recorder writes the v11 schema label when the v11 ablation knob DSH_V11_RECENT_CALLS_KEPT is set, so whichever recorder the runner instantiates the persisted schema matches the batch version; the recency fields are identical",
+          "frozen_sha256_in_freeze": "",
+          "new_sha256": "7bfb43c822fd06fb9cc9086182ae49da2eb71de1cb67e02b873c074eb34b2fdf",
+          "recorded_at": "20261004 final",
+          "record_policy": "this hash is the file's state when the amendment was written; later edits are recorded by re-writing this entry with the new hash and a fresh note, and the batch's manifest.freeze_sha256 always pins the freeze file itself"
+        },
+        {
+          "path": "experiments/runners/openai_agents_long_baseline_boundary_v10.py",
+          "reason": "the v10 filter accepts recent_calls_kept (default = its frozen constant 1) so the v11 ladder needs no copy of the filter; v10 batch numbers unchanged",
+          "frozen_sha256_in_freeze": "",
+          "new_sha256": "1589bda7b11233715466a3e713efc31b3829490cfe7cce363b0073f774de38b9",
+          "recorded_at": "20261004 final",
+          "record_policy": "this hash is the file's state when the amendment was written; later edits are recorded by re-writing this entry with the new hash and a fresh note, and the batch's manifest.freeze_sha256 always pins the freeze file itself"
+        },
+        {
+          "path": "experiments/runners/run_openai_agents_repo_diagnostic_v9.py",
+          "reason": "the v9 entrypoint exposes RECORDER_FACTORY (default unchanged) so a later version can inject its recorder",
+          "frozen_sha256_in_freeze": "",
+          "new_sha256": "f60d788da54b33d5926200a6bd58aff0b3ee34d00c1830a38220c2157ad845ca",
+          "recorded_at": "20261004 final",
+          "record_policy": "this hash is the file's state when the amendment was written; later edits are recorded by re-writing this entry with the new hash and a fresh note, and the batch's manifest.freeze_sha256 always pins the freeze file itself"
+        },
+        {
+          "path": "experiments/audits/amendment_hashes.py",
+          "reason": "new shared helper that turns this amendment file into a lookup used by the v7/v9/v10/v11 audits: a frozen path is accepted when it still hashes to the frozen value or when its current content is exactly a digest recorded here, and a missing amendment file suppresses nothing (fail-closed)",
+          "frozen_sha256_in_freeze": "",
+          "new_sha256": "1ab9d3b74989849d2f6781efa1c66ffd37cc8debfb415e80ff5a275a9e748bcb",
+          "recorded_at": "20261004 amendment v2",
+          "record_policy": "this hash is the file's state when the amendment was written; later edits are recorded by re-writing this entry with the new hash and a fresh note, and the batch's manifest.freeze_sha256 always pins the freeze file itself"
+        }
+      ]
+    },
+    {
+      "version": "v7/v9/v10",
+      "kind": "retrospective_record",
+      "note": "Before this policy existed, three freezes were edited in place to refresh a single hash entry each. They are recorded here retrospectively so the edits are auditable.",
+      "edits": [
+        {
+          "freeze": "integrations/openai_agents/REPO_DIAGNOSTIC_V7_APPLICABILITY_BOUNDARY_FREEZE.json",
+          "field": "source_sha256.integrations/openai_agents/PLUGIN_APPLICABILITY_BOUNDARY.md",
+          "reason": "the applicability-boundary document was updated from its single-sided v7 version to the two-sided (v9) and then the closing (v10) version; the v7 batch numbers are unchanged",
+          "old_sha256": "3fb77b74b4f2",
+          "new_sha256": "cffd528d4b622b14ad8d8b654e3d8da7df2c3fbf9afd77d88683c66816a6e6c2"
+        },
+        {
+          "freeze": "integrations/openai_agents/REPO_DIAGNOSTIC_V9_LONG_BASELINE_BOUNDARY_FREEZE.json",
+          "field": "source_sha256.experiments/runners/run_openai_agents_repo_diagnostic_v9.py",
+          "reason": "v10 added a RECORDER_FACTORY override hook to the v9 entrypoint; the default behaviour is unchanged and the v9 batch numbers are unchanged",
+          "old_sha256": "recorded in the freeze's post_freeze_notes_20261004",
+          "new_sha256": "f60d788da54b33d5926200a6bd58aff0b3ee34d00c1830a38220c2157ad845ca"
+        },
+        {
+          "freeze": "integrations/openai_agents/REPO_DIAGNOSTIC_V9_LONG_BASELINE_BOUNDARY_FREEZE.json",
+          "field": "source_sha256.integrations/openai_agents/PLUGIN_APPLICABILITY_BOUNDARY.md",
+          "reason": "same boundary-document update as the v7 freeze; the v9 batch numbers are unchanged",
+          "old_sha256": "recorded in the freeze's post_freeze_note_20261004_boundary_doc",
+          "new_sha256": "cffd528d4b622b14ad8d8b654e3d8da7df2c3fbf9afd77d88683c66816a6e6c2"
+        },
+        {
+          "freeze": "integrations/openai_agents/REPO_DIAGNOSTIC_V10_TOOL_CALL_RECENCY_FREEZE.json",
+          "field": "rebuilt before its first paid attempt",
+          "reason": "the v10 freeze was regenerated once before the batch (added the inherited recency fields and the persisted-field list) and once after, when the persisted tool-call recency columns were restored; the mechanism code path was unchanged and the judged token totals reproduce",
+          "old_sha256": "n/a (the file did not yet exist)",
+          "new_sha256": "n/a"
+        }
+      ]
+    },
+    {
+      "version": "v7/v9/v10/v11",
+      "kind": "artifact_update_after_freeze",
+      "note": "The applicability-boundary document is pinned by four freezes, and the audits of the v7 and v9 families are pinned by the freezes whose batches they judged. None of those freeze files was edited: the new content of each artifact below is recorded here, and the audits accept it only because it matches this record exactly. Every batch's judged token totals are unaffected because the document and the audits are not inputs to the mechanism.",
+      "artifacts_changed_after_freeze": [
+        {
+          "path": "integrations/openai_agents/PLUGIN_APPLICABILITY_BOUNDARY.md",
+          "frozen_sha256_in_freeze": "5b50e4596af21331545beb5d535153832dd1a7aa08a60533783fd064131e7bc2",
+          "new_sha256": "cffd528d4b622b14ad8d8b654e3d8da7df2c3fbf9afd77d88683c66816a6e6c2",
+          "freezes_affected": [
+            "integrations/openai_agents/REPO_DIAGNOSTIC_V7_APPLICABILITY_BOUNDARY_FREEZE.json",
+            "integrations/openai_agents/REPO_DIAGNOSTIC_V9_LONG_BASELINE_BOUNDARY_FREEZE.json",
+            "integrations/openai_agents/REPO_DIAGNOSTIC_V10_TOOL_CALL_RECENCY_FREEZE.json",
+            "integrations/openai_agents/REPO_DIAGNOSTIC_V11_ELISION_RATIO_FREEZE.json"
+          ],
+          "reason": "updated to the v11 closing version; the earlier v9/v10 update of the same document was recorded in the freezes' own post_freeze_note fields, and this one is recorded here because the freeze files must not be edited again",
+          "recorded_at": "20261004 amendment v2",
+          "record_policy": "this hash is the file's state when the amendment was written; later edits are recorded by re-writing this entry with the new hash and a fresh note, and the batch's manifest.freeze_sha256 always pins the freeze file itself"
+        },
+        {
+          "path": "experiments/audits/audit_openai_agents_repo_diagnostic_v7.py",
+          "frozen_sha256_in_freeze": "cb0709d55210e58f82e8a5c587965473560dbe2fcc04c91ce84faece37cbe586",
+          "new_sha256": "5b21ad1a49d2db956775a14c02ba299c091f34f68f58ea3be9a02744181894bc",
+          "freezes_affected": [
+            "integrations/openai_agents/REPO_DIAGNOSTIC_V7_APPLICABILITY_BOUNDARY_FREEZE.json"
+          ],
+          "reason": "the freeze-hash check delegates to experiments/audits/amendment_hashes.py, so a declared post-freeze change (here: the boundary document) is no longer reported as an undeclared one; the v7 batch's own checks and numbers are untouched and its audit still fails on any unrecorded hash",
+          "recorded_at": "20261004 amendment v2",
+          "record_policy": "this hash is the file's state when the amendment was written; later edits are recorded by re-writing this entry with the new hash and a fresh note, and the batch's manifest.freeze_sha256 always pins the freeze file itself"
+        },
+        {
+          "path": "experiments/audits/audit_openai_agents_repo_diagnostic_v9.py",
+          "frozen_sha256_in_freeze": "c6f43ae9f594d69e4ba8b97668636b047eca8269a283f64bdacef27488df741d",
+          "new_sha256": "a4b5e8b394b9a995c970675bd79cc00cea072a6a9c2c98d6ad864416e34ca988",
+          "freezes_affected": [
+            "integrations/openai_agents/REPO_DIAGNOSTIC_V9_LONG_BASELINE_BOUNDARY_FREEZE.json",
+            "integrations/openai_agents/REPO_DIAGNOSTIC_V10_TOOL_CALL_RECENCY_FREEZE.json",
+            "integrations/openai_agents/REPO_DIAGNOSTIC_V11_ELISION_RATIO_FREEZE.json"
+          ],
+          "reason": "same change as the v7 audit; the v9, v10 and v11 audits inherit this hash check, so they pick up the amendment-aware behaviour from the same edit",
+          "recorded_at": "20261004 amendment v2",
+          "record_policy": "this hash is the file's state when the amendment was written; later edits are recorded by re-writing this entry with the new hash and a fresh note, and the batch's manifest.freeze_sha256 always pins the freeze file itself"
+        }
+      ]
+    }
+  ]
+}

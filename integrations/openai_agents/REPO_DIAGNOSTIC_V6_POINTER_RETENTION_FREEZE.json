@@ -1,0 +1,208 @@
+{
+  "batch": "openai-repo-diagnostic-v6-pointer-retention-pilot-01",
+  "mechanism": "span_retention_v6",
+  "registry_schema": "openai_agents_literal_registry_v6",
+  "base_registry_schema": "openai_agents_literal_registry_v5",
+  "context_lines": 0,
+  "scenarios": [
+    "django_count_annotations"
+  ],
+  "methods": [
+    "none",
+    "pruner_v1",
+    "native_summary"
+  ],
+  "repeats": 3,
+  "samples": 9,
+  "max_api_requests": 100,
+  "max_output_tokens": 1024,
+  "model": "deepseek-v4-flash",
+  "base_url": "https://api.deepseek.com",
+  "provider_budget_tokens": {
+    "soft": 2000,
+    "hard": 6000,
+    "target": 1500
+  },
+  "bytes_per_estimated_token": 4,
+  "filter_hard_bytes": 65216,
+  "filter_hard_bytes_derivation": "provider_hard 6000 / measured provider-per-estimated ratio 0.368 = 16304 estimated tokens * 4 bytes per estimated token = 65216 bytes",
+  "data_class": "public_source_diagnostic",
+  "registry_fingerprints": {
+    "django_count_annotations": "27079f66e76911a86fcab6e501a4e82380a2656576a48660010e4dc812fcd892"
+  },
+  "base_registry_fingerprints": {
+    "django_count_annotations": "e536b9c64da1ffef42c6f69b28bfc7d84ee5d38f8624e1a08e3c00d8aea657ef"
+  },
+  "registered_spans": {
+    "django_count_annotations": [
+      {
+        "tool": "read_django_count_entry",
+        "repo": "django-16263",
+        "path": "django/db/models/query.py",
+        "first_line": 610,
+        "last_line": 632,
+        "literal_lines": [],
+        "literal_labels": []
+      },
+      {
+        "tool": "read_django_aggregation",
+        "repo": "django-16263",
+        "path": "django/db/models/sql/query.py",
+        "first_line": 438,
+        "last_line": 527,
+        "literal_lines": [
+          444,
+          463,
+          475,
+          477,
+          478,
+          487
+        ],
+        "literal_labels": [
+          "ordering_references",
+          "aggregation_decision"
+        ]
+      },
+      {
+        "tool": "read_django_count_call",
+        "repo": "django-16263",
+        "path": "django/db/models/sql/query.py",
+        "first_line": 542,
+        "last_line": 560,
+        "literal_lines": [
+          550,
+          556
+        ],
+        "literal_labels": [
+          "filter_references"
+        ]
+      }
+    ]
+  },
+  "registered_literal_labels": {
+    "django_count_annotations": {
+      "filter_references": [
+        "filter"
+      ],
+      "other_annotation_references": [
+        "other annotations"
+      ],
+      "ordering_references": [
+        "ordering"
+      ],
+      "aggregation_decision": [
+        "existing_annotations"
+      ]
+    }
+  },
+  "constraint_carrier_tools": {
+    "django_count_annotations": {
+      "read_django_aggregation": [
+        "ordering_references",
+        "aggregation_decision"
+      ],
+      "read_django_count_call": [
+        "filter_references"
+      ]
+    }
+  },
+  "persisted_retention_fields": [
+    "task_anchor_restore_failures",
+    "selective_retention_restore_failures",
+    "task_restore_fallbacks",
+    "budget_fallbacks",
+    "restore_failures_by_model_call",
+    "restore_fallbacks_by_model_call",
+    "budget_fallbacks_by_model_call",
+    "restore_failure_is_whole_prefix_fallback",
+    "input_evidence_task_anchor_restore_failures",
+    "selective_retention_compacted_calls",
+    "selective_retention_compacted_tool_outputs",
+    "selective_retention_duplicate_units_dropped",
+    "selective_retention_saved_bytes_total",
+    "selective_retention_task_unit_count",
+    "selective_retention_literal_unit_count",
+    "selective_retention_literal_text_count",
+    "selective_retention_constraint_unit_count",
+    "selective_retention_protected_unit_count",
+    "selective_retention_protected_group_count",
+    "selective_retention_pinned_outputs",
+    "selective_retention_pinned_by_reason",
+    "selective_retention_elided_outputs",
+    "selective_retention_notes_with_source_pointer",
+    "selective_retention_pointer_coverage",
+    "selective_retention_recent_group_items_kept",
+    "selective_retention_recent_group_kept_in_full",
+    "selective_retention_literal_guard_fallbacks",
+    "selective_retention_registry_fingerprint",
+    "selective_retention_fallback_reasons",
+    "selective_retention_last_fallback_reason",
+    "pointer_retention_registry_schema",
+    "pointer_retention_registry_fingerprint",
+    "pointer_retention_base_registry_fingerprint",
+    "pointer_retention_registry_problems",
+    "pointer_retention_context_lines",
+    "pointer_retention_elided_sources",
+    "pointer_retention_elided_lines",
+    "pointer_retention_kept_lines",
+    "pointer_retention_kept_literal_lines",
+    "pointer_retention_span_notes_with_omitted_intervals",
+    "pointer_retention_group_baseline_groups",
+    "evidence_registered_literals_present_final",
+    "evidence_registered_literal_counts_final",
+    "evidence_registered_literal_counts_by_boundary",
+    "evidence_constraint_carrying_outputs_final",
+    "evidence_outputs_elided_final",
+    "evidence_elided_output_manifest_final",
+    "evidence_span_elision_records",
+    "evidence_output_manifest_final",
+    "evidence_pointer_coverage_final",
+    "evidence_pointer_completeness_final",
+    "evidence_most_recent_tool_group_kept_in_full_final",
+    "evidence_omitted_lines_final",
+    "evidence_retained_literal_lines_final",
+    "evidence_elision_note_count_final",
+    "evidence_input_bytes_by_boundary"
+  ],
+  "pre_registered_acceptance": "plugin strict quality >= baseline AND paired mean complete-total-token saving > 0",
+  "requires": [
+    "tests.test_openai_agents_evidence_safe_retention_v6 passes offline",
+    "the offline grid measures a plugin input below the baseline on at least one sample",
+    "the projected paid saving is positive"
+  ],
+  "source_sha256": {
+    "experiments/runners/run_openai_agents_api_experiment.py": "1cafd67b5b4d649381c737ff2e97d15d7cbba95709311d3516ccdb266c7e8708",
+    "experiments/runners/run_openai_agents_repo_diagnostic_v1.py": "bc6134ec953214277c4ba3cb877313f164ec54013d54d5907629bc3851928ccf",
+    "experiments/runners/token_policy.py": "e1d3c0de34c1ba55a3400a24ca71ea514363b7c9cdcf0ca4e8449382a58474cb",
+    "experiments/runners/trigger_gate.py": "931fd869733029f2f47604f6d99fdaef5da542840c6cb8c806360870cb3c5b23",
+    "experiments/runners/openai_agents_native_summary.py": "2b05db2560ab80d8eca9aaee5828209f9439d0682d200cf8e6a7f01ab5f7fccd",
+    "experiments/runners/openai_agents_literal_registry_v5.py": "b36052fd0ef32849c8e191903a794424a590c7e2d2125721ad4ada38092f7d3b",
+    "experiments/runners/openai_agents_evidence_safe_retention_v5.py": "8b67133f8780fa03e562dbf1052e8a95b19a90ff042cf293c1b1cb17e2426e56",
+    "experiments/runners/openai_agents_evidence_v5.py": "16e2b70aa1f9496485d9f82aa69e3274f5dd07026051f877ced029c952333046",
+    "experiments/runners/run_openai_agents_repo_diagnostic_v5.py": "b1974fb0d76381a5dd286a0b05057e8a8b69f4eee4d015876e87708ea94726ea",
+    "experiments/runners/openai_agents_literal_registry_v6.py": "1840c9ab3503719c6b93d6bfbcff04334934fe1af6787e237f826715b1329b9e",
+    "experiments/runners/openai_agents_span_retention_v6.py": "ca23ad436736bc978ce081a0707aebf27833ff79429fad8f7f8055b515427a72",
+    "experiments/runners/openai_agents_evidence_v6.py": "09a493cfb3d70e0924057d8084974b0dd6d91f98680752f19663e8946e3324db",
+    "experiments/runners/run_openai_agents_repo_diagnostic_v6.py": "a115765ec4a4c16331613acf1ad121ac3282088519d9ef26cb24796f3d411e62",
+    "experiments/audits/audit_openai_agents_repo_diagnostic_v6.py": "0969afdde61a25bdcedfb732fef34846c5d7b7df317c3ba45ae89b7a9172f0ca",
+    ".tooling/gate_openai_agents_pointer_retention_v6.py": "5f4c61e39df9b322e1aa199feb12e1414b3126332c2e7a5ce601f868d17e4cd2",
+    ".tooling/diagnose_v5_cost_regression.py": "337904beee8b79a773d1bbf73cc7a970a22a82f4a8c4168451a25213f22425a9",
+    "tests/test_openai_agents_evidence_safe_retention_v6.py": "fb31dd88ec616a8c5a341c8e57090824236501d2cdecd6c32a4309ac89700fb7",
+    "tests/test_openai_agents_group_baseline_diagnosis_v5.py": "fea8ca32c185bb71dd3cfd63208c55d13826cf31f32c6236f63e86d372a86821",
+    "tests/test_openai_agents_repo_diagnostic_v1.py": "928f9af64f598f6a76e5e13db7fb4f80792b0ce2696165a7ecb058638bc6a1fb",
+    "tests/test_openai_agents_input_evidence_v2.py": "689e294c40979355c213de2cb4c3c79b38a3a40dfcf92377d843f921894563c4",
+    "tests/test_openai_agents_repo_diagnostic_v2.py": "4720340ab65de0cc427a608d5de0523fb1988603b0dea5551730e2f8d5cc267f",
+    "tests/test_openai_agents_task_anchor_v3.py": "cce3dbe60273d634f38302158b8457ead980b8b668dd0a88411cd816a6439943",
+    "tests/test_openai_agents_selective_retention_v4.py": "4145b9e7bde9622c2bdc336e0097e03cf4967cc1c7ff2a3c4d570058f606281e",
+    "tests/test_openai_agents_evidence_safe_retention_v5.py": "cc70b68739d1cd369e544675b29104402481e7a06f3c0af49ed36409b26588c5",
+    "integrations/openai_agents/REPO_DIAGNOSTIC_V5_EVIDENCE_SAFE_RETENTION_PROTOCOL.md": "6c80552090c23e72111bead51bef9620f2a58dfc67985b058af794d30c17f23a",
+    "integrations/openai_agents/V5_COST_REGRESSION_DIAGNOSIS.md": "a53432bd3565daa2eefede33bb8f4e512b127f7615579a56f4e59b7ee17f92b4",
+    "integrations/openai_agents/V5_COST_REGRESSION_DIAGNOSIS.json": "1a153e2cf88b2a7e3f86074f771f0f22a32a08258a152ee83d81f86d7447ab78",
+    "integrations/openai_agents/REPO_DIAGNOSTIC_V6_POINTER_RETENTION_PROTOCOL.md": "df05a2184e39f9cf3a04d4abd5cc73d553dfc06c250594e8875faa0f2bc88530"
+  },
+  "public_input_sha256": {
+    ".tooling/swebench-verified/django-16263/instance.json": "dc9b3b68d4ec74dcd68aad5e1699377781d58bc34152db074eebeb50dce2bb66",
+    ".tooling/upstream/django-16263/django/db/models/query.py": "01df683d1cb1407298081ed147bb9bd7f261e1db2b51ce1173ef8e23ca586116",
+    ".tooling/upstream/django-16263/django/db/models/sql/query.py": "e8e8149c1994e52f53bd4e774c3d4ec6e8d79d1cba3661a2d594629e5b474fc2"
+  }
+}

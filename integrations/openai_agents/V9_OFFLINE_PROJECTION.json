@@ -1,0 +1,180 @@
+{
+  "schema": "openai_agents_v9_offline_projection_v1",
+  "batch": "openai-repo-diagnostic-v9-long-baseline-boundary",
+  "offline_gate": true,
+  "paid_requests_sent": 0,
+  "baseline_model_calls": 7,
+  "baseline_input_tokens": 49905,
+  "baseline_complete_total_tokens": 50073,
+  "plugin_input_tokens": 32806,
+  "plugin_complete_total_tokens": 32974,
+  "paired_complete_total_savings": [
+    0.3414814371018313,
+    0.3414814371018313,
+    0.3414814371018313
+  ],
+  "paired_complete_total_savings_mean": 0.3414814371018313,
+  "positive_pairs": 3,
+  "boundary": {
+    "frozen_recent_turns_kept_verbatim": 1,
+    "baseline_model_calls": 7,
+    "elidable_turns_available_to_the_plugin": 5,
+    "plugin_can_elide_anything": true,
+    "plugin_wins_possible": true,
+    "baseline_input_tokens": 49905,
+    "short_regime_arithmetic": {
+      "v5_plugin_extra_round_input_tokens": 2335.8,
+      "v5_extra_round_share_of_input_regression": 0.9985,
+      "v5_pinned_text_effect_input_tokens": -136.7,
+      "baseline_complete_total_tokens": 2962,
+      "reading": "one extra round costs 2,335.8 input tokens - 99.85 % of the v5 regression and more than the whole 2,962-token baseline complete total; re-sent pinned bytes are worth -136.7 tokens, i.e. they help. So on a baseline this short a mechanism that changes visible text can only be negative, and a mechanism that changes nothing can only be zero."
+    },
+    "regime": "long",
+    "short_side_measured_by": "v7 batch openai-repo-diagnostic-v7-applicability-boundary (payload identical to baseline, paired saving 0.0000 %)",
+    "long_side_measured_by": "v8 batch openai-repo-diagnostic-v8-long-baseline-boundary (this batch)"
+  },
+  "arms": {
+    "none": {
+      "model_calls": [
+        7,
+        7,
+        7
+      ],
+      "actual_input_tokens": [
+        49905,
+        49905,
+        49905
+      ],
+      "complete_total_tokens": [
+        50073,
+        50073,
+        50073
+      ],
+      "elided_sources": [
+        0,
+        0,
+        0
+      ],
+      "elided_lines": [
+        0,
+        0,
+        0
+      ],
+      "task_anchor_restore_failures": [
+        0,
+        0,
+        0
+      ],
+      "successes": [
+        true,
+        true,
+        true
+      ],
+      "guard_protected_units": [
+        0,
+        0,
+        0
+      ],
+      "guard_unprotected_statement_units": [
+        0,
+        0,
+        0
+      ]
+    },
+    "pruner_v1": {
+      "model_calls": [
+        7,
+        7,
+        7
+      ],
+      "actual_input_tokens": [
+        32806,
+        32806,
+        32806
+      ],
+      "complete_total_tokens": [
+        32974,
+        32974,
+        32974
+      ],
+      "elided_sources": [
+        15,
+        15,
+        15
+      ],
+      "elided_lines": [
+        632,
+        632,
+        632
+      ],
+      "task_anchor_restore_failures": [
+        0,
+        0,
+        0
+      ],
+      "successes": [
+        true,
+        true,
+        true
+      ],
+      "guard_protected_units": [
+        2,
+        2,
+        2
+      ],
+      "guard_unprotected_statement_units": [
+        6,
+        6,
+        6
+      ]
+    },
+    "native_summary": {
+      "model_calls": [
+        7,
+        7,
+        7
+      ],
+      "actual_input_tokens": [
+        47430,
+        47430,
+        47430
+      ],
+      "complete_total_tokens": [
+        54422,
+        54422,
+        54422
+      ],
+      "elided_sources": [
+        0,
+        0,
+        0
+      ],
+      "elided_lines": [
+        0,
+        0,
+        0
+      ],
+      "task_anchor_restore_failures": [
+        0,
+        0,
+        0
+      ],
+      "successes": [
+        true,
+        true,
+        true
+      ],
+      "guard_protected_units": [
+        0,
+        0,
+        0
+      ],
+      "guard_unprotected_statement_units": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "note": "measured with --offline-gate against a local stub model; no provider request was sent. The stub takes six one-tool-per-turn reads plus one answer, so its K may differ from a real run - v6 showed an offline stub cannot predict turns."
+}

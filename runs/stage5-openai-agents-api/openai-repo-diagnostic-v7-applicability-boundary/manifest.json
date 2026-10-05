@@ -1,0 +1,155 @@
+{
+  "experiment_id": "openai-repo-diagnostic-v7-applicability-boundary",
+  "kind": "openai_agents_runner_real_api_paired_recency_boundary",
+  "data_class": "public_source_diagnostic",
+  "disclosure": "Public SWE-bench issue statements and selected public baseline source ranges are sent through real SDK tools. No reference patches, host test patches, local secrets, or expected answers are sent. This arm applies the plugin's registered-span line-range reduction ONLY to tool turns that are at least one turn behind the newest one; the newest turn (and every model message) is sent verbatim, and a task that finishes within that window is sent unchanged.",
+  "sdk": "openai-agents",
+  "model": "deepseek-v4-flash",
+  "base_url": "https://api.deepseek.com",
+  "methods": [
+    "none",
+    "pruner_v1",
+    "native_summary"
+  ],
+  "scenarios": [
+    "django_count_annotations"
+  ],
+  "repeats": 3,
+  "minimum_planned_requests": 84,
+  "maximum_api_requests": 100,
+  "max_api_retries": 2,
+  "max_turns": 6,
+  "max_output_tokens": 1024,
+  "max_summary_tokens": 1024,
+  "max_summary_calls": 16,
+  "trigger_policy": "symmetric_budget",
+  "native_summary_contract": {
+    "trigger": "estimated input tokens > soft budget",
+    "retention": "last units up to target token budget, kept verbatim",
+    "pinned": "leading user statement always kept verbatim",
+    "boundary": "Responses groups are never split across a call/output pair",
+    "acceptance": "summary accepted only when it shrinks the payload",
+    "failure_policy": "provider error leaves the input untouched",
+    "accounting": "summary requests consume the same global request budget",
+    "regrowth_rule": "an already-summarised payload is not summarised again until it grows 25%"
+  },
+  "final_output_contract": {
+    "prefix": "RESULT ",
+    "single_line": true,
+    "max_chars": 160
+  },
+  "budget": {
+    "soft": 5435,
+    "hard": 16304,
+    "target": 4076,
+    "fixed_reserved_tokens": 512
+  },
+  "budget_calibration": {
+    "host": "openai_agents",
+    "calibration_ratio_provider_per_estimated": 0.368,
+    "provider_tokens": {
+      "soft": 2000,
+      "hard": 6000,
+      "target": 1500
+    },
+    "estimated_tokens": {
+      "soft": 5435,
+      "hard": 16304,
+      "target": 4076
+    },
+    "note": "Budgets are declared in provider tokens and converted with a measured ratio."
+  },
+  "cost_rates_per_million": {
+    "input": 0.0,
+    "output": 0.0
+  },
+  "mechanism": {
+    "arm": "pruner_v1",
+    "name": "recency_boundary_v7",
+    "schema": "openai_agents_recency_boundary_v7",
+    "registry": "openai_agents_literal_registry_v6",
+    "policy": "recency_boundary",
+    "recent_turns_kept_verbatim": 1,
+    "elidable_rule": "current_call_index - turn_index >= recent_turns_kept_verbatim",
+    "reduction": "v6 registered-span line-range elision, unchanged",
+    "guards": "v6 literal-survival guard, pointer completeness, whole-payload fallback",
+    "registry_schema": "openai_agents_literal_registry_v6",
+    "base_registry_schema": "openai_agents_literal_registry_v5",
+    "context_lines": 0,
+    "note_prefix": "[pointer-retention v6]",
+    "purpose": "state and test the applicability boundary of the reduction: it can only help when the baseline has turns older than the frozen recency window"
+  },
+  "shared_runner_disclosure_amended": true,
+  "persisted_retention_fields": [
+    "recency_boundary_recent_turns_kept_verbatim",
+    "recency_boundary_protected_turn_items",
+    "recency_boundary_elidable_indices",
+    "recency_boundary_protected_outputs",
+    "recency_boundary_protected_calls",
+    "recency_boundary_elided_sources",
+    "recency_boundary_elidable_turns_available",
+    "recency_boundary_plugin_can_elide_anything",
+    "recency_boundary_plugin_wins_possible",
+    "recency_boundary_baseline_model_calls",
+    "recency_boundary_baseline_input_tokens",
+    "recency_boundary_baseline_payload_sha256_by_call",
+    "recency_boundary_plugin_payload_sha256_by_call",
+    "recency_boundary_payload_identical_to_baseline",
+    "recency_boundary_boundary_proposition",
+    "task_anchor_restore_failures",
+    "task_restore_fallbacks",
+    "budget_fallbacks",
+    "restore_failures_by_model_call",
+    "restore_fallback_by_model_call",
+    "restore_failure_is_whole_prefix_fallback",
+    "selective_retention_pointer_coverage",
+    "selective_retention_elided_outputs",
+    "pointer_retention_elided_sources",
+    "pointer_retention_elided_lines",
+    "pointer_retention_kept_literal_lines",
+    "pointer_retention_registry_fingerprint",
+    "pointer_retention_base_registry_fingerprint",
+    "evidence_registered_literals_present_final",
+    "evidence_registered_literal_counts_final",
+    "evidence_pointer_coverage_final",
+    "evidence_pointer_completeness_final",
+    "evidence_span_elision_records",
+    "evidence_output_manifest_final",
+    "evidence_input_bytes_by_boundary",
+    "evidence_recency_decisions"
+  ],
+  "filter_hard_bytes": 65216,
+  "bytes_per_estimated_token": 4,
+  "offline_gate": true,
+  "paid_requests_sent": 0,
+  "offline_gate_note": "this batch was produced with --offline-gate against a local stub model; no provider request was sent and api_request_attempts counts local stub calls only",
+  "mechanism_identity": {
+    "schema": "openai_agents_recency_boundary_v7",
+    "mechanism_schema": "openai_agents_recency_boundary_v7",
+    "v6_mechanism_schema": "openai_agents_span_retention_v6",
+    "policy": "recency_boundary",
+    "recent_turns_kept_verbatim": 1,
+    "elidable_rule": "current_call_index - turn_index >= recent_turns_kept_verbatim",
+    "reduction": "v6 registered-span line-range elision, unchanged",
+    "guards": "v6 literal-survival guard, pointer completeness, whole-payload fallback",
+    "registry_schema": "openai_agents_literal_registry_v6",
+    "base_registry_schema": "openai_agents_literal_registry_v5",
+    "context_lines": 0,
+    "note_prefix": "[pointer-retention v6]"
+  },
+  "literal_registry": {
+    "schema": "openai_agents_literal_registry_v6",
+    "base_schema": "openai_agents_literal_registry_v5",
+    "fingerprints": {
+      "django_count_annotations": "27079f66e76911a86fcab6e501a4e82380a2656576a48660010e4dc812fcd892",
+      "pylint_regex_csv": "ffdd36e91a49896b578155d7d2c0cd8d9fa17341de699644072dc3d1ecf0f4ec",
+      "pytest_mro": "333e00f97daf96b061856f64f7be2319baa6bf73e95f9fcb734ce9a705972c8b"
+    },
+    "base_fingerprints": {
+      "django_count_annotations": "e536b9c64da1ffef42c6f69b28bfc7d84ee5d38f8624e1a08e3c00d8aea657ef",
+      "pylint_regex_csv": "9eb23cc0334748e60d2ab0f0cfd5285e0ab171e02abd632c16cf95b9b048f5a1",
+      "pytest_mro": "aac7a257f92c86a3425c046b5f5b651c9c99e9df6d836a3232b3494bbfbadb34"
+    },
+    "problems": []
+  }
+}

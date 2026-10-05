@@ -1,0 +1,227 @@
+{
+  "experiment_id": "openai-repo-diagnostic-v10-tool-call-recency-boundary",
+  "kind": "openai_agents_runner_real_api_paired_tool_call_recency",
+  "data_class": "public_source_diagnostic",
+  "disclosure": "Public SWE-bench issue statements, a pre-registered read-only investigation protocol, and selected public baseline source ranges are sent through real SDK tools. No reference patches, host test patches, local secrets, or expected answers are sent. The plugin arm applies the plugin's registered-span line-range reduction ONLY to tool turns at least one turn older than the newest one; the newest turn and every model message are sent verbatim.",
+  "sdk": "openai-agents",
+  "model": "deepseek-v4-flash",
+  "base_url": "https://api.deepseek.com",
+  "methods": [
+    "none",
+    "pruner_v1",
+    "native_summary"
+  ],
+  "scenarios": [
+    "django_long_investigation"
+  ],
+  "repeats": 3,
+  "minimum_planned_requests": 84,
+  "maximum_api_requests": 200,
+  "max_api_retries": 2,
+  "max_turns": 10,
+  "max_output_tokens": 1024,
+  "max_summary_tokens": 1024,
+  "max_summary_calls": 16,
+  "trigger_policy": "symmetric_budget",
+  "native_summary_contract": {
+    "trigger": "estimated input tokens > soft budget",
+    "retention": "last units up to target token budget, kept verbatim",
+    "pinned": "leading user statement always kept verbatim",
+    "boundary": "Responses groups are never split across a call/output pair",
+    "acceptance": "summary accepted only when it shrinks the payload",
+    "failure_policy": "provider error leaves the input untouched",
+    "accounting": "summary requests consume the same global request budget",
+    "regrowth_rule": "an already-summarised payload is not summarised again until it grows 25%"
+  },
+  "final_output_contract": {
+    "prefix": "RESULT ",
+    "single_line": true,
+    "max_chars": 160
+  },
+  "budget": {
+    "soft": 5435,
+    "hard": 16304,
+    "target": 4076,
+    "fixed_reserved_tokens": 512
+  },
+  "budget_calibration": {
+    "host": "openai_agents",
+    "calibration_ratio_provider_per_estimated": 0.368,
+    "provider_tokens": {
+      "soft": 2000,
+      "hard": 6000,
+      "target": 1500
+    },
+    "estimated_tokens": {
+      "soft": 5435,
+      "hard": 16304,
+      "target": 4076
+    },
+    "note": "Budgets are declared in provider tokens and converted with a measured ratio."
+  },
+  "cost_rates_per_million": {
+    "input": 0.0,
+    "output": 0.0
+  },
+  "mechanism": {
+    "arm": "pruner_v1",
+    "name": "tool_call_recency_v10",
+    "schema": "openai_agents_tool_call_recency_v10",
+    "registry": "openai_agents_long_task_registry_v8",
+    "base_registry": "openai_agents_literal_registry_v6",
+    "policy": "tool_call_recency",
+    "recent_turns_kept_verbatim": 1,
+    "elidable_rule": "a tool call is elidable when the number of newer tool calls in the payload is >= recent_tool_calls_kept_verbatim",
+    "reduction": "v6 registered-span line-range elision, unchanged",
+    "guards": "v6 literal-survival guard, pointer completeness, whole-payload fallback",
+    "task_input_change": "the long task keeps the frozen issue and request messages verbatim and appends one user message carrying a pre-registered read-only investigation protocol (six one-tool-per-turn reads); the mechanism, the thresholds and the budgets are v7's",
+    "source_registration_task": "django_count_annotations",
+    "amendments": "message-unit repeat rule disabled (message text is sent verbatim, strictly more conservative); kept-output reasons recorded for elidable candidates",
+    "module": "openai_agents_long_baseline_boundary_v10",
+    "guard_change": "the protected message-unit set is narrowed to the units that carry a registered literal (plus the registered literal units); the frozen rule that drops an already-delivered message unit is left in place, so the two rules no longer contradict each other",
+    "unchanged": "span reduction, literal-survival guard, pointer checks, structural check, message-unit classification, whole-payload fallback, thresholds, budgets",
+    "prior_observation": "the same guard reported 5 protected_item_dropped fallbacks per plugin sample on the v7 short baseline; harmless there because no turn was elidable, recorded now because it is the same contradiction",
+    "recency_unit": "tool call (a call together with the output that answers it)",
+    "recent_tool_calls_kept_verbatim": 1,
+    "hypothesis": "on the real recorded payloads the contiguous-group rule protected everything (turn_count = 1, elidable_indices empty); measuring recency in tool calls should leave the older calls elidable - this is measured by replay, not assumed",
+    "registry_schema": "openai_agents_long_task_registry_v8",
+    "base_registry_schema": "openai_agents_literal_registry_v6",
+    "context_lines": 0,
+    "note_prefix": "[pointer-retention v6]",
+    "investigation_steps": [
+      "STEP 1: call read_django_count_entry alone, then stop and wait for its result.",
+      "STEP 2: after step 1 returns, call read_django_aggregation alone, then stop and wait.",
+      "STEP 3: after step 2 returns, call read_django_count_call alone, then stop and wait.",
+      "STEP 4: after step 3 returns, call read_django_count_entry once more alone, then stop and wait.",
+      "STEP 5: after step 4 returns, call read_django_aggregation once more alone, then stop and wait.",
+      "STEP 6: after step 5 returns, call read_django_count_call once more alone, then stop and wait.",
+      "STEP 7: only after all six reads have returned, state the final diagnosis."
+    ],
+    "purpose": "test the one direction v9 left un-falsified: measure the recency window in tool calls instead of contiguous tool groups, on the real recorded payload structure rather than on a self-built stub"
+  },
+  "task_input_change": {
+    "long_task_id": "django_long_investigation",
+    "extends": "django_count_annotations",
+    "investigation_steps": [
+      "STEP 1: call read_django_count_entry alone, then stop and wait for its result.",
+      "STEP 2: after step 1 returns, call read_django_aggregation alone, then stop and wait.",
+      "STEP 3: after step 2 returns, call read_django_count_call alone, then stop and wait.",
+      "STEP 4: after step 3 returns, call read_django_count_entry once more alone, then stop and wait.",
+      "STEP 5: after step 4 returns, call read_django_aggregation once more alone, then stop and wait.",
+      "STEP 6: after step 5 returns, call read_django_count_call once more alone, then stop and wait.",
+      "STEP 7: only after all six reads have returned, state the final diagnosis."
+    ],
+    "note": "only the task input changes: the same public issue, the same three public baseline source ranges, the same literals, the same mechanism"
+  },
+  "shared_runner_disclosure_amended": true,
+  "persisted_retention_fields": [
+    "long_baseline_task_id",
+    "long_baseline_recent_turns_kept_verbatim",
+    "long_baseline_registry_schema",
+    "long_baseline_registry_fingerprint",
+    "long_baseline_base_registry_fingerprint",
+    "long_baseline_registry_problems",
+    "long_baseline_literal_unit_count",
+    "long_baseline_elided_sources",
+    "long_baseline_baseline_model_calls",
+    "long_baseline_baseline_input_tokens",
+    "long_baseline_baseline_payload_sha256_by_call",
+    "long_baseline_plugin_payload_sha256_by_call",
+    "long_baseline_payload_identical_to_baseline",
+    "long_baseline_shared_boundary_count",
+    "long_baseline_elidable_turns_available",
+    "long_baseline_plugin_can_elide_anything",
+    "long_baseline_plugin_wins_possible",
+    "long_baseline_boundary_proposition",
+    "long_baseline_regime",
+    "long_baseline_turn_count_max",
+    "task_anchor_restore_failures",
+    "task_restore_fallbacks",
+    "budget_fallbacks",
+    "restore_failures_by_model_call",
+    "restore_fallback_by_model_call",
+    "restore_failure_is_whole_prefix_fallback",
+    "selective_retention_pointer_coverage",
+    "selective_retention_elided_outputs",
+    "selective_retention_literal_guard_fallbacks",
+    "selective_retention_fallback_reasons",
+    "pointer_retention_elided_sources",
+    "pointer_retention_elided_lines",
+    "pointer_retention_kept_literal_lines",
+    "pointer_retention_registry_fingerprint",
+    "pointer_retention_base_registry_fingerprint",
+    "evidence_registered_literals_present_final",
+    "evidence_registered_literal_counts_final",
+    "evidence_registered_literals_present_by_boundary",
+    "evidence_pointer_coverage_final",
+    "evidence_pointer_completeness_final",
+    "evidence_span_elision_records",
+    "evidence_output_manifest_final",
+    "evidence_input_bytes_by_boundary",
+    "evidence_recency_decisions",
+    "evidence_payload_sha256_by_call",
+    "narrow_guard_schema",
+    "narrow_guard_protected_unit_count",
+    "narrow_guard_unprotected_statement_unit_count",
+    "narrow_guard_protectable_unit_count",
+    "narrow_guard_full_statement_unit_count",
+    "evidence_literal_carrier_units_present_by_boundary",
+    "evidence_repeated_literal_unit_kept",
+    "tool_call_recency_unit",
+    "tool_call_recency_recent_calls_kept",
+    "tool_call_recency_tool_calls",
+    "tool_call_recency_elidable_calls",
+    "tool_call_recency_protected_indices",
+    "tool_call_recency_elidable_indices"
+  ],
+  "filter_hard_bytes": 65216,
+  "bytes_per_estimated_token": 4,
+  "offline_gate": false,
+  "paid_requests_sent": null,
+  "v8_registry": {
+    "schema": "openai_agents_long_task_registry_v8",
+    "tasks": [
+      "django_long_investigation",
+      "django_count_annotations"
+    ],
+    "frozen_registry_schema": "openai_agents_literal_registry_v6",
+    "frozen_v5_registry_schema": "openai_agents_literal_registry_v5",
+    "investigation_steps": [
+      "STEP 1: call read_django_count_entry alone, then stop and wait for its result.",
+      "STEP 2: after step 1 returns, call read_django_aggregation alone, then stop and wait.",
+      "STEP 3: after step 2 returns, call read_django_count_call alone, then stop and wait.",
+      "STEP 4: after step 3 returns, call read_django_count_entry once more alone, then stop and wait.",
+      "STEP 5: after step 4 returns, call read_django_aggregation once more alone, then stop and wait.",
+      "STEP 6: after step 5 returns, call read_django_count_call once more alone, then stop and wait.",
+      "STEP 7: only after all six reads have returned, state the final diagnosis."
+    ],
+    "literal_context_units": {
+      "django_long_investigation": [
+        "It produces the same results as:\nBook.objects.count()",
+        "Django could be more intelligent about what annotations to include in the query produced by queryset.count(), stripping out any annotations that are not referenced by filters, other annotations or ordering. This should speed up calls to count() with complex annotations.",
+        "There seems to be precedent for this: select_related calls are ignored with count() queries."
+      ],
+      "django_count_annotations": []
+    },
+    "fingerprints": {
+      "django_long_investigation": "a3d61f15470d2e52e4a01c7dfc4394d66aabae131059bb9a47b247c2cf6b4002",
+      "django_count_annotations": "a91a1f367d0be197ca42ce6be7b50ba11074ed597636f4350a4f09e6a2a1cf66"
+    },
+    "base_fingerprints": {
+      "django_long_investigation": "27079f66e76911a86fcab6e501a4e82380a2656576a48660010e4dc812fcd892",
+      "django_count_annotations": "27079f66e76911a86fcab6e501a4e82380a2656576a48660010e4dc812fcd892"
+    },
+    "long_task_extends": "django_count_annotations"
+  },
+  "literal_registry": {
+    "schema": "openai_agents_literal_registry_v6",
+    "base_schema": "openai_agents_literal_registry_v5",
+    "fingerprints": {
+      "django_count_annotations": "27079f66e76911a86fcab6e501a4e82380a2656576a48660010e4dc812fcd892"
+    },
+    "base_fingerprints": {
+      "django_count_annotations": "e536b9c64da1ffef42c6f69b28bfc7d84ee5d38f8624e1a08e3c00d8aea657ef"
+    },
+    "problems": []
+  }
+}

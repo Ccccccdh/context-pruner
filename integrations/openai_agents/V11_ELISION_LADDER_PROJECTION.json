@@ -1,0 +1,478 @@
+{
+  "schema": "openai_agents_v11_elision_ladder_v1",
+  "task": "django_long_investigation",
+  "ladder": [
+    6,
+    4,
+    2
+  ],
+  "quality_first": "the native-summary arm also reduces input and also loses quality on this task, so the ablation takes the largest M whose replay projection is still positive",
+  "projections": {
+    "6": {
+      "M": 6,
+      "fixture_ok": true,
+      "boundaries": 6,
+      "last_boundary_elidable_indices": [],
+      "last_boundary_elidable_calls": 0,
+      "elidable_indices_non_empty": false,
+      "total_elided_sources": 0,
+      "total_elided_lines": 0,
+      "total_kept_literal_lines": 0,
+      "task_anchor_restore_failures": 0,
+      "budget_fallbacks": 0,
+      "fallback_reasons": {},
+      "literal_regressions": [],
+      "baseline_payload_bytes": 63026,
+      "plugin_payload_bytes": 63026,
+      "byte_saving_rate": 0.0,
+      "events": [
+        {
+          "index": 1,
+          "item_count": 5,
+          "tool_calls": 1,
+          "elidable_indices": [],
+          "elidable_calls": 0,
+          "protected_indices": [
+            3,
+            4
+          ],
+          "before_bytes": 2903,
+          "after_bytes": 2903,
+          "elided_sources_total": 0,
+          "fallback_reason": "",
+          "literal_regressions": []
+        },
+        {
+          "index": 2,
+          "item_count": 7,
+          "tool_calls": 2,
+          "elidable_indices": [],
+          "elidable_calls": 0,
+          "protected_indices": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "before_bytes": 8154,
+          "after_bytes": 8154,
+          "elided_sources_total": 0,
+          "fallback_reason": "",
+          "literal_regressions": []
+        },
+        {
+          "index": 3,
+          "item_count": 9,
+          "tool_calls": 3,
+          "elidable_indices": [],
+          "elidable_calls": 0,
+          "protected_indices": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "before_bytes": 9215,
+          "after_bytes": 9215,
+          "elided_sources_total": 0,
+          "fallback_reason": "",
+          "literal_regressions": []
+        },
+        {
+          "index": 4,
+          "item_count": 11,
+          "tool_calls": 4,
+          "elidable_indices": [],
+          "elidable_calls": 0,
+          "protected_indices": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "before_bytes": 10397,
+          "after_bytes": 10397,
+          "elided_sources_total": 0,
+          "fallback_reason": "",
+          "literal_regressions": []
+        },
+        {
+          "index": 5,
+          "item_count": 13,
+          "tool_calls": 5,
+          "elidable_indices": [],
+          "elidable_calls": 0,
+          "protected_indices": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "before_bytes": 15648,
+          "after_bytes": 15648,
+          "elided_sources_total": 0,
+          "fallback_reason": "",
+          "literal_regressions": []
+        },
+        {
+          "index": 6,
+          "item_count": 15,
+          "tool_calls": 6,
+          "elidable_indices": [],
+          "elidable_calls": 0,
+          "protected_indices": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "before_bytes": 16709,
+          "after_bytes": 16709,
+          "elided_sources_total": 0,
+          "fallback_reason": "",
+          "literal_regressions": []
+        }
+      ]
+    },
+    "4": {
+      "M": 4,
+      "fixture_ok": true,
+      "boundaries": 6,
+      "last_boundary_elidable_indices": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "last_boundary_elidable_calls": 2,
+      "elidable_indices_non_empty": true,
+      "total_elided_sources": 3,
+      "total_elided_lines": 130,
+      "total_kept_literal_lines": 6,
+      "task_anchor_restore_failures": 0,
+      "budget_fallbacks": 0,
+      "fallback_reasons": {},
+      "literal_regressions": [],
+      "baseline_payload_bytes": 63026,
+      "plugin_payload_bytes": 57960,
+      "byte_saving_rate": 0.08037952590994193,
+      "events": [
+        {
+          "index": 1,
+          "item_count": 5,
+          "tool_calls": 1,
+          "elidable_indices": [],
+          "elidable_calls": 0,
+          "protected_indices": [
+            3,
+            4
+          ],
+          "before_bytes": 2903,
+          "after_bytes": 2903,
+          "elided_sources_total": 0,
+          "fallback_reason": "",
+          "literal_regressions": []
+        },
+        {
+          "index": 2,
+          "item_count": 7,
+          "tool_calls": 2,
+          "elidable_indices": [],
+          "elidable_calls": 0,
+          "protected_indices": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "before_bytes": 8154,
+          "after_bytes": 8154,
+          "elided_sources_total": 0,
+          "fallback_reason": "",
+          "literal_regressions": []
+        },
+        {
+          "index": 3,
+          "item_count": 9,
+          "tool_calls": 3,
+          "elidable_indices": [],
+          "elidable_calls": 0,
+          "protected_indices": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "before_bytes": 9215,
+          "after_bytes": 9215,
+          "elided_sources_total": 0,
+          "fallback_reason": "",
+          "literal_regressions": []
+        },
+        {
+          "index": 4,
+          "item_count": 11,
+          "tool_calls": 4,
+          "elidable_indices": [],
+          "elidable_calls": 0,
+          "protected_indices": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "before_bytes": 10397,
+          "after_bytes": 10397,
+          "elided_sources_total": 0,
+          "fallback_reason": "",
+          "literal_regressions": []
+        },
+        {
+          "index": 5,
+          "item_count": 13,
+          "tool_calls": 5,
+          "elidable_indices": [
+            3,
+            4
+          ],
+          "elidable_calls": 1,
+          "protected_indices": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "before_bytes": 15648,
+          "after_bytes": 15163,
+          "elided_sources_total": 1,
+          "fallback_reason": "",
+          "literal_regressions": []
+        },
+        {
+          "index": 6,
+          "item_count": 15,
+          "tool_calls": 6,
+          "elidable_indices": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "elidable_calls": 2,
+          "protected_indices": [
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "before_bytes": 16709,
+          "after_bytes": 12128,
+          "elided_sources_total": 3,
+          "fallback_reason": "",
+          "literal_regressions": []
+        }
+      ]
+    },
+    "2": {
+      "M": 2,
+      "fixture_ok": true,
+      "boundaries": 6,
+      "last_boundary_elidable_indices": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "last_boundary_elidable_calls": 4,
+      "elidable_indices_non_empty": true,
+      "total_elided_sources": 10,
+      "total_elided_lines": 401,
+      "total_kept_literal_lines": 22,
+      "task_anchor_restore_failures": 0,
+      "budget_fallbacks": 0,
+      "fallback_reasons": {},
+      "literal_regressions": [],
+      "baseline_payload_bytes": 63026,
+      "plugin_payload_bytes": 47923,
+      "byte_saving_rate": 0.23963126328816678,
+      "events": [
+        {
+          "index": 1,
+          "item_count": 5,
+          "tool_calls": 1,
+          "elidable_indices": [],
+          "elidable_calls": 0,
+          "protected_indices": [
+            3,
+            4
+          ],
+          "before_bytes": 2903,
+          "after_bytes": 2903,
+          "elided_sources_total": 0,
+          "fallback_reason": "",
+          "literal_regressions": []
+        },
+        {
+          "index": 2,
+          "item_count": 7,
+          "tool_calls": 2,
+          "elidable_indices": [],
+          "elidable_calls": 0,
+          "protected_indices": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "before_bytes": 8154,
+          "after_bytes": 8154,
+          "elided_sources_total": 0,
+          "fallback_reason": "",
+          "literal_regressions": []
+        },
+        {
+          "index": 3,
+          "item_count": 9,
+          "tool_calls": 3,
+          "elidable_indices": [
+            3,
+            4
+          ],
+          "elidable_calls": 1,
+          "protected_indices": [
+            5,
+            6,
+            7,
+            8
+          ],
+          "before_bytes": 9215,
+          "after_bytes": 8730,
+          "elided_sources_total": 1,
+          "fallback_reason": "",
+          "literal_regressions": []
+        },
+        {
+          "index": 4,
+          "item_count": 11,
+          "tool_calls": 4,
+          "elidable_indices": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "elidable_calls": 2,
+          "protected_indices": [
+            7,
+            8,
+            9,
+            10
+          ],
+          "before_bytes": 10397,
+          "after_bytes": 5816,
+          "elided_sources_total": 3,
+          "fallback_reason": "",
+          "literal_regressions": []
+        },
+        {
+          "index": 5,
+          "item_count": 13,
+          "tool_calls": 5,
+          "elidable_indices": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "elidable_calls": 3,
+          "protected_indices": [
+            9,
+            10,
+            11,
+            12
+          ],
+          "before_bytes": 15648,
+          "after_bytes": 10869,
+          "elided_sources_total": 6,
+          "fallback_reason": "",
+          "literal_regressions": []
+        },
+        {
+          "index": 6,
+          "item_count": 15,
+          "tool_calls": 6,
+          "elidable_indices": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "elidable_calls": 4,
+          "protected_indices": [
+            11,
+            12,
+            13,
+            14
+          ],
+          "before_bytes": 16709,
+          "after_bytes": 11451,
+          "elided_sources_total": 10,
+          "fallback_reason": "",
+          "literal_regressions": []
+        }
+      ]
+    }
+  },
+  "positive_M": [
+    2,
+    4
+  ],
+  "selected_M": 4,
+  "selection_rule": "largest M whose replay projection is positive (most conservative elision); if none is positive, no paid request is sent",
+  "paid_run_allowed": true,
+  "fixture_note": "measured on the recorded real payload structure via openai_agents_real_payload_replay_v10 (no self-built stub)"
+}

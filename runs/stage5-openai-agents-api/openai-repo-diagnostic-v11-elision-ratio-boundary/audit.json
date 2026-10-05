@@ -1,0 +1,160 @@
+{
+  "complete": true,
+  "issues": [],
+  "batch": "openai-repo-diagnostic-v11-elision-ratio-boundary",
+  "expected_batch": "openai-repo-diagnostic-v11-elision-ratio-boundary",
+  "freeze": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\v11-freeze-08ebsfwd\\derived_freeze.json",
+  "mechanism": "elision_ratio_boundary_v11",
+  "samples": 9,
+  "attempts": 68,
+  "evidence_checked": 9,
+  "arm_means": {
+    "none": {
+      "n": 3,
+      "successes": 3,
+      "mean_actual_input_tokens": 17003.0,
+      "mean_complete_total_tokens": 17187.0,
+      "mean_model_calls": 7.0,
+      "elided_sources": 0,
+      "error_types": []
+    },
+    "pruner_v1": {
+      "n": 3,
+      "successes": 2,
+      "mean_actual_input_tokens": 16004.0,
+      "mean_complete_total_tokens": 16187.666666666666,
+      "mean_model_calls": 7.0,
+      "elided_sources": 9,
+      "error_types": []
+    },
+    "native_summary": {
+      "n": 3,
+      "successes": 2,
+      "mean_actual_input_tokens": 13210.0,
+      "mean_complete_total_tokens": 15029.666666666666,
+      "mean_model_calls": 6.0,
+      "elided_sources": 0,
+      "error_types": []
+    }
+  },
+  "successes": {
+    "none": 3,
+    "pruner_v1": 2,
+    "native_summary": 2
+  },
+  "failures": {
+    "none": 0,
+    "pruner_v1": 0,
+    "native_summary": 0
+  },
+  "task_anchor_restore_failures": {
+    "none": 0,
+    "pruner_v1": 0,
+    "native_summary": 0
+  },
+  "plugin_elided_sources_total": 9,
+  "boundary": {
+    "django_long_investigation-0": {
+      "frozen_recent_turns_kept_verbatim": 1,
+      "baseline_model_calls": 7,
+      "elidable_turns_available_to_the_plugin": 5,
+      "plugin_can_elide_anything": true,
+      "plugin_wins_possible": true,
+      "baseline_input_tokens": 17003,
+      "short_regime_arithmetic": {
+        "v5_plugin_extra_round_input_tokens": 2335.8,
+        "v5_extra_round_share_of_input_regression": 0.9985,
+        "v5_pinned_text_effect_input_tokens": -136.7,
+        "baseline_complete_total_tokens": 2962,
+        "reading": "one extra round costs 2,335.8 input tokens - 99.85 % of the v5 regression and more than the whole 2,962-token baseline complete total; re-sent pinned bytes are worth -136.7 tokens, i.e. they help. So on a baseline this short a mechanism that changes visible text can only be negative, and a mechanism that changes nothing can only be zero."
+      },
+      "regime": "long",
+      "short_side_measured_by": "v7 batch openai-repo-diagnostic-v7-applicability-boundary (payload identical to baseline, paired saving 0.0000 %)",
+      "long_side_measured_by": "v8 batch openai-repo-diagnostic-v8-long-baseline-boundary (this batch)",
+      "plugin_elided_sources": 3,
+      "plugin_input_tokens": 16007,
+      "payload_identical_to_baseline": false
+    },
+    "django_long_investigation-1": {
+      "frozen_recent_turns_kept_verbatim": 1,
+      "baseline_model_calls": 7,
+      "elidable_turns_available_to_the_plugin": 5,
+      "plugin_can_elide_anything": true,
+      "plugin_wins_possible": true,
+      "baseline_input_tokens": 17003,
+      "short_regime_arithmetic": {
+        "v5_plugin_extra_round_input_tokens": 2335.8,
+        "v5_extra_round_share_of_input_regression": 0.9985,
+        "v5_pinned_text_effect_input_tokens": -136.7,
+        "baseline_complete_total_tokens": 2962,
+        "reading": "one extra round costs 2,335.8 input tokens - 99.85 % of the v5 regression and more than the whole 2,962-token baseline complete total; re-sent pinned bytes are worth -136.7 tokens, i.e. they help. So on a baseline this short a mechanism that changes visible text can only be negative, and a mechanism that changes nothing can only be zero."
+      },
+      "regime": "long",
+      "short_side_measured_by": "v7 batch openai-repo-diagnostic-v7-applicability-boundary (payload identical to baseline, paired saving 0.0000 %)",
+      "long_side_measured_by": "v8 batch openai-repo-diagnostic-v8-long-baseline-boundary (this batch)",
+      "plugin_elided_sources": 3,
+      "plugin_input_tokens": 16005,
+      "payload_identical_to_baseline": false
+    },
+    "django_long_investigation-2": {
+      "frozen_recent_turns_kept_verbatim": 1,
+      "baseline_model_calls": 7,
+      "elidable_turns_available_to_the_plugin": 5,
+      "plugin_can_elide_anything": true,
+      "plugin_wins_possible": true,
+      "baseline_input_tokens": 17003,
+      "short_regime_arithmetic": {
+        "v5_plugin_extra_round_input_tokens": 2335.8,
+        "v5_extra_round_share_of_input_regression": 0.9985,
+        "v5_pinned_text_effect_input_tokens": -136.7,
+        "baseline_complete_total_tokens": 2962,
+        "reading": "one extra round costs 2,335.8 input tokens - 99.85 % of the v5 regression and more than the whole 2,962-token baseline complete total; re-sent pinned bytes are worth -136.7 tokens, i.e. they help. So on a baseline this short a mechanism that changes visible text can only be negative, and a mechanism that changes nothing can only be zero."
+      },
+      "regime": "long",
+      "short_side_measured_by": "v7 batch openai-repo-diagnostic-v7-applicability-boundary (payload identical to baseline, paired saving 0.0000 %)",
+      "long_side_measured_by": "v8 batch openai-repo-diagnostic-v8-long-baseline-boundary (this batch)",
+      "plugin_elided_sources": 3,
+      "plugin_input_tokens": 16000,
+      "payload_identical_to_baseline": false
+    }
+  },
+  "paired": {
+    "pruner_v1": {
+      "paired_n": 3,
+      "actual_input_savings_mean": 0.05875433746985826,
+      "complete_total_savings_mean": 0.05814469853757213,
+      "complete_total_savings_positive": 3,
+      "success_delta_mean": -0.3333333333333333
+    },
+    "native_summary": {
+      "paired_n": 3,
+      "actual_input_savings_mean": 0.22307828030347585,
+      "complete_total_savings_mean": 0.12547133234415606,
+      "complete_total_savings_positive": 1,
+      "success_delta_mean": -0.3333333333333333
+    }
+  },
+  "pre_registered_acceptance": "plugin strict quality >= baseline AND paired mean complete-total-token saving > 0",
+  "quality_acceptance_met": false,
+  "cost_acceptance_met": true,
+  "verdict": "not-yet-valid",
+  "self_hashes": {
+    "experiments/audits/audit_openai_agents_repo_diagnostic_v9.py": "a4b5e8b394b9a995c970675bd79cc00cea072a6a9c2c98d6ad864416e34ca988",
+    "experiments/runners/openai_agents_long_baseline_boundary_v9.py": "d3ea4aed6735e643f6936e7ca188f68852dd0a77330c349afb98a08660037d0e",
+    "experiments/runners/run_openai_agents_repo_diagnostic_v9.py": "f60d788da54b33d5926200a6bd58aff0b3ee34d00c1830a38220c2157ad845ca",
+    "experiments/runners/openai_agents_evidence_v9.py": "36d42d56984d7f9ffa869457f18613f253d1917b3b96790d299a59b01c4fc95a",
+    ".tooling/gate_openai_agents_long_baseline_v8.py": "c303c44e8309d820ab6c045bb94fedc9d9c4d4194cc3d9e8f4ea76f38d4a26c3"
+  },
+  "recency_unit": "tool call",
+  "replay_fixture_ok": true,
+  "replay_projection_verdict": null,
+  "replay_projected_byte_saving": null,
+  "recorded_structure_fingerprint": "a1989c7bbef72c0a9012abf641490d9511fa250c4a38d5d0cb7cfe7df400c1c3",
+  "selected_M": 4,
+  "elision_ladder": [
+    6,
+    4,
+    2
+  ],
+  "freeze_sha256_recorded": true
+}

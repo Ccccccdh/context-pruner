@@ -1,0 +1,440 @@
+{
+  "schema": "openai_agents_v10_replay_v1",
+  "task": "django_long_investigation",
+  "repeat": 0,
+  "fixture": {
+    "batch": "openai-repo-diagnostic-v9-long-baseline-boundary",
+    "repeat": 0,
+    "fixture_boundaries": 7,
+    "recorded_boundaries": 7,
+    "checks": [
+      {
+        "index": 0,
+        "observed": {
+          "item_count": 3,
+          "message_items": 3,
+          "tool_items": 0,
+          "tool_outputs": 0,
+          "tool_runs": 0
+        },
+        "recorded": {
+          "item_count": 3,
+          "message_items": 3,
+          "tool_items": 0,
+          "tool_outputs": 0,
+          "tool_runs": 0
+        },
+        "ok": true
+      },
+      {
+        "index": 1,
+        "observed": {
+          "item_count": 5,
+          "message_items": 3,
+          "tool_items": 2,
+          "tool_outputs": 1,
+          "tool_runs": 1
+        },
+        "recorded": {
+          "item_count": 5,
+          "message_items": 3,
+          "tool_items": 2,
+          "tool_outputs": 1,
+          "tool_runs": 1
+        },
+        "ok": true
+      },
+      {
+        "index": 2,
+        "observed": {
+          "item_count": 7,
+          "message_items": 3,
+          "tool_items": 4,
+          "tool_outputs": 2,
+          "tool_runs": 1
+        },
+        "recorded": {
+          "item_count": 7,
+          "message_items": 3,
+          "tool_items": 4,
+          "tool_outputs": 2,
+          "tool_runs": 1
+        },
+        "ok": true
+      },
+      {
+        "index": 3,
+        "observed": {
+          "item_count": 9,
+          "message_items": 3,
+          "tool_items": 6,
+          "tool_outputs": 3,
+          "tool_runs": 1
+        },
+        "recorded": {
+          "item_count": 9,
+          "message_items": 3,
+          "tool_items": 6,
+          "tool_outputs": 3,
+          "tool_runs": 1
+        },
+        "ok": true
+      },
+      {
+        "index": 4,
+        "observed": {
+          "item_count": 11,
+          "message_items": 3,
+          "tool_items": 8,
+          "tool_outputs": 4,
+          "tool_runs": 1
+        },
+        "recorded": {
+          "item_count": 11,
+          "message_items": 3,
+          "tool_items": 8,
+          "tool_outputs": 4,
+          "tool_runs": 1
+        },
+        "ok": true
+      },
+      {
+        "index": 5,
+        "observed": {
+          "item_count": 13,
+          "message_items": 3,
+          "tool_items": 10,
+          "tool_outputs": 5,
+          "tool_runs": 1
+        },
+        "recorded": {
+          "item_count": 13,
+          "message_items": 3,
+          "tool_items": 10,
+          "tool_outputs": 5,
+          "tool_runs": 1
+        },
+        "ok": true
+      },
+      {
+        "index": 6,
+        "observed": {
+          "item_count": 15,
+          "message_items": 3,
+          "tool_items": 12,
+          "tool_outputs": 6,
+          "tool_runs": 1
+        },
+        "recorded": {
+          "item_count": 15,
+          "message_items": 3,
+          "tool_items": 12,
+          "tool_outputs": 6,
+          "tool_runs": 1
+        },
+        "ok": true
+      }
+    ],
+    "mismatches": [],
+    "ok": true,
+    "tool_items_contiguous": true,
+    "recorded_turn_count_by_boundary": [
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "recorded_elidable_indices": [
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      []
+    ],
+    "recorded_baseline_structure": [
+      {
+        "index": 0,
+        "item_count": 3,
+        "message_items": 3,
+        "tool_items": 0,
+        "tool_outputs": 0,
+        "turn_count": 0
+      },
+      {
+        "index": 1,
+        "item_count": 5,
+        "message_items": 3,
+        "tool_items": 2,
+        "tool_outputs": 1,
+        "turn_count": 1
+      },
+      {
+        "index": 2,
+        "item_count": 7,
+        "message_items": 3,
+        "tool_items": 4,
+        "tool_outputs": 2,
+        "turn_count": 1
+      },
+      {
+        "index": 3,
+        "item_count": 9,
+        "message_items": 3,
+        "tool_items": 6,
+        "tool_outputs": 3,
+        "turn_count": 1
+      },
+      {
+        "index": 4,
+        "item_count": 11,
+        "message_items": 3,
+        "tool_items": 8,
+        "tool_outputs": 4,
+        "turn_count": 1
+      },
+      {
+        "index": 5,
+        "item_count": 13,
+        "message_items": 3,
+        "tool_items": 10,
+        "tool_outputs": 5,
+        "turn_count": 1
+      },
+      {
+        "index": 6,
+        "item_count": 15,
+        "message_items": 3,
+        "tool_items": 12,
+        "tool_outputs": 6,
+        "turn_count": 1
+      }
+    ],
+    "byte_note": "fixture bytes differ from the recorded input_bytes because the paid run used the chat-completions transport; the replay measures structure and payload content, not transport bytes"
+  },
+  "events": [
+    {
+      "index": 1,
+      "item_count": 5,
+      "tool_calls": 1,
+      "elidable_calls": 0,
+      "protected_calls": 1,
+      "elidable_indices": [],
+      "before_bytes": 2903,
+      "after_bytes": 2903,
+      "elided_sources_total": 0,
+      "fallback_reason": "",
+      "task_anchor_restore_failures": 0,
+      "budget_fallbacks": 0,
+      "literal_counts": {
+        "filter_references": 2,
+        "other_annotation_references": 1,
+        "ordering_references": 1,
+        "aggregation_decision": 0
+      },
+      "literal_counts_before": {
+        "filter_references": 2,
+        "other_annotation_references": 1,
+        "ordering_references": 1,
+        "aggregation_decision": 0
+      },
+      "pointer_coverage": true
+    },
+    {
+      "index": 2,
+      "item_count": 7,
+      "tool_calls": 2,
+      "elidable_calls": 1,
+      "protected_calls": 1,
+      "elidable_indices": [
+        3,
+        4
+      ],
+      "before_bytes": 8154,
+      "after_bytes": 7669,
+      "elided_sources_total": 1,
+      "fallback_reason": "",
+      "task_anchor_restore_failures": 0,
+      "budget_fallbacks": 0,
+      "literal_counts": {
+        "filter_references": 2,
+        "other_annotation_references": 1,
+        "ordering_references": 4,
+        "aggregation_decision": 3
+      },
+      "literal_counts_before": {
+        "filter_references": 2,
+        "other_annotation_references": 1,
+        "ordering_references": 4,
+        "aggregation_decision": 3
+      },
+      "pointer_coverage": true
+    },
+    {
+      "index": 3,
+      "item_count": 9,
+      "tool_calls": 3,
+      "elidable_calls": 2,
+      "protected_calls": 1,
+      "elidable_indices": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "before_bytes": 9215,
+      "after_bytes": 4634,
+      "elided_sources_total": 3,
+      "fallback_reason": "",
+      "task_anchor_restore_failures": 0,
+      "budget_fallbacks": 0,
+      "literal_counts": {
+        "filter_references": 4,
+        "other_annotation_references": 1,
+        "ordering_references": 4,
+        "aggregation_decision": 3
+      },
+      "literal_counts_before": {
+        "filter_references": 4,
+        "other_annotation_references": 1,
+        "ordering_references": 4,
+        "aggregation_decision": 3
+      },
+      "pointer_coverage": true
+    },
+    {
+      "index": 4,
+      "item_count": 11,
+      "tool_calls": 4,
+      "elidable_calls": 3,
+      "protected_calls": 1,
+      "elidable_indices": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "before_bytes": 10397,
+      "after_bytes": 5618,
+      "elided_sources_total": 6,
+      "fallback_reason": "",
+      "task_anchor_restore_failures": 0,
+      "budget_fallbacks": 0,
+      "literal_counts": {
+        "filter_references": 4,
+        "other_annotation_references": 1,
+        "ordering_references": 4,
+        "aggregation_decision": 3
+      },
+      "literal_counts_before": {
+        "filter_references": 4,
+        "other_annotation_references": 1,
+        "ordering_references": 4,
+        "aggregation_decision": 3
+      },
+      "pointer_coverage": true
+    },
+    {
+      "index": 5,
+      "item_count": 13,
+      "tool_calls": 5,
+      "elidable_calls": 4,
+      "protected_calls": 1,
+      "elidable_indices": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "before_bytes": 15648,
+      "after_bytes": 10390,
+      "elided_sources_total": 10,
+      "fallback_reason": "",
+      "task_anchor_restore_failures": 0,
+      "budget_fallbacks": 0,
+      "literal_counts": {
+        "filter_references": 4,
+        "other_annotation_references": 1,
+        "ordering_references": 7,
+        "aggregation_decision": 6
+      },
+      "literal_counts_before": {
+        "filter_references": 4,
+        "other_annotation_references": 1,
+        "ordering_references": 7,
+        "aggregation_decision": 6
+      },
+      "pointer_coverage": true
+    },
+    {
+      "index": 6,
+      "item_count": 15,
+      "tool_calls": 6,
+      "elidable_calls": 5,
+      "protected_calls": 1,
+      "elidable_indices": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "before_bytes": 16709,
+      "after_bytes": 7355,
+      "elided_sources_total": 15,
+      "fallback_reason": "",
+      "task_anchor_restore_failures": 0,
+      "budget_fallbacks": 0,
+      "literal_counts": {
+        "filter_references": 6,
+        "other_annotation_references": 1,
+        "ordering_references": 7,
+        "aggregation_decision": 6
+      },
+      "literal_counts_before": {
+        "filter_references": 6,
+        "other_annotation_references": 1,
+        "ordering_references": 7,
+        "aggregation_decision": 6
+      },
+      "pointer_coverage": true
+    }
+  ],
+  "elidable_indices_non_empty": true,
+  "total_elided_sources": 15,
+  "total_elided_lines": 632,
+  "total_kept_literal_lines": 36,
+  "task_anchor_restore_failures": 0,
+  "budget_fallbacks": 0,
+  "fallback_reasons": {},
+  "literal_regressions": [],
+  "baseline_payload_bytes": 63026,
+  "plugin_payload_bytes": 38569,
+  "byte_saving_rate": 0.3880462031542538,
+  "recorded_reference": {
+    "paid_baseline_complete_total_tokens": 17187.0,
+    "paid_plugin_complete_total_tokens": 17187.0,
+    "paid_paired_saving": -4e-06,
+    "note": "the v9 paid batch measured an identical payload; the replay projects what this mechanism would send on the same recorded structure"
+  },
+  "pre_registered_outcomes": {
+    "positive": "elidable indices non-empty and projection positive -> paid batch allowed",
+    "empty": "nothing elidable -> close out this host, no request"
+  },
+  "verdict": "positive"
+}

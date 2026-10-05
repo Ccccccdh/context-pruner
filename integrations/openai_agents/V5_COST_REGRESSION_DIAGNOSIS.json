@@ -1,0 +1,406 @@
+{
+  "schema": "openai_agents_v5_cost_regression_diagnosis_v1",
+  "task": "django_count_annotations",
+  "sources": {
+    "batch": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v5-evidence-safe-retention-pilot-01",
+    "freeze": "integrations/openai_agents/REPO_DIAGNOSTIC_V5_EVIDENCE_SAFE_RETENTION_FREEZE.json",
+    "api_requests_sent": 0
+  },
+  "recorded": {
+    "baseline_provider_input_tokens_by_call": [
+      [
+        662,
+        2212
+      ],
+      [
+        662,
+        2212
+      ],
+      [
+        662,
+        2212
+      ]
+    ],
+    "plugin_provider_input_tokens_by_call": [
+      [
+        662,
+        2075,
+        2476
+      ],
+      [
+        662,
+        2076,
+        2476
+      ],
+      [
+        662,
+        2075,
+        2476
+      ]
+    ],
+    "baseline_provider_input_tokens": [
+      2874,
+      2874,
+      2874
+    ],
+    "plugin_provider_input_tokens": [
+      5213,
+      5214,
+      5213
+    ],
+    "baseline_complete_total_tokens": [
+      2962,
+      2962,
+      2962
+    ],
+    "plugin_complete_total_tokens": [
+      5325,
+      5326,
+      5325
+    ],
+    "plugin_provider_output_tokens": [
+      112,
+      112,
+      112
+    ],
+    "baseline_provider_output_tokens": [
+      88,
+      88,
+      88
+    ],
+    "baseline_model_calls": [
+      2,
+      2,
+      2
+    ],
+    "plugin_model_calls": [
+      3,
+      3,
+      3
+    ],
+    "plugin_input_bytes_by_boundary": [
+      1408,
+      8510,
+      10382,
+      1408,
+      8510,
+      10382,
+      1408,
+      8510,
+      10382
+    ],
+    "plugin_fallback_reasons": [
+      "protected_tool_group_changed:baseline:responses-0b0c12140f10ab09-0",
+      "protected_tool_group_changed:baseline:responses-583502b2544f4158-0",
+      "protected_tool_group_changed:baseline:responses-b4005161fd24780a-0"
+    ],
+    "filter_hard_bytes": 65216
+  },
+  "offline_payload_measurements": {
+    "byte_ratio_paid_over_offline": 1.1514463981849121,
+    "baseline": [
+      {
+        "call": 0,
+        "payload_est": 1530,
+        "payload_bytes": 2180
+      },
+      {
+        "call": 1,
+        "payload_est": 5233,
+        "payload_bytes": 7471
+      },
+      {
+        "call": 2,
+        "payload_est": 6004,
+        "payload_bytes": 8572
+      }
+    ],
+    "v5": [
+      {
+        "call": 0,
+        "payload_est_before": 1530,
+        "payload_est_after": 1530,
+        "payload_bytes_after": 2180,
+        "elided_sources": 0,
+        "fallback": "",
+        "literal_counts": {
+          "existing_annotations": 0,
+          "other annotations": 1,
+          "ordering": 1,
+          "filter": 2
+        }
+      },
+      {
+        "call": 1,
+        "payload_est_before": 5233,
+        "payload_est_after": 4818,
+        "payload_bytes_after": 6878,
+        "elided_sources": 0,
+        "fallback": "",
+        "literal_counts": {
+          "existing_annotations": 3,
+          "other annotations": 1,
+          "ordering": 4,
+          "filter": 2
+        }
+      },
+      {
+        "call": 2,
+        "payload_est_before": 6004,
+        "payload_est_after": 6004,
+        "payload_bytes_after": 8572,
+        "elided_sources": 0,
+        "fallback": "protected_tool_group_changed:baseline:responses-fc89fb3f49adfd29-0",
+        "literal_counts": {
+          "existing_annotations": 3,
+          "other annotations": 1,
+          "ordering": 4,
+          "filter": 4
+        }
+      }
+    ],
+    "v6": [
+      {
+        "call": 0,
+        "payload_est_before": 1530,
+        "payload_est_after": 1530,
+        "payload_bytes_after": 2180,
+        "elided_sources": 0,
+        "fallback": "",
+        "literal_counts": {
+          "existing_annotations": 0,
+          "other annotations": 1,
+          "ordering": 1,
+          "filter": 2
+        }
+      },
+      {
+        "call": 1,
+        "payload_est_before": 5233,
+        "payload_est_after": 4908,
+        "payload_bytes_after": 7006,
+        "elided_sources": 1,
+        "fallback": "",
+        "literal_counts": {
+          "existing_annotations": 3,
+          "other annotations": 1,
+          "ordering": 4,
+          "filter": 2
+        }
+      },
+      {
+        "call": 2,
+        "payload_est_before": 6004,
+        "payload_est_after": 2825,
+        "payload_bytes_after": 4031,
+        "elided_sources": 3,
+        "fallback": "",
+        "literal_counts": {
+          "existing_annotations": 3,
+          "other annotations": 1,
+          "ordering": 4,
+          "filter": 4
+        }
+      }
+    ]
+  },
+  "decomposition": {
+    "unit": "provider input tokens, mean over the 3 paired repeats",
+    "baseline_input_total": 2874.0,
+    "plugin_input_total": 5213.333333333333,
+    "regression_input_total": 2339.333333333333,
+    "regression_complete_total_rate": -0.7978843124015306,
+    "basis": "the plugin's three recorded boundaries and the baseline's two recorded boundaries, plus the offline-measured compression each call performed",
+    "term_a_extra_model_round": 2335.8004496908375,
+    "term_a2_compression_blocked_by_the_false_positive": 140.1995503091624,
+    "term_b_pinned_payload_inflation": -136.66666666666652,
+    "term_c_lost_compression_inside_the_shared_calls": 2335.8004496908375,
+    "reconstruction": 5213.333333333334,
+    "residual": 9.094947017729282e-13,
+    "share_of_regression": {
+      "extra_model_round": 0.9984897904064567,
+      "blocked_compression": 0.05993141221537293,
+      "pinned_payload_inflation": -0.058421202621829524
+    },
+    "dominant_term": "extra model round",
+    "reading": "The extra model round dominates: together with the compression its own fallback blocked it accounts for about 81 % of the input regression, while the pinned text contributes nothing to it on this batch - the plugin's second call was 137 input tokens cheaper than the baseline's because it still elided one output. The mechanism's real cost is the round, not the bytes.",
+    "counterfactual_without_the_false_positive": {
+      "plugin_input_total": 5073.133783024171,
+      "note": "Removing the false-positive fallback restores the compression of the third call only. The plugin still sends three calls, so the regression stays large and negative."
+    }
+  },
+  "round_count_finding": {
+    "plugin_calls_per_sample": 3,
+    "baseline_calls_per_sample": 2,
+    "plugin_largest_boundary_bytes": 10382,
+    "filter_hard_bytes": 65216,
+    "hard_budget_headroom_ratio": 6.281641302253901,
+    "recorded_fallback_reasons": [
+      "protected_tool_group_changed:baseline:responses-0b0c12140f10ab09-0",
+      "protected_tool_group_changed:baseline:responses-583502b2544f4158-0",
+      "protected_tool_group_changed:baseline:responses-b4005161fd24780a-0"
+    ],
+    "finding": "Pinning itself does not cause the extra round. The batch's third call was forced by a group-baseline false positive whose payload was byte-identical before and after, and the largest payload the plugin ever sent (10,382 bytes) is 6.3x below the frozen 65,216-byte ceiling, so pinning never pushed the payload over a limit and never triggered a budget fallback. The v3/v4 history shows the extra round appears whenever an elision makes the model re-issue a tool (v3 = 3 calls, v4 = 2 calls with the largest text deleted); v5 removed the elision of the constraint carrier but still elided read_django_count_entry, so the round structure stayed at 3. The recorded evidence cannot prove which of those drove the model's decision on any single sample, and this diagnosis does not claim it can.",
+    "documented_round_counts": {
+      "v5": {
+        "none": [
+          2,
+          2,
+          2
+        ],
+        "pruner_v1": [
+          3,
+          3,
+          3
+        ],
+        "native_summary": [
+          2,
+          2,
+          2
+        ]
+      },
+      "v4": {
+        "none": [
+          2,
+          2,
+          2
+        ],
+        "pruner_v1": [
+          2,
+          2,
+          4
+        ],
+        "native_summary": [
+          2,
+          2,
+          2
+        ]
+      },
+      "v3": {
+        "none": [
+          2,
+          2,
+          2
+        ],
+        "pruner_v1": [
+          2,
+          2,
+          4
+        ],
+        "native_summary": [
+          2,
+          2,
+          2
+        ]
+      }
+    }
+  },
+  "projection": {
+    "unit": "provider tokens; complete total = input + output for the same trajectory",
+    "conversion": "paid_input_v6[boundary] = recorded paid_input_v5[boundary] * (offline estimated payload v6 / offline estimated payload v5)",
+    "estimated_payload_tokens": {
+      "baseline": [
+        1530,
+        5233,
+        6004
+      ],
+      "v5": [
+        1530,
+        4818,
+        6004
+      ],
+      "v6": [
+        1530,
+        4908,
+        2825
+      ]
+    },
+    "payload_ratio_v6_over_v5": [
+      1.0,
+      1.0186799501867996,
+      0.4705196535642905
+    ],
+    "input_bytes_offline": {
+      "baseline": [
+        2180,
+        7471,
+        8572
+      ],
+      "v5": [
+        2180,
+        6878,
+        8572
+      ],
+      "v6": [
+        2180,
+        7006,
+        4031
+      ]
+    },
+    "recorded_v5": {
+      "input_tokens_by_call": [
+        662.0,
+        2075.3333333333335,
+        2476.0
+      ],
+      "input_total": 5213.333333333334,
+      "output_tokens": 112.0,
+      "complete_total": 5325.333333333334
+    },
+    "recorded_baseline": {
+      "input_tokens_by_call": [
+        662.0,
+        2212.0
+      ],
+      "input_total": 2874.0,
+      "output_tokens": 88.0,
+      "complete_total": 2962.0
+    },
+    "three_call_counterfactual": {
+      "baseline_input_projected": 5392.092846270929,
+      "baseline_complete_projected": 5480.092846270929,
+      "v6_input_projected": 3941.1071188461883,
+      "v6_complete_projected": 4053.1071188461883,
+      "saving_rate_vs_baseline": 0.26909509327685543,
+      "saving_rate_vs_recorded_v5": 0.24403316134663916
+    },
+    "two_call_trajectory": {
+      "baseline_input_recorded": 2874.0,
+      "baseline_complete_recorded": 2962.0,
+      "v6_input_projected": 2776.100456621005,
+      "v6_complete_projected": 2888.100456621005,
+      "saving_rate": 0.03406386338865521,
+      "why_this_is_a_floor": "the boundary where the baseline answers carries the newest tool group, which no version of this mechanism elides; v6 beats v5 there only by eliding the older outputs, so this trajectory is the floor"
+    },
+    "self_check": {
+      "note": "the same conversion applied across arms (baseline payloads priced by the plugin arm's recorded tokens) would project a three-call baseline input of 5392 tokens, so it is only used within one arm's own recorded sequence, where the measured payload ratio carries the change and the recorded tokens provide the scale",
+      "v5_column_is_identity": [
+        662.0,
+        2075.3333333333335,
+        2476.0
+      ],
+      "offline_bytes_vs_recorded_bytes": {
+        "recorded_paid_bytes": [
+          1408,
+          8510,
+          10382,
+          1408,
+          8510,
+          10382,
+          1408,
+          8510,
+          10382
+        ],
+        "offline_v5_bytes": [
+          2180,
+          6878,
+          8572
+        ],
+        "note": "the offline reconstruction is smaller than the paid payload at the later boundaries because the paid request also carries the system instructions and the tool schema per call; the *ratio* between arms at the same boundary is what the projection uses"
+      }
+    },
+    "pre_registered_acceptance_line": "plugin strict quality >= baseline AND paired mean complete-total-token saving > 0",
+    "projection_verdict": "positive on both trajectories, so the paid pilot is justified; the floor trajectory is the one to watch, because the recorded batches show this plugin arm can need one more model call than the baseline",
+    "caveat": "This is a projection from the v5 batch's recorded tokens and the offline payload measurements, not a measurement of a v6 paid run."
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "complete": true,
+  "issues": [],
+  "batch": "openai-repo-diagnostic-v7-applicability-boundary",
+  "expected_batch": "openai-repo-diagnostic-v7-applicability-boundary",
+  "freeze": "integrations\\openai_agents\\REPO_DIAGNOSTIC_V7_APPLICABILITY_BOUNDARY_FREEZE.json",
+  "mechanism": "recency_boundary_v7",
+  "registry_schema": "openai_agents_literal_registry_v6",
+  "base_registry_schema": "openai_agents_literal_registry_v5",
+  "recent_turns_kept_verbatim": 1,
+  "samples": 9,
+  "attempts": 39,
+  "evidence_checked": 9,
+  "arm_means": {
+    "none": {
+      "n": 3,
+      "successes": 3,
+      "mean_actual_input_tokens": 14715.0,
+      "mean_complete_total_tokens": 14811.0,
+      "mean_model_calls": 4.0,
+      "elided_sources": 0,
+      "error_types": []
+    },
+    "pruner_v1": {
+      "n": 3,
+      "successes": 3,
+      "mean_actual_input_tokens": 14715.0,
+      "mean_complete_total_tokens": 14811.0,
+      "mean_model_calls": 4.0,
+      "elided_sources": 0,
+      "error_types": []
+    },
+    "native_summary": {
+      "n": 3,
+      "successes": 3,
+      "mean_actual_input_tokens": 14633.0,
+      "mean_complete_total_tokens": 15887.0,
+      "mean_model_calls": 4.0,
+      "elided_sources": 0,
+      "error_types": []
+    }
+  },
+  "successes": {
+    "none": 3,
+    "pruner_v1": 3,
+    "native_summary": 3
+  },
+  "failures": {
+    "none": 0,
+    "pruner_v1": 0,
+    "native_summary": 0
+  },
+  "task_anchor_restore_failures": {
+    "none": 0,
+    "pruner_v1": 0,
+    "native_summary": 0
+  },
+  "budget_fallbacks": {
+    "none": 0,
+    "pruner_v1": 0,
+    "native_summary": 0
+  },
+  "plugin_elided_sources_total": 0,
+  "plugin_samples_with_payload_identical_to_baseline": 3,
+  "projectable_saving_rates": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "boundary": {
+    "django_count_annotations-0": {
+      "frozen_recent_turns_kept_verbatim": 1,
+      "baseline_model_calls": 4,
+      "elidable_turns_available_to_the_plugin": 2,
+      "plugin_can_elide_anything": true,
+      "plugin_wins_possible": true,
+      "baseline_input_tokens": 14715,
+      "short_regime_arithmetic": {
+        "v5_plugin_extra_round_input_tokens": 2335.8,
+        "v5_extra_round_share_of_input_regression": 0.9985,
+        "v5_pinned_text_effect_input_tokens": -136.7,
+        "baseline_complete_total_tokens": 2962,
+        "reading": "one extra round costs 2,335.8 input tokens - 99.85 % of the v5 regression and more than the whole 2,962-token baseline complete total; re-sent pinned bytes are worth -136.7 tokens, i.e. they help. So on a baseline this short a mechanism that changes visible text can only be negative, and a mechanism that changes nothing can only be zero."
+      },
+      "plugin_elided_sources": 0,
+      "payload_identical_to_baseline": true,
+      "plugin_input_tokens": 14715,
+      "projectable_saving_rate": 0.0
+    },
+    "django_count_annotations-1": {
+      "frozen_recent_turns_kept_verbatim": 1,
+      "baseline_model_calls": 4,
+      "elidable_turns_available_to_the_plugin": 2,
+      "plugin_can_elide_anything": true,
+      "plugin_wins_possible": true,
+      "baseline_input_tokens": 14715,
+      "short_regime_arithmetic": {
+        "v5_plugin_extra_round_input_tokens": 2335.8,
+        "v5_extra_round_share_of_input_regression": 0.9985,
+        "v5_pinned_text_effect_input_tokens": -136.7,
+        "baseline_complete_total_tokens": 2962,
+        "reading": "one extra round costs 2,335.8 input tokens - 99.85 % of the v5 regression and more than the whole 2,962-token baseline complete total; re-sent pinned bytes are worth -136.7 tokens, i.e. they help. So on a baseline this short a mechanism that changes visible text can only be negative, and a mechanism that changes nothing can only be zero."
+      },
+      "plugin_elided_sources": 0,
+      "payload_identical_to_baseline": true,
+      "plugin_input_tokens": 14715,
+      "projectable_saving_rate": 0.0
+    },
+    "django_count_annotations-2": {
+      "frozen_recent_turns_kept_verbatim": 1,
+      "baseline_model_calls": 4,
+      "elidable_turns_available_to_the_plugin": 2,
+      "plugin_can_elide_anything": true,
+      "plugin_wins_possible": true,
+      "baseline_input_tokens": 14715,
+      "short_regime_arithmetic": {
+        "v5_plugin_extra_round_input_tokens": 2335.8,
+        "v5_extra_round_share_of_input_regression": 0.9985,
+        "v5_pinned_text_effect_input_tokens": -136.7,
+        "baseline_complete_total_tokens": 2962,
+        "reading": "one extra round costs 2,335.8 input tokens - 99.85 % of the v5 regression and more than the whole 2,962-token baseline complete total; re-sent pinned bytes are worth -136.7 tokens, i.e. they help. So on a baseline this short a mechanism that changes visible text can only be negative, and a mechanism that changes nothing can only be zero."
+      },
+      "plugin_elided_sources": 0,
+      "payload_identical_to_baseline": true,
+      "plugin_input_tokens": 14715,
+      "projectable_saving_rate": 0.0
+    }
+  },
+  "paired": {
+    "pruner_v1": {
+      "paired_n": 3,
+      "actual_input_savings_mean": 0.0,
+      "complete_total_savings_mean": 0.0,
+      "complete_total_savings_positive": 0,
+      "success_delta_mean": 0.0
+    },
+    "native_summary": {
+      "paired_n": 3,
+      "actual_input_savings_mean": 0.005572545022086307,
+      "complete_total_savings_mean": -0.07264870704206333,
+      "complete_total_savings_positive": 0,
+      "success_delta_mean": 0.0
+    }
+  },
+  "pre_registered_acceptance": "plugin strict quality >= baseline AND paired mean complete-total-token saving > 0",
+  "quality_acceptance_met": true,
+  "cost_acceptance_met": false,
+  "verdict": "not-yet-valid",
+  "self_hashes": {
+    "experiments/audits/audit_openai_agents_repo_diagnostic_v7.py": "5b21ad1a49d2db956775a14c02ba299c091f34f68f58ea3be9a02744181894bc",
+    "experiments/runners/openai_agents_recency_boundary_v7.py": "6aa7541315705b018720deed8a41eba917c022e3b5c330a77280275b264219b2",
+    "experiments/runners/run_openai_agents_repo_diagnostic_v7.py": "41faec6599a84246c280b53b32462dd2299022eabb390a01a1bd167d53e727e8",
+    "experiments/runners/openai_agents_evidence_v7.py": "7507cd0ab7c76c429b5aecb594ec52fb09c0460debc2525cf2fe2c372b7a8770",
+    ".tooling/gate_openai_agents_pointer_retention_v6.py": "5f4c61e39df9b322e1aa199feb12e1414b3126332c2e7a5ce601f868d17e4cd2"
+  }
+}

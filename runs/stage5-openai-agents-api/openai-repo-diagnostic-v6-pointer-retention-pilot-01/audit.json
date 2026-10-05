@@ -1,0 +1,233 @@
+{
+  "complete": true,
+  "issues": [],
+  "batch": "openai-repo-diagnostic-v6-pointer-retention-pilot-01",
+  "expected_batch": "openai-repo-diagnostic-v6-pointer-retention-pilot-01",
+  "freeze": "integrations\\openai_agents\\REPO_DIAGNOSTIC_V6_POINTER_RETENTION_FREEZE.json",
+  "mechanism": "span_retention_v6",
+  "registry_schema": "openai_agents_literal_registry_v6",
+  "base_registry_schema": "openai_agents_literal_registry_v5",
+  "samples": 9,
+  "attempts": 33,
+  "evidence_checked": 9,
+  "successes": {
+    "none": 2,
+    "pruner_v1": 0,
+    "native_summary": 3
+  },
+  "failures": {
+    "none": 0,
+    "pruner_v1": 2,
+    "native_summary": 0
+  },
+  "task_anchor_restore_failures": {
+    "none": 0,
+    "pruner_v1": 0,
+    "native_summary": 0
+  },
+  "samples_with_a_missing_registered_literal": {
+    "none": 0,
+    "pruner_v1": 0,
+    "native_summary": 0
+  },
+  "arm_means": {
+    "none": {
+      "n": 3,
+      "successes": 2,
+      "inputs": [
+        2874,
+        5828,
+        2874
+      ],
+      "complete_totals": [
+        2962,
+        5949,
+        2962
+      ],
+      "model_calls": [
+        2,
+        4,
+        2
+      ],
+      "mean_actual_input_tokens": 3858.6666666666665,
+      "mean_complete_total_tokens": 3957.6666666666665,
+      "mean_model_calls": 2.6666666666666665,
+      "error_types": []
+    },
+    "pruner_v1": {
+      "n": 3,
+      "successes": 0,
+      "inputs": [
+        12813,
+        12816,
+        4861
+      ],
+      "complete_totals": [
+        13066,
+        13069,
+        4984
+      ],
+      "model_calls": [
+        6,
+        6,
+        4
+      ],
+      "mean_actual_input_tokens": 10163.333333333334,
+      "mean_complete_total_tokens": 10373.0,
+      "mean_model_calls": 5.333333333333333,
+      "error_types": [
+        "MaxTurnsExceeded"
+      ]
+    },
+    "native_summary": {
+      "n": 3,
+      "successes": 3,
+      "inputs": [
+        2874,
+        2874,
+        2874
+      ],
+      "complete_totals": [
+        3374,
+        3379,
+        3379
+      ],
+      "model_calls": [
+        2,
+        2,
+        2
+      ],
+      "mean_actual_input_tokens": 2874.0,
+      "mean_complete_total_tokens": 3377.3333333333335,
+      "mean_model_calls": 2.0,
+      "error_types": []
+    }
+  },
+  "plugin_samples_needing_extra_model_calls_vs_baseline": 3,
+  "per_sample_facts": {
+    "django_count_annotations-0-native_summary": {
+      "extra_model_calls_vs_baseline": 0,
+      "model_calls": 2,
+      "baseline_model_calls": null,
+      "elided_sources": 0,
+      "elided_lines": 0,
+      "retained_literal_lines": 0,
+      "actual_input_tokens": 2874,
+      "complete_total_tokens": 3374,
+      "success": true
+    },
+    "django_count_annotations-0-none": {
+      "extra_model_calls_vs_baseline": 0,
+      "model_calls": 2,
+      "baseline_model_calls": null,
+      "elided_sources": 0,
+      "elided_lines": 0,
+      "retained_literal_lines": 0,
+      "actual_input_tokens": 2874,
+      "complete_total_tokens": 2962,
+      "success": true
+    },
+    "django_count_annotations-0-pruner_v1": {
+      "extra_model_calls_vs_baseline": 4,
+      "model_calls": 6,
+      "baseline_model_calls": 2,
+      "elided_sources": 30,
+      "elided_lines": 1203,
+      "retained_literal_lines": 66,
+      "actual_input_tokens": 12813,
+      "complete_total_tokens": 13066,
+      "success": false
+    },
+    "django_count_annotations-1-native_summary": {
+      "extra_model_calls_vs_baseline": 0,
+      "model_calls": 2,
+      "baseline_model_calls": null,
+      "elided_sources": 0,
+      "elided_lines": 0,
+      "retained_literal_lines": 0,
+      "actual_input_tokens": 2874,
+      "complete_total_tokens": 3379,
+      "success": true
+    },
+    "django_count_annotations-1-none": {
+      "extra_model_calls_vs_baseline": 0,
+      "model_calls": 4,
+      "baseline_model_calls": null,
+      "elided_sources": 0,
+      "elided_lines": 0,
+      "retained_literal_lines": 0,
+      "actual_input_tokens": 5828,
+      "complete_total_tokens": 5949,
+      "success": false
+    },
+    "django_count_annotations-1-pruner_v1": {
+      "extra_model_calls_vs_baseline": 2,
+      "model_calls": 6,
+      "baseline_model_calls": 4,
+      "elided_sources": 30,
+      "elided_lines": 1203,
+      "retained_literal_lines": 66,
+      "actual_input_tokens": 12816,
+      "complete_total_tokens": 13069,
+      "success": false
+    },
+    "django_count_annotations-2-native_summary": {
+      "extra_model_calls_vs_baseline": 0,
+      "model_calls": 2,
+      "baseline_model_calls": null,
+      "elided_sources": 0,
+      "elided_lines": 0,
+      "retained_literal_lines": 0,
+      "actual_input_tokens": 2874,
+      "complete_total_tokens": 3379,
+      "success": true
+    },
+    "django_count_annotations-2-none": {
+      "extra_model_calls_vs_baseline": 0,
+      "model_calls": 2,
+      "baseline_model_calls": null,
+      "elided_sources": 0,
+      "elided_lines": 0,
+      "retained_literal_lines": 0,
+      "actual_input_tokens": 2874,
+      "complete_total_tokens": 2962,
+      "success": true
+    },
+    "django_count_annotations-2-pruner_v1": {
+      "extra_model_calls_vs_baseline": 2,
+      "model_calls": 4,
+      "baseline_model_calls": 2,
+      "elided_sources": 3,
+      "elided_lines": 130,
+      "retained_literal_lines": 6,
+      "actual_input_tokens": 4861,
+      "complete_total_tokens": 4984,
+      "success": false
+    }
+  },
+  "paired": {
+    "pruner_v1": {
+      "paired_n": 3,
+      "actual_input_savings_mean": -1.7828854598864183,
+      "complete_total_savings_mean": -1.7635651026825776,
+      "complete_total_savings_positive": 0,
+      "success_delta_mean": -0.6666666666666666
+    },
+    "native_summary": {
+      "paired_n": 3,
+      "actual_input_savings_mean": 0.16895447266071836,
+      "complete_total_savings_mean": 0.050708972851880335,
+      "complete_total_savings_positive": 1,
+      "success_delta_mean": 0.3333333333333333
+    }
+  },
+  "pre_registered_acceptance": "plugin strict quality >= baseline AND paired mean complete-total-token saving > 0",
+  "quality_acceptance_met": false,
+  "cost_acceptance_met": false,
+  "verdict": "not-yet-valid",
+  "self_hashes": {
+    "experiments/audits/audit_openai_agents_repo_diagnostic_v6.py": "0969afdde61a25bdcedfb732fef34846c5d7b7df317c3ba45ae89b7a9172f0ca",
+    ".tooling/gate_openai_agents_pointer_retention_v6.py": "5f4c61e39df9b322e1aa199feb12e1414b3126332c2e7a5ce601f868d17e4cd2",
+    ".tooling/diagnose_v5_cost_regression.py": "337904beee8b79a773d1bbf73cc7a970a22a82f4a8c4168451a25213f22425a9"
+  }
+}

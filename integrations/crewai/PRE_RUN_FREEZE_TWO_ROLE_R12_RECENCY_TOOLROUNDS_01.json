@@ -1,0 +1,101 @@
+{
+  "batch": "crewai-two-role-r12-recency-toolrounds-01",
+  "samples": 48,
+  "manifest": {
+    "protocol": "crewai-two-role-r12-recency-tool-rounds",
+    "runner_sha256": "4958e6e6467298841e3f1b790600a452bec98e8a6197871a77d3d976b17b8631",
+    "mechanism_sha256": "a69513e210cdb23c62ecac7c897baaee5a77375fa9531ce7b45e89eb7df5ef26",
+    "pinned_evidence_sha256": "5ccc86abf9032df6abbdfddca2c108221e9121e98eb7aedc6ff2ad663fd6ade4",
+    "task_sha256": "873a306b109ee438e6513870bbbd5f25410a98865f8aff0fcd44d5279793aa0f",
+    "judge_sha256": "26aea58bbbe57aa6fc451e00436254636cc01df97c0ec33d321cad73924304e1",
+    "judge_routing_sha256": "837cb02d3de11efc892f4382c451b10ebbf0f557002ed33e7f2ab7dbd646c477",
+    "tasks": [
+      "credential_rotation",
+      "shard_split",
+      "batch_replay",
+      "window_gate"
+    ],
+    "methods": [
+      "none",
+      "pruner_v1",
+      "native_summary"
+    ],
+    "repeats": 4,
+    "model": "deepseek-v4-flash",
+    "mode": "api",
+    "base_url": "https://api.deepseek.com",
+    "budget": {
+      "host": "crewai",
+      "calibration_ratio_provider_per_estimated": 0.389,
+      "provider_tokens": {
+        "soft": 1200,
+        "hard": 3000,
+        "target": 900
+      },
+      "estimated_tokens": {
+        "soft": 3085,
+        "hard": 7712,
+        "target": 2314
+      },
+      "note": "Budgets are declared in provider tokens and converted with a measured ratio."
+    },
+    "limits": {
+      "fixed_reserved_tokens": 300,
+      "max_output_tokens": 512,
+      "max_summary_tokens": 1024,
+      "max_summary_calls": 4
+    },
+    "max_api_requests": 440,
+    "quality_gates": [
+      "strict",
+      "semantic",
+      "first_pass_facts",
+      "tool_sequence_consistent"
+    ],
+    "failure_policy": "preserve sample failure and continue unless provider unavailable or request cap"
+  },
+  "source_sha256": {
+    "experiments/audits/audit_crewai_handoff_v12.py": "47bde9d649957464fca8757de9b5a3c8b6cd1c92c540687bfcc0a29b515e60a8",
+    "experiments/runners/crewai_pinned_evidence_v9.py": "5ccc86abf9032df6abbdfddca2c108221e9121e98eb7aedc6ff2ad663fd6ade4",
+    "experiments/runners/crewai_recency_tool_rounds_v12.py": "a69513e210cdb23c62ecac7c897baaee5a77375fa9531ce7b45e89eb7df5ef26",
+    "experiments/runners/crewai_semantic_equivalence_v12.py": "837cb02d3de11efc892f4382c451b10ebbf0f557002ed33e7f2ab7dbd646c477",
+    "experiments/runners/crewai_semantic_equivalence_v8.py": "26aea58bbbe57aa6fc451e00436254636cc01df97c0ec33d321cad73924304e1",
+    "experiments/runners/run_crewai_experiment.py": "0c0cd1d3e30ea837b323e1318321804433c20f8c9fdcd3a40b42deb1849554f1",
+    "experiments/runners/run_crewai_handoff_v12.py": "4958e6e6467298841e3f1b790600a452bec98e8a6197871a77d3d976b17b8631",
+    "experiments/runners/run_crewai_handoff_v4.py": "8aa75353bd7a5b4cffea5bd0233a82583d5c4ac34d83c2bac0672117edd078cf",
+    "integrations/crewai/PILOT_PROTOCOL_TWO_ROLE_R12_RECENCY_TOOLROUNDS_01.md": "5fad7eb275d572dc926acbb3ac2c250a99b1410ecbced2af97f7534f43c1a7f6",
+    "tasks/stage5_autogen/natural_tasks_r10.json": "873a306b109ee438e6513870bbbd5f25410a98865f8aff0fcd44d5279793aa0f"
+  },
+  "first_pass_gate": {
+    "name": "first_pass_facts",
+    "definition": "the first-role HANDOFF line emitted before any remedy call carries every literal of the frozen handle_facts list of its task under the frozen semantic judge, is single-line and within the 450-character contract",
+    "reported_with": [
+      "strict",
+      "semantic",
+      "tool_sequence_consistent"
+    ],
+    "saving_requires": "tool-sequence consistency, strict and semantic quality non-inferior to the uncompressed arm, first-pass completeness recorded, and complete total tokens positive"
+  },
+  "tool_sequence_gate": {
+    "name": "tool_sequence_consistent",
+    "definition": "the first role's recorded tool trace equals the frozen task's tool list for that role, in the frozen order, once per tool; tool_sequence_matches_baseline additionally requires equality with the uncompressed arm's recorded trace for the same task and repeat",
+    "reported_with": [
+      "strict",
+      "semantic",
+      "first_pass_facts"
+    ],
+    "acceptance": "plugin tool-sequence consistency and strict/semantic quality must not be worse than the uncompressed arm, and complete total tokens must be positive"
+  },
+  "mechanism_rules": {
+    "structure_rule": "experiments/runners/crewai_recency_tool_rounds_v12.py",
+    "k_recent_tool_rounds": 1,
+    "how": "the newest K protected tool-group placeholders of the prepared (pre-compression) list are re-appended verbatim when the compressed view dropped them, so the adapter restores the real tool messages byte-for-byte; no host instruction message is added anywhere",
+    "omissions": "only older tool rounds may be folded away; every omitted round is counted per call and per sample, and the frozen v9 fact pins plus the counted tier-3 whole-prefix fallback still constrain what an omission may lose",
+    "unchanged": [
+      "experiments/runners/crewai_pinned_evidence_v9.py",
+      "experiments/runners/crewai_semantic_equivalence_v8.py",
+      "tasks/stage5_autogen/natural_tasks_r10.json"
+    ],
+    "removed_after_r11": "no directive message: r11's tool-sequence directive was self-maintaining and looped the first role on one tool in 12/16 samples"
+  }
+}

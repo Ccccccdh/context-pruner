@@ -1,0 +1,88 @@
+{
+  "batch": "crewai-two-role-r10-fresh-multitask-01",
+  "samples": 48,
+  "manifest": {
+    "protocol": "crewai-two-role-r10-fresh-task-confirmation",
+    "runner_sha256": "562084c2995832680ad4b32e3bc22d3080a81e181675c2d83ae9e3da0732db54",
+    "mechanism_sha256": "5ccc86abf9032df6abbdfddca2c108221e9121e98eb7aedc6ff2ad663fd6ade4",
+    "task_sha256": "873a306b109ee438e6513870bbbd5f25410a98865f8aff0fcd44d5279793aa0f",
+    "judge_sha256": "26aea58bbbe57aa6fc451e00436254636cc01df97c0ec33d321cad73924304e1",
+    "judge_routing_sha256": "9320fa11daed4efd8026f52cf4323e95d0ffa1e34c6680b89b81242e642adcfd",
+    "tasks": [
+      "credential_rotation",
+      "shard_split",
+      "batch_replay",
+      "window_gate"
+    ],
+    "methods": [
+      "none",
+      "pruner_v1",
+      "native_summary"
+    ],
+    "repeats": 4,
+    "model": "deepseek-v4-flash",
+    "mode": "api",
+    "base_url": "https://api.deepseek.com",
+    "budget": {
+      "host": "crewai",
+      "calibration_ratio_provider_per_estimated": 0.389,
+      "provider_tokens": {
+        "soft": 1200,
+        "hard": 3000,
+        "target": 900
+      },
+      "estimated_tokens": {
+        "soft": 3085,
+        "hard": 7712,
+        "target": 2314
+      },
+      "note": "Budgets are declared in provider tokens and converted with a measured ratio."
+    },
+    "limits": {
+      "fixed_reserved_tokens": 300,
+      "max_output_tokens": 512,
+      "max_summary_tokens": 1024,
+      "max_summary_calls": 4
+    },
+    "max_api_requests": 440,
+    "quality_gates": [
+      "strict",
+      "semantic",
+      "first_pass_facts"
+    ],
+    "failure_policy": "preserve sample failure and continue unless provider unavailable or request cap"
+  },
+  "source_sha256": {
+    "experiments/audits/audit_crewai_handoff_v10.py": "8df81c3aad7f7525f8f1434b0048ae70bc47f86fb3949337d6179dc6e1854ce8",
+    "experiments/runners/crewai_pinned_evidence_v9.py": "5ccc86abf9032df6abbdfddca2c108221e9121e98eb7aedc6ff2ad663fd6ade4",
+    "experiments/runners/crewai_semantic_equivalence_v10.py": "9320fa11daed4efd8026f52cf4323e95d0ffa1e34c6680b89b81242e642adcfd",
+    "experiments/runners/crewai_semantic_equivalence_v8.py": "26aea58bbbe57aa6fc451e00436254636cc01df97c0ec33d321cad73924304e1",
+    "experiments/runners/run_crewai_experiment.py": "0c0cd1d3e30ea837b323e1318321804433c20f8c9fdcd3a40b42deb1849554f1",
+    "experiments/runners/run_crewai_handoff_v10.py": "562084c2995832680ad4b32e3bc22d3080a81e181675c2d83ae9e3da0732db54",
+    "experiments/runners/run_crewai_handoff_v4.py": "8aa75353bd7a5b4cffea5bd0233a82583d5c4ac34d83c2bac0672117edd078cf",
+    "integrations/crewai/PILOT_PROTOCOL_TWO_ROLE_R10_FRESH_MULTITASK_01.md": "0648965934720122dd4ba8acb98dcf2959023c13b6d95ff6b19e7742aee45a2d",
+    "tasks/stage5_autogen/natural_tasks_r10.json": "873a306b109ee438e6513870bbbd5f25410a98865f8aff0fcd44d5279793aa0f"
+  },
+  "first_pass_gate": {
+    "name": "first_pass_facts",
+    "definition": "the first-role HANDOFF line emitted before any remedy call carries every literal of the frozen handle_facts list of its task under the frozen semantic judge, is single-line and within the 450-character contract",
+    "reported_with": [
+      "strict",
+      "semantic"
+    ],
+    "saving_requires": "strict and semantic quality non-inferior, first-pass completeness recorded, and complete total tokens positive"
+  },
+  "task_novelty": {
+    "fresh_task_file": "tasks/stage5_autogen/natural_tasks_r10.json",
+    "development_task_files": [
+      "tasks/stage5_autogen/natural_tasks.json",
+      "tasks/stage5_autogen/natural_tasks_r5.json",
+      "tasks/stage5_autogen/natural_tasks_r6.json",
+      "tasks/stage5_autogen/natural_tasks_r7.json",
+      "tasks/stage5_autogen/natural_tasks_r8.json"
+    ],
+    "mechanism": "experiments/runners/crewai_pinned_evidence_v9.py",
+    "judge_rules": "experiments/runners/crewai_semantic_equivalence_v8.py",
+    "judge_routing": "experiments/runners/crewai_semantic_equivalence_v10.py"
+  }
+}

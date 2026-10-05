@@ -1,0 +1,208 @@
+{
+  "complete": true,
+  "freeze_checked": true,
+  "dry_run_mock": true,
+  "rows": 48,
+  "expected_rows": 48,
+  "request_attempts": 0,
+  "quality": {
+    "none": {
+      "n": 16,
+      "strict_success": 16,
+      "semantic_success": 16,
+      "first_pass_facts": 16,
+      "first_pass_missing_slots": 0,
+      "tool_sequence_consistent": 16,
+      "tool_sequence_matches_baseline": 16,
+      "decider_tool_sequence_consistent": 16,
+      "recovered": 0,
+      "recovery_failed": 0,
+      "complete_total_tokens": 335085,
+      "compression_events": 0,
+      "failed_or_limited": 0,
+      "summary_attempts": 0,
+      "pinned_events": 0,
+      "pinned_messages": 0,
+      "pinned_characters": 0,
+      "whole_prefix_fallbacks": 0,
+      "first_role_tool_calls": 48,
+      "recency_calls": 0,
+      "recency_protected_rounds_total": 0,
+      "recent_rounds_seen_total": 0,
+      "recent_rounds_readded_total": 0,
+      "recent_replacement_characters_total": 0,
+      "recency_omitted_tool_rounds_total": 0
+    },
+    "pruner_v1": {
+      "n": 16,
+      "strict_success": 16,
+      "semantic_success": 16,
+      "first_pass_facts": 15,
+      "first_pass_missing_slots": 3,
+      "tool_sequence_consistent": 16,
+      "tool_sequence_matches_baseline": 16,
+      "decider_tool_sequence_consistent": 16,
+      "recovered": 1,
+      "recovery_failed": 0,
+      "complete_total_tokens": 310204,
+      "compression_events": 64,
+      "failed_or_limited": 0,
+      "summary_attempts": 0,
+      "pinned_events": 64,
+      "pinned_messages": 116,
+      "pinned_characters": 20688,
+      "whole_prefix_fallbacks": 0,
+      "first_role_tool_calls": 48,
+      "recency_calls": 48,
+      "recency_protected_rounds_total": 48,
+      "recent_rounds_seen_total": 48,
+      "recent_rounds_readded_total": 0,
+      "recent_replacement_characters_total": 0,
+      "recency_omitted_tool_rounds_total": 48
+    },
+    "native_summary": {
+      "n": 16,
+      "strict_success": 16,
+      "semantic_success": 16,
+      "first_pass_facts": 16,
+      "first_pass_missing_slots": 0,
+      "tool_sequence_consistent": 16,
+      "tool_sequence_matches_baseline": 16,
+      "decider_tool_sequence_consistent": 16,
+      "recovered": 0,
+      "recovery_failed": 0,
+      "complete_total_tokens": 335085,
+      "compression_events": 0,
+      "failed_or_limited": 0,
+      "summary_attempts": 0,
+      "pinned_events": 0,
+      "pinned_messages": 0,
+      "pinned_characters": 0,
+      "whole_prefix_fallbacks": 0,
+      "first_role_tool_calls": 48,
+      "recency_calls": 0,
+      "recency_protected_rounds_total": 0,
+      "recent_rounds_seen_total": 0,
+      "recent_rounds_readded_total": 0,
+      "recent_replacement_characters_total": 0,
+      "recency_omitted_tool_rounds_total": 0
+    }
+  },
+  "pin_rules": {
+    "credential_rotation": [
+      "svc-ledger-key",
+      "ca-central-1",
+      "failed 0"
+    ],
+    "shard_split": [
+      "shard-88",
+      "tenant-lumen",
+      "target_shards 3"
+    ],
+    "batch_replay": [
+      "run-8842",
+      "step-transform",
+      "failed 0"
+    ],
+    "window_gate": [
+      "window-9930",
+      "620",
+      "failed 0"
+    ]
+  },
+  "tool_sequence_gate": {
+    "name": "tool_sequence_consistent",
+    "definition": "the first role's recorded tool trace equals the frozen task's tool list for that role, in the frozen order, once per tool; tool_sequence_matches_baseline additionally requires equality with the uncompressed arm's recorded trace for the same task and repeat",
+    "plugin_tool_sequence_consistent": 16,
+    "baseline_tool_sequence_consistent": 16,
+    "plugin_matches_baseline": 16,
+    "baseline_matches_baseline": 16,
+    "plugin_decider_tool_sequence_consistent": 16,
+    "plugin_first_role_tool_calls": 48,
+    "baseline_first_role_tool_calls": 48
+  },
+  "first_pass_gate": {
+    "name": "first_pass_facts",
+    "definition": "the first-role HANDOFF line emitted before any remedy call carries every literal of the frozen handle_facts list of its task under the frozen semantic judge, is single-line and within the 450-character contract",
+    "plugin_first_pass_facts": 15,
+    "baseline_first_pass_facts": 16,
+    "plugin_remedy_calls": 1,
+    "baseline_remedy_calls": 0,
+    "plugin_whole_prefix_fallbacks": 0
+  },
+  "structure_rule_gate": {
+    "k_recent_tool_rounds": 1,
+    "plugin_recency_calls": 48,
+    "plugin_recent_rounds_seen": 48,
+    "plugin_recent_rounds_readded": 0,
+    "plugin_recent_rounds_protected": 48,
+    "plugin_recency_omitted_tool_rounds": 48,
+    "plugin_compression_events": 64
+  },
+  "tool_sequence_non_inferior": true,
+  "quality_non_inferior": true,
+  "first_pass_non_inferior": false,
+  "complete_total_tokens_by_method": {
+    "none": 335085,
+    "native_summary": 335085,
+    "pruner_v1": 310204
+  },
+  "paired": {
+    "credential_rotation": {
+      "pruner_paired_mean_saving_percent": 8.0455,
+      "pruner_paired_positive": 4,
+      "paired_n": 4,
+      "per_repeat": [
+        7.1561,
+        7.7833,
+        8.3526,
+        8.8898
+      ]
+    },
+    "shard_split": {
+      "pruner_paired_mean_saving_percent": 8.0494,
+      "pruner_paired_positive": 4,
+      "paired_n": 4,
+      "per_repeat": [
+        7.1352,
+        7.777,
+        8.3729,
+        8.9124
+      ]
+    },
+    "batch_replay": {
+      "pruner_paired_mean_saving_percent": 8.2977,
+      "pruner_paired_positive": 4,
+      "paired_n": 4,
+      "per_repeat": [
+        7.3961,
+        8.0289,
+        8.6165,
+        9.1491
+      ]
+    },
+    "window_gate": {
+      "pruner_paired_mean_saving_percent": 5.11,
+      "pruner_paired_positive": 4,
+      "paired_n": 4,
+      "per_repeat": [
+        0.2288,
+        6.1034,
+        6.7485,
+        7.3594
+      ]
+    }
+  },
+  "plugin_paired_mean_saving_percent": 7.3757,
+  "plugin_inter_task_dispersion_percentage_points": 3.1877,
+  "still_compressible": true,
+  "boundary": "correctness_not_established",
+  "boundary_statement": "正确性门未全部通过，本批不给出边界结论。",
+  "verdict": "not_yet_valid",
+  "verdict_reason": [
+    "plugin first-pass fact completeness below the uncompressed arm (15 vs 16)",
+    "本批数字不得当作有效节省"
+  ],
+  "errors": [],
+  "errors_meaning": "non-empty errors means the batch cannot be cited as an effective saving; 本批数字不得当作有效节省"
+}

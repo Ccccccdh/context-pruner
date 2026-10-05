@@ -1,0 +1,1085 @@
+{
+  "control": "r13 tool-loop-termination control (replay, zero API)",
+  "question": "at the call where the first role stopped its tool loop, did the plugin view lack anything the uncompressed view had?",
+  "frozen_inputs": {
+    "mechanism": "experiments/runners/crewai_toolrounds_contract_v13.py",
+    "pinning": "experiments/runners/crewai_pinned_evidence_v9.py",
+    "adapter": "context_pruner/adapters/crewai.py",
+    "task_file": "tasks\\stage5_autogen\\natural_tasks_r10.json",
+    "k_recent_tool_rounds": 3
+  },
+  "layer_a_recorded_ledger": [
+    {
+      "batch": "r13",
+      "directory": "runs\\stage5-crewai\\crewai-two-role-r13-toolrounds-and-contract-01",
+      "rows": 48,
+      "plugin_quality_failure_samples": 4,
+      "replayed_quality_failures": 4,
+      "replayed_quality_failures_by_class": {
+        "tool_sequence": 4
+      },
+      "tool_sequence_broken": 4,
+      "tool_sequence_broken_without_trace": 0,
+      "samples_without_recorded_trace": 0,
+      "samples_without_recorded_trace_note": "these rows predate the per-row first_role_trace field, so they cannot be replayed; they are counted, not silently dropped",
+      "samples": [
+        {
+          "task_id": "credential_rotation",
+          "repeat": 1,
+          "failure_class": "tool_sequence",
+          "trace_recorded": true,
+          "plugin_first_role_trace": [
+            "get_credential_status",
+            "verify_failover_region",
+            "check_trust_chain"
+          ],
+          "plugin_first_role_tool_calls": 3,
+          "baseline_first_role_trace": [
+            "get_credential_status",
+            "check_trust_chain",
+            "verify_failover_region"
+          ],
+          "plugin": {
+            "tool_sequence_consistent": false,
+            "first_pass_complete": true,
+            "required_fact_whole_prefix_fallbacks": 0,
+            "whole_prefix_fallback_reasons": {},
+            "pin_tier_counts": {
+              "tier1_evidence_pinned": 4,
+              "tier2_task_contract": 3
+            },
+            "recency_omitted_tool_rounds_total": 0,
+            "recent_rounds_seen_total": 6,
+            "recent_rounds_readded_total": 0,
+            "compression_events": 4,
+            "role_metrics_safety": [
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              },
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              },
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              }
+            ],
+            "answer_decision_seen": "renew",
+            "answer_missing_facts": []
+          }
+        },
+        {
+          "task_id": "credential_rotation",
+          "repeat": 3,
+          "failure_class": "tool_sequence",
+          "trace_recorded": true,
+          "plugin_first_role_trace": [
+            "get_credential_status",
+            "verify_failover_region"
+          ],
+          "plugin_first_role_tool_calls": 2,
+          "baseline_first_role_trace": [
+            "get_credential_status",
+            "check_trust_chain",
+            "verify_failover_region"
+          ],
+          "plugin": {
+            "tool_sequence_consistent": false,
+            "first_pass_complete": true,
+            "required_fact_whole_prefix_fallbacks": 0,
+            "whole_prefix_fallback_reasons": {},
+            "pin_tier_counts": {
+              "tier1_evidence_pinned": 3,
+              "tier2_task_contract": 2
+            },
+            "recency_omitted_tool_rounds_total": 0,
+            "recent_rounds_seen_total": 3,
+            "recent_rounds_readded_total": 0,
+            "compression_events": 3,
+            "role_metrics_safety": [
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              },
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              },
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              }
+            ],
+            "answer_decision_seen": "renew",
+            "answer_missing_facts": []
+          }
+        },
+        {
+          "task_id": "window_gate",
+          "repeat": 1,
+          "failure_class": "tool_sequence",
+          "trace_recorded": true,
+          "plugin_first_role_trace": [
+            "check_window_lock",
+            "inspect_change_guard"
+          ],
+          "plugin_first_role_tool_calls": 2,
+          "baseline_first_role_trace": [
+            "check_window_lock",
+            "inspect_change_guard",
+            "verify_risk_review"
+          ],
+          "plugin": {
+            "tool_sequence_consistent": false,
+            "first_pass_complete": true,
+            "required_fact_whole_prefix_fallbacks": 0,
+            "whole_prefix_fallback_reasons": {},
+            "pin_tier_counts": {
+              "tier1_evidence_pinned": 3,
+              "tier2_task_contract": 2
+            },
+            "recency_omitted_tool_rounds_total": 0,
+            "recent_rounds_seen_total": 3,
+            "recent_rounds_readded_total": 0,
+            "compression_events": 3,
+            "role_metrics_safety": [
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              },
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              },
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              }
+            ],
+            "answer_decision_seen": "clear",
+            "answer_missing_facts": []
+          }
+        },
+        {
+          "task_id": "window_gate",
+          "repeat": 2,
+          "failure_class": "tool_sequence",
+          "trace_recorded": true,
+          "plugin_first_role_trace": [
+            "check_window_lock"
+          ],
+          "plugin_first_role_tool_calls": 1,
+          "baseline_first_role_trace": [
+            "check_window_lock",
+            "inspect_change_guard",
+            "verify_risk_review"
+          ],
+          "plugin": {
+            "tool_sequence_consistent": false,
+            "first_pass_complete": true,
+            "required_fact_whole_prefix_fallbacks": 0,
+            "whole_prefix_fallback_reasons": {},
+            "pin_tier_counts": {
+              "tier1_evidence_pinned": 2,
+              "tier2_task_contract": 1
+            },
+            "recency_omitted_tool_rounds_total": 0,
+            "recent_rounds_seen_total": 1,
+            "recent_rounds_readded_total": 0,
+            "compression_events": 2,
+            "role_metrics_safety": [
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              },
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              },
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              }
+            ],
+            "answer_decision_seen": "clear",
+            "answer_missing_facts": []
+          }
+        }
+      ]
+    },
+    {
+      "batch": "r12",
+      "directory": "runs\\stage5-crewai\\crewai-two-role-r12-recency-toolrounds-01",
+      "rows": 48,
+      "plugin_quality_failure_samples": 9,
+      "replayed_quality_failures": 9,
+      "replayed_quality_failures_by_class": {
+        "n/a (pre-r13 batch)": 9
+      },
+      "tool_sequence_broken": 5,
+      "tool_sequence_broken_without_trace": 0,
+      "samples_without_recorded_trace": 0,
+      "samples_without_recorded_trace_note": "these rows predate the per-row first_role_trace field, so they cannot be replayed; they are counted, not silently dropped",
+      "samples": [
+        {
+          "task_id": "credential_rotation",
+          "repeat": 0,
+          "failure_class": "n/a (pre-r13 batch)",
+          "trace_recorded": true,
+          "plugin_first_role_trace": [
+            "get_credential_status",
+            "check_trust_chain",
+            "verify_failover_region"
+          ],
+          "plugin_first_role_tool_calls": 3,
+          "baseline_first_role_trace": [
+            "get_credential_status",
+            "check_trust_chain",
+            "verify_failover_region"
+          ],
+          "plugin": {
+            "tool_sequence_consistent": true,
+            "first_pass_complete": true,
+            "required_fact_whole_prefix_fallbacks": 0,
+            "whole_prefix_fallback_reasons": {},
+            "pin_tier_counts": {
+              "tier1_evidence_pinned": 4,
+              "tier2_task_contract": 3
+            },
+            "recency_omitted_tool_rounds_total": 3,
+            "recent_rounds_seen_total": 3,
+            "recent_rounds_readded_total": 0,
+            "compression_events": 4,
+            "role_metrics_safety": [
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              },
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              },
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              }
+            ],
+            "answer_decision_seen": "",
+            "answer_missing_facts": []
+          }
+        },
+        {
+          "task_id": "credential_rotation",
+          "repeat": 1,
+          "failure_class": "n/a (pre-r13 batch)",
+          "trace_recorded": true,
+          "plugin_first_role_trace": [
+            "get_credential_status",
+            "verify_failover_region",
+            "check_trust_chain"
+          ],
+          "plugin_first_role_tool_calls": 3,
+          "baseline_first_role_trace": [
+            "get_credential_status",
+            "check_trust_chain",
+            "verify_failover_region"
+          ],
+          "plugin": {
+            "tool_sequence_consistent": false,
+            "first_pass_complete": true,
+            "required_fact_whole_prefix_fallbacks": 0,
+            "whole_prefix_fallback_reasons": {},
+            "pin_tier_counts": {
+              "tier1_evidence_pinned": 4,
+              "tier2_task_contract": 3
+            },
+            "recency_omitted_tool_rounds_total": 3,
+            "recent_rounds_seen_total": 3,
+            "recent_rounds_readded_total": 0,
+            "compression_events": 4,
+            "role_metrics_safety": [
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              },
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              },
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              }
+            ],
+            "answer_decision_seen": "renew",
+            "answer_missing_facts": []
+          }
+        },
+        {
+          "task_id": "credential_rotation",
+          "repeat": 2,
+          "failure_class": "n/a (pre-r13 batch)",
+          "trace_recorded": true,
+          "plugin_first_role_trace": [
+            "get_credential_status",
+            "verify_failover_region",
+            "check_trust_chain"
+          ],
+          "plugin_first_role_tool_calls": 3,
+          "baseline_first_role_trace": [
+            "get_credential_status",
+            "check_trust_chain",
+            "verify_failover_region"
+          ],
+          "plugin": {
+            "tool_sequence_consistent": false,
+            "first_pass_complete": true,
+            "required_fact_whole_prefix_fallbacks": 0,
+            "whole_prefix_fallback_reasons": {},
+            "pin_tier_counts": {
+              "tier1_evidence_pinned": 4,
+              "tier2_task_contract": 3
+            },
+            "recency_omitted_tool_rounds_total": 3,
+            "recent_rounds_seen_total": 3,
+            "recent_rounds_readded_total": 0,
+            "compression_events": 4,
+            "role_metrics_safety": [
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              },
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              },
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              }
+            ],
+            "answer_decision_seen": "renew",
+            "answer_missing_facts": []
+          }
+        },
+        {
+          "task_id": "credential_rotation",
+          "repeat": 3,
+          "failure_class": "n/a (pre-r13 batch)",
+          "trace_recorded": true,
+          "plugin_first_role_trace": [
+            "get_credential_status",
+            "verify_failover_region",
+            "check_trust_chain"
+          ],
+          "plugin_first_role_tool_calls": 3,
+          "baseline_first_role_trace": [
+            "get_credential_status",
+            "check_trust_chain",
+            "verify_failover_region"
+          ],
+          "plugin": {
+            "tool_sequence_consistent": false,
+            "first_pass_complete": true,
+            "required_fact_whole_prefix_fallbacks": 0,
+            "whole_prefix_fallback_reasons": {},
+            "pin_tier_counts": {
+              "tier1_evidence_pinned": 4,
+              "tier2_task_contract": 3
+            },
+            "recency_omitted_tool_rounds_total": 3,
+            "recent_rounds_seen_total": 3,
+            "recent_rounds_readded_total": 0,
+            "compression_events": 4,
+            "role_metrics_safety": [
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              },
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              },
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              }
+            ],
+            "answer_decision_seen": "renew",
+            "answer_missing_facts": []
+          }
+        },
+        {
+          "task_id": "batch_replay",
+          "repeat": 0,
+          "failure_class": "n/a (pre-r13 batch)",
+          "trace_recorded": true,
+          "plugin_first_role_trace": [
+            "inspect_failed_step",
+            "check_downstream_deps",
+            "verify_replay_safety"
+          ],
+          "plugin_first_role_tool_calls": 3,
+          "baseline_first_role_trace": [
+            "inspect_failed_step",
+            "check_downstream_deps",
+            "verify_replay_safety"
+          ],
+          "plugin": {
+            "tool_sequence_consistent": true,
+            "first_pass_complete": true,
+            "required_fact_whole_prefix_fallbacks": 0,
+            "whole_prefix_fallback_reasons": {},
+            "pin_tier_counts": {
+              "tier1_evidence_pinned": 4,
+              "tier2_task_contract": 3
+            },
+            "recency_omitted_tool_rounds_total": 3,
+            "recent_rounds_seen_total": 3,
+            "recent_rounds_readded_total": 0,
+            "compression_events": 4,
+            "role_metrics_safety": [
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              },
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              },
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              }
+            ],
+            "answer_decision_seen": "",
+            "answer_missing_facts": []
+          }
+        },
+        {
+          "task_id": "batch_replay",
+          "repeat": 1,
+          "failure_class": "n/a (pre-r13 batch)",
+          "trace_recorded": true,
+          "plugin_first_role_trace": [
+            "inspect_failed_step",
+            "check_downstream_deps",
+            "verify_replay_safety"
+          ],
+          "plugin_first_role_tool_calls": 3,
+          "baseline_first_role_trace": [
+            "inspect_failed_step",
+            "check_downstream_deps",
+            "verify_replay_safety"
+          ],
+          "plugin": {
+            "tool_sequence_consistent": true,
+            "first_pass_complete": true,
+            "required_fact_whole_prefix_fallbacks": 0,
+            "whole_prefix_fallback_reasons": {},
+            "pin_tier_counts": {
+              "tier1_evidence_pinned": 4,
+              "tier2_task_contract": 3
+            },
+            "recency_omitted_tool_rounds_total": 3,
+            "recent_rounds_seen_total": 3,
+            "recent_rounds_readded_total": 0,
+            "compression_events": 4,
+            "role_metrics_safety": [
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              },
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              },
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              }
+            ],
+            "answer_decision_seen": "",
+            "answer_missing_facts": []
+          }
+        },
+        {
+          "task_id": "batch_replay",
+          "repeat": 2,
+          "failure_class": "n/a (pre-r13 batch)",
+          "trace_recorded": true,
+          "plugin_first_role_trace": [
+            "inspect_failed_step",
+            "check_downstream_deps",
+            "verify_replay_safety"
+          ],
+          "plugin_first_role_tool_calls": 3,
+          "baseline_first_role_trace": [
+            "inspect_failed_step",
+            "check_downstream_deps",
+            "verify_replay_safety"
+          ],
+          "plugin": {
+            "tool_sequence_consistent": true,
+            "first_pass_complete": true,
+            "required_fact_whole_prefix_fallbacks": 0,
+            "whole_prefix_fallback_reasons": {},
+            "pin_tier_counts": {
+              "tier1_evidence_pinned": 4,
+              "tier2_task_contract": 3
+            },
+            "recency_omitted_tool_rounds_total": 3,
+            "recent_rounds_seen_total": 3,
+            "recent_rounds_readded_total": 0,
+            "compression_events": 4,
+            "role_metrics_safety": [
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              },
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              },
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              }
+            ],
+            "answer_decision_seen": "",
+            "answer_missing_facts": []
+          }
+        },
+        {
+          "task_id": "window_gate",
+          "repeat": 1,
+          "failure_class": "n/a (pre-r13 batch)",
+          "trace_recorded": true,
+          "plugin_first_role_trace": [
+            "check_window_lock"
+          ],
+          "plugin_first_role_tool_calls": 1,
+          "baseline_first_role_trace": [
+            "check_window_lock",
+            "inspect_change_guard",
+            "verify_risk_review"
+          ],
+          "plugin": {
+            "tool_sequence_consistent": false,
+            "first_pass_complete": true,
+            "required_fact_whole_prefix_fallbacks": 0,
+            "whole_prefix_fallback_reasons": {},
+            "pin_tier_counts": {
+              "tier1_evidence_pinned": 2,
+              "tier2_task_contract": 1
+            },
+            "recency_omitted_tool_rounds_total": 0,
+            "recent_rounds_seen_total": 1,
+            "recent_rounds_readded_total": 0,
+            "compression_events": 2,
+            "role_metrics_safety": [
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              },
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              },
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              }
+            ],
+            "answer_decision_seen": "",
+            "answer_missing_facts": []
+          }
+        },
+        {
+          "task_id": "window_gate",
+          "repeat": 2,
+          "failure_class": "n/a (pre-r13 batch)",
+          "trace_recorded": true,
+          "plugin_first_role_trace": [
+            "check_window_lock"
+          ],
+          "plugin_first_role_tool_calls": 1,
+          "baseline_first_role_trace": [
+            "check_window_lock",
+            "inspect_change_guard",
+            "verify_risk_review"
+          ],
+          "plugin": {
+            "tool_sequence_consistent": false,
+            "first_pass_complete": true,
+            "required_fact_whole_prefix_fallbacks": 0,
+            "whole_prefix_fallback_reasons": {},
+            "pin_tier_counts": {
+              "tier1_evidence_pinned": 2,
+              "tier2_task_contract": 1
+            },
+            "recency_omitted_tool_rounds_total": 0,
+            "recent_rounds_seen_total": 1,
+            "recent_rounds_readded_total": 0,
+            "compression_events": 2,
+            "role_metrics_safety": [
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              },
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              },
+              {
+                "crewai_group_restore_failure_count": 0,
+                "crewai_unmatched_call_count": 0,
+                "crewai_active_pending_view_count": 0
+              }
+            ],
+            "answer_decision_seen": "",
+            "answer_missing_facts": []
+          }
+        }
+      ]
+    },
+    {
+      "batch": "r10",
+      "directory": "runs\\stage5-crewai\\crewai-two-role-r10-fresh-multitask-01",
+      "rows": 48,
+      "plugin_quality_failure_samples": 16,
+      "replayed_quality_failures": 0,
+      "replayed_quality_failures_by_class": {},
+      "tool_sequence_broken": 0,
+      "tool_sequence_broken_without_trace": 16,
+      "samples_without_recorded_trace": 16,
+      "samples_without_recorded_trace_note": "these rows predate the per-row first_role_trace field, so they cannot be replayed; they are counted, not silently dropped",
+      "samples": []
+    }
+  ],
+  "layer_b_replay": [
+    {
+      "task_id": "credential_rotation",
+      "plugin_recorded_trace": [
+        "get_credential_status",
+        "verify_failover_region",
+        "check_trust_chain"
+      ],
+      "plugin_rounds_replayed": [
+        "get_credential_status",
+        "verify_failover_region",
+        "check_trust_chain"
+      ],
+      "baseline_rounds_replayed": [
+        "get_credential_status",
+        "check_trust_chain",
+        "verify_failover_region"
+      ],
+      "rounds_not_executed_by_plugin": [],
+      "baseline": {
+        "tool_names_all_present": true,
+        "tool_names_present": {
+          "get_credential_status": true,
+          "check_trust_chain": true,
+          "verify_failover_region": true
+        },
+        "tool_evidence_present": {
+          "get_credential_status": true,
+          "check_trust_chain": true,
+          "verify_failover_region": true
+        },
+        "handle_facts_present": {
+          "svc-ledger-key": true,
+          "ca-central-1": true,
+          "failed 0": true
+        },
+        "contract_anchors_present": {
+          "HANDOFF": true,
+          "RESULT task=": false,
+          "450 characters": false,
+          "Thought:": true,
+          "Final Answer:": false
+        },
+        "message_count": 70,
+        "estimated_tokens": 5327
+      },
+      "plugin": {
+        "tool_names_all_present": true,
+        "tool_names_present": {
+          "get_credential_status": true,
+          "check_trust_chain": true,
+          "verify_failover_region": true
+        },
+        "tool_evidence_present": {
+          "get_credential_status": true,
+          "check_trust_chain": true,
+          "verify_failover_region": true
+        },
+        "handle_facts_present": {
+          "svc-ledger-key": true,
+          "ca-central-1": true,
+          "failed 0": true
+        },
+        "contract_anchors_present": {
+          "HANDOFF": true,
+          "RESULT task=": false,
+          "450 characters": false,
+          "Thought:": true,
+          "Final Answer:": false
+        },
+        "message_count": 9,
+        "estimated_tokens": 2099
+      },
+      "missing_in_plugin_vs_baseline": [],
+      "plugin_metrics": {
+        "k_recent_tool_rounds": 3,
+        "recency_calls": 1,
+        "recent_rounds_seen_total": 3,
+        "recency_protected_rounds_total": 3,
+        "recent_rounds_readded_total": 0,
+        "recency_omitted_tool_rounds_total": 0,
+        "required_fact_whole_prefix_fallbacks": 0,
+        "pin_tier_counts": {
+          "tier1_evidence_pinned": 1
+        },
+        "crewai_group_restore_failure_count": null,
+        "compression_count": 1
+      },
+      "baseline_tool_rounds": 3,
+      "plugin_tool_rounds_visible": 3,
+      "note": "The plugin view is smaller because the filler history is legitimately compressed; that is the saving, not a withheld requirement.  The strict comparison covers the frozen contract, the frozen tool list and the rounds the role itself executed; evidence for a tool the role never called is reported separately as rounds_not_executed_by_plugin."
+    },
+    {
+      "task_id": "credential_rotation",
+      "plugin_recorded_trace": [
+        "get_credential_status",
+        "verify_failover_region"
+      ],
+      "plugin_rounds_replayed": [
+        "get_credential_status",
+        "verify_failover_region"
+      ],
+      "baseline_rounds_replayed": [
+        "get_credential_status",
+        "check_trust_chain",
+        "verify_failover_region"
+      ],
+      "rounds_not_executed_by_plugin": [
+        "check_trust_chain"
+      ],
+      "baseline": {
+        "tool_names_all_present": true,
+        "tool_names_present": {
+          "get_credential_status": true,
+          "check_trust_chain": true,
+          "verify_failover_region": true
+        },
+        "tool_evidence_present": {
+          "get_credential_status": true,
+          "check_trust_chain": true,
+          "verify_failover_region": true
+        },
+        "handle_facts_present": {
+          "svc-ledger-key": true,
+          "ca-central-1": true,
+          "failed 0": true
+        },
+        "contract_anchors_present": {
+          "HANDOFF": true,
+          "RESULT task=": false,
+          "450 characters": false,
+          "Thought:": true,
+          "Final Answer:": false
+        },
+        "message_count": 70,
+        "estimated_tokens": 5327
+      },
+      "plugin": {
+        "tool_names_all_present": true,
+        "tool_names_present": {
+          "get_credential_status": true,
+          "check_trust_chain": true,
+          "verify_failover_region": true
+        },
+        "tool_evidence_present": {
+          "get_credential_status": true,
+          "check_trust_chain": true,
+          "verify_failover_region": true
+        },
+        "handle_facts_present": {
+          "svc-ledger-key": true,
+          "ca-central-1": true,
+          "failed 0": true
+        },
+        "contract_anchors_present": {
+          "HANDOFF": true,
+          "RESULT task=": false,
+          "450 characters": false,
+          "Thought:": true,
+          "Final Answer:": false
+        },
+        "message_count": 8,
+        "estimated_tokens": 1922
+      },
+      "missing_in_plugin_vs_baseline": [],
+      "plugin_metrics": {
+        "k_recent_tool_rounds": 3,
+        "recency_calls": 1,
+        "recent_rounds_seen_total": 2,
+        "recency_protected_rounds_total": 2,
+        "recent_rounds_readded_total": 0,
+        "recency_omitted_tool_rounds_total": 0,
+        "required_fact_whole_prefix_fallbacks": 0,
+        "pin_tier_counts": {
+          "tier1_evidence_pinned": 1
+        },
+        "crewai_group_restore_failure_count": null,
+        "compression_count": 1
+      },
+      "baseline_tool_rounds": 3,
+      "plugin_tool_rounds_visible": 2,
+      "note": "The plugin view is smaller because the filler history is legitimately compressed; that is the saving, not a withheld requirement.  The strict comparison covers the frozen contract, the frozen tool list and the rounds the role itself executed; evidence for a tool the role never called is reported separately as rounds_not_executed_by_plugin."
+    },
+    {
+      "task_id": "window_gate",
+      "plugin_recorded_trace": [
+        "check_window_lock",
+        "inspect_change_guard"
+      ],
+      "plugin_rounds_replayed": [
+        "check_window_lock",
+        "inspect_change_guard"
+      ],
+      "baseline_rounds_replayed": [
+        "check_window_lock",
+        "inspect_change_guard",
+        "verify_risk_review"
+      ],
+      "rounds_not_executed_by_plugin": [
+        "verify_risk_review"
+      ],
+      "baseline": {
+        "tool_names_all_present": true,
+        "tool_names_present": {
+          "check_window_lock": true,
+          "inspect_change_guard": true,
+          "verify_risk_review": true
+        },
+        "tool_evidence_present": {
+          "check_window_lock": true,
+          "inspect_change_guard": true,
+          "verify_risk_review": true
+        },
+        "handle_facts_present": {
+          "window-9930": true,
+          "620": true,
+          "failed 0": true
+        },
+        "contract_anchors_present": {
+          "HANDOFF": true,
+          "RESULT task=": false,
+          "450 characters": false,
+          "Thought:": true,
+          "Final Answer:": false
+        },
+        "message_count": 70,
+        "estimated_tokens": 5266
+      },
+      "plugin": {
+        "tool_names_all_present": true,
+        "tool_names_present": {
+          "check_window_lock": true,
+          "inspect_change_guard": true,
+          "verify_risk_review": true
+        },
+        "tool_evidence_present": {
+          "check_window_lock": true,
+          "inspect_change_guard": true,
+          "verify_risk_review": true
+        },
+        "handle_facts_present": {
+          "window-9930": true,
+          "620": true,
+          "failed 0": true
+        },
+        "contract_anchors_present": {
+          "HANDOFF": true,
+          "RESULT task=": false,
+          "450 characters": false,
+          "Thought:": true,
+          "Final Answer:": false
+        },
+        "message_count": 9,
+        "estimated_tokens": 1949
+      },
+      "missing_in_plugin_vs_baseline": [],
+      "plugin_metrics": {
+        "k_recent_tool_rounds": 3,
+        "recency_calls": 1,
+        "recent_rounds_seen_total": 2,
+        "recency_protected_rounds_total": 2,
+        "recent_rounds_readded_total": 0,
+        "recency_omitted_tool_rounds_total": 0,
+        "required_fact_whole_prefix_fallbacks": 0,
+        "pin_tier_counts": {
+          "tier1_evidence_pinned": 1
+        },
+        "crewai_group_restore_failure_count": null,
+        "compression_count": 1
+      },
+      "baseline_tool_rounds": 3,
+      "plugin_tool_rounds_visible": 2,
+      "note": "The plugin view is smaller because the filler history is legitimately compressed; that is the saving, not a withheld requirement.  The strict comparison covers the frozen contract, the frozen tool list and the rounds the role itself executed; evidence for a tool the role never called is reported separately as rounds_not_executed_by_plugin."
+    },
+    {
+      "task_id": "window_gate",
+      "plugin_recorded_trace": [
+        "check_window_lock"
+      ],
+      "plugin_rounds_replayed": [
+        "check_window_lock"
+      ],
+      "baseline_rounds_replayed": [
+        "check_window_lock",
+        "inspect_change_guard",
+        "verify_risk_review"
+      ],
+      "rounds_not_executed_by_plugin": [
+        "inspect_change_guard",
+        "verify_risk_review"
+      ],
+      "baseline": {
+        "tool_names_all_present": true,
+        "tool_names_present": {
+          "check_window_lock": true,
+          "inspect_change_guard": true,
+          "verify_risk_review": true
+        },
+        "tool_evidence_present": {
+          "check_window_lock": true,
+          "inspect_change_guard": true,
+          "verify_risk_review": true
+        },
+        "handle_facts_present": {
+          "window-9930": true,
+          "620": true,
+          "failed 0": true
+        },
+        "contract_anchors_present": {
+          "HANDOFF": true,
+          "RESULT task=": false,
+          "450 characters": false,
+          "Thought:": true,
+          "Final Answer:": false
+        },
+        "message_count": 70,
+        "estimated_tokens": 5266
+      },
+      "plugin": {
+        "tool_names_all_present": true,
+        "tool_names_present": {
+          "check_window_lock": true,
+          "inspect_change_guard": true,
+          "verify_risk_review": true
+        },
+        "tool_evidence_present": {
+          "check_window_lock": true,
+          "inspect_change_guard": true,
+          "verify_risk_review": true
+        },
+        "handle_facts_present": {
+          "window-9930": true,
+          "620": true,
+          "failed 0": true
+        },
+        "contract_anchors_present": {
+          "HANDOFF": true,
+          "RESULT task=": false,
+          "450 characters": false,
+          "Thought:": true,
+          "Final Answer:": false
+        },
+        "message_count": 8,
+        "estimated_tokens": 1776
+      },
+      "missing_in_plugin_vs_baseline": [],
+      "plugin_metrics": {
+        "k_recent_tool_rounds": 3,
+        "recency_calls": 1,
+        "recent_rounds_seen_total": 1,
+        "recency_protected_rounds_total": 1,
+        "recent_rounds_readded_total": 0,
+        "recency_omitted_tool_rounds_total": 0,
+        "required_fact_whole_prefix_fallbacks": 0,
+        "pin_tier_counts": {
+          "tier1_evidence_pinned": 1
+        },
+        "crewai_group_restore_failure_count": null,
+        "compression_count": 1
+      },
+      "baseline_tool_rounds": 3,
+      "plugin_tool_rounds_visible": 1,
+      "note": "The plugin view is smaller because the filler history is legitimately compressed; that is the saving, not a withheld requirement.  The strict comparison covers the frozen contract, the frozen tool list and the rounds the role itself executed; evidence for a tool the role never called is reported separately as rounds_not_executed_by_plugin."
+    }
+  ],
+  "layer_b_all_content_present": true,
+  "layer_b_missing_samples": [],
+  "r13_batch_invariants": {
+    "plugin_samples": 16,
+    "required_fact_whole_prefix_fallbacks_total": 0,
+    "samples_with_group_restore_failure": 0,
+    "samples_with_unmatched_calls": 0,
+    "recency_omitted_tool_rounds_total": 0,
+    "first_pass_complete": 16,
+    "tier1_evidence_pins_total": 60,
+    "samples_with_tier2_contract_pin": 12,
+    "samples_without_tier2_contract_pin": [
+      "shard_split/0",
+      "shard_split/1",
+      "shard_split/2",
+      "shard_split/3"
+    ],
+    "note": "zero fallbacks plus zero group-restore and unmatched-call failures means no protected tool round and no pinned fact was dropped in any plugin sample.  The tier-2 pin is conditional by design: it fires only when the served view no longer carries the task statement, so a sample without a tier-2 pin is one where the task statement itself survived compression (the two paths are complementary, and every sample took exactly one).  The tool-loop instruction therefore reached the decisive call either way."
+  },
+  "outcome": "same_content_at_decision_boundary"
+}

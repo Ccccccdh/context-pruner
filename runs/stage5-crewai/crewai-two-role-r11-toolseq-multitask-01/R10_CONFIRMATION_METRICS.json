@@ -1,0 +1,759 @@
+{
+  "batch": "crewai-two-role-r11-toolseq-multitask-01",
+  "manifest": {
+    "protocol": "crewai-two-role-r11-tool-sequence",
+    "tasks": [
+      "credential_rotation",
+      "shard_split",
+      "batch_replay",
+      "window_gate"
+    ],
+    "methods": [
+      "none",
+      "pruner_v1",
+      "native_summary"
+    ],
+    "repeats": 4,
+    "mode": "api",
+    "model": "deepseek-v4-flash",
+    "max_api_requests": 440
+  },
+  "rows": 48,
+  "expected_rows": 48,
+  "per_method": {
+    "none": {
+      "n": 16,
+      "strict_success": 13,
+      "semantic_success": 13,
+      "first_pass_complete": 16,
+      "remedy_calls": 0,
+      "remedy_failed": 0,
+      "errors": 0,
+      "complete_total_tokens": 135561,
+      "agent_input_tokens": 129231,
+      "agent_output_tokens": 6330,
+      "summary_input_tokens": 0,
+      "summary_output_tokens": 0,
+      "summary_attempts": 0,
+      "api_request_attempts": 96,
+      "agent_attempts": 96,
+      "compression_events": 0,
+      "pinned_events": 0,
+      "pinned_messages": 0,
+      "pinned_characters": 0,
+      "whole_prefix_fallbacks": 0,
+      "tool_sequence_consistent": 16,
+      "tool_sequence_matches_baseline": 16,
+      "decider_tool_sequence_consistent": 16,
+      "tool_directive_events": 0,
+      "contract_directive_events": 0,
+      "first_role_tool_calls": 48
+    },
+    "pruner_v1": {
+      "n": 16,
+      "strict_success": 0,
+      "semantic_success": 0,
+      "first_pass_complete": 4,
+      "remedy_calls": 12,
+      "remedy_failed": 12,
+      "errors": 12,
+      "complete_total_tokens": 228075,
+      "agent_input_tokens": 219829,
+      "agent_output_tokens": 8246,
+      "summary_input_tokens": 0,
+      "summary_output_tokens": 0,
+      "summary_attempts": 0,
+      "api_request_attempts": 132,
+      "agent_attempts": 132,
+      "compression_events": 96,
+      "pinned_events": 96,
+      "pinned_messages": 180,
+      "pinned_characters": 32864,
+      "whole_prefix_fallbacks": 0,
+      "tool_sequence_consistent": 0,
+      "tool_sequence_matches_baseline": 0,
+      "decider_tool_sequence_consistent": 4,
+      "tool_directive_events": 96,
+      "contract_directive_events": 0,
+      "first_role_tool_calls": 26
+    },
+    "native_summary": {
+      "n": 16,
+      "strict_success": 13,
+      "semantic_success": 13,
+      "first_pass_complete": 16,
+      "remedy_calls": 0,
+      "remedy_failed": 0,
+      "errors": 0,
+      "complete_total_tokens": 166521,
+      "agent_input_tokens": 124194,
+      "agent_output_tokens": 6417,
+      "summary_input_tokens": 32655,
+      "summary_output_tokens": 3255,
+      "summary_attempts": 38,
+      "api_request_attempts": 134,
+      "agent_attempts": 96,
+      "compression_events": 0,
+      "pinned_events": 0,
+      "pinned_messages": 0,
+      "pinned_characters": 0,
+      "whole_prefix_fallbacks": 0,
+      "tool_sequence_consistent": 16,
+      "tool_sequence_matches_baseline": 16,
+      "decider_tool_sequence_consistent": 16,
+      "tool_directive_events": 0,
+      "contract_directive_events": 0,
+      "first_role_tool_calls": 48
+    }
+  },
+  "per_task": {
+    "credential_rotation": {
+      "repeats": [
+        {
+          "repeat": 0,
+          "none": 7799,
+          "pruner_v1": 13192,
+          "native_summary": 10206,
+          "paired_saving_percent": -69.1499,
+          "input_difference_plugin_minus_none": 5231,
+          "output_difference_plugin_minus_none": 162,
+          "plugin_pinned_events": 6,
+          "plugin_compression_events": 6,
+          "plugin_remedies": 1,
+          "first_pass": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "strict": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "semantic": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "tool_sequence_consistent": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "first_role_tool_calls": {
+            "none": 3,
+            "pruner_v1": 1,
+            "native_summary": 3
+          }
+        },
+        {
+          "repeat": 1,
+          "none": 8346,
+          "pruner_v1": 14041,
+          "native_summary": 9775,
+          "paired_saving_percent": -68.2363,
+          "input_difference_plugin_minus_none": 5517,
+          "output_difference_plugin_minus_none": 178,
+          "plugin_pinned_events": 6,
+          "plugin_compression_events": 6,
+          "plugin_remedies": 1,
+          "first_pass": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "strict": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "semantic": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "tool_sequence_consistent": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "first_role_tool_calls": {
+            "none": 3,
+            "pruner_v1": 1,
+            "native_summary": 3
+          }
+        },
+        {
+          "repeat": 2,
+          "none": 8727,
+          "pruner_v1": 14818,
+          "native_summary": 10436,
+          "paired_saving_percent": -69.7949,
+          "input_difference_plugin_minus_none": 5873,
+          "output_difference_plugin_minus_none": 218,
+          "plugin_pinned_events": 6,
+          "plugin_compression_events": 6,
+          "plugin_remedies": 1,
+          "first_pass": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "strict": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "semantic": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "tool_sequence_consistent": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "first_role_tool_calls": {
+            "none": 3,
+            "pruner_v1": 1,
+            "native_summary": 3
+          }
+        },
+        {
+          "repeat": 3,
+          "none": 9233,
+          "pruner_v1": 15432,
+          "native_summary": 10856,
+          "paired_saving_percent": -67.1396,
+          "input_difference_plugin_minus_none": 6022,
+          "output_difference_plugin_minus_none": 177,
+          "plugin_pinned_events": 6,
+          "plugin_compression_events": 6,
+          "plugin_remedies": 1,
+          "first_pass": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "strict": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "semantic": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "tool_sequence_consistent": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "first_role_tool_calls": {
+            "none": 3,
+            "pruner_v1": 1,
+            "native_summary": 3
+          }
+        }
+      ],
+      "none_total": 34105,
+      "pruner_total": 57483,
+      "native_total": 41273,
+      "paired_mean_saving_percent": -68.5802,
+      "paired_positive": 0,
+      "paired_n": 4,
+      "ratio_only_mean_saving_percent": -68.5471
+    },
+    "shard_split": {
+      "repeats": [
+        {
+          "repeat": 0,
+          "none": 7863,
+          "pruner_v1": 12979,
+          "native_summary": 9248,
+          "paired_saving_percent": -65.0642,
+          "input_difference_plugin_minus_none": 5018,
+          "output_difference_plugin_minus_none": 98,
+          "plugin_pinned_events": 6,
+          "plugin_compression_events": 6,
+          "plugin_remedies": 1,
+          "first_pass": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "strict": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "semantic": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "tool_sequence_consistent": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "first_role_tool_calls": {
+            "none": 3,
+            "pruner_v1": 1,
+            "native_summary": 3
+          }
+        },
+        {
+          "repeat": 1,
+          "none": 8377,
+          "pruner_v1": 13788,
+          "native_summary": 10688,
+          "paired_saving_percent": -64.5935,
+          "input_difference_plugin_minus_none": 5376,
+          "output_difference_plugin_minus_none": 35,
+          "plugin_pinned_events": 6,
+          "plugin_compression_events": 6,
+          "plugin_remedies": 1,
+          "first_pass": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "strict": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "semantic": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "tool_sequence_consistent": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "first_role_tool_calls": {
+            "none": 3,
+            "pruner_v1": 1,
+            "native_summary": 3
+          }
+        },
+        {
+          "repeat": 2,
+          "none": 8650,
+          "pruner_v1": 14355,
+          "native_summary": 11440,
+          "paired_saving_percent": -65.9538,
+          "input_difference_plugin_minus_none": 5620,
+          "output_difference_plugin_minus_none": 85,
+          "plugin_pinned_events": 6,
+          "plugin_compression_events": 6,
+          "plugin_remedies": 1,
+          "first_pass": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "strict": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "semantic": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "tool_sequence_consistent": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "first_role_tool_calls": {
+            "none": 3,
+            "pruner_v1": 1,
+            "native_summary": 3
+          }
+        },
+        {
+          "repeat": 3,
+          "none": 9213,
+          "pruner_v1": 15038,
+          "native_summary": 12113,
+          "paired_saving_percent": -63.2259,
+          "input_difference_plugin_minus_none": 5838,
+          "output_difference_plugin_minus_none": -13,
+          "plugin_pinned_events": 6,
+          "plugin_compression_events": 6,
+          "plugin_remedies": 1,
+          "first_pass": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "strict": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "semantic": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "tool_sequence_consistent": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "first_role_tool_calls": {
+            "none": 3,
+            "pruner_v1": 1,
+            "native_summary": 3
+          }
+        }
+      ],
+      "none_total": 34103,
+      "pruner_total": 56160,
+      "native_total": 43489,
+      "paired_mean_saving_percent": -64.7094,
+      "paired_positive": 0,
+      "paired_n": 4,
+      "ratio_only_mean_saving_percent": -64.6776
+    },
+    "batch_replay": {
+      "repeats": [
+        {
+          "repeat": 0,
+          "none": 7865,
+          "pruner_v1": 13900,
+          "native_summary": 10142,
+          "paired_saving_percent": -76.7324,
+          "input_difference_plugin_minus_none": 5942,
+          "output_difference_plugin_minus_none": 93,
+          "plugin_pinned_events": 6,
+          "plugin_compression_events": 6,
+          "plugin_remedies": 0,
+          "first_pass": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "strict": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "semantic": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "tool_sequence_consistent": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "first_role_tool_calls": {
+            "none": 3,
+            "pruner_v1": 5,
+            "native_summary": 3
+          }
+        },
+        {
+          "repeat": 1,
+          "none": 8225,
+          "pruner_v1": 14560,
+          "native_summary": 9803,
+          "paired_saving_percent": -77.0213,
+          "input_difference_plugin_minus_none": 6064,
+          "output_difference_plugin_minus_none": 271,
+          "plugin_pinned_events": 6,
+          "plugin_compression_events": 6,
+          "plugin_remedies": 0,
+          "first_pass": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "strict": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "semantic": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "tool_sequence_consistent": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "first_role_tool_calls": {
+            "none": 3,
+            "pruner_v1": 3,
+            "native_summary": 3
+          }
+        },
+        {
+          "repeat": 2,
+          "none": 8737,
+          "pruner_v1": 15105,
+          "native_summary": 10392,
+          "paired_saving_percent": -72.8854,
+          "input_difference_plugin_minus_none": 6210,
+          "output_difference_plugin_minus_none": 158,
+          "plugin_pinned_events": 6,
+          "plugin_compression_events": 6,
+          "plugin_remedies": 0,
+          "first_pass": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "strict": {
+            "none": false,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "semantic": {
+            "none": false,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "tool_sequence_consistent": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "first_role_tool_calls": {
+            "none": 3,
+            "pruner_v1": 3,
+            "native_summary": 3
+          }
+        },
+        {
+          "repeat": 3,
+          "none": 9048,
+          "pruner_v1": 15854,
+          "native_summary": 10948,
+          "paired_saving_percent": -75.221,
+          "input_difference_plugin_minus_none": 6643,
+          "output_difference_plugin_minus_none": 163,
+          "plugin_pinned_events": 6,
+          "plugin_compression_events": 6,
+          "plugin_remedies": 0,
+          "first_pass": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "strict": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "semantic": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "tool_sequence_consistent": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "first_role_tool_calls": {
+            "none": 3,
+            "pruner_v1": 3,
+            "native_summary": 3
+          }
+        }
+      ],
+      "none_total": 33875,
+      "pruner_total": 59419,
+      "native_total": 41285,
+      "paired_mean_saving_percent": -75.465,
+      "paired_positive": 0,
+      "paired_n": 4,
+      "ratio_only_mean_saving_percent": -75.4066
+    },
+    "window_gate": {
+      "repeats": [
+        {
+          "repeat": 0,
+          "none": 7719,
+          "pruner_v1": 12681,
+          "native_summary": 9937,
+          "paired_saving_percent": -64.2829,
+          "input_difference_plugin_minus_none": 4905,
+          "output_difference_plugin_minus_none": 57,
+          "plugin_pinned_events": 6,
+          "plugin_compression_events": 6,
+          "plugin_remedies": 1,
+          "first_pass": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "strict": {
+            "none": false,
+            "pruner_v1": false,
+            "native_summary": false
+          },
+          "semantic": {
+            "none": false,
+            "pruner_v1": false,
+            "native_summary": false
+          },
+          "tool_sequence_consistent": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "first_role_tool_calls": {
+            "none": 3,
+            "pruner_v1": 1,
+            "native_summary": 3
+          }
+        },
+        {
+          "repeat": 1,
+          "none": 8097,
+          "pruner_v1": 13447,
+          "native_summary": 9571,
+          "paired_saving_percent": -66.0739,
+          "input_difference_plugin_minus_none": 5213,
+          "output_difference_plugin_minus_none": 137,
+          "plugin_pinned_events": 6,
+          "plugin_compression_events": 6,
+          "plugin_remedies": 1,
+          "first_pass": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "strict": {
+            "none": false,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "semantic": {
+            "none": false,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "tool_sequence_consistent": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "first_role_tool_calls": {
+            "none": 3,
+            "pruner_v1": 1,
+            "native_summary": 3
+          }
+        },
+        {
+          "repeat": 2,
+          "none": 8644,
+          "pruner_v1": 14095,
+          "native_summary": 10272,
+          "paired_saving_percent": -63.0611,
+          "input_difference_plugin_minus_none": 5406,
+          "output_difference_plugin_minus_none": 45,
+          "plugin_pinned_events": 6,
+          "plugin_compression_events": 6,
+          "plugin_remedies": 1,
+          "first_pass": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "strict": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": false
+          },
+          "semantic": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": false
+          },
+          "tool_sequence_consistent": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "first_role_tool_calls": {
+            "none": 3,
+            "pruner_v1": 1,
+            "native_summary": 3
+          }
+        },
+        {
+          "repeat": 3,
+          "none": 9018,
+          "pruner_v1": 14790,
+          "native_summary": 10694,
+          "paired_saving_percent": -64.0053,
+          "input_difference_plugin_minus_none": 5720,
+          "output_difference_plugin_minus_none": 52,
+          "plugin_pinned_events": 6,
+          "plugin_compression_events": 6,
+          "plugin_remedies": 1,
+          "first_pass": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "strict": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": false
+          },
+          "semantic": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": false
+          },
+          "tool_sequence_consistent": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "first_role_tool_calls": {
+            "none": 3,
+            "pruner_v1": 1,
+            "native_summary": 3
+          }
+        }
+      ],
+      "none_total": 33478,
+      "pruner_total": 55013,
+      "native_total": 40474,
+      "paired_mean_saving_percent": -64.3558,
+      "paired_positive": 0,
+      "paired_n": 4,
+      "ratio_only_mean_saving_percent": -64.3258
+    }
+  },
+  "batch_paired_mean_saving_percent": -68.2776,
+  "batch_inter_task_dispersion_percentage_points": 11.1092,
+  "positive_task_count": 0,
+  "total_positive_pairs": 0,
+  "total_pairs": 16,
+  "native_summary_paired_mean_saving_percent": -22.9072,
+  "native_summary_paired_positive": 0,
+  "total_complete_tokens_by_method": {
+    "none": 135561,
+    "pruner_v1": 228075,
+    "native_summary": 166521
+  }
+}

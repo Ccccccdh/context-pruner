@@ -1,0 +1,1758 @@
+{
+  "control": "r14 first-role-uncompressed upper bound (offline estimate, zero API)",
+  "batches": [
+    {
+      "batch": "r13",
+      "directory": "runs\\stage5-crewai\\crewai-two-role-r13-toolrounds-and-contract-01",
+      "method": "estimate = none.first_role_tokens + pruner_v1.decider_tokens, per sample; paired against none_total",
+      "assumptions": [
+        "the decider keeps the full frozen plugin compression and shows no behaviour regression",
+        "freeing the first role changes no other cost (no extra calls, no extra auxiliary requests)",
+        "call order is fixed: the first 3 attempts are the first role"
+      ],
+      "per_task": {
+        "batch_replay": {
+          "repeats": [
+            {
+              "repeat": 0,
+              "none_total": 7875,
+              "pruner_total": 7844,
+              "none_first_role": 4691,
+              "none_decider": 3184,
+              "pruner_first_role": 4611,
+              "pruner_decider": 3233,
+              "estimate_first_role_uncompressed": 7924,
+              "paired_saving_percent": -0.6222,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            },
+            {
+              "repeat": 1,
+              "none_total": 8384,
+              "pruner_total": 8232,
+              "none_first_role": 4990,
+              "none_decider": 3394,
+              "pruner_first_role": 5058,
+              "pruner_decider": 3174,
+              "estimate_first_role_uncompressed": 8164,
+              "paired_saving_percent": 2.624,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            },
+            {
+              "repeat": 2,
+              "none_total": 8807,
+              "pruner_total": 8507,
+              "none_first_role": 5308,
+              "none_decider": 3499,
+              "pruner_first_role": 5238,
+              "pruner_decider": 3269,
+              "estimate_first_role_uncompressed": 8577,
+              "paired_saving_percent": 2.6116,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            },
+            {
+              "repeat": 3,
+              "none_total": 9157,
+              "pruner_total": 8912,
+              "none_first_role": 5610,
+              "none_decider": 3547,
+              "pruner_first_role": 5540,
+              "pruner_decider": 3372,
+              "estimate_first_role_uncompressed": 8982,
+              "paired_saving_percent": 1.9111,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            }
+          ],
+          "mean_paired_saving_percent": 1.6311,
+          "positive_pairs": 3,
+          "paired_n": 4
+        },
+        "credential_rotation": {
+          "repeats": [
+            {
+              "repeat": 0,
+              "none_total": 7967,
+              "pruner_total": 8025,
+              "none_first_role": 4727,
+              "none_decider": 3240,
+              "pruner_first_role": 4755,
+              "pruner_decider": 3270,
+              "estimate_first_role_uncompressed": 7997,
+              "paired_saving_percent": -0.3766,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            },
+            {
+              "repeat": 1,
+              "none_total": 8502,
+              "pruner_total": 8276,
+              "none_first_role": 5068,
+              "none_decider": 3434,
+              "pruner_first_role": 4978,
+              "pruner_decider": 3298,
+              "estimate_first_role_uncompressed": 8366,
+              "paired_saving_percent": 1.5996,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            },
+            {
+              "repeat": 2,
+              "none_total": 8883,
+              "pruner_total": 8812,
+              "none_first_role": 5404,
+              "none_decider": 3479,
+              "pruner_first_role": 5368,
+              "pruner_decider": 3444,
+              "estimate_first_role_uncompressed": 8848,
+              "paired_saving_percent": 0.394,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            },
+            {
+              "repeat": 3,
+              "none_total": 9379,
+              "pruner_total": 7356,
+              "none_first_role": 5717,
+              "none_decider": 3662,
+              "pruner_first_role": 5863,
+              "pruner_decider": 1493,
+              "estimate_first_role_uncompressed": 7210,
+              "paired_saving_percent": 23.1261,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 5
+              }
+            }
+          ],
+          "mean_paired_saving_percent": 6.1858,
+          "positive_pairs": 3,
+          "paired_n": 4
+        },
+        "shard_split": {
+          "repeats": [
+            {
+              "repeat": 0,
+              "none_total": 8124,
+              "pruner_total": 8001,
+              "none_first_role": 4705,
+              "none_decider": 3419,
+              "pruner_first_role": 4644,
+              "pruner_decider": 3357,
+              "estimate_first_role_uncompressed": 8062,
+              "paired_saving_percent": 0.7632,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            },
+            {
+              "repeat": 1,
+              "none_total": 8555,
+              "pruner_total": 8343,
+              "none_first_role": 5010,
+              "none_decider": 3545,
+              "pruner_first_role": 4918,
+              "pruner_decider": 3425,
+              "estimate_first_role_uncompressed": 8435,
+              "paired_saving_percent": 1.4027,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            },
+            {
+              "repeat": 2,
+              "none_total": 8966,
+              "pruner_total": 8809,
+              "none_first_role": 5292,
+              "none_decider": 3674,
+              "pruner_first_role": 5220,
+              "pruner_decider": 3589,
+              "estimate_first_role_uncompressed": 8881,
+              "paired_saving_percent": 0.948,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            },
+            {
+              "repeat": 3,
+              "none_total": 9383,
+              "pruner_total": 9259,
+              "none_first_role": 5638,
+              "none_decider": 3745,
+              "pruner_first_role": 5511,
+              "pruner_decider": 3748,
+              "estimate_first_role_uncompressed": 9386,
+              "paired_saving_percent": -0.032,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            }
+          ],
+          "mean_paired_saving_percent": 0.7705,
+          "positive_pairs": 3,
+          "paired_n": 4
+        },
+        "window_gate": {
+          "repeats": [
+            {
+              "repeat": 0,
+              "none_total": 7910,
+              "pruner_total": 8057,
+              "none_first_role": 4596,
+              "none_decider": 3314,
+              "pruner_first_role": 4697,
+              "pruner_decider": 3360,
+              "estimate_first_role_uncompressed": 7956,
+              "paired_saving_percent": -0.5815,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            },
+            {
+              "repeat": 1,
+              "none_total": 8328,
+              "pruner_total": 6691,
+              "none_first_role": 4896,
+              "none_decider": 3432,
+              "pruner_first_role": 5090,
+              "pruner_decider": 1601,
+              "estimate_first_role_uncompressed": 6497,
+              "paired_saving_percent": 21.9861,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 5
+              }
+            },
+            {
+              "repeat": 2,
+              "none_total": 8763,
+              "pruner_total": 5110,
+              "none_first_role": 5233,
+              "none_decider": 3530,
+              "pruner_first_role": 4259,
+              "pruner_decider": 851,
+              "estimate_first_role_uncompressed": 6084,
+              "paired_saving_percent": 30.5717,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 4
+              }
+            },
+            {
+              "repeat": 3,
+              "none_total": 9181,
+              "pruner_total": 9098,
+              "none_first_role": 5533,
+              "none_decider": 3648,
+              "pruner_first_role": 5568,
+              "pruner_decider": 3530,
+              "estimate_first_role_uncompressed": 9063,
+              "paired_saving_percent": 1.2853,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            }
+          ],
+          "mean_paired_saving_percent": 13.3154,
+          "positive_pairs": 3,
+          "paired_n": 4
+        }
+      },
+      "per_task_first_role_share_of_uncompressed_percent": {
+        "batch_replay": 59.71,
+        "credential_rotation": 60.29,
+        "shard_split": 57.9,
+        "window_gate": 57.44
+      },
+      "batch_mean_paired_saving_percent": 5.4757,
+      "batch_positive_pairs": 12,
+      "batch_pairs": 16,
+      "batch_dispersion_percentage_points": 12.5449,
+      "detail": [
+        {
+          "task_id": "batch_replay",
+          "repeat": 0,
+          "none_total": 7875,
+          "pruner_total": 7844,
+          "none_first_role": 4691,
+          "none_decider": 3184,
+          "pruner_first_role": 4611,
+          "pruner_decider": 3233,
+          "estimate_first_role_uncompressed": 7924,
+          "paired_saving_percent": -0.6222,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "batch_replay",
+          "repeat": 1,
+          "none_total": 8384,
+          "pruner_total": 8232,
+          "none_first_role": 4990,
+          "none_decider": 3394,
+          "pruner_first_role": 5058,
+          "pruner_decider": 3174,
+          "estimate_first_role_uncompressed": 8164,
+          "paired_saving_percent": 2.624,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "batch_replay",
+          "repeat": 2,
+          "none_total": 8807,
+          "pruner_total": 8507,
+          "none_first_role": 5308,
+          "none_decider": 3499,
+          "pruner_first_role": 5238,
+          "pruner_decider": 3269,
+          "estimate_first_role_uncompressed": 8577,
+          "paired_saving_percent": 2.6116,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "batch_replay",
+          "repeat": 3,
+          "none_total": 9157,
+          "pruner_total": 8912,
+          "none_first_role": 5610,
+          "none_decider": 3547,
+          "pruner_first_role": 5540,
+          "pruner_decider": 3372,
+          "estimate_first_role_uncompressed": 8982,
+          "paired_saving_percent": 1.9111,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "credential_rotation",
+          "repeat": 0,
+          "none_total": 7967,
+          "pruner_total": 8025,
+          "none_first_role": 4727,
+          "none_decider": 3240,
+          "pruner_first_role": 4755,
+          "pruner_decider": 3270,
+          "estimate_first_role_uncompressed": 7997,
+          "paired_saving_percent": -0.3766,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "credential_rotation",
+          "repeat": 1,
+          "none_total": 8502,
+          "pruner_total": 8276,
+          "none_first_role": 5068,
+          "none_decider": 3434,
+          "pruner_first_role": 4978,
+          "pruner_decider": 3298,
+          "estimate_first_role_uncompressed": 8366,
+          "paired_saving_percent": 1.5996,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "credential_rotation",
+          "repeat": 2,
+          "none_total": 8883,
+          "pruner_total": 8812,
+          "none_first_role": 5404,
+          "none_decider": 3479,
+          "pruner_first_role": 5368,
+          "pruner_decider": 3444,
+          "estimate_first_role_uncompressed": 8848,
+          "paired_saving_percent": 0.394,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "credential_rotation",
+          "repeat": 3,
+          "none_total": 9379,
+          "pruner_total": 7356,
+          "none_first_role": 5717,
+          "none_decider": 3662,
+          "pruner_first_role": 5863,
+          "pruner_decider": 1493,
+          "estimate_first_role_uncompressed": 7210,
+          "paired_saving_percent": 23.1261,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 5
+          }
+        },
+        {
+          "task_id": "shard_split",
+          "repeat": 0,
+          "none_total": 8124,
+          "pruner_total": 8001,
+          "none_first_role": 4705,
+          "none_decider": 3419,
+          "pruner_first_role": 4644,
+          "pruner_decider": 3357,
+          "estimate_first_role_uncompressed": 8062,
+          "paired_saving_percent": 0.7632,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "shard_split",
+          "repeat": 1,
+          "none_total": 8555,
+          "pruner_total": 8343,
+          "none_first_role": 5010,
+          "none_decider": 3545,
+          "pruner_first_role": 4918,
+          "pruner_decider": 3425,
+          "estimate_first_role_uncompressed": 8435,
+          "paired_saving_percent": 1.4027,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "shard_split",
+          "repeat": 2,
+          "none_total": 8966,
+          "pruner_total": 8809,
+          "none_first_role": 5292,
+          "none_decider": 3674,
+          "pruner_first_role": 5220,
+          "pruner_decider": 3589,
+          "estimate_first_role_uncompressed": 8881,
+          "paired_saving_percent": 0.948,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "shard_split",
+          "repeat": 3,
+          "none_total": 9383,
+          "pruner_total": 9259,
+          "none_first_role": 5638,
+          "none_decider": 3745,
+          "pruner_first_role": 5511,
+          "pruner_decider": 3748,
+          "estimate_first_role_uncompressed": 9386,
+          "paired_saving_percent": -0.032,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "window_gate",
+          "repeat": 0,
+          "none_total": 7910,
+          "pruner_total": 8057,
+          "none_first_role": 4596,
+          "none_decider": 3314,
+          "pruner_first_role": 4697,
+          "pruner_decider": 3360,
+          "estimate_first_role_uncompressed": 7956,
+          "paired_saving_percent": -0.5815,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "window_gate",
+          "repeat": 1,
+          "none_total": 8328,
+          "pruner_total": 6691,
+          "none_first_role": 4896,
+          "none_decider": 3432,
+          "pruner_first_role": 5090,
+          "pruner_decider": 1601,
+          "estimate_first_role_uncompressed": 6497,
+          "paired_saving_percent": 21.9861,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 5
+          }
+        },
+        {
+          "task_id": "window_gate",
+          "repeat": 2,
+          "none_total": 8763,
+          "pruner_total": 5110,
+          "none_first_role": 5233,
+          "none_decider": 3530,
+          "pruner_first_role": 4259,
+          "pruner_decider": 851,
+          "estimate_first_role_uncompressed": 6084,
+          "paired_saving_percent": 30.5717,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 4
+          }
+        },
+        {
+          "task_id": "window_gate",
+          "repeat": 3,
+          "none_total": 9181,
+          "pruner_total": 9098,
+          "none_first_role": 5533,
+          "none_decider": 3648,
+          "pruner_first_role": 5568,
+          "pruner_decider": 3530,
+          "estimate_first_role_uncompressed": 9063,
+          "paired_saving_percent": 1.2853,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        }
+      ]
+    },
+    {
+      "batch": "r12",
+      "directory": "runs\\stage5-crewai\\crewai-two-role-r12-recency-toolrounds-01",
+      "method": "estimate = none.first_role_tokens + pruner_v1.decider_tokens, per sample; paired against none_total",
+      "assumptions": [
+        "the decider keeps the full frozen plugin compression and shows no behaviour regression",
+        "freeing the first role changes no other cost (no extra calls, no extra auxiliary requests)",
+        "call order is fixed: the first 3 attempts are the first role"
+      ],
+      "per_task": {
+        "batch_replay": {
+          "repeats": [
+            {
+              "repeat": 0,
+              "none_total": 7866,
+              "pruner_total": 7490,
+              "none_first_role": 4691,
+              "none_decider": 3175,
+              "pruner_first_role": 4586,
+              "pruner_decider": 2904,
+              "estimate_first_role_uncompressed": 7595,
+              "paired_saving_percent": 3.4452,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            },
+            {
+              "repeat": 1,
+              "none_total": 8216,
+              "pruner_total": 8077,
+              "none_first_role": 4990,
+              "none_decider": 3226,
+              "pruner_first_role": 5058,
+              "pruner_decider": 3019,
+              "estimate_first_role_uncompressed": 8009,
+              "paired_saving_percent": 2.5195,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            },
+            {
+              "repeat": 2,
+              "none_total": 8737,
+              "pruner_total": 8476,
+              "none_first_role": 5308,
+              "none_decider": 3429,
+              "pruner_first_role": 5212,
+              "pruner_decider": 3264,
+              "estimate_first_role_uncompressed": 8572,
+              "paired_saving_percent": 1.8885,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            },
+            {
+              "repeat": 3,
+              "none_total": 9103,
+              "pruner_total": 8716,
+              "none_first_role": 5608,
+              "none_decider": 3495,
+              "pruner_first_role": 5513,
+              "pruner_decider": 3203,
+              "estimate_first_role_uncompressed": 8811,
+              "paired_saving_percent": 3.2077,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            }
+          ],
+          "mean_paired_saving_percent": 2.7652,
+          "positive_pairs": 4,
+          "paired_n": 4
+        },
+        "credential_rotation": {
+          "repeats": [
+            {
+              "repeat": 0,
+              "none_total": 7890,
+              "pruner_total": 7873,
+              "none_first_role": 4777,
+              "none_decider": 3113,
+              "pruner_first_role": 4757,
+              "pruner_decider": 3116,
+              "estimate_first_role_uncompressed": 7893,
+              "paired_saving_percent": -0.038,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            },
+            {
+              "repeat": 1,
+              "none_total": 8388,
+              "pruner_total": 8124,
+              "none_first_role": 5084,
+              "none_decider": 3304,
+              "pruner_first_role": 4980,
+              "pruner_decider": 3144,
+              "estimate_first_role_uncompressed": 8228,
+              "paired_saving_percent": 1.9075,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            },
+            {
+              "repeat": 2,
+              "none_total": 8727,
+              "pruner_total": 8672,
+              "none_first_role": 5404,
+              "none_decider": 3323,
+              "pruner_first_role": 5383,
+              "pruner_decider": 3289,
+              "estimate_first_role_uncompressed": 8693,
+              "paired_saving_percent": 0.3896,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            },
+            {
+              "repeat": 3,
+              "none_total": 9162,
+              "pruner_total": 9031,
+              "none_first_role": 5736,
+              "none_decider": 3426,
+              "pruner_first_role": 5674,
+              "pruner_decider": 3357,
+              "estimate_first_role_uncompressed": 9093,
+              "paired_saving_percent": 0.7531,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            }
+          ],
+          "mean_paired_saving_percent": 0.753,
+          "positive_pairs": 3,
+          "paired_n": 4
+        },
+        "shard_split": {
+          "repeats": [
+            {
+              "repeat": 0,
+              "none_total": 7871,
+              "pruner_total": 7870,
+              "none_first_role": 4725,
+              "none_decider": 3146,
+              "pruner_first_role": 4635,
+              "pruner_decider": 3235,
+              "estimate_first_role_uncompressed": 7960,
+              "paired_saving_percent": -1.1307,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            },
+            {
+              "repeat": 1,
+              "none_total": 8366,
+              "pruner_total": 8145,
+              "none_first_role": 5004,
+              "none_decider": 3362,
+              "pruner_first_role": 4931,
+              "pruner_decider": 3214,
+              "estimate_first_role_uncompressed": 8218,
+              "paired_saving_percent": 1.7691,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            },
+            {
+              "repeat": 2,
+              "none_total": 8675,
+              "pruner_total": 8684,
+              "none_first_role": 5328,
+              "none_decider": 3347,
+              "pruner_first_role": 5353,
+              "pruner_decider": 3331,
+              "estimate_first_role_uncompressed": 8659,
+              "paired_saving_percent": 0.1844,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            },
+            {
+              "repeat": 3,
+              "none_total": 9212,
+              "pruner_total": 9109,
+              "none_first_role": 5632,
+              "none_decider": 3580,
+              "pruner_first_role": 5506,
+              "pruner_decider": 3603,
+              "estimate_first_role_uncompressed": 9235,
+              "paired_saving_percent": -0.2497,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            }
+          ],
+          "mean_paired_saving_percent": 0.1433,
+          "positive_pairs": 2,
+          "paired_n": 4
+        },
+        "window_gate": {
+          "repeats": [
+            {
+              "repeat": 0,
+              "none_total": 7712,
+              "pruner_total": 7772,
+              "none_first_role": 4571,
+              "none_decider": 3141,
+              "pruner_first_role": 4699,
+              "pruner_decider": 3073,
+              "estimate_first_role_uncompressed": 7644,
+              "paired_saving_percent": 0.8817,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            },
+            {
+              "repeat": 1,
+              "none_total": 8087,
+              "pruner_total": 4671,
+              "none_first_role": 4853,
+              "none_decider": 3234,
+              "pruner_first_role": 3894,
+              "pruner_decider": 777,
+              "estimate_first_role_uncompressed": 5630,
+              "paired_saving_percent": 30.3821,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 4
+              }
+            },
+            {
+              "repeat": 2,
+              "none_total": 8608,
+              "pruner_total": 4997,
+              "none_first_role": 5233,
+              "none_decider": 3375,
+              "pruner_first_role": 4271,
+              "pruner_decider": 726,
+              "estimate_first_role_uncompressed": 5959,
+              "paired_saving_percent": 30.7737,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 4
+              }
+            },
+            {
+              "repeat": 3,
+              "none_total": 8812,
+              "pruner_total": 9198,
+              "none_first_role": 5459,
+              "none_decider": 3353,
+              "pruner_first_role": 5836,
+              "pruner_decider": 3362,
+              "estimate_first_role_uncompressed": 8821,
+              "paired_saving_percent": -0.1021,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            }
+          ],
+          "mean_paired_saving_percent": 15.4839,
+          "positive_pairs": 3,
+          "paired_n": 4
+        }
+      },
+      "per_task_first_role_share_of_uncompressed_percent": {
+        "batch_replay": 60.02,
+        "credential_rotation": 60.82,
+        "shard_split": 59.83,
+        "window_gate": 56.23
+      },
+      "batch_mean_paired_saving_percent": 4.7864,
+      "batch_positive_pairs": 12,
+      "batch_pairs": 16,
+      "batch_dispersion_percentage_points": 15.3406,
+      "detail": [
+        {
+          "task_id": "batch_replay",
+          "repeat": 0,
+          "none_total": 7866,
+          "pruner_total": 7490,
+          "none_first_role": 4691,
+          "none_decider": 3175,
+          "pruner_first_role": 4586,
+          "pruner_decider": 2904,
+          "estimate_first_role_uncompressed": 7595,
+          "paired_saving_percent": 3.4452,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "batch_replay",
+          "repeat": 1,
+          "none_total": 8216,
+          "pruner_total": 8077,
+          "none_first_role": 4990,
+          "none_decider": 3226,
+          "pruner_first_role": 5058,
+          "pruner_decider": 3019,
+          "estimate_first_role_uncompressed": 8009,
+          "paired_saving_percent": 2.5195,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "batch_replay",
+          "repeat": 2,
+          "none_total": 8737,
+          "pruner_total": 8476,
+          "none_first_role": 5308,
+          "none_decider": 3429,
+          "pruner_first_role": 5212,
+          "pruner_decider": 3264,
+          "estimate_first_role_uncompressed": 8572,
+          "paired_saving_percent": 1.8885,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "batch_replay",
+          "repeat": 3,
+          "none_total": 9103,
+          "pruner_total": 8716,
+          "none_first_role": 5608,
+          "none_decider": 3495,
+          "pruner_first_role": 5513,
+          "pruner_decider": 3203,
+          "estimate_first_role_uncompressed": 8811,
+          "paired_saving_percent": 3.2077,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "credential_rotation",
+          "repeat": 0,
+          "none_total": 7890,
+          "pruner_total": 7873,
+          "none_first_role": 4777,
+          "none_decider": 3113,
+          "pruner_first_role": 4757,
+          "pruner_decider": 3116,
+          "estimate_first_role_uncompressed": 7893,
+          "paired_saving_percent": -0.038,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "credential_rotation",
+          "repeat": 1,
+          "none_total": 8388,
+          "pruner_total": 8124,
+          "none_first_role": 5084,
+          "none_decider": 3304,
+          "pruner_first_role": 4980,
+          "pruner_decider": 3144,
+          "estimate_first_role_uncompressed": 8228,
+          "paired_saving_percent": 1.9075,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "credential_rotation",
+          "repeat": 2,
+          "none_total": 8727,
+          "pruner_total": 8672,
+          "none_first_role": 5404,
+          "none_decider": 3323,
+          "pruner_first_role": 5383,
+          "pruner_decider": 3289,
+          "estimate_first_role_uncompressed": 8693,
+          "paired_saving_percent": 0.3896,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "credential_rotation",
+          "repeat": 3,
+          "none_total": 9162,
+          "pruner_total": 9031,
+          "none_first_role": 5736,
+          "none_decider": 3426,
+          "pruner_first_role": 5674,
+          "pruner_decider": 3357,
+          "estimate_first_role_uncompressed": 9093,
+          "paired_saving_percent": 0.7531,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "shard_split",
+          "repeat": 0,
+          "none_total": 7871,
+          "pruner_total": 7870,
+          "none_first_role": 4725,
+          "none_decider": 3146,
+          "pruner_first_role": 4635,
+          "pruner_decider": 3235,
+          "estimate_first_role_uncompressed": 7960,
+          "paired_saving_percent": -1.1307,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "shard_split",
+          "repeat": 1,
+          "none_total": 8366,
+          "pruner_total": 8145,
+          "none_first_role": 5004,
+          "none_decider": 3362,
+          "pruner_first_role": 4931,
+          "pruner_decider": 3214,
+          "estimate_first_role_uncompressed": 8218,
+          "paired_saving_percent": 1.7691,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "shard_split",
+          "repeat": 2,
+          "none_total": 8675,
+          "pruner_total": 8684,
+          "none_first_role": 5328,
+          "none_decider": 3347,
+          "pruner_first_role": 5353,
+          "pruner_decider": 3331,
+          "estimate_first_role_uncompressed": 8659,
+          "paired_saving_percent": 0.1844,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "shard_split",
+          "repeat": 3,
+          "none_total": 9212,
+          "pruner_total": 9109,
+          "none_first_role": 5632,
+          "none_decider": 3580,
+          "pruner_first_role": 5506,
+          "pruner_decider": 3603,
+          "estimate_first_role_uncompressed": 9235,
+          "paired_saving_percent": -0.2497,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "window_gate",
+          "repeat": 0,
+          "none_total": 7712,
+          "pruner_total": 7772,
+          "none_first_role": 4571,
+          "none_decider": 3141,
+          "pruner_first_role": 4699,
+          "pruner_decider": 3073,
+          "estimate_first_role_uncompressed": 7644,
+          "paired_saving_percent": 0.8817,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "window_gate",
+          "repeat": 1,
+          "none_total": 8087,
+          "pruner_total": 4671,
+          "none_first_role": 4853,
+          "none_decider": 3234,
+          "pruner_first_role": 3894,
+          "pruner_decider": 777,
+          "estimate_first_role_uncompressed": 5630,
+          "paired_saving_percent": 30.3821,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 4
+          }
+        },
+        {
+          "task_id": "window_gate",
+          "repeat": 2,
+          "none_total": 8608,
+          "pruner_total": 4997,
+          "none_first_role": 5233,
+          "none_decider": 3375,
+          "pruner_first_role": 4271,
+          "pruner_decider": 726,
+          "estimate_first_role_uncompressed": 5959,
+          "paired_saving_percent": 30.7737,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 4
+          }
+        },
+        {
+          "task_id": "window_gate",
+          "repeat": 3,
+          "none_total": 8812,
+          "pruner_total": 9198,
+          "none_first_role": 5459,
+          "none_decider": 3353,
+          "pruner_first_role": 5836,
+          "pruner_decider": 3362,
+          "estimate_first_role_uncompressed": 8821,
+          "paired_saving_percent": -0.1021,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        }
+      ]
+    },
+    {
+      "batch": "r10",
+      "directory": "runs\\stage5-crewai\\crewai-two-role-r10-fresh-multitask-01",
+      "method": "estimate = none.first_role_tokens + pruner_v1.decider_tokens, per sample; paired against none_total",
+      "assumptions": [
+        "the decider keeps the full frozen plugin compression and shows no behaviour regression",
+        "freeing the first role changes no other cost (no extra calls, no extra auxiliary requests)",
+        "call order is fixed: the first 3 attempts are the first role"
+      ],
+      "per_task": {
+        "batch_replay": {
+          "repeats": [
+            {
+              "repeat": 0,
+              "none_total": 7875,
+              "pruner_total": 7704,
+              "none_first_role": 4689,
+              "none_decider": 3186,
+              "pruner_first_role": 4642,
+              "pruner_decider": 3062,
+              "estimate_first_role_uncompressed": 7751,
+              "paired_saving_percent": 1.5746,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            },
+            {
+              "repeat": 1,
+              "none_total": 8288,
+              "pruner_total": 8074,
+              "none_first_role": 4999,
+              "none_decider": 3289,
+              "pruner_first_role": 4908,
+              "pruner_decider": 3166,
+              "estimate_first_role_uncompressed": 8165,
+              "paired_saving_percent": 1.4841,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            },
+            {
+              "repeat": 2,
+              "none_total": 8699,
+              "pruner_total": 8353,
+              "none_first_role": 5307,
+              "none_decider": 3392,
+              "pruner_first_role": 5227,
+              "pruner_decider": 3126,
+              "estimate_first_role_uncompressed": 8433,
+              "paired_saving_percent": 3.0578,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            },
+            {
+              "repeat": 3,
+              "none_total": 9105,
+              "pruner_total": 8768,
+              "none_first_role": 5610,
+              "none_decider": 3495,
+              "pruner_first_role": 5551,
+              "pruner_decider": 3217,
+              "estimate_first_role_uncompressed": 8827,
+              "paired_saving_percent": 3.0533,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            }
+          ],
+          "mean_paired_saving_percent": 2.2925,
+          "positive_pairs": 4,
+          "paired_n": 4
+        },
+        "credential_rotation": {
+          "repeats": [
+            {
+              "repeat": 0,
+              "none_total": 7799,
+              "pruner_total": 7807,
+              "none_first_role": 4727,
+              "none_decider": 3072,
+              "pruner_first_role": 4752,
+              "pruner_decider": 3055,
+              "estimate_first_role_uncompressed": 7782,
+              "paired_saving_percent": 0.218,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            },
+            {
+              "repeat": 1,
+              "none_total": 8300,
+              "pruner_total": 8158,
+              "none_first_role": 5084,
+              "none_decider": 3216,
+              "pruner_first_role": 5016,
+              "pruner_decider": 3142,
+              "estimate_first_role_uncompressed": 8226,
+              "paired_saving_percent": 0.8916,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            },
+            {
+              "repeat": 2,
+              "none_total": 8730,
+              "pruner_total": 8654,
+              "none_first_role": 5407,
+              "none_decider": 3323,
+              "pruner_first_role": 5372,
+              "pruner_decider": 3282,
+              "estimate_first_role_uncompressed": 8689,
+              "paired_saving_percent": 0.4696,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            },
+            {
+              "repeat": 3,
+              "none_total": 9145,
+              "pruner_total": 9014,
+              "none_first_role": 5717,
+              "none_decider": 3428,
+              "pruner_first_role": 5661,
+              "pruner_decider": 3353,
+              "estimate_first_role_uncompressed": 9070,
+              "paired_saving_percent": 0.8201,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            }
+          ],
+          "mean_paired_saving_percent": 0.5998,
+          "positive_pairs": 4,
+          "paired_n": 4
+        },
+        "shard_split": {
+          "repeats": [
+            {
+              "repeat": 0,
+              "none_total": 7875,
+              "pruner_total": 7831,
+              "none_first_role": 4726,
+              "none_decider": 3149,
+              "pruner_first_role": 4635,
+              "pruner_decider": 3196,
+              "estimate_first_role_uncompressed": 7922,
+              "paired_saving_percent": -0.5968,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            },
+            {
+              "repeat": 1,
+              "none_total": 8374,
+              "pruner_total": 8118,
+              "none_first_role": 5008,
+              "none_decider": 3366,
+              "pruner_first_role": 4931,
+              "pruner_decider": 3187,
+              "estimate_first_role_uncompressed": 8195,
+              "paired_saving_percent": 2.1376,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            },
+            {
+              "repeat": 2,
+              "none_total": 8711,
+              "pruner_total": 8553,
+              "none_first_role": 5317,
+              "none_decider": 3394,
+              "pruner_first_role": 5215,
+              "pruner_decider": 3338,
+              "estimate_first_role_uncompressed": 8655,
+              "paired_saving_percent": 0.6429,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            },
+            {
+              "repeat": 3,
+              "none_total": 9220,
+              "pruner_total": 9047,
+              "none_first_role": 5631,
+              "none_decider": 3589,
+              "pruner_first_role": 5509,
+              "pruner_decider": 3538,
+              "estimate_first_role_uncompressed": 9169,
+              "paired_saving_percent": 0.5531,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 6
+              }
+            }
+          ],
+          "mean_paired_saving_percent": 0.6842,
+          "positive_pairs": 3,
+          "paired_n": 4
+        },
+        "window_gate": {
+          "repeats": [
+            {
+              "repeat": 0,
+              "none_total": 7776,
+              "pruner_total": 4463,
+              "none_first_role": 4605,
+              "none_decider": 3171,
+              "pruner_first_role": 3700,
+              "pruner_decider": 763,
+              "estimate_first_role_uncompressed": 5368,
+              "paired_saving_percent": 30.9671,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 4
+              }
+            },
+            {
+              "repeat": 1,
+              "none_total": 8090,
+              "pruner_total": 4733,
+              "none_first_role": 4856,
+              "none_decider": 3234,
+              "pruner_first_role": 3943,
+              "pruner_decider": 790,
+              "estimate_first_role_uncompressed": 5646,
+              "paired_saving_percent": 30.2101,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 4
+              }
+            },
+            {
+              "repeat": 2,
+              "none_total": 8472,
+              "pruner_total": 5003,
+              "none_first_role": 5148,
+              "none_decider": 3324,
+              "pruner_first_role": 4189,
+              "pruner_decider": 814,
+              "estimate_first_role_uncompressed": 5962,
+              "paired_saving_percent": 29.627,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 4
+              }
+            },
+            {
+              "repeat": 3,
+              "none_total": 9028,
+              "pruner_total": 5387,
+              "none_first_role": 5541,
+              "none_decider": 3487,
+              "pruner_first_role": 4620,
+              "pruner_decider": 767,
+              "estimate_first_role_uncompressed": 6308,
+              "paired_saving_percent": 30.1285,
+              "role_split_consistent": true,
+              "calls": {
+                "none": 6,
+                "pruner_v1": 4
+              }
+            }
+          ],
+          "mean_paired_saving_percent": 30.2332,
+          "positive_pairs": 4,
+          "paired_n": 4
+        }
+      },
+      "per_task_first_role_share_of_uncompressed_percent": {
+        "batch_replay": 59.8,
+        "credential_rotation": 61.2,
+        "shard_split": 59.34,
+        "window_gate": 49.24
+      },
+      "batch_mean_paired_saving_percent": 8.4524,
+      "batch_positive_pairs": 15,
+      "batch_pairs": 16,
+      "batch_dispersion_percentage_points": 29.6334,
+      "detail": [
+        {
+          "task_id": "batch_replay",
+          "repeat": 0,
+          "none_total": 7875,
+          "pruner_total": 7704,
+          "none_first_role": 4689,
+          "none_decider": 3186,
+          "pruner_first_role": 4642,
+          "pruner_decider": 3062,
+          "estimate_first_role_uncompressed": 7751,
+          "paired_saving_percent": 1.5746,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "batch_replay",
+          "repeat": 1,
+          "none_total": 8288,
+          "pruner_total": 8074,
+          "none_first_role": 4999,
+          "none_decider": 3289,
+          "pruner_first_role": 4908,
+          "pruner_decider": 3166,
+          "estimate_first_role_uncompressed": 8165,
+          "paired_saving_percent": 1.4841,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "batch_replay",
+          "repeat": 2,
+          "none_total": 8699,
+          "pruner_total": 8353,
+          "none_first_role": 5307,
+          "none_decider": 3392,
+          "pruner_first_role": 5227,
+          "pruner_decider": 3126,
+          "estimate_first_role_uncompressed": 8433,
+          "paired_saving_percent": 3.0578,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "batch_replay",
+          "repeat": 3,
+          "none_total": 9105,
+          "pruner_total": 8768,
+          "none_first_role": 5610,
+          "none_decider": 3495,
+          "pruner_first_role": 5551,
+          "pruner_decider": 3217,
+          "estimate_first_role_uncompressed": 8827,
+          "paired_saving_percent": 3.0533,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "credential_rotation",
+          "repeat": 0,
+          "none_total": 7799,
+          "pruner_total": 7807,
+          "none_first_role": 4727,
+          "none_decider": 3072,
+          "pruner_first_role": 4752,
+          "pruner_decider": 3055,
+          "estimate_first_role_uncompressed": 7782,
+          "paired_saving_percent": 0.218,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "credential_rotation",
+          "repeat": 1,
+          "none_total": 8300,
+          "pruner_total": 8158,
+          "none_first_role": 5084,
+          "none_decider": 3216,
+          "pruner_first_role": 5016,
+          "pruner_decider": 3142,
+          "estimate_first_role_uncompressed": 8226,
+          "paired_saving_percent": 0.8916,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "credential_rotation",
+          "repeat": 2,
+          "none_total": 8730,
+          "pruner_total": 8654,
+          "none_first_role": 5407,
+          "none_decider": 3323,
+          "pruner_first_role": 5372,
+          "pruner_decider": 3282,
+          "estimate_first_role_uncompressed": 8689,
+          "paired_saving_percent": 0.4696,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "credential_rotation",
+          "repeat": 3,
+          "none_total": 9145,
+          "pruner_total": 9014,
+          "none_first_role": 5717,
+          "none_decider": 3428,
+          "pruner_first_role": 5661,
+          "pruner_decider": 3353,
+          "estimate_first_role_uncompressed": 9070,
+          "paired_saving_percent": 0.8201,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "shard_split",
+          "repeat": 0,
+          "none_total": 7875,
+          "pruner_total": 7831,
+          "none_first_role": 4726,
+          "none_decider": 3149,
+          "pruner_first_role": 4635,
+          "pruner_decider": 3196,
+          "estimate_first_role_uncompressed": 7922,
+          "paired_saving_percent": -0.5968,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "shard_split",
+          "repeat": 1,
+          "none_total": 8374,
+          "pruner_total": 8118,
+          "none_first_role": 5008,
+          "none_decider": 3366,
+          "pruner_first_role": 4931,
+          "pruner_decider": 3187,
+          "estimate_first_role_uncompressed": 8195,
+          "paired_saving_percent": 2.1376,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "shard_split",
+          "repeat": 2,
+          "none_total": 8711,
+          "pruner_total": 8553,
+          "none_first_role": 5317,
+          "none_decider": 3394,
+          "pruner_first_role": 5215,
+          "pruner_decider": 3338,
+          "estimate_first_role_uncompressed": 8655,
+          "paired_saving_percent": 0.6429,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "shard_split",
+          "repeat": 3,
+          "none_total": 9220,
+          "pruner_total": 9047,
+          "none_first_role": 5631,
+          "none_decider": 3589,
+          "pruner_first_role": 5509,
+          "pruner_decider": 3538,
+          "estimate_first_role_uncompressed": 9169,
+          "paired_saving_percent": 0.5531,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 6
+          }
+        },
+        {
+          "task_id": "window_gate",
+          "repeat": 0,
+          "none_total": 7776,
+          "pruner_total": 4463,
+          "none_first_role": 4605,
+          "none_decider": 3171,
+          "pruner_first_role": 3700,
+          "pruner_decider": 763,
+          "estimate_first_role_uncompressed": 5368,
+          "paired_saving_percent": 30.9671,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 4
+          }
+        },
+        {
+          "task_id": "window_gate",
+          "repeat": 1,
+          "none_total": 8090,
+          "pruner_total": 4733,
+          "none_first_role": 4856,
+          "none_decider": 3234,
+          "pruner_first_role": 3943,
+          "pruner_decider": 790,
+          "estimate_first_role_uncompressed": 5646,
+          "paired_saving_percent": 30.2101,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 4
+          }
+        },
+        {
+          "task_id": "window_gate",
+          "repeat": 2,
+          "none_total": 8472,
+          "pruner_total": 5003,
+          "none_first_role": 5148,
+          "none_decider": 3324,
+          "pruner_first_role": 4189,
+          "pruner_decider": 814,
+          "estimate_first_role_uncompressed": 5962,
+          "paired_saving_percent": 29.627,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 4
+          }
+        },
+        {
+          "task_id": "window_gate",
+          "repeat": 3,
+          "none_total": 9028,
+          "pruner_total": 5387,
+          "none_first_role": 5541,
+          "none_decider": 3487,
+          "pruner_first_role": 4620,
+          "pruner_decider": 767,
+          "estimate_first_role_uncompressed": 6308,
+          "paired_saving_percent": 30.1285,
+          "role_split_consistent": true,
+          "calls": {
+            "none": 6,
+            "pruner_v1": 4
+          }
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "batch_mean_paired_saving_percent": {
+      "r13": 5.4757,
+      "r12": 4.7864,
+      "r10": 8.4524
+    },
+    "threshold_percent": 3.0,
+    "optimistic_estimate_reaches_threshold": true,
+    "decision": "not_paid",
+    "decision_note": "the optimistic estimate exceeds 3%, but it is inflated by samples where the plugin arm skipped tool calls -- removing that confound is exactly what this arm is for, so the binding number is the restricted estimate in estimate_crewai_r14_call_effect.py (+0.86%), and no paid run was made",
+    "binding_estimate_reference": "integrations/crewai/R14_FIRST_ROLE_UNCOMPRESSED_CALL_EFFECT.json",
+    "discipline": "any future freeze is immutable once written; revisions require a new *_FREEZE_AMENDMENT_<date>.json recording what changed, why and the old and new SHA256, and the batch manifest must record the freeze file's own SHA256"
+  }
+}

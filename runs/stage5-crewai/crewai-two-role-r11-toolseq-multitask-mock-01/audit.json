@@ -1,0 +1,184 @@
+{
+  "complete": true,
+  "freeze_checked": true,
+  "dry_run_mock": true,
+  "rows": 48,
+  "expected_rows": 48,
+  "request_attempts": 0,
+  "quality": {
+    "none": {
+      "n": 16,
+      "strict_success": 16,
+      "semantic_success": 16,
+      "first_pass_facts": 16,
+      "first_pass_missing_slots": 0,
+      "tool_sequence_consistent": 16,
+      "tool_sequence_matches_baseline": 16,
+      "decider_tool_sequence_consistent": 16,
+      "recovered": 0,
+      "recovery_failed": 0,
+      "complete_total_tokens": 335085,
+      "compression_events": 0,
+      "failed_or_limited": 0,
+      "summary_attempts": 0,
+      "pinned_events": 0,
+      "pinned_messages": 0,
+      "pinned_characters": 0,
+      "whole_prefix_fallbacks": 0,
+      "tool_directive_events": 0,
+      "tool_directive_messages": 0,
+      "contract_directive_events": 0,
+      "contract_directive_messages": 0
+    },
+    "pruner_v1": {
+      "n": 16,
+      "strict_success": 16,
+      "semantic_success": 16,
+      "first_pass_facts": 15,
+      "first_pass_missing_slots": 3,
+      "tool_sequence_consistent": 16,
+      "tool_sequence_matches_baseline": 16,
+      "decider_tool_sequence_consistent": 16,
+      "recovered": 1,
+      "recovery_failed": 0,
+      "complete_total_tokens": 330644,
+      "compression_events": 64,
+      "failed_or_limited": 0,
+      "summary_attempts": 0,
+      "pinned_events": 64,
+      "pinned_messages": 116,
+      "pinned_characters": 20688,
+      "whole_prefix_fallbacks": 0,
+      "tool_directive_events": 64,
+      "tool_directive_messages": 64,
+      "contract_directive_events": 0,
+      "contract_directive_messages": 0
+    },
+    "native_summary": {
+      "n": 16,
+      "strict_success": 16,
+      "semantic_success": 16,
+      "first_pass_facts": 16,
+      "first_pass_missing_slots": 0,
+      "tool_sequence_consistent": 16,
+      "tool_sequence_matches_baseline": 16,
+      "decider_tool_sequence_consistent": 16,
+      "recovered": 0,
+      "recovery_failed": 0,
+      "complete_total_tokens": 335085,
+      "compression_events": 0,
+      "failed_or_limited": 0,
+      "summary_attempts": 0,
+      "pinned_events": 0,
+      "pinned_messages": 0,
+      "pinned_characters": 0,
+      "whole_prefix_fallbacks": 0,
+      "tool_directive_events": 0,
+      "tool_directive_messages": 0,
+      "contract_directive_events": 0,
+      "contract_directive_messages": 0
+    }
+  },
+  "pin_rules": {
+    "credential_rotation": [
+      "svc-ledger-key",
+      "ca-central-1",
+      "failed 0"
+    ],
+    "shard_split": [
+      "shard-88",
+      "tenant-lumen",
+      "target_shards 3"
+    ],
+    "batch_replay": [
+      "run-8842",
+      "step-transform",
+      "failed 0"
+    ],
+    "window_gate": [
+      "window-9930",
+      "620",
+      "failed 0"
+    ]
+  },
+  "tool_sequence_gate": {
+    "name": "tool_sequence_consistent",
+    "definition": "the first role's recorded tool trace equals the frozen task's tool list for that role, in the frozen order, once per tool; tool_sequence_matches_baseline additionally requires equality with the uncompressed arm's recorded trace for the same task and repeat",
+    "plugin_tool_sequence_consistent": 16,
+    "baseline_tool_sequence_consistent": 16,
+    "plugin_matches_baseline": 16,
+    "baseline_matches_baseline": 16,
+    "plugin_decider_tool_sequence_consistent": 16,
+    "tool_directive_events": 64,
+    "contract_directive_events": 0
+  },
+  "first_pass_gate": {
+    "name": "first_pass_facts",
+    "definition": "the first-role HANDOFF line emitted before any remedy call carries every literal of the frozen handle_facts list of its task under the frozen semantic judge, is single-line and within the 450-character contract",
+    "plugin_first_pass_facts": 15,
+    "baseline_first_pass_facts": 16,
+    "plugin_remedy_calls": 1,
+    "baseline_remedy_calls": 0,
+    "plugin_whole_prefix_fallbacks": 0
+  },
+  "tool_sequence_non_inferior": true,
+  "quality_non_inferior": true,
+  "first_pass_non_inferior": false,
+  "complete_total_tokens_by_method": {
+    "none": 335085,
+    "native_summary": 335085,
+    "pruner_v1": 330644
+  },
+  "paired": {
+    "credential_rotation": {
+      "pruner_paired_mean_saving_percent": 1.9301,
+      "pruner_paired_positive": 4,
+      "paired_n": 4,
+      "per_repeat": [
+        0.6801,
+        1.5576,
+        2.3693,
+        3.1134
+      ]
+    },
+    "shard_split": {
+      "pruner_paired_mean_saving_percent": 1.9294,
+      "pruner_paired_positive": 4,
+      "paired_n": 4,
+      "per_repeat": [
+        0.6565,
+        1.5505,
+        2.3721,
+        3.1386
+      ]
+    },
+    "batch_replay": {
+      "pruner_paired_mean_saving_percent": 2.1094,
+      "pruner_paired_positive": 4,
+      "paired_n": 4,
+      "per_repeat": [
+        0.8444,
+        1.731,
+        2.5553,
+        3.3067
+      ]
+    },
+    "window_gate": {
+      "pruner_paired_mean_saving_percent": -0.9109,
+      "pruner_paired_positive": 2,
+      "paired_n": 4,
+      "per_repeat": [
+        -6.147,
+        -0.0244,
+        0.8512,
+        1.6767
+      ]
+    }
+  },
+  "plugin_paired_mean_saving_percent": 1.2645,
+  "plugin_inter_task_dispersion_percentage_points": 3.0203,
+  "verdict": "valid_equivalent_saving",
+  "verdict_reason": [],
+  "errors": [],
+  "errors_meaning": "non-empty errors means the batch cannot be cited as an effective saving; 本批数字不得当作有效节省"
+}

@@ -1,0 +1,218 @@
+{
+  "batch": "r13",
+  "method": "estimate = none.first_role_tokens + pruner_v1.decider_tokens; restricted to samples whose plugin tool trace equals the baseline trace",
+  "per_task": {
+    "batch_replay": {
+      "repeats": [
+        {
+          "repeat": 0,
+          "tool_sequence_consistent": true,
+          "none_first_calls": 3,
+          "pruner_first_calls": 3,
+          "none_first_tokens": 4691,
+          "pruner_first_tokens": 4611,
+          "pruner_decider_tokens": 3233,
+          "none_total": 7875,
+          "estimate_saving_percent": -0.6222
+        },
+        {
+          "repeat": 1,
+          "tool_sequence_consistent": true,
+          "none_first_calls": 3,
+          "pruner_first_calls": 3,
+          "none_first_tokens": 4990,
+          "pruner_first_tokens": 5058,
+          "pruner_decider_tokens": 3174,
+          "none_total": 8384,
+          "estimate_saving_percent": 2.624
+        },
+        {
+          "repeat": 2,
+          "tool_sequence_consistent": true,
+          "none_first_calls": 3,
+          "pruner_first_calls": 3,
+          "none_first_tokens": 5308,
+          "pruner_first_tokens": 5238,
+          "pruner_decider_tokens": 3269,
+          "none_total": 8807,
+          "estimate_saving_percent": 2.6116
+        },
+        {
+          "repeat": 3,
+          "tool_sequence_consistent": true,
+          "none_first_calls": 3,
+          "pruner_first_calls": 3,
+          "none_first_tokens": 5610,
+          "pruner_first_tokens": 5540,
+          "pruner_decider_tokens": 3372,
+          "none_total": 9157,
+          "estimate_saving_percent": 1.9111
+        }
+      ],
+      "restricted_n": 4,
+      "restricted_mean_saving_percent": 1.6311,
+      "all_repeats_mean_saving_percent": 1.6311
+    },
+    "credential_rotation": {
+      "repeats": [
+        {
+          "repeat": 0,
+          "tool_sequence_consistent": true,
+          "none_first_calls": 3,
+          "pruner_first_calls": 3,
+          "none_first_tokens": 4727,
+          "pruner_first_tokens": 4755,
+          "pruner_decider_tokens": 3270,
+          "none_total": 7967,
+          "estimate_saving_percent": -0.3766
+        },
+        {
+          "repeat": 1,
+          "tool_sequence_consistent": false,
+          "none_first_calls": 3,
+          "pruner_first_calls": 3,
+          "none_first_tokens": 5068,
+          "pruner_first_tokens": 4978,
+          "pruner_decider_tokens": 3298,
+          "none_total": 8502,
+          "estimate_saving_percent": 1.5996
+        },
+        {
+          "repeat": 2,
+          "tool_sequence_consistent": true,
+          "none_first_calls": 3,
+          "pruner_first_calls": 3,
+          "none_first_tokens": 5404,
+          "pruner_first_tokens": 5368,
+          "pruner_decider_tokens": 3444,
+          "none_total": 8883,
+          "estimate_saving_percent": 0.394
+        },
+        {
+          "repeat": 3,
+          "tool_sequence_consistent": false,
+          "none_first_calls": 3,
+          "pruner_first_calls": 3,
+          "none_first_tokens": 5717,
+          "pruner_first_tokens": 5863,
+          "pruner_decider_tokens": 1493,
+          "none_total": 9379,
+          "estimate_saving_percent": 23.1261
+        }
+      ],
+      "restricted_n": 2,
+      "restricted_mean_saving_percent": 0.0087,
+      "all_repeats_mean_saving_percent": 6.1858
+    },
+    "shard_split": {
+      "repeats": [
+        {
+          "repeat": 0,
+          "tool_sequence_consistent": true,
+          "none_first_calls": 3,
+          "pruner_first_calls": 3,
+          "none_first_tokens": 4705,
+          "pruner_first_tokens": 4644,
+          "pruner_decider_tokens": 3357,
+          "none_total": 8124,
+          "estimate_saving_percent": 0.7632
+        },
+        {
+          "repeat": 1,
+          "tool_sequence_consistent": true,
+          "none_first_calls": 3,
+          "pruner_first_calls": 3,
+          "none_first_tokens": 5010,
+          "pruner_first_tokens": 4918,
+          "pruner_decider_tokens": 3425,
+          "none_total": 8555,
+          "estimate_saving_percent": 1.4027
+        },
+        {
+          "repeat": 2,
+          "tool_sequence_consistent": true,
+          "none_first_calls": 3,
+          "pruner_first_calls": 3,
+          "none_first_tokens": 5292,
+          "pruner_first_tokens": 5220,
+          "pruner_decider_tokens": 3589,
+          "none_total": 8966,
+          "estimate_saving_percent": 0.948
+        },
+        {
+          "repeat": 3,
+          "tool_sequence_consistent": true,
+          "none_first_calls": 3,
+          "pruner_first_calls": 3,
+          "none_first_tokens": 5638,
+          "pruner_first_tokens": 5511,
+          "pruner_decider_tokens": 3748,
+          "none_total": 9383,
+          "estimate_saving_percent": -0.032
+        }
+      ],
+      "restricted_n": 4,
+      "restricted_mean_saving_percent": 0.7705,
+      "all_repeats_mean_saving_percent": 0.7705
+    },
+    "window_gate": {
+      "repeats": [
+        {
+          "repeat": 0,
+          "tool_sequence_consistent": true,
+          "none_first_calls": 3,
+          "pruner_first_calls": 3,
+          "none_first_tokens": 4596,
+          "pruner_first_tokens": 4697,
+          "pruner_decider_tokens": 3360,
+          "none_total": 7910,
+          "estimate_saving_percent": -0.5815
+        },
+        {
+          "repeat": 1,
+          "tool_sequence_consistent": false,
+          "none_first_calls": 3,
+          "pruner_first_calls": 3,
+          "none_first_tokens": 4896,
+          "pruner_first_tokens": 5090,
+          "pruner_decider_tokens": 1601,
+          "none_total": 8328,
+          "estimate_saving_percent": 21.9861
+        },
+        {
+          "repeat": 2,
+          "tool_sequence_consistent": false,
+          "none_first_calls": 3,
+          "pruner_first_calls": 3,
+          "none_first_tokens": 5233,
+          "pruner_first_tokens": 4259,
+          "pruner_decider_tokens": 851,
+          "none_total": 8763,
+          "estimate_saving_percent": 30.5717
+        },
+        {
+          "repeat": 3,
+          "tool_sequence_consistent": true,
+          "none_first_calls": 3,
+          "pruner_first_calls": 3,
+          "none_first_tokens": 5533,
+          "pruner_first_tokens": 5568,
+          "pruner_decider_tokens": 3530,
+          "none_total": 9181,
+          "estimate_saving_percent": 1.2853
+        }
+      ],
+      "restricted_n": 2,
+      "restricted_mean_saving_percent": 0.3519,
+      "all_repeats_mean_saving_percent": 13.3154
+    }
+  },
+  "restricted_batch_mean_saving_percent": 0.8606,
+  "restricted_pairs": 12,
+  "restricted_positive_pairs": 8,
+  "matched_per_call_first_role_input_reduction_percent": 0.5749,
+  "samples_with_call_count_mismatch": 0,
+  "call_mismatch_detail": [],
+  "threshold_percent": 3.0,
+  "paid_run_justified_by_restricted_estimate": false
+}

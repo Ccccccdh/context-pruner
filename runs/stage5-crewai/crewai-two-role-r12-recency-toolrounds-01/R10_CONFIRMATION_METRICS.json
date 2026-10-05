@@ -1,0 +1,905 @@
+{
+  "batch": "crewai-two-role-r12-recency-toolrounds-01",
+  "manifest": {
+    "protocol": "crewai-two-role-r12-recency-tool-rounds",
+    "tasks": [
+      "credential_rotation",
+      "shard_split",
+      "batch_replay",
+      "window_gate"
+    ],
+    "methods": [
+      "none",
+      "pruner_v1",
+      "native_summary"
+    ],
+    "repeats": 4,
+    "mode": "api",
+    "model": "deepseek-v4-flash",
+    "max_api_requests": 440
+  },
+  "rows": 48,
+  "expected_rows": 48,
+  "per_method": {
+    "none": {
+      "n": 16,
+      "strict_success": 13,
+      "semantic_success": 13,
+      "first_pass_complete": 16,
+      "remedy_calls": 0,
+      "remedy_failed": 0,
+      "errors": 0,
+      "complete_total_tokens": 135432,
+      "agent_input_tokens": 129049,
+      "agent_output_tokens": 6383,
+      "summary_input_tokens": 0,
+      "summary_output_tokens": 0,
+      "summary_attempts": 0,
+      "api_request_attempts": 96,
+      "agent_attempts": 96,
+      "compression_events": 0,
+      "pinned_events": 0,
+      "pinned_messages": 0,
+      "pinned_characters": 0,
+      "whole_prefix_fallbacks": 0,
+      "tool_sequence_consistent": 16,
+      "tool_sequence_matches_baseline": 16,
+      "decider_tool_sequence_consistent": 16,
+      "tool_directive_events": 0,
+      "contract_directive_events": 0,
+      "first_role_tool_calls": 48,
+      "recency_calls": 0,
+      "recent_rounds_seen_total": 0,
+      "recency_protected_rounds_total": 0,
+      "recent_rounds_readded_total": 0,
+      "recency_omitted_tool_rounds_total": 0,
+      "k_recent_tool_rounds": 1
+    },
+    "pruner_v1": {
+      "n": 16,
+      "strict_success": 7,
+      "semantic_success": 7,
+      "first_pass_complete": 16,
+      "remedy_calls": 0,
+      "remedy_failed": 0,
+      "errors": 0,
+      "complete_total_tokens": 126905,
+      "agent_input_tokens": 120468,
+      "agent_output_tokens": 6437,
+      "summary_input_tokens": 0,
+      "summary_output_tokens": 0,
+      "summary_attempts": 0,
+      "api_request_attempts": 92,
+      "agent_attempts": 92,
+      "compression_events": 60,
+      "pinned_events": 60,
+      "pinned_messages": 104,
+      "pinned_characters": 18540,
+      "whole_prefix_fallbacks": 0,
+      "tool_sequence_consistent": 11,
+      "tool_sequence_matches_baseline": 11,
+      "decider_tool_sequence_consistent": 16,
+      "tool_directive_events": 0,
+      "contract_directive_events": 0,
+      "first_role_tool_calls": 44,
+      "recency_calls": 44,
+      "recent_rounds_seen_total": 44,
+      "recency_protected_rounds_total": 44,
+      "recent_rounds_readded_total": 0,
+      "recency_omitted_tool_rounds_total": 42,
+      "k_recent_tool_rounds": 1
+    },
+    "native_summary": {
+      "n": 16,
+      "strict_success": 13,
+      "semantic_success": 12,
+      "first_pass_complete": 16,
+      "remedy_calls": 0,
+      "remedy_failed": 0,
+      "errors": 0,
+      "complete_total_tokens": 172467,
+      "agent_input_tokens": 123363,
+      "agent_output_tokens": 6751,
+      "summary_input_tokens": 38172,
+      "summary_output_tokens": 4181,
+      "summary_attempts": 43,
+      "api_request_attempts": 139,
+      "agent_attempts": 96,
+      "compression_events": 0,
+      "pinned_events": 0,
+      "pinned_messages": 0,
+      "pinned_characters": 0,
+      "whole_prefix_fallbacks": 0,
+      "tool_sequence_consistent": 16,
+      "tool_sequence_matches_baseline": 16,
+      "decider_tool_sequence_consistent": 16,
+      "tool_directive_events": 0,
+      "contract_directive_events": 0,
+      "first_role_tool_calls": 48,
+      "recency_calls": 0,
+      "recent_rounds_seen_total": 0,
+      "recency_protected_rounds_total": 0,
+      "recent_rounds_readded_total": 0,
+      "recency_omitted_tool_rounds_total": 0,
+      "k_recent_tool_rounds": 1
+    }
+  },
+  "per_task": {
+    "credential_rotation": {
+      "repeats": [
+        {
+          "repeat": 0,
+          "none": 7890,
+          "pruner_v1": 7873,
+          "native_summary": 11151,
+          "paired_saving_percent": 0.2155,
+          "input_difference_plugin_minus_none": -37,
+          "output_difference_plugin_minus_none": 20,
+          "plugin_pinned_events": 4,
+          "plugin_compression_events": 4,
+          "plugin_remedies": 0,
+          "first_pass": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "strict": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "semantic": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "tool_sequence_consistent": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "first_role_tool_calls": {
+            "none": 3,
+            "pruner_v1": 3,
+            "native_summary": 3
+          },
+          "plugin_recency": {
+            "calls": 3,
+            "rounds_seen": 3,
+            "rounds_protected": 3,
+            "rounds_readded": 0,
+            "rounds_omitted": 3,
+            "compression_events": 4
+          }
+        },
+        {
+          "repeat": 1,
+          "none": 8388,
+          "pruner_v1": 8124,
+          "native_summary": 9796,
+          "paired_saving_percent": 3.1474,
+          "input_difference_plugin_minus_none": -174,
+          "output_difference_plugin_minus_none": -90,
+          "plugin_pinned_events": 4,
+          "plugin_compression_events": 4,
+          "plugin_remedies": 0,
+          "first_pass": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "strict": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "semantic": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "tool_sequence_consistent": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "first_role_tool_calls": {
+            "none": 3,
+            "pruner_v1": 3,
+            "native_summary": 3
+          },
+          "plugin_recency": {
+            "calls": 3,
+            "rounds_seen": 3,
+            "rounds_protected": 3,
+            "rounds_readded": 0,
+            "rounds_omitted": 3,
+            "compression_events": 4
+          }
+        },
+        {
+          "repeat": 2,
+          "none": 8727,
+          "pruner_v1": 8672,
+          "native_summary": 12558,
+          "paired_saving_percent": 0.6302,
+          "input_difference_plugin_minus_none": -44,
+          "output_difference_plugin_minus_none": -11,
+          "plugin_pinned_events": 4,
+          "plugin_compression_events": 4,
+          "plugin_remedies": 0,
+          "first_pass": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "strict": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "semantic": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": false
+          },
+          "tool_sequence_consistent": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "first_role_tool_calls": {
+            "none": 3,
+            "pruner_v1": 3,
+            "native_summary": 3
+          },
+          "plugin_recency": {
+            "calls": 3,
+            "rounds_seen": 3,
+            "rounds_protected": 3,
+            "rounds_readded": 0,
+            "rounds_omitted": 3,
+            "compression_events": 4
+          }
+        },
+        {
+          "repeat": 3,
+          "none": 9162,
+          "pruner_v1": 9031,
+          "native_summary": 11078,
+          "paired_saving_percent": 1.4298,
+          "input_difference_plugin_minus_none": -119,
+          "output_difference_plugin_minus_none": -12,
+          "plugin_pinned_events": 4,
+          "plugin_compression_events": 4,
+          "plugin_remedies": 0,
+          "first_pass": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "strict": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "semantic": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "tool_sequence_consistent": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "first_role_tool_calls": {
+            "none": 3,
+            "pruner_v1": 3,
+            "native_summary": 3
+          },
+          "plugin_recency": {
+            "calls": 3,
+            "rounds_seen": 3,
+            "rounds_protected": 3,
+            "rounds_readded": 0,
+            "rounds_omitted": 3,
+            "compression_events": 4
+          }
+        }
+      ],
+      "none_total": 34167,
+      "pruner_total": 33700,
+      "native_total": 44583,
+      "paired_mean_saving_percent": 1.3557,
+      "paired_positive": 4,
+      "paired_n": 4,
+      "ratio_only_mean_saving_percent": 1.3668
+    },
+    "shard_split": {
+      "repeats": [
+        {
+          "repeat": 0,
+          "none": 7871,
+          "pruner_v1": 7870,
+          "native_summary": 9303,
+          "paired_saving_percent": 0.0127,
+          "input_difference_plugin_minus_none": -71,
+          "output_difference_plugin_minus_none": 70,
+          "plugin_pinned_events": 4,
+          "plugin_compression_events": 4,
+          "plugin_remedies": 0,
+          "first_pass": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "strict": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "semantic": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "tool_sequence_consistent": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "first_role_tool_calls": {
+            "none": 3,
+            "pruner_v1": 3,
+            "native_summary": 3
+          },
+          "plugin_recency": {
+            "calls": 3,
+            "rounds_seen": 3,
+            "rounds_protected": 3,
+            "rounds_readded": 0,
+            "rounds_omitted": 3,
+            "compression_events": 4
+          }
+        },
+        {
+          "repeat": 1,
+          "none": 8366,
+          "pruner_v1": 8145,
+          "native_summary": 10807,
+          "paired_saving_percent": 2.6416,
+          "input_difference_plugin_minus_none": -116,
+          "output_difference_plugin_minus_none": -105,
+          "plugin_pinned_events": 4,
+          "plugin_compression_events": 4,
+          "plugin_remedies": 0,
+          "first_pass": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "strict": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "semantic": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "tool_sequence_consistent": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "first_role_tool_calls": {
+            "none": 3,
+            "pruner_v1": 3,
+            "native_summary": 3
+          },
+          "plugin_recency": {
+            "calls": 3,
+            "rounds_seen": 3,
+            "rounds_protected": 3,
+            "rounds_readded": 0,
+            "rounds_omitted": 3,
+            "compression_events": 4
+          }
+        },
+        {
+          "repeat": 2,
+          "none": 8675,
+          "pruner_v1": 8684,
+          "native_summary": 11705,
+          "paired_saving_percent": -0.1037,
+          "input_difference_plugin_minus_none": -127,
+          "output_difference_plugin_minus_none": 136,
+          "plugin_pinned_events": 4,
+          "plugin_compression_events": 4,
+          "plugin_remedies": 0,
+          "first_pass": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "strict": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "semantic": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "tool_sequence_consistent": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "first_role_tool_calls": {
+            "none": 3,
+            "pruner_v1": 3,
+            "native_summary": 3
+          },
+          "plugin_recency": {
+            "calls": 3,
+            "rounds_seen": 3,
+            "rounds_protected": 3,
+            "rounds_readded": 0,
+            "rounds_omitted": 3,
+            "compression_events": 4
+          }
+        },
+        {
+          "repeat": 3,
+          "none": 9212,
+          "pruner_v1": 9109,
+          "native_summary": 12292,
+          "paired_saving_percent": 1.1181,
+          "input_difference_plugin_minus_none": -140,
+          "output_difference_plugin_minus_none": 37,
+          "plugin_pinned_events": 4,
+          "plugin_compression_events": 4,
+          "plugin_remedies": 0,
+          "first_pass": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "strict": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": false
+          },
+          "semantic": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": false
+          },
+          "tool_sequence_consistent": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "first_role_tool_calls": {
+            "none": 3,
+            "pruner_v1": 3,
+            "native_summary": 3
+          },
+          "plugin_recency": {
+            "calls": 3,
+            "rounds_seen": 3,
+            "rounds_protected": 3,
+            "rounds_readded": 0,
+            "rounds_omitted": 3,
+            "compression_events": 4
+          }
+        }
+      ],
+      "none_total": 34124,
+      "pruner_total": 33808,
+      "native_total": 44107,
+      "paired_mean_saving_percent": 0.9172,
+      "paired_positive": 3,
+      "paired_n": 4,
+      "ratio_only_mean_saving_percent": 0.926
+    },
+    "batch_replay": {
+      "repeats": [
+        {
+          "repeat": 0,
+          "none": 7866,
+          "pruner_v1": 7490,
+          "native_summary": 10151,
+          "paired_saving_percent": 4.7801,
+          "input_difference_plugin_minus_none": -153,
+          "output_difference_plugin_minus_none": -223,
+          "plugin_pinned_events": 4,
+          "plugin_compression_events": 4,
+          "plugin_remedies": 0,
+          "first_pass": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "strict": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": false
+          },
+          "semantic": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": false
+          },
+          "tool_sequence_consistent": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "first_role_tool_calls": {
+            "none": 3,
+            "pruner_v1": 3,
+            "native_summary": 3
+          },
+          "plugin_recency": {
+            "calls": 3,
+            "rounds_seen": 3,
+            "rounds_protected": 3,
+            "rounds_readded": 0,
+            "rounds_omitted": 3,
+            "compression_events": 4
+          }
+        },
+        {
+          "repeat": 1,
+          "none": 8216,
+          "pruner_v1": 8077,
+          "native_summary": 9816,
+          "paired_saving_percent": 1.6918,
+          "input_difference_plugin_minus_none": -209,
+          "output_difference_plugin_minus_none": 70,
+          "plugin_pinned_events": 4,
+          "plugin_compression_events": 4,
+          "plugin_remedies": 0,
+          "first_pass": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "strict": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "semantic": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "tool_sequence_consistent": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "first_role_tool_calls": {
+            "none": 3,
+            "pruner_v1": 3,
+            "native_summary": 3
+          },
+          "plugin_recency": {
+            "calls": 3,
+            "rounds_seen": 3,
+            "rounds_protected": 3,
+            "rounds_readded": 0,
+            "rounds_omitted": 3,
+            "compression_events": 4
+          }
+        },
+        {
+          "repeat": 2,
+          "none": 8737,
+          "pruner_v1": 8476,
+          "native_summary": 11419,
+          "paired_saving_percent": 2.9873,
+          "input_difference_plugin_minus_none": -219,
+          "output_difference_plugin_minus_none": -42,
+          "plugin_pinned_events": 4,
+          "plugin_compression_events": 4,
+          "plugin_remedies": 0,
+          "first_pass": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "strict": {
+            "none": false,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "semantic": {
+            "none": false,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "tool_sequence_consistent": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "first_role_tool_calls": {
+            "none": 3,
+            "pruner_v1": 3,
+            "native_summary": 3
+          },
+          "plugin_recency": {
+            "calls": 3,
+            "rounds_seen": 3,
+            "rounds_protected": 3,
+            "rounds_readded": 0,
+            "rounds_omitted": 3,
+            "compression_events": 4
+          }
+        },
+        {
+          "repeat": 3,
+          "none": 9103,
+          "pruner_v1": 8716,
+          "native_summary": 10961,
+          "paired_saving_percent": 4.2513,
+          "input_difference_plugin_minus_none": -204,
+          "output_difference_plugin_minus_none": -183,
+          "plugin_pinned_events": 4,
+          "plugin_compression_events": 4,
+          "plugin_remedies": 0,
+          "first_pass": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "strict": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "semantic": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "tool_sequence_consistent": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "first_role_tool_calls": {
+            "none": 3,
+            "pruner_v1": 3,
+            "native_summary": 3
+          },
+          "plugin_recency": {
+            "calls": 3,
+            "rounds_seen": 3,
+            "rounds_protected": 3,
+            "rounds_readded": 0,
+            "rounds_omitted": 3,
+            "compression_events": 4
+          }
+        }
+      ],
+      "none_total": 33922,
+      "pruner_total": 32759,
+      "native_total": 42347,
+      "paired_mean_saving_percent": 3.4276,
+      "paired_positive": 4,
+      "paired_n": 4,
+      "ratio_only_mean_saving_percent": 3.4285
+    },
+    "window_gate": {
+      "repeats": [
+        {
+          "repeat": 0,
+          "none": 7712,
+          "pruner_v1": 7772,
+          "native_summary": 9957,
+          "paired_saving_percent": -0.778,
+          "input_difference_plugin_minus_none": 55,
+          "output_difference_plugin_minus_none": 5,
+          "plugin_pinned_events": 4,
+          "plugin_compression_events": 4,
+          "plugin_remedies": 0,
+          "first_pass": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "strict": {
+            "none": false,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "semantic": {
+            "none": false,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "tool_sequence_consistent": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "first_role_tool_calls": {
+            "none": 3,
+            "pruner_v1": 3,
+            "native_summary": 3
+          },
+          "plugin_recency": {
+            "calls": 3,
+            "rounds_seen": 3,
+            "rounds_protected": 3,
+            "rounds_readded": 0,
+            "rounds_omitted": 3,
+            "compression_events": 4
+          }
+        },
+        {
+          "repeat": 1,
+          "none": 8087,
+          "pruner_v1": 4671,
+          "native_summary": 9630,
+          "paired_saving_percent": 42.2406,
+          "input_difference_plugin_minus_none": -3373,
+          "output_difference_plugin_minus_none": -43,
+          "plugin_pinned_events": 2,
+          "plugin_compression_events": 2,
+          "plugin_remedies": 0,
+          "first_pass": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "strict": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": false
+          },
+          "semantic": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": false
+          },
+          "tool_sequence_consistent": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "first_role_tool_calls": {
+            "none": 3,
+            "pruner_v1": 1,
+            "native_summary": 3
+          },
+          "plugin_recency": {
+            "calls": 1,
+            "rounds_seen": 1,
+            "rounds_protected": 1,
+            "rounds_readded": 0,
+            "rounds_omitted": 0,
+            "compression_events": 2
+          }
+        },
+        {
+          "repeat": 2,
+          "none": 8608,
+          "pruner_v1": 4997,
+          "native_summary": 10165,
+          "paired_saving_percent": 41.9493,
+          "input_difference_plugin_minus_none": -3673,
+          "output_difference_plugin_minus_none": 62,
+          "plugin_pinned_events": 2,
+          "plugin_compression_events": 2,
+          "plugin_remedies": 0,
+          "first_pass": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "strict": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "semantic": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "tool_sequence_consistent": {
+            "none": true,
+            "pruner_v1": false,
+            "native_summary": true
+          },
+          "first_role_tool_calls": {
+            "none": 3,
+            "pruner_v1": 1,
+            "native_summary": 3
+          },
+          "plugin_recency": {
+            "calls": 1,
+            "rounds_seen": 1,
+            "rounds_protected": 1,
+            "rounds_readded": 0,
+            "rounds_omitted": 0,
+            "compression_events": 2
+          }
+        },
+        {
+          "repeat": 3,
+          "none": 8812,
+          "pruner_v1": 9198,
+          "native_summary": 11678,
+          "paired_saving_percent": -4.3804,
+          "input_difference_plugin_minus_none": 23,
+          "output_difference_plugin_minus_none": 363,
+          "plugin_pinned_events": 4,
+          "plugin_compression_events": 4,
+          "plugin_remedies": 0,
+          "first_pass": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "strict": {
+            "none": false,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "semantic": {
+            "none": false,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "tool_sequence_consistent": {
+            "none": true,
+            "pruner_v1": true,
+            "native_summary": true
+          },
+          "first_role_tool_calls": {
+            "none": 3,
+            "pruner_v1": 3,
+            "native_summary": 3
+          },
+          "plugin_recency": {
+            "calls": 3,
+            "rounds_seen": 3,
+            "rounds_protected": 3,
+            "rounds_readded": 0,
+            "rounds_omitted": 3,
+            "compression_events": 4
+          }
+        }
+      ],
+      "none_total": 33219,
+      "pruner_total": 26638,
+      "native_total": 41430,
+      "paired_mean_saving_percent": 19.7579,
+      "paired_positive": 2,
+      "paired_n": 4,
+      "ratio_only_mean_saving_percent": 19.811
+    }
+  },
+  "batch_paired_mean_saving_percent": 6.3646,
+  "batch_inter_task_dispersion_percentage_points": 18.8407,
+  "positive_task_count": 4,
+  "total_positive_pairs": 13,
+  "total_pairs": 16,
+  "native_summary_paired_mean_saving_percent": -27.3184,
+  "native_summary_paired_positive": 0,
+  "total_complete_tokens_by_method": {
+    "none": 135432,
+    "pruner_v1": 126905,
+    "native_summary": 172467
+  }
+}

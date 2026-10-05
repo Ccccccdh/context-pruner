@@ -1,0 +1,328 @@
+[
+  {
+    "task_id": "credential_rotation",
+    "title": "服务凭据轮换准入判断",
+    "task": "服务凭据 svc-ledger-key 计划在故障转移区域 ca-central-1 完成轮换。请核对当前序列号、信任链校验与故障转移区域的容量余量，判断是否可以开始轮换，并给出必须保留的事实。",
+    "history_constraint": "凭据名 svc-ledger-key 与区域 ca-central-1 是本次轮换的固定标识，不得改写；历史讨论里的 ca-central-2 不是本次故障转移区域。",
+    "history_topic": "旧凭据退役记录、跨区演练、已撤销的轮换工单和过期的容量预留申请",
+    "tools": [
+      {
+        "name": "get_credential_status",
+        "call": {
+          "credential": "svc-ledger-key"
+        },
+        "result": {
+          "credential": "svc-ledger-key",
+          "serial": "cert-v7",
+          "region": "ca-central-1",
+          "days_to_expiry": 21,
+          "state": "active"
+        },
+        "evidence_parts": [
+          "\"credential\": \"svc-ledger-key\"",
+          "\"serial\": \"cert-v7\"",
+          "\"region\": \"ca-central-1\""
+        ]
+      },
+      {
+        "name": "check_trust_chain",
+        "call": {
+          "credential": "svc-ledger-key"
+        },
+        "result": {
+          "credential": "svc-ledger-key",
+          "trust_chain": "verified",
+          "failed": 0,
+          "revocations_checked": 3
+        },
+        "evidence_parts": [
+          "\"trust_chain\": \"verified\"",
+          "\"failed\": 0"
+        ]
+      },
+      {
+        "name": "verify_failover_region",
+        "call": {
+          "region": "ca-central-1"
+        },
+        "result": {
+          "region": "ca-central-1",
+          "failover_ready": true,
+          "spare_slots": 240,
+          "maintenance_window_open": false
+        },
+        "evidence_parts": [
+          "\"region\": \"ca-central-1\"",
+          "\"failover_ready\": true",
+          "\"spare_slots\": 240"
+        ]
+      }
+    ],
+    "decision": "RENEW",
+    "handle_facts": [
+      "svc-ledger-key",
+      "ca-central-1",
+      "failed 0"
+    ],
+    "answer_facts": [
+      "ca-central-1",
+      "failover_ready true"
+    ],
+    "forbidden_facts": [
+      "ca-central-2"
+    ],
+    "region_fact": "ca-central-1",
+    "version_fact": "cert-v7",
+    "expected_terms": [
+      "svc-ledger-key",
+      "ca-central-1",
+      "failed 0",
+      "RENEW"
+    ]
+  },
+  {
+    "task_id": "shard_split",
+    "title": "热租户分片拆分判断",
+    "task": "租户 tenant-lumen 所在分片的写入压力偏高。请核对分片压力、副本复制延迟与拆分方案检查，判断是否可以执行分片拆分，并给出当前分片标识与关键事实。",
+    "history_constraint": "当前分片标识 shard-88 与租户 tenant-lumen 是本次拆分的固定标识；历史讨论里的 shard-71 是已退役分片，不得作为本次目标。",
+    "history_topic": "旧分片退役记录、拆分演练、已取消的迁移窗口和过期的容量评估",
+    "tools": [
+      {
+        "name": "inspect_shard_pressure",
+        "call": {
+          "shard": "shard-88"
+        },
+        "result": {
+          "shard": "shard-88",
+          "tenant": "tenant-lumen",
+          "write_amplification": 7,
+          "hot_key_share": "62%",
+          "state": "saturated"
+        },
+        "evidence_parts": [
+          "\"shard\": \"shard-88\"",
+          "\"tenant\": \"tenant-lumen\"",
+          "\"state\": \"saturated\""
+        ]
+      },
+      {
+        "name": "check_replica_lag",
+        "call": {
+          "shard": "shard-88"
+        },
+        "result": {
+          "shard": "shard-88",
+          "replica_lag_seconds": 0,
+          "replicas_behind": 0,
+          "split_lock_held": "none"
+        },
+        "evidence_parts": [
+          "\"replica_lag_seconds\": 0",
+          "\"replicas_behind\": 0"
+        ]
+      },
+      {
+        "name": "verify_split_plan",
+        "call": {
+          "shard": "shard-88"
+        },
+        "result": {
+          "shard": "shard-88",
+          "split_ready": true,
+          "target_shards": 3,
+          "data_copy_verified": true
+        },
+        "evidence_parts": [
+          "\"shard\": \"shard-88\"",
+          "\"split_ready\": true",
+          "\"target_shards\": 3"
+        ]
+      }
+    ],
+    "decision": "FORK",
+    "handle_facts": [
+      "shard-88",
+      "tenant-lumen",
+      "target_shards 3"
+    ],
+    "answer_facts": [
+      "shard-88",
+      "split_ready true",
+      "target_shards 3"
+    ],
+    "forbidden_facts": [
+      "shard-71"
+    ],
+    "region_fact": "",
+    "version_fact": "",
+    "expected_terms": [
+      "shard-88",
+      "tenant-lumen",
+      "target_shards 3",
+      "FORK"
+    ]
+  },
+  {
+    "task_id": "batch_replay",
+    "title": "失败批处理重跑判断",
+    "task": "夜间批处理 job-2214 的 step-transform 步骤失败。请核对失败计数、上下游依赖与重放安全检查，判断是否可以重跑，并给出必须保留的事实。",
+    "history_constraint": "作业 job-2214 与本次失败的运行 run-8842 是当前工单的固定标识；历史讨论里的 run-8839 是上一次运行，不得作为本次运行的标识。",
+    "history_topic": "旧运行记录、幂等性讨论、已关闭的失败告警和过期的重跑申请",
+    "tools": [
+      {
+        "name": "inspect_failed_step",
+        "call": {
+          "job": "job-2214"
+        },
+        "result": {
+          "run": "run-8842",
+          "job": "job-2214",
+          "step": "step-transform",
+          "failed": 0,
+          "error_class": "transient-network"
+        },
+        "evidence_parts": [
+          "\"run\": \"run-8842\"",
+          "\"step\": \"step-transform\"",
+          "\"failed\": 0",
+          "\"error_class\": \"transient-network\""
+        ]
+      },
+      {
+        "name": "check_downstream_deps",
+        "call": {
+          "job": "job-2214"
+        },
+        "result": {
+          "job": "job-2214",
+          "blocked_downstream_jobs": 6,
+          "idempotent": true,
+          "open_incidents": 0
+        },
+        "evidence_parts": [
+          "\"blocked_downstream_jobs\": 6",
+          "\"idempotent\": true"
+        ]
+      },
+      {
+        "name": "verify_replay_safety",
+        "call": {
+          "job": "job-2214"
+        },
+        "result": {
+          "job": "job-2214",
+          "replay_safe": true,
+          "duplicate_risk": "none",
+          "dry_run_records": 1100
+        },
+        "evidence_parts": [
+          "\"job\": \"job-2214\"",
+          "\"replay_safe\": true",
+          "\"dry_run_records\": 1100"
+        ]
+      }
+    ],
+    "decision": "RETRY",
+    "handle_facts": [
+      "run-8842",
+      "step-transform",
+      "failed 0"
+    ],
+    "answer_facts": [
+      "replay_safe true",
+      "dry_run_records 1100"
+    ],
+    "forbidden_facts": [
+      "run-8839"
+    ],
+    "region_fact": "",
+    "version_fact": "",
+    "expected_terms": [
+      "run-8842",
+      "step-transform",
+      "failed 0",
+      "RETRY"
+    ]
+  },
+  {
+    "task_id": "window_gate",
+    "title": "维护窗口准入判断",
+    "task": "窗口 window-9930 计划在 03:40-05:10 UTC 执行数据库参数变更。请核对窗口锁定状态、变更守卫检查与风险评审结果，判断是否可以在该窗口内放行变更，并给出必须保留的事实。",
+    "history_constraint": "窗口标识 window-9930 与时段 03:40-05:10 UTC 是本次变更的固定标识，不得改写；历史讨论里的 02:30-04:00 UTC 已作废，不得作为本次时段。",
+    "history_topic": "旧窗口记录、变更冻结期讨论、已撤销的放行单和过期的风险评估",
+    "tools": [
+      {
+        "name": "check_window_lock",
+        "call": {
+          "window": "window-9930"
+        },
+        "result": {
+          "window": "window-9930",
+          "state": "open",
+          "conflicting_locks": 0,
+          "approvals_required": 2
+        },
+        "evidence_parts": [
+          "\"window\": \"window-9930\"",
+          "\"state\": \"open\"",
+          "\"conflicting_locks\": 0"
+        ]
+      },
+      {
+        "name": "inspect_change_guard",
+        "call": {
+          "window": "window-9930"
+        },
+        "result": {
+          "window": "window-9930",
+          "guard_state": "armed",
+          "failed": 0,
+          "rollback_point": "snapshot-4417"
+        },
+        "evidence_parts": [
+          "\"guard_state\": \"armed\"",
+          "\"failed\": 0",
+          "\"rollback_point\": \"snapshot-4417\""
+        ]
+      },
+      {
+        "name": "verify_risk_review",
+        "call": {
+          "window": "window-9930"
+        },
+        "result": {
+          "window": "window-9930",
+          "review_state": "approved",
+          "review_seconds": 620,
+          "open_risks": 0
+        },
+        "evidence_parts": [
+          "\"review_state\": \"approved\"",
+          "\"review_seconds\": 620",
+          "\"open_risks\": 0"
+        ]
+      }
+    ],
+    "decision": "CLEAR",
+    "handle_facts": [
+      "window-9930",
+      "620",
+      "failed 0"
+    ],
+    "answer_facts": [
+      "review_state approved",
+      "620"
+    ],
+    "forbidden_facts": [
+      "window-9927"
+    ],
+    "region_fact": "",
+    "version_fact": "",
+    "expected_terms": [
+      "window-9930",
+      "620",
+      "failed 0",
+      "CLEAR"
+    ]
+  }
+]

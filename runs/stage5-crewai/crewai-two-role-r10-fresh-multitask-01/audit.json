@@ -1,0 +1,168 @@
+{
+  "complete": true,
+  "freeze_checked": true,
+  "dry_run_mock": false,
+  "rows": 48,
+  "expected_rows": 48,
+  "request_attempts": 319,
+  "quality": {
+    "none": {
+      "n": 16,
+      "strict_success": 16,
+      "semantic_success": 16,
+      "first_pass_facts": 16,
+      "first_pass_missing_slots": 0,
+      "recovered": 0,
+      "recovery_failed": 0,
+      "complete_total_tokens": 135487,
+      "compression_events": 0,
+      "failed_or_limited": 0,
+      "summary_attempts": 0,
+      "pinned_events": 0,
+      "pinned_messages": 0,
+      "pinned_characters": 0,
+      "whole_prefix_fallbacks": 0
+    },
+    "pruner_v1": {
+      "n": 16,
+      "strict_success": 6,
+      "semantic_success": 6,
+      "first_pass_facts": 16,
+      "first_pass_missing_slots": 0,
+      "recovered": 0,
+      "recovery_failed": 0,
+      "complete_total_tokens": 119667,
+      "compression_events": 56,
+      "failed_or_limited": 10,
+      "summary_attempts": 0,
+      "pinned_events": 56,
+      "pinned_messages": 92,
+      "pinned_characters": 16392,
+      "whole_prefix_fallbacks": 0
+    },
+    "native_summary": {
+      "n": 16,
+      "strict_success": 13,
+      "semantic_success": 13,
+      "first_pass_facts": 16,
+      "first_pass_missing_slots": 0,
+      "recovered": 0,
+      "recovery_failed": 0,
+      "complete_total_tokens": 169777,
+      "compression_events": 0,
+      "failed_or_limited": 3,
+      "summary_attempts": 39,
+      "pinned_events": 0,
+      "pinned_messages": 0,
+      "pinned_characters": 0,
+      "whole_prefix_fallbacks": 0
+    }
+  },
+  "pin_rules": {
+    "credential_rotation": [
+      "svc-ledger-key",
+      "ca-central-1",
+      "failed 0"
+    ],
+    "shard_split": [
+      "shard-88",
+      "tenant-lumen",
+      "target_shards 3"
+    ],
+    "batch_replay": [
+      "run-8842",
+      "step-transform",
+      "failed 0"
+    ],
+    "window_gate": [
+      "window-9930",
+      "620",
+      "failed 0"
+    ]
+  },
+  "fresh_tasks": [
+    "credential_rotation",
+    "shard_split",
+    "batch_replay",
+    "window_gate"
+  ],
+  "first_pass_gate": {
+    "name": "first_pass_facts",
+    "definition": "the first-role HANDOFF line emitted before any remedy call carries every literal of the frozen handle_facts list of its task under the frozen semantic judge, is single-line and within the 450-character contract",
+    "plugin_first_pass_facts": 16,
+    "baseline_first_pass_facts": 16,
+    "plugin_remedy_calls": 0,
+    "baseline_remedy_calls": 0,
+    "plugin_whole_prefix_fallbacks": 0
+  },
+  "quality_non_inferior": false,
+  "first_pass_non_inferior": true,
+  "complete_total_tokens_by_method": {
+    "none": 135487,
+    "native_summary": 169777,
+    "pruner_v1": 119667
+  },
+  "paired": {
+    "credential_rotation": {
+      "pruner_paired_mean_saving_percent": 0.9778,
+      "pruner_paired_positive": 3,
+      "paired_n": 4,
+      "per_repeat": [
+        -0.1026,
+        1.7108,
+        0.8706,
+        1.4325
+      ]
+    },
+    "shard_split": {
+      "pruner_paired_mean_saving_percent": 1.8265,
+      "pruner_paired_positive": 4,
+      "paired_n": 4,
+      "per_repeat": [
+        0.5587,
+        3.0571,
+        1.8138,
+        1.8764
+      ]
+    },
+    "batch_replay": {
+      "pruner_paired_mean_saving_percent": 3.108,
+      "pruner_paired_positive": 4,
+      "paired_n": 4,
+      "per_repeat": [
+        2.1714,
+        2.582,
+        3.9775,
+        3.7013
+      ]
+    },
+    "window_gate": {
+      "pruner_paired_mean_saving_percent": 41.3445,
+      "pruner_paired_positive": 4,
+      "paired_n": 4,
+      "per_repeat": [
+        42.6055,
+        41.4957,
+        40.9466,
+        40.3301
+      ]
+    }
+  },
+  "plugin_paired_mean_saving_percent": 11.8142,
+  "plugin_inter_task_dispersion_percentage_points": 40.3667,
+  "plugin_positive_task_count": 4,
+  "plugin_positive_tasks": [
+    "credential_rotation",
+    "shard_split",
+    "batch_replay",
+    "window_gate"
+  ],
+  "errors": [
+    "credential_rotation/2/pruner_v1: tool evidence mismatch",
+    "credential_rotation/3/pruner_v1: tool evidence mismatch",
+    "window_gate/0/pruner_v1: tool evidence mismatch",
+    "window_gate/1/pruner_v1: tool evidence mismatch",
+    "window_gate/2/pruner_v1: tool evidence mismatch",
+    "window_gate/3/pruner_v1: tool evidence mismatch"
+  ]
+}

@@ -1,0 +1,368 @@
+{
+  "complete": true,
+  "freeze_checked": true,
+  "dry_run_mock": false,
+  "rows": 48,
+  "expected_rows": 48,
+  "request_attempts": 325,
+  "quality": {
+    "none": {
+      "n": 16,
+      "strict_success": 16,
+      "semantic_success": 16,
+      "first_pass_facts": 16,
+      "first_pass_missing_slots": 0,
+      "tool_sequence_consistent": 16,
+      "tool_sequence_matches_baseline": 16,
+      "decider_tool_sequence_consistent": 16,
+      "recovered": 0,
+      "recovery_failed": 0,
+      "complete_total_tokens": 138164,
+      "compression_events": 0,
+      "failed_or_limited": 0,
+      "summary_attempts": 0,
+      "pinned_events": 0,
+      "pinned_messages": 0,
+      "pinned_characters": 0,
+      "whole_prefix_fallbacks": 0,
+      "first_role_tool_calls": 48,
+      "errors": 0,
+      "failure_classes": {
+        "none": 16,
+        "tool_sequence": 0,
+        "contract_placeholder_echo": 0,
+        "other": 0
+      },
+      "failure_classes_by_task": {
+        "credential_rotation": {
+          "none": 4
+        },
+        "shard_split": {
+          "none": 4
+        },
+        "batch_replay": {
+          "none": 4
+        },
+        "window_gate": {
+          "none": 4
+        }
+      },
+      "recency_calls": 0,
+      "recency_protected_rounds_total": 0,
+      "recent_rounds_seen_total": 0,
+      "recent_rounds_readded_total": 0,
+      "recent_replacement_characters_total": 0,
+      "recency_omitted_tool_rounds_total": 0
+    },
+    "pruner_v1": {
+      "n": 16,
+      "strict_success": 12,
+      "semantic_success": 12,
+      "first_pass_facts": 16,
+      "first_pass_missing_slots": 0,
+      "tool_sequence_consistent": 12,
+      "tool_sequence_matches_baseline": 12,
+      "decider_tool_sequence_consistent": 16,
+      "recovered": 0,
+      "recovery_failed": 0,
+      "complete_total_tokens": 129332,
+      "compression_events": 60,
+      "failed_or_limited": 4,
+      "summary_attempts": 0,
+      "pinned_events": 60,
+      "pinned_messages": 105,
+      "pinned_characters": 18648,
+      "whole_prefix_fallbacks": 0,
+      "first_role_tool_calls": 44,
+      "errors": 0,
+      "failure_classes": {
+        "none": 12,
+        "tool_sequence": 4,
+        "contract_placeholder_echo": 0,
+        "other": 0
+      },
+      "failure_classes_by_task": {
+        "credential_rotation": {
+          "none": 2,
+          "tool_sequence": 2
+        },
+        "shard_split": {
+          "none": 4
+        },
+        "batch_replay": {
+          "none": 4
+        },
+        "window_gate": {
+          "none": 2,
+          "tool_sequence": 2
+        }
+      },
+      "recency_calls": 44,
+      "recency_protected_rounds_total": 85,
+      "recent_rounds_seen_total": 85,
+      "recent_rounds_readded_total": 0,
+      "recent_replacement_characters_total": 0,
+      "recency_omitted_tool_rounds_total": 0
+    },
+    "native_summary": {
+      "n": 16,
+      "strict_success": 16,
+      "semantic_success": 16,
+      "first_pass_facts": 16,
+      "first_pass_missing_slots": 0,
+      "tool_sequence_consistent": 16,
+      "tool_sequence_matches_baseline": 16,
+      "decider_tool_sequence_consistent": 16,
+      "recovered": 0,
+      "recovery_failed": 0,
+      "complete_total_tokens": 174277,
+      "compression_events": 0,
+      "failed_or_limited": 0,
+      "summary_attempts": 41,
+      "pinned_events": 0,
+      "pinned_messages": 0,
+      "pinned_characters": 0,
+      "whole_prefix_fallbacks": 0,
+      "first_role_tool_calls": 48,
+      "errors": 0,
+      "failure_classes": {
+        "none": 16,
+        "tool_sequence": 0,
+        "contract_placeholder_echo": 0,
+        "other": 0
+      },
+      "failure_classes_by_task": {
+        "credential_rotation": {
+          "none": 4
+        },
+        "shard_split": {
+          "none": 4
+        },
+        "batch_replay": {
+          "none": 4
+        },
+        "window_gate": {
+          "none": 4
+        }
+      },
+      "recency_calls": 0,
+      "recency_protected_rounds_total": 0,
+      "recent_rounds_seen_total": 0,
+      "recent_rounds_readded_total": 0,
+      "recent_replacement_characters_total": 0,
+      "recency_omitted_tool_rounds_total": 0
+    }
+  },
+  "pin_rules": {
+    "credential_rotation": [
+      "svc-ledger-key",
+      "ca-central-1",
+      "failed 0"
+    ],
+    "shard_split": [
+      "shard-88",
+      "tenant-lumen",
+      "target_shards 3"
+    ],
+    "batch_replay": [
+      "run-8842",
+      "step-transform",
+      "failed 0"
+    ],
+    "window_gate": [
+      "window-9930",
+      "620",
+      "failed 0"
+    ]
+  },
+  "tool_sequence_gate": {
+    "name": "tool_sequence_consistent",
+    "definition": "the first role's recorded tool trace equals the frozen task's tool list for that role, in the frozen order, once per tool; tool_sequence_matches_baseline additionally requires equality with the uncompressed arm's recorded trace for the same task and repeat",
+    "plugin_tool_sequence_consistent": 12,
+    "baseline_tool_sequence_consistent": 16,
+    "plugin_matches_baseline": 12,
+    "baseline_matches_baseline": 16,
+    "plugin_decider_tool_sequence_consistent": 16,
+    "plugin_first_role_tool_calls": 44,
+    "baseline_first_role_tool_calls": 48
+  },
+  "first_pass_gate": {
+    "name": "first_pass_facts",
+    "definition": "the first-role HANDOFF line emitted before any remedy call carries every literal of the frozen handle_facts list of its task under the frozen semantic judge, is single-line and within the 450-character contract",
+    "plugin_first_pass_facts": 16,
+    "baseline_first_pass_facts": 16,
+    "plugin_remedy_calls": 0,
+    "baseline_remedy_calls": 0,
+    "plugin_whole_prefix_fallbacks": 0
+  },
+  "failure_class_gate": {
+    "classes": [
+      "none",
+      "tool_sequence",
+      "contract_placeholder_echo",
+      "other"
+    ],
+    "per_method": {
+      "none": {
+        "none": 16,
+        "tool_sequence": 0,
+        "contract_placeholder_echo": 0,
+        "other": 0
+      },
+      "pruner_v1": {
+        "none": 12,
+        "tool_sequence": 4,
+        "contract_placeholder_echo": 0,
+        "other": 0
+      },
+      "native_summary": {
+        "none": 16,
+        "tool_sequence": 0,
+        "contract_placeholder_echo": 0,
+        "other": 0
+      }
+    },
+    "per_method_by_task": {
+      "none": {
+        "credential_rotation": {
+          "none": 4
+        },
+        "shard_split": {
+          "none": 4
+        },
+        "batch_replay": {
+          "none": 4
+        },
+        "window_gate": {
+          "none": 4
+        }
+      },
+      "pruner_v1": {
+        "credential_rotation": {
+          "none": 2,
+          "tool_sequence": 2
+        },
+        "shard_split": {
+          "none": 4
+        },
+        "batch_replay": {
+          "none": 4
+        },
+        "window_gate": {
+          "none": 2,
+          "tool_sequence": 2
+        }
+      },
+      "native_summary": {
+        "credential_rotation": {
+          "none": 4
+        },
+        "shard_split": {
+          "none": 4
+        },
+        "batch_replay": {
+          "none": 4
+        },
+        "window_gate": {
+          "none": 4
+        }
+      }
+    }
+  },
+  "structure_rule_gate": {
+    "k_recent_tool_rounds": 3,
+    "plugin_recency_calls": 44,
+    "plugin_recent_rounds_seen": 85,
+    "plugin_recent_rounds_readded": 0,
+    "plugin_recent_rounds_protected": 85,
+    "plugin_recency_omitted_tool_rounds": 0,
+    "plugin_compression_events": 60,
+    "plugin_whole_prefix_fallbacks": 0
+  },
+  "contract_wording_gate": {
+    "sentence_frozen_in_protocol": true,
+    "judge_unchanged": true,
+    "plugin_placeholder_echoes": 0,
+    "baseline_placeholder_echoes": 0,
+    "native_placeholder_echoes": 0
+  },
+  "tool_sequence_non_inferior": false,
+  "quality_non_inferior": false,
+  "first_pass_non_inferior": true,
+  "complete_total_tokens_by_method": {
+    "none": 138164,
+    "native_summary": 174277,
+    "pruner_v1": 129332
+  },
+  "paired": {
+    "credential_rotation": {
+      "pruner_paired_mean_saving_percent": 6.0748,
+      "pruner_paired_positive": 3,
+      "paired_n": 4,
+      "per_repeat": [
+        -0.728,
+        2.6582,
+        0.7993,
+        21.5695
+      ]
+    },
+    "shard_split": {
+      "pruner_paired_mean_saving_percent": 1.7662,
+      "pruner_paired_positive": 4,
+      "paired_n": 4,
+      "per_repeat": [
+        1.514,
+        2.4781,
+        1.7511,
+        1.3215
+      ]
+    },
+    "batch_replay": {
+      "pruner_paired_mean_saving_percent": 2.0722,
+      "pruner_paired_positive": 4,
+      "paired_n": 4,
+      "per_repeat": [
+        0.3937,
+        1.813,
+        3.4064,
+        2.6755
+      ]
+    },
+    "window_gate": {
+      "pruner_paired_mean_saving_percent": 15.0972,
+      "pruner_paired_positive": 3,
+      "paired_n": 4,
+      "per_repeat": [
+        -1.8584,
+        19.6566,
+        41.6866,
+        0.904
+      ]
+    }
+  },
+  "plugin_paired_mean_saving_percent": 6.2526,
+  "plugin_inter_task_dispersion_percentage_points": 13.331,
+  "still_compressible": false,
+  "quality_at_frozen_threshold": false,
+  "tool_sequence_perfect": false,
+  "pre_registered_outcome": "tool_sequence_not_caused_by_compression",
+  "pre_registered_outcome_meaning": "the tool sequence is still short of the uncompressed arm -- the missing tool rounds are not a compression artefact",
+  "verdict": "not_yet_valid",
+  "verdict_reason": [
+    "plugin tool-sequence consistency below the uncompressed arm (12 vs 16)",
+    "plugin quality below the uncompressed arm (strict 12 vs 16, semantic 12 vs 16)",
+    "audit errors present (8)",
+    "本批数字不得当作有效节省"
+  ],
+  "errors": [
+    "credential_rotation/1/pruner_v1: plugin tool sequence inconsistent with the frozen task",
+    "credential_rotation/1/pruner_v1: tool evidence mismatch",
+    "credential_rotation/3/pruner_v1: plugin tool sequence inconsistent with the frozen task",
+    "credential_rotation/3/pruner_v1: tool evidence mismatch",
+    "window_gate/1/pruner_v1: plugin tool sequence inconsistent with the frozen task",
+    "window_gate/1/pruner_v1: tool evidence mismatch",
+    "window_gate/2/pruner_v1: plugin tool sequence inconsistent with the frozen task",
+    "window_gate/2/pruner_v1: tool evidence mismatch"
+  ],
+  "errors_meaning": "non-empty errors means the batch cannot be cited as an effective saving; 本批数字不得当作有效节省"
+}

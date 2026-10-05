@@ -1,0 +1,99 @@
+{
+  "batch": "crewai-two-role-r11-toolseq-multitask-01",
+  "samples": 48,
+  "manifest": {
+    "protocol": "crewai-two-role-r11-tool-sequence",
+    "runner_sha256": "1f78c3ce66b0aeb12fb0dd0b9a27bdee83c563bb18996a54cac643df8df82bcb",
+    "mechanism_sha256": "1b136b7f6563092e231293c09e5cf48e4a4ddbbe18248f92f45c33793d76e2ab",
+    "pinned_evidence_sha256": "5ccc86abf9032df6abbdfddca2c108221e9121e98eb7aedc6ff2ad663fd6ade4",
+    "task_sha256": "873a306b109ee438e6513870bbbd5f25410a98865f8aff0fcd44d5279793aa0f",
+    "judge_sha256": "26aea58bbbe57aa6fc451e00436254636cc01df97c0ec33d321cad73924304e1",
+    "judge_routing_sha256": "aaed6709ae3759d0932a19e279e37aab610aa6d0a31ee118596de93ee8291cef",
+    "tasks": [
+      "credential_rotation",
+      "shard_split",
+      "batch_replay",
+      "window_gate"
+    ],
+    "methods": [
+      "none",
+      "pruner_v1",
+      "native_summary"
+    ],
+    "repeats": 4,
+    "model": "deepseek-v4-flash",
+    "mode": "api",
+    "base_url": "https://api.deepseek.com",
+    "budget": {
+      "host": "crewai",
+      "calibration_ratio_provider_per_estimated": 0.389,
+      "provider_tokens": {
+        "soft": 1200,
+        "hard": 3000,
+        "target": 900
+      },
+      "estimated_tokens": {
+        "soft": 3085,
+        "hard": 7712,
+        "target": 2314
+      },
+      "note": "Budgets are declared in provider tokens and converted with a measured ratio."
+    },
+    "limits": {
+      "fixed_reserved_tokens": 300,
+      "max_output_tokens": 512,
+      "max_summary_tokens": 1024,
+      "max_summary_calls": 4
+    },
+    "max_api_requests": 440,
+    "quality_gates": [
+      "strict",
+      "semantic",
+      "first_pass_facts",
+      "tool_sequence_consistent"
+    ],
+    "failure_policy": "preserve sample failure and continue unless provider unavailable or request cap"
+  },
+  "source_sha256": {
+    "experiments/audits/audit_crewai_handoff_v11.py": "5a26777e2eb221874632e15be26d62ddc16df55b309a9f3e24d90eb9ff348248",
+    "experiments/runners/crewai_pinned_evidence_v9.py": "5ccc86abf9032df6abbdfddca2c108221e9121e98eb7aedc6ff2ad663fd6ade4",
+    "experiments/runners/crewai_semantic_equivalence_v11.py": "aaed6709ae3759d0932a19e279e37aab610aa6d0a31ee118596de93ee8291cef",
+    "experiments/runners/crewai_semantic_equivalence_v8.py": "26aea58bbbe57aa6fc451e00436254636cc01df97c0ec33d321cad73924304e1",
+    "experiments/runners/crewai_tool_sequence_v11.py": "1b136b7f6563092e231293c09e5cf48e4a4ddbbe18248f92f45c33793d76e2ab",
+    "experiments/runners/run_crewai_experiment.py": "0c0cd1d3e30ea837b323e1318321804433c20f8c9fdcd3a40b42deb1849554f1",
+    "experiments/runners/run_crewai_handoff_v11.py": "1f78c3ce66b0aeb12fb0dd0b9a27bdee83c563bb18996a54cac643df8df82bcb",
+    "experiments/runners/run_crewai_handoff_v4.py": "8aa75353bd7a5b4cffea5bd0233a82583d5c4ac34d83c2bac0672117edd078cf",
+    "integrations/crewai/PILOT_PROTOCOL_TWO_ROLE_R11_TOOLSEQ_MULTITASK_01.md": "a761fdc71933307002ddfb8ef14eac9c7299be29317a905cf112bc6d8ca3ca71",
+    "tasks/stage5_autogen/natural_tasks_r10.json": "873a306b109ee438e6513870bbbd5f25410a98865f8aff0fcd44d5279793aa0f"
+  },
+  "first_pass_gate": {
+    "name": "first_pass_facts",
+    "definition": "the first-role HANDOFF line emitted before any remedy call carries every literal of the frozen handle_facts list of its task under the frozen semantic judge, is single-line and within the 450-character contract",
+    "reported_with": [
+      "strict",
+      "semantic",
+      "tool_sequence_consistent"
+    ],
+    "saving_requires": "tool-sequence consistency, strict and semantic quality non-inferior to the uncompressed arm, first-pass completeness recorded, and complete total tokens positive"
+  },
+  "tool_sequence_gate": {
+    "name": "tool_sequence_consistent",
+    "definition": "the first role's recorded tool trace equals the frozen task's tool list for that role, in the frozen order, once per tool; tool_sequence_matches_baseline additionally requires equality with the uncompressed arm's recorded trace for the same task and repeat",
+    "reported_with": [
+      "strict",
+      "semantic",
+      "first_pass_facts"
+    ],
+    "acceptance": "plugin tool-sequence consistency and strict/semantic quality must not be worse than the uncompressed arm, and complete total tokens must be positive"
+  },
+  "mechanism_guarantees": {
+    "frozen_tool_order": "experiments/runners/crewai_tool_sequence_v11.py",
+    "tool_directive": "the frozen tool list in its frozen order is restated whenever the raw history shows an un-called frozen tool, so a compressed view cannot end the first role's tool loop early",
+    "decision_contract_directive": "the frozen RESULT contract is restated verbatim when the served view lost it, together with an explicit instruction never to output angle brackets",
+    "unchanged": [
+      "experiments/runners/crewai_pinned_evidence_v9.py",
+      "experiments/runners/crewai_semantic_equivalence_v8.py",
+      "tasks/stage5_autogen/natural_tasks_r10.json"
+    ]
+  }
+}

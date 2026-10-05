@@ -1,0 +1,69 @@
+{
+  "per_branch": {
+    "none": {
+      "sample": "branch-0-none",
+      "position": 0,
+      "host_rounds_completed": 2,
+      "host_verdict_measured": true,
+      "final_host_verdict": "failed",
+      "final_host_passed": false,
+      "post_fork_agent_requests": 21,
+      "post_fork_tokens": 1068562,
+      "condensation_events": 0,
+      "changed_files": []
+    },
+    "native_summary": {
+      "sample": "branch-1-native_summary",
+      "position": 1,
+      "host_rounds_completed": 2,
+      "host_verdict_measured": true,
+      "final_host_verdict": "failed",
+      "final_host_passed": false,
+      "post_fork_agent_requests": 30,
+      "post_fork_tokens": 792454,
+      "condensation_events": 2,
+      "changed_files": [
+        "django/contrib/admin/options.py"
+      ]
+    },
+    "pruner_v1": {
+      "sample": "branch-2-pruner_v1",
+      "position": 2,
+      "host_rounds_completed": 2,
+      "host_verdict_measured": true,
+      "final_host_verdict": "failed",
+      "final_host_passed": false,
+      "post_fork_agent_requests": 24,
+      "post_fork_tokens": 590571,
+      "condensation_events": 2,
+      "changed_files": [
+        "django/contrib/admin/options.py"
+      ]
+    }
+  },
+  "branch_host_verdicts_measured": true,
+  "branches_measured": 3,
+  "branches_expected": 3,
+  "plugin_compaction_count": 2,
+  "plugin_compaction_at_least_one": true,
+  "branch_verdict_gate": true,
+  "compaction_gate": true,
+  "quality_verdict_obtained": true,
+  "quality_verdict": "three-flag gate satisfied: measured per-branch host verdicts (native_summary=failed, none=failed, pruner_v1=failed) and the plugin arm condensed 2 time(s)",
+  "cap_arithmetic": {
+    "arms": 3,
+    "shared_ceiling": 132,
+    "branch_reserve": 30,
+    "prefix_budget_cap": 42,
+    "branch_total": 90,
+    "sum": 132,
+    "identity_holds": true,
+    "reserve_identity_holds": true,
+    "branch_window_after_prefix_cap": 30,
+    "reserve_covers_branch_window": true,
+    "branch_verdict_reachable_by_arithmetic": true,
+    "minimum_branch_requests_for_verdict": 30,
+    "minimum_prefix_requests_to_trigger": 30,
+    "note": "a branch that inherits the whole prefix budget cap holds reserve >= host_feedback_correction_reserve requests, which is what its own correction window can spend after the fork: one edit plus one host verdict is reachable without a fresh allowance"
+  }
+}

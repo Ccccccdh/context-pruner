@@ -159,6 +159,21 @@ runs/stage5-openhands/*
 !runs/stage5-openhands/django-multitask-v56-prefix-fork-01/
 !runs/stage5-openhands/django-multitask-v57-prefix-fork-01/
 !runs/stage5-openhands/django-multitask-v58-prefix-fork-01/
+# v59 五个批次都保留：01 未选中合格前缀，02/03/04/05 走完阶梯；
+# 03 是唯一越过触发并让三条分叉真实压缩的批次（成本侧证据，无质量判定）。
+!runs/stage5-openhands/django-multitask-v59-prefix-fork-01/
+!runs/stage5-openhands/django-multitask-v59-prefix-fork-02/
+!runs/stage5-openhands/django-multitask-v59-prefix-fork-03/
+!runs/stage5-openhands/django-multitask-v59-prefix-fork-04/
+!runs/stage5-openhands/django-multitask-v59-prefix-fork-05/
+# v60：走完预注册阶梯但没有出现合格前缀（模型 15/20/8 次请求即修对目标测试），
+# 批次因此无前缀、无分叉、无审计；结论本身入库。
+!runs/stage5-openhands/django-multitask-v60-01/
+# v61 两批都保留：01 首次拿到“每分叉实测宿主判定 + 质量判定”的完整同前缀成本对比
+# （三臂全部 failed，插件侧真实压缩两次，成本侧 -44.73% 后缀 / -16.36% 全程）；
+# 02 走完预注册阶梯但没有出现合格前缀（三条 rung 的视图 17342/21745/16219 < 28000）。
+!runs/stage5-openhands/django-multitask-v61-01/
+!runs/stage5-openhands/django-multitask-v61-02/
 # v53-pilot-01 / -02 是各只有 1 个样本的中断/演练目录，不作为结果入库。
 
 # 新主机三臂批次：只放行最终结果批次，中间/演练批次不入库。
@@ -175,6 +190,13 @@ runs/stage5-openai-agents-api/*
 !runs/stage5-openai-agents-api/openai-repo-diagnostic-v3-task-anchor-pilot-01/
 !runs/stage5-openai-agents-api/openai-repo-diagnostic-v4-selective-retention-pilot-01/
 !runs/stage5-openai-agents-api/openai-repo-diagnostic-v5-evidence-safe-retention-pilot-01/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v6-pointer-retention-pilot-01/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v7-applicability-boundary/
+# v8/v9 长基线边界（含守卫口径修正与双侧命题）；v10/v11 工具调用序号口径与省略比例阶梯。
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v8-long-baseline-boundary/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v9-long-baseline-boundary/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v10-tool-call-recency-boundary/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v11-elision-ratio-boundary/
 !runs/stage5-crewai/
 runs/stage5-crewai/*
 !runs/stage5-crewai/crewai-natural-3arm-v133/
@@ -197,6 +219,14 @@ runs/stage5-crewai/*
 !runs/stage5-crewai/crewai-two-role-r8-multitask-01/
 !runs/stage5-crewai/crewai-two-role-r9-multitask-mock-01/
 !runs/stage5-crewai/crewai-two-role-r9-multitask-01/
+!runs/stage5-crewai/crewai-two-role-r10-fresh-multitask-01/
+!runs/stage5-crewai/crewai-two-role-r10-fresh-multitask-mock-01/
+!runs/stage5-crewai/crewai-two-role-r11-toolseq-multitask-01/
+!runs/stage5-crewai/crewai-two-role-r11-toolseq-multitask-mock-01/
+!runs/stage5-crewai/crewai-two-role-r12-recency-toolrounds-01/
+!runs/stage5-crewai/crewai-two-role-r12-recency-toolrounds-mock-01/
+!runs/stage5-crewai/crewai-two-role-r13-toolrounds-and-contract-01/
+!runs/stage5-crewai/crewai-two-role-r13-toolrounds-and-contract-mock-01/
 
 # 保留报告、manifest、ledger、SDK 事件和测试日志；跳过可重建的完整源码副本。
 runs/stage5-*/**/workspaces/

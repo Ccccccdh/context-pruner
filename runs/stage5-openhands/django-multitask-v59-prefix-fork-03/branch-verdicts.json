@@ -1,0 +1,63 @@
+{
+  "per_branch": {
+    "none": {
+      "sample": "branch-0-none",
+      "position": 0,
+      "host_rounds_completed": 0,
+      "host_verdict_measured": false,
+      "final_host_verdict": null,
+      "final_host_passed": false,
+      "post_fork_agent_requests": 10,
+      "post_fork_tokens": 442486,
+      "condensation_events": 0,
+      "changed_files": []
+    },
+    "native_summary": {
+      "sample": "branch-1-native_summary",
+      "position": 1,
+      "host_rounds_completed": 0,
+      "host_verdict_measured": false,
+      "final_host_verdict": null,
+      "final_host_passed": false,
+      "post_fork_agent_requests": 10,
+      "post_fork_tokens": 288610,
+      "condensation_events": 1,
+      "changed_files": [
+        "django/contrib/admin/options.py"
+      ]
+    },
+    "pruner_v1": {
+      "sample": "branch-2-pruner_v1",
+      "position": 2,
+      "host_rounds_completed": 0,
+      "host_verdict_measured": false,
+      "final_host_verdict": null,
+      "final_host_passed": false,
+      "post_fork_agent_requests": 10,
+      "post_fork_tokens": 212833,
+      "condensation_events": 1,
+      "changed_files": []
+    }
+  },
+  "branch_host_verdicts_measured": false,
+  "branches_measured": 0,
+  "branches_expected": 3,
+  "quality_verdict_obtained": false,
+  "quality_verdict": "quality verdict not obtained: at least one branch completed no host target test round after the fork, so this round is cost-side evidence only and no quality result is claimed",
+  "cap_arithmetic": {
+    "arms": 3,
+    "shared_ceiling": 84,
+    "branch_reserve": 14,
+    "prefix_budget_cap": 42,
+    "branch_total": 42,
+    "sum": 84,
+    "identity_holds": true,
+    "reserve_identity_holds": true,
+    "branch_window_after_prefix_cap": 10,
+    "reserve_covers_branch_window": true,
+    "branch_verdict_reachable_by_arithmetic": true,
+    "minimum_branch_requests_for_verdict": 10,
+    "minimum_prefix_requests_to_trigger": 30,
+    "note": "a branch that inherits the whole prefix budget cap holds reserve >= host_feedback_correction_reserve requests, which is what its own correction window can spend after the fork: one edit plus one host verdict is reachable without a fresh allowance"
+  }
+}

@@ -1,0 +1,14 @@
+Host tests failed. Read-only test feedback follows:
+Repeated root diagnostics: 1x AssertionError: False is not True
+Fixed test run: Ran 163 tests in 0.242s; FAILED (failures=1)
+Named failures and errors (1):
+1. FAIL: test_lookup_allowed_foreign_primary (modeladmin.tests.ModelAdminTests.test_lookup_allowed_foreign_primary)
+Selected diagnostic tails:
+[1]
+^^^^^^^^^^^^^^^^^^^^^
+File "C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-multitask-v59-prefix-fork-03\prefix-select\attempt-2-django_lookup_allowed_foreign_primary-rung0\evaluation-host-round1\host-workspace\tests\modeladmin\tests.py", line 178, in test_lookup_allowed_foreign_primary
+self.assertIs(ma.lookup_allowed("restaurant__place__country", "1"), True)
+AssertionError: False is not True
+Ran 163 tests in 0.242s
+FAILED (failures=1)
+Destroying test database for alias 'default'... Correct only ['django/contrib/admin/options.py']. Do not edit tests. Inspect the failed assertion, change the smallest relevant code section, and never submit a replacement whose old and new strings are identical. You must land an actual edit and re-run scoped_tests before finishing; a correction that changes no allowed source file cannot succeed. Finish only when the change is written to disk.

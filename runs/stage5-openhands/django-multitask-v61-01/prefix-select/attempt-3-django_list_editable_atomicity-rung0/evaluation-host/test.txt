@@ -1,0 +1,23 @@
+Testing against Django installed in 'C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-multitask-v61-01\prefix-select\attempt-3-django_list_editable_atomicity-rung0\evaluation-host\host-workspace\django'
+Found 75 test(s).
+System check identified no issues (0 silenced).
+Creating test database for alias 'default'...
+
+.......................F............................................sssssss
+======================================================================
+FAIL: test_list_editable_atomicity (admin_changelist.tests.ChangeListTests.test_list_editable_atomicity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-multitask-v61-01\prefix-select\attempt-3-django_list_editable_atomicity-rung0\evaluation-host\host-workspace\django\test\testcases.py", line 1586, in skip_wrapper
+    return test_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\LENOVO\Desktop\AI Agent\code\runs\stage5-openhands\django-multitask-v61-01\prefix-select\attempt-3-django_list_editable_atomicity-rung0\evaluation-host\host-workspace\tests\admin_changelist\tests.py", line 431, in test_list_editable_atomicity
+    self.assertEqual(a.load, 4)
+AssertionError: 9.0 != 4
+
+----------------------------------------------------------------------
+Ran 75 tests in 1.898s
+
+FAILED (failures=1, skipped=7)
+Destroying test database for alias 'default'...
+

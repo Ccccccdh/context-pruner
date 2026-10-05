@@ -1,0 +1,9 @@
+{
+  "batch": "django-multitask-v61-01",
+  "frozen_auditor_sha256": "0cbce38420f1737cde1e384690cba35ad11cbd8e2988ecfe6ead494c482b700a",
+  "reconstruction_sha256": "0cbce38420f1737cde1e384690cba35ad11cbd8e2988ecfe6ead494c482b700a",
+  "reconstruction_reproduces_frozen_auditor": true,
+  "reverted_edit": "the ladder-order assertion only: the current audit models the frozen next_step skip rule (a passed task is not re-attempted) and the \"the walk stops at the first qualifying attempt\" rule; the frozen revision compared the recorded attempts with a raw plan prefix and therefore rejected this batch's correct walk",
+  "scope": "the rest of the auditor, and every other frozen source, is byte-identical: batch 01 drains 110/111 sources and only the auditor differs",
+  "consequence": "batch 01 therefore cannot be judged by an audit that is itself the frozen revision; its three flags come from the runner and its own persisted bytes, and the independent audit of that batch is reported as not obtained rather than assumed"
+}

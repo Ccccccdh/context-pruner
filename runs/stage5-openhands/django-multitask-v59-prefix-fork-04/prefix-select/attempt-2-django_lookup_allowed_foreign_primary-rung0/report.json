@@ -1,0 +1,608 @@
+{
+  "sample": "attempt-2-django_lookup_allowed_foreign_primary-rung0",
+  "kind": "prefix_attempt",
+  "task": "django_lookup_allowed_foreign_primary",
+  "arm": "none",
+  "rung": 0,
+  "work_cap": 24,
+  "phase1_request_ceiling": 26,
+  "condenser": "NoOpCondenser",
+  "success": false,
+  "index": 2,
+  "sdk_status": "error",
+  "elapsed_seconds": 75.81,
+  "timing_seconds": {
+    "prepare_reuse_verify_seconds": 27.48,
+    "prefix_model_wait_seconds": 172.22,
+    "host_test_seconds": 279.28,
+    "prepare_copy_hash_seconds": 309.14
+  },
+  "agent_requests": 12,
+  "summary_requests": 0,
+  "estimated_input": 155221,
+  "condensation_events": 0,
+  "event_count": 30,
+  "event_id_digest": "a9a342ee89cf298f92ec88b47b4211fa975661e02988ffd2efb1b890b2c9ec6b",
+  "ledger": {
+    "calls": [
+      {
+        "kind": "agent",
+        "estimated_input": 5438,
+        "structural_valid": true,
+        "status": "returned",
+        "budget": {
+          "phase": "work",
+          "remaining_requests": 84,
+          "remaining_work_requests": 24,
+          "remaining_estimated_input": 4670000,
+          "public_verification": "not_currently_verified",
+          "reason": "work_capacity_available"
+        },
+        "budget_notice": "HOST RUNTIME BUDGET (remaining requests INCLUDE this request; estimated input is not a bill): {\"phase\": \"work\", \"public_verification\": \"not_currently_verified\", \"reason\": \"work_capacity_available\", \"remaining_estimated_input\": 4670000, \"remaining_requests\": 84, \"remaining_work_requests\": 24}\nPlan within remaining work requests. Reserve verification and Finish. Once ready code passes scoped_tests, finish promptly. Public regression success does not imply host feature acceptance. Later edits invalidate verification.",
+        "allowed_tools": [
+          "scoped_editor",
+          "scoped_symbols",
+          "scoped_tests"
+        ],
+        "budget_response_valid": true,
+        "latency_seconds": 1.0376438999956008
+      },
+      {
+        "kind": "agent",
+        "estimated_input": 6028,
+        "structural_valid": true,
+        "status": "returned",
+        "budget": {
+          "phase": "work",
+          "remaining_requests": 83,
+          "remaining_work_requests": 23,
+          "remaining_estimated_input": 4664562,
+          "public_verification": "not_currently_verified",
+          "reason": "work_capacity_available"
+        },
+        "budget_notice": "HOST RUNTIME BUDGET (remaining requests INCLUDE this request; estimated input is not a bill): {\"phase\": \"work\", \"public_verification\": \"not_currently_verified\", \"reason\": \"work_capacity_available\", \"remaining_estimated_input\": 4664562, \"remaining_requests\": 83, \"remaining_work_requests\": 23}\nPlan within remaining work requests. Reserve verification and Finish. Once ready code passes scoped_tests, finish promptly. Public regression success does not imply host feature acceptance. Later edits invalidate verification.",
+        "allowed_tools": [
+          "scoped_editor",
+          "scoped_symbols",
+          "scoped_tests"
+        ],
+        "budget_response_valid": true,
+        "latency_seconds": 0.8531306000077166
+      },
+      {
+        "kind": "agent",
+        "estimated_input": 7449,
+        "structural_valid": true,
+        "status": "returned",
+        "budget": {
+          "phase": "work",
+          "remaining_requests": 82,
+          "remaining_work_requests": 22,
+          "remaining_estimated_input": 4658534,
+          "public_verification": "not_currently_verified",
+          "reason": "work_capacity_available"
+        },
+        "budget_notice": "HOST RUNTIME BUDGET (remaining requests INCLUDE this request; estimated input is not a bill): {\"phase\": \"work\", \"public_verification\": \"not_currently_verified\", \"reason\": \"work_capacity_available\", \"remaining_estimated_input\": 4658534, \"remaining_requests\": 82, \"remaining_work_requests\": 22}\nPlan within remaining work requests. Reserve verification and Finish. Once ready code passes scoped_tests, finish promptly. Public regression success does not imply host feature acceptance. Later edits invalidate verification.",
+        "allowed_tools": [
+          "scoped_editor",
+          "scoped_symbols",
+          "scoped_tests"
+        ],
+        "budget_response_valid": true,
+        "latency_seconds": 5.450851699992199
+      },
+      {
+        "kind": "agent",
+        "estimated_input": 9356,
+        "structural_valid": true,
+        "status": "returned",
+        "budget": {
+          "phase": "work",
+          "remaining_requests": 81,
+          "remaining_work_requests": 21,
+          "remaining_estimated_input": 4651085,
+          "public_verification": "not_currently_verified",
+          "reason": "work_capacity_available"
+        },
+        "budget_notice": "HOST RUNTIME BUDGET (remaining requests INCLUDE this request; estimated input is not a bill): {\"phase\": \"work\", \"public_verification\": \"not_currently_verified\", \"reason\": \"work_capacity_available\", \"remaining_estimated_input\": 4651085, \"remaining_requests\": 81, \"remaining_work_requests\": 21}\nPlan within remaining work requests. Reserve verification and Finish. Once ready code passes scoped_tests, finish promptly. Public regression success does not imply host feature acceptance. Later edits invalidate verification.",
+        "allowed_tools": [
+          "scoped_editor",
+          "scoped_symbols",
+          "scoped_tests"
+        ],
+        "budget_response_valid": true,
+        "latency_seconds": 0.8323431000026176
+      },
+      {
+        "kind": "agent",
+        "estimated_input": 9796,
+        "structural_valid": true,
+        "status": "returned",
+        "budget": {
+          "phase": "verify",
+          "remaining_requests": 80,
+          "remaining_work_requests": 0,
+          "remaining_estimated_input": 4641729,
+          "public_verification": "not_currently_verified",
+          "reason": "total_input_reserve"
+        },
+        "budget_notice": "HOST RUNTIME BUDGET (remaining requests INCLUDE this request; estimated input is not a bill): {\"phase\": \"verify\", \"public_verification\": \"not_currently_verified\", \"reason\": \"total_input_reserve\", \"remaining_estimated_input\": 4641729, \"remaining_requests\": 80, \"remaining_work_requests\": 0}\nWork budget is closed. Call scoped_tests now. Reading and editing are unavailable in this reserved request. Public regression success does not imply host feature acceptance. Later edits invalidate verification.",
+        "allowed_tools": [
+          "scoped_tests"
+        ],
+        "budget_response_valid": true,
+        "latency_seconds": 0.6921367000031751
+      },
+      {
+        "kind": "agent",
+        "estimated_input": 10230,
+        "structural_valid": true,
+        "status": "returned",
+        "budget": {
+          "phase": "finish",
+          "remaining_requests": 79,
+          "remaining_work_requests": 0,
+          "remaining_estimated_input": 4631933,
+          "public_verification": "passed_current",
+          "reason": "total_input_reserve"
+        },
+        "budget_notice": "HOST RUNTIME BUDGET (remaining requests INCLUDE this request; estimated input is not a bill): {\"phase\": \"finish\", \"public_verification\": \"passed_current\", \"reason\": \"total_input_reserve\", \"remaining_estimated_input\": 4631933, \"remaining_requests\": 79, \"remaining_work_requests\": 0}\nCall finish now. No reading, editing or testing is available. If public verification is not passed_current, explain incomplete/failed verification honestly. Public regression success does not imply host feature acceptance. Later edits invalidate verification.",
+        "allowed_tools": [
+          "finish"
+        ],
+        "budget_response_valid": true,
+        "latency_seconds": 1.8600881000020308
+      },
+      {
+        "kind": "agent",
+        "estimated_input": 12014,
+        "structural_valid": true,
+        "status": "returned",
+        "budget": {
+          "phase": "work",
+          "remaining_requests": 78,
+          "remaining_work_requests": 34,
+          "remaining_estimated_input": 4621703,
+          "public_verification": "not_currently_verified",
+          "reason": "work_capacity_available"
+        },
+        "budget_notice": "HOST RUNTIME BUDGET (remaining requests INCLUDE this request; estimated input is not a bill): {\"phase\": \"work\", \"public_verification\": \"not_currently_verified\", \"reason\": \"work_capacity_available\", \"remaining_estimated_input\": 4621703, \"remaining_requests\": 78, \"remaining_work_requests\": 34}\nPlan within remaining work requests. Reserve verification and Finish. Once ready code passes scoped_tests, finish promptly. Public regression success does not imply host feature acceptance. Later edits invalidate verification.",
+        "allowed_tools": [
+          "scoped_editor",
+          "scoped_symbols",
+          "scoped_tests"
+        ],
+        "budget_response_valid": true,
+        "latency_seconds": 1.043315300004906
+      },
+      {
+        "kind": "agent",
+        "estimated_input": 13025,
+        "structural_valid": true,
+        "status": "returned",
+        "budget": {
+          "phase": "work",
+          "remaining_requests": 77,
+          "remaining_work_requests": 33,
+          "remaining_estimated_input": 4609689,
+          "public_verification": "not_currently_verified",
+          "reason": "work_capacity_available"
+        },
+        "budget_notice": "HOST RUNTIME BUDGET (remaining requests INCLUDE this request; estimated input is not a bill): {\"phase\": \"work\", \"public_verification\": \"not_currently_verified\", \"reason\": \"work_capacity_available\", \"remaining_estimated_input\": 4609689, \"remaining_requests\": 77, \"remaining_work_requests\": 33}\nPlan within remaining work requests. Reserve verification and Finish. Once ready code passes scoped_tests, finish promptly. Public regression success does not imply host feature acceptance. Later edits invalidate verification.",
+        "allowed_tools": [
+          "scoped_editor",
+          "scoped_symbols",
+          "scoped_tests"
+        ],
+        "budget_response_valid": true,
+        "latency_seconds": 20.438100100000156
+      },
+      {
+        "kind": "agent",
+        "estimated_input": 19467,
+        "structural_valid": true,
+        "status": "returned",
+        "budget": {
+          "phase": "work",
+          "remaining_requests": 76,
+          "remaining_work_requests": 32,
+          "remaining_estimated_input": 4596664,
+          "public_verification": "not_currently_verified",
+          "reason": "work_capacity_available"
+        },
+        "budget_notice": "HOST RUNTIME BUDGET (remaining requests INCLUDE this request; estimated input is not a bill): {\"phase\": \"work\", \"public_verification\": \"not_currently_verified\", \"reason\": \"work_capacity_available\", \"remaining_estimated_input\": 4596664, \"remaining_requests\": 76, \"remaining_work_requests\": 32}\nPlan within remaining work requests. Reserve verification and Finish. Once ready code passes scoped_tests, finish promptly. Public regression success does not imply host feature acceptance. Later edits invalidate verification.",
+        "allowed_tools": [
+          "scoped_editor",
+          "scoped_symbols",
+          "scoped_tests"
+        ],
+        "budget_response_valid": true,
+        "latency_seconds": 1.0454521000065142
+      },
+      {
+        "kind": "agent",
+        "estimated_input": 19881,
+        "structural_valid": true,
+        "status": "returned",
+        "budget": {
+          "phase": "work",
+          "remaining_requests": 75,
+          "remaining_work_requests": 31,
+          "remaining_estimated_input": 4577197,
+          "public_verification": "passed_current",
+          "reason": "work_capacity_available"
+        },
+        "budget_notice": "HOST RUNTIME BUDGET (remaining requests INCLUDE this request; estimated input is not a bill): {\"phase\": \"work\", \"public_verification\": \"passed_current\", \"reason\": \"work_capacity_available\", \"remaining_estimated_input\": 4577197, \"remaining_requests\": 75, \"remaining_work_requests\": 31}\nPlan within remaining work requests. Reserve verification and Finish. Once ready code passes scoped_tests, finish promptly. Public regression success does not imply host feature acceptance. Later edits invalidate verification.",
+        "allowed_tools": [
+          "scoped_editor",
+          "scoped_symbols",
+          "scoped_tests"
+        ],
+        "budget_response_valid": true,
+        "latency_seconds": 0.980507200001739
+      },
+      {
+        "kind": "agent",
+        "estimated_input": 21045,
+        "structural_valid": true,
+        "status": "returned",
+        "budget": {
+          "phase": "work",
+          "remaining_requests": 74,
+          "remaining_work_requests": 30,
+          "remaining_estimated_input": 4557316,
+          "public_verification": "passed_current",
+          "reason": "work_capacity_available"
+        },
+        "budget_notice": "HOST RUNTIME BUDGET (remaining requests INCLUDE this request; estimated input is not a bill): {\"phase\": \"work\", \"public_verification\": \"passed_current\", \"reason\": \"work_capacity_available\", \"remaining_estimated_input\": 4557316, \"remaining_requests\": 74, \"remaining_work_requests\": 30}\nPlan within remaining work requests. Reserve verification and Finish. Once ready code passes scoped_tests, finish promptly. Public regression success does not imply host feature acceptance. Later edits invalidate verification.",
+        "allowed_tools": [
+          "scoped_editor",
+          "scoped_symbols",
+          "scoped_tests"
+        ],
+        "budget_response_valid": true,
+        "latency_seconds": 0.6904053000034764
+      },
+      {
+        "kind": "agent",
+        "estimated_input": 21492,
+        "structural_valid": true,
+        "status": "returned",
+        "budget": {
+          "phase": "work",
+          "remaining_requests": 73,
+          "remaining_work_requests": 29,
+          "remaining_estimated_input": 4536271,
+          "public_verification": "passed_current",
+          "reason": "work_capacity_available"
+        },
+        "budget_notice": "HOST RUNTIME BUDGET (remaining requests INCLUDE this request; estimated input is not a bill): {\"phase\": \"work\", \"public_verification\": \"passed_current\", \"reason\": \"work_capacity_available\", \"remaining_estimated_input\": 4536271, \"remaining_requests\": 73, \"remaining_work_requests\": 29}\nPlan within remaining work requests. Reserve verification and Finish. Once ready code passes scoped_tests, finish promptly. Public regression success does not imply host feature acceptance. Later edits invalidate verification.",
+        "allowed_tools": [
+          "scoped_editor",
+          "scoped_symbols",
+          "scoped_tests"
+        ],
+        "budget_response_valid": false,
+        "latency_seconds": 1.9957063999900129
+      }
+    ],
+    "estimated_input": 155221,
+    "agent_requests": 12,
+    "summary_requests": 0,
+    "final_call_estimated_input": 21492
+  },
+  "agent_metrics": {
+    "model_name": "openai/deepseek-v4-flash",
+    "accumulated_cost": 0.0,
+    "max_budget_per_task": null,
+    "accumulated_token_usage": {
+      "model": "openai/deepseek-v4-flash",
+      "prompt_tokens": 144120,
+      "completion_tokens": 8970,
+      "cache_read_tokens": 116480,
+      "cache_write_tokens": 0,
+      "reasoning_tokens": 0,
+      "context_window": 1000000,
+      "per_turn_token": 19980,
+      "response_id": ""
+    },
+    "costs": [],
+    "response_latencies": [
+      {
+        "model": "openai/deepseek-v4-flash",
+        "latency": 1.0312964916229248,
+        "response_id": "825975eb-0f80-4bda-a131-02f81c55e5ba"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "latency": 0.8476908206939697,
+        "response_id": "a4d05467-1559-48f4-8423-0e720a6cf612"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "latency": 5.444658994674683,
+        "response_id": "ce57db18-c6ff-4dc8-857b-084ebf82229b"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "latency": 0.825873851776123,
+        "response_id": "677a6181-bedd-4aa8-ae56-6067467a92e1"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "latency": 0.6891574859619141,
+        "response_id": "8974f9d7-d714-462f-a276-c76c2774dffd"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "latency": 1.8571064472198486,
+        "response_id": "39f8090e-715b-4438-9cdc-e82605e81e76"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "latency": 1.0367388725280762,
+        "response_id": "52e3aa86-9000-4827-b501-2610834e3f68"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "latency": 20.43068838119507,
+        "response_id": "acdbf4cd-b367-45dd-a5f4-ef6c6efaf04d"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "latency": 1.0384228229522705,
+        "response_id": "927bd349-14da-4b80-b522-98c8380b92ea"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "latency": 0.9740853309631348,
+        "response_id": "0c3ef62a-28de-4667-b25d-42a477d7e13e"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "latency": 0.6834664344787598,
+        "response_id": "fa3aade5-dacb-4016-99f2-7c6f489e779a"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "latency": 1.98820161819458,
+        "response_id": "be27afdf-9e19-4c70-9885-3381bb245ac7"
+      }
+    ],
+    "token_usages": [
+      {
+        "model": "openai/deepseek-v4-flash",
+        "prompt_tokens": 5832,
+        "completion_tokens": 247,
+        "cache_read_tokens": 4864,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "context_window": 1000000,
+        "per_turn_token": 6079,
+        "response_id": "825975eb-0f80-4bda-a131-02f81c55e5ba"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "prompt_tokens": 6222,
+        "completion_tokens": 127,
+        "cache_read_tokens": 5504,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "context_window": 1000000,
+        "per_turn_token": 6349,
+        "response_id": "a4d05467-1559-48f4-8423-0e720a6cf612"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "prompt_tokens": 7355,
+        "completion_tokens": 1427,
+        "cache_read_tokens": 5888,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "context_window": 1000000,
+        "per_turn_token": 8782,
+        "response_id": "ce57db18-c6ff-4dc8-857b-084ebf82229b"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "prompt_tokens": 9028,
+        "completion_tokens": 129,
+        "cache_read_tokens": 7040,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "context_window": 1000000,
+        "per_turn_token": 9157,
+        "response_id": "677a6181-bedd-4aa8-ae56-6067467a92e1"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "prompt_tokens": 8572,
+        "completion_tokens": 47,
+        "cache_read_tokens": 3584,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "context_window": 1000000,
+        "per_turn_token": 8619,
+        "response_id": "8974f9d7-d714-462f-a276-c76c2774dffd"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "prompt_tokens": 8859,
+        "completion_tokens": 328,
+        "cache_read_tokens": 3584,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "context_window": 1000000,
+        "per_turn_token": 9187,
+        "response_id": "39f8090e-715b-4438-9cdc-e82605e81e76"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "prompt_tokens": 11118,
+        "completion_tokens": 163,
+        "cache_read_tokens": 8704,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "context_window": 1000000,
+        "per_turn_token": 11281,
+        "response_id": "52e3aa86-9000-4827-b501-2610834e3f68"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "prompt_tokens": 11900,
+        "completion_tokens": 5767,
+        "cache_read_tokens": 10752,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "context_window": 1000000,
+        "per_turn_token": 17667,
+        "response_id": "acdbf4cd-b367-45dd-a5f4-ef6c6efaf04d"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "prompt_tokens": 18071,
+        "completion_tokens": 61,
+        "cache_read_tokens": 11776,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "context_window": 1000000,
+        "per_turn_token": 18132,
+        "response_id": "927bd349-14da-4b80-b522-98c8380b92ea"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "prompt_tokens": 18337,
+        "completion_tokens": 177,
+        "cache_read_tokens": 17792,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "context_window": 1000000,
+        "per_turn_token": 18514,
+        "response_id": "0c3ef62a-28de-4667-b25d-42a477d7e13e"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "prompt_tokens": 19268,
+        "completion_tokens": 75,
+        "cache_read_tokens": 18048,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "context_window": 1000000,
+        "per_turn_token": 19343,
+        "response_id": "fa3aade5-dacb-4016-99f2-7c6f489e779a"
+      },
+      {
+        "model": "openai/deepseek-v4-flash",
+        "prompt_tokens": 19558,
+        "completion_tokens": 422,
+        "cache_read_tokens": 18944,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "context_window": 1000000,
+        "per_turn_token": 19980,
+        "response_id": "be27afdf-9e19-4c70-9885-3381bb245ac7"
+      }
+    ]
+  },
+  "summary_metrics": {
+    "model_name": "openai/deepseek-v4-flash",
+    "accumulated_cost": 0.0,
+    "max_budget_per_task": null,
+    "accumulated_token_usage": {
+      "model": "openai/deepseek-v4-flash",
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "reasoning_tokens": 0,
+      "context_window": 0,
+      "per_turn_token": 0,
+      "response_id": ""
+    },
+    "costs": [],
+    "response_latencies": [],
+    "token_usages": []
+  },
+  "complete_total_tokens": 153090,
+  "first_phase_within_budget": true,
+  "workspace_preparation": {
+    "reused_gate_workspace": false,
+    "file_count": 19972,
+    "task": "django_lookup_allowed_foreign_primary"
+  },
+  "work_phase_host_passed": false,
+  "work_phase_agent_requests": 6,
+  "host_evaluation": {
+    "passed": true,
+    "returncode": 0,
+    "ran": 163,
+    "failures": null,
+    "summary": [
+      "Testing against Django installed in 'C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v59-prefix-fork-04\\prefix-select\\attempt-2-django_lookup_allowed_foreign_primary-rung0\\evaluation-host-round1\\host-workspace\\django'",
+      "Ran 163 tests in 0.283s",
+      "OK"
+    ],
+    "elapsed_seconds": 7.68,
+    "host_tests_applied": true,
+    "selection": [
+      "modeladmin"
+    ],
+    "workspace_unchanged_by_test": true
+  },
+  "host_passed": true,
+  "needs_correction": false,
+  "attempt_timing_seconds": {
+    "prepare_reuse_verify_seconds": 27.48,
+    "prefix_model_wait_seconds": 172.22,
+    "host_test_seconds": 425.28,
+    "prepare_copy_hash_seconds": 309.14
+  },
+  "disk_free_gb_after": 4.791,
+  "prefix_correction_window": 42,
+  "prefix_work_phase_requests": 6,
+  "prefix_correction_stopped_reason": "correction round 1 ended in ConversationRunError: Conversation run failed for id=0bb63a15-1a42-4cdc-b8c3-532fa4a6c919: Budget policy blocked an unexpected tool before execution\n\nConversation logs are stored at: C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v59-prefix-fork-04\\sdk-persistence\\prefix\\0bb63a151a424cdcb8c3532fa4a6c919\n\nTo help debug this issue, please file a bug report at:\n  https://github.com/OpenHands/software-agent-sdk/issues/new\nand attach the conversation logs from the directory above.",
+  "prefix_correction_round1_error": {
+    "error_type": "ConversationRunError",
+    "message": "Conversation run failed for id=0bb63a15-1a42-4cdc-b8c3-532fa4a6c919: Budget policy blocked an unexpected tool before execution\n\nConversation logs are stored at: C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\runs\\stage5-openhands\\django-multitask-v59-prefix-fork-04\\sdk-persistence\\prefix\\0bb63a151a424cdcb8c3532fa4a6c919\n\nTo help debug this issue, please file a bug report at:\n  https://github.com/OpenHands/software-agent-sdk/issues/new\nand attach the conversation logs from the directory above."
+  },
+  "prefix_host_rounds": [
+    {
+      "round": 1,
+      "host_passed": true,
+      "agent_requests": 12,
+      "burst_error_type": "ConversationRunError",
+      "evaluation_dir": "prefix-select\\attempt-2-django_lookup_allowed_foreign_primary-rung0\\evaluation-host-round1"
+    }
+  ],
+  "final_evaluation_dir": "prefix-select\\attempt-2-django_lookup_allowed_foreign_primary-rung0\\evaluation-host-round1",
+  "prefix_rounds_used": 1,
+  "prefix_reserve_at_end": {
+    "arms": 3,
+    "shared_ceiling": 84,
+    "branch_reserve": 14,
+    "prefix_budget_cap": 42,
+    "branch_total": 42,
+    "sum": 84,
+    "identity_holds": true,
+    "reserve_identity_holds": true,
+    "branch_window_after_prefix_cap": 10,
+    "reserve_covers_branch_window": true,
+    "branch_verdict_reachable_by_arithmetic": true,
+    "minimum_branch_requests_for_verdict": 10,
+    "minimum_prefix_requests_to_trigger": 30,
+    "note": "a branch that inherits the whole prefix budget cap holds reserve >= host_feedback_correction_reserve requests, which is what its own correction window can spend after the fork: one edit plus one host verdict is reachable without a fresh allowance",
+    "prefix_requests": 12,
+    "requests_used": 12,
+    "remaining_after_prefix": 72,
+    "reserve_satisfied": true,
+    "branch_requests_each": 24,
+    "budget_exhausted": false
+  },
+  "attempt_dir": "prefix-select\\attempt-2-django_lookup_allowed_foreign_primary-rung0",
+  "trigger_prediction": {
+    "triggered": false,
+    "skipped": "host target test passed; this end state needs no correction",
+    "measured_view_tokens": null,
+    "ledger_last_estimated_input": 21492
+  }
+}

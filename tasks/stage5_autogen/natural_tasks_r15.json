@@ -1,0 +1,398 @@
+[
+  {
+    "task_id": "service_release_gate",
+    "title": "服务版本发布准入",
+    "task": "服务 svc-checkout-api 的候选版本 rel-2207 计划今晚发布到 us-east-2。请按固定顺序读取当前部署配置、运行指标、变更记录与发布前校验结果，判断是否准予发布或必须回滚到上一个稳定版本，并给出必须保留的事实。",
+    "history_constraint": "服务名 svc-checkout-api 与候选版本 rel-2207 是本次发布的固定标识，不得改写；历史讨论里的 rel-2190 是更早的已下线版本，本次不得再作为发布目标。",
+    "history_topic": "上一轮灰度复盘、旧的容量申请、已经关闭的告警与过期的发布排期",
+    "tools": [
+      {
+        "name": "read_deploy_config",
+        "call": {
+          "service": "svc-checkout-api"
+        },
+        "result": {
+          "service": "svc-checkout-api",
+          "release": "rel-2207",
+          "target_region": "us-east-2",
+          "replicas": 12,
+          "config_sha": "cfg-91ac"
+        },
+        "evidence_parts": [
+          "\"service\": \"svc-checkout-api\"",
+          "\"release\": \"rel-2207\"",
+          "\"target_region\": \"us-east-2\""
+        ]
+      },
+      {
+        "name": "read_runtime_metrics",
+        "call": {
+          "service": "svc-checkout-api"
+        },
+        "result": {
+          "service": "svc-checkout-api",
+          "window_minutes": 30,
+          "error_rate_percent": 0.4,
+          "p99_latency_ms": 240,
+          "saturation_percent": 61
+        },
+        "evidence_parts": [
+          "\"error_rate_percent\": 0.4",
+          "\"p99_latency_ms\": 240"
+        ]
+      },
+      {
+        "name": "read_change_log",
+        "call": {
+          "release": "rel-2207"
+        },
+        "result": {
+          "release": "rel-2207",
+          "breaking_changes": 0,
+          "rollback_target": "rel-2201",
+          "change_window_closed": true
+        },
+        "evidence_parts": [
+          "\"breaking_changes\": 0",
+          "\"rollback_target\": \"rel-2201\""
+        ]
+      },
+      {
+        "name": "run_release_check",
+        "call": {
+          "release": "rel-2207"
+        },
+        "result": {
+          "release": "rel-2207",
+          "release_ready": true,
+          "failed": 0,
+          "checked_rules": 18
+        },
+        "evidence_parts": [
+          "\"release\": \"rel-2207\"",
+          "\"release_ready\": true",
+          "\"failed\": 0",
+          "\"checked_rules\": 18"
+        ]
+      }
+    ],
+    "decision": "RELEASE",
+    "handle_facts": [
+      "svc-checkout-api",
+      "rel-2207",
+      "us-east-2"
+    ],
+    "answer_facts": [
+      "release_ready true",
+      "failed 0",
+      "rel-2207"
+    ],
+    "forbidden_facts": [
+      "rel-2190"
+    ],
+    "region_fact": "us-east-2",
+    "version_fact": "rel-2207",
+    "expected_terms": [
+      "svc-checkout-api",
+      "rel-2207",
+      "us-east-2",
+      "RELEASE"
+    ]
+  },
+  {
+    "task_id": "schema_migration_gate",
+    "title": "数据库迁移准入",
+    "task": "迁移包 mig-7702 计划在阅读副本上加索引并放宽 orders.order_id 的可空约束。请按固定顺序读取模式清单、数据库实测指标、变更记录与迁移前校验结果，判断应当执行迁移还是必须回退到上一个模式版本，并给出必须保留的事实。",
+    "history_constraint": "迁移包 mig-7702 与目标模式版本 schema-88 是本次变更的固定标识，不得改写；历史讨论里的 schema-71 已被取代，本次不得再作为目标版本。",
+    "history_topic": "旧模式回滚记录、已完成的演练、过期的一致性审计与已经撤销的变更窗口",
+    "tools": [
+      {
+        "name": "read_schema_inventory",
+        "call": {
+          "migration": "mig-7702"
+        },
+        "result": {
+          "migration": "mig-7702",
+          "schema_version": "schema-88",
+          "tables": 24,
+          "manifest_sha": "sch-4d17"
+        },
+        "evidence_parts": [
+          "\"migration\": \"mig-7702\"",
+          "\"schema_version\": \"schema-88\""
+        ]
+      },
+      {
+        "name": "read_db_metrics",
+        "call": {
+          "schema_version": "schema-88"
+        },
+        "result": {
+          "schema_version": "schema-88",
+          "table_rows": 8200000,
+          "reader_replicas": 4,
+          "long_running_queries": 6,
+          "lock_wait_ms": 0
+        },
+        "evidence_parts": [
+          "\"table_rows\": 8200000",
+          "\"reader_replicas\": 4"
+        ]
+      },
+      {
+        "name": "read_change_record",
+        "call": {
+          "migration": "mig-7702"
+        },
+        "result": {
+          "migration": "mig-7702",
+          "index_add_ok": true,
+          "nullability_check": "failed",
+          "fallback_schema": "schema-61"
+        },
+        "evidence_parts": [
+          "\"index_add_ok\": true",
+          "\"nullability_check\": \"failed\"",
+          "\"fallback_schema\": \"schema-61\""
+        ]
+      },
+      {
+        "name": "run_migration_check",
+        "call": {
+          "migration": "mig-7702"
+        },
+        "result": {
+          "migration": "mig-7702",
+          "migration_ready": false,
+          "failed_checks": 1,
+          "affected_foreign_keys": 6
+        },
+        "evidence_parts": [
+          "\"migration_ready\": false",
+          "\"failed_checks\": 1",
+          "\"affected_foreign_keys\": 6"
+        ]
+      }
+    ],
+    "decision": "REVERT",
+    "handle_facts": [
+      "mig-7702",
+      "schema-88",
+      "failed_checks 1"
+    ],
+    "answer_facts": [
+      "migration_ready false",
+      "failed_checks 1",
+      "affected_foreign_keys 6"
+    ],
+    "forbidden_facts": [
+      "schema-71"
+    ],
+    "region_fact": "",
+    "version_fact": "schema-88",
+    "expected_terms": [
+      "mig-7702",
+      "schema-88",
+      "failed_checks 1",
+      "REVERT"
+    ]
+  },
+  {
+    "task_id": "flag_promotion_gate",
+    "title": "特性开关放量准入",
+    "task": "特性开关 flag-orion 的 v16 配置计划从 5% 放量到 25%。请按固定顺序读取开关定义、曝光指标、变更记录与放量前校验结果，判断应当放量还是必须保持关闭，并给出必须保留的事实。",
+    "history_constraint": "开关名 flag-orion 与其版本 v16 是本次放量的固定标识，不得改写；历史讨论里的 v9 是已经退役的旧版本，本次不得再作为放量目标。",
+    "history_topic": "旧版本退役记录、已经取消的灰度批次、过期的实验报告与已关闭的指标告警",
+    "tools": [
+      {
+        "name": "read_flag_definition",
+        "call": {
+          "flag": "flag-orion"
+        },
+        "result": {
+          "flag": "flag-orion",
+          "flag_version": "v16",
+          "rollout_percent_requested": 25,
+          "definition_sha": "flg-2b08"
+        },
+        "evidence_parts": [
+          "\"flag\": \"flag-orion\"",
+          "\"flag_version\": \"v16\"",
+          "\"rollout_percent_requested\": 25"
+        ]
+      },
+      {
+        "name": "read_exposure_metrics",
+        "call": {
+          "flag": "flag-orion"
+        },
+        "result": {
+          "flag": "flag-orion",
+          "exposed_users": 41000,
+          "guardrail_breaches": 0,
+          "error_rate_percent": 0.1,
+          "p95_latency_ms": 180
+        },
+        "evidence_parts": [
+          "\"exposed_users\": 41000",
+          "\"guardrail_breaches\": 0"
+        ]
+      },
+      {
+        "name": "read_change_record",
+        "call": {
+          "flag_version": "v16"
+        },
+        "result": {
+          "flag_version": "v16",
+          "target_cohort_percent": 25,
+          "holdback_percent": 5,
+          "previous_version": "v9"
+        },
+        "evidence_parts": [
+          "\"target_cohort_percent\": 25",
+          "\"holdback_percent\": 5"
+        ]
+      },
+      {
+        "name": "run_flag_check",
+        "call": {
+          "flag": "flag-orion"
+        },
+        "result": {
+          "flag": "flag-orion",
+          "promotion_ready": true,
+          "blocked_checks": 0,
+          "checked_guardrails": 9
+        },
+        "evidence_parts": [
+          "\"promotion_ready\": true",
+          "\"blocked_checks\": 0",
+          "\"checked_guardrails\": 9"
+        ]
+      }
+    ],
+    "decision": "PROMOTE",
+    "handle_facts": [
+      "flag-orion",
+      "v16",
+      "promotion_ready true"
+    ],
+    "answer_facts": [
+      "promotion_ready true",
+      "blocked_checks 0",
+      "checked_guardrails 9"
+    ],
+    "forbidden_facts": [
+      "v9"
+    ],
+    "region_fact": "",
+    "version_fact": "v16",
+    "expected_terms": [
+      "flag-orion",
+      "v16",
+      "promotion_ready true",
+      "PROMOTE"
+    ]
+  },
+  {
+    "task_id": "cache_promotion_gate",
+    "title": "缓存层提升准入",
+    "task": "缓存节点 cache-node-44 的构建 build-3341 计划提升为主读缓存。请按固定顺序读取缓存配置、一致性指标、变更记录与提升前校验结果，判断应当提升还是必须回退到上一个构建，并给出必须保留的事实。",
+    "history_constraint": "缓存节点 cache-node-44、构建号 build-3341 与区域 us-west-1 是本次提升的固定标识，不得改写；历史讨论里的 build-3300 是已经被取代的构建，本次不得再作为提升目标。",
+    "history_topic": "上一个构建的退役记录、已完成的容量演练、过期的命中率报告与已撤销的提升窗口",
+    "tools": [
+      {
+        "name": "read_cache_config",
+        "call": {
+          "node": "cache-node-44"
+        },
+        "result": {
+          "node": "cache-node-44",
+          "build": "build-3341",
+          "region": "us-west-1",
+          "configured_shards": 8,
+          "config_sha": "cch-7f31"
+        },
+        "evidence_parts": [
+          "\"node\": \"cache-node-44\"",
+          "\"build\": \"build-3341\"",
+          "\"region\": \"us-west-1\""
+        ]
+      },
+      {
+        "name": "read_consistency_metrics",
+        "call": {
+          "node": "cache-node-44"
+        },
+        "result": {
+          "node": "cache-node-44",
+          "hit_rate_percent": 94,
+          "evictions_per_minute": 2,
+          "warmup_seconds": 45
+        },
+        "evidence_parts": [
+          "\"hit_rate_percent\": 94",
+          "\"evictions_per_minute\": 2"
+        ]
+      },
+      {
+        "name": "read_change_record",
+        "call": {
+          "build": "build-3341"
+        },
+        "result": {
+          "build": "build-3341",
+          "key_schema_changed": false,
+          "previous_build": "build-3300",
+          "promotion_step_index": 3
+        },
+        "evidence_parts": [
+          "\"key_schema_changed\": false",
+          "\"previous_build\": \"build-3300\""
+        ]
+      },
+      {
+        "name": "run_cache_check",
+        "call": {
+          "node": "cache-node-44"
+        },
+        "result": {
+          "node": "cache-node-44",
+          "build": "build-3341",
+          "promotion_ready": false,
+          "mismatched_keys": 3,
+          "verified_shards": 8
+        },
+        "evidence_parts": [
+          "\"build\": \"build-3341\"",
+          "\"promotion_ready\": false",
+          "\"mismatched_keys\": 3",
+          "\"verified_shards\": 8"
+        ]
+      }
+    ],
+    "decision": "DISABLE",
+    "handle_facts": [
+      "cache-node-44",
+      "us-west-1",
+      "mismatched_keys 3"
+    ],
+    "answer_facts": [
+      "promotion_ready false",
+      "mismatched_keys 3",
+      "verified_shards 8"
+    ],
+    "forbidden_facts": [
+      "build-3300"
+    ],
+    "region_fact": "us-west-1",
+    "version_fact": "build-3341",
+    "expected_terms": [
+      "cache-node-44",
+      "us-west-1",
+      "mismatched_keys 3",
+      "DISABLE"
+    ]
+  }
+]

@@ -1,0 +1,58 @@
+{
+  "amendment_of": "integrations/crewai/PRE_RUN_FREEZE_R16_RELEASE_GATE_GUARDED_3ARM_01.json",
+  "batch": "crewai-two-role-r16-release-gate-guarded-3arm-01",
+  "date": "2026-10-05",
+  "status_before": "draft freeze; its paid three-arm pilot has NOT been run yet, so no recorded result becomes stale",
+  "changes": [
+    {
+      "revision": 1,
+      "what_changed": [
+        "integrations/crewai/PILOT_PROTOCOL_TWO_ROLE_R16_RELEASE_GATE_GUARDED_3ARM_01.md section 7 was updated after the r16 payload acquisition batch (crewai-r16-payload-none-01) landed: the projection-only caveat is replaced by the measured r16 bound, the revised three-arm request arithmetic with the guard is recorded, and the remaining preconditions are restated"
+      ],
+      "why": [
+        "the payload acquisition batch was approved and executed, so the protocol's 'no r16 payload exists' precondition is no longer true and leaving it would misstate the evidence",
+        "the paid three-arm pilot's request cap must be justified with the guard's resend cost, which the original arithmetic (280 = 252 + 28, zero rejections) did not include"
+      ],
+      "old_sha256": {
+        "integrations/crewai/PILOT_PROTOCOL_TWO_ROLE_R16_RELEASE_GATE_GUARDED_3ARM_01.md": "c25a8e0e553986a23a6bee31b8f4f013b3233e61caf451e22a810e7099aeecb5"
+      },
+      "new_sha256": {
+        "integrations/crewai/PILOT_PROTOCOL_TWO_ROLE_R16_RELEASE_GATE_GUARDED_3ARM_01.md": "178f3a00b1cf65fafc18cbb40244d65676fb67af6fd9acfaab0f7fed59415e4f"
+      }
+    },
+    {
+      "revision": 2,
+      "what_changed": [
+        "experiments/runners/run_crewai_handoff_v16.py now writes the batch purpose into the manifest: a --purpose argument was added (default three_arm_pilot), and limits.max_summary_calls plus limits.max_summary_tokens were confirmed present"
+      ],
+      "why": [
+        "the approved three-arm pilot requires the manifest to be written ONCE with purpose + both citable_as_* flags + freeze hashes + budget + max_summary_calls; purpose was the only field the runner did not write itself"
+      ],
+      "old_sha256": {
+        "experiments/runners/run_crewai_handoff_v16.py": "0c3573d3ecfca1cb36564d897927becce5ea679647eee87424cd9eed4bbef989"
+      },
+      "new_sha256": {
+        "experiments/runners/run_crewai_handoff_v16.py": "pinned_by_the_regenerated_freeze"
+      },
+      "behaviour_change": "none: the new argument only adds a manifest field, and its default preserves every previously recorded behaviour",
+      "no_paid_request": "written before the pilot's first request"
+    }
+  ],
+  "old_sha256": {
+    "integrations/crewai/PILOT_PROTOCOL_TWO_ROLE_R16_RELEASE_GATE_GUARDED_3ARM_01.md": "c25a8e0e553986a23a6bee31b8f4f013b3233e61caf451e22a810e7099aeecb5"
+  },
+  "new_sha256": {
+    "integrations/crewai/PILOT_PROTOCOL_TWO_ROLE_R16_RELEASE_GATE_GUARDED_3ARM_01.md": "178f3a00b1cf65fafc18cbb40244d65676fb67af6fd9acfaab0f7fed59415e4f",
+    "integrations/crewai/PRE_RUN_FREEZE_R16_RELEASE_GATE_GUARDED_3ARM_01.json": "regenerated_by_.tooling/write_crewai_r16_freeze.py_which_pins_this_file; the freeze records its own file hash and declared self-hash"
+  },
+  "unchanged_in_substance": [
+    "the matrix (4 tasks x 3 repeats x 3 arms, 12 units per arm)",
+    "the guard semantics, its rejection cap and its failure semantics",
+    "the frozen r13 view mechanism and the r16 task file",
+    "the corrected call-wise cost formula and the VOID status of the old +10.247% bound",
+    "the acceptance conditions and the 12/12 behaviour requirement",
+    "the 280 request cap and the stop-and-resume plan"
+  ],
+  "no_paid_request": "this amendment was written without issuing any API request; the batch it freezes had not been run",
+  "immutability": "this amendment is itself immutable once written; the regenerated freeze pins this file's SHA256"
+}

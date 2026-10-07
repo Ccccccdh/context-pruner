@@ -1,0 +1,314 @@
+{
+  "method": "SUM_calls(uncompressed_input - compressed_input) - protection_cost",
+  "batch": "crewai-r17-payload-none-01",
+  "samples": 4,
+  "requests_used": 28,
+  "estimator_calibration": {
+    "r17_payload": {
+      "samples": 4,
+      "mean_estimator_over_provider": 2.0849,
+      "mean_characters_per_provider_token": 2.5517
+    },
+    "r16_payload": {
+      "samples": 4,
+      "mean_estimator_over_provider": 1.9988,
+      "mean_characters_per_provider_token": 2.3838
+    },
+    "r15_payload": {
+      "samples": 12,
+      "mean_estimator_over_provider": 2.0213,
+      "mean_characters_per_provider_token": 2.3951
+    }
+  },
+  "r15_plugin_arm_measured_growth": {
+    "samples": 6,
+    "delta_series": [
+      [
+        120,
+        42,
+        93,
+        76
+      ],
+      [
+        120,
+        52,
+        101,
+        55
+      ],
+      [
+        120,
+        42,
+        93,
+        55
+      ],
+      [
+        112,
+        39,
+        95,
+        87
+      ],
+      [
+        112,
+        39,
+        112,
+        85
+      ],
+      [
+        112,
+        54,
+        108,
+        74
+      ]
+    ],
+    "mean_delta": 83.25
+  },
+  "per_task": [
+    {
+      "task_id": "audit_trail_retention_gate",
+      "first_role_calls": 5,
+      "decider_calls": 2,
+      "uncompressed_first_role_tokens": 8849,
+      "uncompressed_decider_tokens": 1468,
+      "uncompressed_total_tokens": 10317,
+      "uncompressed_series": [
+        1567,
+        1672,
+        1770,
+        1871,
+        1969
+      ],
+      "decider_series": [
+        685,
+        783
+      ],
+      "compressed_first_call_provider_tokens": 1258.4,
+      "potential_old_unit_upper_tokens": 3830.3,
+      "potential_old_unit_upper_percent": 37.126,
+      "reference_bound_tokens": 2914.5,
+      "reference_bound_percent": 28.25,
+      "protection": {
+        "pinned_characters": 130,
+        "pin_tokens_per_call": 54,
+        "protection_total_tokens": 270,
+        "protected_rounds": 0,
+        "whole_prefix_fallbacks": 0,
+        "summary_tokens": 0
+      },
+      "safe_candidate_upper_tokens": 3560.3,
+      "safe_candidate_upper_percent": 34.509,
+      "safe_candidate_reference_tokens": 2644.5,
+      "safe_candidate_reference_percent": 25.633,
+      "view": {
+        "served_messages": 6,
+        "served_characters": 3211,
+        "served_estimated_tokens": 2423,
+        "pinned_characters": 130,
+        "pinned_events": 1,
+        "pin_tier_counts": {
+          "tier1_evidence_pinned": 1
+        },
+        "protected_rounds": 0,
+        "whole_prefix_fallbacks": 0
+      },
+      "judge": {
+        "strict_success": true,
+        "semantic_success": true,
+        "first_pass_complete": true,
+        "tool_sequence_consistent": true,
+        "error": ""
+      },
+      "api_request_attempts": 7
+    },
+    {
+      "task_id": "zone_drain_gate",
+      "first_role_calls": 5,
+      "decider_calls": 2,
+      "uncompressed_first_role_tokens": 8831,
+      "uncompressed_decider_tokens": 1432,
+      "uncompressed_total_tokens": 10263,
+      "uncompressed_series": [
+        1554,
+        1662,
+        1768,
+        1866,
+        1981
+      ],
+      "decider_series": [
+        667,
+        765
+      ],
+      "compressed_first_call_provider_tokens": 1214.5,
+      "potential_old_unit_upper_tokens": 4007.1,
+      "potential_old_unit_upper_percent": 39.044,
+      "reference_bound_tokens": 3091.4,
+      "reference_bound_percent": 30.121,
+      "protection": {
+        "pinned_characters": 123,
+        "pin_tokens_per_call": 52,
+        "protection_total_tokens": 260,
+        "protected_rounds": 0,
+        "whole_prefix_fallbacks": 0,
+        "summary_tokens": 0
+      },
+      "safe_candidate_upper_tokens": 3747.1,
+      "safe_candidate_upper_percent": 36.511,
+      "safe_candidate_reference_tokens": 2831.4,
+      "safe_candidate_reference_percent": 27.588,
+      "view": {
+        "served_messages": 6,
+        "served_characters": 3099,
+        "served_estimated_tokens": 2344,
+        "pinned_characters": 123,
+        "pinned_events": 1,
+        "pin_tier_counts": {
+          "tier1_evidence_pinned": 1
+        },
+        "protected_rounds": 0,
+        "whole_prefix_fallbacks": 0
+      },
+      "judge": {
+        "strict_success": true,
+        "semantic_success": true,
+        "first_pass_complete": true,
+        "tool_sequence_consistent": true,
+        "error": ""
+      },
+      "api_request_attempts": 7
+    },
+    {
+      "task_id": "compaction_window_gate",
+      "first_role_calls": 5,
+      "decider_calls": 2,
+      "uncompressed_first_role_tokens": 8887,
+      "uncompressed_decider_tokens": 1393,
+      "uncompressed_total_tokens": 10280,
+      "uncompressed_series": [
+        1577,
+        1681,
+        1778,
+        1877,
+        1974
+      ],
+      "decider_series": [
+        649,
+        744
+      ],
+      "compressed_first_call_provider_tokens": 1650.3,
+      "potential_old_unit_upper_tokens": 1787.6,
+      "potential_old_unit_upper_percent": 17.389,
+      "reference_bound_tokens": 871.9,
+      "reference_bound_percent": 8.481,
+      "protection": {
+        "pinned_characters": 116,
+        "pin_tokens_per_call": 49,
+        "protection_total_tokens": 245,
+        "protected_rounds": 0,
+        "whole_prefix_fallbacks": 0,
+        "summary_tokens": 0
+      },
+      "safe_candidate_upper_tokens": 1542.6,
+      "safe_candidate_upper_percent": 15.006,
+      "safe_candidate_reference_tokens": 626.9,
+      "safe_candidate_reference_percent": 6.098,
+      "view": {
+        "served_messages": 7,
+        "served_characters": 4211,
+        "served_estimated_tokens": 3358,
+        "pinned_characters": 116,
+        "pinned_events": 1,
+        "pin_tier_counts": {
+          "tier1_evidence_pinned": 1
+        },
+        "protected_rounds": 0,
+        "whole_prefix_fallbacks": 0
+      },
+      "judge": {
+        "strict_success": true,
+        "semantic_success": true,
+        "first_pass_complete": true,
+        "tool_sequence_consistent": true,
+        "error": ""
+      },
+      "api_request_attempts": 7
+    },
+    {
+      "task_id": "rollback_point_gate",
+      "first_role_calls": 5,
+      "decider_calls": 2,
+      "uncompressed_first_role_tokens": 8989,
+      "uncompressed_decider_tokens": 1424,
+      "uncompressed_total_tokens": 10413,
+      "uncompressed_series": [
+        1579,
+        1683,
+        1790,
+        1907,
+        2030
+      ],
+      "decider_series": [
+        665,
+        759
+      ],
+      "compressed_first_call_provider_tokens": 1227.0,
+      "potential_old_unit_upper_tokens": 4096.3,
+      "potential_old_unit_upper_percent": 39.339,
+      "reference_bound_tokens": 3180.6,
+      "reference_bound_percent": 30.544,
+      "protection": {
+        "pinned_characters": 114,
+        "pin_tokens_per_call": 48,
+        "protection_total_tokens": 240,
+        "protected_rounds": 0,
+        "whole_prefix_fallbacks": 0,
+        "summary_tokens": 0
+      },
+      "safe_candidate_upper_tokens": 3856.3,
+      "safe_candidate_upper_percent": 37.034,
+      "safe_candidate_reference_tokens": 2940.6,
+      "safe_candidate_reference_percent": 28.239,
+      "view": {
+        "served_messages": 6,
+        "served_characters": 3131,
+        "served_estimated_tokens": 2366,
+        "pinned_characters": 114,
+        "pinned_events": 1,
+        "pin_tier_counts": {
+          "tier1_evidence_pinned": 1
+        },
+        "protected_rounds": 0,
+        "whole_prefix_fallbacks": 0
+      },
+      "judge": {
+        "strict_success": true,
+        "semantic_success": true,
+        "first_pass_complete": true,
+        "tool_sequence_consistent": true,
+        "error": ""
+      },
+      "api_request_attempts": 7
+    }
+  ],
+  "batch_totals": {
+    "uncompressed_total_tokens": 41273,
+    "potential_old_unit_upper_tokens": 13721.3,
+    "potential_old_unit_upper_percent": 33.245,
+    "reference_bound_tokens": 10058.4,
+    "reference_bound_percent": 24.37,
+    "protection_total_tokens": 1015,
+    "safe_candidate_upper_percent": 30.786,
+    "safe_candidate_reference_percent": 21.911,
+    "gate_3_threshold_percent": 3.0,
+    "gate_3": "PASS: every per-task column is above the 3% cost gate",
+    "safe_candidate_non_empty": true
+  },
+  "columns": {
+    "potential_old_unit_upper": "call-wise saving with the compressed view held flat at its first-call size: an upper bound, never a quality claim",
+    "safe_candidate_after_protection": "the same minus every protection cost the frozen r13 ledger charges"
+  },
+  "caveats": [
+    "the compressed side is bounded/estimated, not measured: the uncompressed arm cannot produce a compressed view, and the plugin arm is a separate paid batch",
+    "the guard is not installed on this path, so this batch says nothing about whether the role finishes the frozen tool table under the guard",
+    "one repeat per task: four task-level observations, no confidence interval",
+    "these tasks were constructed while the guard was designed, so the guard is not blind to them"
+  ]
+}

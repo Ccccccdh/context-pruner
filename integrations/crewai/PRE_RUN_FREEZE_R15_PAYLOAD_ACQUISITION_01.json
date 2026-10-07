@@ -1,0 +1,73 @@
+{
+  "batch": "crewai-r15-payload-none-01",
+  "samples": 12,
+  "mode": "api",
+  "purpose": "payload_acquisition_only",
+  "citable_as_saving": false,
+  "citable_as_quality_equivalence": false,
+  "tasks": [
+    "service_release_gate",
+    "schema_migration_gate",
+    "flag_promotion_gate",
+    "cache_promotion_gate"
+  ],
+  "methods": [
+    "none"
+  ],
+  "repeats": 3,
+  "model": "deepseek-v4-flash",
+  "base_url": "https://api.deepseek.com",
+  "budget": {
+    "provider_tokens": {
+      "soft": 1200,
+      "hard": 3000,
+      "target": 900
+    },
+    "estimated_tokens": {
+      "soft": 3085,
+      "hard": 7712,
+      "target": 2314
+    }
+  },
+  "limits": {
+    "fixed_reserved_tokens": 300,
+    "max_output_tokens": 512,
+    "filler_history_pairs": 14
+  },
+  "max_api_requests": 120,
+  "request_arithmetic": "minimum 2 agent requests per sample = 24; this task shape runs about 5 first-role calls (4 tool rounds + handoff) and 2 decider calls, so about 84 requests for 12 samples; the cap adds ~43% headroom for retries and empty responses. The uncompressed arm issues no summary requests.",
+  "stop_line": [
+    "global request cap reached",
+    "empty model response",
+    "connection-class error (APIConnectionError/APITimeoutError/connection error/insufficient balance/rate limit/authentication error)"
+  ],
+  "failure_policy": "preserve and count every failure and cap-limited sample",
+  "payload_contract": {
+    "per_call": [
+      "message role sequence",
+      "per-message sha256 and character count",
+      "verbatim text of the first call of each role",
+      "per-call new-frame characters and provider input/output tokens"
+    ],
+    "per_sample": [
+      "payload_sha256 over the recorded payload block",
+      "tool trace, handoff line, final answer, judge verdicts"
+    ]
+  },
+  "gate_thresholds": {
+    "upper_bound_percent": 3.0,
+    "min_tasks_with_nonzero_headroom": 3,
+    "same_work_required": true
+  },
+  "source_sha256": {
+    "experiments/commands/run_crewai_r15_payload_acquisition.py": "3fbc61fe4b1ac219ae6efacda21a2f316318e6a2ab02a9912e6980d1489c99af",
+    "experiments/commands/crewai_candidate_gate_r15_real_payload.py": "048cc99b9148e3f8922b85c13a3cbb63c4e6dfc8462391f445947d9ad3c41f22",
+    "experiments/runners/crewai_semantic_equivalence_v8.py": "26aea58bbbe57aa6fc451e00436254636cc01df97c0ec33d321cad73924304e1",
+    "experiments/runners/run_crewai_handoff_v4.py": "8aa75353bd7a5b4cffea5bd0233a82583d5c4ac34d83c2bac0672117edd078cf",
+    "experiments/runners/run_crewai_experiment.py": "0c0cd1d3e30ea837b323e1318321804433c20f8c9fdcd3a40b42deb1849554f1",
+    "tasks/stage5_autogen/natural_tasks_r15.json": "7164a9252e58c4914620b3b86a1b8b78b3d542e316437831673884b86981bc4a",
+    "integrations/crewai/PILOT_PROTOCOL_R15_PAYLOAD_ACQUISITION_01.md": "d3d54f60c137f6741feac98c73eb9fe2f34b1ae24514af2300e7d2d4c0aa699e",
+    ".tooling/probe_crewai_r15_tasks.py": "8a2cf8fd4fd074468eb820eeadbb523f2b248ef0bd29c602d2607cf25b6f3577"
+  },
+  "freeze_sha256_note": "per the r15 discipline this freeze is immutable; any revision requires a *_FREEZE_AMENDMENT_<date>.json recording what changed, why, and the old and new SHA256, and the batch manifest records this freeze file's own SHA256"
+}

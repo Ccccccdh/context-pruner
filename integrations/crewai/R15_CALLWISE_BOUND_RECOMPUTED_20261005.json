@@ -1,0 +1,682 @@
+{
+  "method": "call-wise: SUM_calls(uncompressed_input - compressed_input) - protection",
+  "old_bound": {
+    "value_percent": 10.247,
+    "status": "VOID",
+    "why": "it booked only once-only first-frame text; the whole frame is re-sent on every call.  Measured same-work saving was +35.16%, i.e. 3.43x the old bound"
+  },
+  "chars_per_token": 2.41,
+  "k_recent_tool_rounds": 3,
+  "payload_batch": "runs\\stage5-crewai\\crewai-r15-payload-none-01",
+  "pilot_batch": "runs\\stage5-crewai\\crewai-two-role-r15-release-gate-3arm-resume-a-01",
+  "units": [
+    {
+      "task_id": "cache_promotion_gate",
+      "repeat": 0,
+      "baseline_calls": [
+        1905,
+        2032,
+        2139,
+        2243,
+        2354,
+        669,
+        770
+      ],
+      "plugin_calls": [
+        1073,
+        1190,
+        1222,
+        1338,
+        665,
+        766
+      ],
+      "baseline_first_role_calls": 5,
+      "baseline_message_counts": [
+        32,
+        34,
+        36,
+        38,
+        40
+      ],
+      "same_call_count": false,
+      "same_tool_sequence": false,
+      "basis": "not_pairwise",
+      "reason": "call counts differ; the plugin arm did less work",
+      "bound_tokens": null,
+      "paired_saving_percent": null
+    },
+    {
+      "task_id": "cache_promotion_gate",
+      "repeat": 1,
+      "baseline_calls": [
+        1995,
+        2122,
+        2221,
+        2317,
+        2418,
+        671,
+        772
+      ],
+      "plugin_calls": [
+        1100,
+        1217,
+        1249,
+        1344,
+        671,
+        772
+      ],
+      "baseline_first_role_calls": 5,
+      "baseline_message_counts": [
+        34,
+        36,
+        38,
+        40,
+        42
+      ],
+      "same_call_count": false,
+      "same_tool_sequence": false,
+      "basis": "not_pairwise",
+      "reason": "call counts differ; the plugin arm did less work",
+      "bound_tokens": null,
+      "paired_saving_percent": null
+    },
+    {
+      "task_id": "cache_promotion_gate",
+      "repeat": 2,
+      "baseline_calls": [
+        2085,
+        2212,
+        2319,
+        2423,
+        2534,
+        671,
+        772
+      ],
+      "plugin_calls": [
+        1127,
+        1244,
+        1289,
+        1397,
+        675,
+        776
+      ],
+      "baseline_first_role_calls": 5,
+      "baseline_message_counts": [
+        36,
+        38,
+        40,
+        42,
+        44
+      ],
+      "same_call_count": false,
+      "same_tool_sequence": false,
+      "basis": "not_pairwise",
+      "reason": "call counts differ; the plugin arm did less work",
+      "bound_tokens": null,
+      "paired_saving_percent": null
+    },
+    {
+      "task_id": "flag_promotion_gate",
+      "repeat": 0,
+      "baseline_calls": [
+        1909,
+        2013,
+        2122,
+        2215,
+        2307,
+        683,
+        775
+      ],
+      "plugin_calls": [
+        1054,
+        1164,
+        1225,
+        1336,
+        680,
+        772
+      ],
+      "baseline_first_role_calls": 5,
+      "baseline_message_counts": [
+        32,
+        34,
+        36,
+        38,
+        40
+      ],
+      "same_call_count": false,
+      "same_tool_sequence": false,
+      "basis": "not_pairwise",
+      "reason": "call counts differ; the plugin arm did less work",
+      "bound_tokens": null,
+      "paired_saving_percent": null
+    },
+    {
+      "task_id": "flag_promotion_gate",
+      "repeat": 1,
+      "baseline_calls": [
+        2000,
+        2106,
+        2215,
+        2308,
+        2400,
+        678,
+        770
+      ],
+      "plugin_calls": [
+        1081,
+        1191,
+        1233,
+        1346,
+        674,
+        766
+      ],
+      "baseline_first_role_calls": 5,
+      "baseline_message_counts": [
+        34,
+        36,
+        38,
+        40,
+        42
+      ],
+      "same_call_count": false,
+      "same_tool_sequence": false,
+      "basis": "not_pairwise",
+      "reason": "call counts differ; the plugin arm did less work",
+      "bound_tokens": null,
+      "paired_saving_percent": null
+    },
+    {
+      "task_id": "flag_promotion_gate",
+      "repeat": 2,
+      "baseline_calls": [
+        2091,
+        2196,
+        2316,
+        2411,
+        2506,
+        683,
+        775
+      ],
+      "plugin_calls": [
+        1108,
+        1218,
+        1260,
+        1352,
+        680,
+        772
+      ],
+      "baseline_first_role_calls": 5,
+      "baseline_message_counts": [
+        36,
+        38,
+        40,
+        42,
+        44
+      ],
+      "same_call_count": false,
+      "same_tool_sequence": false,
+      "basis": "not_pairwise",
+      "reason": "call counts differ; the plugin arm did less work",
+      "bound_tokens": null,
+      "paired_saving_percent": null
+    },
+    {
+      "task_id": "schema_migration_gate",
+      "repeat": 0,
+      "baseline_calls": [
+        1869,
+        1974,
+        2080,
+        2176,
+        2271,
+        709,
+        804
+      ],
+      "plugin_calls": [
+        1058,
+        1170,
+        1209,
+        1304,
+        1391,
+        679,
+        774
+      ],
+      "baseline_first_role_calls": 5,
+      "baseline_message_counts": [
+        32,
+        34,
+        36,
+        38,
+        40
+      ],
+      "same_call_count": true,
+      "same_tool_sequence": true,
+      "basis": "measured",
+      "per_call_delta_tokens": [
+        811,
+        804,
+        871,
+        872,
+        880,
+        30,
+        30
+      ],
+      "raw_delta_tokens": 4298,
+      "protection": {
+        "pinned_characters": 1894,
+        "pin_tokens": 786,
+        "protected_rounds": 9,
+        "protected_round_readded_characters": 0,
+        "protected_round_tokens": 0,
+        "whole_prefix_fallbacks": 0,
+        "fallback_tokens": 0,
+        "summary_tokens": 0,
+        "total_tokens": 786
+      },
+      "bound_tokens": 3512,
+      "uncompressed_total_tokens": 11883,
+      "compressed_total_tokens": 7585,
+      "bound_percent_of_uncompressed": 29.555,
+      "paired_saving_percent": 36.169
+    },
+    {
+      "task_id": "schema_migration_gate",
+      "repeat": 1,
+      "baseline_calls": [
+        1957,
+        2068,
+        2184,
+        2282,
+        2380,
+        681,
+        776
+      ],
+      "plugin_calls": [
+        1085,
+        1197,
+        1236,
+        1348,
+        1433,
+        681,
+        776
+      ],
+      "baseline_first_role_calls": 5,
+      "baseline_message_counts": [
+        34,
+        36,
+        38,
+        40,
+        42
+      ],
+      "same_call_count": true,
+      "same_tool_sequence": true,
+      "basis": "measured",
+      "per_call_delta_tokens": [
+        872,
+        871,
+        948,
+        934,
+        947,
+        0,
+        0
+      ],
+      "raw_delta_tokens": 4572,
+      "protection": {
+        "pinned_characters": 1894,
+        "pin_tokens": 786,
+        "protected_rounds": 9,
+        "protected_round_readded_characters": 0,
+        "protected_round_tokens": 0,
+        "whole_prefix_fallbacks": 0,
+        "fallback_tokens": 0,
+        "summary_tokens": 0,
+        "total_tokens": 786
+      },
+      "bound_tokens": 3786,
+      "uncompressed_total_tokens": 12328,
+      "compressed_total_tokens": 7756,
+      "bound_percent_of_uncompressed": 30.711,
+      "paired_saving_percent": 37.086
+    },
+    {
+      "task_id": "schema_migration_gate",
+      "repeat": 2,
+      "baseline_calls": [
+        2045,
+        2150,
+        2256,
+        2352,
+        2447,
+        708,
+        803
+      ],
+      "plugin_calls": [
+        1112,
+        1224,
+        1278,
+        1386,
+        1460,
+        669,
+        764
+      ],
+      "baseline_first_role_calls": 5,
+      "baseline_message_counts": [
+        36,
+        38,
+        40,
+        42,
+        44
+      ],
+      "same_call_count": true,
+      "same_tool_sequence": true,
+      "basis": "measured",
+      "per_call_delta_tokens": [
+        933,
+        926,
+        978,
+        966,
+        987,
+        39,
+        39
+      ],
+      "raw_delta_tokens": 4868,
+      "protection": {
+        "pinned_characters": 1894,
+        "pin_tokens": 786,
+        "protected_rounds": 9,
+        "protected_round_readded_characters": 0,
+        "protected_round_tokens": 0,
+        "whole_prefix_fallbacks": 0,
+        "fallback_tokens": 0,
+        "summary_tokens": 0,
+        "total_tokens": 786
+      },
+      "bound_tokens": 4082,
+      "uncompressed_total_tokens": 12761,
+      "compressed_total_tokens": 7893,
+      "bound_percent_of_uncompressed": 31.988,
+      "paired_saving_percent": 38.147
+    },
+    {
+      "task_id": "service_release_gate",
+      "repeat": 0,
+      "baseline_calls": [
+        1878,
+        1991,
+        2100,
+        2194,
+        2283,
+        709,
+        798
+      ],
+      "plugin_calls": [
+        1080,
+        1200,
+        1242,
+        1335,
+        1411,
+        693,
+        782
+      ],
+      "baseline_first_role_calls": 5,
+      "baseline_message_counts": [
+        32,
+        34,
+        36,
+        38,
+        40
+      ],
+      "same_call_count": true,
+      "same_tool_sequence": true,
+      "basis": "measured",
+      "per_call_delta_tokens": [
+        798,
+        791,
+        858,
+        859,
+        872,
+        16,
+        16
+      ],
+      "raw_delta_tokens": 4210,
+      "protection": {
+        "pinned_characters": 2021,
+        "pin_tokens": 839,
+        "protected_rounds": 9,
+        "protected_round_readded_characters": 0,
+        "protected_round_tokens": 0,
+        "whole_prefix_fallbacks": 0,
+        "fallback_tokens": 0,
+        "summary_tokens": 0,
+        "total_tokens": 839
+      },
+      "bound_tokens": 3371,
+      "uncompressed_total_tokens": 11953,
+      "compressed_total_tokens": 7743,
+      "bound_percent_of_uncompressed": 28.202,
+      "paired_saving_percent": 35.221
+    },
+    {
+      "task_id": "service_release_gate",
+      "repeat": 1,
+      "baseline_calls": [
+        1966,
+        2080,
+        2191,
+        2286,
+        2376,
+        702,
+        791
+      ],
+      "plugin_calls": [
+        1107,
+        1227,
+        1279,
+        1380,
+        1435,
+        705,
+        794
+      ],
+      "baseline_first_role_calls": 5,
+      "baseline_message_counts": [
+        34,
+        36,
+        38,
+        40,
+        42
+      ],
+      "same_call_count": true,
+      "same_tool_sequence": true,
+      "basis": "measured",
+      "per_call_delta_tokens": [
+        859,
+        853,
+        912,
+        906,
+        941,
+        -3,
+        -3
+      ],
+      "raw_delta_tokens": 4465,
+      "protection": {
+        "pinned_characters": 2021,
+        "pin_tokens": 839,
+        "protected_rounds": 9,
+        "protected_round_readded_characters": 0,
+        "protected_round_tokens": 0,
+        "whole_prefix_fallbacks": 0,
+        "fallback_tokens": 0,
+        "summary_tokens": 0,
+        "total_tokens": 839
+      },
+      "bound_tokens": 3626,
+      "uncompressed_total_tokens": 12392,
+      "compressed_total_tokens": 7927,
+      "bound_percent_of_uncompressed": 29.261,
+      "paired_saving_percent": 36.031
+    },
+    {
+      "task_id": "service_release_gate",
+      "repeat": 2,
+      "baseline_calls": [
+        2054,
+        2171,
+        2280,
+        2374,
+        2463,
+        696,
+        785
+      ],
+      "plugin_calls": [
+        1134,
+        1254,
+        1296,
+        1389,
+        1444,
+        709,
+        798
+      ],
+      "baseline_first_role_calls": 5,
+      "baseline_message_counts": [
+        36,
+        38,
+        40,
+        42,
+        44
+      ],
+      "same_call_count": true,
+      "same_tool_sequence": true,
+      "basis": "measured",
+      "per_call_delta_tokens": [
+        920,
+        917,
+        984,
+        985,
+        1019,
+        -13,
+        -13
+      ],
+      "raw_delta_tokens": 4799,
+      "protection": {
+        "pinned_characters": 2021,
+        "pin_tokens": 839,
+        "protected_rounds": 9,
+        "protected_round_readded_characters": 0,
+        "protected_round_tokens": 0,
+        "whole_prefix_fallbacks": 0,
+        "fallback_tokens": 0,
+        "summary_tokens": 0,
+        "total_tokens": 839
+      },
+      "bound_tokens": 3960,
+      "uncompressed_total_tokens": 12823,
+      "compressed_total_tokens": 8024,
+      "bound_percent_of_uncompressed": 30.882,
+      "paired_saving_percent": 37.425
+    }
+  ],
+  "aggregate": {
+    "paired_units": 6,
+    "unpairable_units": 6,
+    "per_task": {
+      "schema_migration_gate": {
+        "paired_units": 3,
+        "mean_bound_tokens": 3793.3,
+        "mean_protection_tokens": 786.0,
+        "mean_raw_delta_tokens": 4579.3,
+        "mean_bound_percent": 30.78,
+        "mean_paired_saving_percent": 37.158
+      },
+      "service_release_gate": {
+        "paired_units": 3,
+        "mean_bound_tokens": 3652.3,
+        "mean_protection_tokens": 839.0,
+        "mean_raw_delta_tokens": 4491.3,
+        "mean_bound_percent": 29.48,
+        "mean_paired_saving_percent": 36.252
+      }
+    },
+    "batch_mean_bound_tokens": 3722.8,
+    "batch_mean_bound_percent": 30.128
+  },
+  "r16_projection": {
+    "basis": "projected",
+    "assumption": "the host scaffolding (system prompt, agent scaffolding, decider prompt) scales with the task's own content only through the tool names and schema block; the projection applies the r15 measured mean uncompressed / compressed / protection cost per unit unchanged to the r16 tasks, whose own content sizes are measured below",
+    "r15_measured_mean_uncompressed_tokens_per_unit": 12356.7,
+    "r15_measured_mean_compressed_tokens_per_unit": 7821.3,
+    "r15_measured_mean_protection_tokens_per_unit": 812.5,
+    "r15_measured_mean_bound_percent": 30.128,
+    "tasks": [
+      {
+        "task_id": "artifact_publish_gate",
+        "tools": [
+          "read_artifact_manifest",
+          "read_signature_metrics",
+          "read_publish_record",
+          "run_publish_check"
+        ],
+        "content": {
+          "history_constraint_characters": 85,
+          "tool_evidence_characters": 493,
+          "total_characters": 578
+        },
+        "bound": null,
+        "basis": "projected",
+        "note": "run the r16 payload acquisition batch before any measured bound"
+      },
+      {
+        "task_id": "quota_scale_gate",
+        "tools": [
+          "read_quota_definition",
+          "read_usage_metrics",
+          "read_scale_record",
+          "run_quota_check"
+        ],
+        "content": {
+          "history_constraint_characters": 78,
+          "tool_evidence_characters": 472,
+          "total_characters": 550
+        },
+        "bound": null,
+        "basis": "projected",
+        "note": "run the r16 payload acquisition batch before any measured bound"
+      },
+      {
+        "task_id": "traffic_shift_gate",
+        "tools": [
+          "read_route_config",
+          "read_latency_metrics",
+          "read_shift_record",
+          "run_shift_check"
+        ],
+        "content": {
+          "history_constraint_characters": 74,
+          "tool_evidence_characters": 517,
+          "total_characters": 591
+        },
+        "bound": null,
+        "basis": "projected",
+        "note": "run the r16 payload acquisition batch before any measured bound"
+      },
+      {
+        "task_id": "failover_switch_gate",
+        "tools": [
+          "read_cluster_config",
+          "read_replication_metrics",
+          "read_switch_record",
+          "run_switch_check"
+        ],
+        "content": {
+          "history_constraint_characters": 79,
+          "tool_evidence_characters": 513,
+          "total_characters": 592
+        },
+        "bound": null,
+        "basis": "projected",
+        "note": "run the r16 payload acquisition batch before any measured bound"
+      }
+    ]
+  },
+  "r16_status": "PROJECTION ONLY - the r16 tasks have no payload acquisition yet; a projected bound must not admit a paid batch",
+  "script_sha256": "8b1380a89d414abcf1b9cbb622148bc40919eeef2457a36748942f400c2b8fad"
+}

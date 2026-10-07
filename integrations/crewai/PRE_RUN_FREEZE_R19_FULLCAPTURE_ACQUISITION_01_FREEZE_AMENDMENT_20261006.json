@@ -1,0 +1,70 @@
+{
+  "amendment_of": "integrations/crewai/PRE_RUN_FREEZE_R19_FULLCAPTURE_ACQUISITION_01.json",
+  "batch": "crewai-r19-fullcapture-acquisition-api-01",
+  "date": "2026-10-06",
+  "status_before": "write-once freeze written; its real acquisition has not been run",
+  "changes": [
+    {
+      "revision": 1,
+      "subject": "cache metering",
+      "what_changed": [
+        "experiments/runners/crewai_capture_v19.py now records prompt_cache_hit_tokens / prompt_cache_miss_tokens per attempt (with a cache_tokens_source marker), the UTC start/finish timestamp of each attempt, and the off-peak verdict derived from it"
+      ],
+      "why": [
+        "the provider bills cached input at $0.003/1M against $0.15/1M uncached (50x) and offers five times off-peak pricing, while the runner previously recorded only total input/output tokens"
+      ],
+      "old_sha256": {
+        "experiments/runners/crewai_capture_v19.py": "1deddfd9beb9769f1e45147f66998138e69652b33bc3974e66ab33b3a1cfa55a",
+        "experiments/commands/run_crewai_r19_acquisition.py": "166834659df0df816972ab651809294f2d08c22f3839ffb7a34a46cb4fce0284"
+      },
+      "new_sha256": {
+        "experiments/runners/crewai_capture_v19.py": "03419f730c9930f425ee53a6ab77874b8bd72af90f5dd22dba48ec19674e29b9",
+        "experiments/commands/run_crewai_r19_acquisition.py": "f754ae1348445f6fc307ee3d11df38840fb3bb9a78a734e3989823c634eb3ad6"
+      }
+    },
+    {
+      "revision": 2,
+      "subject": "request hard cap",
+      "what_changed": [
+        "the effective request hard cap is 30, not 48"
+      ],
+      "why": [
+        "the mock acquisition needed 21 requests; the handoff sets the real acquisition's hard top at 30, which still leaves room for retries or one cap hit while staying far below the freeze's 48-slot ceiling"
+      ],
+      "old_sha256": {},
+      "new_sha256": {},
+      "effective_max_api_requests": 30,
+      "freeze_ceiling_max_api_requests": 48,
+      "note": "the real run can never exceed 30; the freeze's 48 remains the absolute ceiling it was written with"
+    }
+  ],
+  "pinned_sources_after_amendment": {
+    "experiments/commands/run_crewai_r19_acquisition.py": "f754ae1348445f6fc307ee3d11df38840fb3bb9a78a734e3989823c634eb3ad6",
+    "experiments/runners/crewai_capture_v19.py": "03419f730c9930f425ee53a6ab77874b8bd72af90f5dd22dba48ec19674e29b9",
+    "experiments/audits/audit_crewai_r19_acquisition.py": "358352834c2d90cc635d778360b940c99253463b75c215969b08f4afcb34f510",
+    "experiments/commands/run_crewai_r17_confirmation_acquisition.py": "fed8633a6f29b5b58fd88c9c747937caec3de5dd7e89ce856b0091a2f21b7427",
+    "experiments/runners/run_crewai_experiment.py": "0c0cd1d3e30ea837b323e1318321804433c20f8c9fdcd3a40b42deb1849554f1",
+    "experiments/runners/run_crewai_handoff_v16.py": "6bcbe39e537de96caea1fc419849fff2d1eebb8176247e6db6e749289384927d",
+    "experiments/runners/run_crewai_handoff_v4.py": "8aa75353bd7a5b4cffea5bd0233a82583d5c4ac34d83c2bac0672117edd078cf",
+    "experiments/runners/crewai_loop_guard_v18.py": "bdd24fc967486e73da0541087977dce1efb638c9b76f0a70456859837063da31",
+    "experiments/runners/crewai_semantic_equivalence_v8.py": "26aea58bbbe57aa6fc451e00436254636cc01df97c0ec33d321cad73924304e1",
+    "experiments/runners/crewai_handoff_v17_tasks.py": "e225e0540ecba0e192a65215ee7a44197cbd9d7e6eb206a313838922d401c5b9",
+    "tasks/stage5_autogen/natural_tasks_r19_acquisition.json": "32ab262674a5c9672df68ca226678c75bfb64652f0e19655b6e2a11ae9934fb9"
+  },
+  "effective_max_api_requests": 30,
+  "freeze_file_unchanged_sha256": "e4a9e5f74266e9209970221856c861377ed8066dc84602cc364a72ec33f7b966",
+  "freeze_declared_self_sha256": "",
+  "cache_metering": {
+    "fields": [
+      "prompt_cache_hit_tokens",
+      "prompt_cache_miss_tokens",
+      "cache_tokens_source",
+      "utc_started",
+      "utc_finished",
+      "off_peak_window"
+    ],
+    "absence_rule": "when the provider reports no cache split, the record says so ('absent') instead of booking a full-price miss"
+  },
+  "no_paid_request": "written without issuing any API request",
+  "immutability": "immutable once written; a further change needs another amendment"
+}

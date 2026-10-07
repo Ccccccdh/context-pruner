@@ -1,0 +1,386 @@
+[
+  {
+    "task_id": "watermark_publish_gate",
+    "title": "水印发布准入",
+    "task": "载体 carrier-5521 的发布计划 bind-lane-07 准备启用水印方案 plan-wm-4。请按固定顺序读取水印方案定义、探针标记指标、启用记录与启用前校验结果，判断应当启用还是必须暂缓该计划，并给出必须保留的事实。",
+    "history_constraint": "载体 carrier-5521 与发布计划 bind-lane-07 是本次启用的固定标识，不得改写；历史讨论里的 plan-wm-1 是已经作废的方案，本次不得再作为启用目标。",
+    "history_topic": "旧水印方案作废记录、探针误报复盘、已取消的启用窗口与过期的标记配额",
+    "tools": [
+      {
+        "name": "read_watermark_plan",
+        "call": {
+          "carrier": "carrier-5521"
+        },
+        "result": {
+          "carrier": "carrier-5521",
+          "plan": "plan-wm-4",
+          "layer_count": 9,
+          "plan_sha": "wmp-71c4"
+        },
+        "evidence_parts": [
+          "\"carrier\": \"carrier-5521\"",
+          "\"plan\": \"plan-wm-4\""
+        ]
+      },
+      {
+        "name": "read_probe_metrics",
+        "call": {
+          "plan": "plan-wm-4"
+        },
+        "result": {
+          "plan": "plan-wm-4",
+          "probes_detected": 64,
+          "false_positive_rate_percent": 0,
+          "probe_markers": "present"
+        },
+        "evidence_parts": [
+          "\"probes_detected\": 64",
+          "\"false_positive_rate_percent\": 0"
+        ]
+      },
+      {
+        "name": "read_embed_record",
+        "call": {
+          "plan": "plan-wm-4"
+        },
+        "result": {
+          "plan": "plan-wm-4",
+          "record_state": "open",
+          "previous_plan": "plan-wm-1",
+          "embed_step_index": 6
+        },
+        "evidence_parts": [
+          "\"record_state\": \"open\"",
+          "\"previous_plan\": \"plan-wm-1\""
+        ]
+      },
+      {
+        "name": "run_embed_check",
+        "call": {
+          "carrier": "carrier-5521"
+        },
+        "result": {
+          "carrier": "carrier-5521",
+          "embed_ready": true,
+          "mandatory_markers": 12,
+          "noncompliance_count": 0
+        },
+        "evidence_parts": [
+          "\"embed_ready\": true",
+          "\"mandatory_markers\": 12",
+          "\"noncompliance_count\": 0"
+        ]
+      }
+    ],
+    "decision": "HOLD",
+    "handle_facts": [
+      "carrier-5521",
+      "bind-lane-07",
+      "embed_ready true"
+    ],
+    "answer_facts": [
+      "embed_ready true",
+      "mandatory_markers 12",
+      "noncompliance_count 0"
+    ],
+    "forbidden_facts": [
+      "plan-wm-1"
+    ],
+    "region_fact": "",
+    "version_fact": "carrier-5521",
+    "expected_terms": [
+      "carrier-5521",
+      "bind-lane-07",
+      "embed_ready true",
+      "HOLD"
+    ]
+  },
+  {
+    "task_id": "autoscale_policy_gate",
+    "title": "自动扩缩策略准入",
+    "task": "服务 svc-queue-88 的策略组 policy-314 申请采用扩缩策略 scale-rg-9 替换当前策略。请按固定顺序读取策略定义、容量护栏指标、采用记录与采用前校验结果，判断应当采用还是必须维持当前策略，并给出必须保留的事实。",
+    "history_constraint": "服务 svc-queue-88 与策略组 policy-314 是本次采用的固定标识，不得改写；历史讨论里的 scale-rg-2 是已经下线的策略，本次不得再作为采用目标。",
+    "history_topic": "旧扩缩策略下线记录、护栏阈值谈判、已取消的采用窗口与过期的容量预留",
+    "tools": [
+      {
+        "name": "read_policy_definition",
+        "call": {
+          "service": "svc-queue-88"
+        },
+        "result": {
+          "service": "svc-queue-88",
+          "policy": "policy-314",
+          "target_utilisation_percent": 60,
+          "definition_sha": "pdy-9f02"
+        },
+        "evidence_parts": [
+          "\"service\": \"svc-queue-88\"",
+          "\"policy\": \"policy-314\""
+        ]
+      },
+      {
+        "name": "read_capacity_guardrails",
+        "call": {
+          "region": "eu-north-4"
+        },
+        "result": {
+          "region": "eu-north-4",
+          "guardrails_passed": 14,
+          "breached_guardrails": 0,
+          "guardrail_state": "satisfied"
+        },
+        "evidence_parts": [
+          "\"guardrails_passed\": 14",
+          "\"breached_guardrails\": 0"
+        ]
+      },
+      {
+        "name": "read_adoption_record",
+        "call": {
+          "policy": "policy-314"
+        },
+        "result": {
+          "policy": "policy-314",
+          "record_state": "open",
+          "previous_policy": "scale-rg-2",
+          "adoption_step_index": 5
+        },
+        "evidence_parts": [
+          "\"record_state\": \"open\"",
+          "\"previous_policy\": \"scale-rg-2\""
+        ]
+      },
+      {
+        "name": "run_guardrail_check",
+        "call": {
+          "service": "svc-queue-88"
+        },
+        "result": {
+          "service": "svc-queue-88",
+          "scaling_ready": true,
+          "band_min_percent": 40,
+          "band_max_percent": 90
+        },
+        "evidence_parts": [
+          "\"scaling_ready\": true",
+          "\"band_min_percent\": 40",
+          "\"band_max_percent\": 90"
+        ]
+      }
+    ],
+    "decision": "ADOPT",
+    "handle_facts": [
+      "svc-queue-88",
+      "policy-314",
+      "scaling_ready true"
+    ],
+    "answer_facts": [
+      "scaling_ready true",
+      "band_min_percent 40",
+      "band_max_percent 90"
+    ],
+    "forbidden_facts": [
+      "scale-rg-2"
+    ],
+    "region_fact": "eu-north-4",
+    "version_fact": "svc-queue-88",
+    "expected_terms": [
+      "svc-queue-88",
+      "policy-314",
+      "scaling_ready true",
+      "ADOPT"
+    ]
+  },
+  {
+    "task_id": "key_rotation_gate",
+    "title": "密钥轮换准入",
+    "task": "设施 site-fra-19 的密罐 vault-slot-6 计划轮换密钥 material-key-y7。请按固定顺序读取密钥定义、到期指标、轮换记录与轮换前校验结果，判断应当轮换还是必须维持现用密钥，并给出必须保留的事实。",
+    "history_constraint": "设施 site-fra-19 与密罐 vault-slot-6 是本次轮换的固定标识，不得改写；历史讨论里的 material-key-y1 是已经被吊销的密钥，本次不得再作为轮换目标。",
+    "history_topic": "旧密钥吊销记录、信任链审计复盘、已取消的轮换窗口与过期的轮换配额",
+    "tools": [
+      {
+        "name": "read_key_definition",
+        "call": {
+          "vault": "vault-slot-6"
+        },
+        "result": {
+          "vault": "vault-slot-6",
+          "material": "material-key-y7",
+          "key_bits": 4096,
+          "definition_sha": "kdf-4a11"
+        },
+        "evidence_parts": [
+          "\"vault\": \"vault-slot-6\"",
+          "\"material\": \"material-key-y7\""
+        ]
+      },
+      {
+        "name": "read_expiry_metrics",
+        "call": {
+          "material": "material-key-y7"
+        },
+        "result": {
+          "material": "material-key-y7",
+          "days_to_expiry": 9,
+          "expired_material": 0,
+          "trust_chain_state": "verified"
+        },
+        "evidence_parts": [
+          "\"days_to_expiry\": 9",
+          "\"expired_material\": 0"
+        ]
+      },
+      {
+        "name": "read_rotation_record",
+        "call": {
+          "vault": "vault-slot-6"
+        },
+        "result": {
+          "vault": "vault-slot-6",
+          "record_state": "open",
+          "previous_material": "material-key-y1",
+          "rotation_step_index": 3
+        },
+        "evidence_parts": [
+          "\"record_state\": \"open\"",
+          "\"previous_material\": \"material-key-y1\""
+        ]
+      },
+      {
+        "name": "run_rotation_check",
+        "call": {
+          "site": "site-fra-19"
+        },
+        "result": {
+          "site": "site-fra-19",
+          "rotation_ready": true,
+          "escrow_copies": 3,
+          "missing_attestations": 0
+        },
+        "evidence_parts": [
+          "\"rotation_ready\": true",
+          "\"escrow_copies\": 3",
+          "\"missing_attestations\": 0"
+        ]
+      }
+    ],
+    "decision": "ROTATE",
+    "handle_facts": [
+      "site-fra-19",
+      "vault-slot-6",
+      "rotation_ready true"
+    ],
+    "answer_facts": [
+      "rotation_ready true",
+      "escrow_copies 3",
+      "missing_attestations 0"
+    ],
+    "forbidden_facts": [
+      "material-key-y1"
+    ],
+    "region_fact": "site-fra-19",
+    "version_fact": "material-key-y7",
+    "expected_terms": [
+      "site-fra-19",
+      "vault-slot-6",
+      "rotation_ready true",
+      "ROTATE"
+    ]
+  },
+  {
+    "task_id": "index_rebuild_gate",
+    "title": "索引重建准入",
+    "task": "搜索集群 cluster-r7 的索引列 segment-list-3 申请按计划 rebuild-plan-8 重建。请按固定顺序读取索引计划、分片健康指标、重建记录与重建前校验结果，判断应当执行重建还是必须改期，并给出必须保留的事实。",
+    "history_constraint": "搜索集群 cluster-r7 与索引列 segment-list-3 是本次重建的固定标识，不得改写；历史讨论里的 rebuild-plan-2 是已经作废的计划，本次不得再作为重建目标。",
+    "history_topic": "旧索引重建作废记录、分片漂移复盘、已取消的重建窗口与过期的磁盘配额",
+    "tools": [
+      {
+        "name": "read_index_plan",
+        "call": {
+          "cluster": "cluster-r7"
+        },
+        "result": {
+          "cluster": "cluster-r7",
+          "plan": "rebuild-plan-8",
+          "segments": 48,
+          "plan_sha": "idx-2b6e"
+        },
+        "evidence_parts": [
+          "\"cluster\": \"cluster-r7\"",
+          "\"plan\": \"rebuild-plan-8\""
+        ]
+      },
+      {
+        "name": "read_shard_health",
+        "call": {
+          "cluster": "cluster-r7"
+        },
+        "result": {
+          "cluster": "cluster-r7",
+          "unassigned_shards": 0,
+          "drifted_shards": 0,
+          "health_state": "green"
+        },
+        "evidence_parts": [
+          "\"unassigned_shards\": 0",
+          "\"drifted_shards\": 0"
+        ]
+      },
+      {
+        "name": "read_rebuild_record",
+        "call": {
+          "cluster": "cluster-r7"
+        },
+        "result": {
+          "cluster": "cluster-r7",
+          "record_state": "open",
+          "previous_plan": "rebuild-plan-2",
+          "rebuild_step_index": 2
+        },
+        "evidence_parts": [
+          "\"record_state\": \"open\"",
+          "\"previous_plan\": \"rebuild-plan-2\""
+        ]
+      },
+      {
+        "name": "run_index_check",
+        "call": {
+          "cluster": "cluster-r7"
+        },
+        "result": {
+          "cluster": "cluster-r7",
+          "rebuild_ready": true,
+          "free_disk_percent": 38,
+          "blocking_locks": 0
+        },
+        "evidence_parts": [
+          "\"rebuild_ready\": true",
+          "\"free_disk_percent\": 38",
+          "\"blocking_locks\": 0"
+        ]
+      }
+    ],
+    "decision": "REINDEX",
+    "handle_facts": [
+      "cluster-r7",
+      "segment-list-3",
+      "rebuild_ready true"
+    ],
+    "answer_facts": [
+      "rebuild_ready true",
+      "free_disk_percent 38",
+      "blocking_locks 0"
+    ],
+    "forbidden_facts": [
+      "rebuild-plan-2"
+    ],
+    "region_fact": "",
+    "version_fact": "cluster-r7",
+    "expected_terms": [
+      "cluster-r7",
+      "segment-list-3",
+      "rebuild_ready true",
+      "REINDEX"
+    ]
+  }
+]

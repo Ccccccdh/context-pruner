@@ -1,0 +1,143 @@
+{
+  "method": "SUM_calls(uncompressed_input - compressed_input) - protection_cost",
+  "batch": "crewai-r17-confirmation-payload-none-01",
+  "samples": 4,
+  "requests_used": 28,
+  "estimator_calibration": {
+    "samples": 4,
+    "mean_estimator_over_provider": 2.0795,
+    "mean_characters_per_provider_token": 2.5439
+  },
+  "r15_plugin_arm_measured_growth_per_call": 83.25,
+  "per_task": [
+    {
+      "task_id": "watermark_publish_gate",
+      "uncompressed_first_role_tokens": 8954,
+      "uncompressed_decider_tokens": 1501,
+      "uncompressed_total_tokens": 10455,
+      "compressed_first_call_provider_tokens": 1228.4,
+      "potential_old_unit_upper_percent": 39.407,
+      "reference_bound_percent": 30.648,
+      "protection_total_tokens": 255,
+      "safe_candidate_upper_percent": 36.968,
+      "safe_candidate_reference_percent": 28.209,
+      "view": {
+        "served_messages": 6,
+        "served_characters": 3125,
+        "pinned_characters": 122,
+        "protected_rounds": 0,
+        "whole_prefix_fallbacks": 0
+      },
+      "judge": {
+        "strict_success": true,
+        "semantic_success": true,
+        "first_pass_complete": true,
+        "tool_sequence_consistent": true,
+        "error": ""
+      },
+      "api_request_attempts": 7
+    },
+    {
+      "task_id": "autoscale_policy_gate",
+      "uncompressed_first_role_tokens": 8883,
+      "uncompressed_decider_tokens": 1473,
+      "uncompressed_total_tokens": 10356,
+      "compressed_first_call_provider_tokens": 1259.5,
+      "potential_old_unit_upper_percent": 37.307,
+      "reference_bound_percent": 28.464,
+      "protection_total_tokens": 255,
+      "safe_candidate_upper_percent": 34.844,
+      "safe_candidate_reference_percent": 26.002,
+      "view": {
+        "served_messages": 6,
+        "served_characters": 3204,
+        "pinned_characters": 121,
+        "protected_rounds": 0,
+        "whole_prefix_fallbacks": 0
+      },
+      "judge": {
+        "strict_success": true,
+        "semantic_success": true,
+        "first_pass_complete": true,
+        "tool_sequence_consistent": true,
+        "error": ""
+      },
+      "api_request_attempts": 7
+    },
+    {
+      "task_id": "key_rotation_gate",
+      "uncompressed_first_role_tokens": 8826,
+      "uncompressed_decider_tokens": 1457,
+      "uncompressed_total_tokens": 10283,
+      "compressed_first_call_provider_tokens": 1241.4,
+      "potential_old_unit_upper_percent": 37.775,
+      "reference_bound_percent": 28.87,
+      "protection_total_tokens": 245,
+      "safe_candidate_upper_percent": 35.393,
+      "safe_candidate_reference_percent": 26.487,
+      "view": {
+        "served_messages": 6,
+        "served_characters": 3158,
+        "pinned_characters": 117,
+        "protected_rounds": 0,
+        "whole_prefix_fallbacks": 0
+      },
+      "judge": {
+        "strict_success": true,
+        "semantic_success": true,
+        "first_pass_complete": true,
+        "tool_sequence_consistent": true,
+        "error": ""
+      },
+      "api_request_attempts": 7
+    },
+    {
+      "task_id": "index_rebuild_gate",
+      "uncompressed_first_role_tokens": 8782,
+      "uncompressed_decider_tokens": 1457,
+      "uncompressed_total_tokens": 10239,
+      "compressed_first_call_provider_tokens": 1222.1,
+      "potential_old_unit_upper_percent": 38.466,
+      "reference_bound_percent": 29.522,
+      "protection_total_tokens": 245,
+      "safe_candidate_upper_percent": 36.073,
+      "safe_candidate_reference_percent": 27.129,
+      "view": {
+        "served_messages": 6,
+        "served_characters": 3109,
+        "pinned_characters": 117,
+        "protected_rounds": 0,
+        "whole_prefix_fallbacks": 0
+      },
+      "judge": {
+        "strict_success": true,
+        "semantic_success": true,
+        "first_pass_complete": true,
+        "tool_sequence_consistent": true,
+        "error": ""
+      },
+      "api_request_attempts": 7
+    }
+  ],
+  "batch_totals": {
+    "uncompressed_total_tokens": 41333,
+    "potential_old_unit_upper_percent": 38.242,
+    "reference_bound_percent": 29.38,
+    "protection_total_tokens": 1000,
+    "safe_candidate_upper_percent": 35.822,
+    "safe_candidate_reference_percent": 26.96,
+    "gate_3_threshold_percent": 3.0,
+    "safe_candidate_non_empty": true,
+    "gate_3": "PASS: every per-task safe candidate is at or above the 3% cost gate and non-empty"
+  },
+  "columns": {
+    "potential_old_unit_upper": "flat-view upper bound (conservative for the view)",
+    "safe_candidate_after_protection": "after every protection cost the frozen r13 ledger charges"
+  },
+  "caveats": [
+    "the compressed side is bounded/estimated, not measured",
+    "the guard is not installed on this path",
+    "one repeat per task: four task-level observations, no confidence interval",
+    "confirmation tasks written after the guard was frozen"
+  ]
+}

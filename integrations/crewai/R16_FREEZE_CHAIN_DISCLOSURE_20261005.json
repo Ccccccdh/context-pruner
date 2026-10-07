@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-05",
+  "purpose": "the r16 freeze chain, its hashes, and one structural disclosure",
+  "freezes": {
+    "integrations/crewai/PRE_RUN_FREEZE_R16_RELEASE_GATE_GUARDED_3ARM_01.json": {
+      "file_sha256": "10b5fbf0a4f0dea7cdf9319851af021ee5f8eeef06482fee51f9d2b3993d6338",
+      "declared_self_sha256": "c60fc00848d03fc87862f32bb655cc8a4835b0e281e80dec1e1cd850e0eef07d",
+      "self_hash_is_fixed_point": true,
+      "pinned_sources_match": true,
+      "stale_sources": [],
+      "batch": "crewai-two-role-r16-release-gate-guarded-3arm-01"
+    },
+    "integrations/crewai/PRE_RUN_FREEZE_R16_PAYLOAD_ACQUISITION_01.json": {
+      "file_sha256": "0ace36c1063c584ce878256c38f5b4e5716b15732bacaa37def929be19afdc6b",
+      "declared_self_sha256": "a43147bfcf34a52dc82e9a8cf0f0af44d2787baa7f6d806b80e88f5ee99f614d",
+      "self_hash_is_fixed_point": true,
+      "pinned_sources_match": true,
+      "stale_sources": [],
+      "batch": "crewai-r16-payload-none-01"
+    }
+  },
+  "amendments": {
+    "integrations/crewai/PRE_RUN_FREEZE_R16_RELEASE_GATE_GUARDED_3ARM_01_FREEZE_AMENDMENT_20261005.json": {
+      "sha256": "a141a0101890b254040637a9e2ae6154417f7074d9ad4f6813958d1bdfc01146"
+    },
+    "integrations/crewai/PRE_RUN_FREEZE_R16_PAYLOAD_ACQUISITION_01_FREEZE_AMENDMENT_20261005.json": {
+      "sha256": "a545b459fb1d8e69f007dc525fe625091f87b42076bea0151fbf8b8f388e72ac"
+    }
+  },
+  "batches": {
+    "runs/stage5-crewai/crewai-two-role-r16-release-gate-guarded-3arm-01": {
+      "rows": 32,
+      "requests": 278,
+      "purpose": "three_arm_pilot",
+      "citable_as_saving": false,
+      "citable_as_quality_equivalence": false,
+      "freeze_sha256": "2460ac9fa3aa9a5507b4be5c5733adccb5d1db0c93edb7db93f093254b196049",
+      "freeze_declared_self_sha256": "c6a274077f3376d877c187c81696324cad88d27ae590255d5a8426a8704ea393"
+    },
+    "runs/stage5-crewai/crewai-two-role-r16-release-gate-guarded-3arm-resume-a-01": {
+      "rows": 36,
+      "requests": 317,
+      "purpose": "three_arm_pilot_resume_a",
+      "citable_as_saving": false,
+      "citable_as_quality_equivalence": false,
+      "freeze_sha256": "2460ac9fa3aa9a5507b4be5c5733adccb5d1db0c93edb7db93f093254b196049",
+      "freeze_declared_self_sha256": "c6a274077f3376d877c187c81696324cad88d27ae590255d5a8426a8704ea393"
+    },
+    "runs/stage5-crewai/crewai-r16-payload-none-01": {
+      "rows": 4,
+      "requests": 28,
+      "purpose": "payload_acquisition_only",
+      "citable_as_saving": false,
+      "citable_as_quality_equivalence": false,
+      "freeze_sha256": "82d29f167f66ace219b3ae8211e424aab5359bcecd792df15c3acb96e2a27cd8",
+      "freeze_declared_self_sha256": "0cff6f4611a41cbf349bcdaca7aa0233dd9290256d48154c2877a159d4bcab8f"
+    }
+  },
+  "disclosure": {
+    "what": "the three-arm freeze originally pinned the payload-acquisition freeze and its amendment as sources; the acquisition freeze pins the three-arm freeze (it needs the authority for the task set)",
+    "problem": "those two pins form a cycle: each file's hash would have to depend on the other's, so no pair of hashes can be simultaneously correct",
+    "resolution": "the three-arm freeze no longer pins the acquisition freeze or its amendment; the acquisition batch is a separate, completed batch with its own freeze, manifest, results and audit, so nothing it needs is unverified by this change",
+    "verified": "both freezes are self-hash fixed points and every source they do pin matches its recorded hash",
+    "no_paid_request": "this disclosure was written without issuing any API request"
+  },
+  "all_consistent": true,
+  "measured_batches_use_the_three_arm_freeze": false
+}

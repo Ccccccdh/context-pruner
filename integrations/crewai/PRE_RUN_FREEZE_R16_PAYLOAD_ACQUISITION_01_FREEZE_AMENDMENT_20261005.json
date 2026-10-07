@@ -1,0 +1,37 @@
+{
+  "amendment_of": "integrations/crewai/PRE_RUN_FREEZE_R16_PAYLOAD_ACQUISITION_01.json",
+  "batch": "crewai-r16-payload-none-01",
+  "date": "2026-10-05",
+  "what_changed": [
+    "integrations/crewai/PRE_RUN_FREEZE_R16_RELEASE_GATE_GUARDED_3ARM_01.json was regenerated after PRE_RUN_FREEZE_R16_RELEASE_GATE_GUARDED_3ARM_01_FREEZE_AMENDMENT_20261005.json updated the three-arm protocol with this batch's measured results"
+  ],
+  "why": [
+    "the acquisition freeze pinned the three-arm freeze because that file is the authority for the task set, the filler history and the prompt shape",
+    "the three-arm freeze is a draft freeze for a batch that has NOT been run, so amending it before its paid run is allowed and leaves no paid result stale",
+    "the acquisition batch, its freeze and its manifest are immutable and are NOT rewritten by this amendment"
+  ],
+  "old_sha256": {
+    "integrations/crewai/PRE_RUN_FREEZE_R16_RELEASE_GATE_GUARDED_3ARM_01.json": "3393cbbef56b7c31092e152a3a0bccd033af59f785c8ecabbed52a4e81a34f8e"
+  },
+  "new_sha256": {
+    "integrations/crewai/PRE_RUN_FREEZE_R16_RELEASE_GATE_GUARDED_3ARM_01.json": "039b98fdab5a64f6f79278fdb2117c02c76344fc87afc610510d544541d68d35"
+  },
+  "also_recorded": {
+    "integrations/crewai/PRE_RUN_FREEZE_R16_RELEASE_GATE_GUARDED_3ARM_01_FREEZE_AMENDMENT_20261005.json": "577f9b305cb7b63201c1a1180f128afc47ecfe0e5898109ec6bd77c61b68976e"
+  },
+  "batch_result_unchanged": {
+    "samples": 4,
+    "requests": 28,
+    "payload_sha256_per_task": {
+      "artifact_publish_gate": "58b5e49a585a2492e857566aefd9991c54cfb88d41338660c9a4aebfb9a4cf61",
+      "quota_scale_gate": "e6b2e2d6f12998f933d9152dbf8b18343cec2ba571802b58fdcace59a3cb88ba",
+      "traffic_shift_gate": "9dee68c903ddb8efe72defcd88e9c94a1b026c933142732c09022bf2a1463a85",
+      "failover_switch_gate": "282cc84efbe2efecde0ddc20da7d8274f93cb3ae0a063dcb50e6bde1c34aa1c5"
+    },
+    "manifest_purpose": "payload_acquisition_only",
+    "manifest_citable_as_saving": false,
+    "manifest_citable_as_quality_equivalence": false
+  },
+  "no_paid_request": "this amendment was written after the batch finished; it issues no request and changes no recorded number",
+  "immutability": "immutable once written; any further revision needs another *_FREEZE_AMENDMENT_<date>.json"
+}

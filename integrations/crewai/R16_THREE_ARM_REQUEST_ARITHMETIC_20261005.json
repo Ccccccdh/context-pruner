@@ -1,0 +1,173 @@
+{
+  "purpose": "revised request arithmetic for the r16 three-arm pilot with the guard",
+  "baseline_requests": {
+    "per_arm": 84,
+    "all_three_arms": 252,
+    "note": "zero rejections: 7 calls per sample"
+  },
+  "guard_cost_model": {
+    "a_rejection_is_a_request": true,
+    "first_role_calls_per_sample": 5,
+    "guard_max_rejections": 6,
+    "realistic": "a stopped unit is pushed back once and then finishes the table",
+    "worst_case": "a unit that never finishes is pushed back 6 times, then fails"
+  },
+  "r15_measured_stop_rate": {
+    "source": "runs/stage5-crewai/crewai-two-role-r15-release-gate-3arm-resume-a-01",
+    "plugin_units": 12,
+    "units_that_stopped_early": 6,
+    "unit_stop_rate": 0.5,
+    "expected_resends_per_arm": 6,
+    "expected_batch_requests": 258
+  },
+  "sensitivity": [
+    {
+      "realistic": {
+        "stop_rate": 0.0,
+        "stopped_units": 0,
+        "rejection_resends": 0,
+        "plugin_requests": 84,
+        "batch_requests": 252,
+        "under_280": true,
+        "headroom_under_280": 28,
+        "needed_cap_for_11pct_headroom": 280
+      },
+      "worst_case": {
+        "stop_rate": 0.0,
+        "stopped_units": 0,
+        "rejection_resends": 0,
+        "plugin_requests": 84,
+        "batch_requests": 252,
+        "under_280": true,
+        "headroom_under_280": 28,
+        "needed_cap_for_11pct_headroom": 280
+      }
+    },
+    {
+      "realistic": {
+        "stop_rate": 0.1,
+        "stopped_units": 1,
+        "rejection_resends": 1,
+        "plugin_requests": 85,
+        "batch_requests": 253,
+        "under_280": true,
+        "headroom_under_280": 27,
+        "needed_cap_for_11pct_headroom": 281
+      },
+      "worst_case": {
+        "stop_rate": 0.1,
+        "stopped_units": 1,
+        "rejection_resends": 6,
+        "plugin_requests": 90,
+        "batch_requests": 258,
+        "under_280": true,
+        "headroom_under_280": 22,
+        "needed_cap_for_11pct_headroom": 286
+      }
+    },
+    {
+      "realistic": {
+        "stop_rate": 0.2,
+        "stopped_units": 2,
+        "rejection_resends": 2,
+        "plugin_requests": 86,
+        "batch_requests": 254,
+        "under_280": true,
+        "headroom_under_280": 26,
+        "needed_cap_for_11pct_headroom": 282
+      },
+      "worst_case": {
+        "stop_rate": 0.2,
+        "stopped_units": 2,
+        "rejection_resends": 12,
+        "plugin_requests": 96,
+        "batch_requests": 264,
+        "under_280": true,
+        "headroom_under_280": 16,
+        "needed_cap_for_11pct_headroom": 293
+      }
+    },
+    {
+      "realistic": {
+        "stop_rate": 0.3,
+        "stopped_units": 4,
+        "rejection_resends": 4,
+        "plugin_requests": 88,
+        "batch_requests": 256,
+        "under_280": true,
+        "headroom_under_280": 24,
+        "needed_cap_for_11pct_headroom": 284
+      },
+      "worst_case": {
+        "stop_rate": 0.3,
+        "stopped_units": 4,
+        "rejection_resends": 24,
+        "plugin_requests": 108,
+        "batch_requests": 276,
+        "under_280": true,
+        "headroom_under_280": 4,
+        "needed_cap_for_11pct_headroom": 306
+      }
+    },
+    {
+      "realistic": {
+        "stop_rate": 0.5,
+        "stopped_units": 6,
+        "rejection_resends": 6,
+        "plugin_requests": 90,
+        "batch_requests": 258,
+        "under_280": true,
+        "headroom_under_280": 22,
+        "needed_cap_for_11pct_headroom": 286
+      },
+      "worst_case": {
+        "stop_rate": 0.5,
+        "stopped_units": 6,
+        "rejection_resends": 36,
+        "plugin_requests": 120,
+        "batch_requests": 288,
+        "under_280": false,
+        "headroom_under_280": -8,
+        "needed_cap_for_11pct_headroom": 320
+      }
+    },
+    {
+      "realistic": {
+        "stop_rate": 1.0,
+        "stopped_units": 12,
+        "rejection_resends": 12,
+        "plugin_requests": 96,
+        "batch_requests": 264,
+        "under_280": true,
+        "headroom_under_280": 16,
+        "needed_cap_for_11pct_headroom": 293
+      },
+      "worst_case": {
+        "stop_rate": 1.0,
+        "stopped_units": 12,
+        "rejection_resends": 72,
+        "plugin_requests": 156,
+        "batch_requests": 324,
+        "under_280": false,
+        "headroom_under_280": -44,
+        "needed_cap_for_11pct_headroom": 360
+      }
+    }
+  ],
+  "recommendation": {
+    "cap": 280,
+    "why": "280 still holds the measured r15 stop rate (50%) with margin: the expected batch is 258 requests",
+    "resume_plan": "on cap, stop immediately, keep the partial directory, and continue under a NEW id with --resume; never treat a partial grid as a complete grid",
+    "abort_condition": "if another slot is needed, or if guard_exhausted exceeds 30% of plugin units, the batch is abandoned and reported"
+  },
+  "preconditions": {
+    "gate_1_behaviour": "requires the paid pilot: the acquisition path has no guard",
+    "gate_2_quality": "the acquisition run is single-arm uncompressed, so it cannot settle a three-arm comparison; it shows strict 3/4 and semantic 3/4 for the host on these tasks, and one semantic decision miss (traffic_shift_gate)",
+    "gate_3_cost": {
+      "status": "PASS on the real r16 payload",
+      "reference_bound_percent": 30.989,
+      "safe_candidate_reference_percent": 29.025,
+      "threshold_percent": 3.0
+    }
+  }
+}

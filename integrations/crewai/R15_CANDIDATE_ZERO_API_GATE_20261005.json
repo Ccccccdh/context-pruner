@@ -1,0 +1,1167 @@
+{
+  "method": "Existing results only; same-work means equal agent call counts and first-role tool traces",
+  "batches": {
+    "r9": {
+      "source_sha256": {
+        "results.jsonl": "bbcbd2b153d23fab2d6aa2d39c16d32ff1deef93b05be0b35af10c61d056147b",
+        "audit.json": "c9cf52cf7338721228d81f86db186d90e5318e0a9e9faa0d1045e9eca765ca42",
+        "manifest.json": "ec7705df83a63a389bd20afb045b04d5b1e5cc31a5170c94d85cd299bcb36ffb"
+      },
+      "audit": {
+        "complete": true,
+        "freeze_checked": true,
+        "errors": 0
+      },
+      "row_count": 27,
+      "tasks": {
+        "queue_backlog_replay": {
+          "pairs": [
+            {
+              "repeat": 0,
+              "saving_percent": 18.8234,
+              "same_work": true,
+              "none_calls": 6,
+              "plugin_calls": 6,
+              "none_trace": [
+                "check_pipeline_status",
+                "inspect_dead_letter_queue",
+                "verify_queue_replay"
+              ],
+              "plugin_trace": [
+                "check_pipeline_status",
+                "inspect_dead_letter_queue",
+                "verify_queue_replay"
+              ],
+              "none_strict": true,
+              "plugin_strict": true,
+              "none_semantic": true,
+              "plugin_semantic": true,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 4
+            },
+            {
+              "repeat": 1,
+              "saving_percent": 21.0776,
+              "same_work": true,
+              "none_calls": 6,
+              "plugin_calls": 6,
+              "none_trace": [
+                "check_pipeline_status",
+                "inspect_dead_letter_queue",
+                "verify_queue_replay"
+              ],
+              "plugin_trace": [
+                "check_pipeline_status",
+                "inspect_dead_letter_queue",
+                "verify_queue_replay"
+              ],
+              "none_strict": true,
+              "plugin_strict": true,
+              "none_semantic": true,
+              "plugin_semantic": true,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 4
+            },
+            {
+              "repeat": 2,
+              "saving_percent": 26.8389,
+              "same_work": true,
+              "none_calls": 6,
+              "plugin_calls": 6,
+              "none_trace": [
+                "check_pipeline_status",
+                "inspect_dead_letter_queue",
+                "verify_queue_replay"
+              ],
+              "plugin_trace": [
+                "check_pipeline_status",
+                "inspect_dead_letter_queue",
+                "verify_queue_replay"
+              ],
+              "none_strict": true,
+              "plugin_strict": true,
+              "none_semantic": true,
+              "plugin_semantic": true,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 4
+            }
+          ],
+          "all_mean_percent": 22.2466,
+          "same_work_count": 3,
+          "same_work_mean_percent": 22.2466,
+          "strict_none": 3,
+          "strict_plugin": 3,
+          "semantic_none": 3,
+          "semantic_plugin": 3,
+          "first_pass_none": 3,
+          "first_pass_plugin": 3
+        },
+        "region_failover": {
+          "pairs": [
+            {
+              "repeat": 0,
+              "saving_percent": 0.6055,
+              "same_work": true,
+              "none_calls": 6,
+              "plugin_calls": 6,
+              "none_trace": [
+                "get_cluster_health",
+                "check_region_drain",
+                "verify_capacity_headroom"
+              ],
+              "plugin_trace": [
+                "get_cluster_health",
+                "check_region_drain",
+                "verify_capacity_headroom"
+              ],
+              "none_strict": false,
+              "plugin_strict": false,
+              "none_semantic": true,
+              "plugin_semantic": true,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 4
+            },
+            {
+              "repeat": 1,
+              "saving_percent": 1.0236,
+              "same_work": true,
+              "none_calls": 6,
+              "plugin_calls": 6,
+              "none_trace": [
+                "get_cluster_health",
+                "check_region_drain",
+                "verify_capacity_headroom"
+              ],
+              "plugin_trace": [
+                "get_cluster_health",
+                "check_region_drain",
+                "verify_capacity_headroom"
+              ],
+              "none_strict": false,
+              "plugin_strict": false,
+              "none_semantic": true,
+              "plugin_semantic": true,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 4
+            },
+            {
+              "repeat": 2,
+              "saving_percent": -2.3963,
+              "same_work": true,
+              "none_calls": 6,
+              "plugin_calls": 6,
+              "none_trace": [
+                "get_cluster_health",
+                "check_region_drain",
+                "verify_capacity_headroom"
+              ],
+              "plugin_trace": [
+                "get_cluster_health",
+                "check_region_drain",
+                "verify_capacity_headroom"
+              ],
+              "none_strict": false,
+              "plugin_strict": false,
+              "none_semantic": true,
+              "plugin_semantic": true,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 4
+            }
+          ],
+          "all_mean_percent": -0.2557,
+          "same_work_count": 3,
+          "same_work_mean_percent": -0.2557,
+          "strict_none": 0,
+          "strict_plugin": 0,
+          "semantic_none": 3,
+          "semantic_plugin": 3,
+          "first_pass_none": 3,
+          "first_pass_plugin": 3
+        },
+        "schema_migration": {
+          "pairs": [
+            {
+              "repeat": 0,
+              "saving_percent": 1.7415,
+              "same_work": true,
+              "none_calls": 6,
+              "plugin_calls": 6,
+              "none_trace": [
+                "inspect_schema_drift",
+                "run_contract_tests",
+                "verify_schema_target"
+              ],
+              "plugin_trace": [
+                "inspect_schema_drift",
+                "run_contract_tests",
+                "verify_schema_target"
+              ],
+              "none_strict": true,
+              "plugin_strict": true,
+              "none_semantic": true,
+              "plugin_semantic": true,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 4
+            },
+            {
+              "repeat": 1,
+              "saving_percent": 2.6074,
+              "same_work": true,
+              "none_calls": 6,
+              "plugin_calls": 6,
+              "none_trace": [
+                "inspect_schema_drift",
+                "run_contract_tests",
+                "verify_schema_target"
+              ],
+              "plugin_trace": [
+                "inspect_schema_drift",
+                "run_contract_tests",
+                "verify_schema_target"
+              ],
+              "none_strict": true,
+              "plugin_strict": true,
+              "none_semantic": true,
+              "plugin_semantic": true,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 4
+            },
+            {
+              "repeat": 2,
+              "saving_percent": 1.7592,
+              "same_work": true,
+              "none_calls": 6,
+              "plugin_calls": 6,
+              "none_trace": [
+                "inspect_schema_drift",
+                "run_contract_tests",
+                "verify_schema_target"
+              ],
+              "plugin_trace": [
+                "inspect_schema_drift",
+                "run_contract_tests",
+                "verify_schema_target"
+              ],
+              "none_strict": true,
+              "plugin_strict": true,
+              "none_semantic": true,
+              "plugin_semantic": true,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 4
+            }
+          ],
+          "all_mean_percent": 2.036,
+          "same_work_count": 3,
+          "same_work_mean_percent": 2.036,
+          "strict_none": 3,
+          "strict_plugin": 3,
+          "semantic_none": 3,
+          "semantic_plugin": 3,
+          "first_pass_none": 3,
+          "first_pass_plugin": 3
+        }
+      }
+    },
+    "r10": {
+      "source_sha256": {
+        "results.jsonl": "0282d6fcc3c4bf16330e6badb3c4789f19ab0f7216aafa0ec6929660a763d9e6",
+        "audit.json": "8f839f739a69acf449c2ec0385b8eed070b0ff4b3fcf0e60cdf11ec0c83c008e",
+        "manifest.json": "182cbc4996fe39c066694ce71d660da0dd14cd9c686cb1e1fdcf33359efe0934"
+      },
+      "audit": {
+        "complete": true,
+        "freeze_checked": true,
+        "errors": 6
+      },
+      "row_count": 48,
+      "tasks": {
+        "batch_replay": {
+          "pairs": [
+            {
+              "repeat": 0,
+              "saving_percent": 2.1714,
+              "same_work": true,
+              "none_calls": 6,
+              "plugin_calls": 6,
+              "none_trace": [
+                "inspect_failed_step",
+                "check_downstream_deps",
+                "verify_replay_safety"
+              ],
+              "plugin_trace": [
+                "inspect_failed_step",
+                "check_downstream_deps",
+                "verify_replay_safety"
+              ],
+              "none_strict": true,
+              "plugin_strict": true,
+              "none_semantic": true,
+              "plugin_semantic": true,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 4
+            },
+            {
+              "repeat": 1,
+              "saving_percent": 2.582,
+              "same_work": true,
+              "none_calls": 6,
+              "plugin_calls": 6,
+              "none_trace": [
+                "inspect_failed_step",
+                "check_downstream_deps",
+                "verify_replay_safety"
+              ],
+              "plugin_trace": [
+                "inspect_failed_step",
+                "check_downstream_deps",
+                "verify_replay_safety"
+              ],
+              "none_strict": true,
+              "plugin_strict": false,
+              "none_semantic": true,
+              "plugin_semantic": false,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 4
+            },
+            {
+              "repeat": 2,
+              "saving_percent": 3.9775,
+              "same_work": true,
+              "none_calls": 6,
+              "plugin_calls": 6,
+              "none_trace": [
+                "inspect_failed_step",
+                "check_downstream_deps",
+                "verify_replay_safety"
+              ],
+              "plugin_trace": [
+                "inspect_failed_step",
+                "check_downstream_deps",
+                "verify_replay_safety"
+              ],
+              "none_strict": true,
+              "plugin_strict": false,
+              "none_semantic": true,
+              "plugin_semantic": false,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 4
+            },
+            {
+              "repeat": 3,
+              "saving_percent": 3.7013,
+              "same_work": true,
+              "none_calls": 6,
+              "plugin_calls": 6,
+              "none_trace": [
+                "inspect_failed_step",
+                "check_downstream_deps",
+                "verify_replay_safety"
+              ],
+              "plugin_trace": [
+                "inspect_failed_step",
+                "check_downstream_deps",
+                "verify_replay_safety"
+              ],
+              "none_strict": true,
+              "plugin_strict": false,
+              "none_semantic": true,
+              "plugin_semantic": false,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 4
+            }
+          ],
+          "all_mean_percent": 3.108,
+          "same_work_count": 4,
+          "same_work_mean_percent": 3.108,
+          "strict_none": 4,
+          "strict_plugin": 1,
+          "semantic_none": 4,
+          "semantic_plugin": 1,
+          "first_pass_none": 4,
+          "first_pass_plugin": 4
+        },
+        "credential_rotation": {
+          "pairs": [
+            {
+              "repeat": 0,
+              "saving_percent": -0.1026,
+              "same_work": true,
+              "none_calls": 6,
+              "plugin_calls": 6,
+              "none_trace": [
+                "get_credential_status",
+                "check_trust_chain",
+                "verify_failover_region"
+              ],
+              "plugin_trace": [
+                "get_credential_status",
+                "check_trust_chain",
+                "verify_failover_region"
+              ],
+              "none_strict": true,
+              "plugin_strict": true,
+              "none_semantic": true,
+              "plugin_semantic": true,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 4
+            },
+            {
+              "repeat": 1,
+              "saving_percent": 1.7108,
+              "same_work": true,
+              "none_calls": 6,
+              "plugin_calls": 6,
+              "none_trace": [
+                "get_credential_status",
+                "check_trust_chain",
+                "verify_failover_region"
+              ],
+              "plugin_trace": [
+                "get_credential_status",
+                "check_trust_chain",
+                "verify_failover_region"
+              ],
+              "none_strict": true,
+              "plugin_strict": true,
+              "none_semantic": true,
+              "plugin_semantic": true,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 4
+            },
+            {
+              "repeat": 2,
+              "saving_percent": 0.8706,
+              "same_work": false,
+              "none_calls": 6,
+              "plugin_calls": 6,
+              "none_trace": [
+                "get_credential_status",
+                "check_trust_chain",
+                "verify_failover_region"
+              ],
+              "plugin_trace": [
+                "get_credential_status",
+                "verify_failover_region",
+                "check_trust_chain"
+              ],
+              "none_strict": true,
+              "plugin_strict": false,
+              "none_semantic": true,
+              "plugin_semantic": false,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 4
+            },
+            {
+              "repeat": 3,
+              "saving_percent": 1.4325,
+              "same_work": false,
+              "none_calls": 6,
+              "plugin_calls": 6,
+              "none_trace": [
+                "get_credential_status",
+                "check_trust_chain",
+                "verify_failover_region"
+              ],
+              "plugin_trace": [
+                "get_credential_status",
+                "verify_failover_region",
+                "check_trust_chain"
+              ],
+              "none_strict": true,
+              "plugin_strict": false,
+              "none_semantic": true,
+              "plugin_semantic": false,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 4
+            }
+          ],
+          "all_mean_percent": 0.9778,
+          "same_work_count": 2,
+          "same_work_mean_percent": 0.8041,
+          "strict_none": 4,
+          "strict_plugin": 2,
+          "semantic_none": 4,
+          "semantic_plugin": 2,
+          "first_pass_none": 4,
+          "first_pass_plugin": 4
+        },
+        "shard_split": {
+          "pairs": [
+            {
+              "repeat": 0,
+              "saving_percent": 0.5587,
+              "same_work": true,
+              "none_calls": 6,
+              "plugin_calls": 6,
+              "none_trace": [
+                "inspect_shard_pressure",
+                "check_replica_lag",
+                "verify_split_plan"
+              ],
+              "plugin_trace": [
+                "inspect_shard_pressure",
+                "check_replica_lag",
+                "verify_split_plan"
+              ],
+              "none_strict": true,
+              "plugin_strict": true,
+              "none_semantic": true,
+              "plugin_semantic": true,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 4
+            },
+            {
+              "repeat": 1,
+              "saving_percent": 3.0571,
+              "same_work": true,
+              "none_calls": 6,
+              "plugin_calls": 6,
+              "none_trace": [
+                "inspect_shard_pressure",
+                "check_replica_lag",
+                "verify_split_plan"
+              ],
+              "plugin_trace": [
+                "inspect_shard_pressure",
+                "check_replica_lag",
+                "verify_split_plan"
+              ],
+              "none_strict": true,
+              "plugin_strict": true,
+              "none_semantic": true,
+              "plugin_semantic": true,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 4
+            },
+            {
+              "repeat": 2,
+              "saving_percent": 1.8138,
+              "same_work": true,
+              "none_calls": 6,
+              "plugin_calls": 6,
+              "none_trace": [
+                "inspect_shard_pressure",
+                "check_replica_lag",
+                "verify_split_plan"
+              ],
+              "plugin_trace": [
+                "inspect_shard_pressure",
+                "check_replica_lag",
+                "verify_split_plan"
+              ],
+              "none_strict": true,
+              "plugin_strict": true,
+              "none_semantic": true,
+              "plugin_semantic": true,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 4
+            },
+            {
+              "repeat": 3,
+              "saving_percent": 1.8764,
+              "same_work": true,
+              "none_calls": 6,
+              "plugin_calls": 6,
+              "none_trace": [
+                "inspect_shard_pressure",
+                "check_replica_lag",
+                "verify_split_plan"
+              ],
+              "plugin_trace": [
+                "inspect_shard_pressure",
+                "check_replica_lag",
+                "verify_split_plan"
+              ],
+              "none_strict": true,
+              "plugin_strict": false,
+              "none_semantic": true,
+              "plugin_semantic": false,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 4
+            }
+          ],
+          "all_mean_percent": 1.8265,
+          "same_work_count": 4,
+          "same_work_mean_percent": 1.8265,
+          "strict_none": 4,
+          "strict_plugin": 3,
+          "semantic_none": 4,
+          "semantic_plugin": 3,
+          "first_pass_none": 4,
+          "first_pass_plugin": 4
+        },
+        "window_gate": {
+          "pairs": [
+            {
+              "repeat": 0,
+              "saving_percent": 42.6055,
+              "same_work": false,
+              "none_calls": 6,
+              "plugin_calls": 4,
+              "none_trace": [
+                "check_window_lock",
+                "inspect_change_guard",
+                "verify_risk_review"
+              ],
+              "plugin_trace": [
+                "check_window_lock"
+              ],
+              "none_strict": true,
+              "plugin_strict": false,
+              "none_semantic": true,
+              "plugin_semantic": false,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 2
+            },
+            {
+              "repeat": 1,
+              "saving_percent": 41.4957,
+              "same_work": false,
+              "none_calls": 6,
+              "plugin_calls": 4,
+              "none_trace": [
+                "check_window_lock",
+                "inspect_change_guard",
+                "verify_risk_review"
+              ],
+              "plugin_trace": [
+                "check_window_lock"
+              ],
+              "none_strict": true,
+              "plugin_strict": false,
+              "none_semantic": true,
+              "plugin_semantic": false,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 2
+            },
+            {
+              "repeat": 2,
+              "saving_percent": 40.9466,
+              "same_work": false,
+              "none_calls": 6,
+              "plugin_calls": 4,
+              "none_trace": [
+                "check_window_lock",
+                "inspect_change_guard",
+                "verify_risk_review"
+              ],
+              "plugin_trace": [
+                "check_window_lock"
+              ],
+              "none_strict": true,
+              "plugin_strict": false,
+              "none_semantic": true,
+              "plugin_semantic": false,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 2
+            },
+            {
+              "repeat": 3,
+              "saving_percent": 40.3301,
+              "same_work": false,
+              "none_calls": 6,
+              "plugin_calls": 4,
+              "none_trace": [
+                "check_window_lock",
+                "inspect_change_guard",
+                "verify_risk_review"
+              ],
+              "plugin_trace": [
+                "check_window_lock"
+              ],
+              "none_strict": true,
+              "plugin_strict": false,
+              "none_semantic": true,
+              "plugin_semantic": false,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 2
+            }
+          ],
+          "all_mean_percent": 41.3445,
+          "same_work_count": 0,
+          "same_work_mean_percent": null,
+          "strict_none": 4,
+          "strict_plugin": 0,
+          "semantic_none": 4,
+          "semantic_plugin": 0,
+          "first_pass_none": 4,
+          "first_pass_plugin": 4
+        }
+      }
+    },
+    "r13": {
+      "source_sha256": {
+        "results.jsonl": "d8759fd9b7e5db73fb89034a421aa9f835d9cf72b4a6153cf019348cd11556f8",
+        "audit.json": "488728efe43bb7d51a511d35f00d6b628d4a25a3074856c2855008cd812d8ef3",
+        "manifest.json": "f6f4dae15ca45adc44d73ef3f6893db0ad3e33b6305fb8f53734fc7586ece5a4"
+      },
+      "audit": {
+        "complete": true,
+        "freeze_checked": true,
+        "errors": 8
+      },
+      "row_count": 48,
+      "tasks": {
+        "batch_replay": {
+          "pairs": [
+            {
+              "repeat": 0,
+              "saving_percent": 0.3937,
+              "same_work": true,
+              "none_calls": 6,
+              "plugin_calls": 6,
+              "none_trace": [
+                "inspect_failed_step",
+                "check_downstream_deps",
+                "verify_replay_safety"
+              ],
+              "plugin_trace": [
+                "inspect_failed_step",
+                "check_downstream_deps",
+                "verify_replay_safety"
+              ],
+              "none_strict": true,
+              "plugin_strict": true,
+              "none_semantic": true,
+              "plugin_semantic": true,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 4
+            },
+            {
+              "repeat": 1,
+              "saving_percent": 1.813,
+              "same_work": true,
+              "none_calls": 6,
+              "plugin_calls": 6,
+              "none_trace": [
+                "inspect_failed_step",
+                "check_downstream_deps",
+                "verify_replay_safety"
+              ],
+              "plugin_trace": [
+                "inspect_failed_step",
+                "check_downstream_deps",
+                "verify_replay_safety"
+              ],
+              "none_strict": true,
+              "plugin_strict": true,
+              "none_semantic": true,
+              "plugin_semantic": true,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 4
+            },
+            {
+              "repeat": 2,
+              "saving_percent": 3.4064,
+              "same_work": true,
+              "none_calls": 6,
+              "plugin_calls": 6,
+              "none_trace": [
+                "inspect_failed_step",
+                "check_downstream_deps",
+                "verify_replay_safety"
+              ],
+              "plugin_trace": [
+                "inspect_failed_step",
+                "check_downstream_deps",
+                "verify_replay_safety"
+              ],
+              "none_strict": true,
+              "plugin_strict": true,
+              "none_semantic": true,
+              "plugin_semantic": true,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 4
+            },
+            {
+              "repeat": 3,
+              "saving_percent": 2.6755,
+              "same_work": true,
+              "none_calls": 6,
+              "plugin_calls": 6,
+              "none_trace": [
+                "inspect_failed_step",
+                "check_downstream_deps",
+                "verify_replay_safety"
+              ],
+              "plugin_trace": [
+                "inspect_failed_step",
+                "check_downstream_deps",
+                "verify_replay_safety"
+              ],
+              "none_strict": true,
+              "plugin_strict": true,
+              "none_semantic": true,
+              "plugin_semantic": true,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 4
+            }
+          ],
+          "all_mean_percent": 2.0722,
+          "same_work_count": 4,
+          "same_work_mean_percent": 2.0722,
+          "strict_none": 4,
+          "strict_plugin": 4,
+          "semantic_none": 4,
+          "semantic_plugin": 4,
+          "first_pass_none": 4,
+          "first_pass_plugin": 4
+        },
+        "credential_rotation": {
+          "pairs": [
+            {
+              "repeat": 0,
+              "saving_percent": -0.728,
+              "same_work": true,
+              "none_calls": 6,
+              "plugin_calls": 6,
+              "none_trace": [
+                "get_credential_status",
+                "check_trust_chain",
+                "verify_failover_region"
+              ],
+              "plugin_trace": [
+                "get_credential_status",
+                "check_trust_chain",
+                "verify_failover_region"
+              ],
+              "none_strict": true,
+              "plugin_strict": true,
+              "none_semantic": true,
+              "plugin_semantic": true,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 4
+            },
+            {
+              "repeat": 1,
+              "saving_percent": 2.6582,
+              "same_work": false,
+              "none_calls": 6,
+              "plugin_calls": 6,
+              "none_trace": [
+                "get_credential_status",
+                "check_trust_chain",
+                "verify_failover_region"
+              ],
+              "plugin_trace": [
+                "get_credential_status",
+                "verify_failover_region",
+                "check_trust_chain"
+              ],
+              "none_strict": true,
+              "plugin_strict": false,
+              "none_semantic": true,
+              "plugin_semantic": false,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 4
+            },
+            {
+              "repeat": 2,
+              "saving_percent": 0.7993,
+              "same_work": true,
+              "none_calls": 6,
+              "plugin_calls": 6,
+              "none_trace": [
+                "get_credential_status",
+                "check_trust_chain",
+                "verify_failover_region"
+              ],
+              "plugin_trace": [
+                "get_credential_status",
+                "check_trust_chain",
+                "verify_failover_region"
+              ],
+              "none_strict": true,
+              "plugin_strict": true,
+              "none_semantic": true,
+              "plugin_semantic": true,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 4
+            },
+            {
+              "repeat": 3,
+              "saving_percent": 21.5695,
+              "same_work": false,
+              "none_calls": 6,
+              "plugin_calls": 5,
+              "none_trace": [
+                "get_credential_status",
+                "check_trust_chain",
+                "verify_failover_region"
+              ],
+              "plugin_trace": [
+                "get_credential_status",
+                "verify_failover_region"
+              ],
+              "none_strict": true,
+              "plugin_strict": false,
+              "none_semantic": true,
+              "plugin_semantic": false,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 3
+            }
+          ],
+          "all_mean_percent": 6.0748,
+          "same_work_count": 2,
+          "same_work_mean_percent": 0.0357,
+          "strict_none": 4,
+          "strict_plugin": 2,
+          "semantic_none": 4,
+          "semantic_plugin": 2,
+          "first_pass_none": 4,
+          "first_pass_plugin": 4
+        },
+        "shard_split": {
+          "pairs": [
+            {
+              "repeat": 0,
+              "saving_percent": 1.514,
+              "same_work": true,
+              "none_calls": 6,
+              "plugin_calls": 6,
+              "none_trace": [
+                "inspect_shard_pressure",
+                "check_replica_lag",
+                "verify_split_plan"
+              ],
+              "plugin_trace": [
+                "inspect_shard_pressure",
+                "check_replica_lag",
+                "verify_split_plan"
+              ],
+              "none_strict": true,
+              "plugin_strict": true,
+              "none_semantic": true,
+              "plugin_semantic": true,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 4
+            },
+            {
+              "repeat": 1,
+              "saving_percent": 2.4781,
+              "same_work": true,
+              "none_calls": 6,
+              "plugin_calls": 6,
+              "none_trace": [
+                "inspect_shard_pressure",
+                "check_replica_lag",
+                "verify_split_plan"
+              ],
+              "plugin_trace": [
+                "inspect_shard_pressure",
+                "check_replica_lag",
+                "verify_split_plan"
+              ],
+              "none_strict": true,
+              "plugin_strict": true,
+              "none_semantic": true,
+              "plugin_semantic": true,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 4
+            },
+            {
+              "repeat": 2,
+              "saving_percent": 1.7511,
+              "same_work": true,
+              "none_calls": 6,
+              "plugin_calls": 6,
+              "none_trace": [
+                "inspect_shard_pressure",
+                "check_replica_lag",
+                "verify_split_plan"
+              ],
+              "plugin_trace": [
+                "inspect_shard_pressure",
+                "check_replica_lag",
+                "verify_split_plan"
+              ],
+              "none_strict": true,
+              "plugin_strict": true,
+              "none_semantic": true,
+              "plugin_semantic": true,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 4
+            },
+            {
+              "repeat": 3,
+              "saving_percent": 1.3215,
+              "same_work": true,
+              "none_calls": 6,
+              "plugin_calls": 6,
+              "none_trace": [
+                "inspect_shard_pressure",
+                "check_replica_lag",
+                "verify_split_plan"
+              ],
+              "plugin_trace": [
+                "inspect_shard_pressure",
+                "check_replica_lag",
+                "verify_split_plan"
+              ],
+              "none_strict": true,
+              "plugin_strict": true,
+              "none_semantic": true,
+              "plugin_semantic": true,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 4
+            }
+          ],
+          "all_mean_percent": 1.7662,
+          "same_work_count": 4,
+          "same_work_mean_percent": 1.7662,
+          "strict_none": 4,
+          "strict_plugin": 4,
+          "semantic_none": 4,
+          "semantic_plugin": 4,
+          "first_pass_none": 4,
+          "first_pass_plugin": 4
+        },
+        "window_gate": {
+          "pairs": [
+            {
+              "repeat": 0,
+              "saving_percent": -1.8584,
+              "same_work": true,
+              "none_calls": 6,
+              "plugin_calls": 6,
+              "none_trace": [
+                "check_window_lock",
+                "inspect_change_guard",
+                "verify_risk_review"
+              ],
+              "plugin_trace": [
+                "check_window_lock",
+                "inspect_change_guard",
+                "verify_risk_review"
+              ],
+              "none_strict": true,
+              "plugin_strict": true,
+              "none_semantic": true,
+              "plugin_semantic": true,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 4
+            },
+            {
+              "repeat": 1,
+              "saving_percent": 19.6566,
+              "same_work": false,
+              "none_calls": 6,
+              "plugin_calls": 5,
+              "none_trace": [
+                "check_window_lock",
+                "inspect_change_guard",
+                "verify_risk_review"
+              ],
+              "plugin_trace": [
+                "check_window_lock",
+                "inspect_change_guard"
+              ],
+              "none_strict": true,
+              "plugin_strict": false,
+              "none_semantic": true,
+              "plugin_semantic": false,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 3
+            },
+            {
+              "repeat": 2,
+              "saving_percent": 41.6866,
+              "same_work": false,
+              "none_calls": 6,
+              "plugin_calls": 4,
+              "none_trace": [
+                "check_window_lock",
+                "inspect_change_guard",
+                "verify_risk_review"
+              ],
+              "plugin_trace": [
+                "check_window_lock"
+              ],
+              "none_strict": true,
+              "plugin_strict": false,
+              "none_semantic": true,
+              "plugin_semantic": false,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 2
+            },
+            {
+              "repeat": 3,
+              "saving_percent": 0.904,
+              "same_work": true,
+              "none_calls": 6,
+              "plugin_calls": 6,
+              "none_trace": [
+                "check_window_lock",
+                "inspect_change_guard",
+                "verify_risk_review"
+              ],
+              "plugin_trace": [
+                "check_window_lock",
+                "inspect_change_guard",
+                "verify_risk_review"
+              ],
+              "none_strict": true,
+              "plugin_strict": true,
+              "none_semantic": true,
+              "plugin_semantic": true,
+              "none_first_pass": true,
+              "plugin_first_pass": true,
+              "plugin_compression_events": 4
+            }
+          ],
+          "all_mean_percent": 15.0972,
+          "same_work_count": 2,
+          "same_work_mean_percent": -0.4772,
+          "strict_none": 4,
+          "strict_plugin": 2,
+          "semantic_none": 4,
+          "semantic_plugin": 2,
+          "first_pass_none": 4,
+          "first_pass_plugin": 4
+        }
+      }
+    }
+  },
+  "new_task_real_payload_available": false,
+  "paid_candidate_gate": "fail_missing_new_task_real_payload"
+}

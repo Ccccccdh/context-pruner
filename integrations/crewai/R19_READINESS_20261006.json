@@ -1,0 +1,175 @@
+{
+  "artifact": "R19_READINESS_20261006",
+  "batch": "crewai-r19-fullcapture-acquisition-api-01",
+  "mock_batch": "runs/stage5-crewai/crewai-r19-fullcapture-acquisition-mock-readiness-01",
+  "freeze": {
+    "path": "integrations/crewai/PRE_RUN_FREEZE_R19_FULLCAPTURE_ACQUISITION_01.json",
+    "file_sha256": "e4a9e5f74266e9209970221856c861377ed8066dc84602cc364a72ec33f7b966",
+    "declared_self_sha256": "",
+    "ceiling_max_api_requests": 48
+  },
+  "amendment": {
+    "path": "integrations/crewai/PRE_RUN_FREEZE_R19_FULLCAPTURE_ACQUISITION_01_FREEZE_AMENDMENT_20261006.json",
+    "file_sha256": "ca0ec8edc4914ed160ef1c18398392546153ade926c7635013f914e9ae15a7cb",
+    "effective_max_api_requests": 30,
+    "audit_module": null,
+    "revisions": [
+      1,
+      2
+    ]
+  },
+  "mock_verification": {
+    "rows": 3,
+    "mock_requests": 21,
+    "complete": true,
+    "errors": [],
+    "statement": "the 21 requests and their token counts are MOCK/SIMULATED; they are not provider usage and not cost"
+  },
+  "gbk_noise": {
+    "exit_code": 0,
+    "gbk_or_eventsbus_lines": 96,
+    "rows_recorded": 3,
+    "stdout_tail": [
+      "multibyte sequence"
+    ],
+    "handling": "the noise is CrewAI's console event sink failing to encode emoji on the legacy GBK code page; the process exits 0, the rows and the audit are unaffected, and the noise is counted here rather than hidden or treated as a batch failure"
+  },
+  "negative_controls": {
+    "clean_control": {
+      "complete": true,
+      "errors": []
+    },
+    "deleted_field": {
+      "complete": false,
+      "caught": true,
+      "errors": [
+        "missing full output: quorum_snapshot_r19"
+      ]
+    },
+    "corrupted_record": {
+      "complete": false,
+      "caught": true,
+      "errors": [
+        "action candidate mismatch: quorum_snapshot_r19"
+      ]
+    },
+    "token_tamper": {
+      "complete": false,
+      "caught": true,
+      "errors": [
+        "complete token ledger mismatch: quorum_snapshot_r19"
+      ]
+    },
+    "action_rebinding": {
+      "complete": false,
+      "caught": true,
+      "errors": [
+        "parsed/executed tool binding mismatch: quorum_snapshot_r19"
+      ]
+    },
+    "freeze_hash_tamper": {
+      "complete": false,
+      "caught": true,
+      "errors": [
+        "manifest freeze/source binding mismatch"
+      ]
+    },
+    "unregistered_source_digest": {
+      "complete": false,
+      "caught": true,
+      "errors": [
+        "source drift or missing (unregistered digest): experiments/commands/run_crewai_r19_acquisition.py",
+        "source drift or missing (unregistered digest): experiments/runners/crewai_capture_v19.py",
+        "manifest freeze/source binding mismatch"
+      ]
+    },
+    "all_controls_caught": true
+  },
+  "unit_suite": {
+    "command": "python -m unittest tests.test_crewai_capture_v19 tests.test_crewai_r19_acquisition -q",
+    "tail": [
+      "Ran 5 tests in 0.231s",
+      "OK"
+    ]
+  },
+  "signing": {
+    "real_api_path": {
+      "signed": true,
+      "evidence": "experiments/commands/run_crewai_r19_acquisition.py uses OpenAICompat-style client from crewai_capture_v19 with --mode api + --confirm-send-synthetic-data; the mock and the api paths share one code path, differing only in the client"
+    },
+    "exceptions_and_cap_charged": {
+      "signed": true,
+      "evidence": "CapturedOpenAICompatCrewAILLM consumes the request slot BEFORE send, records status=error with error_type and zero tokens, and re-raises; the cap test asserts no provider call is attempted beyond the budget"
+    },
+    "credential_scan": {
+      "signed": true,
+      "evidence": "the key is read from the environment only and passed to the client; scanning the r19 manifest, results and reports for sk- patterns: no sk- pattern found in r19 artefacts"
+    },
+    "audit_negative_controls": {
+      "signed": true,
+      "evidence": "deleted field, corrupted record, token tamper, action rebinding, freeze hash tamper and unregistered source digest each make the audit report errors; the clean control stays complete"
+    },
+    "freeze_source_pinning": {
+      "signed": true,
+      "evidence": "the freeze file is unmodified (e4a9e5f74266e920) and every pin resolves through the amendment's authority; an unregistered digest fails (see the negative control)"
+    },
+    "per_attempt_full_capture": {
+      "signed": true,
+      "evidence": "each attempt stores the full input messages, raw and normalized output, provider usage, the request slot, the host parsed Action and the executed tool, plus the cache split and timestamps"
+    },
+    "cache_metering": {
+      "signed": true,
+      "evidence": "prompt_cache_hit_tokens / prompt_cache_miss_tokens / cache_tokens_source / utc_started / utc_finished / off_peak_window per attempt; absent splits are labelled absent"
+    }
+  },
+  "cost_estimate": {
+    "prices_usd_per_million": {
+      "cache_hit_input": 0.003,
+      "cache_miss_input": 0.15,
+      "output": 0.45
+    },
+    "off_peak_multiplier": 0.5,
+    "output_price_assumption": "the handoff quoted the cache-hit and cache-miss input prices only; the output price used here is a stated stand-in, so the estimate is an upper bound on the input side and indicative on the output side",
+    "mock_measurement": {
+      "attempts": 21,
+      "mock_input_tokens": 21017,
+      "mock_output_tokens": 453,
+      "note": "mock token counts are SIMULATED, not provider cost"
+    },
+    "real_run_projection": {
+      "calls": 21,
+      "input_per_call": 1900,
+      "output_per_call": 120,
+      "input_tokens": 39900,
+      "output_tokens": 2520,
+      "basis": "the r17/r19 measured frames are about 1.9k provider tokens per first-role call and about 120 output tokens per call"
+    },
+    "tiers": {
+      "all_miss_peak": {
+        "cache_hit_tokens": 0,
+        "cache_miss_tokens": 39900,
+        "output_tokens": 2520,
+        "usd": 0.0071
+      },
+      "typical_miss_heavy_off_peak": {
+        "cache_hit_tokens": 9975,
+        "cache_miss_tokens": 29925,
+        "output_tokens": 2520,
+        "usd": 0.0028
+      },
+      "all_hit_off_peak": {
+        "cache_hit_tokens": 39900,
+        "cache_miss_tokens": 0,
+        "output_tokens": 2520,
+        "usd": 0.0006
+      }
+    },
+    "cheapest_realistic": 0.0006,
+    "most_expensive": 0.0071
+  },
+  "prohibition": {
+    "rule": "mock complete=true is NOT authorisation to start the real acquisition",
+    "state": "this report is the readiness evidence; the real none-arm acquisition still requires the frozen ID, the 30-request top, off-peak timing and both citable flags false"
+  },
+  "generated_utc": "2026-10-06T13:30:51Z"
+}

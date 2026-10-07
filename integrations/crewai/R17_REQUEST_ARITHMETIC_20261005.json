@@ -1,0 +1,86 @@
+{
+  "batch": "crewai-two-role-r17-guarded-3arm-01",
+  "inputs": {
+    "falsification": "integrations/crewai/R17_TRIGGER_FALSIFICATION_ON_R16_20261005.json",
+    "plugin_units": 12,
+    "complete_units": 5,
+    "actionless_early_stop_units": 7,
+    "rejections_under_v16": 15,
+    "rejections_floor_under_v17": 11,
+    "per_unit_v17_floor": {
+      "artifact_publish_gate/0": 1,
+      "artifact_publish_gate/1": 1,
+      "artifact_publish_gate/2": 1,
+      "quota_scale_gate/0": 1,
+      "quota_scale_gate/1": 1,
+      "quota_scale_gate/2": 1,
+      "traffic_shift_gate/0": 0,
+      "traffic_shift_gate/1": 0,
+      "traffic_shift_gate/2": 5,
+      "failover_switch_gate/0": 0,
+      "failover_switch_gate/1": 0,
+      "failover_switch_gate/2": 0
+    },
+    "r16_measured_cost_of_an_exhausted_unit": {
+      "requests_18_example": "failover_switch_gate/1 (6 rejections)",
+      "requests_15_example": "failover_switch_gate/2 (4 rejections)"
+    }
+  },
+  "baseline": {
+    "per_arm": 84,
+    "three_arms": 252
+  },
+  "sensitivity": [
+    {
+      "completion_rate_after_pushback": 0.0,
+      "exhausted_units_per_arm": 7.0,
+      "rejections_per_arm": 42.0,
+      "plugin_requests_per_arm": 126.0,
+      "batch_requests": 294,
+      "headroom_under_336": 42,
+      "headroom_under_280": -14
+    },
+    {
+      "completion_rate_after_pushback": 0.25,
+      "exhausted_units_per_arm": 5.25,
+      "rejections_per_arm": 33.25,
+      "plugin_requests_per_arm": 117.2,
+      "batch_requests": 285,
+      "headroom_under_336": 51,
+      "headroom_under_280": -5
+    },
+    {
+      "completion_rate_after_pushback": 0.5,
+      "exhausted_units_per_arm": 3.5,
+      "rejections_per_arm": 24.5,
+      "plugin_requests_per_arm": 108.5,
+      "batch_requests": 276,
+      "headroom_under_336": 60,
+      "headroom_under_280": 4
+    },
+    {
+      "completion_rate_after_pushback": 0.75,
+      "exhausted_units_per_arm": 1.75,
+      "rejections_per_arm": 15.75,
+      "plugin_requests_per_arm": 99.8,
+      "batch_requests": 268,
+      "headroom_under_336": 68,
+      "headroom_under_280": 12
+    },
+    {
+      "completion_rate_after_pushback": 1.0,
+      "exhausted_units_per_arm": 0.0,
+      "rejections_per_arm": 7.0,
+      "plugin_requests_per_arm": 91.0,
+      "batch_requests": 259,
+      "headroom_under_336": 77,
+      "headroom_under_280": 21
+    }
+  ],
+  "recommended_cap": 336,
+  "recommended_cap_rationale": "336 = 3 x 84 + 84 of guard headroom: it clears every modelled case up to a completion rate of 0 (all seven early stops per arm exhausting the guard), which is the pessimistic end of the r16 evidence, with 12 requests to spare",
+  "minimum_necessary_cap": 294,
+  "resume_plan": "on cap stop immediately, keep the partial directory, continue under a NEW id with --resume; a partial grid is never reported as a complete grid",
+  "abort_condition": "guard_exhausted above 3 of 12 plugin units, or a second request slot needed, abandons the batch and reports it as such",
+  "cost_order_of_magnitude": "the r16 pilot consumed 595 requests because two exhausted units alone burned 33 of them; the v17 cap is sized so that even seven exhausting units fit"
+}

@@ -1,0 +1,194 @@
+[
+  {
+    "task_id": "shipment_customs_dispatch",
+    "title": "三源出关发运核验",
+    "task": "货运单 shipment-641 的报关批次 customs-18 申请发运。先读货单与合规标记，再查放行校验；把三项当前来源都至少读取一次，顺序不限、可重复。依据货物数量、限制标记和校验状态综合决定发运或扣留。",
+    "history_constraint": "shipment-641 与 customs-18 才是本次对象；旧批次 customs-11 已撤销，不得当作当前报关批次。",
+    "history_topic": "旧报关批次撤销记录、限制标记争议和过期发运窗口",
+    "tools": [
+      {
+        "name": "read_shipment_manifest",
+        "call": {
+          "shipment": "shipment-641"
+        },
+        "result": {
+          "shipment": "shipment-641",
+          "batch": "customs-18",
+          "package_count": 16,
+          "manifest_sha": "ship-6ab1"
+        },
+        "evidence_parts": [
+          "\"shipment\": \"shipment-641\"",
+          "\"batch\": \"customs-18\"",
+          "\"package_count\": 16"
+        ]
+      },
+      {
+        "name": "read_compliance_flags",
+        "call": {
+          "batch": "customs-18"
+        },
+        "result": {
+          "batch": "customs-18",
+          "restricted_flags": 0,
+          "inspection_state": "passed",
+          "previous_batch": "customs-11"
+        },
+        "evidence_parts": [
+          "\"restricted_flags\": 0",
+          "\"inspection_state\": \"passed\""
+        ]
+      },
+      {
+        "name": "run_dispatch_check",
+        "call": {
+          "shipment": "shipment-641"
+        },
+        "result": {
+          "shipment": "shipment-641",
+          "dispatch_ready": true,
+          "blocking_holds": 0,
+          "checker_count": 2
+        },
+        "evidence_parts": [
+          "\"dispatch_ready\": true",
+          "\"blocking_holds\": 0"
+        ]
+      }
+    ],
+    "decision": "SHIP",
+    "handle_facts": [
+      "shipment-641",
+      "customs-18",
+      "dispatch_ready true"
+    ],
+    "answer_facts": [
+      "package_count 16",
+      "restricted_flags 0",
+      "dispatch_ready true",
+      "blocking_holds 0"
+    ],
+    "forbidden_facts": [
+      "customs-11"
+    ],
+    "region_fact": "",
+    "version_fact": "customs-18",
+    "expected_terms": [
+      "shipment-641",
+      "customs-18",
+      "dispatch_ready true",
+      "SHIP"
+    ]
+  },
+  {
+    "task_id": "cluster_failover_hold",
+    "title": "五源集群故障转移审核",
+    "task": "集群 cluster-e6 的转移申请 failover-29 需要审核。分别核对拓扑、副本健康、流量容量、变更记录和最终激活校验，五项来源都至少读取一次，顺序不限、可重复。容量即使足够，只要副本落后且激活校验未通过就必须暂缓。",
+    "history_constraint": "cluster-e6 与 failover-29 是本次申请；旧申请 failover-17 已取消，不得作为当前申请。",
+    "history_topic": "旧故障转移申请取消记录、副本追赶争议与过期切流窗口",
+    "tools": [
+      {
+        "name": "read_failover_topology",
+        "call": {
+          "cluster": "cluster-e6"
+        },
+        "result": {
+          "cluster": "cluster-e6",
+          "request": "failover-29",
+          "replica_count": 4,
+          "topology_sha": "topo-8d3c"
+        },
+        "evidence_parts": [
+          "\"cluster\": \"cluster-e6\"",
+          "\"request\": \"failover-29\""
+        ]
+      },
+      {
+        "name": "read_replica_health",
+        "call": {
+          "cluster": "cluster-e6"
+        },
+        "result": {
+          "cluster": "cluster-e6",
+          "lagging_replicas": 1,
+          "max_lag_seconds": 48,
+          "health_state": "degraded"
+        },
+        "evidence_parts": [
+          "\"lagging_replicas\": 1",
+          "\"health_state\": \"degraded\""
+        ]
+      },
+      {
+        "name": "read_traffic_capacity",
+        "call": {
+          "cluster": "cluster-e6"
+        },
+        "result": {
+          "cluster": "cluster-e6",
+          "capacity_headroom_pct": 35,
+          "route_state": "available"
+        },
+        "evidence_parts": [
+          "\"capacity_headroom_pct\": 35",
+          "\"route_state\": \"available\""
+        ]
+      },
+      {
+        "name": "read_failover_change_log",
+        "call": {
+          "request": "failover-29"
+        },
+        "result": {
+          "request": "failover-29",
+          "record_state": "open",
+          "previous_request": "failover-17",
+          "change_step": 3
+        },
+        "evidence_parts": [
+          "\"record_state\": \"open\"",
+          "\"previous_request\": \"failover-17\""
+        ]
+      },
+      {
+        "name": "run_activation_check",
+        "call": {
+          "cluster": "cluster-e6"
+        },
+        "result": {
+          "cluster": "cluster-e6",
+          "activation_ready": false,
+          "blocking_checks": 1,
+          "reviewer_count": 3
+        },
+        "evidence_parts": [
+          "\"activation_ready\": false",
+          "\"blocking_checks\": 1"
+        ]
+      }
+    ],
+    "decision": "WAIT",
+    "handle_facts": [
+      "cluster-e6",
+      "failover-29",
+      "activation_ready false"
+    ],
+    "answer_facts": [
+      "lagging_replicas 1",
+      "capacity_headroom_pct 35",
+      "activation_ready false",
+      "blocking_checks 1"
+    ],
+    "forbidden_facts": [
+      "failover-17"
+    ],
+    "region_fact": "",
+    "version_fact": "failover-29",
+    "expected_terms": [
+      "cluster-e6",
+      "failover-29",
+      "activation_ready false",
+      "WAIT"
+    ]
+  }
+]

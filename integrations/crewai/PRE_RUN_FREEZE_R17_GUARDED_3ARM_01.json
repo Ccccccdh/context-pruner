@@ -1,0 +1,156 @@
+{
+  "batch": "crewai-two-role-r17-guarded-3arm-01",
+  "samples": 36,
+  "units_per_arm": 12,
+  "manifest": {
+    "protocol": "crewai-two-role-r17-guarded",
+    "tasks": [
+      "audit_trail_retention_gate",
+      "zone_drain_gate",
+      "compaction_window_gate",
+      "rollback_point_gate"
+    ],
+    "tools_per_task": {
+      "audit_trail_retention_gate": [
+        "read_retention_policy",
+        "read_trail_coverage",
+        "read_retention_change_log",
+        "run_retention_check"
+      ],
+      "zone_drain_gate": [
+        "read_zone_topology",
+        "read_drain_progress",
+        "read_drain_log",
+        "run_zone_check"
+      ],
+      "compaction_window_gate": [
+        "read_compaction_plan",
+        "read_fragmentation_metrics",
+        "read_compaction_log",
+        "run_compaction_check"
+      ],
+      "rollback_point_gate": [
+        "read_train_config",
+        "read_snapshot_usage",
+        "read_retention_log",
+        "run_snapshot_check"
+      ]
+    },
+    "methods": [
+      "none",
+      "pruner_v1",
+      "native_summary"
+    ],
+    "guard_arms": [
+      "pruner_v1"
+    ],
+    "repeats": 3,
+    "units_per_arm": 12,
+    "model": "deepseek-v4-flash",
+    "mode": "api",
+    "base_url": "https://api.deepseek.com",
+    "budget": {
+      "host": "crewai",
+      "provider_tokens": {
+        "soft": 1200,
+        "hard": 3000,
+        "target": 900
+      },
+      "estimated_tokens": {
+        "soft": 3085,
+        "hard": 7712,
+        "target": 2314
+      }
+    },
+    "limits": {
+      "fixed_reserved_tokens": 300,
+      "max_output_tokens": 512,
+      "max_summary_tokens": 1024,
+      "max_summary_calls": 4,
+      "guard_max_rejections": 6
+    },
+    "max_api_requests": 336,
+    "quality_gates": [
+      "strict",
+      "semantic",
+      "first_pass_facts",
+      "tool_sequence_consistent"
+    ],
+    "controller_guard": {
+      "module": "experiments/runners/crewai_loop_guard_v17.py",
+      "rule": "the frozen tool table is not finished AND this turn produced no valid Action => refuse, append one control message, re-serve",
+      "final_answer_marker": "sufficient but not necessary; it is not consulted on its own any more",
+      "cannot_be_fooled_by": [
+        "prose claiming the remaining tools were already called",
+        "repeating a tool that was already called",
+        "a bare HANDOFF line with no Final Answer marker",
+        "any model text: the guard reads only the host's own action markers"
+      ],
+      "only_added_text": "one control message, on the rejection path only",
+      "enabled_arms": [
+        "pruner_v1"
+      ]
+    },
+    "cost_formula": {
+      "form": "SUM_calls(uncompressed_input_tokens - compressed_input_tokens) - protection_cost",
+      "protection_cost": "ceil(pinned_characters / 2.41) + ceil(protected_round_readded_characters / 2.41) + whole_prefix_fallback_tokens + summary_tokens",
+      "void_bound": {
+        "value_percent": 10.247,
+        "status": "void",
+        "why": "booked only once-only first-frame text; the whole frame is re-sent every call.  Measured same-work saving +35.16% = 3.43x the old bound"
+      }
+    },
+    "citable_as_saving": false,
+    "citable_as_quality_equivalence": false,
+    "citable_note": "both flags stay false until the independent audit passes all three acceptance conditions; the audit decides, not this file",
+    "failure_policy": "preserve sample failure and continue unless provider unavailable or request cap",
+    "freeze_sha256": "7f8dccfb5579061354c8609456d79bf5d58dbc0e37e9aa9eb8e55c9646192499"
+  },
+  "source_sha256": {
+    "experiments/runners/crewai_handoff_v17_tasks.py": "d79a442a3e661922e7bbd06d600954b8cd64c7fd0d00572dbb9d7a587286c055",
+    "experiments/runners/crewai_loop_guard_v17.py": "3a93a70b9604624862449a6f6f22354dfa5482419ac22ef681a29ae72175d1d7",
+    "experiments/runners/crewai_toolrounds_contract_v13.py": "c2ed0bb824b1af414e7c121ffc8390d1b4d4eb8f6dad68f7bc95b40e627156de",
+    "experiments/runners/crewai_pinned_evidence_v9.py": "5ccc86abf9032df6abbdfddca2c108221e9121e98eb7aedc6ff2ad663fd6ade4",
+    "experiments/runners/crewai_semantic_equivalence_v8.py": "26aea58bbbe57aa6fc451e00436254636cc01df97c0ec33d321cad73924304e1",
+    "experiments/runners/run_crewai_experiment.py": "0c0cd1d3e30ea837b323e1318321804433c20f8c9fdcd3a40b42deb1849554f1",
+    "experiments/runners/run_crewai_handoff_v4.py": "8aa75353bd7a5b4cffea5bd0233a82583d5c4ac34d83c2bac0672117edd078cf",
+    "tasks/stage5_autogen/natural_tasks_r17.json": "3cb251bb3407e32df0e5c8496a07858f499471b3e7df4aa7b33870117c301c70",
+    "tasks/stage5_autogen/natural_tasks_r17_confirmation.json": "5ac20f894ca687130c8b100681958ddbe13e93794d2ecda171841d8033686c96",
+    ".tooling/falsify_r17_trigger_on_r16.py": "305be45476d34a6060651d7a815378b602886f4b51298dec027f56d4d08f672c",
+    "integrations/crewai/R17_TRIGGER_FALSIFICATION_ON_R16_20261005.json": "83b853444fd6e890ff19b424db24cf1752d468db7adbbd8f33ea36bab8f931a6",
+    "integrations/crewai/R17_CONFIRMATION_TASKS_AND_GUARD_PROBE_20261005.json": "b1333e98a22e62c8f2fcc160dcffc83dedbf4448be292937bf02cf707ba26b0e",
+    "integrations/crewai/PRE_RUN_FREEZE_R17_GUARDED_3ARM_01.json": ""
+  },
+  "acceptance": {
+    "unit_count": "per-arm units = 4 tasks x 3 repeats = 12",
+    "condition_1_behaviour": "plugin tool_sequence_consistent = 12/12 and per-task not below baseline; first_pass_facts not below baseline; guard_exhausted = 0",
+    "condition_2_quality": "strict and semantic success not below baseline per task and overall",
+    "condition_3_cost": "same work (equal agent call counts and first-role traces) and the corrected call-wise bound positive on the majority and in the batch mean; fewer tool calls or fewer model calls never count as saving",
+    "verdict_rule": "all three required for a valid saving candidate; otherwise 'not_passed_quality_gate'"
+  },
+  "guard_failure_semantics": {
+    "exhausted": "a role that answers with an action-less turn after guard_max_rejections push-backs is recorded with guard_exhausted = true and booked as a FAILED unit; it is excluded from every saving claim",
+    "extra_requests": "every rejection re-send is a real agent request charged to the arm and to the global ledger",
+    "cap": "336; on cap stop immediately, keep the partial directory, continue under a NEW id with --resume; a partial grid is never a complete grid"
+  },
+  "stop_line": [
+    "global request cap reached",
+    "empty model response",
+    "connection-class error",
+    "guard exhausted in more than 3 of 12 plugin units"
+  ],
+  "freeze_discipline": {
+    "write_once": "the freeze file is written once and never regenerated",
+    "amendments": "any change is recorded in *_FREEZE_AMENDMENT_<date>.json with what, why and both hashes",
+    "refusal_assertion": "the writer refuses to run when the target file exists",
+    "why": "the r16 three-arm freeze was regenerated twice during its run window, which broke the link between the file hash its manifests recorded and the file on disk"
+  },
+  "missing_before_payment": [
+    "no r17 payload acquisition exists yet; the r17 bound is a projection until an uncompressed-arm acquisition batch is run",
+    "the v17 rule has been falsified only on the recorded r16 sequences (7/7 early stops refused, 5/5 completions untouched); its behaviour on live r17 traffic is unobserved",
+    "the 336 cap is derived from the r16 rejection sequences; a higher live stop rate needs the stop-and-resume plan"
+  ],
+  "freeze_sha256": "7f8dccfb5579061354c8609456d79bf5d58dbc0e37e9aa9eb8e55c9646192499",
+  "self_hash_of": "the freeze content with every freeze_sha256 value left empty; the batch manifest records this value and the auditor recomputes it",
+  "revision_discipline": "immutable once written; any revision requires a *_FREEZE_AMENDMENT_<date>.json recording what changed, why, and the old and new SHA256"
+}

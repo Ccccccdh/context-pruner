@@ -1,0 +1,1491 @@
+{
+  "status": "posthoc_nonfrozen_diagnosis_only",
+  "old_audit": {
+    "complete": false,
+    "error_count": 38,
+    "unchanged_sha256": "ec7fd1eb3c6c6ef8a69a11816bd022641a7e7dc5008352be19e205256645f139",
+    "cannot_retroactively_validate": true
+  },
+  "source_sha256": {
+    "results": "c55eda249cac474df3c08db3306dfbe4aee63537a7085f93985b00b9f1fa1cf9",
+    "manifest": "4ecb883c1aa26dbed4aec86b08af06c21b180c9f8d36f7c99042cc9b0ce71fce",
+    "task_table": "5ac20f894ca687130c8b100681958ddbe13e93794d2ecda171841d8033686c96"
+  },
+  "rows": [
+    {
+      "task_id": "watermark_publish_gate",
+      "repeat": 0,
+      "arm": "none",
+      "expected": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "actual": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "ordered_prefix": 4,
+      "exact_tool_sequence": true,
+      "trace_failure_kind": "none",
+      "strict": true,
+      "semantic": true,
+      "first_pass_complete": true,
+      "failure_class": "none",
+      "requests": 7,
+      "agent_requests": 7,
+      "summary_requests": 0,
+      "complete_tokens": 12705,
+      "guard_rejections": 0,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 0,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    },
+    {
+      "task_id": "watermark_publish_gate",
+      "repeat": 0,
+      "arm": "pruner_v1",
+      "expected": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "actual": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "ordered_prefix": 4,
+      "exact_tool_sequence": true,
+      "trace_failure_kind": "none",
+      "strict": true,
+      "semantic": true,
+      "first_pass_complete": true,
+      "failure_class": "none",
+      "requests": 7,
+      "agent_requests": 7,
+      "summary_requests": 0,
+      "complete_tokens": 8334,
+      "guard_rejections": 0,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 0,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    },
+    {
+      "task_id": "watermark_publish_gate",
+      "repeat": 0,
+      "arm": "native_summary",
+      "expected": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "actual": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "ordered_prefix": 4,
+      "exact_tool_sequence": true,
+      "trace_failure_kind": "none",
+      "strict": true,
+      "semantic": true,
+      "first_pass_complete": true,
+      "failure_class": "none",
+      "requests": 11,
+      "agent_requests": 7,
+      "summary_requests": 4,
+      "complete_tokens": 16940,
+      "guard_rejections": 0,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 0,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    },
+    {
+      "task_id": "watermark_publish_gate",
+      "repeat": 1,
+      "arm": "pruner_v1",
+      "expected": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "actual": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "ordered_prefix": 4,
+      "exact_tool_sequence": true,
+      "trace_failure_kind": "none",
+      "strict": false,
+      "semantic": false,
+      "first_pass_complete": true,
+      "failure_class": "contract_placeholder_echo",
+      "requests": 7,
+      "agent_requests": 7,
+      "summary_requests": 0,
+      "complete_tokens": 8427,
+      "guard_rejections": 0,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 0,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    },
+    {
+      "task_id": "watermark_publish_gate",
+      "repeat": 1,
+      "arm": "native_summary",
+      "expected": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "actual": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "ordered_prefix": 4,
+      "exact_tool_sequence": true,
+      "trace_failure_kind": "none",
+      "strict": false,
+      "semantic": false,
+      "first_pass_complete": false,
+      "failure_class": "tool_sequence",
+      "requests": 10,
+      "agent_requests": 6,
+      "summary_requests": 4,
+      "complete_tokens": 16378,
+      "guard_rejections": 0,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 0,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    },
+    {
+      "task_id": "watermark_publish_gate",
+      "repeat": 1,
+      "arm": "none",
+      "expected": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "actual": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "ordered_prefix": 4,
+      "exact_tool_sequence": true,
+      "trace_failure_kind": "none",
+      "strict": true,
+      "semantic": true,
+      "first_pass_complete": true,
+      "failure_class": "none",
+      "requests": 7,
+      "agent_requests": 7,
+      "summary_requests": 0,
+      "complete_tokens": 13124,
+      "guard_rejections": 0,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 0,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    },
+    {
+      "task_id": "watermark_publish_gate",
+      "repeat": 2,
+      "arm": "native_summary",
+      "expected": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "actual": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "ordered_prefix": 4,
+      "exact_tool_sequence": true,
+      "trace_failure_kind": "none",
+      "strict": true,
+      "semantic": true,
+      "first_pass_complete": true,
+      "failure_class": "none",
+      "requests": 11,
+      "agent_requests": 7,
+      "summary_requests": 4,
+      "complete_tokens": 17678,
+      "guard_rejections": 0,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 0,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    },
+    {
+      "task_id": "watermark_publish_gate",
+      "repeat": 2,
+      "arm": "none",
+      "expected": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "actual": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "ordered_prefix": 4,
+      "exact_tool_sequence": true,
+      "trace_failure_kind": "none",
+      "strict": false,
+      "semantic": false,
+      "first_pass_complete": true,
+      "failure_class": "contract_placeholder_echo",
+      "requests": 7,
+      "agent_requests": 7,
+      "summary_requests": 0,
+      "complete_tokens": 13611,
+      "guard_rejections": 0,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 0,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    },
+    {
+      "task_id": "watermark_publish_gate",
+      "repeat": 2,
+      "arm": "pruner_v1",
+      "expected": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "actual": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "ordered_prefix": 4,
+      "exact_tool_sequence": true,
+      "trace_failure_kind": "none",
+      "strict": false,
+      "semantic": false,
+      "first_pass_complete": true,
+      "failure_class": "contract_placeholder_echo",
+      "requests": 7,
+      "agent_requests": 7,
+      "summary_requests": 0,
+      "complete_tokens": 8590,
+      "guard_rejections": 0,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 0,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    },
+    {
+      "task_id": "autoscale_policy_gate",
+      "repeat": 0,
+      "arm": "pruner_v1",
+      "expected": [
+        "read_policy_definition",
+        "read_capacity_guardrails",
+        "read_adoption_record",
+        "run_guardrail_check"
+      ],
+      "actual": [
+        "read_policy_definition",
+        "read_adoption_record",
+        "run_guardrail_check",
+        "read_capacity_guardrails"
+      ],
+      "ordered_prefix": 1,
+      "exact_tool_sequence": false,
+      "trace_failure_kind": "wrong_action_or_order",
+      "strict": false,
+      "semantic": false,
+      "first_pass_complete": false,
+      "failure_class": "tool_sequence",
+      "requests": 18,
+      "agent_requests": 18,
+      "summary_requests": 0,
+      "complete_tokens": 30284,
+      "guard_rejections": 6,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 6,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    },
+    {
+      "task_id": "autoscale_policy_gate",
+      "repeat": 0,
+      "arm": "native_summary",
+      "expected": [
+        "read_policy_definition",
+        "read_capacity_guardrails",
+        "read_adoption_record",
+        "run_guardrail_check"
+      ],
+      "actual": [
+        "read_policy_definition",
+        "read_capacity_guardrails",
+        "read_adoption_record",
+        "run_guardrail_check"
+      ],
+      "ordered_prefix": 4,
+      "exact_tool_sequence": true,
+      "trace_failure_kind": "none",
+      "strict": false,
+      "semantic": false,
+      "first_pass_complete": true,
+      "failure_class": "other",
+      "requests": 11,
+      "agent_requests": 7,
+      "summary_requests": 4,
+      "complete_tokens": 16728,
+      "guard_rejections": 0,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 0,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    },
+    {
+      "task_id": "autoscale_policy_gate",
+      "repeat": 0,
+      "arm": "none",
+      "expected": [
+        "read_policy_definition",
+        "read_capacity_guardrails",
+        "read_adoption_record",
+        "run_guardrail_check"
+      ],
+      "actual": [
+        "read_policy_definition",
+        "read_capacity_guardrails",
+        "read_adoption_record",
+        "run_guardrail_check"
+      ],
+      "ordered_prefix": 4,
+      "exact_tool_sequence": true,
+      "trace_failure_kind": "none",
+      "strict": true,
+      "semantic": true,
+      "first_pass_complete": true,
+      "failure_class": "none",
+      "requests": 7,
+      "agent_requests": 7,
+      "summary_requests": 0,
+      "complete_tokens": 12739,
+      "guard_rejections": 0,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 0,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    },
+    {
+      "task_id": "autoscale_policy_gate",
+      "repeat": 1,
+      "arm": "native_summary",
+      "expected": [
+        "read_policy_definition",
+        "read_capacity_guardrails",
+        "read_adoption_record",
+        "run_guardrail_check"
+      ],
+      "actual": [
+        "read_policy_definition",
+        "read_capacity_guardrails",
+        "read_adoption_record",
+        "run_guardrail_check"
+      ],
+      "ordered_prefix": 4,
+      "exact_tool_sequence": true,
+      "trace_failure_kind": "none",
+      "strict": true,
+      "semantic": true,
+      "first_pass_complete": true,
+      "failure_class": "none",
+      "requests": 11,
+      "agent_requests": 7,
+      "summary_requests": 4,
+      "complete_tokens": 17272,
+      "guard_rejections": 0,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 0,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    },
+    {
+      "task_id": "autoscale_policy_gate",
+      "repeat": 1,
+      "arm": "none",
+      "expected": [
+        "read_policy_definition",
+        "read_capacity_guardrails",
+        "read_adoption_record",
+        "run_guardrail_check"
+      ],
+      "actual": [
+        "read_policy_definition",
+        "read_capacity_guardrails",
+        "read_adoption_record",
+        "run_guardrail_check"
+      ],
+      "ordered_prefix": 4,
+      "exact_tool_sequence": true,
+      "trace_failure_kind": "none",
+      "strict": true,
+      "semantic": true,
+      "first_pass_complete": true,
+      "failure_class": "none",
+      "requests": 7,
+      "agent_requests": 7,
+      "summary_requests": 0,
+      "complete_tokens": 13084,
+      "guard_rejections": 0,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 0,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    },
+    {
+      "task_id": "autoscale_policy_gate",
+      "repeat": 1,
+      "arm": "pruner_v1",
+      "expected": [
+        "read_policy_definition",
+        "read_capacity_guardrails",
+        "read_adoption_record",
+        "run_guardrail_check"
+      ],
+      "actual": [
+        "read_policy_definition",
+        "read_adoption_record",
+        "read_capacity_guardrails",
+        "run_guardrail_check",
+        "read_capacity_guardrails"
+      ],
+      "ordered_prefix": 1,
+      "exact_tool_sequence": false,
+      "trace_failure_kind": "wrong_action_or_order",
+      "strict": false,
+      "semantic": false,
+      "first_pass_complete": false,
+      "failure_class": "tool_sequence",
+      "requests": 17,
+      "agent_requests": 17,
+      "summary_requests": 0,
+      "complete_tokens": 30077,
+      "guard_rejections": 5,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 5,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    },
+    {
+      "task_id": "autoscale_policy_gate",
+      "repeat": 2,
+      "arm": "none",
+      "expected": [
+        "read_policy_definition",
+        "read_capacity_guardrails",
+        "read_adoption_record",
+        "run_guardrail_check"
+      ],
+      "actual": [
+        "read_policy_definition",
+        "read_capacity_guardrails",
+        "read_adoption_record",
+        "run_guardrail_check"
+      ],
+      "ordered_prefix": 4,
+      "exact_tool_sequence": true,
+      "trace_failure_kind": "none",
+      "strict": true,
+      "semantic": true,
+      "first_pass_complete": true,
+      "failure_class": "none",
+      "requests": 7,
+      "agent_requests": 7,
+      "summary_requests": 0,
+      "complete_tokens": 13557,
+      "guard_rejections": 0,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 0,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    },
+    {
+      "task_id": "autoscale_policy_gate",
+      "repeat": 2,
+      "arm": "pruner_v1",
+      "expected": [
+        "read_policy_definition",
+        "read_capacity_guardrails",
+        "read_adoption_record",
+        "run_guardrail_check"
+      ],
+      "actual": [
+        "read_policy_definition",
+        "read_adoption_record",
+        "read_capacity_guardrails",
+        "run_guardrail_check",
+        "read_capacity_guardrails"
+      ],
+      "ordered_prefix": 1,
+      "exact_tool_sequence": false,
+      "trace_failure_kind": "wrong_action_or_order",
+      "strict": false,
+      "semantic": false,
+      "first_pass_complete": false,
+      "failure_class": "tool_sequence",
+      "requests": 17,
+      "agent_requests": 17,
+      "summary_requests": 0,
+      "complete_tokens": 30422,
+      "guard_rejections": 5,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 5,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    },
+    {
+      "task_id": "autoscale_policy_gate",
+      "repeat": 2,
+      "arm": "native_summary",
+      "expected": [
+        "read_policy_definition",
+        "read_capacity_guardrails",
+        "read_adoption_record",
+        "run_guardrail_check"
+      ],
+      "actual": [
+        "read_policy_definition",
+        "read_capacity_guardrails",
+        "read_adoption_record",
+        "run_guardrail_check"
+      ],
+      "ordered_prefix": 4,
+      "exact_tool_sequence": true,
+      "trace_failure_kind": "none",
+      "strict": false,
+      "semantic": false,
+      "first_pass_complete": true,
+      "failure_class": "other",
+      "requests": 11,
+      "agent_requests": 7,
+      "summary_requests": 4,
+      "complete_tokens": 17715,
+      "guard_rejections": 0,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 0,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    },
+    {
+      "task_id": "key_rotation_gate",
+      "repeat": 0,
+      "arm": "native_summary",
+      "expected": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "actual": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "ordered_prefix": 4,
+      "exact_tool_sequence": true,
+      "trace_failure_kind": "none",
+      "strict": true,
+      "semantic": true,
+      "first_pass_complete": true,
+      "failure_class": "none",
+      "requests": 11,
+      "agent_requests": 7,
+      "summary_requests": 4,
+      "complete_tokens": 16971,
+      "guard_rejections": 0,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 0,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    },
+    {
+      "task_id": "key_rotation_gate",
+      "repeat": 0,
+      "arm": "none",
+      "expected": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "actual": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "ordered_prefix": 4,
+      "exact_tool_sequence": true,
+      "trace_failure_kind": "none",
+      "strict": true,
+      "semantic": true,
+      "first_pass_complete": true,
+      "failure_class": "none",
+      "requests": 7,
+      "agent_requests": 7,
+      "summary_requests": 0,
+      "complete_tokens": 12459,
+      "guard_rejections": 0,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 0,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    },
+    {
+      "task_id": "key_rotation_gate",
+      "repeat": 0,
+      "arm": "pruner_v1",
+      "expected": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "actual": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "ordered_prefix": 4,
+      "exact_tool_sequence": true,
+      "trace_failure_kind": "none",
+      "strict": true,
+      "semantic": true,
+      "first_pass_complete": true,
+      "failure_class": "none",
+      "requests": 8,
+      "agent_requests": 8,
+      "summary_requests": 0,
+      "complete_tokens": 9808,
+      "guard_rejections": 1,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 1,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    },
+    {
+      "task_id": "key_rotation_gate",
+      "repeat": 1,
+      "arm": "none",
+      "expected": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "actual": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "ordered_prefix": 4,
+      "exact_tool_sequence": true,
+      "trace_failure_kind": "none",
+      "strict": true,
+      "semantic": true,
+      "first_pass_complete": true,
+      "failure_class": "none",
+      "requests": 7,
+      "agent_requests": 7,
+      "summary_requests": 0,
+      "complete_tokens": 13332,
+      "guard_rejections": 0,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 0,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    },
+    {
+      "task_id": "key_rotation_gate",
+      "repeat": 1,
+      "arm": "pruner_v1",
+      "expected": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "actual": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "ordered_prefix": 4,
+      "exact_tool_sequence": true,
+      "trace_failure_kind": "none",
+      "strict": true,
+      "semantic": true,
+      "first_pass_complete": true,
+      "failure_class": "none",
+      "requests": 8,
+      "agent_requests": 8,
+      "summary_requests": 0,
+      "complete_tokens": 10262,
+      "guard_rejections": 1,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 1,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    },
+    {
+      "task_id": "key_rotation_gate",
+      "repeat": 1,
+      "arm": "native_summary",
+      "expected": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "actual": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "ordered_prefix": 4,
+      "exact_tool_sequence": true,
+      "trace_failure_kind": "none",
+      "strict": true,
+      "semantic": true,
+      "first_pass_complete": true,
+      "failure_class": "none",
+      "requests": 11,
+      "agent_requests": 7,
+      "summary_requests": 4,
+      "complete_tokens": 17284,
+      "guard_rejections": 0,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 0,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    },
+    {
+      "task_id": "key_rotation_gate",
+      "repeat": 2,
+      "arm": "pruner_v1",
+      "expected": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "actual": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "ordered_prefix": 4,
+      "exact_tool_sequence": true,
+      "trace_failure_kind": "none",
+      "strict": true,
+      "semantic": true,
+      "first_pass_complete": true,
+      "failure_class": "none",
+      "requests": 8,
+      "agent_requests": 8,
+      "summary_requests": 0,
+      "complete_tokens": 10116,
+      "guard_rejections": 1,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 1,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    },
+    {
+      "task_id": "key_rotation_gate",
+      "repeat": 2,
+      "arm": "native_summary",
+      "expected": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "actual": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "ordered_prefix": 4,
+      "exact_tool_sequence": true,
+      "trace_failure_kind": "none",
+      "strict": true,
+      "semantic": true,
+      "first_pass_complete": true,
+      "failure_class": "none",
+      "requests": 11,
+      "agent_requests": 7,
+      "summary_requests": 4,
+      "complete_tokens": 17935,
+      "guard_rejections": 0,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 0,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    },
+    {
+      "task_id": "key_rotation_gate",
+      "repeat": 2,
+      "arm": "none",
+      "expected": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "actual": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "ordered_prefix": 4,
+      "exact_tool_sequence": true,
+      "trace_failure_kind": "none",
+      "strict": true,
+      "semantic": true,
+      "first_pass_complete": true,
+      "failure_class": "none",
+      "requests": 7,
+      "agent_requests": 7,
+      "summary_requests": 0,
+      "complete_tokens": 13765,
+      "guard_rejections": 0,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 0,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    },
+    {
+      "task_id": "index_rebuild_gate",
+      "repeat": 0,
+      "arm": "none",
+      "expected": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "actual": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "ordered_prefix": 4,
+      "exact_tool_sequence": true,
+      "trace_failure_kind": "none",
+      "strict": true,
+      "semantic": true,
+      "first_pass_complete": true,
+      "failure_class": "none",
+      "requests": 7,
+      "agent_requests": 7,
+      "summary_requests": 0,
+      "complete_tokens": 12480,
+      "guard_rejections": 0,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 0,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    },
+    {
+      "task_id": "index_rebuild_gate",
+      "repeat": 0,
+      "arm": "pruner_v1",
+      "expected": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "actual": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "ordered_prefix": 4,
+      "exact_tool_sequence": true,
+      "trace_failure_kind": "none",
+      "strict": true,
+      "semantic": true,
+      "first_pass_complete": true,
+      "failure_class": "none",
+      "requests": 7,
+      "agent_requests": 7,
+      "summary_requests": 0,
+      "complete_tokens": 8017,
+      "guard_rejections": 0,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 0,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    },
+    {
+      "task_id": "index_rebuild_gate",
+      "repeat": 0,
+      "arm": "native_summary",
+      "expected": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "actual": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "ordered_prefix": 4,
+      "exact_tool_sequence": true,
+      "trace_failure_kind": "none",
+      "strict": true,
+      "semantic": true,
+      "first_pass_complete": true,
+      "failure_class": "none",
+      "requests": 11,
+      "agent_requests": 7,
+      "summary_requests": 4,
+      "complete_tokens": 17043,
+      "guard_rejections": 0,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 0,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    },
+    {
+      "task_id": "index_rebuild_gate",
+      "repeat": 1,
+      "arm": "pruner_v1",
+      "expected": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "actual": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "ordered_prefix": 4,
+      "exact_tool_sequence": true,
+      "trace_failure_kind": "none",
+      "strict": true,
+      "semantic": true,
+      "first_pass_complete": true,
+      "failure_class": "none",
+      "requests": 7,
+      "agent_requests": 7,
+      "summary_requests": 0,
+      "complete_tokens": 8701,
+      "guard_rejections": 0,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 0,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    },
+    {
+      "task_id": "index_rebuild_gate",
+      "repeat": 1,
+      "arm": "native_summary",
+      "expected": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "actual": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "ordered_prefix": 4,
+      "exact_tool_sequence": true,
+      "trace_failure_kind": "none",
+      "strict": true,
+      "semantic": true,
+      "first_pass_complete": true,
+      "failure_class": "none",
+      "requests": 11,
+      "agent_requests": 7,
+      "summary_requests": 4,
+      "complete_tokens": 17106,
+      "guard_rejections": 0,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 0,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    },
+    {
+      "task_id": "index_rebuild_gate",
+      "repeat": 1,
+      "arm": "none",
+      "expected": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "actual": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "ordered_prefix": 4,
+      "exact_tool_sequence": true,
+      "trace_failure_kind": "none",
+      "strict": true,
+      "semantic": true,
+      "first_pass_complete": true,
+      "failure_class": "none",
+      "requests": 7,
+      "agent_requests": 7,
+      "summary_requests": 0,
+      "complete_tokens": 13176,
+      "guard_rejections": 0,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 0,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    },
+    {
+      "task_id": "index_rebuild_gate",
+      "repeat": 2,
+      "arm": "native_summary",
+      "expected": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "actual": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "ordered_prefix": 4,
+      "exact_tool_sequence": true,
+      "trace_failure_kind": "none",
+      "strict": true,
+      "semantic": true,
+      "first_pass_complete": true,
+      "failure_class": "none",
+      "requests": 11,
+      "agent_requests": 7,
+      "summary_requests": 4,
+      "complete_tokens": 17780,
+      "guard_rejections": 0,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 0,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    },
+    {
+      "task_id": "index_rebuild_gate",
+      "repeat": 2,
+      "arm": "none",
+      "expected": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "actual": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "ordered_prefix": 4,
+      "exact_tool_sequence": true,
+      "trace_failure_kind": "none",
+      "strict": true,
+      "semantic": true,
+      "first_pass_complete": true,
+      "failure_class": "none",
+      "requests": 7,
+      "agent_requests": 7,
+      "summary_requests": 0,
+      "complete_tokens": 13377,
+      "guard_rejections": 0,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 0,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    },
+    {
+      "task_id": "index_rebuild_gate",
+      "repeat": 2,
+      "arm": "pruner_v1",
+      "expected": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "actual": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "ordered_prefix": 4,
+      "exact_tool_sequence": true,
+      "trace_failure_kind": "none",
+      "strict": true,
+      "semantic": true,
+      "first_pass_complete": true,
+      "failure_class": "none",
+      "requests": 8,
+      "agent_requests": 8,
+      "summary_requests": 0,
+      "complete_tokens": 9690,
+      "guard_rejections": 1,
+      "bare_handoff_rejections": 1,
+      "marked_handoff_rejections": 0,
+      "other_rejections": 0,
+      "guard_exhausted": false
+    }
+  ],
+  "arm_totals": {
+    "none": {
+      "rows": 12,
+      "requests": 84,
+      "agent_requests": 84,
+      "summary_requests": 0,
+      "tokens": 157409,
+      "agent_input": 151752,
+      "agent_output": 5657,
+      "summary_input": 0,
+      "summary_output": 0,
+      "strict": 11,
+      "semantic": 11,
+      "first_pass": 12,
+      "exact_tool_sequence": 12,
+      "guard_rejections": 0,
+      "guard_triggered_units": 0,
+      "guard_exhausted": 0,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 0,
+      "other_rejections": 0
+    },
+    "pruner_v1": {
+      "rows": 12,
+      "requests": 119,
+      "agent_requests": 119,
+      "summary_requests": 0,
+      "tokens": 172728,
+      "agent_input": 161992,
+      "agent_output": 10736,
+      "summary_input": 0,
+      "summary_output": 0,
+      "strict": 7,
+      "semantic": 7,
+      "first_pass": 9,
+      "exact_tool_sequence": 9,
+      "guard_rejections": 20,
+      "guard_triggered_units": 7,
+      "guard_exhausted": 0,
+      "bare_handoff_rejections": 1,
+      "marked_handoff_rejections": 19,
+      "other_rejections": 0
+    },
+    "native_summary": {
+      "rows": 12,
+      "requests": 131,
+      "agent_requests": 83,
+      "summary_requests": 48,
+      "tokens": 206830,
+      "agent_input": 117601,
+      "agent_output": 6192,
+      "summary_input": 78728,
+      "summary_output": 4309,
+      "strict": 9,
+      "semantic": 9,
+      "first_pass": 11,
+      "exact_tool_sequence": 12,
+      "guard_rejections": 0,
+      "guard_triggered_units": 0,
+      "guard_exhausted": 0,
+      "bare_handoff_rejections": 0,
+      "marked_handoff_rejections": 0,
+      "other_rejections": 0
+    }
+  },
+  "paired": [
+    {
+      "task_id": "watermark_publish_gate",
+      "repeat": 0,
+      "base_tokens": 12705,
+      "plugin_tokens": 8334,
+      "saving_pct": 34.403778040141674,
+      "same_work": true
+    },
+    {
+      "task_id": "watermark_publish_gate",
+      "repeat": 1,
+      "base_tokens": 13124,
+      "plugin_tokens": 8427,
+      "saving_pct": 35.789393477598296,
+      "same_work": true
+    },
+    {
+      "task_id": "watermark_publish_gate",
+      "repeat": 2,
+      "base_tokens": 13611,
+      "plugin_tokens": 8590,
+      "saving_pct": 36.88928072882228,
+      "same_work": true
+    },
+    {
+      "task_id": "autoscale_policy_gate",
+      "repeat": 0,
+      "base_tokens": 12739,
+      "plugin_tokens": 30284,
+      "saving_pct": -137.72666614333934,
+      "same_work": false
+    },
+    {
+      "task_id": "autoscale_policy_gate",
+      "repeat": 1,
+      "base_tokens": 13084,
+      "plugin_tokens": 30077,
+      "saving_pct": -129.8761846530113,
+      "same_work": false
+    },
+    {
+      "task_id": "autoscale_policy_gate",
+      "repeat": 2,
+      "base_tokens": 13557,
+      "plugin_tokens": 30422,
+      "saving_pct": -124.40067861621303,
+      "same_work": false
+    },
+    {
+      "task_id": "key_rotation_gate",
+      "repeat": 0,
+      "base_tokens": 12459,
+      "plugin_tokens": 9808,
+      "saving_pct": 21.27779115498836,
+      "same_work": false
+    },
+    {
+      "task_id": "key_rotation_gate",
+      "repeat": 1,
+      "base_tokens": 13332,
+      "plugin_tokens": 10262,
+      "saving_pct": 23.02730273027303,
+      "same_work": false
+    },
+    {
+      "task_id": "key_rotation_gate",
+      "repeat": 2,
+      "base_tokens": 13765,
+      "plugin_tokens": 10116,
+      "saving_pct": 26.509262622593535,
+      "same_work": false
+    },
+    {
+      "task_id": "index_rebuild_gate",
+      "repeat": 0,
+      "base_tokens": 12480,
+      "plugin_tokens": 8017,
+      "saving_pct": 35.76121794871795,
+      "same_work": true
+    },
+    {
+      "task_id": "index_rebuild_gate",
+      "repeat": 1,
+      "base_tokens": 13176,
+      "plugin_tokens": 8701,
+      "saving_pct": 33.96326654523376,
+      "same_work": true
+    },
+    {
+      "task_id": "index_rebuild_gate",
+      "repeat": 2,
+      "base_tokens": 13377,
+      "plugin_tokens": 9690,
+      "saving_pct": 27.562233684682663,
+      "same_work": false
+    }
+  ],
+  "per_task": {
+    "watermark_publish_gate": {
+      "mean_saving_pct": 35.694150748854085,
+      "same_work_pairs": 3
+    },
+    "autoscale_policy_gate": {
+      "mean_saving_pct": -130.66784313752123,
+      "same_work_pairs": 0
+    },
+    "key_rotation_gate": {
+      "mean_saving_pct": 23.60478550261831,
+      "same_work_pairs": 0
+    },
+    "index_rebuild_gate": {
+      "mean_saving_pct": 32.428906059544786,
+      "same_work_pairs": 2
+    }
+  },
+  "paired_batch_mean_pct": -9.735000206626012,
+  "same_work_mean_pct": 35.36138734810279,
+  "task_mean_spread_pp": 166.36199388637533,
+  "candidate_guard_replay": {
+    "definition": "reject an Action unless it is the next frozen tool; reject actionless handoff before all four tools; fail closed on cap",
+    "plugin_classification": [
+      {
+        "task_id": "watermark_publish_gate",
+        "repeat": 0,
+        "decision": "pass",
+        "observed_extra_requests": 0
+      },
+      {
+        "task_id": "watermark_publish_gate",
+        "repeat": 1,
+        "decision": "pass",
+        "observed_extra_requests": 0
+      },
+      {
+        "task_id": "watermark_publish_gate",
+        "repeat": 2,
+        "decision": "pass",
+        "observed_extra_requests": 0
+      },
+      {
+        "task_id": "autoscale_policy_gate",
+        "repeat": 0,
+        "decision": "reject_wrong_action_or_order",
+        "observed_extra_requests": 6
+      },
+      {
+        "task_id": "autoscale_policy_gate",
+        "repeat": 1,
+        "decision": "reject_wrong_action_or_order",
+        "observed_extra_requests": 5
+      },
+      {
+        "task_id": "autoscale_policy_gate",
+        "repeat": 2,
+        "decision": "reject_wrong_action_or_order",
+        "observed_extra_requests": 5
+      },
+      {
+        "task_id": "key_rotation_gate",
+        "repeat": 0,
+        "decision": "existing_actionless_rejections_only",
+        "observed_extra_requests": 1
+      },
+      {
+        "task_id": "key_rotation_gate",
+        "repeat": 1,
+        "decision": "existing_actionless_rejections_only",
+        "observed_extra_requests": 1
+      },
+      {
+        "task_id": "key_rotation_gate",
+        "repeat": 2,
+        "decision": "existing_actionless_rejections_only",
+        "observed_extra_requests": 1
+      },
+      {
+        "task_id": "index_rebuild_gate",
+        "repeat": 0,
+        "decision": "pass",
+        "observed_extra_requests": 0
+      },
+      {
+        "task_id": "index_rebuild_gate",
+        "repeat": 1,
+        "decision": "pass",
+        "observed_extra_requests": 0
+      },
+      {
+        "task_id": "index_rebuild_gate",
+        "repeat": 2,
+        "decision": "existing_actionless_rejections_only",
+        "observed_extra_requests": 1
+      }
+    ],
+    "nonplugin_trace_rejections": 0,
+    "model_continuation_observed": false
+  },
+  "cost_stress": {
+    "basis": "largest observed plugin agent call, including input and output; 6 additional rejections per plugin unit; this is an observed-envelope stress test, not a provider hard upper bound",
+    "max_observed_call_tokens": 3282,
+    "max_extra_requests": 72,
+    "max_extra_tokens": 236304,
+    "baseline_observed_tokens": 157409,
+    "plugin_observed_tokens": 172728,
+    "plugin_stress_tokens": 409032,
+    "stress_saving_pct": -159.85299442852696,
+    "request_cap": 350,
+    "observed_requests": 334,
+    "stress_requests": 406
+  },
+  "paid_gate": {
+    "passed": false,
+    "reasons": [
+      "old frozen independent audit remains incomplete with 38 errors",
+      "three plugin autoscale traces violate frozen order despite current guard",
+      "full-pair cost is negative and worst-case resend stress exceeds the existing request cap",
+      "no three new-task real-payload safe replay for a revised mechanism"
+    ]
+  }
+}

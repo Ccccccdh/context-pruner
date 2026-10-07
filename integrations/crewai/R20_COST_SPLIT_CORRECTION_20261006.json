@@ -1,0 +1,373 @@
+{
+  "artifact": "R20_COST_SPLIT_CORRECTION_20261006",
+  "what_this_corrects": "the r20 note's claim that 'compression is the more expensive side on this shape' was an inference error: observed_plugin already contains the guard's 20 re-send calls, so it cannot support any statement about cost with re-sends removed",
+  "corrected_reading": "the batch's overrun is entirely re-send-driven and concentrated in ONE task: autoscale_policy_gate lifts calls from 7 to 17-18 per unit.  In the other nine units, which have the SAME call count as their baseline, compression is 25-35% cheaper",
+  "units": [
+    {
+      "task_id": "autoscale_policy_gate",
+      "repeat": 0,
+      "baseline_calls": 7,
+      "plugin_calls": 18,
+      "baseline_tokens": 12739,
+      "plugin_tokens": 30284,
+      "guard_rejections": 6,
+      "same_call_count": false,
+      "same_tool_trace": false,
+      "same_work": false,
+      "plugin_mean_tokens_per_call": 1682.4,
+      "resend_overrun_calls": 11,
+      "resend_overrun_tokens": 18506.9,
+      "compression_difference_tokens": null,
+      "compression_difference_percent": null
+    },
+    {
+      "task_id": "autoscale_policy_gate",
+      "repeat": 1,
+      "baseline_calls": 7,
+      "plugin_calls": 17,
+      "baseline_tokens": 13084,
+      "plugin_tokens": 30077,
+      "guard_rejections": 5,
+      "same_call_count": false,
+      "same_tool_trace": false,
+      "same_work": false,
+      "plugin_mean_tokens_per_call": 1769.2,
+      "resend_overrun_calls": 10,
+      "resend_overrun_tokens": 17692.4,
+      "compression_difference_tokens": null,
+      "compression_difference_percent": null
+    },
+    {
+      "task_id": "autoscale_policy_gate",
+      "repeat": 2,
+      "baseline_calls": 7,
+      "plugin_calls": 17,
+      "baseline_tokens": 13557,
+      "plugin_tokens": 30422,
+      "guard_rejections": 5,
+      "same_call_count": false,
+      "same_tool_trace": false,
+      "same_work": false,
+      "plugin_mean_tokens_per_call": 1789.5,
+      "resend_overrun_calls": 10,
+      "resend_overrun_tokens": 17895.3,
+      "compression_difference_tokens": null,
+      "compression_difference_percent": null
+    },
+    {
+      "task_id": "index_rebuild_gate",
+      "repeat": 0,
+      "baseline_calls": 7,
+      "plugin_calls": 7,
+      "baseline_tokens": 12480,
+      "plugin_tokens": 8017,
+      "guard_rejections": 0,
+      "same_call_count": true,
+      "same_tool_trace": true,
+      "same_work": true,
+      "plugin_mean_tokens_per_call": 1145.3,
+      "resend_overrun_calls": 0,
+      "resend_overrun_tokens": 0.0,
+      "compression_difference_tokens": -4463,
+      "compression_difference_percent": 35.761
+    },
+    {
+      "task_id": "index_rebuild_gate",
+      "repeat": 1,
+      "baseline_calls": 7,
+      "plugin_calls": 7,
+      "baseline_tokens": 13176,
+      "plugin_tokens": 8701,
+      "guard_rejections": 0,
+      "same_call_count": true,
+      "same_tool_trace": true,
+      "same_work": true,
+      "plugin_mean_tokens_per_call": 1243.0,
+      "resend_overrun_calls": 0,
+      "resend_overrun_tokens": 0.0,
+      "compression_difference_tokens": -4475,
+      "compression_difference_percent": 33.963
+    },
+    {
+      "task_id": "index_rebuild_gate",
+      "repeat": 2,
+      "baseline_calls": 7,
+      "plugin_calls": 8,
+      "baseline_tokens": 13377,
+      "plugin_tokens": 9690,
+      "guard_rejections": 1,
+      "same_call_count": false,
+      "same_tool_trace": true,
+      "same_work": true,
+      "plugin_mean_tokens_per_call": 1211.2,
+      "resend_overrun_calls": 1,
+      "resend_overrun_tokens": 1211.2,
+      "compression_difference_tokens": -3687,
+      "compression_difference_percent": 27.562
+    },
+    {
+      "task_id": "key_rotation_gate",
+      "repeat": 0,
+      "baseline_calls": 7,
+      "plugin_calls": 8,
+      "baseline_tokens": 12459,
+      "plugin_tokens": 9808,
+      "guard_rejections": 1,
+      "same_call_count": false,
+      "same_tool_trace": true,
+      "same_work": true,
+      "plugin_mean_tokens_per_call": 1226.0,
+      "resend_overrun_calls": 1,
+      "resend_overrun_tokens": 1226.0,
+      "compression_difference_tokens": -2651,
+      "compression_difference_percent": 21.278
+    },
+    {
+      "task_id": "key_rotation_gate",
+      "repeat": 1,
+      "baseline_calls": 7,
+      "plugin_calls": 8,
+      "baseline_tokens": 13332,
+      "plugin_tokens": 10262,
+      "guard_rejections": 1,
+      "same_call_count": false,
+      "same_tool_trace": true,
+      "same_work": true,
+      "plugin_mean_tokens_per_call": 1282.8,
+      "resend_overrun_calls": 1,
+      "resend_overrun_tokens": 1282.8,
+      "compression_difference_tokens": -3070,
+      "compression_difference_percent": 23.027
+    },
+    {
+      "task_id": "key_rotation_gate",
+      "repeat": 2,
+      "baseline_calls": 7,
+      "plugin_calls": 8,
+      "baseline_tokens": 13765,
+      "plugin_tokens": 10116,
+      "guard_rejections": 1,
+      "same_call_count": false,
+      "same_tool_trace": true,
+      "same_work": true,
+      "plugin_mean_tokens_per_call": 1264.5,
+      "resend_overrun_calls": 1,
+      "resend_overrun_tokens": 1264.5,
+      "compression_difference_tokens": -3649,
+      "compression_difference_percent": 26.509
+    },
+    {
+      "task_id": "watermark_publish_gate",
+      "repeat": 0,
+      "baseline_calls": 7,
+      "plugin_calls": 7,
+      "baseline_tokens": 12705,
+      "plugin_tokens": 8334,
+      "guard_rejections": 0,
+      "same_call_count": true,
+      "same_tool_trace": true,
+      "same_work": true,
+      "plugin_mean_tokens_per_call": 1190.6,
+      "resend_overrun_calls": 0,
+      "resend_overrun_tokens": 0.0,
+      "compression_difference_tokens": -4371,
+      "compression_difference_percent": 34.404
+    },
+    {
+      "task_id": "watermark_publish_gate",
+      "repeat": 1,
+      "baseline_calls": 7,
+      "plugin_calls": 7,
+      "baseline_tokens": 13124,
+      "plugin_tokens": 8427,
+      "guard_rejections": 0,
+      "same_call_count": true,
+      "same_tool_trace": true,
+      "same_work": true,
+      "plugin_mean_tokens_per_call": 1203.9,
+      "resend_overrun_calls": 0,
+      "resend_overrun_tokens": 0.0,
+      "compression_difference_tokens": -4697,
+      "compression_difference_percent": 35.789
+    },
+    {
+      "task_id": "watermark_publish_gate",
+      "repeat": 2,
+      "baseline_calls": 7,
+      "plugin_calls": 7,
+      "baseline_tokens": 13611,
+      "plugin_tokens": 8590,
+      "guard_rejections": 0,
+      "same_call_count": true,
+      "same_tool_trace": true,
+      "same_work": true,
+      "plugin_mean_tokens_per_call": 1227.1,
+      "resend_overrun_calls": 0,
+      "resend_overrun_tokens": 0.0,
+      "compression_difference_tokens": -5021,
+      "compression_difference_percent": 36.889
+    }
+  ],
+  "summary": {
+    "strict_same_call_units": 5,
+    "same_work_units": 9,
+    "extra_call_units": 3,
+    "strict_same_call_difference_percent": 35.374,
+    "same_work_difference_percent": 30.572,
+    "same_work_baseline_tokens": 118029,
+    "same_work_plugin_tokens": 81945,
+    "batch_baseline_tokens": 157409,
+    "batch_plugin_tokens_observed": 172728,
+    "batch_observed_difference_percent": -9.732,
+    "resend_overrun_calls_total": 31,
+    "resend_overrun_tokens_total": 54094.6,
+    "plugin_tokens_with_resend_overrun_removed": 118633.4,
+    "difference_with_resend_overrun_removed_percent": 24.634
+  },
+  "per_task": {
+    "autoscale_policy_gate": {
+      "units": 3,
+      "baseline_calls": [
+        7,
+        7,
+        7
+      ],
+      "plugin_calls": [
+        18,
+        17,
+        17
+      ],
+      "baseline_tokens": [
+        12739,
+        13084,
+        13557
+      ],
+      "plugin_tokens": [
+        30284,
+        30077,
+        30422
+      ],
+      "guard_rejections": [
+        6,
+        5,
+        5
+      ],
+      "same_work_units": 0,
+      "same_call_units": 0,
+      "resend_overrun_calls": 31,
+      "resend_overrun_tokens": 54094.6,
+      "compression_difference_percent": null
+    },
+    "index_rebuild_gate": {
+      "units": 3,
+      "baseline_calls": [
+        7,
+        7,
+        7
+      ],
+      "plugin_calls": [
+        7,
+        7,
+        8
+      ],
+      "baseline_tokens": [
+        12480,
+        13176,
+        13377
+      ],
+      "plugin_tokens": [
+        8017,
+        8701,
+        9690
+      ],
+      "guard_rejections": [
+        0,
+        0,
+        1
+      ],
+      "same_work_units": 3,
+      "same_call_units": 2,
+      "resend_overrun_calls": 1,
+      "resend_overrun_tokens": 1211.2,
+      "compression_difference_percent": 34.838
+    },
+    "key_rotation_gate": {
+      "units": 3,
+      "baseline_calls": [
+        7,
+        7,
+        7
+      ],
+      "plugin_calls": [
+        8,
+        8,
+        8
+      ],
+      "baseline_tokens": [
+        12459,
+        13332,
+        13765
+      ],
+      "plugin_tokens": [
+        9808,
+        10262,
+        10116
+      ],
+      "guard_rejections": [
+        1,
+        1,
+        1
+      ],
+      "same_work_units": 3,
+      "same_call_units": 0,
+      "resend_overrun_calls": 3,
+      "resend_overrun_tokens": 3773.3,
+      "compression_difference_percent": null
+    },
+    "watermark_publish_gate": {
+      "units": 3,
+      "baseline_calls": [
+        7,
+        7,
+        7
+      ],
+      "plugin_calls": [
+        7,
+        7,
+        7
+      ],
+      "baseline_tokens": [
+        12705,
+        13124,
+        13611
+      ],
+      "plugin_tokens": [
+        8334,
+        8427,
+        8590
+      ],
+      "guard_rejections": [
+        0,
+        0,
+        0
+      ],
+      "same_work_units": 3,
+      "same_call_units": 3,
+      "resend_overrun_calls": 0,
+      "resend_overrun_tokens": 0.0,
+      "compression_difference_percent": 35.723
+    }
+  },
+  "cost_side_statement": {
+    "same_work_units_percent": 30.572,
+    "strict_same_call_units_percent": 35.374,
+    "batch_observed_percent": -9.732,
+    "resend_overrun_tokens": 54094.6,
+    "reading": "cost is favourable on every same-work unit (and on the strict same-call subset) and is turned negative for the batch by ONE task's re-sends; the cost side is therefore not the reason to stop"
+  },
+  "quality_side_statement": {
+    "task_failing_quality": "autoscale_policy_gate (3 units)",
+    "evidence": "after 5-6 push-backs the role still did not adopt the frozen order (r18 recorded the same), so the guard detects the wrong order but its remedy -- a re-send -- does not work on this task",
+    "consequence": "per-task 'quality not below baseline' necessarily fails for that task, independently of cost"
+  }
+}

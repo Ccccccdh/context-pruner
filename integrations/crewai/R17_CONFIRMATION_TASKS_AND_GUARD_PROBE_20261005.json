@@ -1,0 +1,168 @@
+{
+  "new_task_file": "tasks/stage5_autogen/natural_tasks_r17_confirmation.json",
+  "novelty": {
+    "tasks": [
+      "watermark_publish_gate",
+      "autoscale_policy_gate",
+      "key_rotation_gate",
+      "index_rebuild_gate"
+    ],
+    "tools_per_task": {
+      "watermark_publish_gate": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "autoscale_policy_gate": [
+        "read_policy_definition",
+        "read_capacity_guardrails",
+        "read_adoption_record",
+        "run_guardrail_check"
+      ],
+      "key_rotation_gate": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "index_rebuild_gate": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ]
+    },
+    "decisions": {
+      "watermark_publish_gate": "HOLD",
+      "autoscale_policy_gate": "ADOPT",
+      "key_rotation_gate": "ROTATE",
+      "index_rebuild_gate": "REINDEX"
+    },
+    "collisions": {
+      "watermark_publish_gate": [],
+      "autoscale_policy_gate": [],
+      "key_rotation_gate": [],
+      "index_rebuild_gate": []
+    },
+    "no_reuse": true,
+    "old_task_files_scanned": [
+      "tasks/stage5_autogen/natural_tasks.json",
+      "tasks/stage5_autogen/natural_tasks_r5.json",
+      "tasks/stage5_autogen/natural_tasks_r6.json",
+      "tasks/stage5_autogen/natural_tasks_r7.json",
+      "tasks/stage5_autogen/natural_tasks_r8.json",
+      "tasks/stage5_autogen/natural_tasks_r10.json",
+      "tasks/stage5_autogen/natural_tasks_r15.json",
+      "tasks/stage5_autogen/natural_tasks_r16.json"
+    ]
+  },
+  "judge": {
+    "watermark_publish_gate": {
+      "handoff_missing_facts": [],
+      "handoff_one_line": true,
+      "answer_strict": true,
+      "answer_semantic": true,
+      "answer_issues": [],
+      "answer_facts_derivable": true
+    },
+    "autoscale_policy_gate": {
+      "handoff_missing_facts": [],
+      "handoff_one_line": true,
+      "answer_strict": true,
+      "answer_semantic": true,
+      "answer_issues": [],
+      "answer_facts_derivable": true
+    },
+    "key_rotation_gate": {
+      "handoff_missing_facts": [],
+      "handoff_one_line": true,
+      "answer_strict": true,
+      "answer_semantic": true,
+      "answer_issues": [],
+      "answer_facts_derivable": true
+    },
+    "index_rebuild_gate": {
+      "handoff_missing_facts": [],
+      "handoff_one_line": true,
+      "answer_strict": true,
+      "answer_semantic": true,
+      "answer_issues": [],
+      "answer_facts_derivable": true
+    }
+  },
+  "negative_controls_v17_on_the_host_path": {
+    "control_1_tries_to_stop_early_with_marker": {
+      "rejections": 1,
+      "actionless_rejections": 1,
+      "final_answer_rejections": 0,
+      "exhausted": false,
+      "reached_required_rounds": true,
+      "verdicts": [
+        "reject_actionless"
+      ],
+      "tool_trace": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "output_head": "HANDOFF carrier-5521 bind-lane-07 embed_ready true",
+      "error": ""
+    },
+    "control_2_claims_in_prose_it_already_called": {
+      "rejections": 1,
+      "actionless_rejections": 1,
+      "final_answer_rejections": 0,
+      "exhausted": false,
+      "reached_required_rounds": true,
+      "verdicts": [
+        "reject_actionless"
+      ],
+      "tool_trace": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "output_head": "HANDOFF carrier-5521 bind-lane-07 embed_ready true",
+      "error": ""
+    },
+    "control_3_repeats_a_tool_it_already_called": {
+      "rejections": 1,
+      "actionless_rejections": 1,
+      "final_answer_rejections": 0,
+      "exhausted": false,
+      "reached_required_rounds": false,
+      "verdicts": [
+        "reject_actionless"
+      ],
+      "tool_trace": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "output_head": "",
+      "error": "RuntimeError: mock response sequence exhausted"
+    },
+    "control_4_new_call_one_tool_then_bare_handoff": {
+      "rejections": 1,
+      "actionless_rejections": 1,
+      "final_answer_rejections": 0,
+      "exhausted": false,
+      "reached_required_rounds": true,
+      "verdicts": [
+        "reject_actionless"
+      ],
+      "tool_trace": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "output_head": "HANDOFF carrier-5521 bind-lane-07 embed_ready true",
+      "error": ""
+    }
+  }
+}

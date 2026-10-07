@@ -1,0 +1,135 @@
+{
+  "batch": "crewai-r21-orderfree-3arm-cumulative-01",
+  "protocol": "crewai-two-role-r21-orderfree-cumulative",
+  "purpose": "three_arm_pilot",
+  "purpose_note": "development rerun after r20 stopped at 7/36; the same tasks and quality/cost contract, with durable cumulative request slots only; not held-out confirmation",
+  "tasks": [
+    "ledger_lock_attestation",
+    "telemetry_export_attestation",
+    "replica_resync_attestation",
+    "policy_signoff_attestation"
+  ],
+  "units_per_arm": 12,
+  "samples": 36,
+  "repeats": 3,
+  "methods": [
+    "none",
+    "pruner_v1",
+    "native_summary"
+  ],
+  "model": "deepseek-v4-flash",
+  "max_output_tokens": 512,
+  "max_summary_tokens": 1024,
+  "max_summary_calls": 4,
+  "provider_soft": 1200,
+  "provider_hard": 3000,
+  "provider_target": 900,
+  "fixed_reserved_tokens": 300,
+  "max_api_requests": 390,
+  "request_arithmetic": {
+    "measured_calls_per_sample": 7.0,
+    "baseline_per_arm": 84.0,
+    "three_arms": 252.0,
+    "summary_calls_worst_case": 48,
+    "allowed_repeat_allowance": 12,
+    "realistic_total": 312.0,
+    "worst_case_total": 384.0,
+    "declared_cap": 390,
+    "why_390": "the worst case is 384; the cap is rounded UP to 390 so the declared cap can never be smaller than the arithmetic it is supposed to cover",
+    "on_cap": "stop immediately, keep the partial directory, continue under a NEW id with --resume; a partial grid is never a complete grid",
+    "resume_is_not_a_budget_loophole": "the cap is per experiment id; --resume may only continue a batch whose cap was not raised, and must never be used to spend past the declared ceiling"
+  },
+  "guard_configuration": {
+    "order_guard": "not_installed",
+    "repeat_guard": "not_installed",
+    "actionless_rule": "not_installed",
+    "guard_mode": "none",
+    "guard_installed_arms": [],
+    "rationale": "design D: the r20 contract asks for the evidence SET (each source at least once, order free, repeats allowed), so an order or once-only guard would refuse turns the contract permits; the observed acquisition batch is 28/28 attempts with no guard"
+  },
+  "acceptance": {
+    "quality_gate": "frozen r8 judge per task: strict and semantic success not below the baseline arm, AND CRIT_R20_COVERAGE satisfied on every unit",
+    "cost_gate": "paired complete provider tokens positive on the majority of units and positive in the batch mean; repeats and remedy requests are charged in full",
+    "report_only": [
+      "repeat counts",
+      "call counts",
+      "tool traces",
+      "set equality (CRIT_R20_SAME_WORK_REPORT)",
+      "same-work subset"
+    ],
+    "frozen_before_the_run": true,
+    "not_to_be_changed_afterwards": true
+  },
+  "failure_line": {
+    "conditions": [
+      "any guard activity on a non-plugin arm",
+      "guard_exhausted > 0 (this family installs no guard, so any guard activity is an anomaly)",
+      "audit errors non-empty"
+    ],
+    "consequence": "stop and state in plain words that the numbers must not be treated as an effective saving"
+  },
+  "cache_accounting": {
+    "fields": [
+      "prompt_cache_hit_tokens",
+      "prompt_cache_miss_tokens",
+      "cache_tokens_source",
+      "utc_started",
+      "utc_finished",
+      "off_peak_window"
+    ],
+    "rule": "cache changes dollars only, never token counts; the acceptance line is complete provider tokens",
+    "absent_split": "labelled absent, never booked as a full-price miss",
+    "time_window": "off-peak only; if the start lands in a peak window, wait for the window rather than paying more to finish sooner"
+  },
+  "attribution": {
+    "required_sentence": "在装上本轮控制器配置的主机配置下（本族不装顺序/重复守卫）",
+    "forbidden": [
+      "压缩单独省了 X%",
+      "四判据达成"
+    ],
+    "template": "在装上本轮控制器配置的主机配置下（本族不装顺序/重复守卫），插件在等质量前提下省 X%（完整供应商 token，重复与补救请求全额入账）"
+  },
+  "citable_as_saving": false,
+  "citable_as_quality_equivalence": false,
+  "not_citable_note": "purpose=three_arm_pilot is development evidence for a contract that was still being designed when these tasks were written",
+  "not_retroactive": "r15, r16 and r17 keep their exact-order criterion, recorded failures and scores",
+  "bound": {
+    "uncompressed_total_tokens": 41249,
+    "potential_old_unit_upper_percent": 38.205,
+    "safe_candidate_upper_percent": 35.805,
+    "gate_3": "PASS: every per-task safe candidate is at or above the 3% cost gate and non-empty"
+  },
+  "source_sha256": {
+    "experiments/commands/run_crewai_r20_orderfree_3arm.py": "50951ea7ea6f423bf9a0d74b8258d63e83bcc411b828fa5e9b6d73ca55d91404",
+    "experiments/runners/run_crewai_handoff_v17.py": "634655ce5d22fcee8ff07b0930c54dc11fbe1b479ae62de2922e99c5d0e951f5",
+    "experiments/runners/crewai_capture_v20.py": "5a11c378c8a5ce3cd6319ad64c6cbc5579fdfc4c4888b3af518a4c9402ff6d93",
+    "experiments/runners/crewai_semantic_equivalence_v8.py": "26aea58bbbe57aa6fc451e00436254636cc01df97c0ec33d321cad73924304e1",
+    "experiments/runners/crewai_pinned_evidence_v9.py": "5ccc86abf9032df6abbdfddca2c108221e9121e98eb7aedc6ff2ad663fd6ade4",
+    "experiments/runners/crewai_toolrounds_contract_v13.py": "c2ed0bb824b1af414e7c121ffc8390d1b4d4eb8f6dad68f7bc95b40e627156de",
+    "experiments/runners/run_crewai_experiment.py": "0c0cd1d3e30ea837b323e1318321804433c20f8c9fdcd3a40b42deb1849554f1",
+    "experiments/runners/run_crewai_handoff_v4.py": "8aa75353bd7a5b4cffea5bd0233a82583d5c4ac34d83c2bac0672117edd078cf",
+    "experiments/runners/crewai_handoff_v17_tasks.py": "e225e0540ecba0e192a65215ee7a44197cbd9d7e6eb206a313838922d401c5b9",
+    "experiments/audits/criteria_crewai_r20_orderfree.py": "fee30da34d31d66d682b5ee4afb1ab3e7a133d3ebd61461cc43e5b28e926126b",
+    "experiments/audits/audit_crewai_r20_orderfree_batch.py": "5cf45a21c001b6a2afa6fae9953777eda8cf2630c2f369604f161d3fbdef697a",
+    "tasks/stage5_autogen/natural_tasks_r20_orderfree.json": "543b57953a98046d6e0c18a2161c8c96f7a624a901596ac70df3d928d3ff8d3d",
+    "integrations/crewai/R20_ORDERFREE_PREREGISTRATION_DRAFT_20261006.md": "71d1278e1bf51523e585439145309f067ad854fd1fa862c12136fc9a7fb207be",
+    "integrations/crewai/R20_ORDERFREE_BOUND_20261006.json": "33fc4c6c04dc5fd7b8cafdd5a0fde856ed06db24ceb3c0a1e0c3de29bd05e09b",
+    "experiments/commands/run_crewai_r21_orderfree_3arm.py": "2eed228763a46ce3cfad53643b48e234787ce452925b386c6f070c521cb6ab2f",
+    "experiments/audits/audit_crewai_r21_orderfree_3arm.py": "dd5d49c69ed38755b2dcab54a32527fa3eb6c528310e3c83b901c001e71e775d",
+    "integrations/crewai/PILOT_PROTOCOL_R21_CUMULATIVE_20261007.md": "8c0f7a41e5e17e64fb069cf3ce0ad97b2ada757cc8d37f685db5f56cee1ab165",
+    "integrations/crewai/write_r21_freeze.py": "713e850d06b32b0cc07c90835d856e21ceabef52d68f1f3ebcaf5d27ca17b856",
+    "tests/test_crewai_r21_cumulative_budget.py": "07e01a3d46ee794b9aa1b64049538ce8f0cdbd39cff8e92ea20792526c74daad"
+  },
+  "freeze_discipline": {
+    "write_once": true,
+    "overwrite": "refused by the writer",
+    "revisions": "only via *_FREEZE_AMENDMENT_<date>.json; this file is never rewritten"
+  },
+  "written_utc": "2026-10-07",
+  "self_hash_of": "every field except freeze_sha256, key-sorted, indent=2, utf-8",
+  "revision": 1,
+  "revision_history": [],
+  "r20_partial_sha256": "abb2941e7000d0afb483ef1094a92e233c2fdc1d36913631da697af3d58dc7ea",
+  "r20_partial_requests": 56,
+  "freeze_sha256": "a92d44de6fb65b5fbb8b712fc55a77df2ca7ac858f1511436cde61974149cfde"
+}

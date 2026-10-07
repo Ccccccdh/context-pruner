@@ -1,0 +1,16 @@
+{
+  "ledger": "crewai revision-aware pin ledger",
+  "of_freeze": "integrations/crewai/PRE_RUN_FREEZE_R16_RELEASE_GATE_GUARDED_3ARM_01.json",
+  "rule": "a drift is suppressed only when the current digest is exactly one this ledger registers for that path; anything else stays a mismatch (fail-closed)",
+  "registered_current_digests": {
+    "experiments/runners/run_crewai_handoff_v16.py": [
+      "6bcbe39e537de96caea1fc419849fff2d1eebb8176247e6db6e749289384927d"
+    ],
+    "experiments/audits/audit_crewai_handoff_v16.py": [
+      "851ea49185687c79969d3a4d958156f867b5a0a8223d553501ba6c411d3accc7"
+    ]
+  },
+  "registered_count": 2,
+  "amendment": "integrations/crewai/R16_SOURCE_PIN_AMENDMENT_20261005.json",
+  "how_to_extend": "add an amendment entry (path, frozen hash, new hash, why, when, which batches used which revision) and re-run .tooling/write_crewai_pin_amendment.py"
+}

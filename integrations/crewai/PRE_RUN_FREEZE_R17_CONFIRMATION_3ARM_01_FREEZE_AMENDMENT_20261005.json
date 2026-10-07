@@ -1,0 +1,48 @@
+{
+  "amendment_of": "integrations/crewai/PRE_RUN_FREEZE_R17_CONFIRMATION_3ARM_01.json",
+  "batch": "crewai-two-role-r17-confirmation-3arm-01",
+  "date": "2026-10-05",
+  "status_before": "freeze written; its batch has not been run yet",
+  "changes": [
+    {
+      "revision": 1,
+      "what_changed": [
+        "experiments/runners/run_crewai_handoff_v17_confirmation.py was added as the confirmation batch's runner",
+        "integrations/crewai/R17_CONFIRMATION_REAL_PAYLOAD_BOUND_20261005.json (the confirmation bound that gates this pilot) was pinned"
+      ],
+      "why": [
+        "the pilot runner is pinned by the pilot freeze and must not be edited, so the confirmation batch needs its own runner file that imports it",
+        "the confirmation pilot may only run when the bound clears the 3% gate, so the bound artifact is part of this batch's inputs"
+      ],
+      "old_sha256": {
+        "experiments/runners/run_crewai_handoff_v17_confirmation.py": null,
+        "integrations/crewai/R17_CONFIRMATION_REAL_PAYLOAD_BOUND_20261005.json": null
+      },
+      "new_sha256": {
+        "experiments/runners/run_crewai_handoff_v17_confirmation.py": "532bdf19648b040833ad2ce2ddbe3ba4669466ae0adc9873a9d0c1ef9d939a75",
+        "integrations/crewai/R17_CONFIRMATION_REAL_PAYLOAD_BOUND_20261005.json": "3f2487872a52829a1dd29770be279ee7250aff08ef4e13bd3e9eb3d769bcb078"
+      }
+    }
+  ],
+  "pinned_sources_after_amendment": {
+    "experiments/runners/run_crewai_handoff_v17.py": "634655ce5d22fcee8ff07b0930c54dc11fbe1b479ae62de2922e99c5d0e951f5",
+    "experiments/runners/crewai_loop_guard_v17.py": "3a93a70b9604624862449a6f6f22354dfa5482419ac22ef681a29ae72175d1d7",
+    "experiments/runners/crewai_handoff_v17_tasks.py": "e225e0540ecba0e192a65215ee7a44197cbd9d7e6eb206a313838922d401c5b9",
+    "experiments/runners/crewai_toolrounds_contract_v13.py": "c2ed0bb824b1af414e7c121ffc8390d1b4d4eb8f6dad68f7bc95b40e627156de",
+    "experiments/runners/crewai_pinned_evidence_v9.py": "5ccc86abf9032df6abbdfddca2c108221e9121e98eb7aedc6ff2ad663fd6ade4",
+    "experiments/runners/crewai_semantic_equivalence_v8.py": "26aea58bbbe57aa6fc451e00436254636cc01df97c0ec33d321cad73924304e1",
+    "experiments/runners/run_crewai_experiment.py": "0c0cd1d3e30ea837b323e1318321804433c20f8c9fdcd3a40b42deb1849554f1",
+    "experiments/runners/run_crewai_handoff_v4.py": "8aa75353bd7a5b4cffea5bd0233a82583d5c4ac34d83c2bac0672117edd078cf",
+    "experiments/audits/audit_crewai_handoff_v17.py": "ebab0f24f63f8ec14c17382702854f4b108868ede6df396f844fd6afa8373f63",
+    "tasks/stage5_autogen/natural_tasks_r17_confirmation.json": "5ac20f894ca687130c8b100681958ddbe13e93794d2ecda171841d8033686c96",
+    "integrations/crewai/R17_CONFIRMATION_CAP_ARITHMETIC_20261005.json": "10bd0391e6cf2e44482edc33e917d3cb6a0d891b8e0a7e0acff97256eddd23bf",
+    "integrations/crewai/PRE_RUN_FREEZE_R17_CONFIRMATION_3ARM_01.json": "",
+    "experiments/runners/run_crewai_handoff_v17_confirmation.py": "532bdf19648b040833ad2ce2ddbe3ba4669466ae0adc9873a9d0c1ef9d939a75",
+    "integrations/crewai/R17_CONFIRMATION_REAL_PAYLOAD_BOUND_20261005.json": "3f2487872a52829a1dd29770be279ee7250aff08ef4e13bd3e9eb3d769bcb078"
+  },
+  "freeze_file_unchanged_sha256": "92326e1b43e35d7bf74f6ccda4ee9a8234321ed9931f9648b0de2d3dc429f105",
+  "freeze_declared_self_sha256": "1116272862a2e512aca7912abad7bc69008ff3af7bd54713e87c9ed394fb586b",
+  "freeze_file_unchanged_note": "the freeze file is not rewritten; the amendment is the authority for the current pins, and the auditor checks every entry against it (fail-closed)",
+  "no_paid_request": "written without issuing any API request for this batch",
+  "immutability": "immutable once written"
+}

@@ -1,0 +1,136 @@
+{
+  "status": "DRAFT — not frozen, not run",
+  "batch": "crewai-r20-orderfree-3arm-01",
+  "matrix": {
+    "tasks": 4,
+    "repeats": 3,
+    "arms": [
+      "none",
+      "pruner_v1",
+      "native_summary"
+    ],
+    "samples": 36,
+    "units_per_arm": 12
+  },
+  "guard_configuration": {
+    "order_guard": "not_installed",
+    "repeat_guard": "not_installed",
+    "actionless_rule": "not_installed_by_default; if a batch enables it, it must be declared in the manifest and it must stay inert on the compliant arms",
+    "guard_mode": "none"
+  },
+  "criteria": {
+    "module": "experiments/audits/criteria_crewai_r20_orderfree.py",
+    "module_sha256": "fee30da34d31d66d682b5ee4afb1ab3e7a133d3ebd61461cc43e5b28e926126b",
+    "audit_that_decides_a_pass": "experiments/audits/audit_crewai_r20_orderfree_batch.py",
+    "audit_module_sha256": "5cf45a21c001b6a2afa6fae9953777eda8cf2630c2f369604f161d3fbdef697a",
+    "criterion_ids": [
+      "CRIT_R20_COVERAGE",
+      "CRIT_R20_REPEAT_REPORT",
+      "CRIT_R20_SAME_WORK_REPORT"
+    ],
+    "quality_side": [
+      "CRIT_R20_COVERAGE"
+    ],
+    "report_only": [
+      "CRIT_R20_REPEAT_REPORT",
+      "CRIT_R20_SAME_WORK_REPORT"
+    ],
+    "independent_recomputation": "the batch audit must recompute all three from the recorded first_role_trace: coverage (each source at least once) decides the quality side together with the frozen r8 judge; repeats and same-work are recorded, never gated",
+    "errors_rule": "errors non-empty means the numbers must not be quoted as a saving",
+    "audit_imports_a_runner": false
+  },
+  "request_cap": {
+    "measured_calls_per_sample": 7.0,
+    "baseline_per_arm": 84.0,
+    "three_arms": 252.0,
+    "summary_calls_worst_case": 48,
+    "allowed_repeat_allowance": 12,
+    "realistic_total": 312.0,
+    "worst_case_total": 384.0,
+    "declared_cap": 390,
+    "cap_covers_worst_case": true,
+    "cap_covers_realistic": true,
+    "on_cap": "stop immediately, keep the partial directory, continue under a NEW id with --resume; a partial grid is never a complete grid",
+    "abort_conditions": [
+      "audit errors non-empty",
+      "request cap reached",
+      "a guard firing on a non-plugin arm (only if a guard is declared enabled)"
+    ]
+  },
+  "cost_estimate": {
+    "basis": "measured tokens per call from the r20 acquisition batch, measured hit share 68.58%, official input prices, the stated output stand-in",
+    "tokens_per_call": 1532.6,
+    "input_share_of_tokens": 0.9612,
+    "measured_hit_share": 0.6858,
+    "realistic": {
+      "calls": 312,
+      "input_tokens": 459632,
+      "output_tokens": 18542,
+      "hit_tokens": 315215,
+      "miss_tokens": 144416,
+      "peak_usd": 0.03095,
+      "off_peak_usd": 0.01548
+    },
+    "worst_case": {
+      "calls": 384,
+      "input_tokens": 565701,
+      "output_tokens": 22821,
+      "hit_tokens": 387957,
+      "miss_tokens": 177743,
+      "peak_usd": 0.03809,
+      "off_peak_usd": 0.01905
+    },
+    "note": "cache changes dollars only; the acceptance line is complete provider tokens"
+  },
+  "manifest_fields_required": {
+    "purpose": "three_arm_pilot",
+    "citable_as_saving": false,
+    "citable_as_quality_equivalence": false,
+    "cache_metering_fields": [
+      "prompt_cache_hit_tokens",
+      "prompt_cache_miss_tokens",
+      "cache_tokens_source",
+      "utc_started",
+      "utc_finished",
+      "off_peak_window"
+    ],
+    "guard_mode_recorded": true,
+    "criteria_ids_recorded": [
+      "CRIT_R20_COVERAGE",
+      "CRIT_R20_REPEAT_REPORT",
+      "CRIT_R20_SAME_WORK_REPORT"
+    ]
+  },
+  "acceptance": {
+    "quality": "frozen r8 judge per task (strict and semantic not below baseline) AND CRIT_R20_COVERAGE satisfied on every unit; repeats are reported, never gated",
+    "cost": "paired complete provider tokens positive on the majority and in the batch mean; every repeat, remedy and guard request charged in full; cache changes dollars only",
+    "errors_rule": "audit errors non-empty means the numbers must not be quoted as a saving"
+  },
+  "attribution": {
+    "required_sentence": "在装上本轮控制器配置的主机配置下（本族不装顺序/重复守卫）",
+    "forbidden": [
+      "压缩单独省了 X%",
+      "四判据达成"
+    ]
+  },
+  "source_sha256": {
+    "integrations/crewai/R20_ORDERFREE_BOUND_20261006.json": "33fc4c6c04dc5fd7b8cafdd5a0fde856ed06db24ceb3c0a1e0c3de29bd05e09b",
+    "tasks/stage5_autogen/natural_tasks_r20_orderfree.json": "543b57953a98046d6e0c18a2161c8c96f7a624a901596ac70df3d928d3ff8d3d",
+    "experiments/audits/criteria_crewai_r20_orderfree.py": "fee30da34d31d66d682b5ee4afb1ab3e7a133d3ebd61461cc43e5b28e926126b",
+    "integrations/crewai/R20_ORDERFREE_PREREGISTRATION_DRAFT_20261006.md": "71d1278e1bf51523e585439145309f067ad854fd1fa862c12136fc9a7fb207be",
+    "experiments/runners/crewai_semantic_equivalence_v8.py": "26aea58bbbe57aa6fc451e00436254636cc01df97c0ec33d321cad73924304e1"
+  },
+  "bound_gate": {
+    "uncompressed_total_tokens": 41249,
+    "potential_old_unit_upper_percent": 38.205,
+    "reference_bound_percent": 29.325,
+    "protection_total_tokens": 990,
+    "safe_candidate_upper_percent": 35.805,
+    "safe_candidate_reference_percent": 26.925,
+    "gate_3_threshold_percent": 3.0,
+    "safe_candidate_non_empty": true,
+    "gate_3": "PASS: every per-task safe candidate is at or above the 3% cost gate and non-empty"
+  },
+  "not_run": "this draft is reported for review; no paid pilot is started",
+  "not_retroactive": "r15, r16 and r17 keep their exact-order criterion, recorded failures and scores"
+}

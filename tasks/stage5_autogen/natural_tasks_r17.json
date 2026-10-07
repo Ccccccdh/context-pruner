@@ -1,0 +1,386 @@
+[
+  {
+    "task_id": "audit_trail_retention_gate",
+    "title": "审计轨迹保留期准入",
+    "task": "数据域 domain-ops-31 的审计轨迹 trail-7f3 申请把保留期从 30 天缩短到 7 天。请按固定顺序读取保留策略定义、轨迹覆盖指标、变更记录与缩短前校验结果，判断应当缩短还是必须维持当前保留期，并给出必须保留的事实。",
+    "history_constraint": "数据域 domain-ops-31 与审计轨迹 trail-7f3 是本次变更的固定标识，不得改写；历史讨论里的 trail-2b1 是已经归档的轨迹，本次不得再作为变更对象。",
+    "history_topic": "旧轨迹归档记录、保留期争议复盘、已取消的变更窗口与过期的存储配额",
+    "tools": [
+      {
+        "name": "read_retention_policy",
+        "call": {
+          "domain": "domain-ops-31"
+        },
+        "result": {
+          "domain": "domain-ops-31",
+          "policy": "retention-p9",
+          "current_days": 30,
+          "requested_days": 7
+        },
+        "evidence_parts": [
+          "\"domain\": \"domain-ops-31\"",
+          "\"policy\": \"retention-p9\""
+        ]
+      },
+      {
+        "name": "read_trail_coverage",
+        "call": {
+          "trail": "trail-7f3"
+        },
+        "result": {
+          "trail": "trail-7f3",
+          "events_covered": 48210,
+          "uncovered_events": 0,
+          "coverage_state": "complete"
+        },
+        "evidence_parts": [
+          "\"events_covered\": 48210",
+          "\"uncovered_events\": 0"
+        ]
+      },
+      {
+        "name": "read_retention_change_log",
+        "call": {
+          "trail": "trail-7f3"
+        },
+        "result": {
+          "trail": "trail-7f3",
+          "record_state": "open",
+          "previous_trail": "trail-2b1",
+          "change_step_index": 3
+        },
+        "evidence_parts": [
+          "\"record_state\": \"open\"",
+          "\"previous_trail\": \"trail-2b1\""
+        ]
+      },
+      {
+        "name": "run_retention_check",
+        "call": {
+          "domain": "domain-ops-31"
+        },
+        "result": {
+          "domain": "domain-ops-31",
+          "retention_change_ready": true,
+          "legal_hold_conflicts": 0,
+          "audit_signoffs": 4
+        },
+        "evidence_parts": [
+          "\"retention_change_ready\": true",
+          "\"legal_hold_conflicts\": 0",
+          "\"audit_signoffs\": 4"
+        ]
+      }
+    ],
+    "decision": "SHORTEN",
+    "handle_facts": [
+      "domain-ops-31",
+      "trail-7f3",
+      "retention_change_ready true"
+    ],
+    "answer_facts": [
+      "retention_change_ready true",
+      "legal_hold_conflicts 0",
+      "audit_signoffs 4"
+    ],
+    "forbidden_facts": [
+      "trail-2b1"
+    ],
+    "region_fact": "",
+    "version_fact": "domain-ops-31",
+    "expected_terms": [
+      "domain-ops-31",
+      "trail-7f3",
+      "retention_change_ready true",
+      "SHORTEN"
+    ]
+  },
+  {
+    "task_id": "zone_drain_gate",
+    "title": "可用区排空准入",
+    "task": "区域 region-mx-6 的可用区 zone-d4 计划排空并转到 zone-d1。请按固定顺序读取区域拓扑、排空进度指标、排空记录与排空前校验结果，判断应当继续排空还是必须暂停，并给出必须保留的事实。",
+    "history_constraint": "区域 region-mx-6 与可用区 zone-d4 是本次排空的固定标识，不得改写；历史讨论里的 zone-d1 是已经退役的旧可用区，本次不得再作为排空对象。",
+    "history_topic": "旧可用区退役记录、排空演练复盘、已取消的维护窗口与过期的容量预留",
+    "tools": [
+      {
+        "name": "read_zone_topology",
+        "call": {
+          "region": "region-mx-6"
+        },
+        "result": {
+          "region": "region-mx-6",
+          "zone": "zone-d4",
+          "peer_zones": 3,
+          "topology_sha": "ztp-5e18"
+        },
+        "evidence_parts": [
+          "\"region\": \"region-mx-6\"",
+          "\"zone\": \"zone-d4\""
+        ]
+      },
+      {
+        "name": "read_drain_progress",
+        "call": {
+          "zone": "zone-d4"
+        },
+        "result": {
+          "zone": "zone-d4",
+          "instances_remaining": 0,
+          "straggler_instances": 0,
+          "drain_state": "complete"
+        },
+        "evidence_parts": [
+          "\"instances_remaining\": 0",
+          "\"straggler_instances\": 0"
+        ]
+      },
+      {
+        "name": "read_drain_log",
+        "call": {
+          "zone": "zone-d4"
+        },
+        "result": {
+          "zone": "zone-d4",
+          "record_state": "open",
+          "previous_zone": "zone-d1",
+          "drain_step_index": 4
+        },
+        "evidence_parts": [
+          "\"record_state\": \"open\"",
+          "\"previous_zone\": \"zone-d1\""
+        ]
+      },
+      {
+        "name": "run_zone_check",
+        "call": {
+          "region": "region-mx-6"
+        },
+        "result": {
+          "region": "region-mx-6",
+          "drain_ready": true,
+          "peer_headroom_percent": 35,
+          "blocking_workloads": 0
+        },
+        "evidence_parts": [
+          "\"drain_ready\": true",
+          "\"peer_headroom_percent\": 35",
+          "\"blocking_workloads\": 0"
+        ]
+      }
+    ],
+    "decision": "DRAIN",
+    "handle_facts": [
+      "region-mx-6",
+      "zone-d4",
+      "drain_ready true"
+    ],
+    "answer_facts": [
+      "drain_ready true",
+      "peer_headroom_percent 35",
+      "blocking_workloads 0"
+    ],
+    "forbidden_facts": [
+      "zone-d1"
+    ],
+    "region_fact": "region-mx-6",
+    "version_fact": "zone-d4",
+    "expected_terms": [
+      "region-mx-6",
+      "zone-d4",
+      "drain_ready true",
+      "DRAIN"
+    ]
+  },
+  {
+    "task_id": "compaction_window_gate",
+    "title": "压实窗口准入",
+    "task": "存储池 pool-t5 的压实作业 compaction-job-6 申请在下一个窗口执行。请按固定顺序读取压实计划、碎片指标、作业记录与执行前校验结果，判断应当开始压实还是必须推迟，并给出必须保留的事实。",
+    "history_constraint": "存储池 pool-t5 与压实作业 compaction-job-6 是本次执行的固定标识，不得改写；历史讨论里的 compaction-job-1 是已经作废的作业，本次不得再作为执行对象。",
+    "history_topic": "旧压实作业作废记录、碎片率争议复盘、已取消的执行窗口与过期的 IO 配额",
+    "tools": [
+      {
+        "name": "read_compaction_plan",
+        "call": {
+          "pool": "pool-t5"
+        },
+        "result": {
+          "pool": "pool-t5",
+          "job": "compaction-job-6",
+          "tables": 27,
+          "plan_sha": "cmp-3c92"
+        },
+        "evidence_parts": [
+          "\"pool\": \"pool-t5\"",
+          "\"job\": \"compaction-job-6\""
+        ]
+      },
+      {
+        "name": "read_fragmentation_metrics",
+        "call": {
+          "pool": "pool-t5"
+        },
+        "result": {
+          "pool": "pool-t5",
+          "fragmentation_percent": 22,
+          "overlaps_open": 0,
+          "metrics_state": "stable"
+        },
+        "evidence_parts": [
+          "\"fragmentation_percent\": 22",
+          "\"overlaps_open\": 0"
+        ]
+      },
+      {
+        "name": "read_compaction_log",
+        "call": {
+          "pool": "pool-t5"
+        },
+        "result": {
+          "pool": "pool-t5",
+          "record_state": "open",
+          "previous_job": "compaction-job-1",
+          "compaction_step_index": 2
+        },
+        "evidence_parts": [
+          "\"record_state\": \"open\"",
+          "\"previous_job\": \"compaction-job-1\""
+        ]
+      },
+      {
+        "name": "run_compaction_check",
+        "call": {
+          "pool": "pool-t5"
+        },
+        "result": {
+          "pool": "pool-t5",
+          "compaction_ready": true,
+          "io_budget_percent": 40,
+          "blocking_readers": 0
+        },
+        "evidence_parts": [
+          "\"compaction_ready\": true",
+          "\"io_budget_percent\": 40",
+          "\"blocking_readers\": 0"
+        ]
+      }
+    ],
+    "decision": "COMPACT",
+    "handle_facts": [
+      "pool-t5",
+      "compaction-job-6",
+      "compaction_ready true"
+    ],
+    "answer_facts": [
+      "compaction_ready true",
+      "io_budget_percent 40",
+      "blocking_readers 0"
+    ],
+    "forbidden_facts": [
+      "compaction-job-1"
+    ],
+    "region_fact": "",
+    "version_fact": "pool-t5",
+    "expected_terms": [
+      "pool-t5",
+      "compaction-job-6",
+      "compaction_ready true",
+      "COMPACT"
+    ]
+  },
+  {
+    "task_id": "rollback_point_gate",
+    "title": "回滚点保留准入",
+    "task": "发布列车 train-h2 的回滚点 snapshot-q4 即将到期。请按固定顺序读取列车配置、回滚点使用指标、保留记录与到期前校验结果，判断应当延续保留还是必须按计划释放，并给出必须保留的事实。",
+    "history_constraint": "发布列车 train-h2 与回滚点 snapshot-q4 是本次保留判定的固定标识，不得改写；历史讨论里的 snapshot-q1 是已经释放的旧回滚点，本次不得再作为保留对象。",
+    "history_topic": "旧回滚点释放记录、保留期争议复盘、已取消的延期申请与过期的快照配额",
+    "tools": [
+      {
+        "name": "read_train_config",
+        "call": {
+          "train": "train-h2"
+        },
+        "result": {
+          "train": "train-h2",
+          "snapshot": "snapshot-q4",
+          "stages": 6,
+          "config_sha": "trn-8d05"
+        },
+        "evidence_parts": [
+          "\"train\": \"train-h2\"",
+          "\"snapshot\": \"snapshot-q4\""
+        ]
+      },
+      {
+        "name": "read_snapshot_usage",
+        "call": {
+          "snapshot": "snapshot-q4"
+        },
+        "result": {
+          "snapshot": "snapshot-q4",
+          "restores_since_release": 0,
+          "age_days": 41,
+          "usage_state": "idle"
+        },
+        "evidence_parts": [
+          "\"restores_since_release\": 0",
+          "\"age_days\": 41"
+        ]
+      },
+      {
+        "name": "read_retention_log",
+        "call": {
+          "train": "train-h2"
+        },
+        "result": {
+          "train": "train-h2",
+          "record_state": "open",
+          "previous_snapshot": "snapshot-q1",
+          "retention_step_index": 2
+        },
+        "evidence_parts": [
+          "\"record_state\": \"open\"",
+          "\"previous_snapshot\": \"snapshot-q1\""
+        ]
+      },
+      {
+        "name": "run_snapshot_check",
+        "call": {
+          "train": "train-h2"
+        },
+        "result": {
+          "train": "train-h2",
+          "extend_ready": false,
+          "open_incidents": 1,
+          "release_approved_by": 0
+        },
+        "evidence_parts": [
+          "\"extend_ready\": false",
+          "\"open_incidents\": 1",
+          "\"release_approved_by\": 0"
+        ]
+      }
+    ],
+    "decision": "DISCARD",
+    "handle_facts": [
+      "train-h2",
+      "snapshot-q4",
+      "extend_ready false"
+    ],
+    "answer_facts": [
+      "extend_ready false",
+      "open_incidents 1",
+      "release_approved_by 0"
+    ],
+    "forbidden_facts": [
+      "snapshot-q1"
+    ],
+    "region_fact": "",
+    "version_fact": "snapshot-q4",
+    "expected_terms": [
+      "train-h2",
+      "snapshot-q4",
+      "extend_ready false",
+      "DISCARD"
+    ]
+  }
+]

@@ -1,0 +1,73 @@
+{
+  "batch": "crewai-two-role-r17-confirmation-3arm-01",
+  "observed": {
+    "r17_pilot_run_1": {
+      "baseline_stops": "0/12",
+      "plugin_refusals": 4,
+      "plugin_exhausted": 0,
+      "charged_requests": 350,
+      "declared_cap": 336,
+      "note": "charged above the cap because auxiliary summary calls were not visible in the per-row ledger; fixed before run 2"
+    },
+    "r17_pilot_run_2": {
+      "baseline_stops": "0/12",
+      "plugin_refusals": 5,
+      "plugin_exhausted": 0,
+      "charged_requests": 304,
+      "declared_cap": 336,
+      "note": "every charged request visible per row; audit clean (errors 0)"
+    },
+    "conclusion": "the compliant arm never stopped early (24/24 units), so the guard is inert there; the plugin's stop rate is <= 1.5 per arm and every refusal costs exactly one extra request"
+  },
+  "baseline": {
+    "per_arm": 84,
+    "three_arms": 252
+  },
+  "sensitivity": [
+    {
+      "assumed_stop_rate_per_arm": 0.0,
+      "stopped_units": 0,
+      "guard_resends": 0,
+      "plugin_requests": 84,
+      "batch_requests": 252,
+      "headroom_under_350": 98
+    },
+    {
+      "assumed_stop_rate_per_arm": 0.25,
+      "stopped_units": 3,
+      "guard_resends": 3,
+      "plugin_requests": 87,
+      "batch_requests": 255,
+      "headroom_under_350": 95
+    },
+    {
+      "assumed_stop_rate_per_arm": 0.5,
+      "stopped_units": 6,
+      "guard_resends": 6,
+      "plugin_requests": 90,
+      "batch_requests": 258,
+      "headroom_under_350": 92
+    },
+    {
+      "assumed_stop_rate_per_arm": 0.75,
+      "stopped_units": 9,
+      "guard_resends": 9,
+      "plugin_requests": 93,
+      "batch_requests": 261,
+      "headroom_under_350": 89
+    },
+    {
+      "assumed_stop_rate_per_arm": 1.0,
+      "stopped_units": 12,
+      "guard_resends": 12,
+      "plugin_requests": 96,
+      "batch_requests": 264,
+      "headroom_under_350": 86
+    }
+  ],
+  "declared_cap": 350,
+  "cap_rationale": "350 = 252 (three arms x 12 units x 7 calls) + 84 (every unit of every arm pushed back once) + 14 slack; it clears the worst case modelled from the observation with 42 slots to spare",
+  "minimum_necessary_cap": 264,
+  "stop_plan": "on cap: stop immediately, keep the partial directory, continue under a NEW id with --resume; a partial grid is never a complete grid",
+  "abort_condition": "guard_exhausted above 3 of 12 plugin units, or a guard firing on a non-plugin arm (the r17 stop condition), ends the batch"
+}

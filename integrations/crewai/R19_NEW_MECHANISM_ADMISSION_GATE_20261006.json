@@ -1,0 +1,150 @@
+{
+  "status": "zero_api_new_mechanism_admission_gate",
+  "payload_batch": "runs/stage5-crewai/crewai-r17-confirmation-payload-none-01",
+  "pilot_batch": "runs/stage5-crewai/crewai-two-role-r17-confirmation-3arm-01",
+  "parameters": {
+    "chars_per_token": 2.54,
+    "r15_measured_growth_per_call": 83.25,
+    "guard_cap_rejections": 6,
+    "loss_multiplier": 1.15,
+    "prices_usd_per_million": {
+      "cache_hit_input": 0.003,
+      "cache_miss_input": 0.15,
+      "output": 0.45
+    },
+    "off_peak_multiplier": 0.5
+  },
+  "per_task": {
+    "watermark_publish_gate": {
+      "uncompressed_total": 10455,
+      "compressed_first_call_estimate": 1230.3,
+      "upper_tokens": 4110.2,
+      "protection_tokens": 255,
+      "safe_candidate_tokens": 3855.2,
+      "safe_candidate_nonzero": true,
+      "safe_candidate_pct": 36.875,
+      "worst_case_extra_tokens": 11916,
+      "lower_bound_after_worst_resends": -8060.8,
+      "lower_bound_positive": false,
+      "view": {
+        "served_messages": 6,
+        "served_characters": 3125,
+        "pinned_characters": 122,
+        "protected_rounds": 0,
+        "whole_prefix_fallbacks": 0
+      }
+    },
+    "autoscale_policy_gate": {
+      "uncompressed_total": 10356,
+      "compressed_first_call_estimate": 1261.4,
+      "upper_tokens": 3853.5,
+      "protection_tokens": 255,
+      "safe_candidate_tokens": 3598.5,
+      "safe_candidate_nonzero": true,
+      "safe_candidate_pct": 34.748,
+      "worst_case_extra_tokens": 11886,
+      "lower_bound_after_worst_resends": -8287.5,
+      "lower_bound_positive": false,
+      "view": {
+        "served_messages": 6,
+        "served_characters": 3204,
+        "pinned_characters": 121,
+        "protected_rounds": 0,
+        "whole_prefix_fallbacks": 0
+      }
+    },
+    "key_rotation_gate": {
+      "uncompressed_total": 10283,
+      "compressed_first_call_estimate": 1243.3,
+      "upper_tokens": 3874.6,
+      "protection_tokens": 245,
+      "safe_candidate_tokens": 3629.6,
+      "safe_candidate_nonzero": true,
+      "safe_candidate_pct": 35.297,
+      "worst_case_extra_tokens": 11760,
+      "lower_bound_after_worst_resends": -8130.4,
+      "lower_bound_positive": false,
+      "view": {
+        "served_messages": 6,
+        "served_characters": 3158,
+        "pinned_characters": 117,
+        "protected_rounds": 0,
+        "whole_prefix_fallbacks": 0
+      }
+    },
+    "index_rebuild_gate": {
+      "uncompressed_total": 10239,
+      "compressed_first_call_estimate": 1224.0,
+      "upper_tokens": 3928.8,
+      "protection_tokens": 245,
+      "safe_candidate_tokens": 3683.8,
+      "safe_candidate_nonzero": true,
+      "safe_candidate_pct": 35.978,
+      "worst_case_extra_tokens": 11676,
+      "lower_bound_after_worst_resends": -7992.2,
+      "lower_bound_positive": false,
+      "view": {
+        "served_messages": 6,
+        "served_characters": 3109,
+        "pinned_characters": 117,
+        "protected_rounds": 0,
+        "whole_prefix_fallbacks": 0
+      }
+    }
+  },
+  "trace_kinds": {
+    "none": {
+      "complete_exact_order": 12
+    },
+    "pruner_v1": {
+      "complete_exact_order": 9,
+      "complete_but_misordered": 3
+    },
+    "native_summary": {
+      "complete_exact_order": 12
+    }
+  },
+  "out_of_order_negative_control": {
+    "scenario": "after the first frozen tool, the model calls the SECOND frozen tool",
+    "completed_rounds": 1,
+    "ordered_prefix_expected": 1,
+    "current_rule_produces_action": true,
+    "current_rule_accepts": true,
+    "current_rule_verdict": "advance",
+    "finding": "the current guard accepts it: it only refuses an action-less turn while the table is unfinished, so wrong-tool / wrong-order turns pass through unchecked",
+    "candidate_requirement": "an order-aware refusal must refuse it AND the baseline arm must stay at zero rejections; the worst-case re-send envelope above is then charged into the lower bound"
+  },
+  "conditions": {
+    "at_least_three_tasks_have_nonzero_safe_candidate": {
+      "satisfied": true,
+      "tasks": [
+        "autoscale_policy_gate",
+        "index_rebuild_gate",
+        "key_rotation_gate",
+        "watermark_publish_gate"
+      ],
+      "count": 4
+    },
+    "tool_sequence_not_worse_expected": {
+      "satisfied": false,
+      "pruner_v1_trace_kinds": {
+        "complete_exact_order": 9,
+        "complete_but_misordered": 3
+      },
+      "baseline_trace_kinds": {
+        "complete_exact_order": 12
+      },
+      "note": "measured on the r17 confirmation batch: three pruner_v1 units are complete_but_misordered, so this condition is NOT satisfied by the current mechanism"
+    },
+    "batch_complete_cost_lower_bound_positive": {
+      "satisfied": false,
+      "observed_all_pairs_pct": -9.735,
+      "observed_same_work_pct": 35.361,
+      "worst_case_extra_tokens": 47238,
+      "lower_bound_tokens": -62557,
+      "note": "the favourable same-work 5/5 pairs are not used to admit anything"
+    }
+  },
+  "gate_passed": false,
+  "verdict": "gate NOT passed: keep the paid stop in place (items 1-3 reported, acquisition batch awaits confirmation)"
+}

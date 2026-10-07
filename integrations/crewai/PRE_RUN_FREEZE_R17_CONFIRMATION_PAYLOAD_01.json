@@ -1,0 +1,91 @@
+{
+  "batch": "crewai-r17-confirmation-payload-none-01",
+  "samples": 4,
+  "units_per_arm": 4,
+  "manifest": {
+    "protocol": "crewai-r17-confirmation-payload-acquisition-uncompressed",
+    "batch": "crewai-r17-confirmation-payload-none-01",
+    "tasks": [
+      "watermark_publish_gate",
+      "autoscale_policy_gate",
+      "key_rotation_gate",
+      "index_rebuild_gate"
+    ],
+    "methods": [
+      "none"
+    ],
+    "repeats": 1,
+    "units_per_arm": 4,
+    "filler_history_pairs": 10,
+    "controller_guard_installed": false,
+    "runner_sha256": "fed8633a6f29b5b58fd88c9c747937caec3de5dd7e89ce856b0091a2f21b7427",
+    "judge_sha256": "26aea58bbbe57aa6fc451e00436254636cc01df97c0ec33d321cad73924304e1",
+    "task_sha256": "5ac20f894ca687130c8b100681958ddbe13e93794d2ecda171841d8033686c96",
+    "freeze_path": "integrations/crewai/PRE_RUN_FREEZE_R17_CONFIRMATION_PAYLOAD_01.json",
+    "freeze_sha256": "5059a1c5101d55f940b5cabd26919a1dccd26bb708219a5a1d87b63be4b29c99",
+    "model": "deepseek-v4-flash",
+    "mode": "api",
+    "base_url": "https://api.deepseek.com",
+    "budget": {
+      "host": "crewai",
+      "provider_tokens": {
+        "soft": 1200,
+        "hard": 3000,
+        "target": 900
+      },
+      "estimated_tokens": {
+        "soft": 3085,
+        "hard": 7712,
+        "target": 2314
+      }
+    },
+    "limits": {
+      "fixed_reserved_tokens": 300,
+      "max_output_tokens": 512,
+      "max_summary_tokens": 1024,
+      "max_summary_calls": 4
+    },
+    "max_api_requests": 120,
+    "quality_gates": [
+      "strict",
+      "semantic",
+      "first_pass_facts",
+      "tool_sequence_consistent"
+    ],
+    "purpose": "payload_acquisition_only",
+    "citable_as_saving": false,
+    "citable_as_quality_equivalence": false,
+    "citable_note": "uncompressed arm only: never a saving, never quality equivalence",
+    "failure_policy": "preserve sample failure and continue unless provider unavailable or request cap"
+  },
+  "source_sha256": {
+    "experiments/commands/run_crewai_r17_confirmation_acquisition.py": "fed8633a6f29b5b58fd88c9c747937caec3de5dd7e89ce856b0091a2f21b7427",
+    "experiments/runners/crewai_handoff_v17_tasks.py": "e225e0540ecba0e192a65215ee7a44197cbd9d7e6eb206a313838922d401c5b9",
+    "experiments/runners/crewai_loop_guard_v17.py": "3a93a70b9604624862449a6f6f22354dfa5482419ac22ef681a29ae72175d1d7",
+    "experiments/runners/run_crewai_handoff_v4.py": "8aa75353bd7a5b4cffea5bd0233a82583d5c4ac34d83c2bac0672117edd078cf",
+    "experiments/runners/run_crewai_experiment.py": "0c0cd1d3e30ea837b323e1318321804433c20f8c9fdcd3a40b42deb1849554f1",
+    "experiments/runners/crewai_semantic_equivalence_v8.py": "26aea58bbbe57aa6fc451e00436254636cc01df97c0ec33d321cad73924304e1",
+    "tasks/stage5_autogen/natural_tasks_r17_confirmation.json": "5ac20f894ca687130c8b100681958ddbe13e93794d2ecda171841d8033686c96",
+    "integrations/crewai/PRE_RUN_FREEZE_R17_CONFIRMATION_PAYLOAD_01.json": ""
+  },
+  "why": "the confirmation chain needs the real uncompressed payload for the four confirmation tasks before its own bound can be computed",
+  "request_arithmetic": {
+    "expected_calls_per_sample": 7,
+    "samples": 4,
+    "expected_requests": 28,
+    "cap": 120
+  },
+  "stop_line": [
+    "global request cap reached",
+    "empty model response",
+    "connection-class error"
+  ],
+  "freeze_discipline": {
+    "write_once": "written once and never regenerated",
+    "refusal_assertion": "the writer refuses to run when the target exists",
+    "pinned_sources": "a pinned source must not be edited after this freeze"
+  },
+  "freeze_sha256": "5059a1c5101d55f940b5cabd26919a1dccd26bb708219a5a1d87b63be4b29c99",
+  "self_hash_of": "the freeze content with every freeze_sha256 value left empty",
+  "revision_discipline": "immutable once written; revisions go to *_FREEZE_AMENDMENT_<date>.json"
+}

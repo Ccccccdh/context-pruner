@@ -1,0 +1,61 @@
+{
+  "artifact": "R19_REAL_ACQUISITION_RESULT_20261006",
+  "batch": "crewai-r19-fullcapture-acquisition-api-01",
+  "mode": "api",
+  "purpose": "payload_acquisition_only",
+  "citable_as_saving": false,
+  "citable_as_quality_equivalence": false,
+  "requests": {
+    "used": 21,
+    "effective_cap": 30,
+    "freeze_ceiling": 48,
+    "rows": 3
+  },
+  "audit": {
+    "complete": true,
+    "errors": [],
+    "totals": {
+      "requests": 21,
+      "input_tokens": 29513,
+      "output_tokens": 1152
+    },
+    "cache_metering": {
+      "attempts_with_split": 21,
+      "attempts_without_split": 0,
+      "prompt_cache_hit_tokens": 20224,
+      "prompt_cache_miss_tokens": 9289,
+      "attempts_timestamped": 21,
+      "attempts_off_peak": 21,
+      "note": "a missing cache split is reported as absent, never booked as a full-price miss; the price tier is derived from the recorded UTC timestamps"
+    }
+  },
+  "cache": {
+    "attempts": 21,
+    "prompt_cache_hit_tokens": 20224,
+    "prompt_cache_miss_tokens": 9289,
+    "input_tokens_total": 29513,
+    "output_tokens_total": 1152,
+    "hit_share_percent": 68.53,
+    "source_counts": {
+      "usage_top_level": 21
+    },
+    "attempts_off_peak": 21,
+    "all_attempts_off_peak": true
+  },
+  "cost_usd": {
+    "prices_per_million": {
+      "cache_hit_input": 0.003,
+      "cache_miss_input": 0.15,
+      "output": 0.45
+    },
+    "off_peak_multiplier": 0.5,
+    "peak_equivalent": 0.00197,
+    "billed": 0.00099,
+    "note": "the output price is the stated stand-in from the readiness report; the input side uses the official cache-hit/miss prices"
+  },
+  "what_this_batch_is_not": [
+    "not a saving claim",
+    "not a quality-equivalence claim",
+    "not guard evidence (the guard is not installed on this path)"
+  ]
+}

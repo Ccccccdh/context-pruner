@@ -1,0 +1,8 @@
+{
+  "status": "synthetic_zero_api_controls_only_not_paid_or_confirmation_tasks",
+  "tasks": [
+    {"task_id": "quorum_snapshot_probe", "tools": ["read_quorum_manifest", "read_vote_counters", "read_snapshot_journal", "run_quorum_probe"], "required_literals": ["quorum-tag-q18", "votes_valid 7"], "decision": "PAUSE"},
+    {"task_id": "cache_purge_probe", "tools": ["read_cache_policy", "read_eviction_metrics", "read_purge_journal", "run_cache_probe"], "required_literals": ["cache-ticket-c18", "stale_entries 0"], "decision": "PURGE"},
+    {"task_id": "certificate_rollover_probe", "tools": ["read_certificate_manifest", "read_expiry_window", "read_rollover_journal", "run_certificate_probe"], "required_literals": ["cert-slot-c18", "expired_chains 0"], "decision": "ROLL"}
+  ]
+}

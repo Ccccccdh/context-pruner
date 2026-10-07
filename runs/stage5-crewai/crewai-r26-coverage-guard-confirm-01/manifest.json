@@ -1,0 +1,70 @@
+{
+  "protocol": "crewai-two-role-r26-coverage-confirm",
+  "runner_sha256": "634655ce5d22fcee8ff07b0930c54dc11fbe1b479ae62de2922e99c5d0e951f5",
+  "task_sha256": "15b41a5071c85871e66dfa34b500ead40b810c51d5161a99f93d561f95553fc1",
+  "judge_sha256": "26aea58bbbe57aa6fc451e00436254636cc01df97c0ec33d321cad73924304e1",
+  "mechanism_sha256": "c2ed0bb824b1af414e7c121ffc8390d1b4d4eb8f6dad68f7bc95b40e627156de",
+  "guard_sha256": "3a93a70b9604624862449a6f6f22354dfa5482419ac22ef681a29ae72175d1d7",
+  "pinned_evidence_sha256": "5ccc86abf9032df6abbdfddca2c108221e9121e98eb7aedc6ff2ad663fd6ade4",
+  "freeze_path": "C:/Users/LENOVO/Desktop/AI Agent/code/integrations/crewai/PRE_RUN_FREEZE_R26_COVERAGE_CONFIRM_01.json",
+  "freeze_sha256": "7c4149b0b4ace1152f884d4ab1a7462af68095290756e2bf68493aa4492c0b31",
+  "freeze_declared_self_sha256": "69a3e187ecff36809cdcc71e47ba409808f324caea7984a862ba3af3124e2558",
+  "tasks": [
+    "certificate_rotation_release",
+    "inventory_quarantine_hold",
+    "backup_restore_closeout"
+  ],
+  "methods": [
+    "none",
+    "pruner_v1",
+    "native_summary"
+  ],
+  "repeats": 3,
+  "units_per_arm": 9,
+  "model": "deepseek-v4-flash",
+  "mode": "api",
+  "base_url": "https://api.deepseek.com",
+  "budget": {
+    "host": "crewai",
+    "calibration_ratio_provider_per_estimated": 0.389,
+    "provider_tokens": {
+      "soft": 1200,
+      "hard": 3000,
+      "target": 900
+    },
+    "estimated_tokens": {
+      "soft": 3085,
+      "hard": 7712,
+      "target": 2314
+    },
+    "note": "Budgets are declared in provider tokens and converted with a measured ratio."
+  },
+  "limits": {
+    "fixed_reserved_tokens": 300,
+    "max_output_tokens": 512,
+    "max_summary_tokens": 1024,
+    "max_summary_calls": 4,
+    "guard_max_rejections": 6
+  },
+  "max_api_requests": 360,
+  "quality_gates": [
+    "strict",
+    "semantic",
+    "first_pass_facts",
+    "tool_sequence_consistent"
+  ],
+  "purpose": "three_arm_pilot",
+  "guard_scope": "all_arms_order_free_coverage",
+  "guard_installed_arms": [
+    "none",
+    "pruner_v1",
+    "native_summary"
+  ],
+  "guard_enabled_all_arms": true,
+  "citable_as_saving": false,
+  "citable_as_quality_equivalence": false,
+  "failure_policy": "preserve sample failure and continue unless provider unavailable or request cap",
+  "batch": "crewai-r26-coverage-guard-confirm-01",
+  "quality_gate": "all-arm source coverage 9/9, baseline strict >=2/3 per task, plugin strict and semantic >= baseline per task, zero guard exhaustion",
+  "cost_gate": "complete provider token deltas >=2/3 positive and positive sum per task; >=7/9 positive and positive sum overall"
+}

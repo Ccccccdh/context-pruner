@@ -1,0 +1,68 @@
+{
+  "protocol": "crewai-two-role-r25-coverage-dev",
+  "runner_sha256": "634655ce5d22fcee8ff07b0930c54dc11fbe1b479ae62de2922e99c5d0e951f5",
+  "task_sha256": "543b57953a98046d6e0c18a2161c8c96f7a624a901596ac70df3d928d3ff8d3d",
+  "judge_sha256": "26aea58bbbe57aa6fc451e00436254636cc01df97c0ec33d321cad73924304e1",
+  "mechanism_sha256": "c2ed0bb824b1af414e7c121ffc8390d1b4d4eb8f6dad68f7bc95b40e627156de",
+  "guard_sha256": "3a93a70b9604624862449a6f6f22354dfa5482419ac22ef681a29ae72175d1d7",
+  "pinned_evidence_sha256": "5ccc86abf9032df6abbdfddca2c108221e9121e98eb7aedc6ff2ad663fd6ade4",
+  "freeze_path": "C:/Users/LENOVO/Desktop/AI Agent/code/integrations/crewai/PRE_RUN_FREEZE_R25_COVERAGE_PILOT_01.json",
+  "freeze_sha256": "254277467f2433304eb4407cb959669e041a53af1856a2c9c69e9bdf1846f504",
+  "freeze_declared_self_sha256": "1734a1be3d577726149850b3621b17466cfec42f304e2fdcb26516352d762260",
+  "tasks": [
+    "ledger_lock_attestation"
+  ],
+  "methods": [
+    "none",
+    "pruner_v1",
+    "native_summary"
+  ],
+  "repeats": 3,
+  "units_per_arm": 3,
+  "model": "deepseek-v4-flash",
+  "mode": "api",
+  "base_url": "https://api.deepseek.com",
+  "budget": {
+    "host": "crewai",
+    "calibration_ratio_provider_per_estimated": 0.389,
+    "provider_tokens": {
+      "soft": 1200,
+      "hard": 3000,
+      "target": 900
+    },
+    "estimated_tokens": {
+      "soft": 3085,
+      "hard": 7712,
+      "target": 2314
+    },
+    "note": "Budgets are declared in provider tokens and converted with a measured ratio."
+  },
+  "limits": {
+    "fixed_reserved_tokens": 300,
+    "max_output_tokens": 512,
+    "max_summary_tokens": 1024,
+    "max_summary_calls": 4,
+    "guard_max_rejections": 6
+  },
+  "max_api_requests": 120,
+  "quality_gates": [
+    "strict",
+    "semantic",
+    "first_pass_facts",
+    "tool_sequence_consistent"
+  ],
+  "purpose": "three_arm_pilot",
+  "guard_scope": "all_arms_order_free_coverage",
+  "guard_installed_arms": [
+    "none",
+    "pruner_v1",
+    "native_summary"
+  ],
+  "guard_enabled_all_arms": true,
+  "citable_as_saving": false,
+  "citable_as_quality_equivalence": false,
+  "failure_policy": "preserve sample failure and continue unless provider unavailable or request cap",
+  "batch": "crewai-r25-coverage-guard-dev-01",
+  "quality_gate": "first-role source coverage 3/3 on every arm, plugin strict and semantic success no lower than baseline, zero guard exhaustion",
+  "cost_gate": "paired complete provider tokens positive in at least 2/3 units and positive in sum, all remedy and summary calls included"
+}

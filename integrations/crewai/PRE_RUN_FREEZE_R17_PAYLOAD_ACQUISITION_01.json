@@ -1,0 +1,95 @@
+{
+  "batch": "crewai-r17-payload-none-01",
+  "samples": 4,
+  "units_per_arm": 4,
+  "manifest": {
+    "protocol": "crewai-r17-payload-acquisition-uncompressed",
+    "batch": "crewai-r17-payload-none-01",
+    "tasks": [
+      "audit_trail_retention_gate",
+      "zone_drain_gate",
+      "compaction_window_gate",
+      "rollback_point_gate"
+    ],
+    "methods": [
+      "none"
+    ],
+    "repeats": 1,
+    "units_per_arm": 4,
+    "filler_history_pairs": 10,
+    "controller_guard_installed": false,
+    "guard_scope": "not_applicable_acquisition",
+    "runner_sha256": "924190bcce3bcf754dda1edd9b2450fe3cd142038d2a1e380675d54c7ab2efc7",
+    "judge_sha256": "26aea58bbbe57aa6fc451e00436254636cc01df97c0ec33d321cad73924304e1",
+    "task_sha256": "2de4ed6ddae8834787b169ba484158e68cc296c1867f7721d5e19bc4577d380e",
+    "freeze_path": "integrations/crewai/PRE_RUN_FREEZE_R17_PAYLOAD_ACQUISITION_01.json",
+    "freeze_sha256": "d39066bda040059300f41a35c6436f9eed137da674b41ee7736f38e69b04236e",
+    "model": "deepseek-v4-flash",
+    "mode": "api",
+    "base_url": "https://api.deepseek.com",
+    "budget": {
+      "host": "crewai",
+      "provider_tokens": {
+        "soft": 1200,
+        "hard": 3000,
+        "target": 900
+      },
+      "estimated_tokens": {
+        "soft": 3085,
+        "hard": 7712,
+        "target": 2314
+      }
+    },
+    "limits": {
+      "fixed_reserved_tokens": 300,
+      "max_output_tokens": 512,
+      "max_summary_tokens": 1024,
+      "max_summary_calls": 4
+    },
+    "max_api_requests": 120,
+    "quality_gates": [
+      "strict",
+      "semantic",
+      "first_pass_facts",
+      "tool_sequence_consistent"
+    ],
+    "purpose": "payload_acquisition_only",
+    "citable_as_saving": false,
+    "citable_as_quality_equivalence": false,
+    "citable_note": "uncompressed arm only: never a saving, never quality equivalence",
+    "failure_policy": "preserve sample failure and continue unless provider unavailable or request cap"
+  },
+  "source_sha256": {
+    "experiments/commands/run_crewai_r17_payload_acquisition.py": "924190bcce3bcf754dda1edd9b2450fe3cd142038d2a1e380675d54c7ab2efc7",
+    "experiments/runners/crewai_handoff_v17_tasks.py": "d79a442a3e661922e7bbd06d600954b8cd64c7fd0d00572dbb9d7a587286c055",
+    "experiments/runners/crewai_loop_guard_v17.py": "3a93a70b9604624862449a6f6f22354dfa5482419ac22ef681a29ae72175d1d7",
+    "experiments/runners/run_crewai_handoff_v4.py": "8aa75353bd7a5b4cffea5bd0233a82583d5c4ac34d83c2bac0672117edd078cf",
+    "experiments/runners/run_crewai_experiment.py": "0c0cd1d3e30ea837b323e1318321804433c20f8c9fdcd3a40b42deb1849554f1",
+    "experiments/runners/crewai_semantic_equivalence_v8.py": "26aea58bbbe57aa6fc451e00436254636cc01df97c0ec33d321cad73924304e1",
+    "tasks/stage5_autogen/natural_tasks_r17.json": "2de4ed6ddae8834787b169ba484158e68cc296c1867f7721d5e19bc4577d380e",
+    "integrations/crewai/PRE_RUN_FREEZE_R17_GUARDED_3ARM_01.json": "67963116719ffbbc511573a809d369488dd50ba31b2b471446b5d61deb2bf0b6",
+    "integrations/crewai/PRE_RUN_FREEZE_R17_PAYLOAD_ACQUISITION_01.json": ""
+  },
+  "why": "the corrected call-wise bound needs the real uncompressed host payload for the r17 tasks; a projection must not admit the paid three-arm pilot",
+  "request_arithmetic": {
+    "expected_calls_per_sample": 7,
+    "samples": 4,
+    "expected_requests": 28,
+    "cap": 120
+  },
+  "stop_line": [
+    "global request cap reached",
+    "empty model response",
+    "connection-class error"
+  ],
+  "not_citable": "this batch is not a saving and not a quality-equivalence result; it exists only to make the r17 bound measurable",
+  "freeze_discipline": {
+    "write_once": "written once and never regenerated",
+    "refusal_assertion": "the writer refuses to run when the target file exists",
+    "amendments": "any change is recorded in *_FREEZE_AMENDMENT_<date>.json",
+    "pinned_sources": "a source pinned here must not be edited after this freeze; new behaviour goes to a new version file"
+  },
+  "freeze_sha256": "d39066bda040059300f41a35c6436f9eed137da674b41ee7736f38e69b04236e",
+  "self_hash_of": "the freeze content with every freeze_sha256 value left empty; the batch manifest records this value and the auditor recomputes it",
+  "revision_discipline": "immutable once written; any revision requires a *_FREEZE_AMENDMENT_<date>.json recording what changed, why, and the old and new SHA256"
+}

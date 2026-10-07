@@ -1,0 +1,578 @@
+{
+  "artifact": "R20_ORDERFREE_3ARM_AUDIT_20261006",
+  "independent": true,
+  "imports_a_runner": false,
+  "batch": "runs/stage5-crewai/crewai-r20-orderfree-3arm-01",
+  "freeze": "integrations/crewai/PRE_RUN_FREEZE_R20_ORDERFREE_3ARM_01.json",
+  "freeze_sha256": "dd5975441dc607d7403b53f442109e5344d2404eecda9ce2a8c222bcc63b98fb",
+  "freeze_declared_self_sha256": "fb1d79cdeedc5ae4e4297dbbbfb6d4de598d9c6842775e707e144caa45fe7236",
+  "amendment_present": false,
+  "pins_checked": [
+    "experiments/audits/audit_crewai_r20_orderfree_batch.py",
+    "experiments/audits/criteria_crewai_r20_orderfree.py",
+    "experiments/commands/run_crewai_r20_orderfree_3arm.py",
+    "experiments/runners/crewai_capture_v20.py",
+    "experiments/runners/crewai_handoff_v17_tasks.py",
+    "experiments/runners/crewai_pinned_evidence_v9.py",
+    "experiments/runners/crewai_semantic_equivalence_v8.py",
+    "experiments/runners/crewai_toolrounds_contract_v13.py",
+    "experiments/runners/run_crewai_experiment.py",
+    "experiments/runners/run_crewai_handoff_v17.py",
+    "experiments/runners/run_crewai_handoff_v4.py",
+    "integrations/crewai/R20_ORDERFREE_BOUND_20261006.json",
+    "integrations/crewai/R20_ORDERFREE_PREREGISTRATION_DRAFT_20261006.md",
+    "tasks/stage5_autogen/natural_tasks_r20_orderfree.json"
+  ],
+  "grid": {
+    "rows": 7,
+    "expected_rows": 36,
+    "duplicates": 0,
+    "missing_cells": 29,
+    "extra_cells": 0,
+    "unbalanced_blocks": 1,
+    "per_arm": {
+      "none": 2,
+      "pruner_v1": 2,
+      "native_summary": 3
+    },
+    "arm_order_rotated": true,
+    "complete": false,
+    "repeats": 3,
+    "methods": [
+      "none",
+      "pruner_v1",
+      "native_summary"
+    ],
+    "tasks": [
+      "ledger_lock_attestation",
+      "telemetry_export_attestation",
+      "replica_resync_attestation",
+      "policy_signoff_attestation"
+    ]
+  },
+  "criteria": {
+    "criterion_ids": [
+      "CRIT_R20_COVERAGE",
+      "CRIT_R20_REPEAT_REPORT",
+      "CRIT_R20_SAME_WORK_REPORT"
+    ],
+    "quality_criteria": [
+      "CRIT_R20_COVERAGE"
+    ],
+    "gate_ids": [
+      "CRIT_R20_COVERAGE"
+    ],
+    "report_only_ids": [
+      "CRIT_R20_REPEAT_REPORT",
+      "CRIT_R20_SAME_WORK_REPORT"
+    ],
+    "CRIT_R20_COVERAGE": {
+      "criterion": "CRIT_R20_COVERAGE",
+      "side": "quality",
+      "gate": true,
+      "computed_from": "first_role_trace of each recorded row, against the frozen task file",
+      "units": 7,
+      "satisfied": 5,
+      "satisfied_percent": 71.43,
+      "all_satisfied": false,
+      "by_arm": {
+        "none": {
+          "units": 2,
+          "satisfied": 2
+        },
+        "pruner_v1": {
+          "units": 2,
+          "satisfied": 0
+        },
+        "native_summary": {
+          "units": 3,
+          "satisfied": 3
+        }
+      }
+    },
+    "CRIT_R20_REPEAT_REPORT": {
+      "criterion": "CRIT_R20_REPEAT_REPORT",
+      "side": "report_only",
+      "gate": false,
+      "repeat_calls_total": 0,
+      "call_count_total": 26,
+      "expected_count_total": 28,
+      "per_arm": {
+        "none": {
+          "call_count": 8,
+          "repeat_calls": 0
+        },
+        "pruner_v1": {
+          "call_count": 6,
+          "repeat_calls": 0
+        },
+        "native_summary": {
+          "call_count": 12,
+          "repeat_calls": 0
+        }
+      }
+    },
+    "CRIT_R20_SAME_WORK_REPORT": {
+      "criterion": "CRIT_R20_SAME_WORK_REPORT",
+      "side": "report_only",
+      "gate": false,
+      "applicable": true,
+      "pairs": [
+        {
+          "criterion": "CRIT_R20_SAME_WORK_REPORT",
+          "baseline_calls": 7,
+          "plugin_calls": 6,
+          "same_call_count": false,
+          "same_tool_trace": false,
+          "same_work": false,
+          "resend_overrun_calls": 0,
+          "gate": false,
+          "task_id": "ledger_lock_attestation",
+          "repeat": 0
+        },
+        {
+          "criterion": "CRIT_R20_SAME_WORK_REPORT",
+          "baseline_calls": 7,
+          "plugin_calls": 6,
+          "same_call_count": false,
+          "same_tool_trace": false,
+          "same_work": false,
+          "resend_overrun_calls": 0,
+          "gate": false,
+          "task_id": "ledger_lock_attestation",
+          "repeat": 1
+        }
+      ],
+      "same_work_units": 0,
+      "baseline_set_equal_units": 2,
+      "resend_overrun_calls": 0
+    },
+    "units": [
+      {
+        "task_id": "ledger_lock_attestation",
+        "repeat": 0,
+        "arm": "none",
+        "declared_expected_trace_matches_task_file": true,
+        "CRIT_R20_COVERAGE": {
+          "criterion": "CRIT_R20_COVERAGE",
+          "satisfied": true,
+          "missing_sources": [],
+          "read_counts": {
+            "read_lock_config": 1,
+            "read_consistency_metrics": 1,
+            "read_lock_change_log": 1,
+            "run_attestation_check": 1
+          }
+        },
+        "CRIT_R20_REPEAT_REPORT": {
+          "criterion": "CRIT_R20_REPEAT_REPORT",
+          "call_count": 4,
+          "expected_count": 4,
+          "repeat_counts": {},
+          "repeat_calls": 0,
+          "unexpected_tools": [],
+          "gate": false
+        }
+      },
+      {
+        "task_id": "ledger_lock_attestation",
+        "repeat": 0,
+        "arm": "pruner_v1",
+        "declared_expected_trace_matches_task_file": true,
+        "CRIT_R20_COVERAGE": {
+          "criterion": "CRIT_R20_COVERAGE",
+          "satisfied": false,
+          "missing_sources": [
+            "run_attestation_check"
+          ],
+          "read_counts": {
+            "read_lock_config": 1,
+            "read_consistency_metrics": 1,
+            "read_lock_change_log": 1,
+            "run_attestation_check": 0
+          }
+        },
+        "CRIT_R20_REPEAT_REPORT": {
+          "criterion": "CRIT_R20_REPEAT_REPORT",
+          "call_count": 3,
+          "expected_count": 4,
+          "repeat_counts": {},
+          "repeat_calls": 0,
+          "unexpected_tools": [],
+          "gate": false
+        }
+      },
+      {
+        "task_id": "ledger_lock_attestation",
+        "repeat": 0,
+        "arm": "native_summary",
+        "declared_expected_trace_matches_task_file": true,
+        "CRIT_R20_COVERAGE": {
+          "criterion": "CRIT_R20_COVERAGE",
+          "satisfied": true,
+          "missing_sources": [],
+          "read_counts": {
+            "read_lock_config": 1,
+            "read_consistency_metrics": 1,
+            "read_lock_change_log": 1,
+            "run_attestation_check": 1
+          }
+        },
+        "CRIT_R20_REPEAT_REPORT": {
+          "criterion": "CRIT_R20_REPEAT_REPORT",
+          "call_count": 4,
+          "expected_count": 4,
+          "repeat_counts": {},
+          "repeat_calls": 0,
+          "unexpected_tools": [],
+          "gate": false
+        }
+      },
+      {
+        "task_id": "ledger_lock_attestation",
+        "repeat": 1,
+        "arm": "pruner_v1",
+        "declared_expected_trace_matches_task_file": true,
+        "CRIT_R20_COVERAGE": {
+          "criterion": "CRIT_R20_COVERAGE",
+          "satisfied": false,
+          "missing_sources": [
+            "run_attestation_check"
+          ],
+          "read_counts": {
+            "read_lock_config": 1,
+            "read_consistency_metrics": 1,
+            "read_lock_change_log": 1,
+            "run_attestation_check": 0
+          }
+        },
+        "CRIT_R20_REPEAT_REPORT": {
+          "criterion": "CRIT_R20_REPEAT_REPORT",
+          "call_count": 3,
+          "expected_count": 4,
+          "repeat_counts": {},
+          "repeat_calls": 0,
+          "unexpected_tools": [],
+          "gate": false
+        }
+      },
+      {
+        "task_id": "ledger_lock_attestation",
+        "repeat": 1,
+        "arm": "native_summary",
+        "declared_expected_trace_matches_task_file": true,
+        "CRIT_R20_COVERAGE": {
+          "criterion": "CRIT_R20_COVERAGE",
+          "satisfied": true,
+          "missing_sources": [],
+          "read_counts": {
+            "read_lock_config": 1,
+            "read_consistency_metrics": 1,
+            "read_lock_change_log": 1,
+            "run_attestation_check": 1
+          }
+        },
+        "CRIT_R20_REPEAT_REPORT": {
+          "criterion": "CRIT_R20_REPEAT_REPORT",
+          "call_count": 4,
+          "expected_count": 4,
+          "repeat_counts": {},
+          "repeat_calls": 0,
+          "unexpected_tools": [],
+          "gate": false
+        }
+      },
+      {
+        "task_id": "ledger_lock_attestation",
+        "repeat": 1,
+        "arm": "none",
+        "declared_expected_trace_matches_task_file": true,
+        "CRIT_R20_COVERAGE": {
+          "criterion": "CRIT_R20_COVERAGE",
+          "satisfied": true,
+          "missing_sources": [],
+          "read_counts": {
+            "read_lock_config": 1,
+            "read_consistency_metrics": 1,
+            "read_lock_change_log": 1,
+            "run_attestation_check": 1
+          }
+        },
+        "CRIT_R20_REPEAT_REPORT": {
+          "criterion": "CRIT_R20_REPEAT_REPORT",
+          "call_count": 4,
+          "expected_count": 4,
+          "repeat_counts": {},
+          "repeat_calls": 0,
+          "unexpected_tools": [],
+          "gate": false
+        }
+      },
+      {
+        "task_id": "ledger_lock_attestation",
+        "repeat": 2,
+        "arm": "native_summary",
+        "declared_expected_trace_matches_task_file": true,
+        "CRIT_R20_COVERAGE": {
+          "criterion": "CRIT_R20_COVERAGE",
+          "satisfied": true,
+          "missing_sources": [],
+          "read_counts": {
+            "read_lock_config": 1,
+            "read_consistency_metrics": 1,
+            "read_lock_change_log": 1,
+            "run_attestation_check": 1
+          }
+        },
+        "CRIT_R20_REPEAT_REPORT": {
+          "criterion": "CRIT_R20_REPEAT_REPORT",
+          "call_count": 4,
+          "expected_count": 4,
+          "repeat_counts": {},
+          "repeat_calls": 0,
+          "unexpected_tools": [],
+          "gate": false
+        }
+      }
+    ]
+  },
+  "guard_configuration": {
+    "order_guard": "not_installed",
+    "repeat_guard": "not_installed",
+    "actionless_rule": "not_installed",
+    "enabled_guard_requests_suppressed": 0,
+    "scan": {
+      "rows": 7,
+      "rows_with_guard_enabled": 0,
+      "rows_with_guard_rejections": 0,
+      "rows_with_guard_exhausted": 0,
+      "rows_with_rejection_records": 0,
+      "guard_rejections_total": 0,
+      "control_text_occurrences": {
+        "Host control: the evidence loop is not finished.": 0,
+        "Host control: the frozen evidence order is mandatory.": 0
+      },
+      "control_text_occurrences_total": 0,
+      "zero_trigger": true
+    }
+  },
+  "paired": {
+    "pairing": "each (task, repeat) pair: controller unit versus its own baseline unit",
+    "units": [
+      {
+        "arm": "pruner_v1",
+        "task_id": "ledger_lock_attestation",
+        "repeat": 0,
+        "baseline_tokens": 12634,
+        "arm_tokens": 6719,
+        "delta_tokens": 5915,
+        "percent_of_baseline": 46.818,
+        "baseline_strict": true,
+        "baseline_semantic": true,
+        "arm_strict": false,
+        "arm_semantic": false
+      },
+      {
+        "arm": "pruner_v1",
+        "task_id": "ledger_lock_attestation",
+        "repeat": 1,
+        "baseline_tokens": 13177,
+        "arm_tokens": 6827,
+        "delta_tokens": 6350,
+        "percent_of_baseline": 48.19,
+        "baseline_strict": true,
+        "baseline_semantic": true,
+        "arm_strict": false,
+        "arm_semantic": false
+      },
+      {
+        "arm": "native_summary",
+        "task_id": "ledger_lock_attestation",
+        "repeat": 0,
+        "baseline_tokens": 12634,
+        "arm_tokens": 5341,
+        "delta_tokens": 7293,
+        "percent_of_baseline": 57.725,
+        "baseline_strict": true,
+        "baseline_semantic": true,
+        "arm_strict": true,
+        "arm_semantic": true
+      },
+      {
+        "arm": "native_summary",
+        "task_id": "ledger_lock_attestation",
+        "repeat": 1,
+        "baseline_tokens": 13177,
+        "arm_tokens": 3344,
+        "delta_tokens": 9833,
+        "percent_of_baseline": 74.622,
+        "baseline_strict": true,
+        "baseline_semantic": true,
+        "arm_strict": true,
+        "arm_semantic": true
+      }
+    ],
+    "arm_summaries": {
+      "pruner_v1": {
+        "arm": "pruner_v1",
+        "units": 2,
+        "positive_units": 2,
+        "positive_majority": true,
+        "mean_delta_tokens": 6132.5,
+        "mean_delta_percent": 47.518,
+        "stdev_delta_tokens": 307.6,
+        "ci95_delta_tokens": [
+          5706.2,
+          6558.8
+        ],
+        "baseline_tokens_total": 25811,
+        "arm_tokens_total": 13546,
+        "quality_not_below_baseline": false
+      },
+      "native_summary": {
+        "arm": "native_summary",
+        "units": 2,
+        "positive_units": 2,
+        "positive_majority": true,
+        "mean_delta_tokens": 8563.0,
+        "mean_delta_percent": 66.352,
+        "stdev_delta_tokens": 1796.1,
+        "ci95_delta_tokens": [
+          6073.8,
+          11052.2
+        ],
+        "baseline_tokens_total": 25811,
+        "arm_tokens_total": 8685,
+        "quality_not_below_baseline": true
+      }
+    }
+  },
+  "tokens_and_cost": {
+    "none": {
+      "complete_provider_tokens": 25811,
+      "requests": 14,
+      "cache": {
+        "prompt_cache_hit_tokens": 20992,
+        "prompt_cache_miss_tokens": 3832
+      },
+      "usd": {
+        "peak_equivalent_usd": 0.001082,
+        "billed_usd": 0.000541
+      }
+    },
+    "pruner_v1": {
+      "complete_provider_tokens": 13546,
+      "requests": 12,
+      "cache": {
+        "prompt_cache_hit_tokens": 7808,
+        "prompt_cache_miss_tokens": 5038
+      },
+      "usd": {
+        "peak_equivalent_usd": 0.001094,
+        "billed_usd": 0.000547
+      }
+    },
+    "native_summary": {
+      "complete_provider_tokens": 15948,
+      "requests": 9,
+      "cache": {
+        "prompt_cache_hit_tokens": 11392,
+        "prompt_cache_miss_tokens": 3133
+      },
+      "usd": {
+        "peak_equivalent_usd": 0.001145,
+        "billed_usd": 0.000572
+      }
+    }
+  },
+  "cache": {
+    "attempts": 35,
+    "prompt_cache_hit_tokens": 40192,
+    "prompt_cache_miss_tokens": 12003,
+    "hit_share_percent": 77.0,
+    "attempts_without_split": 0,
+    "attempts_timestamped": 35,
+    "attempts_off_peak": 35,
+    "rule": "cache changes dollars only, never token counts"
+  },
+  "quality_decision": {
+    "gate": "frozen r8 judge strictly/semantically not below baseline AND CRIT_R20_COVERAGE on every unit",
+    "coverage_all_satisfied": false,
+    "judge_not_below_baseline": false,
+    "verdict": "fail"
+  },
+  "cost_decision": {
+    "gate": "paired complete provider tokens positive on the majority of units and positive in the batch mean; repeats and remedies charged in full",
+    "positive_units": 2,
+    "units": 2,
+    "mean_delta_tokens": 6132.5,
+    "mean_delta_percent": 47.518,
+    "verdict": "pass"
+  },
+  "report_only": {
+    "ids": [
+      "CRIT_R20_REPEAT_REPORT",
+      "CRIT_R20_SAME_WORK_REPORT"
+    ],
+    "note": "repeats, call counts, tool traces, set equality and same work are experimental control quantities on this contract, never gates",
+    "CRIT_R20_REPEAT_REPORT": {
+      "criterion": "CRIT_R20_REPEAT_REPORT",
+      "side": "report_only",
+      "gate": false,
+      "repeat_calls_total": 0,
+      "call_count_total": 26,
+      "expected_count_total": 28,
+      "per_arm": {
+        "none": {
+          "call_count": 8,
+          "repeat_calls": 0
+        },
+        "pruner_v1": {
+          "call_count": 6,
+          "repeat_calls": 0
+        },
+        "native_summary": {
+          "call_count": 12,
+          "repeat_calls": 0
+        }
+      }
+    },
+    "CRIT_R20_SAME_WORK_REPORT": {
+      "criterion": "CRIT_R20_SAME_WORK_REPORT",
+      "side": "report_only",
+      "gate": false,
+      "applicable": true,
+      "same_work_units": 0,
+      "baseline_set_equal_units": 2,
+      "resend_overrun_calls": 0
+    }
+  },
+  "disclosure": {
+    "development_evidence_only": "these tasks were built while the order-free contract was being designed, so the batch is development evidence for that contract, not confirmation",
+    "confirmation_needs_a_new_task_set": "confirmation requires a brand-new task set built after the contract is frozen",
+    "must_not_be_written_as": [
+      "the plugin works on its own",
+      "四判据达成",
+      "compression alone saved X%"
+    ],
+    "attribution": {
+      "required_sentence": "在装上本轮控制器配置的主机配置下（本族不装顺序/重复守卫）",
+      "forbidden": [
+        "压缩单独省了 X%",
+        "四判据达成"
+      ],
+      "template": "在装上本轮控制器配置的主机配置下（本族不装顺序/重复守卫），插件在等质量前提下省 X%（完整供应商 token，重复与补救请求全额入账）"
+    },
+    "cache_changes_dollars_only": true
+  },
+  "errors_rule": "errors non-empty: these numbers are NOT an effective saving and must not be quoted as one; a report-only item is never a pass and a pass never depends on a report-only item",
+  "can_be_quoted_as_saving": false,
+  "errors": [
+    "manifest lists installed guard arms",
+    "recorded grid is not the frozen grid: 7 rows, 29 missing, 0 extra, 0 duplicated, 1 unbalanced blocks"
+  ],
+  "complete": false,
+  "criteria_module_sha256": "fee30da34d31d66d682b5ee4afb1ab3e7a133d3ebd61461cc43e5b28e926126b",
+  "audit_module_sha256": "014c1a1b8fc5b8340e31b8c2059d9249508c18bb78869d033e110dcc8d56a428",
+  "zero_api": true
+}

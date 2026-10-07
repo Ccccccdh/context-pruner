@@ -1,0 +1,351 @@
+{
+  "method": "SUM_calls(uncompressed_input - compressed_input) - protection_cost",
+  "batch": {
+    "uncompressed_total_tokens": 42458,
+    "potential_old_unit_upper_tokens": 14408.247503985232,
+    "potential_old_unit_upper_percent": 33.935,
+    "protection_total_tokens": 189,
+    "safe_candidate_after_protection_tokens": 14219.247503985232,
+    "safe_candidate_after_protection_percent": 33.49
+  },
+  "samples": 4,
+  "requests_used": 28,
+  "estimator_calibration": {
+    "r16_payload": {
+      "samples": 4,
+      "mean_estimator_over_provider": 1.9988,
+      "mean_characters_per_provider_token": 2.3838
+    },
+    "r15_payload": {
+      "samples": 12,
+      "mean_estimator_over_provider": 2.0213,
+      "mean_characters_per_provider_token": 2.3951
+    }
+  },
+  "r15_plugin_arm_measured_growth": {
+    "samples": 6,
+    "delta_series": [
+      [
+        120,
+        42,
+        93,
+        76
+      ],
+      [
+        120,
+        52,
+        101,
+        55
+      ],
+      [
+        120,
+        42,
+        93,
+        55
+      ],
+      [
+        112,
+        39,
+        95,
+        87
+      ],
+      [
+        112,
+        39,
+        112,
+        85
+      ],
+      [
+        112,
+        54,
+        108,
+        74
+      ]
+    ],
+    "mean_delta": 83.25
+  },
+  "per_task": [
+    {
+      "task_id": "artifact_publish_gate",
+      "basis": "measured uncompressed input + bounded/estimated compressed input",
+      "first_role_call_count": 5,
+      "uncompressed_input_tokens": [
+        1910,
+        2015,
+        2116,
+        2209,
+        2304
+      ],
+      "uncompressed_total_tokens": 10554,
+      "decider_input_tokens": [
+        656,
+        751
+      ],
+      "compressed_first_call_provider_tokens": 1417.9,
+      "compressed_upper_series": [
+        1417.9,
+        1417.9,
+        1417.9,
+        1417.9,
+        1417.9
+      ],
+      "compressed_reference_series": [
+        1417.9,
+        1501.2,
+        1584.4,
+        1667.7,
+        1750.9
+      ],
+      "potential_old_unit_upper_tokens": 3464.479067035825,
+      "potential_old_unit_upper_percent": 32.826,
+      "reference_raw_tokens": 2631.979067035825,
+      "reference_raw_percent": 24.938,
+      "protection": {
+        "pin_tokens": 49,
+        "pinned_characters": 118,
+        "protected_rounds": 0,
+        "protected_round_tokens": 0,
+        "whole_prefix_fallbacks": 0,
+        "fallback_tokens": 0,
+        "summary_tokens": 0,
+        "total_tokens": 49
+      },
+      "safe_candidate_after_protection_tokens": 3415.479067035825,
+      "safe_candidate_after_protection_percent": 32.362,
+      "view": {
+        "served_messages": 6,
+        "served_characters": 3380,
+        "served_estimated_tokens": 2583,
+        "pinned_characters": 118,
+        "pinned_events": 1,
+        "pin_tier_counts": {
+          "tier1_evidence_pinned": 1
+        },
+        "protected_rounds": 0,
+        "whole_prefix_fallbacks": 0
+      },
+      "judge": {
+        "strict_success": true,
+        "semantic_success": true,
+        "first_pass_complete": true,
+        "tool_sequence_consistent": true,
+        "error": ""
+      },
+      "api_request_attempts": 7
+    },
+    {
+      "task_id": "quota_scale_gate",
+      "basis": "measured uncompressed input + bounded/estimated compressed input",
+      "first_role_call_count": 5,
+      "uncompressed_input_tokens": [
+        1972,
+        2079,
+        2177,
+        2276,
+        2369
+      ],
+      "uncompressed_total_tokens": 10873,
+      "decider_input_tokens": [
+        665,
+        758
+      ],
+      "compressed_first_call_provider_tokens": 1394.8,
+      "compressed_upper_series": [
+        1394.8,
+        1394.8,
+        1394.8,
+        1394.8,
+        1394.8
+      ],
+      "compressed_reference_series": [
+        1394.8,
+        1478.1,
+        1561.3,
+        1644.6,
+        1727.8
+      ],
+      "potential_old_unit_upper_tokens": 3898.841094051513,
+      "potential_old_unit_upper_percent": 35.858,
+      "reference_raw_tokens": 3066.341094051513,
+      "reference_raw_percent": 28.201,
+      "protection": {
+        "pin_tokens": 47,
+        "pinned_characters": 112,
+        "protected_rounds": 0,
+        "protected_round_tokens": 0,
+        "whole_prefix_fallbacks": 0,
+        "fallback_tokens": 0,
+        "summary_tokens": 0,
+        "total_tokens": 47
+      },
+      "safe_candidate_after_protection_tokens": 3851.841094051513,
+      "safe_candidate_after_protection_percent": 35.426,
+      "view": {
+        "served_messages": 6,
+        "served_characters": 3325,
+        "served_estimated_tokens": 2542,
+        "pinned_characters": 112,
+        "pinned_events": 1,
+        "pin_tier_counts": {
+          "tier1_evidence_pinned": 1
+        },
+        "protected_rounds": 0,
+        "whole_prefix_fallbacks": 0
+      },
+      "judge": {
+        "strict_success": true,
+        "semantic_success": true,
+        "first_pass_complete": true,
+        "tool_sequence_consistent": true,
+        "error": ""
+      },
+      "api_request_attempts": 7
+    },
+    {
+      "task_id": "traffic_shift_gate",
+      "basis": "measured uncompressed input + bounded/estimated compressed input",
+      "first_role_call_count": 5,
+      "uncompressed_input_tokens": [
+        1902,
+        2013,
+        2116,
+        2212,
+        2303
+      ],
+      "uncompressed_total_tokens": 10546,
+      "decider_input_tokens": [
+        661,
+        752
+      ],
+      "compressed_first_call_provider_tokens": 1386.9,
+      "compressed_upper_series": [
+        1386.9,
+        1386.9,
+        1386.9,
+        1386.9,
+        1386.9
+      ],
+      "compressed_reference_series": [
+        1386.9,
+        1470.1,
+        1553.4,
+        1636.6,
+        1719.9
+      ],
+      "potential_old_unit_upper_tokens": 3611.6934306569337,
+      "potential_old_unit_upper_percent": 34.247,
+      "reference_raw_tokens": 2779.1934306569337,
+      "reference_raw_percent": 26.353,
+      "protection": {
+        "pin_tokens": 45,
+        "pinned_characters": 107,
+        "protected_rounds": 0,
+        "protected_round_tokens": 0,
+        "whole_prefix_fallbacks": 0,
+        "fallback_tokens": 0,
+        "summary_tokens": 0,
+        "total_tokens": 45
+      },
+      "safe_candidate_after_protection_tokens": 3566.6934306569337,
+      "safe_candidate_after_protection_percent": 33.82,
+      "view": {
+        "served_messages": 6,
+        "served_characters": 3306,
+        "served_estimated_tokens": 2527,
+        "pinned_characters": 107,
+        "pinned_events": 1,
+        "pin_tier_counts": {
+          "tier1_evidence_pinned": 1
+        },
+        "protected_rounds": 0,
+        "whole_prefix_fallbacks": 0
+      },
+      "judge": {
+        "strict_success": true,
+        "semantic_success": false,
+        "first_pass_complete": true,
+        "tool_sequence_consistent": true,
+        "error": ""
+      },
+      "api_request_attempts": 7
+    },
+    {
+      "task_id": "failover_switch_gate",
+      "basis": "measured uncompressed input + bounded/estimated compressed input",
+      "first_role_call_count": 5,
+      "uncompressed_input_tokens": [
+        1892,
+        2000,
+        2101,
+        2199,
+        2293
+      ],
+      "uncompressed_total_tokens": 10485,
+      "decider_input_tokens": [
+        664,
+        758
+      ],
+      "compressed_first_call_provider_tokens": 1410.4,
+      "compressed_upper_series": [
+        1410.4,
+        1410.4,
+        1410.4,
+        1410.4,
+        1410.4
+      ],
+      "compressed_reference_series": [
+        1410.4,
+        1493.6,
+        1576.9,
+        1660.1,
+        1743.4
+      ],
+      "potential_old_unit_upper_tokens": 3433.2339122409594,
+      "potential_old_unit_upper_percent": 32.744,
+      "reference_raw_tokens": 2600.7339122409594,
+      "reference_raw_percent": 24.804,
+      "protection": {
+        "pin_tokens": 48,
+        "pinned_characters": 115,
+        "protected_rounds": 0,
+        "protected_round_tokens": 0,
+        "whole_prefix_fallbacks": 0,
+        "fallback_tokens": 0,
+        "summary_tokens": 0,
+        "total_tokens": 48
+      },
+      "safe_candidate_after_protection_tokens": 3385.2339122409594,
+      "safe_candidate_after_protection_percent": 32.286,
+      "view": {
+        "served_messages": 6,
+        "served_characters": 3362,
+        "served_estimated_tokens": 2569,
+        "pinned_characters": 115,
+        "pinned_events": 1,
+        "pin_tier_counts": {
+          "tier1_evidence_pinned": 1
+        },
+        "protected_rounds": 0,
+        "whole_prefix_fallbacks": 0
+      },
+      "judge": {
+        "strict_success": true,
+        "semantic_success": true,
+        "first_pass_complete": true,
+        "tool_sequence_consistent": true,
+        "error": ""
+      },
+      "api_request_attempts": 7
+    }
+  ],
+  "columns": {
+    "potential_old_unit_upper": "call-wise saving with the compressed view held at its first-call size: an upper bound, never a quality claim",
+    "safe_candidate_after_protection": "the same minus every protection cost the frozen r13 ledger charges"
+  },
+  "caveats": [
+    "the compressed side is bounded/estimated, not measured: the uncompressed arm cannot produce a compressed view, and the plugin arm is a separate paid batch",
+    "the guard is not installed on this path, so this batch says nothing about whether the role finishes the frozen tool table under the guard",
+    "one repeat per task: four task-level observations, no confidence interval",
+    "these tasks were constructed while the guard was designed, so the guard is not blind to them"
+  ]
+}

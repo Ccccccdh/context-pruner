@@ -1,0 +1,38 @@
+{
+  "amendment_of": "integrations/crewai/PRE_RUN_FREEZE_R17_PAYLOAD_ACQUISITION_01.json",
+  "batch": "crewai-r17-payload-none-01",
+  "date": "2026-10-05",
+  "kind": "post-run source pin drift; the freeze file itself is not rewritten",
+  "amendments": [
+    {
+      "entry": 1,
+      "what": "crewai_handoff_v17_tasks gained load_confirmation_tasks and its docstring was reworked for the confirmation set",
+      "why": "the blind confirmation run needs the separate confirmation task file, and the module is the single place that knows both files and the filler pair count",
+      "when": {
+        "detected_at": "2026-10-05 (after the acquisition batch ran)"
+      },
+      "files": [
+        {
+          "path": "experiments/runners/crewai_handoff_v17_tasks.py",
+          "frozen_sha256": "d79a442a3e661922e7bbd06d600954b8cd64c7fd0d00572dbb9d7a587286c055",
+          "new_sha256": "e225e0540ecba0e192a65215ee7a44197cbd9d7e6eb206a313838922d401c5b9",
+          "change": "added load_confirmation_tasks / CONFIRMATION_TASK_FILE and the reworked module docstring"
+        }
+      ],
+      "which_batches_used_which_revision": {
+        "crewai-r17-payload-none-01": "the recorded rows were produced under the frozen revision d79a442a3e66; the batch's own manifest and rows are unchanged"
+      }
+    }
+  ],
+  "frozen_experiment_sources_valid": false,
+  "frozen_experiment_sources_valid_reason": "the module the batch imported is no longer byte-identical to the frozen revision: the recorded result stands (the batch's rows and manifest are unchanged), but re-running today would import different code",
+  "frozen_batch_records_remain_valid": {
+    "rows": 4,
+    "requests": 28,
+    "manifest_freeze_sha256": "8b16152d07b7d6b5484aa2f0dedc39f262e90f89dcf76308aa6aa2fa5a12544e"
+  },
+  "freeze_file_unchanged_sha256": "8b16152d07b7d6b5484aa2f0dedc39f262e90f89dcf76308aa6aa2fa5a12544e",
+  "freeze_declared_self_sha256": "d39066bda040059300f41a35c6436f9eed137da674b41ee7736f38e69b04236e",
+  "no_paid_request": "written without issuing any API request",
+  "immutability": "immutable once written; a further edit of the pinned source needs another amendment and fails until it is registered"
+}

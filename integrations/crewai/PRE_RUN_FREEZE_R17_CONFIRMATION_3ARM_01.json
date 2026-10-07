@@ -1,0 +1,148 @@
+{
+  "batch": "crewai-two-role-r17-confirmation-3arm-01",
+  "samples": 36,
+  "units_per_arm": 12,
+  "manifest": {
+    "protocol": "crewai-two-role-r17-confirmation",
+    "tasks": [
+      "watermark_publish_gate",
+      "autoscale_policy_gate",
+      "key_rotation_gate",
+      "index_rebuild_gate"
+    ],
+    "tools_per_task": {
+      "watermark_publish_gate": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "autoscale_policy_gate": [
+        "read_policy_definition",
+        "read_capacity_guardrails",
+        "read_adoption_record",
+        "run_guardrail_check"
+      ],
+      "key_rotation_gate": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "index_rebuild_gate": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ]
+    },
+    "methods": [
+      "none",
+      "pruner_v1",
+      "native_summary"
+    ],
+    "guard_arms": [
+      "none",
+      "pruner_v1",
+      "native_summary"
+    ],
+    "guard_scope": "all_arms",
+    "repeats": 3,
+    "units_per_arm": 12,
+    "model": "deepseek-v4-flash",
+    "mode": "api",
+    "base_url": "https://api.deepseek.com",
+    "budget": {
+      "host": "crewai",
+      "provider_tokens": {
+        "soft": 1200,
+        "hard": 3000,
+        "target": 900
+      },
+      "estimated_tokens": {
+        "soft": 3085,
+        "hard": 7712,
+        "target": 2314
+      }
+    },
+    "limits": {
+      "fixed_reserved_tokens": 300,
+      "max_output_tokens": 512,
+      "max_summary_tokens": 1024,
+      "max_summary_calls": 4,
+      "guard_max_rejections": 6
+    },
+    "max_api_requests": 350,
+    "quality_gates": [
+      "strict",
+      "semantic",
+      "first_pass_facts",
+      "tool_sequence_consistent"
+    ],
+    "controller_guard": {
+      "module": "experiments/runners/crewai_loop_guard_v17.py",
+      "rule": "the frozen tool table is not finished AND this turn produced no valid Action => refuse, append one control message, re-serve",
+      "enabled_arms": [
+        "none",
+        "pruner_v1",
+        "native_summary"
+      ],
+      "stop_condition": "a rejection or exhaustion on a non-plugin arm ends the batch"
+    },
+    "cost_formula": {
+      "form": "SUM_calls(uncompressed_input_tokens - compressed_input_tokens) - protection_cost",
+      "protection_cost": "ceil(pinned_characters / 2.41) + ceil(protected_round_readded_characters / 2.41) + whole_prefix_fallback_tokens + summary_tokens"
+    },
+    "citable_as_saving": false,
+    "citable_as_quality_equivalence": false,
+    "failure_policy": "preserve sample failure and continue unless provider unavailable or request cap",
+    "freeze_sha256": "1116272862a2e512aca7912abad7bc69008ff3af7bd54713e87c9ed394fb586b"
+  },
+  "source_sha256": {
+    "experiments/runners/run_crewai_handoff_v17.py": "634655ce5d22fcee8ff07b0930c54dc11fbe1b479ae62de2922e99c5d0e951f5",
+    "experiments/runners/crewai_loop_guard_v17.py": "3a93a70b9604624862449a6f6f22354dfa5482419ac22ef681a29ae72175d1d7",
+    "experiments/runners/crewai_handoff_v17_tasks.py": "e225e0540ecba0e192a65215ee7a44197cbd9d7e6eb206a313838922d401c5b9",
+    "experiments/runners/crewai_toolrounds_contract_v13.py": "c2ed0bb824b1af414e7c121ffc8390d1b4d4eb8f6dad68f7bc95b40e627156de",
+    "experiments/runners/crewai_pinned_evidence_v9.py": "5ccc86abf9032df6abbdfddca2c108221e9121e98eb7aedc6ff2ad663fd6ade4",
+    "experiments/runners/crewai_semantic_equivalence_v8.py": "26aea58bbbe57aa6fc451e00436254636cc01df97c0ec33d321cad73924304e1",
+    "experiments/runners/run_crewai_experiment.py": "0c0cd1d3e30ea837b323e1318321804433c20f8c9fdcd3a40b42deb1849554f1",
+    "experiments/runners/run_crewai_handoff_v4.py": "8aa75353bd7a5b4cffea5bd0233a82583d5c4ac34d83c2bac0672117edd078cf",
+    "experiments/audits/audit_crewai_handoff_v17.py": "ebab0f24f63f8ec14c17382702854f4b108868ede6df396f844fd6afa8373f63",
+    "tasks/stage5_autogen/natural_tasks_r17_confirmation.json": "5ac20f894ca687130c8b100681958ddbe13e93794d2ecda171841d8033686c96",
+    "integrations/crewai/R17_CONFIRMATION_CAP_ARITHMETIC_20261005.json": "10bd0391e6cf2e44482edc33e917d3cb6a0d891b8e0a7e0acff97256eddd23bf",
+    "integrations/crewai/PRE_RUN_FREEZE_R17_CONFIRMATION_3ARM_01.json": ""
+  },
+  "acceptance": {
+    "unit_count": "per-arm units = 4 tasks x 3 repeats = 12",
+    "condition_1_behaviour": "per task: plugin tool_sequence_consistent and first_pass_facts not below baseline; batch: 12/12 and guard_exhausted = 0 and non-plugin guard activity 0",
+    "condition_2_quality": "per task and batch: strict and semantic success not below baseline",
+    "condition_3_cost": "BATCH level per the frozen wording: same work, majority of pairs positive and the batch mean positive; fewer tool calls never counts as saving",
+    "verdict_rule": "all three required; otherwise not_passed_quality_gate; errors non-empty means the numbers must not be quoted as a saving"
+  },
+  "this_is_confirmation_evidence": "the four confirmation tasks were written after the guard was frozen, so a pass here is confirmation evidence rather than development evidence",
+  "cap_derivation": {
+    "artifact": "integrations/crewai/R17_CONFIRMATION_CAP_ARITHMETIC_20261005.json",
+    "declared_cap": 350,
+    "minimum_necessary": 264,
+    "rule": "252 baseline + one push-back for every unit of every arm (84) + slack"
+  },
+  "stop_line": [
+    "global request cap reached",
+    "empty model response",
+    "connection-class error",
+    "guard_exhausted above 3 of 12 plugin units",
+    "a guard firing on a non-plugin arm"
+  ],
+  "homogeneity_boundary": "the four tasks share the constructed 10-pair filler history, so a narrow per-task band is an artefact of one design round; cross-task uniformity is NOT evidence of task-level heterogeneity",
+  "attribution": {
+    "control_configuration_sentence": "本次测量是在装有工具轮守卫的主机配置下进行的：守卫是宿主侧控制器配置，四个臂全部安装；非插件臂零拒绝（逐单元断言）。",
+    "allowed_pass_wording": "在装上工具轮守卫的主机配置下，插件在等质量前提下省 X%",
+    "forbidden_wording": [
+      "压缩单独省了 X%",
+      "四判据达成"
+    ]
+  },
+  "freeze_sha256": "1116272862a2e512aca7912abad7bc69008ff3af7bd54713e87c9ed394fb586b",
+  "self_hash_of": "the freeze content with every freeze_sha256 value left empty",
+  "revision_discipline": "immutable once written; revisions go to *_FREEZE_AMENDMENT_<date>.json"
+}

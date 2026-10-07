@@ -1,0 +1,162 @@
+[
+  {
+    "task_id": "ledger_lock_attestation",
+    "title": "账本锁定存证",
+    "task": "账本 ledger-shard-9 的锁定批次 lock-batch-4 申请进入存证流程。请按固定顺序读取锁定配置、一致性指标、变更记录与存证前校验结果，判断应当确认锁定还是必须回退，并给出必须保留的事实。",
+    "history_constraint": "账本 ledger-shard-9 与锁定批次 lock-batch-4 是本次存证的固定标识，不得改写；历史讨论里的 lock-batch-1 是已经撤销的批次，本次不得再作为存证对象。",
+    "history_topic": "旧锁定批次撤销记录、一致性巡检复盘、已取消的存证窗口与过期的副本配额",
+    "tools": [
+      {
+        "name": "read_lock_config",
+        "call": { "ledger": "ledger-shard-9" },
+        "result": { "ledger": "ledger-shard-9", "batch": "lock-batch-4", "replica_count": 5, "config_sha": "lck-71d2" },
+        "evidence_parts": ["\"ledger\": \"ledger-shard-9\"", "\"batch\": \"lock-batch-4\""]
+      },
+      {
+        "name": "read_consistency_metrics",
+        "call": { "ledger": "ledger-shard-9" },
+        "result": { "ledger": "ledger-shard-9", "divergent_entries": 0, "checksum_state": "stable" },
+        "evidence_parts": ["\"divergent_entries\": 0", "\"checksum_state\": \"stable\""]
+      },
+      {
+        "name": "read_lock_change_log",
+        "call": { "batch": "lock-batch-4" },
+        "result": { "batch": "lock-batch-4", "record_state": "open", "previous_batch": "lock-batch-1", "step_index": 3 },
+        "evidence_parts": ["\"record_state\": \"open\"", "\"previous_batch\": \"lock-batch-1\""]
+      },
+      {
+        "name": "run_attestation_check",
+        "call": { "ledger": "ledger-shard-9" },
+        "result": { "ledger": "ledger-shard-9", "attestation_ready": true, "signoff_count": 4, "blocking_holds": 0 },
+        "evidence_parts": ["\"attestation_ready\": true", "\"signoff_count\": 4", "\"blocking_holds\": 0"]
+      }
+    ],
+    "decision": "ATTEST",
+    "handle_facts": ["ledger-shard-9", "lock-batch-4", "attestation_ready true"],
+    "answer_facts": ["attestation_ready true", "signoff_count 4", "blocking_holds 0"],
+    "forbidden_facts": ["lock-batch-1"],
+    "region_fact": "",
+    "version_fact": "lock-batch-4",
+    "expected_terms": ["ledger-shard-9", "lock-batch-4", "attestation_ready true", "ATTEST"]
+  },
+  {
+    "task_id": "telemetry_export_attestation",
+    "title": "遥测导出存证",
+    "task": "遥测湖 lake-metrics-3 的导出作业 export-job-7 申请对外交付。请按固定顺序读取导出定义、完整性指标、变更记录与交付前校验结果，判断应当交付还是必须暂缓，并给出必须保留的事实。",
+    "history_constraint": "遥测湖 lake-metrics-3 与导出作业 export-job-7 是本次交付的固定标识，不得改写；历史讨论里的 export-job-2 是已作废的作业，本次不得再作为交付对象。",
+    "history_topic": "旧导出作业作废记录、完整性争议复盘、已取消的交付窗口与过期的存储配额",
+    "tools": [
+      {
+        "name": "read_export_definition",
+        "call": { "lake": "lake-metrics-3" },
+        "result": { "lake": "lake-metrics-3", "job": "export-job-7", "columns": 42, "definition_sha": "exp-3b88" },
+        "evidence_parts": ["\"lake\": \"lake-metrics-3\"", "\"job\": \"export-job-7\""]
+      },
+      {
+        "name": "read_completeness_metrics",
+        "call": { "job": "export-job-7" },
+        "result": { "job": "export-job-7", "missing_partitions": 0, "late_arrivals": 1 },
+        "evidence_parts": ["\"missing_partitions\": 0", "\"late_arrivals\": 1"]
+      },
+      {
+        "name": "read_export_change_log",
+        "call": { "job": "export-job-7" },
+        "result": { "job": "export-job-7", "record_state": "open", "previous_job": "export-job-2", "step_index": 2 },
+        "evidence_parts": ["\"record_state\": \"open\"", "\"previous_job\": \"export-job-2\""]
+      },
+      {
+        "name": "run_delivery_check",
+        "call": { "lake": "lake-metrics-3" },
+        "result": { "lake": "lake-metrics-3", "delivery_ready": true, "open_holds": 0, "approver_count": 3 },
+        "evidence_parts": ["\"delivery_ready\": true", "\"open_holds\": 0", "\"approver_count\": 3"]
+      }
+    ],
+    "decision": "DELIVER",
+    "handle_facts": ["lake-metrics-3", "export-job-7", "delivery_ready true"],
+    "answer_facts": ["delivery_ready true", "open_holds 0", "approver_count 3"],
+    "forbidden_facts": ["export-job-2"],
+    "region_fact": "",
+    "version_fact": "export-job-7",
+    "expected_terms": ["lake-metrics-3", "export-job-7", "delivery_ready true", "DELIVER"]
+  },
+  {
+    "task_id": "replica_resync_attestation",
+    "title": "副本重同步存证",
+    "task": "副本组 replica-group-6 的重同步会话 resync-session-2 申请结项。请按固定顺序读取副本配置、同步指标、变更记录与结项前校验结果，判断应当结项还是必须继续重同步，并给出必须保留的事实。",
+    "history_constraint": "副本组 replica-group-6 与重同步会话 resync-session-2 是本次结项的固定标识，不得改写；历史讨论里的 resync-session-1 是已经中止的会话，本次不得再作为结项对象。",
+    "history_topic": "旧重同步会话中止记录、滞后争议复盘、已取消的结项窗口与过期的带宽配额",
+    "tools": [
+      {
+        "name": "read_replica_config",
+        "call": { "group": "replica-group-6" },
+        "result": { "group": "replica-group-6", "session": "resync-session-2", "replicas": 4, "config_sha": "rpl-5c19" },
+        "evidence_parts": ["\"group\": \"replica-group-6\"", "\"session\": \"resync-session-2\""]
+      },
+      {
+        "name": "read_sync_metrics",
+        "call": { "group": "replica-group-6" },
+        "result": { "group": "replica-group-6", "lag_seconds": 0, "retry_backlog": 0 },
+        "evidence_parts": ["\"lag_seconds\": 0", "\"retry_backlog\": 0"]
+      },
+      {
+        "name": "read_resync_change_log",
+        "call": { "session": "resync-session-2" },
+        "result": { "session": "resync-session-2", "record_state": "open", "previous_session": "resync-session-1", "step_index": 4 },
+        "evidence_parts": ["\"record_state\": \"open\"", "\"previous_session\": \"resync-session-1\""]
+      },
+      {
+        "name": "run_closeout_check",
+        "call": { "group": "replica-group-6" },
+        "result": { "group": "replica-group-6", "closeout_ready": true, "verified_shards": 12, "open_findings": 0 },
+        "evidence_parts": ["\"closeout_ready\": true", "\"verified_shards\": 12", "\"open_findings\": 0"]
+      }
+    ],
+    "decision": "CLOSE",
+    "handle_facts": ["replica-group-6", "resync-session-2", "closeout_ready true"],
+    "answer_facts": ["closeout_ready true", "verified_shards 12", "open_findings 0"],
+    "forbidden_facts": ["resync-session-1"],
+    "region_fact": "",
+    "version_fact": "resync-session-2",
+    "expected_terms": ["replica-group-6", "resync-session-2", "closeout_ready true", "CLOSE"]
+  },
+  {
+    "task_id": "policy_signoff_attestation",
+    "title": "策略签署存证",
+    "task": "策略域 policy-domain-2 的签署包 signoff-pack-5 申请生效。请按固定顺序读取签署配置、影响面指标、变更记录与生效前校验结果，判断应当生效还是必须退回，并给出必须保留的事实。",
+    "history_constraint": "策略域 policy-domain-2 与签署包 signoff-pack-5 是本次生效的固定标识，不得改写；历史讨论里的 signoff-pack-1 是已经退回的签署包，本次不得再作为生效对象。",
+    "history_topic": "旧签署包退回记录、影响面争议复盘、已取消的生效窗口与过期的审批配额",
+    "tools": [
+      {
+        "name": "read_signoff_config",
+        "call": { "domain": "policy-domain-2" },
+        "result": { "domain": "policy-domain-2", "pack": "signoff-pack-5", "signers": 5, "config_sha": "sgn-9a41" },
+        "evidence_parts": ["\"domain\": \"policy-domain-2\"", "\"pack\": \"signoff-pack-5\""]
+      },
+      {
+        "name": "read_impact_metrics",
+        "call": { "pack": "signoff-pack-5" },
+        "result": { "pack": "signoff-pack-5", "affected_services": 12, "unmapped_rules": 0 },
+        "evidence_parts": ["\"affected_services\": 12", "\"unmapped_rules\": 0"]
+      },
+      {
+        "name": "read_signoff_change_log",
+        "call": { "pack": "signoff-pack-5" },
+        "result": { "pack": "signoff-pack-5", "record_state": "open", "previous_pack": "signoff-pack-1", "step_index": 2 },
+        "evidence_parts": ["\"record_state\": \"open\"", "\"previous_pack\": \"signoff-pack-1\""]
+      },
+      {
+        "name": "run_effect_check",
+        "call": { "domain": "policy-domain-2" },
+        "result": { "domain": "policy-domain-2", "effect_ready": true, "required_signatures": 5, "missing_signatures": 0 },
+        "evidence_parts": ["\"effect_ready\": true", "\"required_signatures\": 5", "\"missing_signatures\": 0"]
+      }
+    ],
+    "decision": "EFFECT",
+    "handle_facts": ["policy-domain-2", "signoff-pack-5", "effect_ready true"],
+    "answer_facts": ["effect_ready true", "required_signatures 5", "missing_signatures 0"],
+    "forbidden_facts": ["signoff-pack-1"],
+    "region_fact": "",
+    "version_fact": "signoff-pack-5",
+    "expected_terms": ["policy-domain-2", "signoff-pack-5", "effect_ready true", "EFFECT"]
+  }
+]

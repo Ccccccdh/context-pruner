@@ -1,0 +1,194 @@
+[
+  {
+    "task_id": "invoice_settlement_finalize",
+    "title": "三源发票结算核验",
+    "task": "结算集 invoices-q12 的批次 settlement-76 申请结算。核对批次清单、支付对账和最终结算校验，三项来源都至少读取一次，顺序不限、可重复。只有无未支付项目且结算校验通过才可完成。",
+    "history_constraint": "invoices-q12 与 settlement-76 是本次对象；旧批次 settlement-52 已撤销，不得作为当前结算。",
+    "history_topic": "旧结算批次撤销记录、支付对账争议和过期审核窗口",
+    "tools": [
+      {
+        "name": "read_invoice_batch",
+        "call": {
+          "set": "invoices-q12"
+        },
+        "result": {
+          "set": "invoices-q12",
+          "batch": "settlement-76",
+          "invoice_count": 17,
+          "batch_sha": "bill-8c24"
+        },
+        "evidence_parts": [
+          "\"set\": \"invoices-q12\"",
+          "\"batch\": \"settlement-76\"",
+          "\"invoice_count\": 17"
+        ]
+      },
+      {
+        "name": "read_payment_reconciliation",
+        "call": {
+          "batch": "settlement-76"
+        },
+        "result": {
+          "batch": "settlement-76",
+          "unpaid_items": 0,
+          "matched_amount": 8300,
+          "previous_batch": "settlement-52"
+        },
+        "evidence_parts": [
+          "\"unpaid_items\": 0",
+          "\"matched_amount\": 8300"
+        ]
+      },
+      {
+        "name": "run_settlement_check",
+        "call": {
+          "set": "invoices-q12"
+        },
+        "result": {
+          "set": "invoices-q12",
+          "settlement_ready": true,
+          "blocking_errors": 0,
+          "reviewer_count": 2
+        },
+        "evidence_parts": [
+          "\"settlement_ready\": true",
+          "\"blocking_errors\": 0"
+        ]
+      }
+    ],
+    "decision": "FINALIZE",
+    "handle_facts": [
+      "invoices-q12",
+      "settlement-76",
+      "settlement_ready true"
+    ],
+    "answer_facts": [
+      "invoice_count 17",
+      "unpaid_items 0",
+      "settlement_ready true",
+      "blocking_errors 0"
+    ],
+    "forbidden_facts": [
+      "settlement-52"
+    ],
+    "region_fact": "",
+    "version_fact": "settlement-76",
+    "expected_terms": [
+      "invoices-q12",
+      "settlement-76",
+      "settlement_ready true",
+      "FINALIZE"
+    ]
+  },
+  {
+    "task_id": "dns_cutover_wait",
+    "title": "五源 DNS 切流审核",
+    "task": "域 zone-k9 的切流申请 cutover-62 需要审核。依次核对拓扑、探测结果、TTL 观测、变更记录与最终切流校验；五项来源都至少读取一次，顺序不限、可重复。即使 TTL 达标，探测失败或最终校验未通过也必须暂缓。",
+    "history_constraint": "zone-k9 与 cutover-62 是本次申请；旧申请 cutover-41 已取消，不得当作当前切流。",
+    "history_topic": "旧切流申请取消记录、探测争议与过期变更窗口",
+    "tools": [
+      {
+        "name": "read_zone_topology",
+        "call": {
+          "zone": "zone-k9"
+        },
+        "result": {
+          "zone": "zone-k9",
+          "request": "cutover-62",
+          "target_nodes": 5,
+          "topology_sha": "dns-2a4e"
+        },
+        "evidence_parts": [
+          "\"zone\": \"zone-k9\"",
+          "\"request\": \"cutover-62\""
+        ]
+      },
+      {
+        "name": "read_endpoint_probe",
+        "call": {
+          "zone": "zone-k9"
+        },
+        "result": {
+          "zone": "zone-k9",
+          "failed_probes": 1,
+          "probe_count": 12,
+          "probe_state": "degraded"
+        },
+        "evidence_parts": [
+          "\"failed_probes\": 1",
+          "\"probe_state\": \"degraded\""
+        ]
+      },
+      {
+        "name": "read_ttl_observation",
+        "call": {
+          "zone": "zone-k9"
+        },
+        "result": {
+          "zone": "zone-k9",
+          "ttl_seconds": 60,
+          "ttl_state": "within_limit"
+        },
+        "evidence_parts": [
+          "\"ttl_seconds\": 60",
+          "\"ttl_state\": \"within_limit\""
+        ]
+      },
+      {
+        "name": "read_cutover_change_log",
+        "call": {
+          "request": "cutover-62"
+        },
+        "result": {
+          "request": "cutover-62",
+          "record_state": "open",
+          "previous_request": "cutover-41",
+          "change_step": 4
+        },
+        "evidence_parts": [
+          "\"record_state\": \"open\"",
+          "\"previous_request\": \"cutover-41\""
+        ]
+      },
+      {
+        "name": "run_cutover_check",
+        "call": {
+          "zone": "zone-k9"
+        },
+        "result": {
+          "zone": "zone-k9",
+          "cutover_ready": false,
+          "blocking_checks": 1,
+          "reviewer_count": 3
+        },
+        "evidence_parts": [
+          "\"cutover_ready\": false",
+          "\"blocking_checks\": 1"
+        ]
+      }
+    ],
+    "decision": "WAIT",
+    "handle_facts": [
+      "zone-k9",
+      "cutover-62",
+      "cutover_ready false"
+    ],
+    "answer_facts": [
+      "failed_probes 1",
+      "ttl_seconds 60",
+      "cutover_ready false",
+      "blocking_checks 1"
+    ],
+    "forbidden_facts": [
+      "cutover-41"
+    ],
+    "region_fact": "",
+    "version_fact": "cutover-62",
+    "expected_terms": [
+      "zone-k9",
+      "cutover-62",
+      "cutover_ready false",
+      "WAIT"
+    ]
+  }
+]

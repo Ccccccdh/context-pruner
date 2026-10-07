@@ -1,0 +1,29 @@
+{
+  "status": "zero_api_fail_closed_readiness",
+  "paid_acquisition_allowed": false,
+  "checks": {
+    "new_full_task_registry": false,
+    "complete_old_capture_reusable": false,
+    "new_api_runner_with_complete_capture": false,
+    "write_once_source_freeze": false,
+    "independent_frozen_acquisition_auditor": false,
+    "hard_request_cap_arithmetic_defined": true
+  },
+  "task_count": 3,
+  "prospective_max_requests_if_three_full_tasks": 48,
+  "request_arithmetic_note": "3 tasks x 2 roles x max_iter 8 = 48 is a planning ceiling only; a real runner must enforce it across failed and retry attempts",
+  "source_sha256": {
+    "registry": "ef8969980c0d2ce3cce09ec97e7bf7622bfee2685ee75013bd4191cc34e8e23a",
+    "mock_runner": "8a467e65e63bd77b3005e8e12a1e0523580e17fc73f6b35f47e7d8f0943138f4",
+    "sanity_auditor": "4aff7e5c8ab38ad084d402fb3e21048e39c0897f0be778b4a8200ff073d4b972",
+    "old_results": "c55eda249cac474df3c08db3306dfbe4aee63537a7085f93985b00b9f1fa1cf9"
+  },
+  "exact_blockers": [
+    "development registry has tool names and literals but lacks the full executable task, tool result, history and handoff contract schema",
+    "r17 attempt records have token/status but no full input messages, full model outputs, host-parsed Action, guard allowance or executed-tool binding",
+    "v18 runner is mock-only; no new-ID API acquisition path captures every attempt before/after the host parser",
+    "no write-once r18 acquisition freeze pins runner, task registry, capture schema and independent auditor",
+    "v18 sanity auditor checks synthetic rows and mock attempts only; it is not a source-frozen acquisition auditor"
+  ],
+  "old_batches_unchanged": true
+}

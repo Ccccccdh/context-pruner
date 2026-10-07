@@ -1,0 +1,29 @@
+{
+  "amendment_of": "integrations/crewai/PRE_RUN_FREEZE_R16_RELEASE_GATE_GUARDED_3ARM_01.json",
+  "batch": "crewai-two-role-r16-release-gate-guarded-3arm-01",
+  "date": "2026-10-05",
+  "kind": "post-run pin drift recorded to the side",
+  "status": "the batch is complete and frozen; this amendment changes no recorded result, no score and no directory",
+  "what_changed": [
+    "experiments/runners/run_crewai_handoff_v16.py: changed after the r16 batches ran, by the r17 round",
+    "experiments/audits/audit_crewai_handoff_v16.py: changed after the r16 batches ran, by the r17 round"
+  ],
+  "why": [
+    "r17 requires the controller guard to be installed on every arm, so the runner gained a --guard-scope switch and the manifest gained guard_scope / guard_installed_arms / guard_enabled_all_arms",
+    "r17 requires the audit to treat a guard firing on a non-plugin arm as a stop condition, so the audit reads guard_installed_arms"
+  ],
+  "old_sha256": {
+    "experiments/runners/run_crewai_handoff_v16.py": "441390dcf06af8b42967b197cb623835414843ef36f18c8c807a860769716aab",
+    "experiments/audits/audit_crewai_handoff_v16.py": "c91483ff26404cb16d4589c35d72afca19421379a48dce466520eb5b7fc197b0"
+  },
+  "new_sha256": {
+    "experiments/runners/run_crewai_handoff_v16.py": "6bcbe39e537de96caea1fc419849fff2d1eebb8176247e6db6e749289384927d",
+    "experiments/audits/audit_crewai_handoff_v16.py": "851ea49185687c79969d3a4d958156f867b5a0a8223d553501ba6c411d3accc7"
+  },
+  "freeze_file_unchanged_sha256": "10b5fbf0a4f0dea7cdf9319851af021ee5f8eeef06482fee51f9d2b3993d6338",
+  "freeze_declared_self_sha256": "c60fc00848d03fc87862f32bb655cc8a4835b0e281e80dec1e1cd850e0eef07d",
+  "not_a_rewrite": "the freeze file bytes are untouched; its recorded hashes stay as the batch recorded them, and this file is the authority for the drift",
+  "recorded_result_link": "the two batches' manifests keep the freeze hash they recorded at run time 2460ac9fa3aa9a5507b4be5c5733adccb5d1db0c93edb7db93f093254b196049; the substantive pin comparison lives in integrations/crewai/R16_PILOT_FREEZE_LINK_VERIFICATION_20261005.json",
+  "no_paid_request": "written without issuing any API request",
+  "immutability": "immutable once written"
+}

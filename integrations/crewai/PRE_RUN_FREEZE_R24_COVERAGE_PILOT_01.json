@@ -1,0 +1,52 @@
+{
+  "batch": "crewai-r24-coverage-guard-dev-01",
+  "protocol": "crewai-two-role-r24-coverage-dev",
+  "purpose": "development_pilot_not_confirmation",
+  "tasks": [
+    "ledger_lock_attestation"
+  ],
+  "methods": [
+    "none",
+    "pruner_v1",
+    "native_summary"
+  ],
+  "repeats": 3,
+  "samples": 9,
+  "model": "deepseek-v4-flash",
+  "max_output_tokens": 512,
+  "max_summary_tokens": 1024,
+  "max_summary_calls": 4,
+  "max_api_requests": 120,
+  "guard_scope": "all_arms_order_free_coverage",
+  "guard_rejections_per_first_role": 6,
+  "quality_gate": "first-role source coverage 3/3 on every arm, plugin strict and semantic success no lower than baseline, zero guard exhaustion",
+  "cost_gate": "paired complete provider tokens positive in at least 2/3 units and positive in sum, all remedy and summary calls included",
+  "citable_as_saving": false,
+  "citable_as_quality_equivalence": false,
+  "source_sha256": {
+    "experiments/commands/run_crewai_r20_orderfree_3arm.py": "50951ea7ea6f423bf9a0d74b8258d63e83bcc411b828fa5e9b6d73ca55d91404",
+    "experiments/runners/run_crewai_handoff_v17.py": "634655ce5d22fcee8ff07b0930c54dc11fbe1b479ae62de2922e99c5d0e951f5",
+    "experiments/runners/crewai_capture_v20.py": "5a11c378c8a5ce3cd6319ad64c6cbc5579fdfc4c4888b3af518a4c9402ff6d93",
+    "experiments/runners/crewai_semantic_equivalence_v8.py": "26aea58bbbe57aa6fc451e00436254636cc01df97c0ec33d321cad73924304e1",
+    "experiments/runners/crewai_pinned_evidence_v9.py": "5ccc86abf9032df6abbdfddca2c108221e9121e98eb7aedc6ff2ad663fd6ade4",
+    "experiments/runners/crewai_toolrounds_contract_v13.py": "c2ed0bb824b1af414e7c121ffc8390d1b4d4eb8f6dad68f7bc95b40e627156de",
+    "experiments/runners/run_crewai_experiment.py": "0c0cd1d3e30ea837b323e1318321804433c20f8c9fdcd3a40b42deb1849554f1",
+    "experiments/runners/run_crewai_handoff_v4.py": "8aa75353bd7a5b4cffea5bd0233a82583d5c4ac34d83c2bac0672117edd078cf",
+    "experiments/runners/crewai_handoff_v17_tasks.py": "e225e0540ecba0e192a65215ee7a44197cbd9d7e6eb206a313838922d401c5b9",
+    "experiments/audits/criteria_crewai_r20_orderfree.py": "fee30da34d31d66d682b5ee4afb1ab3e7a133d3ebd61461cc43e5b28e926126b",
+    "experiments/audits/audit_crewai_r20_orderfree_batch.py": "5cf45a21c001b6a2afa6fae9953777eda8cf2630c2f369604f161d3fbdef697a",
+    "tasks/stage5_autogen/natural_tasks_r20_orderfree.json": "543b57953a98046d6e0c18a2161c8c96f7a624a901596ac70df3d928d3ff8d3d",
+    "integrations/crewai/R20_ORDERFREE_PREREGISTRATION_DRAFT_20261006.md": "71d1278e1bf51523e585439145309f067ad854fd1fa862c12136fc9a7fb207be",
+    "integrations/crewai/R20_ORDERFREE_BOUND_20261006.json": "33fc4c6c04dc5fd7b8cafdd5a0fde856ed06db24ceb3c0a1e0c3de29bd05e09b",
+    "experiments/runners/crewai_coverage_guard_v24.py": "e750365f5335b1ad667d4154533694b9b950c04e8ea1dc9e1f010b8b2bf71327",
+    "experiments/commands/run_crewai_r24_coverage_pilot.py": "9a6ce3fff5101aa5b6f7016997398838b9ee2ac70b7c243cc4b78abba38088f1",
+    "experiments/audits/audit_crewai_r24_coverage_pilot.py": "0a575ed7f67c68efbec68dfa3a0ece261645d494c47cd6c00cc70e272326a0c0",
+    "integrations/crewai/PILOT_PROTOCOL_R24_COVERAGE_20261007.md": "6d26988d20907af70268356715c988b0e75745041d4d26aba36455a88934b5a4",
+    "integrations/crewai/write_r24_freeze.py": "05b68c2a2231273681f2334890cb9ad74fa074e044d44de7822dbde318e3785f",
+    "tests/test_crewai_coverage_guard_v24.py": "7be73727943195c18bdd3df36961883091cc5291aa340d725d98c7f40d03e247",
+    "tests/test_crewai_r24_audit_controls.py": "2101d7e9c7c762518416cde6144d23fdc961a07c003703729a8ec678cbf22bdd"
+  },
+  "written_utc": "2026-10-07",
+  "self_hash_of": "every field except freeze_sha256, key-sorted, indent=2, utf-8",
+  "freeze_sha256": "cf1926195174df157143dfc083fe900030f21eb3af7856f5c573b4dfa637a4cf"
+}

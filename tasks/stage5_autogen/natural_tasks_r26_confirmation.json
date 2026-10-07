@@ -1,0 +1,287 @@
+[
+  {
+    "task_id": "certificate_rotation_release",
+    "title": "证书轮换发布核验",
+    "task": "服务 gateway-c4 的证书轮换 rot-2026-14 申请发布。读取四份当前证据（轮换配置、链路探测、变更记录、发布前核验），判断发布或暂缓，保留当前标识和检查结果。四个来源各至少读取一次，顺序不限，可重复调用。",
+    "history_constraint": "gateway-c4 与 rot-2026-14 是本次唯一有效轮换；旧轮换 rot-2026-09 已撤销，不得当作当前目标。",
+    "history_topic": "旧证书轮换撤销记录、链路探测误报与过期发布窗口",
+    "tools": [
+      {
+        "name": "read_rotation_config",
+        "call": {
+          "service": "gateway-c4"
+        },
+        "result": {
+          "service": "gateway-c4",
+          "rotation": "rot-2026-14",
+          "key_size": 3072,
+          "config_sha": "cert-83ac"
+        },
+        "evidence_parts": [
+          "\"service\": \"gateway-c4\"",
+          "\"rotation\": \"rot-2026-14\""
+        ]
+      },
+      {
+        "name": "read_chain_probe",
+        "call": {
+          "service": "gateway-c4"
+        },
+        "result": {
+          "service": "gateway-c4",
+          "chain_valid": true,
+          "failed_regions": 0,
+          "probe_count": 6
+        },
+        "evidence_parts": [
+          "\"chain_valid\": true",
+          "\"failed_regions\": 0"
+        ]
+      },
+      {
+        "name": "read_rotation_change_log",
+        "call": {
+          "rotation": "rot-2026-14"
+        },
+        "result": {
+          "rotation": "rot-2026-14",
+          "record_state": "approved",
+          "previous_rotation": "rot-2026-09",
+          "change_step": 4
+        },
+        "evidence_parts": [
+          "\"record_state\": \"approved\"",
+          "\"previous_rotation\": \"rot-2026-09\""
+        ]
+      },
+      {
+        "name": "run_release_check",
+        "call": {
+          "service": "gateway-c4"
+        },
+        "result": {
+          "service": "gateway-c4",
+          "release_ready": true,
+          "blocking_checks": 0,
+          "reviewer_count": 2
+        },
+        "evidence_parts": [
+          "\"release_ready\": true",
+          "\"blocking_checks\": 0"
+        ]
+      }
+    ],
+    "decision": "DEPLOY",
+    "handle_facts": [
+      "gateway-c4",
+      "rot-2026-14",
+      "release_ready true"
+    ],
+    "answer_facts": [
+      "release_ready true",
+      "blocking_checks 0",
+      "reviewer_count 2"
+    ],
+    "forbidden_facts": [
+      "rot-2026-09"
+    ],
+    "region_fact": "",
+    "version_fact": "rot-2026-14",
+    "expected_terms": [
+      "gateway-c4",
+      "rot-2026-14",
+      "release_ready true",
+      "DEPLOY"
+    ]
+  },
+  {
+    "task_id": "inventory_quarantine_hold",
+    "title": "库存隔离解除审核",
+    "task": "仓库 store-n8 的隔离批次 quarantine-37 申请解除。读取四份当前证据（批次定义、抽检结果、变更记录、解除前核验），判断解除或继续隔离，保留当前标识和检查结果。四个来源各至少读取一次，顺序不限，可重复调用。",
+    "history_constraint": "store-n8 与 quarantine-37 是本次审核对象；历史批次 quarantine-21 已结案，不得当作当前对象。",
+    "history_topic": "历史隔离批次结案记录、抽检差异争议与旧解除窗口",
+    "tools": [
+      {
+        "name": "read_quarantine_config",
+        "call": {
+          "warehouse": "store-n8"
+        },
+        "result": {
+          "warehouse": "store-n8",
+          "batch": "quarantine-37",
+          "item_count": 184,
+          "policy_sha": "inv-522e"
+        },
+        "evidence_parts": [
+          "\"warehouse\": \"store-n8\"",
+          "\"batch\": \"quarantine-37\""
+        ]
+      },
+      {
+        "name": "read_sample_results",
+        "call": {
+          "batch": "quarantine-37"
+        },
+        "result": {
+          "batch": "quarantine-37",
+          "failed_samples": 2,
+          "sample_count": 24,
+          "lab_state": "final"
+        },
+        "evidence_parts": [
+          "\"failed_samples\": 2",
+          "\"sample_count\": 24"
+        ]
+      },
+      {
+        "name": "read_quarantine_change_log",
+        "call": {
+          "batch": "quarantine-37"
+        },
+        "result": {
+          "batch": "quarantine-37",
+          "record_state": "open",
+          "previous_batch": "quarantine-21",
+          "change_step": 5
+        },
+        "evidence_parts": [
+          "\"record_state\": \"open\"",
+          "\"previous_batch\": \"quarantine-21\""
+        ]
+      },
+      {
+        "name": "run_release_safety_check",
+        "call": {
+          "warehouse": "store-n8"
+        },
+        "result": {
+          "warehouse": "store-n8",
+          "release_ready": false,
+          "blocking_alerts": 2,
+          "reviewer_count": 3
+        },
+        "evidence_parts": [
+          "\"release_ready\": false",
+          "\"blocking_alerts\": 2"
+        ]
+      }
+    ],
+    "decision": "HOLD",
+    "handle_facts": [
+      "store-n8",
+      "quarantine-37",
+      "release_ready false"
+    ],
+    "answer_facts": [
+      "release_ready false",
+      "blocking_alerts 2",
+      "failed_samples 2"
+    ],
+    "forbidden_facts": [
+      "quarantine-21"
+    ],
+    "region_fact": "",
+    "version_fact": "quarantine-37",
+    "expected_terms": [
+      "store-n8",
+      "quarantine-37",
+      "release_ready false",
+      "HOLD"
+    ]
+  },
+  {
+    "task_id": "backup_restore_closeout",
+    "title": "备份恢复结项审核",
+    "task": "数据库 db-west-12 的恢复演练 restore-58 申请结项。读取四份当前证据（演练配置、恢复校验、变更记录、结项前核验），判断结项或继续修复，保留当前标识和检查结果。四个来源各至少读取一次，顺序不限，可重复调用。",
+    "history_constraint": "db-west-12 与 restore-58 是本次演练对象；旧演练 restore-43 已作废，不得当作当前对象。",
+    "history_topic": "旧恢复演练作废记录、校验争议与过期结项窗口",
+    "tools": [
+      {
+        "name": "read_restore_config",
+        "call": {
+          "database": "db-west-12"
+        },
+        "result": {
+          "database": "db-west-12",
+          "run": "restore-58",
+          "snapshot_sha": "bak-7e11",
+          "replica_count": 3
+        },
+        "evidence_parts": [
+          "\"database\": \"db-west-12\"",
+          "\"run\": \"restore-58\""
+        ]
+      },
+      {
+        "name": "read_restore_validation",
+        "call": {
+          "run": "restore-58"
+        },
+        "result": {
+          "run": "restore-58",
+          "checks_passed": 11,
+          "checks_failed": 0,
+          "checksum_state": "matched"
+        },
+        "evidence_parts": [
+          "\"checks_failed\": 0",
+          "\"checksum_state\": \"matched\""
+        ]
+      },
+      {
+        "name": "read_restore_change_log",
+        "call": {
+          "run": "restore-58"
+        },
+        "result": {
+          "run": "restore-58",
+          "record_state": "open",
+          "previous_run": "restore-43",
+          "change_step": 2
+        },
+        "evidence_parts": [
+          "\"record_state\": \"open\"",
+          "\"previous_run\": \"restore-43\""
+        ]
+      },
+      {
+        "name": "run_closeout_check",
+        "call": {
+          "database": "db-west-12"
+        },
+        "result": {
+          "database": "db-west-12",
+          "closeout_ready": true,
+          "open_findings": 0,
+          "approver_count": 4
+        },
+        "evidence_parts": [
+          "\"closeout_ready\": true",
+          "\"open_findings\": 0"
+        ]
+      }
+    ],
+    "decision": "CLOSE",
+    "handle_facts": [
+      "db-west-12",
+      "restore-58",
+      "closeout_ready true"
+    ],
+    "answer_facts": [
+      "closeout_ready true",
+      "open_findings 0",
+      "checks_failed 0"
+    ],
+    "forbidden_facts": [
+      "restore-43"
+    ],
+    "region_fact": "",
+    "version_fact": "restore-58",
+    "expected_terms": [
+      "db-west-12",
+      "restore-58",
+      "closeout_ready true",
+      "CLOSE"
+    ]
+  }
+]

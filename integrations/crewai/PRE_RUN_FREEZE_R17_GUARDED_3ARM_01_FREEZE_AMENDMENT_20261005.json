@@ -1,0 +1,91 @@
+{
+  "amendment_of": "integrations/crewai/PRE_RUN_FREEZE_R17_GUARDED_3ARM_01.json",
+  "batch": "crewai-two-role-r17-guarded-3arm-01",
+  "date": "2026-10-05",
+  "status_before": "freeze written and never rewritten; its batch has not been run, so no recorded result becomes stale",
+  "changes": [
+    {
+      "revision": 1,
+      "what_changed": [
+        "tasks/stage5_autogen/natural_tasks_r17.json: the rollback task's decision word changed from RELEASE to DISCARD"
+      ],
+      "why": [
+        "the r17 gate's no-reuse assertion found RELEASE already used by a r9-r16 task; the r17 set must reuse no task id, tool name, fact, region, version or decision"
+      ],
+      "old_sha256": {
+        "tasks/stage5_autogen/natural_tasks_r17.json": "3cb251bb3407e32df0e5c8496a07858f499471b3e7df4aa7b33870117c301c70"
+      },
+      "new_sha256": {
+        "tasks/stage5_autogen/natural_tasks_r17.json": "2de4ed6ddae8834787b169ba484158e68cc296c1867f7721d5e19bc4577d380e"
+      }
+    },
+    {
+      "revision": 2,
+      "what_changed": [
+        "experiments/runners/run_crewai_handoff_v16.py now installs the controller guard on EVERY arm by default (--guard-scope all_arms, with pruner_only kept for auditability) and records guard_scope / guard_installed_arms / guard_enabled_all_arms in the batch manifest",
+        "experiments/audits/audit_crewai_handoff_v16.py now reads guard_installed_arms and treats a guard firing on a non-plugin arm as the r17 stop condition",
+        ".tooling/check_r17_arm_scope.py and its output R17_ARM_SCOPE_CHECK_ON_R16_20261005.json are pinned: they answer the arm-scope question on the recorded r16 sequences",
+        "R17_ATTRIBUTION_WORDING_TEMPLATE_20261005.json is pinned: the report wording for a pass and its boundaries"
+      ],
+      "in_file_record_updates": {
+        "note": "revision 2 is extended in place while its batch is still unrun: this amendment is the authority for the current pins, so the protocol's own later edits are recorded here rather than by rewriting the freeze file (which is forbidden).  Once the batch runs, a further change needs a NEW amendment file.",
+        "protocol_edits_recorded": [
+          "PILOT_PROTOCOL_TWO_ROLE_R17_GUARDED_3ARM_01.md §1.1: the arm-scope assertion and its stop condition",
+          "PILOT_PROTOCOL_TWO_ROLE_R17_GUARDED_3ARM_01.md §0.1/§0.2: pinned sources are frozen inputs, new features go to new version files, and revision awareness is fail-closed and must not relax gate assertions"
+        ]
+      },
+      "why": [
+        "the r16 layout installed the guard on the plugin arm only, which adds a controller to that arm and not to the others -- a potential confound; r17 makes the configuration explicit and uniform and requires the guard to be inert on the compliant arms",
+        "attribution must name the host configuration, because the mechanism chain has two separate interventions (guard and compression)"
+      ],
+      "old_sha256": {
+        "experiments/runners/run_crewai_handoff_v16.py": null,
+        "experiments/audits/audit_crewai_handoff_v16.py": null,
+        ".tooling/check_r17_arm_scope.py": null,
+        "integrations/crewai/R17_ARM_SCOPE_CHECK_ON_R16_20261005.json": null,
+        "integrations/crewai/R17_ATTRIBUTION_WORDING_TEMPLATE_20261005.json": null
+      },
+      "new_sha256": {
+        "experiments/runners/run_crewai_handoff_v16.py": "6bcbe39e537de96caea1fc419849fff2d1eebb8176247e6db6e749289384927d",
+        "experiments/audits/audit_crewai_handoff_v16.py": "851ea49185687c79969d3a4d958156f867b5a0a8223d553501ba6c411d3accc7",
+        ".tooling/check_r17_arm_scope.py": "244784a966dd2efdfde5529ba448268775855e33ae31d918eb8b309ef4c6ec6c",
+        "integrations/crewai/R17_ARM_SCOPE_CHECK_ON_R16_20261005.json": "a174fc352bf36acbb5f77ca15746ec42d2245210ec2fe251d236a4ea1bbd5882",
+        "integrations/crewai/R17_ATTRIBUTION_WORDING_TEMPLATE_20261005.json": "740de509084c815db3bc479fe4354b7b7afc809b895cd0aa0b41eac312759905"
+      }
+    }
+  ],
+  "pinned_sources_after_amendment": {
+    "experiments/runners/crewai_handoff_v17_tasks.py": "e225e0540ecba0e192a65215ee7a44197cbd9d7e6eb206a313838922d401c5b9",
+    "experiments/runners/crewai_loop_guard_v17.py": "3a93a70b9604624862449a6f6f22354dfa5482419ac22ef681a29ae72175d1d7",
+    "experiments/runners/crewai_toolrounds_contract_v13.py": "c2ed0bb824b1af414e7c121ffc8390d1b4d4eb8f6dad68f7bc95b40e627156de",
+    "experiments/runners/crewai_pinned_evidence_v9.py": "5ccc86abf9032df6abbdfddca2c108221e9121e98eb7aedc6ff2ad663fd6ade4",
+    "experiments/runners/crewai_semantic_equivalence_v8.py": "26aea58bbbe57aa6fc451e00436254636cc01df97c0ec33d321cad73924304e1",
+    "experiments/runners/run_crewai_experiment.py": "0c0cd1d3e30ea837b323e1318321804433c20f8c9fdcd3a40b42deb1849554f1",
+    "experiments/runners/run_crewai_handoff_v4.py": "8aa75353bd7a5b4cffea5bd0233a82583d5c4ac34d83c2bac0672117edd078cf",
+    "experiments/runners/run_crewai_handoff_v16.py": "6bcbe39e537de96caea1fc419849fff2d1eebb8176247e6db6e749289384927d",
+    "experiments/audits/audit_crewai_handoff_v16.py": "851ea49185687c79969d3a4d958156f867b5a0a8223d553501ba6c411d3accc7",
+    "tasks/stage5_autogen/natural_tasks_r17.json": "2de4ed6ddae8834787b169ba484158e68cc296c1867f7721d5e19bc4577d380e",
+    "tasks/stage5_autogen/natural_tasks_r17_confirmation.json": "5ac20f894ca687130c8b100681958ddbe13e93794d2ecda171841d8033686c96",
+    ".tooling/falsify_r17_trigger_on_r16.py": "305be45476d34a6060651d7a815378b602886f4b51298dec027f56d4d08f672c",
+    ".tooling/check_r17_arm_scope.py": "244784a966dd2efdfde5529ba448268775855e33ae31d918eb8b309ef4c6ec6c",
+    "integrations/crewai/R17_TRIGGER_FALSIFICATION_ON_R16_20261005.json": "83b853444fd6e890ff19b424db24cf1752d468db7adbbd8f33ea36bab8f931a6",
+    "integrations/crewai/R17_ARM_SCOPE_CHECK_ON_R16_20261005.json": "a174fc352bf36acbb5f77ca15746ec42d2245210ec2fe251d236a4ea1bbd5882",
+    "integrations/crewai/R17_CONFIRMATION_TASKS_AND_GUARD_PROBE_20261005.json": "b1333e98a22e62c8f2fcc160dcffc83dedbf4448be292937bf02cf707ba26b0e",
+    "integrations/crewai/R17_ATTRIBUTION_WORDING_TEMPLATE_20261005.json": "740de509084c815db3bc479fe4354b7b7afc809b895cd0aa0b41eac312759905",
+    "integrations/crewai/PILOT_PROTOCOL_TWO_ROLE_R17_GUARDED_3ARM_01.md": "2a66d290c5dcecd7273759c8371e98e9eebecd4ecc72a6c0bacd7d1c1e1863c5",
+    "experiments/runners/run_crewai_handoff_v17.py": "634655ce5d22fcee8ff07b0930c54dc11fbe1b479ae62de2922e99c5d0e951f5",
+    "experiments/commands/run_crewai_r17_payload_acquisition.py": "924190bcce3bcf754dda1edd9b2450fe3cd142038d2a1e380675d54c7ab2efc7",
+    "integrations/crewai/R17_REAL_PAYLOAD_BOUND_20261005.json": "50f0aa1ed23932bfd58e5a47fd33dce70ff5401a461f525939d84e21d1fdad74"
+  },
+  "freeze_file_unchanged_sha256": "67963116719ffbbc511573a809d369488dd50ba31b2b471446b5d61deb2bf0b6",
+  "freeze_declared_self_sha256": "7f8dccfb5579061354c8609456d79bf5d58dbc0e37e9aa9eb8e55c9646192499",
+  "why_the_freeze_file_is_not_rewritten": "rewriting a written freeze is the breach the r16 process committed twice; the amendment is the authority for the current pins, and the auditor verifies against pinned_sources_after_amendment",
+  "unpinned_on_purpose": {
+    "paths": [
+      "tests/test_crewai_handoff_v17.py"
+    ],
+    "why": "the zero-API gate verifies this freeze, so pinning the gate would invalidate the freeze whenever the gate is extended; the gate's green result is a recorded precondition instead (same rule as the r16 freeze)"
+  },
+  "no_paid_request": "this amendment was written without issuing any API request",
+  "immutability": "immutable once written; any further revision needs another *_FREEZE_AMENDMENT_<date>.json"
+}

@@ -1,0 +1,32 @@
+{
+  "artifact": "r17 attribution wording template",
+  "why": [
+    "the r17 mechanism chain has two separate interventions: the tool-round guard (a HOST-SIDE controller configuration) and the compression plugin (the mechanism under test)",
+    "leaving the guard on one arm only would add a controller to that arm and not to the others; r17 therefore installs it on every arm and asserts it stays inert on the non-plugin arms",
+    "a pass must consequently be reported as the effect of compression UNDER THAT HOST CONFIGURATION, never as compression alone"
+  ],
+  "control_configuration_sentence": "本次测量是在**装上工具轮守卫的主机配置**下进行的：守卫是宿主侧控制器配置（四个臂全部安装，见 manifest 的 guard_scope / guard_installed_arms），不是插件机制的一部分。",
+  "allowed_pass_wording": "在装上工具轮守卫的主机配置下，插件在等质量前提下省 X%（配对数 n/n，同工作量 m/m）。",
+  "forbidden_pass_wording": [
+    "压缩单独省了 X%",
+    "压缩机制带来 X% 收益（未限定主机配置）",
+    "本批证明该宿主首个有效节省（未限定形状与盲性）",
+    "四判据达成"
+  ],
+  "boundary_sentences": [
+    "压缩收益是在该主机配置下测得的：守卫在合规臂上是空操作（逐单元断言零拒绝），因此本批的对照是「同一配置下有无压缩」。",
+    "若守卫在基线臂触发，本批立即停止：那说明该主机配置下的工具表约束不是单向的，本批不得当作插件效果证据。",
+    "这四个任务是在设计守卫时构造的 ⇒ 结论只能是「该形状上守卫使第一角色走完冻结工具表」的开发证据；确认须在守卫冻结后另建全新任务。",
+    "上界是解析界（压缩侧受界/估计），不是实测：只有三臂小试给出实测配对值。"
+  ],
+  "stop_condition": {
+    "trigger": "any guard rejection or exhaustion recorded on a non-plugin arm",
+    "action": "stop the batch immediately, keep the partial directory, report it, and do not use the batch as plugin-effect evidence",
+    "audit_support": "audit_crewai_handoff_v16 checks guard_installed_arms and raises 'guard fired on a non-plugin arm (r17 stop condition)'"
+  },
+  "pre_payment_evidence": {
+    "artifact": "integrations/crewai/R17_ARM_SCOPE_CHECK_ON_R16_20261005.json",
+    "finding": "on the recorded r16 sequences the v17 guard would have refused nothing on any of the 24 non-plugin units, and would have refused 7 plugin units",
+    "note": "this is why installing the guard on every arm is a no-op on the compliant arms' behaviour; the next batch must still assert it per unit"
+  }
+}

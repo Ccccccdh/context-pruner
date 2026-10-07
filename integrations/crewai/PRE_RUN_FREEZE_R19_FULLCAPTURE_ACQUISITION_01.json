@@ -1,0 +1,54 @@
+{
+  "batch": "crewai-r19-fullcapture-acquisition-api-01",
+  "purpose": "payload_acquisition_only",
+  "citable_as_saving": false,
+  "citable_as_quality_equivalence": false,
+  "tasks": [
+    "quorum_snapshot_r19",
+    "cache_purge_r19",
+    "certificate_rollover_r19"
+  ],
+  "methods": [
+    "none"
+  ],
+  "repeats": 1,
+  "model": "deepseek-v4-flash",
+  "base_url": "https://api.deepseek.com",
+  "max_output_tokens": 512,
+  "max_api_requests": 48,
+  "request_arithmetic": {
+    "expected": "3 tasks x (4 first-role tools + handoff + 1 decider tool + answer) = 21 agent requests",
+    "hard_cap": "3 tasks x 2 roles x CrewAI max_iter 8 = 48; every attempted provider call consumes the global slot before send",
+    "on_cap": "preserve partial rows; no continuation in the same ID"
+  },
+  "capture_required": [
+    "request_slot",
+    "full_input_messages",
+    "raw_model_output",
+    "normalized_model_output",
+    "response_action_candidate",
+    "host_parsed_action",
+    "host_executed_tool",
+    "guard_installed",
+    "guard_allowance",
+    "v18_offline_verdict",
+    "input_tokens",
+    "output_tokens",
+    "status"
+  ],
+  "source_sha256": {
+    "experiments/commands/run_crewai_r19_acquisition.py": "166834659df0df816972ab651809294f2d08c22f3839ffb7a34a46cb4fce0284",
+    "experiments/runners/crewai_capture_v19.py": "1deddfd9beb9769f1e45147f66998138e69652b33bc3974e66ab33b3a1cfa55a",
+    "experiments/audits/audit_crewai_r19_acquisition.py": "358352834c2d90cc635d778360b940c99253463b75c215969b08f4afcb34f510",
+    "experiments/commands/run_crewai_r17_confirmation_acquisition.py": "fed8633a6f29b5b58fd88c9c747937caec3de5dd7e89ce856b0091a2f21b7427",
+    "experiments/runners/run_crewai_experiment.py": "0c0cd1d3e30ea837b323e1318321804433c20f8c9fdcd3a40b42deb1849554f1",
+    "experiments/runners/run_crewai_handoff_v16.py": "6bcbe39e537de96caea1fc419849fff2d1eebb8176247e6db6e749289384927d",
+    "experiments/runners/run_crewai_handoff_v4.py": "8aa75353bd7a5b4cffea5bd0233a82583d5c4ac34d83c2bac0672117edd078cf",
+    "experiments/runners/crewai_loop_guard_v18.py": "bdd24fc967486e73da0541087977dce1efb638c9b76f0a70456859837063da31",
+    "experiments/runners/crewai_semantic_equivalence_v8.py": "26aea58bbbe57aa6fc451e00436254636cc01df97c0ec33d321cad73924304e1",
+    "experiments/runners/crewai_handoff_v17_tasks.py": "e225e0540ecba0e192a65215ee7a44197cbd9d7e6eb206a313838922d401c5b9",
+    "tasks/stage5_autogen/natural_tasks_r19_acquisition.json": "32ab262674a5c9672df68ca226678c75bfb64652f0e19655b6e2a11ae9934fb9"
+  },
+  "freeze_discipline": "write once; reject source drift and batch ID mismatch before an API request",
+  "note": "These three new tasks are acquisition/development data; any later confirmation needs separately chosen tasks after the mechanism is frozen."
+}

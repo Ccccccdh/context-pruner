@@ -1,0 +1,139 @@
+{
+  "method": "SUM_calls(uncompressed_input - compressed_input) - protection_cost",
+  "batch": {
+    "uncompressed_total_tokens": 42458,
+    "potential_old_unit_upper_tokens": 14408.247503985232,
+    "potential_old_unit_upper_percent": 33.935,
+    "protection_total_tokens": 189,
+    "safe_candidate_after_protection_tokens": 14219.247503985232,
+    "safe_candidate_after_protection_percent": 33.49
+  },
+  "samples": 4,
+  "requests_used": 28,
+  "per_task": [
+    {
+      "task_id": "artifact_publish_gate",
+      "first_role_calls": 5,
+      "decider_calls": 2,
+      "uncompressed_first_role_tokens": 10554,
+      "uncompressed_decider_tokens": 1407,
+      "uncompressed_total_tokens": 11961,
+      "potential_old_unit_upper_tokens": 4871.5,
+      "potential_old_unit_upper_percent": 40.728,
+      "reference_bound_tokens": 3577.7,
+      "reference_bound_percent": 29.911,
+      "protection_pin_tokens_per_call": 49,
+      "protection_total_tokens": 245,
+      "safe_candidate_upper_tokens": 4626.5,
+      "safe_candidate_upper_percent": 38.68,
+      "safe_candidate_reference_tokens": 3332.7,
+      "safe_candidate_reference_percent": 27.863,
+      "judge": {
+        "strict_success": true,
+        "semantic_success": true,
+        "first_pass_complete": true,
+        "tool_sequence_consistent": true,
+        "error": ""
+      }
+    },
+    {
+      "task_id": "quota_scale_gate",
+      "first_role_calls": 5,
+      "decider_calls": 2,
+      "uncompressed_first_role_tokens": 10873,
+      "uncompressed_decider_tokens": 1423,
+      "uncompressed_total_tokens": 12296,
+      "potential_old_unit_upper_tokens": 5321.8,
+      "potential_old_unit_upper_percent": 43.281,
+      "reference_bound_tokens": 4041.0,
+      "reference_bound_percent": 32.864,
+      "protection_pin_tokens_per_call": 47,
+      "protection_total_tokens": 235,
+      "safe_candidate_upper_tokens": 5086.8,
+      "safe_candidate_upper_percent": 41.37,
+      "safe_candidate_reference_tokens": 3806.0,
+      "safe_candidate_reference_percent": 30.953,
+      "judge": {
+        "strict_success": true,
+        "semantic_success": true,
+        "first_pass_complete": true,
+        "tool_sequence_consistent": true,
+        "error": ""
+      }
+    },
+    {
+      "task_id": "traffic_shift_gate",
+      "first_role_calls": 5,
+      "decider_calls": 2,
+      "uncompressed_first_role_tokens": 10546,
+      "uncompressed_decider_tokens": 1413,
+      "uncompressed_total_tokens": 11959,
+      "potential_old_unit_upper_tokens": 5024.7,
+      "potential_old_unit_upper_percent": 42.016,
+      "reference_bound_tokens": 3737.3,
+      "reference_bound_percent": 31.251,
+      "protection_pin_tokens_per_call": 45,
+      "protection_total_tokens": 225,
+      "safe_candidate_upper_tokens": 4799.7,
+      "safe_candidate_upper_percent": 40.135,
+      "safe_candidate_reference_tokens": 3512.3,
+      "safe_candidate_reference_percent": 29.369,
+      "judge": {
+        "strict_success": true,
+        "semantic_success": false,
+        "first_pass_complete": true,
+        "tool_sequence_consistent": true,
+        "error": ""
+      }
+    },
+    {
+      "task_id": "failover_switch_gate",
+      "first_role_calls": 5,
+      "decider_calls": 2,
+      "uncompressed_first_role_tokens": 10485,
+      "uncompressed_decider_tokens": 1422,
+      "uncompressed_total_tokens": 11907,
+      "potential_old_unit_upper_tokens": 4855.2,
+      "potential_old_unit_upper_percent": 40.776,
+      "reference_bound_tokens": 3556.9,
+      "reference_bound_percent": 29.873,
+      "protection_pin_tokens_per_call": 48,
+      "protection_total_tokens": 240,
+      "safe_candidate_upper_tokens": 4615.2,
+      "safe_candidate_upper_percent": 38.761,
+      "safe_candidate_reference_tokens": 3316.9,
+      "safe_candidate_reference_percent": 27.857,
+      "judge": {
+        "strict_success": true,
+        "semantic_success": true,
+        "first_pass_complete": true,
+        "tool_sequence_consistent": true,
+        "error": ""
+      }
+    }
+  ],
+  "batch_totals": {
+    "uncompressed_total_tokens": 48123,
+    "potential_old_unit_upper_tokens": 20073.2,
+    "potential_old_unit_upper_percent": 41.712,
+    "reference_bound_tokens": 14912.9,
+    "reference_bound_percent": 30.989,
+    "protection_total_tokens": 945,
+    "safe_candidate_upper_percent": 39.749,
+    "safe_candidate_reference_percent": 29.025,
+    "gate_3_threshold_percent": 3.0,
+    "gate_3": "PASS: every per-task column is far above the 3% cost gate"
+  },
+  "columns": {
+    "potential_old_unit_upper": "call-wise saving with the compressed view held at its first-call size: an upper bound, never a quality claim",
+    "safe_candidate_after_protection": "the same minus every protection cost the frozen r13 ledger charges"
+  },
+  "caveats": [
+    "the compressed side is bounded/estimated, not measured: the uncompressed arm cannot produce a compressed view, and the plugin arm is a separate paid batch",
+    "the guard is not installed on this path, so this batch says nothing about whether the role finishes the frozen tool table under the guard",
+    "one repeat per task: four task-level observations, no confidence interval",
+    "these tasks were constructed while the guard was designed, so the guard is not blind to them",
+    "the decider role is included: its uncompressed per-call input is measured, its compressed size is estimated with the same calibration and growth slope",
+    "the potential_old_unit_upper column holds the compressed view flat; because the frozen r13 view grows with new evidence, the reference column is the tighter and more realistic bound of the two"
+  ]
+}

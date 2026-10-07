@@ -1,0 +1,41 @@
+{
+  "artifact": "R17_PILOT_CORRECTIONS_20261005",
+  "batch": "crewai-two-role-r17-guarded-3arm-01",
+  "date": "2026-10-05",
+  "corrections": [
+    {
+      "entry": 1,
+      "subject": "gate reading",
+      "what_was_written": {
+        "file": "runs/stage5-crewai/crewai-two-role-r17-guarded-3arm-01/R17_GATE_EVALUATION.json",
+        "verdict": "not_passed_quality_gate (see the per-task condition 3 verdicts)",
+        "reading": "condition 3 applied per task, so a task with no same-work unit (compaction_window_gate) failed the batch"
+      },
+      "frozen_wording": "PILOT_PROTOCOL_TWO_ROLE_R17_GUARDED_3ARM_01.md section 5: condition 3 is batch level -- 'same work: the majority of pairs positive and the batch mean positive'; conditions 1 and 2 are per task",
+      "correction": "the batch verdict follows the frozen wording; the stricter per-task reading is kept as an additional observation and is labelled as a deviation, not as the pre-registered criterion",
+      "restated_verdict": "conditions 1, 2 and 3 satisfied at the frozen granularity => valid saving candidate under this host configuration, DEVELOPMENT evidence (the tasks were built while the guard was designed), conditional on an independent audit with no errors",
+      "deviation_disclosed": true
+    },
+    {
+      "entry": 2,
+      "subject": "request accounting",
+      "what_was_wrong": "api_request_attempts charged only the agent-loop calls, so the row ledger under-reported the true charge: the batch consumed 303 recorded agent calls plus 47 auxiliary summary calls = 350 charged requests against a declared cap of 336",
+      "evidence": {
+        "recorded_agent_attempts": 303,
+        "recorded_summary_attempts": 47,
+        "charged_requests": 350,
+        "declared_cap": 336,
+        "exceeded_by": 14
+      },
+      "why_it_matters": "the pre-registered cap is a cap on all requests and the protocol says summary requests are fully charged, so the batch as recorded exceeded its declared bound",
+      "fix": "run_crewai_handoff_v17 now charges every request per sample (api_request_attempts = all charged requests, with agent_request_attempts and auxiliary_request_attempts as a breakdown), and the r17 batch is re-run under the same freeze so the ledger closes inside the cap",
+      "human_note": "the human read the log's exit and reported 303/336; the auxiliary summary requests were the missing term, not a human arithmetic error"
+    }
+  ],
+  "freeze_untouched": {
+    "path": "integrations/crewai/PRE_RUN_FREEZE_R17_GUARDED_3ARM_01.json",
+    "note": "the freeze file is not rewritten; the accounting fix is registered in its amendment, which pins the new runner digest"
+  },
+  "runner_after_fix_sha256": "634655ce5d22fcee8ff07b0930c54dc11fbe1b479ae62de2922e99c5d0e951f5",
+  "no_paid_request": "written without issuing any API request"
+}

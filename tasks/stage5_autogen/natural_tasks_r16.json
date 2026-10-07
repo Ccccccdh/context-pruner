@@ -1,0 +1,388 @@
+[
+  {
+    "task_id": "artifact_publish_gate",
+    "title": "构件发布准入",
+    "task": "构件包 pkg-4410 的通道 release-c18 计划对外发布。请按固定顺序读取构件清单、签名与运行指标、变更记录与发布前校验结果，判断应当发布还是必须撤回该通道，并给出必须保留的事实。",
+    "history_constraint": "构件包 pkg-4410 与通道 release-c18 是本次发布的固定标识，不得改写；历史讨论里的 release-c10 是已经停用的通道，本次不得再作为发布目标。",
+    "history_topic": "旧通道下线记录、签名密钥轮换复盘、已取消的发布窗口与过期的仓库配额",
+    "tools": [
+      {
+        "name": "read_artifact_manifest",
+        "call": {
+          "package": "pkg-4410"
+        },
+        "result": {
+          "package": "pkg-4410",
+          "channel": "release-c18",
+          "artifacts": 7,
+          "manifest_sha": "mnf-30b7"
+        },
+        "evidence_parts": [
+          "\"package\": \"pkg-4410\"",
+          "\"channel\": \"release-c18\""
+        ]
+      },
+      {
+        "name": "read_signature_metrics",
+        "call": {
+          "package": "pkg-4410"
+        },
+        "result": {
+          "package": "pkg-4410",
+          "signed_artifacts": 7,
+          "verification_failures": 0,
+          "signature_age_days": 2
+        },
+        "evidence_parts": [
+          "\"signed_artifacts\": 7",
+          "\"verification_failures\": 0"
+        ]
+      },
+      {
+        "name": "read_publish_record",
+        "call": {
+          "channel": "release-c18"
+        },
+        "result": {
+          "channel": "release-c18",
+          "channel_state": "open",
+          "previous_channel": "release-c10",
+          "publish_step_index": 4
+        },
+        "evidence_parts": [
+          "\"channel_state\": \"open\"",
+          "\"previous_channel\": \"release-c10\""
+        ]
+      },
+      {
+        "name": "run_publish_check",
+        "call": {
+          "package": "pkg-4410"
+        },
+        "result": {
+          "package": "pkg-4410",
+          "publish_ready": true,
+          "verification_failures": 0,
+          "checked_rules": 11
+        },
+        "evidence_parts": [
+          "\"publish_ready\": true",
+          "\"verification_failures\": 0",
+          "\"checked_rules\": 11"
+        ]
+      }
+    ],
+    "decision": "PUBLISH",
+    "handle_facts": [
+      "pkg-4410",
+      "release-c18",
+      "publish_ready true"
+    ],
+    "answer_facts": [
+      "publish_ready true",
+      "verification_failures 0",
+      "checked_rules 11"
+    ],
+    "forbidden_facts": [
+      "release-c10"
+    ],
+    "region_fact": "",
+    "version_fact": "pkg-4410",
+    "expected_terms": [
+      "pkg-4410",
+      "release-c18",
+      "publish_ready true",
+      "PUBLISH"
+    ]
+  },
+  {
+    "task_id": "quota_scale_gate",
+    "title": "配额扩缩准入",
+    "task": "租户 tenant-vega 的配额组 quota-83 申请把并发上限从 40 提到 120。请按固定顺序读取配额定义、用量指标、变更记录与扩容前校验结果，判断应当扩容还是必须维持当前上限，并给出必须保留的事实。",
+    "history_constraint": "租户 tenant-vega 与配额组 quota-83 是本次扩容的固定标识，不得改写；历史讨论里的 quota-70 已经作废，本次不得再作为扩容目标。",
+    "history_topic": "旧配额组撤销记录、跨区余量谈判、已过期的扩容申请与已关闭的限流告警",
+    "tools": [
+      {
+        "name": "read_quota_definition",
+        "call": {
+          "quota": "quota-83"
+        },
+        "result": {
+          "quota": "quota-83",
+          "tenant": "tenant-vega",
+          "concurrency_limit": 40,
+          "required_headroom_percent": 25
+        },
+        "evidence_parts": [
+          "\"quota\": \"quota-83\"",
+          "\"tenant\": \"tenant-vega\"",
+          "\"concurrency_limit\": 40"
+        ]
+      },
+      {
+        "name": "read_usage_metrics",
+        "call": {
+          "quota": "quota-83"
+        },
+        "result": {
+          "quota": "quota-83",
+          "peak_concurrency": 96,
+          "throttled_requests": 0,
+          "p99_wait_ms": 180
+        },
+        "evidence_parts": [
+          "\"peak_concurrency\": 96",
+          "\"throttled_requests\": 0"
+        ]
+      },
+      {
+        "name": "read_scale_record",
+        "call": {
+          "quota": "quota-83"
+        },
+        "result": {
+          "quota": "quota-83",
+          "region_headroom_percent": 41,
+          "previous_quota": "quota-70",
+          "scale_step_index": 2
+        },
+        "evidence_parts": [
+          "\"region_headroom_percent\": 41",
+          "\"previous_quota\": \"quota-70\""
+        ]
+      },
+      {
+        "name": "run_quota_check",
+        "call": {
+          "quota": "quota-83"
+        },
+        "result": {
+          "quota": "quota-83",
+          "scale_ready": true,
+          "failed_checks": 0,
+          "checked_dependencies": 5
+        },
+        "evidence_parts": [
+          "\"scale_ready\": true",
+          "\"failed_checks\": 0",
+          "\"checked_dependencies\": 5"
+        ]
+      }
+    ],
+    "decision": "SCALE",
+    "handle_facts": [
+      "tenant-vega",
+      "quota-83",
+      "scale_ready true"
+    ],
+    "answer_facts": [
+      "scale_ready true",
+      "failed_checks 0",
+      "checked_dependencies 5"
+    ],
+    "forbidden_facts": [
+      "quota-70"
+    ],
+    "region_fact": "",
+    "version_fact": "",
+    "expected_terms": [
+      "tenant-vega",
+      "quota-83",
+      "scale_ready true",
+      "SCALE"
+    ]
+  },
+  {
+    "task_id": "traffic_shift_gate",
+    "title": "流量迁移准入",
+    "task": "接入点 edge-pop-92 计划把 30% 流量从主区切到备用入口。请按固定顺序读取路由配置、延迟与错误指标、变更记录与切换前校验结果，判断应当切换还是必须撤回该路由，并给出必须保留的事实。",
+    "history_constraint": "接入点 edge-pop-92 与备用区域 ap-east-2 是本次切换的固定标识，不得改写；历史讨论里的 ap-east-1 不是本次备用入口。",
+    "history_topic": "旧接入点退役记录、跨区演练复盘、已撤销的切换窗口与过期的容量预留",
+    "tools": [
+      {
+        "name": "read_route_config",
+        "call": {
+          "endpoint": "edge-pop-92"
+        },
+        "result": {
+          "endpoint": "edge-pop-92",
+          "standby_region": "ap-east-2",
+          "requested_shift_percent": 30,
+          "config_sha": "rte-5c22"
+        },
+        "evidence_parts": [
+          "\"endpoint\": \"edge-pop-92\"",
+          "\"standby_region\": \"ap-east-2\"",
+          "\"requested_shift_percent\": 30"
+        ]
+      },
+      {
+        "name": "read_latency_metrics",
+        "call": {
+          "endpoint": "edge-pop-92"
+        },
+        "result": {
+          "endpoint": "edge-pop-92",
+          "p99_latency_ms": 210,
+          "error_rate_percent": 0.3,
+          "edge_saturation_percent": 48
+        },
+        "evidence_parts": [
+          "\"p99_latency_ms\": 210",
+          "\"error_rate_percent\": 0.3"
+        ]
+      },
+      {
+        "name": "read_shift_record",
+        "call": {
+          "endpoint": "edge-pop-92"
+        },
+        "result": {
+          "endpoint": "edge-pop-92",
+          "drain_complete": true,
+          "previous_region": "ap-east-1",
+          "shift_step_index": 3
+        },
+        "evidence_parts": [
+          "\"drain_complete\": true",
+          "\"previous_region\": \"ap-east-1\""
+        ]
+      },
+      {
+        "name": "run_shift_check",
+        "call": {
+          "region": "ap-east-2"
+        },
+        "result": {
+          "region": "ap-east-2",
+          "shift_ready": false,
+          "failed_rules": 2,
+          "checked_rules": 7
+        },
+        "evidence_parts": [
+          "\"shift_ready\": false",
+          "\"failed_rules\": 2",
+          "\"checked_rules\": 7"
+        ]
+      }
+    ],
+    "decision": "UNDO",
+    "handle_facts": [
+      "edge-pop-92",
+      "ap-east-2",
+      "failed_rules 2"
+    ],
+    "answer_facts": [
+      "shift_ready false",
+      "failed_rules 2",
+      "checked_rules 7"
+    ],
+    "forbidden_facts": [
+      "ap-east-1"
+    ],
+    "region_fact": "ap-east-2",
+    "version_fact": "",
+    "expected_terms": [
+      "edge-pop-92",
+      "ap-east-2",
+      "failed_rules 2",
+      "UNDO"
+    ]
+  },
+  {
+    "task_id": "failover_switch_gate",
+    "title": "数据库主从切换准入",
+    "task": "数据库集群 db-aurora-7 计划把写入切到备节点 standby-2。请按固定顺序读取集群与副本配置、复制指标、变更记录与切换前校验结果，判断应当切换还是必须保持主节点，并给出必须保留的事实。",
+    "history_constraint": "集群 db-aurora-7 与备节点 standby-2 是本次切换的固定标识，不得改写；历史讨论里的 standby-1 已经退役，本次不得再作为备节点。",
+    "history_topic": "旧备节点退役记录、切换演练复盘、已取消的维护窗口与过期的复制审计",
+    "tools": [
+      {
+        "name": "read_cluster_config",
+        "call": {
+          "cluster": "db-aurora-7"
+        },
+        "result": {
+          "cluster": "db-aurora-7",
+          "standby": "standby-2",
+          "writer_endpoint": "writer-a",
+          "config_sha": "clu-8d41"
+        },
+        "evidence_parts": [
+          "\"cluster\": \"db-aurora-7\"",
+          "\"standby\": \"standby-2\""
+        ]
+      },
+      {
+        "name": "read_replication_metrics",
+        "call": {
+          "cluster": "db-aurora-7"
+        },
+        "result": {
+          "cluster": "db-aurora-7",
+          "replication_lag_ms": 850,
+          "sessions_open": 1240,
+          "replica_cpu_percent": 44
+        },
+        "evidence_parts": [
+          "\"replication_lag_ms\": 850",
+          "\"sessions_open\": 1240"
+        ]
+      },
+      {
+        "name": "read_switch_record",
+        "call": {
+          "cluster": "db-aurora-7"
+        },
+        "result": {
+          "cluster": "db-aurora-7",
+          "locks_released": true,
+          "previous_standby": "standby-1",
+          "switch_step_index": 6
+        },
+        "evidence_parts": [
+          "\"locks_released\": true",
+          "\"previous_standby\": \"standby-1\""
+        ]
+      },
+      {
+        "name": "run_switch_check",
+        "call": {
+          "cluster": "db-aurora-7"
+        },
+        "result": {
+          "cluster": "db-aurora-7",
+          "switch_ready": true,
+          "blocking_checks": 0,
+          "verified_checks": 9
+        },
+        "evidence_parts": [
+          "\"switch_ready\": true",
+          "\"blocking_checks\": 0",
+          "\"verified_checks\": 9"
+        ]
+      }
+    ],
+    "decision": "SWITCH",
+    "handle_facts": [
+      "db-aurora-7",
+      "standby-2",
+      "switch_ready true"
+    ],
+    "answer_facts": [
+      "switch_ready true",
+      "blocking_checks 0",
+      "verified_checks 9"
+    ],
+    "forbidden_facts": [
+      "standby-1"
+    ],
+    "region_fact": "",
+    "version_fact": "",
+    "expected_terms": [
+      "db-aurora-7",
+      "standby-2",
+      "switch_ready true",
+      "SWITCH"
+    ]
+  }
+]

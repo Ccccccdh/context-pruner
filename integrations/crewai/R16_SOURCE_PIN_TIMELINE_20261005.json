@@ -1,0 +1,104 @@
+{
+  "question": "which revision of each drifted pin did each r16 batch run with?",
+  "freeze": {
+    "path": "integrations/crewai/PRE_RUN_FREEZE_R16_RELEASE_GATE_GUARDED_3ARM_01.json",
+    "file_sha256": "10b5fbf0a4f0dea7cdf9319851af021ee5f8eeef06482fee51f9d2b3993d6338",
+    "declared_self_sha256": "c60fc00848d03fc87862f32bb655cc8a4835b0e281e80dec1e1cd850e0eef07d",
+    "frozen_hashes": {
+      "experiments/runners/run_crewai_handoff_v16.py": "441390dcf06af8b42967b197cb623835414843ef36f18c8c807a860769716aab",
+      "experiments/audits/audit_crewai_handoff_v16.py": "c91483ff26404cb16d4589c35d72afca19421379a48dce466520eb5b7fc197b0"
+    }
+  },
+  "watched_sources": {
+    "experiments/runners/run_crewai_handoff_v16.py": {
+      "frozen_sha256": "441390dcf06af8b42967b197cb623835414843ef36f18c8c807a860769716aab",
+      "current_sha256": "6bcbe39e537de96caea1fc419849fff2d1eebb8176247e6db6e749289384927d",
+      "drifted": true,
+      "mtime_utc": "2026-10-05 16:08:45 UTC",
+      "mtime_local": "2026-10-06 00:08:45"
+    },
+    "experiments/audits/audit_crewai_handoff_v16.py": {
+      "frozen_sha256": "c91483ff26404cb16d4589c35d72afca19421379a48dce466520eb5b7fc197b0",
+      "current_sha256": "851ea49185687c79969d3a4d958156f867b5a0a8223d553501ba6c411d3accc7",
+      "drifted": true,
+      "mtime_utc": "2026-10-05 16:09:07 UTC",
+      "mtime_local": "2026-10-06 00:09:07"
+    }
+  },
+  "batches": {
+    "runs/stage5-crewai/crewai-r16-payload-none-01": {
+      "manifest_mtime_local": "2026-10-05 23:25:17",
+      "manifest_written_sha256": "3a64d5ef874f540d8e6d60331d4ecae63b68d4ba864c0e8195e29abbfd3d2ee2",
+      "runner_sha256_recorded": "cb39b112bd46bfe0ffd19b2a398f40937e39f24a577d468957aaf07de7f3a2c0",
+      "judge_sha256_recorded": "26aea58bbbe57aa6fc451e00436254636cc01df97c0ec33d321cad73924304e1",
+      "guard_sha256_recorded": null,
+      "task_sha256_recorded": "45cffd8c1adaf4a037d95154cd62c46124d6a48712aa3c9621e204c2d10c60b0",
+      "freeze_sha256_recorded": "82d29f167f66ace219b3ae8211e424aab5359bcecd792df15c3acb96e2a27cd8",
+      "purpose": "payload_acquisition_only",
+      "results_mtime_local": "2026-10-05 23:25:46",
+      "results_sha256": "7d96b8684cdb0c5c9850eb7bc89d1e64c39883db3caf868a61348484524861b5",
+      "rows": 4,
+      "runner_revision_used": "post-freeze revision cb39b112bd46"
+    },
+    "runs/stage5-crewai/crewai-two-role-r16-release-gate-guarded-3arm-01": {
+      "manifest_mtime_local": "2026-10-05 23:44:08",
+      "manifest_written_sha256": "2089ac2546ac95190b41c7417592ba053af7d07a09b95d25d05cf079848fa56d",
+      "runner_sha256_recorded": "441390dcf06af8b42967b197cb623835414843ef36f18c8c807a860769716aab",
+      "judge_sha256_recorded": "26aea58bbbe57aa6fc451e00436254636cc01df97c0ec33d321cad73924304e1",
+      "guard_sha256_recorded": "7115b81ef79def02b693fb0cc543322ed4a398fe24ea76f5850dc8bc248e4558",
+      "task_sha256_recorded": "45cffd8c1adaf4a037d95154cd62c46124d6a48712aa3c9621e204c2d10c60b0",
+      "freeze_sha256_recorded": "2460ac9fa3aa9a5507b4be5c5733adccb5d1db0c93edb7db93f093254b196049",
+      "purpose": "three_arm_pilot",
+      "results_mtime_local": "2026-10-05 23:49:12",
+      "results_sha256": "79adac15a199dddb5cd0e327acbba64bf242cf5137097df5417232232b08c95b",
+      "rows": 32,
+      "runner_revision_used": "frozen revision 441390dcf06a"
+    },
+    "runs/stage5-crewai/crewai-two-role-r16-release-gate-guarded-3arm-resume-a-01": {
+      "manifest_mtime_local": "2026-10-05 23:49:36",
+      "manifest_written_sha256": "557610ae7153c48a3b432e72b25e6214f79b18f05f7f8cb9113baff536696ae5",
+      "runner_sha256_recorded": "441390dcf06af8b42967b197cb623835414843ef36f18c8c807a860769716aab",
+      "judge_sha256_recorded": "26aea58bbbe57aa6fc451e00436254636cc01df97c0ec33d321cad73924304e1",
+      "guard_sha256_recorded": "7115b81ef79def02b693fb0cc543322ed4a398fe24ea76f5850dc8bc248e4558",
+      "task_sha256_recorded": "45cffd8c1adaf4a037d95154cd62c46124d6a48712aa3c9621e204c2d10c60b0",
+      "freeze_sha256_recorded": "2460ac9fa3aa9a5507b4be5c5733adccb5d1db0c93edb7db93f093254b196049",
+      "purpose": "three_arm_pilot_resume_a",
+      "results_mtime_local": "2026-10-05 23:50:22",
+      "results_sha256": "cb7df03646396c16ed6ac9492d3008d0060aa7db853bf87ccbbfb7869ee6d068",
+      "rows": 36,
+      "runner_revision_used": "frozen revision 441390dcf06a"
+    },
+    "runs/stage5-crewai/crewai-two-role-r16-release-gate-guarded-mock-01": {
+      "manifest_mtime_local": "2026-10-05 23:53:47",
+      "manifest_written_sha256": "94033bb72c8068971db6362359edd6dd2e622c605cc50ca7cc4850576a063c9a",
+      "runner_sha256_recorded": "441390dcf06af8b42967b197cb623835414843ef36f18c8c807a860769716aab",
+      "judge_sha256_recorded": "26aea58bbbe57aa6fc451e00436254636cc01df97c0ec33d321cad73924304e1",
+      "guard_sha256_recorded": "7115b81ef79def02b693fb0cc543322ed4a398fe24ea76f5850dc8bc248e4558",
+      "task_sha256_recorded": "45cffd8c1adaf4a037d95154cd62c46124d6a48712aa3c9621e204c2d10c60b0",
+      "freeze_sha256_recorded": "",
+      "purpose": "three_arm_pilot",
+      "results_mtime_local": "2026-10-05 23:54:03",
+      "results_sha256": "63132baf5743a1989f796987c4d3d109642f7eb40fe35a17305a4e1ea778161b",
+      "rows": 36,
+      "runner_revision_used": "frozen revision 441390dcf06a"
+    }
+  },
+  "audit_runs": [
+    {
+      "path": "runs/stage5-crewai/crewai-two-role-r16-release-gate-guarded-3arm-resume-a-01/R16_THREE_ARM_PILOT_SUMMARY.json",
+      "mtime_local": "2026-10-05 23:50:42",
+      "sha256": "8d1692ac44a655393f681fef646bae241eaa5b3b5f146a4ea5e5095b8b0efd80"
+    },
+    {
+      "path": "runs/stage5-crewai/crewai-two-role-r16-release-gate-guarded-3arm-resume-a-01/RESULTS.md",
+      "mtime_local": "2026-10-05 23:57:15",
+      "sha256": "670d3b1c16c4a6f262c7190a0b4782183532ea4adf05b2af539ff0340ff610cf"
+    }
+  ],
+  "auditor_edit_vs_pilot": {
+    "auditor_mtime_local": "2026-10-06 00:09:07",
+    "pilot_rows_mtime_local": "2026-10-05 23:50:22",
+    "pilot_summary_mtime_local": "2026-10-05 23:50:42",
+    "reading": "the pilot's own rows were written by the frozen runner revision; the audit of those rows was executed by the in-memory auditor that existed at that moment, and the auditor source has since been edited"
+  }
+}

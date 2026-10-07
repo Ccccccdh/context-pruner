@@ -1,0 +1,398 @@
+{
+  "artifact": "R20_ORDERFREE_BATCH_AUDIT_CRITERIA_20261006",
+  "independent": true,
+  "imports_a_runner": false,
+  "directory": "runs/stage5-crewai/crewai-r20-orderfree-fullcapture-acquisition-api-01",
+  "freeze": "integrations/crewai/PRE_RUN_FREEZE_R20_ORDERFREE_ACQUISITION_01.json",
+  "freeze_sha256": "5a36fb3f0477687ef2fa5ae2b7e146fb222c1e2c5d3e6da0b44192894c8a7267",
+  "amendment_present": false,
+  "pins_checked": [
+    "experiments/audits/criteria_crewai_r20_orderfree.py",
+    "experiments/commands/run_crewai_r17_confirmation_acquisition.py",
+    "experiments/commands/run_crewai_r19_acquisition.py",
+    "experiments/commands/run_crewai_r20_orderfree_acquisition.py",
+    "experiments/runners/crewai_capture_v19.py",
+    "experiments/runners/crewai_semantic_equivalence_v8.py",
+    "experiments/runners/run_crewai_experiment.py",
+    "integrations/crewai/PRE_RUN_FREEZE_R20_ORDERFREE_ACQUISITION_01.json",
+    "integrations/crewai/R20_ORDERFREE_PREREGISTRATION_DRAFT_20261006.md",
+    "tasks/stage5_autogen/natural_tasks_r20_orderfree.json"
+  ],
+  "criteria": {
+    "criterion_ids": [
+      "CRIT_R20_COVERAGE",
+      "CRIT_R20_REPEAT_REPORT",
+      "CRIT_R20_SAME_WORK_REPORT"
+    ],
+    "quality_criteria": [
+      "CRIT_R20_COVERAGE"
+    ],
+    "gate_ids": [
+      "CRIT_R20_COVERAGE"
+    ],
+    "report_only_ids": [
+      "CRIT_R20_REPEAT_REPORT",
+      "CRIT_R20_SAME_WORK_REPORT"
+    ],
+    "CRIT_R20_COVERAGE": {
+      "criterion": "CRIT_R20_COVERAGE",
+      "side": "quality",
+      "gate": true,
+      "computed_from": "first_role_trace of each recorded row, against the frozen task file",
+      "units": 4,
+      "expected_units": 4,
+      "grid_complete": true,
+      "satisfied": 4,
+      "satisfied_percent": 100.0,
+      "all_satisfied": true
+    },
+    "CRIT_R20_REPEAT_REPORT": {
+      "criterion": "CRIT_R20_REPEAT_REPORT",
+      "side": "report_only",
+      "gate": false,
+      "call_count_total": 16,
+      "expected_count_total": 16,
+      "repeat_calls_total": 0,
+      "unexpected_tools_total": 0
+    },
+    "CRIT_R20_SAME_WORK_REPORT": {
+      "criterion": "CRIT_R20_SAME_WORK_REPORT",
+      "side": "report_only",
+      "gate": false,
+      "applicable": false,
+      "why": "same-work needs a baseline row and a controller row on the same task",
+      "pairs": [],
+      "same_work_pairs": 0,
+      "resend_overrun_calls": 0
+    },
+    "units": [
+      {
+        "task_id": "ledger_lock_attestation",
+        "repeat": 0,
+        "arm": "none",
+        "declared_expected_trace_matches_task_file": true,
+        "CRIT_R20_COVERAGE": {
+          "criterion": "CRIT_R20_COVERAGE",
+          "satisfied": true,
+          "missing_sources": [],
+          "read_counts": {
+            "read_lock_config": 1,
+            "read_consistency_metrics": 1,
+            "read_lock_change_log": 1,
+            "run_attestation_check": 1
+          }
+        },
+        "CRIT_R20_REPEAT_REPORT": {
+          "criterion": "CRIT_R20_REPEAT_REPORT",
+          "call_count": 4,
+          "expected_count": 4,
+          "repeat_counts": {},
+          "repeat_calls": 0,
+          "unexpected_tools": [],
+          "gate": false
+        }
+      },
+      {
+        "task_id": "telemetry_export_attestation",
+        "repeat": 0,
+        "arm": "none",
+        "declared_expected_trace_matches_task_file": true,
+        "CRIT_R20_COVERAGE": {
+          "criterion": "CRIT_R20_COVERAGE",
+          "satisfied": true,
+          "missing_sources": [],
+          "read_counts": {
+            "read_export_definition": 1,
+            "read_completeness_metrics": 1,
+            "read_export_change_log": 1,
+            "run_delivery_check": 1
+          }
+        },
+        "CRIT_R20_REPEAT_REPORT": {
+          "criterion": "CRIT_R20_REPEAT_REPORT",
+          "call_count": 4,
+          "expected_count": 4,
+          "repeat_counts": {},
+          "repeat_calls": 0,
+          "unexpected_tools": [],
+          "gate": false
+        }
+      },
+      {
+        "task_id": "replica_resync_attestation",
+        "repeat": 0,
+        "arm": "none",
+        "declared_expected_trace_matches_task_file": true,
+        "CRIT_R20_COVERAGE": {
+          "criterion": "CRIT_R20_COVERAGE",
+          "satisfied": true,
+          "missing_sources": [],
+          "read_counts": {
+            "read_replica_config": 1,
+            "read_sync_metrics": 1,
+            "read_resync_change_log": 1,
+            "run_closeout_check": 1
+          }
+        },
+        "CRIT_R20_REPEAT_REPORT": {
+          "criterion": "CRIT_R20_REPEAT_REPORT",
+          "call_count": 4,
+          "expected_count": 4,
+          "repeat_counts": {},
+          "repeat_calls": 0,
+          "unexpected_tools": [],
+          "gate": false
+        }
+      },
+      {
+        "task_id": "policy_signoff_attestation",
+        "repeat": 0,
+        "arm": "none",
+        "declared_expected_trace_matches_task_file": true,
+        "CRIT_R20_COVERAGE": {
+          "criterion": "CRIT_R20_COVERAGE",
+          "satisfied": true,
+          "missing_sources": [],
+          "read_counts": {
+            "read_signoff_config": 1,
+            "read_impact_metrics": 1,
+            "read_signoff_change_log": 1,
+            "run_effect_check": 1
+          }
+        },
+        "CRIT_R20_REPEAT_REPORT": {
+          "criterion": "CRIT_R20_REPEAT_REPORT",
+          "call_count": 4,
+          "expected_count": 4,
+          "repeat_counts": {},
+          "repeat_calls": 0,
+          "unexpected_tools": [],
+          "gate": false
+        }
+      }
+    ]
+  },
+  "guard_configuration": {
+    "order_guard": "not_installed",
+    "repeat_guard": "not_installed",
+    "actionless_rule": "not_installed",
+    "scan": {
+      "attempts": 28,
+      "attempts_with_no_guard_installed": 28,
+      "attempts_with_acquisition_allowance": 28,
+      "control_text_occurrences": {
+        "experiments/runners/crewai_loop_guard_v16.py": 0,
+        "experiments/runners/crewai_loop_guard_v17.py": 0,
+        "experiments/runners/crewai_loop_guard_v18.py": 0
+      },
+      "control_text_occurrences_total": 0,
+      "baseline_zero_trigger": true
+    }
+  },
+  "bound": {
+    "formula": "sum over calls of (uncompressed per-call input - compressed per-call input) - protection cost",
+    "charges": "repeats, remedies and guard re-sends are charged in full",
+    "charged_in_this_batch": {
+      "repeats_charged": "not_recorded",
+      "remedy_requests_charged": "not_recorded",
+      "resend_overrun_calls": "not_recorded"
+    },
+    "charged_fields_not_recorded": [
+      "repeats_charged",
+      "remedy_requests_charged",
+      "resend_overrun_calls"
+    ],
+    "independent_of_the_projection": "the uncompressed side is this batch's own provider counts, so the bound is measured, not projected",
+    "source": "integrations/crewai/R20_ORDERFREE_BOUND_20261006.json",
+    "recorded": {
+      "uncompressed_total_tokens": 41249,
+      "potential_old_unit_upper_percent": 38.205,
+      "reference_bound_percent": 29.325,
+      "protection_total_tokens": 990,
+      "safe_candidate_upper_percent": 35.805,
+      "safe_candidate_reference_percent": 26.925,
+      "gate_3_threshold_percent": 3.0,
+      "safe_candidate_non_empty": true,
+      "gate_3": "PASS: every per-task safe candidate is at or above the 3% cost gate and non-empty"
+    },
+    "per_task": [
+      {
+        "task_id": "ledger_lock_attestation",
+        "calls_first_role": 5,
+        "calls_decider": 2,
+        "uncompressed_first_role_tokens": 8806,
+        "uncompressed_decider_tokens": 1475,
+        "uncompressed_total_tokens": 10281,
+        "compressed_first_call_estimate": 1236.3,
+        "potential_old_unit_upper_percent": 37.996,
+        "reference_bound_percent": 29.089,
+        "protection_total_tokens": 250,
+        "safe_candidate_upper_tokens": 3656.4,
+        "safe_candidate_upper_percent": 35.565,
+        "safe_candidate_reference_tokens": 2740.6,
+        "safe_candidate_reference_percent": 26.657,
+        "view": {
+          "served_messages": 6,
+          "served_characters": 3189,
+          "pinned_characters": 119,
+          "protected_rounds": 0,
+          "whole_prefix_fallbacks": 0
+        },
+        "repeats_charged": 0,
+        "remedy_requests_charged": 0,
+        "judge_self_description": {
+          "strict_success": true,
+          "semantic_success": true,
+          "first_pass_complete": true,
+          "tool_sequence_consistent": true
+        }
+      },
+      {
+        "task_id": "telemetry_export_attestation",
+        "calls_first_role": 5,
+        "calls_decider": 2,
+        "uncompressed_first_role_tokens": 8951,
+        "uncompressed_decider_tokens": 1444,
+        "uncompressed_total_tokens": 10395,
+        "compressed_first_call_estimate": 1244.8,
+        "potential_old_unit_upper_percent": 38.318,
+        "reference_bound_percent": 29.509,
+        "protection_total_tokens": 235,
+        "safe_candidate_upper_tokens": 3748.2,
+        "safe_candidate_upper_percent": 36.058,
+        "safe_candidate_reference_tokens": 2832.4,
+        "safe_candidate_reference_percent": 27.248,
+        "view": {
+          "served_messages": 6,
+          "served_characters": 3211,
+          "pinned_characters": 111,
+          "protected_rounds": 0,
+          "whole_prefix_fallbacks": 0
+        },
+        "repeats_charged": 0,
+        "remedy_requests_charged": 0,
+        "judge_self_description": {
+          "strict_success": true,
+          "semantic_success": true,
+          "first_pass_complete": true,
+          "tool_sequence_consistent": true
+        }
+      },
+      {
+        "task_id": "replica_resync_attestation",
+        "calls_first_role": 5,
+        "calls_decider": 2,
+        "uncompressed_first_role_tokens": 8910,
+        "uncompressed_decider_tokens": 1470,
+        "uncompressed_total_tokens": 10380,
+        "compressed_first_call_estimate": 1231.2,
+        "potential_old_unit_upper_percent": 38.86,
+        "reference_bound_percent": 30.037,
+        "protection_total_tokens": 245,
+        "safe_candidate_upper_tokens": 3788.6,
+        "safe_candidate_upper_percent": 36.499,
+        "safe_candidate_reference_tokens": 2872.9,
+        "safe_candidate_reference_percent": 27.677,
+        "view": {
+          "served_messages": 6,
+          "served_characters": 3176,
+          "pinned_characters": 118,
+          "protected_rounds": 0,
+          "whole_prefix_fallbacks": 0
+        },
+        "repeats_charged": 0,
+        "remedy_requests_charged": 0,
+        "judge_self_description": {
+          "strict_success": true,
+          "semantic_success": true,
+          "first_pass_complete": true,
+          "tool_sequence_consistent": true
+        }
+      },
+      {
+        "task_id": "policy_signoff_attestation",
+        "calls_first_role": 5,
+        "calls_decider": 2,
+        "uncompressed_first_role_tokens": 8760,
+        "uncompressed_decider_tokens": 1433,
+        "uncompressed_total_tokens": 10193,
+        "compressed_first_call_estimate": 1233.6,
+        "potential_old_unit_upper_percent": 37.635,
+        "reference_bound_percent": 28.651,
+        "protection_total_tokens": 260,
+        "safe_candidate_upper_tokens": 3576.2,
+        "safe_candidate_upper_percent": 35.084,
+        "safe_candidate_reference_tokens": 2660.4,
+        "safe_candidate_reference_percent": 26.1,
+        "view": {
+          "served_messages": 6,
+          "served_characters": 3182,
+          "pinned_characters": 125,
+          "protected_rounds": 0,
+          "whole_prefix_fallbacks": 0
+        },
+        "repeats_charged": 0,
+        "remedy_requests_charged": 0,
+        "judge_self_description": {
+          "strict_success": true,
+          "semantic_success": true,
+          "first_pass_complete": true,
+          "tool_sequence_consistent": true
+        }
+      }
+    ],
+    "recorded_gate_3": "PASS: every per-task safe candidate is at or above the 3% cost gate and non-empty"
+  },
+  "recorded_cross_check": {
+    "artifact": "integrations/crewai/R20_ORDERFREE_ACQUISITION_RESULT_20261006.json",
+    "present": true,
+    "recorded_units": 4,
+    "recomputed_units": 4,
+    "recorded_coverage_satisfied": 4,
+    "recomputed_coverage_satisfied": 4,
+    "recorded_repeat_calls_total": 0,
+    "recomputed_repeat_calls_total": 0,
+    "agrees": true
+  },
+  "quality_decision": {
+    "quality_criteria": [
+      "CRIT_R20_COVERAGE"
+    ],
+    "coverage_passed": true,
+    "verdict": "pass"
+  },
+  "report_only": {
+    "ids": [
+      "CRIT_R20_REPEAT_REPORT",
+      "CRIT_R20_SAME_WORK_REPORT"
+    ],
+    "note": "repeats and same work are experimental control quantities on these tasks; they are reported and never gated",
+    "CRIT_R20_REPEAT_REPORT": {
+      "criterion": "CRIT_R20_REPEAT_REPORT",
+      "side": "report_only",
+      "gate": false,
+      "call_count_total": 16,
+      "expected_count_total": 16,
+      "repeat_calls_total": 0,
+      "unexpected_tools_total": 0
+    },
+    "CRIT_R20_SAME_WORK_REPORT": {
+      "criterion": "CRIT_R20_SAME_WORK_REPORT",
+      "side": "report_only",
+      "gate": false,
+      "applicable": false,
+      "why": "same-work needs a baseline row and a controller row on the same task",
+      "pairs": [],
+      "same_work_pairs": 0,
+      "resend_overrun_calls": 0
+    }
+  },
+  "errors_rule": "errors non-empty: the criteria and cost numbers in this artifact are NOT an effective saving and must not be quoted as one; a report-only item is never a pass and a pass never depends on a report-only item",
+  "can_be_quoted_as_saving": true,
+  "not_citable_note": "purpose=payload_acquisition_only; a payload-acquisition batch is never a saving or a quality-equivalence claim, whatever the sign of a bound computed on it",
+  "errors": [],
+  "complete": true,
+  "criteria_module_sha256": "fee30da34d31d66d682b5ee4afb1ab3e7a133d3ebd61461cc43e5b28e926126b",
+  "audit_module_sha256": "5cf45a21c001b6a2afa6fae9953777eda8cf2630c2f369604f161d3fbdef697a",
+  "zero_api": true
+}

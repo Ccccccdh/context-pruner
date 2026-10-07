@@ -1,0 +1,73 @@
+{
+  "batch": "crewai-r27-variable-source-dev-01",
+  "complete": true,
+  "errors": [],
+  "rows": 18,
+  "durable_request_slots": 145,
+  "outcomes": {
+    "per_task": {
+      "shipment_customs_dispatch": {
+        "coverage": {
+          "none": 3,
+          "pruner_v1": 3,
+          "native_summary": 3
+        },
+        "strict": {
+          "none": 0,
+          "pruner_v1": 0,
+          "native_summary": 0
+        },
+        "semantic": {
+          "none": 0,
+          "pruner_v1": 0,
+          "native_summary": 0
+        },
+        "paired_delta_tokens": [
+          3305,
+          3749,
+          3402
+        ],
+        "quality_pass": false,
+        "cost_pass": true
+      },
+      "cluster_failover_hold": {
+        "coverage": {
+          "none": 3,
+          "pruner_v1": 3,
+          "native_summary": 3
+        },
+        "strict": {
+          "none": 2,
+          "pruner_v1": 3,
+          "native_summary": 3
+        },
+        "semantic": {
+          "none": 2,
+          "pruner_v1": 3,
+          "native_summary": 3
+        },
+        "paired_delta_tokens": [
+          4870,
+          5272,
+          5542
+        ],
+        "quality_pass": true,
+        "cost_pass": true
+      }
+    },
+    "all_paired_delta_tokens": [
+      3305,
+      3749,
+      3402,
+      4870,
+      5272,
+      5542
+    ],
+    "positive_pairs": 6,
+    "quality_pass": false,
+    "cost_pass": true
+  },
+  "acceptance_met": false,
+  "can_be_quoted_as_saving": false,
+  "reason": "development pilot changed K after the offline gate; new-task confirmation remains"
+}

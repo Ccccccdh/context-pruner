@@ -1,0 +1,31 @@
+{
+  "amendment": "R15_PAYLOAD_ACQUISITION_01_GATE_SCOPE_20261005",
+  "date": "2026-10-05",
+  "reason": "integration of integrations/REAL_PAYLOAD_PRESCREEN_20261005.md section 2 into the r15 payload gate",
+  "what_changed": [
+    "the gate command now reports the four prescreen-required facets separately per task: history removable text, current evidence and tool rounds, role decision behaviour, and the cross-task dispersion of the bound",
+    "the gate command now reports potential_old_units_upper_bound (opportunity) separately from guard_preserved_safe_candidates (what survives the frozen literal guards), as the prescreen requires",
+    "the gate command's deciding bound is the realizable one (once-only frame text minus protection cost) and the looser ceiling bound is reported for contrast only"
+  ],
+  "what_did_not_change": [
+    "experiments/commands/run_crewai_r15_payload_acquisition.py (sha256 unchanged) -- the recorded payload is untouched",
+    "tasks/stage5_autogen/natural_tasks_r15.json (sha256 unchanged)",
+    "integrations/crewai/PILOT_PROTOCOL_R15_PAYLOAD_ACQUISITION_01.md (sha256 unchanged)",
+    "the already recorded batch runs/stage5-crewai/crewai-r15-payload-none-01 (results.jsonl sha256 unchanged) -- no re-run, no re-scoring",
+    "no r9-r14 freeze, answer or score was read-modified or re-scored"
+  ],
+  "source_sha256": {
+    "before": {
+      "experiments/commands/crewai_candidate_gate_r15_real_payload.py": "048cc99b9148e3f8922b85c13a3cbb63c4e6dfc8462391f445947d9ad3c41f22",
+      "note": "the before-hash is the value recorded inside integrations/crewai/PRE_RUN_FREEZE_R15_PAYLOAD_ACQUISITION_01.json"
+    },
+    "after": {
+      "experiments/commands/crewai_candidate_gate_r15_real_payload.py": "3705ea083da8a1288ceaff9deacc843503322ad94b650889e4659250ef7b5c3b"
+    }
+  },
+  "frozen_runner_sha256": "3fbc61fe4b1ac219ae6efacda21a2f316318e6a2ab02a9912e6980d1489c99af",
+  "frozen_task_sha256": "7164a9252e58c4914620b3b86a1b8b78b3d542e316437831673884b86981bc4a",
+  "payload_results_sha256": "f09fa84e8037db844c79dba49ae453df31cad96f4641b62654bba0a7390b33e9",
+  "gate_output_sha256_after": "28e21228330a083f8db48ddca9dcc30887ea14ca4ed10723ec239d015207b684",
+  "revision_discipline": "per the r15 rule the freeze file itself is immutable; this amendment records the change, the reason and both hashes, and the batch manifest continues to record the freeze file's own SHA256 (40b5c38528c47fac953cb25d416d03686c685646cb3ddbb7205dd23691bf5d33)"
+}

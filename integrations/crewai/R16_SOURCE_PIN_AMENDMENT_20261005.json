@@ -1,0 +1,62 @@
+{
+  "amendment": "R16_SOURCE_PIN_AMENDMENT_20261005",
+  "of_freeze": "integrations/crewai/PRE_RUN_FREEZE_R16_RELEASE_GATE_GUARDED_3ARM_01.json",
+  "freeze_file_sha256": "10b5fbf0a4f0dea7cdf9319851af021ee5f8eeef06482fee51f9d2b3993d6338",
+  "freeze_declared_self_sha256": "c60fc00848d03fc87862f32bb655cc8a4835b0e281e80dec1e1cd850e0eef07d",
+  "batch": "crewai-two-role-r16-release-gate-guarded-3arm-01",
+  "date": "2026-10-05",
+  "amendment_kind": "post-run source pin drift; the freeze file itself is not rewritten",
+  "amendments": [
+    {
+      "entry": 1,
+      "what": "the r16 runner gained the arm-scope switch and the guard-scope manifest fields (r17 round)",
+      "why": "r17 requires the controller guard to be installed on every arm, so the runner needs --guard-scope and must record guard_scope / guard_installed_arms / guard_enabled_all_arms",
+      "when": {
+        "source_mtime_local": "2026-10-06 00:08:45"
+      },
+      "files": [
+        {
+          "path": "experiments/runners/run_crewai_handoff_v16.py",
+          "frozen_sha256": "441390dcf06af8b42967b197cb623835414843ef36f18c8c807a860769716aab",
+          "new_sha256": "6bcbe39e537de96caea1fc419849fff2d1eebb8176247e6db6e749289384927d",
+          "change": "added GUARD_ALL_ARMS, --guard-scope, and the manifest fields guard_scope / guard_installed_arms / guard_enabled_all_arms"
+        }
+      ],
+      "which_batches_used_which_revision": {
+        "crewai-r16-payload-none-01": "used the dedicated acquisition runner cb39b112bd46 (its manifest records it); it does not import the three-arm runner",
+        "crewai-two-role-r16-release-gate-guarded-3arm-01": "frozen revision 441390dcf06a (manifest records it)",
+        "crewai-two-role-r16-release-gate-guarded-3arm-resume-a-01": "frozen revision 441390dcf06a (manifest records it)",
+        "crewai-two-role-r16-release-gate-guarded-mock-01": "frozen revision 441390dcf06a (manifest records it)"
+      }
+    },
+    {
+      "entry": 2,
+      "what": "the r16 audit gained the guard_installed_arms check and the 'guard fired on a non-plugin arm' stop condition (r17 round)",
+      "why": "r17 pre-registers the arm-scope assertion and its stop condition in the audit",
+      "when": {
+        "source_mtime_local": "2026-10-06 00:09:07"
+      },
+      "files": [
+        {
+          "path": "experiments/audits/audit_crewai_handoff_v16.py",
+          "frozen_sha256": "c91483ff26404cb16d4589c35d72afca19421379a48dce466520eb5b7fc197b0",
+          "new_sha256": "851ea49185687c79969d3a4d958156f867b5a0a8223d553501ba6c411d3accc7",
+          "change": "reads guard_installed_arms; treats a rejection on an arm the manifest declares guarded as the r17 stop condition"
+        }
+      ],
+      "which_batches_used_which_revision": {
+        "crewai-two-role-r16-release-gate-guarded-3arm-resume-a-01": "the stored audit summary was written 2026-10-05 23:50:22, i.e. before the auditor edit at 2026-10-06 00:09:07, so that audit was executed by the frozen revision c91483ff2640"
+      },
+      "audit_conclusion_basis": "the r16 pilot's audit verdict was produced by the frozen revision of the auditor; the auditor has been edited since, so the stored verdict is not reproducible by running the current auditor"
+    }
+  ],
+  "frozen_experiment_sources_valid": false,
+  "frozen_experiment_sources_valid_reason": "two pinned sources are no longer byte-identical to the frozen revision: the run was valid when recorded (each batch manifest records the frozen runner hash 441390dcf06a and the frozen freeze hash 2460ac9fa3aa), but a re-run today would execute different code for both the runner and the auditor, so the pins are not currently valid",
+  "frozen_batch_records_remain_valid": {
+    "basis": "each of the two three-arm manifests records freeze_sha256 = 2460ac9fa3aa9a5507b4be5c5733adccb5d1db0c93edb7db93f093254b196049 and runner_sha256 = 441390dcf06af8b42967b197cb623835414843ef36f18c8c807a860769716aab",
+    "note": "that is what makes the recorded numbers attributable to the frozen revision, and it is independent of the fact that the sources have since been edited"
+  },
+  "timeline_artifact": "integrations/crewai/R16_SOURCE_PIN_TIMELINE_20261005.json",
+  "no_paid_request": "written without issuing any API request",
+  "immutability": "immutable once written; a further edit needs another amendment file and will fail the ledger check until it is registered"
+}

@@ -1,0 +1,113 @@
+{
+  "batch": "crewai-r20-orderfree-fullcapture-acquisition-api-01",
+  "samples": 4,
+  "units_per_arm": 4,
+  "purpose": "payload_acquisition_only",
+  "max_api_requests": 30,
+  "tasks": [
+    "ledger_lock_attestation",
+    "telemetry_export_attestation",
+    "replica_resync_attestation",
+    "policy_signoff_attestation"
+  ],
+  "methods": [
+    "none"
+  ],
+  "repeats": 1,
+  "citable_as_saving": false,
+  "citable_as_quality_equivalence": false,
+  "model": "deepseek-v4-flash",
+  "max_output_tokens": 512,
+  "manifest": {
+    "batch": "crewai-r20-orderfree-fullcapture-acquisition-api-01",
+    "tasks": [
+      "ledger_lock_attestation",
+      "telemetry_export_attestation",
+      "replica_resync_attestation",
+      "policy_signoff_attestation"
+    ],
+    "methods": [
+      "none"
+    ],
+    "repeats": 1,
+    "units_per_arm": 4,
+    "controller_guard_installed": false,
+    "runner_sha256": "d88a3876ef9325ec4071077b6cbc178d3bbd69b5fcb356c4de1fe47b7945b1b9",
+    "judge_sha256": "26aea58bbbe57aa6fc451e00436254636cc01df97c0ec33d321cad73924304e1",
+    "task_sha256": "543b57953a98046d6e0c18a2161c8c96f7a624a901596ac70df3d928d3ff8d3d",
+    "criteria_sha256": "fee30da34d31d66d682b5ee4afb1ab3e7a133d3ebd61461cc43e5b28e926126b",
+    "freeze_path": "integrations/crewai/PRE_RUN_FREEZE_R20_ORDERFREE_ACQUISITION_01.json",
+    "freeze_sha256": "6e3d1c8480b50e7357de61ccd1d9f0790cd1bec4e12bd24aed2fed13d890a302",
+    "model": "deepseek-v4-flash",
+    "mode": "api",
+    "base_url": "https://api.deepseek.com",
+    "budget": {
+      "host": "crewai",
+      "provider_tokens": {
+        "soft": 1200,
+        "hard": 3000,
+        "target": 900
+      },
+      "estimated_tokens": {
+        "soft": 3085,
+        "hard": 7712,
+        "target": 2314
+      }
+    },
+    "limits": {
+      "fixed_reserved_tokens": 300,
+      "max_output_tokens": 512,
+      "max_summary_tokens": 1024,
+      "max_summary_calls": 4
+    },
+    "max_api_requests": 30,
+    "purpose": "payload_acquisition_only",
+    "citable_as_saving": false,
+    "citable_as_quality_equivalence": false,
+    "cache_metering_fields": [
+      "prompt_cache_hit_tokens",
+      "prompt_cache_miss_tokens",
+      "cache_tokens_source",
+      "utc_started",
+      "utc_finished",
+      "off_peak_window"
+    ]
+  },
+  "source_sha256": {
+    "experiments/commands/run_crewai_r20_orderfree_acquisition.py": "d88a3876ef9325ec4071077b6cbc178d3bbd69b5fcb356c4de1fe47b7945b1b9",
+    "experiments/commands/run_crewai_r19_acquisition.py": "f754ae1348445f6fc307ee3d11df38840fb3bb9a78a734e3989823c634eb3ad6",
+    "experiments/commands/run_crewai_r17_confirmation_acquisition.py": "fed8633a6f29b5b58fd88c9c747937caec3de5dd7e89ce856b0091a2f21b7427",
+    "experiments/runners/crewai_capture_v19.py": "03419f730c9930f425ee53a6ab77874b8bd72af90f5dd22dba48ec19674e29b9",
+    "experiments/runners/run_crewai_experiment.py": "0c0cd1d3e30ea837b323e1318321804433c20f8c9fdcd3a40b42deb1849554f1",
+    "experiments/runners/crewai_semantic_equivalence_v8.py": "26aea58bbbe57aa6fc451e00436254636cc01df97c0ec33d321cad73924304e1",
+    "tasks/stage5_autogen/natural_tasks_r20_orderfree.json": "543b57953a98046d6e0c18a2161c8c96f7a624a901596ac70df3d928d3ff8d3d",
+    "experiments/audits/criteria_crewai_r20_orderfree.py": "fee30da34d31d66d682b5ee4afb1ab3e7a133d3ebd61461cc43e5b28e926126b",
+    "integrations/crewai/R20_ORDERFREE_PREREGISTRATION_DRAFT_20261006.md": "71d1278e1bf51523e585439145309f067ad854fd1fa862c12136fc9a7fb207be",
+    "integrations/crewai/PRE_RUN_FREEZE_R20_ORDERFREE_ACQUISITION_01.json": ""
+  },
+  "why": "the r20 order-free task family has no recorded payload of its own; the design D cost reading is arithmetic on r17 trajectories and must not be presented as a result for these tasks",
+  "request_arithmetic": {
+    "expected_calls_per_sample": 7,
+    "samples": 4,
+    "expected_requests": 28,
+    "hard_cap": 30,
+    "note": "the r19 batch of the same shape used 21 of 30; the cap is the same 30"
+  },
+  "stop_line": [
+    "global request cap reached",
+    "empty model response",
+    "connection-class error"
+  ],
+  "not_citable": "this batch is not a saving and not a quality-equivalence result",
+  "cache_accounting": "cache changes dollars only, never token counts; the acceptance line is complete provider tokens with every repeat, remedy and guard request charged in full",
+  "freeze_discipline": {
+    "write_once": "written once and never regenerated",
+    "refusal_assertion": "the writer refuses to run when the target exists",
+    "amendments": "any change is recorded in *_FREEZE_AMENDMENT_<date>.json",
+    "pinned_sources": "a pinned source must not be edited after this freeze"
+  },
+  "protocol_note": "the delegated r19 code writes its own protocol string into the manifest; the batch is identified by this batch id, the recorded r20 task ids and this freeze",
+  "freeze_sha256": "6e3d1c8480b50e7357de61ccd1d9f0790cd1bec4e12bd24aed2fed13d890a302",
+  "self_hash_of": "the freeze content with every freeze_sha256 value left empty",
+  "revision_discipline": "immutable once written; revisions go to *_FREEZE_AMENDMENT_<date>.json"
+}

@@ -1,0 +1,193 @@
+[
+  {
+    "task_id": "artifact_signing_publication",
+    "title": "三源构件签名发布核验",
+    "task": "构件集 bundle-r6 的发布批次 publish-34 需要核验。读取发布清单、签名报告和最终发布校验，三项来源都至少读取一次，顺序不限、可重复。只有所有签名有效且最终校验通过才可发布。",
+    "history_constraint": "bundle-r6 与 publish-34 是当前批次；旧批次 publish-19 已撤销，不得当作当前对象。",
+    "history_topic": "旧发布批次撤销记录、签名争议与过期窗口",
+    "tools": [
+      {
+        "name": "read_artifact_manifest",
+        "call": {
+          "bundle": "bundle-r6"
+        },
+        "result": {
+          "bundle": "bundle-r6",
+          "batch": "publish-34",
+          "artifact_count": 9,
+          "manifest_sha": "art-82f1"
+        },
+        "evidence_parts": [
+          "\"bundle\": \"bundle-r6\"",
+          "\"batch\": \"publish-34\"",
+          "\"artifact_count\": 9"
+        ]
+      },
+      {
+        "name": "read_signature_report",
+        "call": {
+          "batch": "publish-34"
+        },
+        "result": {
+          "batch": "publish-34",
+          "invalid_signatures": 0,
+          "checked_signatures": 9,
+          "previous_batch": "publish-19"
+        },
+        "evidence_parts": [
+          "\"invalid_signatures\": 0",
+          "\"checked_signatures\": 9"
+        ]
+      },
+      {
+        "name": "run_publication_check",
+        "call": {
+          "bundle": "bundle-r6"
+        },
+        "result": {
+          "bundle": "bundle-r6",
+          "publication_ready": true,
+          "blocking_checks": 0,
+          "reviewer_count": 2
+        },
+        "evidence_parts": [
+          "\"publication_ready\": true",
+          "\"blocking_checks\": 0"
+        ]
+      }
+    ],
+    "decision": "AUTHORIZE",
+    "handle_facts": [
+      "bundle-r6",
+      "publish-34",
+      "publication_ready true"
+    ],
+    "answer_facts": [
+      "artifact_count 9",
+      "invalid_signatures 0",
+      "publication_ready true",
+      "blocking_checks 0"
+    ],
+    "forbidden_facts": [
+      "publish-19"
+    ],
+    "region_fact": "",
+    "version_fact": "publish-34",
+    "expected_terms": [
+      "bundle-r6",
+      "publish-34",
+      "publication_ready true",
+      "AUTHORIZE"
+    ]
+  },
+  {
+    "task_id": "replica_rebuild_pause",
+    "title": "五源副本重建审核",
+    "task": "存储池 pool-v3 的重建申请 rebuild-81 需要审核。读取重建计划、副本健康、容量快照、变更记录和最终就绪校验，五项来源都至少读取一次，顺序不限、可重复。容量充足仍不能覆盖副本缺失和最终校验失败，应暂缓。",
+    "history_constraint": "pool-v3 与 rebuild-81 是本次申请；旧申请 rebuild-63 已取消，不得作为当前重建。",
+    "history_topic": "旧副本重建申请取消记录、容量误判与过期维护窗口",
+    "tools": [
+      {
+        "name": "read_rebuild_plan",
+        "call": {
+          "pool": "pool-v3"
+        },
+        "result": {
+          "pool": "pool-v3",
+          "request": "rebuild-81",
+          "target_replicas": 4,
+          "plan_sha": "reb-6d17"
+        },
+        "evidence_parts": [
+          "\"pool\": \"pool-v3\"",
+          "\"request\": \"rebuild-81\""
+        ]
+      },
+      {
+        "name": "read_replica_status",
+        "call": {
+          "pool": "pool-v3"
+        },
+        "result": {
+          "pool": "pool-v3",
+          "missing_replicas": 1,
+          "checksum_state": "degraded"
+        },
+        "evidence_parts": [
+          "\"missing_replicas\": 1",
+          "\"checksum_state\": \"degraded\""
+        ]
+      },
+      {
+        "name": "read_capacity_snapshot",
+        "call": {
+          "pool": "pool-v3"
+        },
+        "result": {
+          "pool": "pool-v3",
+          "free_capacity_gb": 200,
+          "capacity_state": "sufficient"
+        },
+        "evidence_parts": [
+          "\"free_capacity_gb\": 200",
+          "\"capacity_state\": \"sufficient\""
+        ]
+      },
+      {
+        "name": "read_rebuild_change_log",
+        "call": {
+          "request": "rebuild-81"
+        },
+        "result": {
+          "request": "rebuild-81",
+          "record_state": "open",
+          "previous_request": "rebuild-63",
+          "change_step": 4
+        },
+        "evidence_parts": [
+          "\"record_state\": \"open\"",
+          "\"previous_request\": \"rebuild-63\""
+        ]
+      },
+      {
+        "name": "run_rebuild_check",
+        "call": {
+          "pool": "pool-v3"
+        },
+        "result": {
+          "pool": "pool-v3",
+          "rebuild_ready": false,
+          "blocking_checks": 1,
+          "reviewer_count": 3
+        },
+        "evidence_parts": [
+          "\"rebuild_ready\": false",
+          "\"blocking_checks\": 1"
+        ]
+      }
+    ],
+    "decision": "PAUSE",
+    "handle_facts": [
+      "pool-v3",
+      "rebuild-81",
+      "rebuild_ready false"
+    ],
+    "answer_facts": [
+      "missing_replicas 1",
+      "free_capacity_gb 200",
+      "rebuild_ready false",
+      "blocking_checks 1"
+    ],
+    "forbidden_facts": [
+      "rebuild-63"
+    ],
+    "region_fact": "",
+    "version_fact": "rebuild-81",
+    "expected_terms": [
+      "pool-v3",
+      "rebuild-81",
+      "rebuild_ready false",
+      "PAUSE"
+    ]
+  }
+]

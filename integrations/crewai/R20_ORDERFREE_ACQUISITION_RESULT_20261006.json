@@ -1,0 +1,210 @@
+{
+  "artifact": "R20_ORDERFREE_ACQUISITION_RESULT_20261006",
+  "batch": "crewai-r20-orderfree-fullcapture-acquisition-api-01",
+  "mode": "api",
+  "purpose": "payload_acquisition_only",
+  "citable_as_saving": false,
+  "citable_as_quality_equivalence": false,
+  "not_citable_note": "this batch gives the r20 task family its own payload; it is neither a saving nor a quality-equivalence claim",
+  "requests": {
+    "charged": 28,
+    "cap": 30,
+    "rows": 4,
+    "failures": 0
+  },
+  "quality_self_description": {
+    "strict": 4,
+    "semantic": 4,
+    "first_pass": 4,
+    "tool_sequence_consistent": 4
+  },
+  "criteria": {
+    "criterion_ids": [
+      "CRIT_R20_COVERAGE",
+      "CRIT_R20_REPEAT_REPORT",
+      "CRIT_R20_SAME_WORK_REPORT"
+    ],
+    "quality_criteria": [
+      "CRIT_R20_COVERAGE"
+    ],
+    "units": [
+      {
+        "task_id": "ledger_lock_attestation",
+        "repeat": 0,
+        "arm": "none",
+        "CRIT_R20_COVERAGE": {
+          "criterion": "CRIT_R20_COVERAGE",
+          "satisfied": true,
+          "missing_sources": [],
+          "read_counts": {
+            "read_lock_config": 1,
+            "read_consistency_metrics": 1,
+            "read_lock_change_log": 1,
+            "run_attestation_check": 1
+          }
+        },
+        "CRIT_R20_REPEAT_REPORT": {
+          "criterion": "CRIT_R20_REPEAT_REPORT",
+          "call_count": 4,
+          "expected_count": 4,
+          "repeat_counts": {},
+          "repeat_calls": 0,
+          "unexpected_tools": [],
+          "gate": false
+        }
+      },
+      {
+        "task_id": "telemetry_export_attestation",
+        "repeat": 0,
+        "arm": "none",
+        "CRIT_R20_COVERAGE": {
+          "criterion": "CRIT_R20_COVERAGE",
+          "satisfied": true,
+          "missing_sources": [],
+          "read_counts": {
+            "read_export_definition": 1,
+            "read_completeness_metrics": 1,
+            "read_export_change_log": 1,
+            "run_delivery_check": 1
+          }
+        },
+        "CRIT_R20_REPEAT_REPORT": {
+          "criterion": "CRIT_R20_REPEAT_REPORT",
+          "call_count": 4,
+          "expected_count": 4,
+          "repeat_counts": {},
+          "repeat_calls": 0,
+          "unexpected_tools": [],
+          "gate": false
+        }
+      },
+      {
+        "task_id": "replica_resync_attestation",
+        "repeat": 0,
+        "arm": "none",
+        "CRIT_R20_COVERAGE": {
+          "criterion": "CRIT_R20_COVERAGE",
+          "satisfied": true,
+          "missing_sources": [],
+          "read_counts": {
+            "read_replica_config": 1,
+            "read_sync_metrics": 1,
+            "read_resync_change_log": 1,
+            "run_closeout_check": 1
+          }
+        },
+        "CRIT_R20_REPEAT_REPORT": {
+          "criterion": "CRIT_R20_REPEAT_REPORT",
+          "call_count": 4,
+          "expected_count": 4,
+          "repeat_counts": {},
+          "repeat_calls": 0,
+          "unexpected_tools": [],
+          "gate": false
+        }
+      },
+      {
+        "task_id": "policy_signoff_attestation",
+        "repeat": 0,
+        "arm": "none",
+        "CRIT_R20_COVERAGE": {
+          "criterion": "CRIT_R20_COVERAGE",
+          "satisfied": true,
+          "missing_sources": [],
+          "read_counts": {
+            "read_signoff_config": 1,
+            "read_impact_metrics": 1,
+            "read_signoff_change_log": 1,
+            "run_effect_check": 1
+          }
+        },
+        "CRIT_R20_REPEAT_REPORT": {
+          "criterion": "CRIT_R20_REPEAT_REPORT",
+          "call_count": 4,
+          "expected_count": 4,
+          "repeat_counts": {},
+          "repeat_calls": 0,
+          "unexpected_tools": [],
+          "gate": false
+        }
+      }
+    ],
+    "batch": {
+      "units": 4,
+      "coverage_satisfied": 4,
+      "coverage_satisfied_percent": 100.0,
+      "repeat_calls_total": 0
+    }
+  },
+  "cache": {
+    "attempts": 28,
+    "input_tokens": 41249,
+    "output_tokens": 1664,
+    "prompt_cache_hit_tokens": 28288,
+    "prompt_cache_miss_tokens": 12961,
+    "hit_share_percent": 68.58,
+    "attempts_off_peak": 28,
+    "all_attempts_off_peak": true,
+    "by_attempt_index": {
+      "0": {
+        "attempts": 4,
+        "input": 6266,
+        "hit": 0,
+        "miss": 6266
+      },
+      "1": {
+        "attempts": 4,
+        "input": 6698,
+        "hit": 6016,
+        "miss": 682
+      },
+      "2": {
+        "attempts": 4,
+        "input": 7077,
+        "hit": 6144,
+        "miss": 933
+      },
+      "3": {
+        "attempts": 4,
+        "input": 7481,
+        "hit": 6656,
+        "miss": 825
+      },
+      "4": {
+        "attempts": 4,
+        "input": 7905,
+        "hit": 7168,
+        "miss": 737
+      },
+      "5": {
+        "attempts": 4,
+        "input": 2722,
+        "hit": 0,
+        "miss": 2722
+      },
+      "6": {
+        "attempts": 4,
+        "input": 3100,
+        "hit": 2304,
+        "miss": 796
+      }
+    }
+  },
+  "cost_usd": {
+    "prices_per_million": {
+      "hit": 0.003,
+      "miss": 0.15,
+      "output": 0.45
+    },
+    "off_peak_multiplier": 0.5,
+    "peak_equivalent": 0.002778,
+    "billed": 0.001389,
+    "note": "output price is the stated stand-in; the two input prices are official"
+  },
+  "what_is_still_missing_for_three_arms": [
+    "the three-arm baseline comparison needs a plugin arm and a summary arm on these four tasks; this batch is the uncompressed arm only",
+    "the guard configuration for this family is not yet frozen (design D keeps only the action-less rule, or drops the guard entirely)",
+    "the per-task payload bound for these tasks has not been computed yet",
+    "the criteria module must be wired into the batch audit that decides a pass"
+  ]
+}

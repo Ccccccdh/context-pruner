@@ -1,0 +1,47 @@
+{
+  "amendment": "R15_RELEASE_GATE_3ARM_FREEZE_AMENDMENT_20261005",
+  "date": "2026-10-05",
+  "scope": "crewai-two-role-r15-release-gate-3arm-01 -> crewai-two-role-r15-release-gate-3arm-resume-a-01",
+  "reason": [
+    "the first paid run stopped exactly at the pre-registered global request cap (280/280) with 35 of 36 samples recorded, and freezes are immutable, so the continuation runs under a new batch ID with its own freeze",
+    "the independent audit found a bookkeeping defect: the runner recorded the freeze file's byte hash under manifest.freeze_sha256 while the freeze declares a content self-hash (both copies of freeze_sha256 blanked, since a file cannot contain its own digest); the two values are now recorded separately"
+  ],
+  "what_changed": [
+    "experiments/runners/run_crewai_handoff_v15.py now records freeze_path (normalised to forward slashes), freeze_sha256 (the freeze file's byte hash) and freeze_declared_self_sha256 (the declared content self-hash)",
+    "experiments/audits/audit_crewai_handoff_v15.py checks both values separately and recomputes the self-hash with every freeze_sha256 copy blanked",
+    "new freeze integrations/crewai/PRE_RUN_FREEZE_R15_RELEASE_GATE_3ARM_RESUME_A_01.json for the continuation batch, which declares the 35 preserved rows and their sha256"
+  ],
+  "what_did_not_change": [
+    "the four task contracts and tasks/stage5_autogen/natural_tasks_r15.json (sha256 unchanged)",
+    "the plugin mechanism (crewai_toolrounds_contract_v13.py, sha256 unchanged), the pinning module and the frozen r8 judge (sha256 unchanged)",
+    "the acceptance conditions, the 12/12 per-arm unit count, the request cap arithmetic and the homogeneity boundary",
+    "the original batch directory runs/stage5-crewai/crewai-two-role-r15-release-gate-3arm-01 -- preserved byte-for-byte, no re-scoring, no re-running",
+    "no r9-r14 freeze, answer or score was modified or re-scored"
+  ],
+  "source_sha256": {
+    "experiments/runners/run_crewai_handoff_v15.py": {
+      "before": "234d42eca6be13d3d5f13cbab2d18a6d56dde0ba61ab876780eb58874962a10c",
+      "after": "cadf2e6f6447d5e15bbbc00ae387ed78a514ba12636911744489d1f5c09ea678"
+    },
+    "experiments/audits/audit_crewai_handoff_v15.py": {
+      "note": "updated in the same step; the new freeze hashes the current bytes"
+    }
+  },
+  "freezes": {
+    "original": {
+      "path": "integrations/crewai/PRE_RUN_FREEZE_R15_RELEASE_GATE_3ARM_01.json",
+      "file_sha256": "f48a47d82bdbe3d16b74175f83fb538197cb4846eb38f6ac651dc6205a996cb3",
+      "declared_self_sha256": "38cea63f3cc0ec4d60767bc2fe1bf72d622a7bbaa8a915ccedbe2b9b4a89c895",
+      "status": "unchanged, preserved for the record"
+    },
+    "continuation": {
+      "path": "integrations/crewai/PRE_RUN_FREEZE_R15_RELEASE_GATE_3ARM_RESUME_A_01.json",
+      "declared_self_sha256": "057a85ae523d3940ad6a4f0f8dcd84c9c42b45a08c9c3342072789259009b488"
+    }
+  },
+  "cap_arithmetic_for_the_continuation": {
+    "requests": 60,
+    "why": "one missing sample is 7 agent calls; 60 gives >8x headroom and keeps the continuation far below any large spend",
+    "stop_line": "global request cap reached, empty model response, connection-class error"
+  }
+}

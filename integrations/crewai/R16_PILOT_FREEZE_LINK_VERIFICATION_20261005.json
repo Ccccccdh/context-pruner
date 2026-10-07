@@ -1,0 +1,61 @@
+{
+  "freeze_path": "integrations/crewai/PRE_RUN_FREEZE_R16_RELEASE_GATE_GUARDED_3ARM_01.json",
+  "freeze_file_sha256_now": "10b5fbf0a4f0dea7cdf9319851af021ee5f8eeef06482fee51f9d2b3993d6338",
+  "freeze_declared_self_sha256_now": "c60fc00848d03fc87862f32bb655cc8a4835b0e281e80dec1e1cd850e0eef07d",
+  "note": "the freeze file was regenerated after the pilot for administrative revisions recorded in its amendment file; the batches' manifests keep the hash they recorded at run time",
+  "batches": {
+    "crewai-two-role-r16-release-gate-guarded-3arm-01": {
+      "manifest_freeze_file_sha256": "2460ac9fa3aa9a5507b4be5c5733adccb5d1db0c93edb7db93f093254b196049",
+      "manifest_declared_self_sha256": "c6a274077f3376d877c187c81696324cad88d27ae590255d5a8426a8704ea393",
+      "freeze_path_matches": true,
+      "purpose": "three_arm_pilot",
+      "citable_as_saving": false,
+      "citable_as_quality_equivalence": false,
+      "limits": {
+        "fixed_reserved_tokens": 300,
+        "max_output_tokens": 512,
+        "max_summary_tokens": 1024,
+        "max_summary_calls": 4,
+        "guard_max_rejections": 6
+      },
+      "field_mismatches": [],
+      "substantive_source_hashes_identical": true
+    },
+    "crewai-two-role-r16-release-gate-guarded-3arm-resume-a-01": {
+      "manifest_freeze_file_sha256": "2460ac9fa3aa9a5507b4be5c5733adccb5d1db0c93edb7db93f093254b196049",
+      "manifest_declared_self_sha256": "c6a274077f3376d877c187c81696324cad88d27ae590255d5a8426a8704ea393",
+      "freeze_path_matches": true,
+      "purpose": "three_arm_pilot_resume_a",
+      "citable_as_saving": false,
+      "citable_as_quality_equivalence": false,
+      "limits": {
+        "fixed_reserved_tokens": 300,
+        "max_output_tokens": 512,
+        "max_summary_tokens": 1024,
+        "max_summary_calls": 4,
+        "guard_max_rejections": 6
+      },
+      "field_mismatches": [],
+      "substantive_source_hashes_identical": true
+    }
+  },
+  "substantive_pins_identical": true,
+  "differences": [],
+  "amendments": [
+    {
+      "revision": 1,
+      "changed": [
+        "integrations/crewai/PILOT_PROTOCOL_TWO_ROLE_R16_RELEASE_GATE_GUARDED_3ARM_01.md section 7 was updated after the r16 payload acquisition batch (crewai-r16-payload-none-01) landed: the projection-only caveat is replaced by the measured r16 bound, the revised three-arm request arithmetic with the guard is recorded, and the remaining preconditions are restated"
+      ],
+      "behaviour_change": "not stated"
+    },
+    {
+      "revision": 2,
+      "changed": [
+        "experiments/runners/run_crewai_handoff_v16.py now writes the batch purpose into the manifest: a --purpose argument was added (default three_arm_pilot), and limits.max_summary_calls plus limits.max_summary_tokens were confirmed present"
+      ],
+      "behaviour_change": "none: the new argument only adds a manifest field, and its default preserves every previously recorded behaviour"
+    }
+  ],
+  "all_checks_pass": true
+}

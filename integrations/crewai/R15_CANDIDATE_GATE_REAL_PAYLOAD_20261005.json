@@ -1,0 +1,1201 @@
+{
+  "batch": "runs\\stage5-crewai\\crewai-r15-payload-none-01",
+  "gate_1_real_payload": {
+    "pass": true,
+    "problems": [],
+    "interface_check_only": false,
+    "batch": "crewai-r15-payload-none-01",
+    "row_count": 12,
+    "mode": "api",
+    "purpose": "payload_acquisition_only",
+    "tasks_in_manifest": [
+      "service_release_gate",
+      "schema_migration_gate",
+      "flag_promotion_gate",
+      "cache_promotion_gate"
+    ],
+    "repeats": 3,
+    "filler_history_pairs": 14,
+    "runner_sha256": "3fbc61fe4b1ac219ae6efacda21a2f316318e6a2ab02a9912e6980d1489c99af",
+    "task_sha256": "7164a9252e58c4914620b3b86a1b8b78b3d542e316437831673884b86981bc4a",
+    "source_sha256": {
+      "results.jsonl": "f09fa84e8037db844c79dba49ae453df31cad96f4641b62654bba0a7390b33e9",
+      "manifest.json": "494a7c4ed2b1f1413ea66369e2b1f5e1977960fe27a45dea3a632acb146c5910"
+    }
+  },
+  "gate_2_quality_safe_space": {
+    "pass": true,
+    "tasks_with_a_safe_unit": 4,
+    "tasks_total": 4,
+    "by_task": {
+      "service_release_gate": {
+        "units": [
+          {
+            "task_id": "service_release_gate",
+            "repeat": 0,
+            "arm": "none",
+            "first_role_trace": [
+              "read_deploy_config",
+              "read_runtime_metrics",
+              "read_change_log",
+              "run_release_check"
+            ],
+            "expected_trace": [
+              "read_deploy_config",
+              "read_runtime_metrics",
+              "read_change_log",
+              "run_release_check"
+            ],
+            "sources_called": 4,
+            "sources_required": 4,
+            "first_pass_complete": true,
+            "remedy_calls": 0,
+            "strict_success": true,
+            "semantic_success": true,
+            "error": "",
+            "safe_candidate": true
+          },
+          {
+            "task_id": "service_release_gate",
+            "repeat": 1,
+            "arm": "none",
+            "first_role_trace": [
+              "read_deploy_config",
+              "read_runtime_metrics",
+              "read_change_log",
+              "run_release_check"
+            ],
+            "expected_trace": [
+              "read_deploy_config",
+              "read_runtime_metrics",
+              "read_change_log",
+              "run_release_check"
+            ],
+            "sources_called": 4,
+            "sources_required": 4,
+            "first_pass_complete": true,
+            "remedy_calls": 0,
+            "strict_success": true,
+            "semantic_success": true,
+            "error": "",
+            "safe_candidate": true
+          },
+          {
+            "task_id": "service_release_gate",
+            "repeat": 2,
+            "arm": "none",
+            "first_role_trace": [
+              "read_deploy_config",
+              "read_runtime_metrics",
+              "read_change_log",
+              "run_release_check"
+            ],
+            "expected_trace": [
+              "read_deploy_config",
+              "read_runtime_metrics",
+              "read_change_log",
+              "run_release_check"
+            ],
+            "sources_called": 4,
+            "sources_required": 4,
+            "first_pass_complete": true,
+            "remedy_calls": 0,
+            "strict_success": true,
+            "semantic_success": true,
+            "error": "",
+            "safe_candidate": true
+          }
+        ],
+        "safe_units": 3,
+        "total_units": 3
+      },
+      "schema_migration_gate": {
+        "units": [
+          {
+            "task_id": "schema_migration_gate",
+            "repeat": 0,
+            "arm": "none",
+            "first_role_trace": [
+              "read_schema_inventory",
+              "read_db_metrics",
+              "read_change_record",
+              "run_migration_check"
+            ],
+            "expected_trace": [
+              "read_schema_inventory",
+              "read_db_metrics",
+              "read_change_record",
+              "run_migration_check"
+            ],
+            "sources_called": 4,
+            "sources_required": 4,
+            "first_pass_complete": true,
+            "remedy_calls": 0,
+            "strict_success": true,
+            "semantic_success": true,
+            "error": "",
+            "safe_candidate": true
+          },
+          {
+            "task_id": "schema_migration_gate",
+            "repeat": 1,
+            "arm": "none",
+            "first_role_trace": [
+              "read_schema_inventory",
+              "read_db_metrics",
+              "read_change_record",
+              "run_migration_check"
+            ],
+            "expected_trace": [
+              "read_schema_inventory",
+              "read_db_metrics",
+              "read_change_record",
+              "run_migration_check"
+            ],
+            "sources_called": 4,
+            "sources_required": 4,
+            "first_pass_complete": true,
+            "remedy_calls": 0,
+            "strict_success": true,
+            "semantic_success": true,
+            "error": "",
+            "safe_candidate": true
+          },
+          {
+            "task_id": "schema_migration_gate",
+            "repeat": 2,
+            "arm": "none",
+            "first_role_trace": [
+              "read_schema_inventory",
+              "read_db_metrics",
+              "read_change_record",
+              "run_migration_check"
+            ],
+            "expected_trace": [
+              "read_schema_inventory",
+              "read_db_metrics",
+              "read_change_record",
+              "run_migration_check"
+            ],
+            "sources_called": 4,
+            "sources_required": 4,
+            "first_pass_complete": true,
+            "remedy_calls": 0,
+            "strict_success": true,
+            "semantic_success": true,
+            "error": "",
+            "safe_candidate": true
+          }
+        ],
+        "safe_units": 3,
+        "total_units": 3
+      },
+      "flag_promotion_gate": {
+        "units": [
+          {
+            "task_id": "flag_promotion_gate",
+            "repeat": 0,
+            "arm": "none",
+            "first_role_trace": [
+              "read_flag_definition",
+              "read_exposure_metrics",
+              "read_change_record",
+              "run_flag_check"
+            ],
+            "expected_trace": [
+              "read_flag_definition",
+              "read_exposure_metrics",
+              "read_change_record",
+              "run_flag_check"
+            ],
+            "sources_called": 4,
+            "sources_required": 4,
+            "first_pass_complete": true,
+            "remedy_calls": 0,
+            "strict_success": true,
+            "semantic_success": true,
+            "error": "",
+            "safe_candidate": true
+          },
+          {
+            "task_id": "flag_promotion_gate",
+            "repeat": 1,
+            "arm": "none",
+            "first_role_trace": [
+              "read_flag_definition",
+              "read_exposure_metrics",
+              "read_change_record",
+              "run_flag_check"
+            ],
+            "expected_trace": [
+              "read_flag_definition",
+              "read_exposure_metrics",
+              "read_change_record",
+              "run_flag_check"
+            ],
+            "sources_called": 4,
+            "sources_required": 4,
+            "first_pass_complete": true,
+            "remedy_calls": 0,
+            "strict_success": true,
+            "semantic_success": true,
+            "error": "",
+            "safe_candidate": true
+          },
+          {
+            "task_id": "flag_promotion_gate",
+            "repeat": 2,
+            "arm": "none",
+            "first_role_trace": [
+              "read_flag_definition",
+              "read_exposure_metrics",
+              "read_change_record",
+              "run_flag_check"
+            ],
+            "expected_trace": [
+              "read_flag_definition",
+              "read_exposure_metrics",
+              "read_change_record",
+              "run_flag_check"
+            ],
+            "sources_called": 4,
+            "sources_required": 4,
+            "first_pass_complete": true,
+            "remedy_calls": 0,
+            "strict_success": true,
+            "semantic_success": true,
+            "error": "",
+            "safe_candidate": true
+          }
+        ],
+        "safe_units": 3,
+        "total_units": 3
+      },
+      "cache_promotion_gate": {
+        "units": [
+          {
+            "task_id": "cache_promotion_gate",
+            "repeat": 0,
+            "arm": "none",
+            "first_role_trace": [
+              "read_cache_config",
+              "read_consistency_metrics",
+              "read_change_record",
+              "run_cache_check"
+            ],
+            "expected_trace": [
+              "read_cache_config",
+              "read_consistency_metrics",
+              "read_change_record",
+              "run_cache_check"
+            ],
+            "sources_called": 4,
+            "sources_required": 4,
+            "first_pass_complete": true,
+            "remedy_calls": 0,
+            "strict_success": true,
+            "semantic_success": true,
+            "error": "",
+            "safe_candidate": true
+          },
+          {
+            "task_id": "cache_promotion_gate",
+            "repeat": 1,
+            "arm": "none",
+            "first_role_trace": [
+              "read_cache_config",
+              "read_consistency_metrics",
+              "read_change_record",
+              "run_cache_check"
+            ],
+            "expected_trace": [
+              "read_cache_config",
+              "read_consistency_metrics",
+              "read_change_record",
+              "run_cache_check"
+            ],
+            "sources_called": 4,
+            "sources_required": 4,
+            "first_pass_complete": true,
+            "remedy_calls": 0,
+            "strict_success": true,
+            "semantic_success": true,
+            "error": "",
+            "safe_candidate": true
+          },
+          {
+            "task_id": "cache_promotion_gate",
+            "repeat": 2,
+            "arm": "none",
+            "first_role_trace": [
+              "read_cache_config",
+              "read_consistency_metrics",
+              "read_change_record",
+              "run_cache_check"
+            ],
+            "expected_trace": [
+              "read_cache_config",
+              "read_consistency_metrics",
+              "read_change_record",
+              "run_cache_check"
+            ],
+            "sources_called": 4,
+            "sources_required": 4,
+            "first_pass_complete": true,
+            "remedy_calls": 0,
+            "strict_success": true,
+            "semantic_success": true,
+            "error": "",
+            "safe_candidate": true
+          }
+        ],
+        "safe_units": 3,
+        "total_units": 3
+      }
+    },
+    "units": [
+      {
+        "task_id": "service_release_gate",
+        "repeat": 0,
+        "arm": "none",
+        "first_role_trace": [
+          "read_deploy_config",
+          "read_runtime_metrics",
+          "read_change_log",
+          "run_release_check"
+        ],
+        "expected_trace": [
+          "read_deploy_config",
+          "read_runtime_metrics",
+          "read_change_log",
+          "run_release_check"
+        ],
+        "sources_called": 4,
+        "sources_required": 4,
+        "first_pass_complete": true,
+        "remedy_calls": 0,
+        "strict_success": true,
+        "semantic_success": true,
+        "error": "",
+        "safe_candidate": true
+      },
+      {
+        "task_id": "service_release_gate",
+        "repeat": 1,
+        "arm": "none",
+        "first_role_trace": [
+          "read_deploy_config",
+          "read_runtime_metrics",
+          "read_change_log",
+          "run_release_check"
+        ],
+        "expected_trace": [
+          "read_deploy_config",
+          "read_runtime_metrics",
+          "read_change_log",
+          "run_release_check"
+        ],
+        "sources_called": 4,
+        "sources_required": 4,
+        "first_pass_complete": true,
+        "remedy_calls": 0,
+        "strict_success": true,
+        "semantic_success": true,
+        "error": "",
+        "safe_candidate": true
+      },
+      {
+        "task_id": "service_release_gate",
+        "repeat": 2,
+        "arm": "none",
+        "first_role_trace": [
+          "read_deploy_config",
+          "read_runtime_metrics",
+          "read_change_log",
+          "run_release_check"
+        ],
+        "expected_trace": [
+          "read_deploy_config",
+          "read_runtime_metrics",
+          "read_change_log",
+          "run_release_check"
+        ],
+        "sources_called": 4,
+        "sources_required": 4,
+        "first_pass_complete": true,
+        "remedy_calls": 0,
+        "strict_success": true,
+        "semantic_success": true,
+        "error": "",
+        "safe_candidate": true
+      },
+      {
+        "task_id": "schema_migration_gate",
+        "repeat": 0,
+        "arm": "none",
+        "first_role_trace": [
+          "read_schema_inventory",
+          "read_db_metrics",
+          "read_change_record",
+          "run_migration_check"
+        ],
+        "expected_trace": [
+          "read_schema_inventory",
+          "read_db_metrics",
+          "read_change_record",
+          "run_migration_check"
+        ],
+        "sources_called": 4,
+        "sources_required": 4,
+        "first_pass_complete": true,
+        "remedy_calls": 0,
+        "strict_success": true,
+        "semantic_success": true,
+        "error": "",
+        "safe_candidate": true
+      },
+      {
+        "task_id": "schema_migration_gate",
+        "repeat": 1,
+        "arm": "none",
+        "first_role_trace": [
+          "read_schema_inventory",
+          "read_db_metrics",
+          "read_change_record",
+          "run_migration_check"
+        ],
+        "expected_trace": [
+          "read_schema_inventory",
+          "read_db_metrics",
+          "read_change_record",
+          "run_migration_check"
+        ],
+        "sources_called": 4,
+        "sources_required": 4,
+        "first_pass_complete": true,
+        "remedy_calls": 0,
+        "strict_success": true,
+        "semantic_success": true,
+        "error": "",
+        "safe_candidate": true
+      },
+      {
+        "task_id": "schema_migration_gate",
+        "repeat": 2,
+        "arm": "none",
+        "first_role_trace": [
+          "read_schema_inventory",
+          "read_db_metrics",
+          "read_change_record",
+          "run_migration_check"
+        ],
+        "expected_trace": [
+          "read_schema_inventory",
+          "read_db_metrics",
+          "read_change_record",
+          "run_migration_check"
+        ],
+        "sources_called": 4,
+        "sources_required": 4,
+        "first_pass_complete": true,
+        "remedy_calls": 0,
+        "strict_success": true,
+        "semantic_success": true,
+        "error": "",
+        "safe_candidate": true
+      },
+      {
+        "task_id": "flag_promotion_gate",
+        "repeat": 0,
+        "arm": "none",
+        "first_role_trace": [
+          "read_flag_definition",
+          "read_exposure_metrics",
+          "read_change_record",
+          "run_flag_check"
+        ],
+        "expected_trace": [
+          "read_flag_definition",
+          "read_exposure_metrics",
+          "read_change_record",
+          "run_flag_check"
+        ],
+        "sources_called": 4,
+        "sources_required": 4,
+        "first_pass_complete": true,
+        "remedy_calls": 0,
+        "strict_success": true,
+        "semantic_success": true,
+        "error": "",
+        "safe_candidate": true
+      },
+      {
+        "task_id": "flag_promotion_gate",
+        "repeat": 1,
+        "arm": "none",
+        "first_role_trace": [
+          "read_flag_definition",
+          "read_exposure_metrics",
+          "read_change_record",
+          "run_flag_check"
+        ],
+        "expected_trace": [
+          "read_flag_definition",
+          "read_exposure_metrics",
+          "read_change_record",
+          "run_flag_check"
+        ],
+        "sources_called": 4,
+        "sources_required": 4,
+        "first_pass_complete": true,
+        "remedy_calls": 0,
+        "strict_success": true,
+        "semantic_success": true,
+        "error": "",
+        "safe_candidate": true
+      },
+      {
+        "task_id": "flag_promotion_gate",
+        "repeat": 2,
+        "arm": "none",
+        "first_role_trace": [
+          "read_flag_definition",
+          "read_exposure_metrics",
+          "read_change_record",
+          "run_flag_check"
+        ],
+        "expected_trace": [
+          "read_flag_definition",
+          "read_exposure_metrics",
+          "read_change_record",
+          "run_flag_check"
+        ],
+        "sources_called": 4,
+        "sources_required": 4,
+        "first_pass_complete": true,
+        "remedy_calls": 0,
+        "strict_success": true,
+        "semantic_success": true,
+        "error": "",
+        "safe_candidate": true
+      },
+      {
+        "task_id": "cache_promotion_gate",
+        "repeat": 0,
+        "arm": "none",
+        "first_role_trace": [
+          "read_cache_config",
+          "read_consistency_metrics",
+          "read_change_record",
+          "run_cache_check"
+        ],
+        "expected_trace": [
+          "read_cache_config",
+          "read_consistency_metrics",
+          "read_change_record",
+          "run_cache_check"
+        ],
+        "sources_called": 4,
+        "sources_required": 4,
+        "first_pass_complete": true,
+        "remedy_calls": 0,
+        "strict_success": true,
+        "semantic_success": true,
+        "error": "",
+        "safe_candidate": true
+      },
+      {
+        "task_id": "cache_promotion_gate",
+        "repeat": 1,
+        "arm": "none",
+        "first_role_trace": [
+          "read_cache_config",
+          "read_consistency_metrics",
+          "read_change_record",
+          "run_cache_check"
+        ],
+        "expected_trace": [
+          "read_cache_config",
+          "read_consistency_metrics",
+          "read_change_record",
+          "run_cache_check"
+        ],
+        "sources_called": 4,
+        "sources_required": 4,
+        "first_pass_complete": true,
+        "remedy_calls": 0,
+        "strict_success": true,
+        "semantic_success": true,
+        "error": "",
+        "safe_candidate": true
+      },
+      {
+        "task_id": "cache_promotion_gate",
+        "repeat": 2,
+        "arm": "none",
+        "first_role_trace": [
+          "read_cache_config",
+          "read_consistency_metrics",
+          "read_change_record",
+          "run_cache_check"
+        ],
+        "expected_trace": [
+          "read_cache_config",
+          "read_consistency_metrics",
+          "read_change_record",
+          "run_cache_check"
+        ],
+        "sources_called": 4,
+        "sources_required": 4,
+        "first_pass_complete": true,
+        "remedy_calls": 0,
+        "strict_success": true,
+        "semantic_success": true,
+        "error": "",
+        "safe_candidate": true
+      }
+    ]
+  },
+  "gate_3_upper_bound": {
+    "pass": true,
+    "method": "upper_bound(task) = mean over quality-safe units of ((first-call frame characters - later-call growth characters) converted to tokens - protection cost), divided by that unit's complete uncompressed provider tokens.  The frame's growth is subtracted because those bytes are the compressed replacement being re-sent on every later call.",
+    "deciding_bound": "realizable (once-only frame text minus protection cost)",
+    "ceiling_bound_note": "the un-subtracted ceiling is reported per task for contrast and is not the gate: it assumes the compressed replacement costs nothing",
+    "batch_mean_ceiling_upper_bound_percent": 15.1813,
+    "threshold_percent": 3.0,
+    "min_tasks_with_headroom": 3,
+    "tasks_with_nonzero_headroom": 4,
+    "tasks_with_nonzero_headroom_ids": [
+      "service_release_gate",
+      "schema_migration_gate",
+      "flag_promotion_gate",
+      "cache_promotion_gate"
+    ],
+    "batch_mean_upper_bound_percent": 10.247,
+    "per_task": {
+      "service_release_gate": {
+        "safe_units": 3,
+        "headroom_tokens": 1337.33,
+        "upper_bound_percent": 10.3507,
+        "ceiling_upper_bound_percent": 15.2217,
+        "potential_old_units_upper_bound": 4,
+        "guard_preserved_safe_candidates": 3,
+        "guard_survivors": {
+          "required_literals": [
+            "svc-checkout-api",
+            "rel-2207",
+            "us-east-2"
+          ],
+          "shortest_evidence_fragment_per_literal": {
+            "svc-checkout-api": 126,
+            "rel-2207": 80,
+            "us-east-2": 126
+          },
+          "fragments_must_stay_visible": true,
+          "note": "a guard-preserved safe candidate keeps every literal and its shortest evidence fragment in the view; the historical text is what remains removable after those guards"
+        },
+        "facets_first_unit": {
+          "history_removable_facet": {
+            "assistant_history_characters": 755,
+            "user_history_characters": 1730,
+            "frame_characters": 4535,
+            "history_share_of_frame_percent": 54.8,
+            "note": "the prescreen shows this facet alone does not predict saving (r4/r9: 572-646 assistant characters yet -0.26% to +22.25%); it is reported separately and never used as the saving estimate"
+          },
+          "current_evidence_and_tool_rounds_facet": {
+            "frozen_tool_count": 4,
+            "first_role_recorded_rounds": 5,
+            "evidence_marker_bytes": 246,
+            "protected_verbatim": true,
+            "note": "every frozen tool's evidence bytes are protected verbatim by the frozen rule, so they are never removable"
+          },
+          "role_decision_behaviour_facet": {
+            "first_role_calls": 5,
+            "decider_calls": 2,
+            "first_role_trace": [
+              "read_deploy_config",
+              "read_runtime_metrics",
+              "read_change_log",
+              "run_release_check"
+            ],
+            "expected_trace": [
+              "read_deploy_config",
+              "read_runtime_metrics",
+              "read_change_log",
+              "run_release_check"
+            ],
+            "first_pass_complete": true,
+            "remedy_calls": 0,
+            "strict_success": true,
+            "semantic_success": true,
+            "error": ""
+          }
+        },
+        "per_repeat": [
+          {
+            "repeat": 0,
+            "first_frame_input_tokens": 1878,
+            "first_frame_characters": 4535,
+            "later_growth_characters": 1475,
+            "once_only_characters": 3060,
+            "once_only_tokens": 1267,
+            "characters_per_token": 2.4148,
+            "decider_first_frame_input_tokens": 709,
+            "uncompressed_total_tokens": 12386,
+            "protection_cost_tokens": 0,
+            "protection_terms": {
+              "pinned_characters": 0,
+              "pin_tokens": 0,
+              "whole_prefix_fallback_tokens": 0,
+              "auxiliary_summary_tokens": 0
+            },
+            "headroom_tokens": 1267,
+            "upper_bound_percent": 10.2293,
+            "ceiling_upper_bound_percent": 15.1623,
+            "first_role_call_count": 5,
+            "decider_call_count": 2
+          },
+          {
+            "repeat": 1,
+            "first_frame_input_tokens": 1966,
+            "first_frame_characters": 4682,
+            "later_growth_characters": 1527,
+            "once_only_characters": 3155,
+            "once_only_tokens": 1325,
+            "characters_per_token": 2.3815,
+            "decider_first_frame_input_tokens": 702,
+            "uncompressed_total_tokens": 12895,
+            "protection_cost_tokens": 0,
+            "protection_terms": {
+              "pinned_characters": 0,
+              "pin_tokens": 0,
+              "whole_prefix_fallback_tokens": 0,
+              "auxiliary_summary_tokens": 0
+            },
+            "headroom_tokens": 1325,
+            "upper_bound_percent": 10.2753,
+            "ceiling_upper_bound_percent": 15.2462,
+            "first_role_call_count": 5,
+            "decider_call_count": 2
+          },
+          {
+            "repeat": 2,
+            "first_frame_input_tokens": 2054,
+            "first_frame_characters": 4829,
+            "later_growth_characters": 1490,
+            "once_only_characters": 3339,
+            "once_only_tokens": 1420,
+            "characters_per_token": 2.351,
+            "decider_first_frame_input_tokens": 696,
+            "uncompressed_total_tokens": 13463,
+            "protection_cost_tokens": 0,
+            "protection_terms": {
+              "pinned_characters": 0,
+              "pin_tokens": 0,
+              "whole_prefix_fallback_tokens": 0,
+              "auxiliary_summary_tokens": 0
+            },
+            "headroom_tokens": 1420,
+            "upper_bound_percent": 10.5474,
+            "ceiling_upper_bound_percent": 15.2566,
+            "first_role_call_count": 5,
+            "decider_call_count": 2
+          }
+        ]
+      },
+      "schema_migration_gate": {
+        "safe_units": 3,
+        "headroom_tokens": 1334,
+        "upper_bound_percent": 10.3532,
+        "ceiling_upper_bound_percent": 15.192,
+        "potential_old_units_upper_bound": 4,
+        "guard_preserved_safe_candidates": 3,
+        "guard_survivors": {
+          "required_literals": [
+            "mig-7702",
+            "schema-88",
+            "failed_checks 1"
+          ],
+          "shortest_evidence_fragment_per_literal": {
+            "mig-7702": 98,
+            "schema-88": 98,
+            "failed_checks 1": 99
+          },
+          "fragments_must_stay_visible": true,
+          "note": "a guard-preserved safe candidate keeps every literal and its shortest evidence fragment in the view; the historical text is what remains removable after those guards"
+        },
+        "facets_first_unit": {
+          "history_removable_facet": {
+            "assistant_history_characters": 747,
+            "user_history_characters": 1765,
+            "frame_characters": 4574,
+            "history_share_of_frame_percent": 54.92,
+            "note": "the prescreen shows this facet alone does not predict saving (r4/r9: 572-646 assistant characters yet -0.26% to +22.25%); it is reported separately and never used as the saving estimate"
+          },
+          "current_evidence_and_tool_rounds_facet": {
+            "frozen_tool_count": 4,
+            "first_role_recorded_rounds": 5,
+            "evidence_marker_bytes": 240,
+            "protected_verbatim": true,
+            "note": "every frozen tool's evidence bytes are protected verbatim by the frozen rule, so they are never removable"
+          },
+          "role_decision_behaviour_facet": {
+            "first_role_calls": 5,
+            "decider_calls": 2,
+            "first_role_trace": [
+              "read_schema_inventory",
+              "read_db_metrics",
+              "read_change_record",
+              "run_migration_check"
+            ],
+            "expected_trace": [
+              "read_schema_inventory",
+              "read_db_metrics",
+              "read_change_record",
+              "run_migration_check"
+            ],
+            "first_pass_complete": true,
+            "remedy_calls": 0,
+            "strict_success": true,
+            "semantic_success": true,
+            "error": ""
+          }
+        },
+        "per_repeat": [
+          {
+            "repeat": 0,
+            "first_frame_input_tokens": 1869,
+            "first_frame_characters": 4574,
+            "later_growth_characters": 1466,
+            "once_only_characters": 3108,
+            "once_only_tokens": 1270,
+            "characters_per_token": 2.4473,
+            "decider_first_frame_input_tokens": 709,
+            "uncompressed_total_tokens": 12646,
+            "protection_cost_tokens": 0,
+            "protection_terms": {
+              "pinned_characters": 0,
+              "pin_tokens": 0,
+              "whole_prefix_fallback_tokens": 0,
+              "auxiliary_summary_tokens": 0
+            },
+            "headroom_tokens": 1270,
+            "upper_bound_percent": 10.0427,
+            "ceiling_upper_bound_percent": 14.7794,
+            "first_role_call_count": 5,
+            "decider_call_count": 2
+          },
+          {
+            "repeat": 1,
+            "first_frame_input_tokens": 1957,
+            "first_frame_characters": 4724,
+            "later_growth_characters": 1574,
+            "once_only_characters": 3150,
+            "once_only_tokens": 1305,
+            "characters_per_token": 2.4139,
+            "decider_first_frame_input_tokens": 681,
+            "uncompressed_total_tokens": 12813,
+            "protection_cost_tokens": 0,
+            "protection_terms": {
+              "pinned_characters": 0,
+              "pin_tokens": 0,
+              "whole_prefix_fallback_tokens": 0,
+              "auxiliary_summary_tokens": 0
+            },
+            "headroom_tokens": 1305,
+            "upper_bound_percent": 10.185,
+            "ceiling_upper_bound_percent": 15.2736,
+            "first_role_call_count": 5,
+            "decider_call_count": 2
+          },
+          {
+            "repeat": 2,
+            "first_frame_input_tokens": 2045,
+            "first_frame_characters": 4874,
+            "later_growth_characters": 1473,
+            "once_only_characters": 3401,
+            "once_only_tokens": 1427,
+            "characters_per_token": 2.3834,
+            "decider_first_frame_input_tokens": 708,
+            "uncompressed_total_tokens": 13174,
+            "protection_cost_tokens": 0,
+            "protection_terms": {
+              "pinned_characters": 0,
+              "pin_tokens": 0,
+              "whole_prefix_fallback_tokens": 0,
+              "auxiliary_summary_tokens": 0
+            },
+            "headroom_tokens": 1427,
+            "upper_bound_percent": 10.8319,
+            "ceiling_upper_bound_percent": 15.523,
+            "first_role_call_count": 5,
+            "decider_call_count": 2
+          }
+        ]
+      },
+      "flag_promotion_gate": {
+        "safe_units": 3,
+        "headroom_tokens": 1369,
+        "upper_bound_percent": 10.3827,
+        "ceiling_upper_bound_percent": 15.168,
+        "potential_old_units_upper_bound": 4,
+        "guard_preserved_safe_candidates": 3,
+        "guard_survivors": {
+          "required_literals": [
+            "flag-orion",
+            "v16",
+            "promotion_ready true"
+          ],
+          "shortest_evidence_fragment_per_literal": {
+            "flag-orion": 93,
+            "v16": 101,
+            "promotion_ready true": 93
+          },
+          "fragments_must_stay_visible": true,
+          "note": "a guard-preserved safe candidate keeps every literal and its shortest evidence fragment in the view; the historical text is what remains removable after those guards"
+        },
+        "facets_first_unit": {
+          "history_removable_facet": {
+            "assistant_history_characters": 749,
+            "user_history_characters": 1771,
+            "frame_characters": 4582,
+            "history_share_of_frame_percent": 55.0,
+            "note": "the prescreen shows this facet alone does not predict saving (r4/r9: 572-646 assistant characters yet -0.26% to +22.25%); it is reported separately and never used as the saving estimate"
+          },
+          "current_evidence_and_tool_rounds_facet": {
+            "frozen_tool_count": 4,
+            "first_role_recorded_rounds": 5,
+            "evidence_marker_bytes": 230,
+            "protected_verbatim": true,
+            "note": "every frozen tool's evidence bytes are protected verbatim by the frozen rule, so they are never removable"
+          },
+          "role_decision_behaviour_facet": {
+            "first_role_calls": 5,
+            "decider_calls": 2,
+            "first_role_trace": [
+              "read_flag_definition",
+              "read_exposure_metrics",
+              "read_change_record",
+              "run_flag_check"
+            ],
+            "expected_trace": [
+              "read_flag_definition",
+              "read_exposure_metrics",
+              "read_change_record",
+              "run_flag_check"
+            ],
+            "first_pass_complete": true,
+            "remedy_calls": 0,
+            "strict_success": true,
+            "semantic_success": true,
+            "error": ""
+          }
+        },
+        "per_repeat": [
+          {
+            "repeat": 0,
+            "first_frame_input_tokens": 1909,
+            "first_frame_characters": 4582,
+            "later_growth_characters": 1459,
+            "once_only_characters": 3123,
+            "once_only_tokens": 1301,
+            "characters_per_token": 2.4002,
+            "decider_first_frame_input_tokens": 683,
+            "uncompressed_total_tokens": 12504,
+            "protection_cost_tokens": 0,
+            "protection_terms": {
+              "pinned_characters": 0,
+              "pin_tokens": 0,
+              "whole_prefix_fallback_tokens": 0,
+              "auxiliary_summary_tokens": 0
+            },
+            "headroom_tokens": 1301,
+            "upper_bound_percent": 10.4047,
+            "ceiling_upper_bound_percent": 15.2671,
+            "first_role_call_count": 5,
+            "decider_call_count": 2
+          },
+          {
+            "repeat": 1,
+            "first_frame_input_tokens": 2000,
+            "first_frame_characters": 4733,
+            "later_growth_characters": 1473,
+            "once_only_characters": 3260,
+            "once_only_tokens": 1378,
+            "characters_per_token": 2.3665,
+            "decider_first_frame_input_tokens": 678,
+            "uncompressed_total_tokens": 12966,
+            "protection_cost_tokens": 0,
+            "protection_terms": {
+              "pinned_characters": 0,
+              "pin_tokens": 0,
+              "whole_prefix_fallback_tokens": 0,
+              "auxiliary_summary_tokens": 0
+            },
+            "headroom_tokens": 1378,
+            "upper_bound_percent": 10.6278,
+            "ceiling_upper_bound_percent": 15.425,
+            "first_role_call_count": 5,
+            "decider_call_count": 2
+          },
+          {
+            "repeat": 2,
+            "first_frame_input_tokens": 2091,
+            "first_frame_characters": 4884,
+            "later_growth_characters": 1548,
+            "once_only_characters": 3336,
+            "once_only_tokens": 1428,
+            "characters_per_token": 2.3357,
+            "decider_first_frame_input_tokens": 683,
+            "uncompressed_total_tokens": 14117,
+            "protection_cost_tokens": 0,
+            "protection_terms": {
+              "pinned_characters": 0,
+              "pin_tokens": 0,
+              "whole_prefix_fallback_tokens": 0,
+              "auxiliary_summary_tokens": 0
+            },
+            "headroom_tokens": 1428,
+            "upper_bound_percent": 10.1155,
+            "ceiling_upper_bound_percent": 14.8119,
+            "first_role_call_count": 5,
+            "decider_call_count": 2
+          }
+        ]
+      },
+      "cache_promotion_gate": {
+        "safe_units": 3,
+        "headroom_tokens": 1304.67,
+        "upper_bound_percent": 9.9014,
+        "ceiling_upper_bound_percent": 15.1436,
+        "potential_old_units_upper_bound": 4,
+        "guard_preserved_safe_candidates": 3,
+        "guard_survivors": {
+          "required_literals": [
+            "cache-node-44",
+            "us-west-1",
+            "mismatched_keys 3"
+          ],
+          "shortest_evidence_fragment_per_literal": {
+            "cache-node-44": 98,
+            "us-west-1": 121,
+            "mismatched_keys 3": 118
+          },
+          "fragments_must_stay_visible": true,
+          "note": "a guard-preserved safe candidate keeps every literal and its shortest evidence fragment in the view; the historical text is what remains removable after those guards"
+        },
+        "facets_first_unit": {
+          "history_removable_facet": {
+            "assistant_history_characters": 752,
+            "user_history_characters": 1845,
+            "frame_characters": 4663,
+            "history_share_of_frame_percent": 55.69,
+            "note": "the prescreen shows this facet alone does not predict saving (r4/r9: 572-646 assistant characters yet -0.26% to +22.25%); it is reported separately and never used as the saving estimate"
+          },
+          "current_evidence_and_tool_rounds_facet": {
+            "frozen_tool_count": 4,
+            "first_role_recorded_rounds": 5,
+            "evidence_marker_bytes": 254,
+            "protected_verbatim": true,
+            "note": "every frozen tool's evidence bytes are protected verbatim by the frozen rule, so they are never removable"
+          },
+          "role_decision_behaviour_facet": {
+            "first_role_calls": 5,
+            "decider_calls": 2,
+            "first_role_trace": [
+              "read_cache_config",
+              "read_consistency_metrics",
+              "read_change_record",
+              "run_cache_check"
+            ],
+            "expected_trace": [
+              "read_cache_config",
+              "read_consistency_metrics",
+              "read_change_record",
+              "run_cache_check"
+            ],
+            "first_pass_complete": true,
+            "remedy_calls": 0,
+            "strict_success": true,
+            "semantic_success": true,
+            "error": ""
+          }
+        },
+        "per_repeat": [
+          {
+            "repeat": 0,
+            "first_frame_input_tokens": 1905,
+            "first_frame_characters": 4663,
+            "later_growth_characters": 1714,
+            "once_only_characters": 2949,
+            "once_only_tokens": 1205,
+            "characters_per_token": 2.4478,
+            "decider_first_frame_input_tokens": 669,
+            "uncompressed_total_tokens": 12616,
+            "protection_cost_tokens": 0,
+            "protection_terms": {
+              "pinned_characters": 0,
+              "pin_tokens": 0,
+              "whole_prefix_fallback_tokens": 0,
+              "auxiliary_summary_tokens": 0
+            },
+            "headroom_tokens": 1205,
+            "upper_bound_percent": 9.5514,
+            "ceiling_upper_bound_percent": 15.0999,
+            "first_role_call_count": 5,
+            "decider_call_count": 2
+          },
+          {
+            "repeat": 1,
+            "first_frame_input_tokens": 1995,
+            "first_frame_characters": 4817,
+            "later_growth_characters": 1563,
+            "once_only_characters": 3254,
+            "once_only_tokens": 1348,
+            "characters_per_token": 2.4145,
+            "decider_first_frame_input_tokens": 671,
+            "uncompressed_total_tokens": 12927,
+            "protection_cost_tokens": 0,
+            "protection_terms": {
+              "pinned_characters": 0,
+              "pin_tokens": 0,
+              "whole_prefix_fallback_tokens": 0,
+              "auxiliary_summary_tokens": 0
+            },
+            "headroom_tokens": 1348,
+            "upper_bound_percent": 10.4278,
+            "ceiling_upper_bound_percent": 15.4328,
+            "first_role_call_count": 5,
+            "decider_call_count": 2
+          },
+          {
+            "repeat": 2,
+            "first_frame_input_tokens": 2085,
+            "first_frame_characters": 4971,
+            "later_growth_characters": 1726,
+            "once_only_characters": 3245,
+            "once_only_tokens": 1361,
+            "characters_per_token": 2.3842,
+            "decider_first_frame_input_tokens": 671,
+            "uncompressed_total_tokens": 13995,
+            "protection_cost_tokens": 0,
+            "protection_terms": {
+              "pinned_characters": 0,
+              "pin_tokens": 0,
+              "whole_prefix_fallback_tokens": 0,
+              "auxiliary_summary_tokens": 0
+            },
+            "headroom_tokens": 1361,
+            "upper_bound_percent": 9.7249,
+            "ceiling_upper_bound_percent": 14.8982,
+            "first_role_call_count": 5,
+            "decider_call_count": 2
+          }
+        ]
+      }
+    },
+    "protection_cost_note": "pins, whole-prefix fallbacks and auxiliary summary tokens are all zero in this uncompressed acquisition run; the subtraction is implemented and becomes non-zero when a plugin arm exists (e.g. the K=3 structure rule re-adds protected tool rounds, whose token cost must be paid out of this headroom)",
+    "not_counted_as_saving": "fewer tool calls, fewer model calls and any other instrumental shortcut: gate 2 requires the frozen tool list to be called in order, so the units counted here did the same work"
+  },
+  "paid_candidate_gate": "pass_all_three_gates_prepare_three_arm_draft"
+}

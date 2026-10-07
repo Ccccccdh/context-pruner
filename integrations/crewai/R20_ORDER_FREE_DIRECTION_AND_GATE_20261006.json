@@ -1,0 +1,1314 @@
+{
+  "status": "zero_api_order_free_direction_and_gate",
+  "task_file": "tasks/stage5_autogen/natural_tasks_r20_orderfree.json",
+  "why_this_is_not_a_relaxation": [
+    "the r20 tasks' decisions depend on the four evidence sources as a set: the contract requires all four, each once, and the frozen judge checks only the facts and the decision, never a sequence",
+    "so 'set equal + each tool once' is the acceptance rule the new tasks need; requiring a specific order on an order-free decision is what made the r17 confirmation batch fail on one task",
+    "it is pre-registered for the r20 tasks only: r15, r16 and r17 keep their exact-order criterion and their recorded failures, and no old score changes"
+  ],
+  "new_task_checks": {
+    "ledger_lock_attestation": {
+      "decision": "ATTEST",
+      "tools": [
+        "read_lock_config",
+        "read_consistency_metrics",
+        "read_lock_change_log",
+        "run_attestation_check"
+      ],
+      "handoff_ok": true,
+      "answer_strict": true,
+      "answer_semantic": true,
+      "task_mentions_order_free": true
+    },
+    "telemetry_export_attestation": {
+      "decision": "DELIVER",
+      "tools": [
+        "read_export_definition",
+        "read_completeness_metrics",
+        "read_export_change_log",
+        "run_delivery_check"
+      ],
+      "handoff_ok": true,
+      "answer_strict": true,
+      "answer_semantic": true,
+      "task_mentions_order_free": true
+    },
+    "replica_resync_attestation": {
+      "decision": "CLOSE",
+      "tools": [
+        "read_replica_config",
+        "read_sync_metrics",
+        "read_resync_change_log",
+        "run_closeout_check"
+      ],
+      "handoff_ok": true,
+      "answer_strict": true,
+      "answer_semantic": true,
+      "task_mentions_order_free": true
+    },
+    "policy_signoff_attestation": {
+      "decision": "EFFECT",
+      "tools": [
+        "read_signoff_config",
+        "read_impact_metrics",
+        "read_signoff_change_log",
+        "run_effect_check"
+      ],
+      "handoff_ok": true,
+      "answer_strict": true,
+      "answer_semantic": true,
+      "task_mentions_order_free": true
+    }
+  },
+  "replay_units": [
+    {
+      "task_id": "watermark_publish_gate",
+      "repeat": 0,
+      "arm": "none",
+      "expected": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "executed": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "exact_order": true,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": true,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {},
+        "satisfied": true
+      },
+      "order_guard_refusals_under_v18": 0,
+      "recorded_guard_rejections": 0,
+      "strict": true,
+      "semantic": true,
+      "charged_requests": 7,
+      "complete_tokens": 12705
+    },
+    {
+      "task_id": "watermark_publish_gate",
+      "repeat": 0,
+      "arm": "pruner_v1",
+      "expected": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "executed": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "exact_order": true,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": true,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {},
+        "satisfied": true
+      },
+      "order_guard_refusals_under_v18": 0,
+      "recorded_guard_rejections": 0,
+      "strict": true,
+      "semantic": true,
+      "charged_requests": 7,
+      "complete_tokens": 8334
+    },
+    {
+      "task_id": "watermark_publish_gate",
+      "repeat": 0,
+      "arm": "native_summary",
+      "expected": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "executed": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "exact_order": true,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": true,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {},
+        "satisfied": true
+      },
+      "order_guard_refusals_under_v18": 0,
+      "recorded_guard_rejections": 0,
+      "strict": true,
+      "semantic": true,
+      "charged_requests": 11,
+      "complete_tokens": 16940
+    },
+    {
+      "task_id": "watermark_publish_gate",
+      "repeat": 1,
+      "arm": "pruner_v1",
+      "expected": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "executed": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "exact_order": true,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": true,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {},
+        "satisfied": true
+      },
+      "order_guard_refusals_under_v18": 0,
+      "recorded_guard_rejections": 0,
+      "strict": false,
+      "semantic": false,
+      "charged_requests": 7,
+      "complete_tokens": 8427
+    },
+    {
+      "task_id": "watermark_publish_gate",
+      "repeat": 1,
+      "arm": "native_summary",
+      "expected": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "executed": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "exact_order": true,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": true,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {},
+        "satisfied": true
+      },
+      "order_guard_refusals_under_v18": 0,
+      "recorded_guard_rejections": 0,
+      "strict": false,
+      "semantic": false,
+      "charged_requests": 10,
+      "complete_tokens": 16378
+    },
+    {
+      "task_id": "watermark_publish_gate",
+      "repeat": 1,
+      "arm": "none",
+      "expected": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "executed": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "exact_order": true,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": true,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {},
+        "satisfied": true
+      },
+      "order_guard_refusals_under_v18": 0,
+      "recorded_guard_rejections": 0,
+      "strict": true,
+      "semantic": true,
+      "charged_requests": 7,
+      "complete_tokens": 13124
+    },
+    {
+      "task_id": "watermark_publish_gate",
+      "repeat": 2,
+      "arm": "native_summary",
+      "expected": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "executed": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "exact_order": true,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": true,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {},
+        "satisfied": true
+      },
+      "order_guard_refusals_under_v18": 0,
+      "recorded_guard_rejections": 0,
+      "strict": true,
+      "semantic": true,
+      "charged_requests": 11,
+      "complete_tokens": 17678
+    },
+    {
+      "task_id": "watermark_publish_gate",
+      "repeat": 2,
+      "arm": "none",
+      "expected": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "executed": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "exact_order": true,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": true,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {},
+        "satisfied": true
+      },
+      "order_guard_refusals_under_v18": 0,
+      "recorded_guard_rejections": 0,
+      "strict": false,
+      "semantic": false,
+      "charged_requests": 7,
+      "complete_tokens": 13611
+    },
+    {
+      "task_id": "watermark_publish_gate",
+      "repeat": 2,
+      "arm": "pruner_v1",
+      "expected": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "executed": [
+        "read_watermark_plan",
+        "read_probe_metrics",
+        "read_embed_record",
+        "run_embed_check"
+      ],
+      "exact_order": true,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": true,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {},
+        "satisfied": true
+      },
+      "order_guard_refusals_under_v18": 0,
+      "recorded_guard_rejections": 0,
+      "strict": false,
+      "semantic": false,
+      "charged_requests": 7,
+      "complete_tokens": 8590
+    },
+    {
+      "task_id": "autoscale_policy_gate",
+      "repeat": 0,
+      "arm": "pruner_v1",
+      "expected": [
+        "read_policy_definition",
+        "read_capacity_guardrails",
+        "read_adoption_record",
+        "run_guardrail_check"
+      ],
+      "executed": [
+        "read_policy_definition",
+        "read_adoption_record",
+        "run_guardrail_check",
+        "read_capacity_guardrails"
+      ],
+      "exact_order": false,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": true,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {},
+        "satisfied": true
+      },
+      "order_guard_refusals_under_v18": 0,
+      "recorded_guard_rejections": 6,
+      "strict": false,
+      "semantic": false,
+      "charged_requests": 18,
+      "complete_tokens": 30284
+    },
+    {
+      "task_id": "autoscale_policy_gate",
+      "repeat": 0,
+      "arm": "native_summary",
+      "expected": [
+        "read_policy_definition",
+        "read_capacity_guardrails",
+        "read_adoption_record",
+        "run_guardrail_check"
+      ],
+      "executed": [
+        "read_policy_definition",
+        "read_capacity_guardrails",
+        "read_adoption_record",
+        "run_guardrail_check"
+      ],
+      "exact_order": true,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": true,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {},
+        "satisfied": true
+      },
+      "order_guard_refusals_under_v18": 0,
+      "recorded_guard_rejections": 0,
+      "strict": false,
+      "semantic": false,
+      "charged_requests": 11,
+      "complete_tokens": 16728
+    },
+    {
+      "task_id": "autoscale_policy_gate",
+      "repeat": 0,
+      "arm": "none",
+      "expected": [
+        "read_policy_definition",
+        "read_capacity_guardrails",
+        "read_adoption_record",
+        "run_guardrail_check"
+      ],
+      "executed": [
+        "read_policy_definition",
+        "read_capacity_guardrails",
+        "read_adoption_record",
+        "run_guardrail_check"
+      ],
+      "exact_order": true,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": true,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {},
+        "satisfied": true
+      },
+      "order_guard_refusals_under_v18": 0,
+      "recorded_guard_rejections": 0,
+      "strict": true,
+      "semantic": true,
+      "charged_requests": 7,
+      "complete_tokens": 12739
+    },
+    {
+      "task_id": "autoscale_policy_gate",
+      "repeat": 1,
+      "arm": "native_summary",
+      "expected": [
+        "read_policy_definition",
+        "read_capacity_guardrails",
+        "read_adoption_record",
+        "run_guardrail_check"
+      ],
+      "executed": [
+        "read_policy_definition",
+        "read_capacity_guardrails",
+        "read_adoption_record",
+        "run_guardrail_check"
+      ],
+      "exact_order": true,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": true,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {},
+        "satisfied": true
+      },
+      "order_guard_refusals_under_v18": 0,
+      "recorded_guard_rejections": 0,
+      "strict": true,
+      "semantic": true,
+      "charged_requests": 11,
+      "complete_tokens": 17272
+    },
+    {
+      "task_id": "autoscale_policy_gate",
+      "repeat": 1,
+      "arm": "none",
+      "expected": [
+        "read_policy_definition",
+        "read_capacity_guardrails",
+        "read_adoption_record",
+        "run_guardrail_check"
+      ],
+      "executed": [
+        "read_policy_definition",
+        "read_capacity_guardrails",
+        "read_adoption_record",
+        "run_guardrail_check"
+      ],
+      "exact_order": true,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": true,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {},
+        "satisfied": true
+      },
+      "order_guard_refusals_under_v18": 0,
+      "recorded_guard_rejections": 0,
+      "strict": true,
+      "semantic": true,
+      "charged_requests": 7,
+      "complete_tokens": 13084
+    },
+    {
+      "task_id": "autoscale_policy_gate",
+      "repeat": 1,
+      "arm": "pruner_v1",
+      "expected": [
+        "read_policy_definition",
+        "read_capacity_guardrails",
+        "read_adoption_record",
+        "run_guardrail_check"
+      ],
+      "executed": [
+        "read_policy_definition",
+        "read_adoption_record",
+        "read_capacity_guardrails",
+        "run_guardrail_check",
+        "read_capacity_guardrails"
+      ],
+      "exact_order": false,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": false,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {
+          "read_capacity_guardrails": 2
+        },
+        "satisfied": false
+      },
+      "order_guard_refusals_under_v18": null,
+      "recorded_guard_rejections": 5,
+      "strict": false,
+      "semantic": false,
+      "charged_requests": 17,
+      "complete_tokens": 30077
+    },
+    {
+      "task_id": "autoscale_policy_gate",
+      "repeat": 2,
+      "arm": "none",
+      "expected": [
+        "read_policy_definition",
+        "read_capacity_guardrails",
+        "read_adoption_record",
+        "run_guardrail_check"
+      ],
+      "executed": [
+        "read_policy_definition",
+        "read_capacity_guardrails",
+        "read_adoption_record",
+        "run_guardrail_check"
+      ],
+      "exact_order": true,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": true,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {},
+        "satisfied": true
+      },
+      "order_guard_refusals_under_v18": 0,
+      "recorded_guard_rejections": 0,
+      "strict": true,
+      "semantic": true,
+      "charged_requests": 7,
+      "complete_tokens": 13557
+    },
+    {
+      "task_id": "autoscale_policy_gate",
+      "repeat": 2,
+      "arm": "pruner_v1",
+      "expected": [
+        "read_policy_definition",
+        "read_capacity_guardrails",
+        "read_adoption_record",
+        "run_guardrail_check"
+      ],
+      "executed": [
+        "read_policy_definition",
+        "read_adoption_record",
+        "read_capacity_guardrails",
+        "run_guardrail_check",
+        "read_capacity_guardrails"
+      ],
+      "exact_order": false,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": false,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {
+          "read_capacity_guardrails": 2
+        },
+        "satisfied": false
+      },
+      "order_guard_refusals_under_v18": null,
+      "recorded_guard_rejections": 5,
+      "strict": false,
+      "semantic": false,
+      "charged_requests": 17,
+      "complete_tokens": 30422
+    },
+    {
+      "task_id": "autoscale_policy_gate",
+      "repeat": 2,
+      "arm": "native_summary",
+      "expected": [
+        "read_policy_definition",
+        "read_capacity_guardrails",
+        "read_adoption_record",
+        "run_guardrail_check"
+      ],
+      "executed": [
+        "read_policy_definition",
+        "read_capacity_guardrails",
+        "read_adoption_record",
+        "run_guardrail_check"
+      ],
+      "exact_order": true,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": true,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {},
+        "satisfied": true
+      },
+      "order_guard_refusals_under_v18": 0,
+      "recorded_guard_rejections": 0,
+      "strict": false,
+      "semantic": false,
+      "charged_requests": 11,
+      "complete_tokens": 17715
+    },
+    {
+      "task_id": "key_rotation_gate",
+      "repeat": 0,
+      "arm": "native_summary",
+      "expected": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "executed": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "exact_order": true,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": true,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {},
+        "satisfied": true
+      },
+      "order_guard_refusals_under_v18": 0,
+      "recorded_guard_rejections": 0,
+      "strict": true,
+      "semantic": true,
+      "charged_requests": 11,
+      "complete_tokens": 16971
+    },
+    {
+      "task_id": "key_rotation_gate",
+      "repeat": 0,
+      "arm": "none",
+      "expected": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "executed": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "exact_order": true,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": true,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {},
+        "satisfied": true
+      },
+      "order_guard_refusals_under_v18": 0,
+      "recorded_guard_rejections": 0,
+      "strict": true,
+      "semantic": true,
+      "charged_requests": 7,
+      "complete_tokens": 12459
+    },
+    {
+      "task_id": "key_rotation_gate",
+      "repeat": 0,
+      "arm": "pruner_v1",
+      "expected": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "executed": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "exact_order": true,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": true,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {},
+        "satisfied": true
+      },
+      "order_guard_refusals_under_v18": 0,
+      "recorded_guard_rejections": 1,
+      "strict": true,
+      "semantic": true,
+      "charged_requests": 8,
+      "complete_tokens": 9808
+    },
+    {
+      "task_id": "key_rotation_gate",
+      "repeat": 1,
+      "arm": "none",
+      "expected": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "executed": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "exact_order": true,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": true,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {},
+        "satisfied": true
+      },
+      "order_guard_refusals_under_v18": 0,
+      "recorded_guard_rejections": 0,
+      "strict": true,
+      "semantic": true,
+      "charged_requests": 7,
+      "complete_tokens": 13332
+    },
+    {
+      "task_id": "key_rotation_gate",
+      "repeat": 1,
+      "arm": "pruner_v1",
+      "expected": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "executed": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "exact_order": true,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": true,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {},
+        "satisfied": true
+      },
+      "order_guard_refusals_under_v18": 0,
+      "recorded_guard_rejections": 1,
+      "strict": true,
+      "semantic": true,
+      "charged_requests": 8,
+      "complete_tokens": 10262
+    },
+    {
+      "task_id": "key_rotation_gate",
+      "repeat": 1,
+      "arm": "native_summary",
+      "expected": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "executed": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "exact_order": true,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": true,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {},
+        "satisfied": true
+      },
+      "order_guard_refusals_under_v18": 0,
+      "recorded_guard_rejections": 0,
+      "strict": true,
+      "semantic": true,
+      "charged_requests": 11,
+      "complete_tokens": 17284
+    },
+    {
+      "task_id": "key_rotation_gate",
+      "repeat": 2,
+      "arm": "pruner_v1",
+      "expected": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "executed": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "exact_order": true,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": true,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {},
+        "satisfied": true
+      },
+      "order_guard_refusals_under_v18": 0,
+      "recorded_guard_rejections": 1,
+      "strict": true,
+      "semantic": true,
+      "charged_requests": 8,
+      "complete_tokens": 10116
+    },
+    {
+      "task_id": "key_rotation_gate",
+      "repeat": 2,
+      "arm": "native_summary",
+      "expected": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "executed": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "exact_order": true,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": true,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {},
+        "satisfied": true
+      },
+      "order_guard_refusals_under_v18": 0,
+      "recorded_guard_rejections": 0,
+      "strict": true,
+      "semantic": true,
+      "charged_requests": 11,
+      "complete_tokens": 17935
+    },
+    {
+      "task_id": "key_rotation_gate",
+      "repeat": 2,
+      "arm": "none",
+      "expected": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "executed": [
+        "read_key_definition",
+        "read_expiry_metrics",
+        "read_rotation_record",
+        "run_rotation_check"
+      ],
+      "exact_order": true,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": true,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {},
+        "satisfied": true
+      },
+      "order_guard_refusals_under_v18": 0,
+      "recorded_guard_rejections": 0,
+      "strict": true,
+      "semantic": true,
+      "charged_requests": 7,
+      "complete_tokens": 13765
+    },
+    {
+      "task_id": "index_rebuild_gate",
+      "repeat": 0,
+      "arm": "none",
+      "expected": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "executed": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "exact_order": true,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": true,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {},
+        "satisfied": true
+      },
+      "order_guard_refusals_under_v18": 0,
+      "recorded_guard_rejections": 0,
+      "strict": true,
+      "semantic": true,
+      "charged_requests": 7,
+      "complete_tokens": 12480
+    },
+    {
+      "task_id": "index_rebuild_gate",
+      "repeat": 0,
+      "arm": "pruner_v1",
+      "expected": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "executed": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "exact_order": true,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": true,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {},
+        "satisfied": true
+      },
+      "order_guard_refusals_under_v18": 0,
+      "recorded_guard_rejections": 0,
+      "strict": true,
+      "semantic": true,
+      "charged_requests": 7,
+      "complete_tokens": 8017
+    },
+    {
+      "task_id": "index_rebuild_gate",
+      "repeat": 0,
+      "arm": "native_summary",
+      "expected": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "executed": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "exact_order": true,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": true,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {},
+        "satisfied": true
+      },
+      "order_guard_refusals_under_v18": 0,
+      "recorded_guard_rejections": 0,
+      "strict": true,
+      "semantic": true,
+      "charged_requests": 11,
+      "complete_tokens": 17043
+    },
+    {
+      "task_id": "index_rebuild_gate",
+      "repeat": 1,
+      "arm": "pruner_v1",
+      "expected": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "executed": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "exact_order": true,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": true,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {},
+        "satisfied": true
+      },
+      "order_guard_refusals_under_v18": 0,
+      "recorded_guard_rejections": 0,
+      "strict": true,
+      "semantic": true,
+      "charged_requests": 7,
+      "complete_tokens": 8701
+    },
+    {
+      "task_id": "index_rebuild_gate",
+      "repeat": 1,
+      "arm": "native_summary",
+      "expected": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "executed": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "exact_order": true,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": true,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {},
+        "satisfied": true
+      },
+      "order_guard_refusals_under_v18": 0,
+      "recorded_guard_rejections": 0,
+      "strict": true,
+      "semantic": true,
+      "charged_requests": 11,
+      "complete_tokens": 17106
+    },
+    {
+      "task_id": "index_rebuild_gate",
+      "repeat": 1,
+      "arm": "none",
+      "expected": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "executed": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "exact_order": true,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": true,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {},
+        "satisfied": true
+      },
+      "order_guard_refusals_under_v18": 0,
+      "recorded_guard_rejections": 0,
+      "strict": true,
+      "semantic": true,
+      "charged_requests": 7,
+      "complete_tokens": 13176
+    },
+    {
+      "task_id": "index_rebuild_gate",
+      "repeat": 2,
+      "arm": "native_summary",
+      "expected": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "executed": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "exact_order": true,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": true,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {},
+        "satisfied": true
+      },
+      "order_guard_refusals_under_v18": 0,
+      "recorded_guard_rejections": 0,
+      "strict": true,
+      "semantic": true,
+      "charged_requests": 11,
+      "complete_tokens": 17780
+    },
+    {
+      "task_id": "index_rebuild_gate",
+      "repeat": 2,
+      "arm": "none",
+      "expected": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "executed": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "exact_order": true,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": true,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {},
+        "satisfied": true
+      },
+      "order_guard_refusals_under_v18": 0,
+      "recorded_guard_rejections": 0,
+      "strict": true,
+      "semantic": true,
+      "charged_requests": 7,
+      "complete_tokens": 13377
+    },
+    {
+      "task_id": "index_rebuild_gate",
+      "repeat": 2,
+      "arm": "pruner_v1",
+      "expected": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "executed": [
+        "read_index_plan",
+        "read_shard_health",
+        "read_rebuild_record",
+        "run_index_check"
+      ],
+      "exact_order": true,
+      "set_criterion": {
+        "set_equal": true,
+        "each_once": true,
+        "missing_tools": [],
+        "extra_tools": [],
+        "duplicates": {},
+        "satisfied": true
+      },
+      "order_guard_refusals_under_v18": 0,
+      "recorded_guard_rejections": 1,
+      "strict": true,
+      "semantic": true,
+      "charged_requests": 8,
+      "complete_tokens": 9690
+    }
+  ],
+  "per_arm": {
+    "none": {
+      "units": 12,
+      "exact_order_units": 12,
+      "set_criterion_units": 12,
+      "recorded_guard_rejections": 0
+    },
+    "pruner_v1": {
+      "units": 12,
+      "exact_order_units": 9,
+      "set_criterion_units": 10,
+      "recorded_guard_rejections": 20
+    },
+    "native_summary": {
+      "units": 12,
+      "exact_order_units": 12,
+      "set_criterion_units": 12,
+      "recorded_guard_rejections": 0
+    }
+  },
+  "conditions": {
+    "safe_candidate_nonzero": {
+      "satisfied": true,
+      "evidence": "four r20 tasks; each carries four independent evidence sources and the frozen judge's answer rules are order-free, so the compressed view plus protection cost is strictly cheaper per task",
+      "note": "measured for the r17 set at +34.7-36.0% in the earlier gate; the r20 tasks have the same shape"
+    },
+    "sequence_or_set_criterion_not_worse_expected": {
+      "satisfied": false,
+      "exact_order_units": {
+        "none": 12,
+        "pruner_v1": 9,
+        "native_summary": 12
+      },
+      "set_criterion_units": {
+        "none": 12,
+        "pruner_v1": 10,
+        "native_summary": 12
+      },
+      "failing_units_under_set_criterion": [
+        {
+          "task_id": "autoscale_policy_gate",
+          "repeat": 1,
+          "duplicates": {
+            "read_capacity_guardrails": 2
+          }
+        },
+        {
+          "task_id": "autoscale_policy_gate",
+          "repeat": 2,
+          "duplicates": {
+            "read_capacity_guardrails": 2
+          }
+        }
+      ],
+      "reading": "the set criterion lifts the plugin arm from 9/12 to 10/12 and removes the order requirement entirely, but it is NOT refusal-free: two units call one tool twice, and an exactly-once rule must refuse those"
+    },
+    "batch_complete_cost_lower_bound_positive": {
+      "satisfied": false,
+      "baseline_tokens": 157409,
+      "observed_plugin_tokens": 172728,
+      "bound_tokens_observed_batch": -15319,
+      "bound_percent_observed_batch": -9.732,
+      "remediation_units_under_set_criterion": 2,
+      "remediation_overrun_tokens_charged": 35587.7,
+      "bound_tokens_with_remediation": -50906.7,
+      "bound_percent_with_remediation": -32.34,
+      "bound_tokens_if_no_refusals": 38775.6,
+      "bound_percent_if_no_refusals": 24.634,
+      "remediation_cost_note": "the reported verdict charges the remediation: the two duplicated-call units would still be refused, so their re-send cost stays in.  The 'no-refusal' figure is shown only as the ceiling, never as the verdict"
+    }
+  },
+  "alternatives": {
+    "A_stronger_order_constraint": {
+      "hypothesis": "writing an explicit numbered step order into the role prompt and the task contract raises the share of units whose first attempt is exactly ordered, so refusals fall without any change to the criterion",
+      "falsifiable_prediction": "on a fresh batch, exact-order units rise from 9/12 to >=11/12 and refusals fall below 4 per arm",
+      "zero_api_check": "no recorded batch used a numbered contract, so this cannot be tested offline; it needs one paid acquisition after a new selection round, and the prompt change must not alter the frozen view",
+      "verdict": "not testable zero-API; keep as a candidate only if the order-free direction fails"
+    },
+    "B_tailoring_the_remedy": {
+      "hypothesis": "when a turn is refused, appending only the missing evidence instruction (instead of re-serving the whole frame) lowers the per-refusal token cost",
+      "falsifiable_prediction": "the same refusal count costs measurably fewer tokens per refusal than the current full-frame re-send",
+      "zero_api_check": "measurable now: the recorded refusal turns show the full attempt frame is re-sent, and the cache decomposition shows a re-send adds zero new messages, so it is billed at the hit price -- the saving is real but small, because cached input is already 1/50 the price",
+      "verdict": "measurable and already bounded: re-sends are cheap per token; the problem is the number of requests and the quality of the remedy, not its token price"
+    }
+  },
+  "gate_passed": false,
+  "verdict": "a condition still fails: keep the paid stop and report",
+  "what_is_still_missing": [
+    "the r20 tasks have no recorded payload and no recorded three-arm batch: the set-criterion replay above runs on the r17 confirmation traces, so the r20 numbers remain a projection until an acquisition batch exists",
+    "the set-criterion acceptance rule needs its own frozen judge rule (a new rule id) and an audit that checks 'each tool exactly once' from the recorded trace"
+  ]
+}

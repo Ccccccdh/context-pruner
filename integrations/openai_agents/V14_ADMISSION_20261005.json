@@ -1,0 +1,210 @@
+{
+  "schema": "openai_agents_v14_admission",
+  "date": "20261005",
+  "freeze": "integrations/openai_agents/V14_MULTITASK_FREEZE_20261005.json",
+  "freeze_sha256": "04425ae3bf15a1e20381bdbf2231ebe1e57c8a0b775c2558699682db36576532",
+  "rules_applied": [
+    "the acquisition batch stayed within 12 requests and recorded one sample",
+    "the replay gate is clean: the rebuild reproduces the recorded boundaries and per-output hashes, pointers are recomputable, presence is fail-closed and the negative control is caught",
+    "the per-model-call projection is at least 3%",
+    "the guard-filtered safe candidate set is not empty",
+    "the baseline (none) acquisition sample satisfies Track A, so the frozen contract is attainable and the comparison is not degenerate"
+  ],
+  "projection_floor": 0.03,
+  "decisions": {
+    "requests_bad_host_unicode": {
+      "instance_id": "psf__requests-5414",
+      "repo": "psf/requests",
+      "batch": "openai-repo-diagnostic-v14-requests_bad_host_unicode-acquisition-01",
+      "requests": 7,
+      "samples": 1,
+      "projection": 0.15592715959623285,
+      "safe_candidates": 3,
+      "gate_problems": [],
+      "negative_control_caught": true,
+      "invariants_hold": true,
+      "baseline_track_a": {
+        "pass": false,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": false,
+          "required_terms": false
+        },
+        "terms": {
+          "prepare_url": false,
+          "InvalidURL": true
+        }
+      },
+      "baseline_answer": "RESULT issue=requests-5414 cause=_get_idna_encoded_host raises UnicodeError fix=raise InvalidURL('URL has an invalid label.')",
+      "baseline_answer_chars": 125,
+      "checks": {
+        "within_request_cap": true,
+        "gate_clean": true,
+        "projection_at_least_floor": true,
+        "safe_candidates_non_empty": true,
+        "baseline_contract_attainable": false
+      },
+      "admitted": false,
+      "freeze_sha256_recorded": true,
+      "manifest_keys_written_in_one_pass": {
+        "purpose": "payload acquisition for the held-out task requests_bad_host_unicode: record the real model inputs at every boundary. This batch is single-arm and is neither saving evidence nor quality-equivalence evidence.",
+        "citable_as_saving": false,
+        "citable_as_quality_equivalence": false
+      },
+      "manifest_written_in_one_pass": true,
+      "no_manifest_amendment_tool_used": true
+    },
+    "requests_binary_payload": {
+      "instance_id": "psf__requests-2931",
+      "repo": "psf/requests",
+      "batch": "openai-repo-diagnostic-v14-requests_binary_payload-acquisition-01",
+      "requests": 7,
+      "samples": 1,
+      "projection": 0.1403834424968842,
+      "safe_candidates": 3,
+      "gate_problems": [],
+      "negative_control_caught": true,
+      "invariants_hold": true,
+      "baseline_track_a": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "terms": {
+          "to_native_string": true,
+          "prepare_body": true
+        }
+      },
+      "baseline_answer": "RESULT issue=requests-2931 cause=to_native_string decodes bytes fix=skip to_native_string for bytes in prepare_body",
+      "baseline_answer_chars": 115,
+      "checks": {
+        "within_request_cap": true,
+        "gate_clean": true,
+        "projection_at_least_floor": true,
+        "safe_candidates_non_empty": true,
+        "baseline_contract_attainable": true
+      },
+      "admitted": true,
+      "freeze_sha256_recorded": true,
+      "manifest_keys_written_in_one_pass": {
+        "purpose": "payload acquisition for the held-out task requests_binary_payload: record the real model inputs at every boundary. This batch is single-arm and is neither saving evidence nor quality-equivalence evidence.",
+        "citable_as_saving": false,
+        "citable_as_quality_equivalence": false
+      },
+      "manifest_written_in_one_pass": true,
+      "no_manifest_amendment_tool_used": true
+    },
+    "flask_empty_blueprint_name": {
+      "instance_id": "pallets__flask-5014",
+      "repo": "pallets/flask",
+      "batch": "openai-repo-diagnostic-v14-flask_empty_blueprint_name-acquisition-01",
+      "requests": 7,
+      "samples": 1,
+      "projection": 0.17620292779344848,
+      "safe_candidates": 3,
+      "gate_problems": [],
+      "negative_control_caught": true,
+      "invariants_hold": true,
+      "baseline_track_a": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "terms": {
+          "Blueprint": true,
+          "ValueError": true
+        }
+      },
+      "baseline_answer": "RESULT issue=flask-5014 cause=Blueprint.__init__ only rejects dotted names, not empty name fix=raise ValueError in Blueprint.__init__ when name is empty",
+      "baseline_answer_chars": 152,
+      "checks": {
+        "within_request_cap": true,
+        "gate_clean": true,
+        "projection_at_least_floor": true,
+        "safe_candidates_non_empty": true,
+        "baseline_contract_attainable": true
+      },
+      "admitted": true,
+      "freeze_sha256_recorded": true,
+      "manifest_keys_written_in_one_pass": {
+        "purpose": "payload acquisition for the held-out task flask_empty_blueprint_name: record the real model inputs at every boundary. This batch is single-arm and is neither saving evidence nor quality-equivalence evidence.",
+        "citable_as_saving": false,
+        "citable_as_quality_equivalence": false
+      },
+      "manifest_written_in_one_pass": true,
+      "no_manifest_amendment_tool_used": true
+    },
+    "xarray_copy_dtype": {
+      "instance_id": "pydata__xarray-3095",
+      "repo": "pydata/xarray",
+      "batch": "openai-repo-diagnostic-v14-xarray_copy_dtype-acquisition-01",
+      "requests": 7,
+      "samples": 1,
+      "projection": 0.18958317443368164,
+      "safe_candidates": 3,
+      "gate_problems": [],
+      "negative_control_caught": true,
+      "invariants_hold": true,
+      "baseline_track_a": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "terms": {
+          "IndexVariable": true,
+          "dtype": true
+        }
+      },
+      "baseline_answer": "RESULT issue=xarray-3095 cause=IndexVariable.copy loses dtype via as_compatible_data fix=preserve _data PandasIndexAdapter dtype",
+      "baseline_answer_chars": 128,
+      "checks": {
+        "within_request_cap": true,
+        "gate_clean": true,
+        "projection_at_least_floor": true,
+        "safe_candidates_non_empty": true,
+        "baseline_contract_attainable": true
+      },
+      "admitted": true,
+      "freeze_sha256_recorded": true,
+      "manifest_keys_written_in_one_pass": {
+        "purpose": "payload acquisition for the held-out task xarray_copy_dtype: record the real model inputs at every boundary. This batch is single-arm and is neither saving evidence nor quality-equivalence evidence.",
+        "citable_as_saving": false,
+        "citable_as_quality_equivalence": false
+      },
+      "manifest_written_in_one_pass": true,
+      "no_manifest_amendment_tool_used": true
+    }
+  },
+  "admitted_task_ids": [
+    "requests_binary_payload",
+    "flask_empty_blueprint_name",
+    "xarray_copy_dtype"
+  ],
+  "admitted_count": 3,
+  "rejected": {
+    "requests_bad_host_unicode": [
+      "baseline_contract_attainable"
+    ]
+  },
+  "pilot_matrix": {
+    "tasks": 3,
+    "repeats": 3,
+    "methods": 3,
+    "samples": 27
+  },
+  "note": "the rules and the floor were frozen before the acquisition requests; a rejected task is reported as having no qualified space and is not tuned on"
+}

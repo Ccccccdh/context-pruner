@@ -1,0 +1,68 @@
+{
+  "schema": "openai_agents_mechanism_correction_and_scope_limit",
+  "finding_id": "openai-agents-mechanism-duplicate-collapse-01",
+  "date": "20261010",
+  "api_requests_spent": 0,
+  "status": "RECORDED",
+  "supersedes": {
+    "handover_item_12": "the claim that the paired saving scales with the number of read rounds, with the projection N=2 about 14 percent, N=3 about 30 percent, N=4 about 39 percent, N=6 about 52 percent",
+    "verdict_on_that_claim": "FALSIFIED by direct measurement: the shape was varied on fixed tasks and the saving did not follow the round count"
+  },
+
+  "what_was_measured": {
+    "design": "the three v16 development tasks, unchanged views, ranges, hashes, contracts and literals; only the batching of the reads varied; 9 samples per shape (3 tasks x 1 repeat x 3 arms); zero API gates green for both shapes",
+    "N2_shape": "three views read twice, three reads per round, two rounds: paired saving about +14.4 percent on the clean pairs of the v17 pilot",
+    "N3_shape": "three views, one distinct view per round, three rounds, so each view is read exactly once",
+    "N6_shape": "three views, one view per round, two cycles, six rounds, so each view is read twice; the content is identical to the N2 shape and only the batching differs",
+    "N3_result": {
+      "per_task_savings": {"django_sqlite_version_floor": 0.0000, "django_orderedset_reversed": 0.0008, "django_field_hash_immutability": -0.0007},
+      "mean_saving": 0.0000,
+      "per_arm_tokens": {
+        "django_sqlite_version_floor": {"none": 7708, "pruner_v1": 7708, "native_summary": 7708},
+        "django_orderedset_reversed": {"none": 7458, "pruner_v1": 7452, "native_summary": 7458},
+        "django_field_hash_immutability": {"none": 8838, "pruner_v1": 8844, "native_summary": 9767}
+      },
+      "reading": "the plugin arm spent the same tokens as the baseline, to within six tokens either way, so the plugin realised no saving at all when no view was read twice"
+    },
+    "N6_result": {
+      "per_task_savings": {"django_sqlite_version_floor": 0.0781, "django_orderedset_reversed": 0.2547, "django_field_hash_immutability": 0.1165},
+      "mean_saving": 0.1497,
+      "positive_pairs": "3 of 3",
+      "reading": "the saving returns as soon as the same views are read twice, even though the round count is what changed on paper"
+    },
+    "quality_side": "18 of 18 samples passed the strict track in both shapes, with no render failure and no truncation, so the falsification is about the mechanism account and not about quality or the ledger"
+  },
+
+  "the_mechanism_as_now_evidenced": {
+    "statement": "in this host configuration the active mechanism is collapsing exact duplicate tool outputs, not compressing unique content",
+    "artifact_level_evidence": "in the v16 sealed confirmation every read manifest has the shape of three views read twice, for example 4010, 1485, 1985, 4010, 1485, 1985 characters; in the pruner arm the earlier copy of each duplicate is collapsed to 157 characters while the most recent copy is kept verbatim, giving 157, 157, 157, 4010, 1485, 1985",
+    "why_the_earlier_figures_looked_like_compression": "the v16 and v17 protocols instruct the model to read each registered view twice, so about half of the read payload in the baseline arm is an exact repeat of content that is still present in the context; the plugin removes that repeat and the paired statistic falls accordingly",
+    "other_paths_were_inactive": "in the same batch the span elision records list was empty, the pointer retention counters were zero and the final elided output count was zero, so on this configuration the plugin behaved as a lossless duplicate collapser",
+    "losslessness_explains_the_quality_result": "because only exact repeats are collapsed no unique information is lost, which is consistent with 45 of 45 strict-track passes in the sealed confirmation"
+  },
+
+  "scope_limit_this_imposes_on_the_citable_result": {
+    "what_remains_true": "under this host configuration, where the protocol reads each registered view twice, the plugin arm's paired complete-token saving over the baseline on three sealed tasks at five repeats is 12.54 percent, 13 of 15 pairs positive, bootstrap interval 5.17 to 18.30 percent, and that figure is unchanged and still citable under the citation record",
+    "what_must_now_be_said_with_it": "the measured saving is the cost of collapsing exact duplicates that the protocol itself creates; when each view is read once and no output repeats, the measured paired saving in this same configuration is 0.00 percent with per-arm token totals equal to within six tokens",
+    "what_may_not_be_said": [
+      "that the plugin saves about 12.5 percent of context in general",
+      "that the saving scales with the length or the round count of a trajectory",
+      "that the same saving would appear on a workload without repeated tool output"
+    ],
+    "and_explicitly_forbidden": "raising the headline figure by making the protocol read the same views more often; that would manufacture the effect rather than measure it, and this finding exists precisely to make that impossible to do by accident"
+  },
+
+  "execution_defect_recorded": {
+    "item": "both v19 batches have samples and a pre-run manifest but no finalised manifest, because the in-memory freeze override that changed the shape caps omitted the source_of_record key and finalise_pilot_manifest raised KeyError",
+    "consequence": "the numbers above were reconstructed from samples.jsonl and not from a finalised pilot report; they are development evidence either way, so nothing citable is affected",
+    "recurrence": "this is the second time the finalisation path has failed after the samples had already been paid for, the first being the v17 pilot-01 directory",
+    "required_remediation_before_any_further_paid_run": "the zero API gate must itself run a full local pilot and assert that the produced manifest contains every pre-registered key and that the finalisation flag is true, so that finalisation is exercised by the gate rather than discovered after spending"
+  },
+
+  "citable": false,
+  "never_rejudge": [
+    "attempt 01", "attempt 02", "attempt 03", "pilot-01", "pilot-02",
+    "v12", "v13", "v14", "v15", "the v16 sealed confirmation batch",
+    "the v17 development pilots", "the v18 selection branch", "the v19 dose batches"
+  ]
+}

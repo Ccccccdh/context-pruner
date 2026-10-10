@@ -1,0 +1,59 @@
+{
+  "schema": "openai_agents_v15_preselect",
+  "status": "CANDIDATE_ONLY_SOURCE_BLOBS_UNVERIFIED",
+  "paid_requests": 0,
+  "selection": "SWE-bench Verified django/django <15 min fix; no instance ID in integrations/experiments/tests/tasks; commit object present in local partial Git clone; sort by SHA256(instance_id), take first four",
+  "local_clone_is_promisor_partial": true,
+  "excluded_previously_referenced_ids": 39,
+  "eligible_count": 84,
+  "selected": [
+    {
+      "instance_id": "django__django-11880",
+      "repo": "django/django",
+      "base_commit": "06909fe084f87a65459a83bd69d7cdbe4fce9a7c",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "e602e90dd73a70f9faf006238dfda2347f4aa08bb29365ae2611b3ea92f3eff4",
+      "selection_key": "014dd41fc09729f6a1dad41bc08c4a35383e62c0d4a3e2ae3afdbce6b088fe10",
+      "source_blob_probe": "django/forms/fields.py",
+      "source_blob_locally_available": true
+    },
+    {
+      "instance_id": "django__django-14787",
+      "repo": "django/django",
+      "base_commit": "004b4620f6f4ad87261e149898940f2dcd5757ef",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "b52409ced83e2b68e7961a34db6792ca6b89277456ea14c6c166c7f8c8e17c0d",
+      "selection_key": "0586933e5918004e5994f1a7d86bee38681ad95b65a864a4fde0ddcfcbd8aa93",
+      "source_blob_probe": "django/utils/decorators.py",
+      "source_blob_locally_available": true
+    },
+    {
+      "instance_id": "django__django-13512",
+      "repo": "django/django",
+      "base_commit": "b79088306513d5ed76d31ac40ab3c15f858946ea",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "77633ba2243ab634f8e720517e2dea5dee17f839be6ad5ae87c58b4bf021cbf6",
+      "selection_key": "0d6e2fe2ccf32037eadad68cd4b8030475a0c573d4c9a7664a1e4d8f965532aa",
+      "source_blob_probe": "django/contrib/admin/widgets.py",
+      "source_blob_locally_available": true
+    },
+    {
+      "instance_id": "django__django-11964",
+      "repo": "django/django",
+      "base_commit": "fc2b1cc926e34041953738e58fa6ad3053059b22",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "9f510b2ad7d3833f07816f18dfa6dbb8dacf72061c288cfe399418bfe4da25ab",
+      "selection_key": "0ef4cc8135387ea8fe1d59f6b47b8ca5787d12613b19c0f8decf662d685f9578",
+      "source_blob_probe": "django/db/models/fields/__init__.py",
+      "source_blob_locally_available": true
+    }
+  ],
+  "not_examined_for_selection": [
+    "patch",
+    "test_patch",
+    "model answers",
+    "answer lengths",
+    "expected literals"
+  ],
+  "next_gate": "obtain and hash exact baseline source blobs, then register three read-only views and answer pattern before any acquisition request"
+}

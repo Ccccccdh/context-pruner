@@ -1,0 +1,60 @@
+{
+  "schema": "openai_agents_mechanism_wiring_audit",
+  "audit_id": "openai-agents-mechanism-wiring-audit-01",
+  "date": "20261010",
+  "api_requests_spent": 0,
+  "question": "were the span elision and pointer retention paths switched off by configuration, or did they simply never trigger?",
+  "answer": "neither: those paths are not wired into the chain at all. The plugin arm in every recent batch is the frozen v12 exact duplicate rule and nothing else, and the only counter that moves is the one that counts duplicate replacements",
+
+  "code_evidence": {
+    "chain_composition": {
+      "file": "experiments/runners/openai_agents_multitask_chain_v14.py",
+      "line_163": "class MultitaskDuplicateFilter(ExactDuplicateFilter) - the filter installed in the plugin arm is a duplicate filter by construction",
+      "line_232": "def build_retentive_filter(...) with the docstring 'Install this task's duplicate filter in the plugin arm only'",
+      "line_237": "if method != \"pruner_v1\" ... return original(method, **kwargs): the filter is installed for the pruner arm only, which is why the duplicate counter is absent from the baseline and native rows",
+      "line_212": "the filter publishes exact_duplicate_schema = exact_duplicate_v12",
+      "line_207": "MultitaskDuplicateFilter.metrics_dict calls super().metrics_dict(), so the retention counters from the v5 and v6 lineage keep their names even though the rule in force is the v12 duplicate rule"
+    },
+    "rule_module": {
+      "file": "experiments/runners/openai_agents_exact_duplicate_replay_v12.py",
+      "line_54": "class ExactDuplicateFilter(v9.NarrowGuardBoundaryFilter)",
+      "line_72": "reduced, replacements = deduplicate(source)",
+      "line_48": "a replacement records old_index and new_index, so the older copy of a byte identical output is replaced by a compact note and the newest copy is kept verbatim",
+      "freeze_pins": "V13_REQUESTS1766_FREEZE_20261005.json, V14_MULTITASK_FREEZE_20261005.json and V15_ACQUISITION_FREEZE_20261006.json all name experiments/runners/openai_agents_exact_duplicate_replay_v12.py as the frozen rule module, and V16 inherits the same chain"
+    },
+    "the_other_mechanisms_are_separate_modules": "selective retention v4 and evidence safe retention v5, span and pointer retention v6, applicability boundary v7, long baseline boundary v8 and v9, tool call recency v10 and elision ratio v11 all exist as their own frozen modules with their own freezes, and were probed in their own single axis experiments; none of them is part of the chain used by the v13 to v19 batches"
+  },
+
+  "counter_evidence": {
+    "method": "read every sample of the three batches and print which mechanism counters are non zero",
+    "v16_sealed_confirmation_45_rows": {
+      "pruner_v1": {"exact_duplicate_replacements": 3, "selective_retention_saved_bytes_total": [2875, 7157, 7202], "selective_retention_elided_outputs": 0, "evidence_outputs_elided_final": 0, "evidence_span_elision_records": 0, "pointer_retention_elided_sources": 0, "long_baseline_recent_turns_kept_verbatim": 1, "protected_group_count": 0},
+      "none": {"exact_duplicate_replacements": "field absent", "selective_retention_saved_bytes_total": 0},
+      "native_summary": {"exact_duplicate_replacements": "field absent", "selective_retention_saved_bytes_total": 0}
+    },
+    "v19_N3_9_rows": {"pruner_v1": {"exact_duplicate_replacements": 0, "selective_retention_saved_bytes_total": 0}},
+    "v19_N6_9_rows": {"pruner_v1": {"exact_duplicate_replacements": 6, "selective_retention_saved_bytes_total": [5767, 7000, 11533]}},
+    "reading": "three duplicate replacements in the v16 shape because each of the three views is read twice, six in the N6 shape because two cycles produce six duplicates, and zero in the N3 shape because no view is read twice; every other pruning counter is zero or empty in every batch and every arm"
+  },
+
+  "correction_of_an_earlier_claim": {
+    "claim": "handover item 11 said the active mechanism was selective retention and read selective_retention_saved_bytes_total as its evidence",
+    "verdict": "misleading label, correct underlying observation: the field name is inherited from the v5 and v6 metric sets while the rule in force is the v12 duplicate rule, so the counter that moves is a duplicate replacement counter under a legacy name",
+    "what_survives_from_item_11": "the 157 character collapse of the earlier duplicate copies, the sizes 2875 to 7202 bytes, and the fact that the most recent copy is kept verbatim are all correct and reproducible",
+    "what_is_withdrawn": "the name 'selective retention' as the description of what runs in this configuration"
+  },
+
+  "decisions_this_settles": {
+    "c_duplicate_dose_is_now_near_tautological": "measuring how the saving varies with the amount of duplication would re-measure a rule whose definition is 'replace byte identical duplicates'; it would add no decision value, and its only practical use would be to raise the headline figure by adding duplicates, which the mechanism correction explicitly forbids",
+    "the_real_headroom_is_d": "the only way to obtain saving on content that does not repeat is to wire one of the earlier mechanisms - selective retention with the literal guard, or span and pointer retention - into the chain as a new host configuration, and then measure it on the same fixed tasks and the same shape against the same baseline arm",
+    "what_d_must_prove": "that it compresses unique content at all, and that the strict track stays at or above the baseline while it does; the earlier versions were probed on single axis pilots, so neither property is established at the three task, three arm scale",
+    "what_d_must_not_do": "it may not reuse the v16 sealed tasks, may not merge its percentages with any earlier batch, and may not be run without pinning every module hash in its freeze and exercising the finalisation path inside the zero API gate"
+  },
+
+  "citable": false,
+  "never_rejudge": [
+    "attempt 01", "attempt 02", "attempt 03", "pilot-01", "pilot-02",
+    "v12", "v13", "v14", "v15", "the v16 sealed confirmation batch",
+    "the v17 development pilots", "the v18 selection branch", "the v19 dose batches"
+  ]
+}

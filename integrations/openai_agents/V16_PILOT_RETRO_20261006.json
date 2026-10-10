@@ -1,0 +1,391 @@
+{
+  "schema": "openai_agents_v16_pilot_retro",
+  "date": "20261006",
+  "batch": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v16-three-arm-pilot-01",
+  "batch_manifest_sha256": "9ce7fcfe7dcebe9e166886a6d7a49376e09c5827249a51591a87fe848469bcb7",
+  "audit_sha256": "6ab74dbe4e646cd037a89014effd0b612c6b96d03394a28a9902f6e804146598",
+  "paid_requests": 0,
+  "over_length_cases": [
+    {
+      "task": "django_field_hash_immutability",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "first_render_reason": "declared_fact_missing_from_rendered_answer",
+      "first_raw_chars": 216,
+      "first_candidate_chars": 151,
+      "repair_attempted": true,
+      "repair_raw_chars": 260,
+      "repair_render_reason": "over_160_chars",
+      "repair_was_shorter_raw": false,
+      "repair_raw_delta": 44,
+      "retry_still_over_length": true,
+      "accepted_final": false,
+      "diagnostic_chars": 386,
+      "diagnostic_named_the_bound": false,
+      "diagnostic_named_the_literals": false
+    },
+    {
+      "task": "django_field_hash_immutability",
+      "repeat": 1,
+      "method": "pruner_v1",
+      "first_render_reason": "declared_fact_missing_from_rendered_answer",
+      "first_raw_chars": 201,
+      "first_candidate_chars": 136,
+      "repair_attempted": true,
+      "repair_raw_chars": 228,
+      "repair_render_reason": "over_160_chars",
+      "repair_was_shorter_raw": false,
+      "repair_raw_delta": 27,
+      "retry_still_over_length": true,
+      "accepted_final": false,
+      "diagnostic_chars": 386,
+      "diagnostic_named_the_bound": false,
+      "diagnostic_named_the_literals": false
+    },
+    {
+      "task": "django_field_hash_immutability",
+      "repeat": 1,
+      "method": "native_summary",
+      "first_render_reason": "declared_fact_missing_from_rendered_answer",
+      "first_raw_chars": 214,
+      "first_candidate_chars": 149,
+      "repair_attempted": true,
+      "repair_raw_chars": 258,
+      "repair_render_reason": "over_160_chars",
+      "repair_was_shorter_raw": false,
+      "repair_raw_delta": 44,
+      "retry_still_over_length": true,
+      "accepted_final": false,
+      "diagnostic_chars": 386,
+      "diagnostic_named_the_bound": false,
+      "diagnostic_named_the_literals": false
+    },
+    {
+      "task": "django_field_hash_immutability",
+      "repeat": 2,
+      "method": "none",
+      "first_render_reason": "declared_fact_missing_from_rendered_answer",
+      "first_raw_chars": 214,
+      "first_candidate_chars": 149,
+      "repair_attempted": true,
+      "repair_raw_chars": 258,
+      "repair_render_reason": "over_160_chars",
+      "repair_was_shorter_raw": false,
+      "repair_raw_delta": 44,
+      "retry_still_over_length": true,
+      "accepted_final": false,
+      "diagnostic_chars": 386,
+      "diagnostic_named_the_bound": false,
+      "diagnostic_named_the_literals": false
+    }
+  ],
+  "over_length_case_count": 4,
+  "minimal_feasible_answers": [
+    {
+      "task_id": "django_sqlite_version_floor",
+      "required_facts": [
+        "check_sqlite_version",
+        "3.8.3",
+        "3.9.0"
+      ],
+      "cause_side_tokens": [
+        "check_sqlite_version",
+        "3.8.3"
+      ],
+      "fix_side_tokens": [
+        "3.9.0"
+      ],
+      "minimal_line": "RESULT issue=django-13821 cause=check_sqlite_version 3.8.3 fix=3.9.0",
+      "minimal_chars": 68,
+      "margin_to_bound": 92,
+      "minimal_line_conditions_hold": true,
+      "problems": []
+    },
+    {
+      "task_id": "django_orderedset_reversed",
+      "required_facts": [
+        "OrderedSet",
+        "__iter__",
+        "__reversed__"
+      ],
+      "cause_side_tokens": [
+        "OrderedSet",
+        "__iter__"
+      ],
+      "fix_side_tokens": [
+        "__reversed__"
+      ],
+      "minimal_line": "RESULT issue=django-14089 cause=OrderedSet __iter__ fix=__reversed__",
+      "minimal_chars": 68,
+      "margin_to_bound": 92,
+      "minimal_line_conditions_hold": true,
+      "problems": []
+    },
+    {
+      "task_id": "django_field_hash_immutability",
+      "required_facts": [
+        "__hash__",
+        "__eq__",
+        "creation_counter"
+      ],
+      "cause_side_tokens": [
+        "__hash__",
+        "__eq__"
+      ],
+      "fix_side_tokens": [
+        "creation_counter"
+      ],
+      "minimal_line": "RESULT issue=django-15315 cause=__hash__ __eq__ fix=creation_counter",
+      "minimal_chars": 68,
+      "margin_to_bound": 92,
+      "minimal_line_conditions_hold": true,
+      "problems": []
+    }
+  ],
+  "units": [
+    {
+      "task": "django_sqlite_version_floor",
+      "repeat": 0,
+      "baseline_model_calls": 3,
+      "plugin_model_calls": 3,
+      "baseline_tool_calls": 6,
+      "plugin_tool_calls": 6,
+      "baseline_complete_total_tokens": 7358,
+      "plugin_complete_total_tokens": 6522,
+      "saving": 0.1136,
+      "trajectory_matched": true,
+      "baseline_strict": true,
+      "plugin_strict": true,
+      "duplicate_read_pairs": 3
+    },
+    {
+      "task": "django_sqlite_version_floor",
+      "repeat": 1,
+      "baseline_model_calls": 3,
+      "plugin_model_calls": 3,
+      "baseline_tool_calls": 6,
+      "plugin_tool_calls": 6,
+      "baseline_complete_total_tokens": 7350,
+      "plugin_complete_total_tokens": 6518,
+      "saving": 0.1132,
+      "trajectory_matched": true,
+      "baseline_strict": true,
+      "plugin_strict": true,
+      "duplicate_read_pairs": 3
+    },
+    {
+      "task": "django_sqlite_version_floor",
+      "repeat": 2,
+      "baseline_model_calls": 3,
+      "plugin_model_calls": 3,
+      "baseline_tool_calls": 6,
+      "plugin_tool_calls": 6,
+      "baseline_complete_total_tokens": 7358,
+      "plugin_complete_total_tokens": 6513,
+      "saving": 0.1148,
+      "trajectory_matched": true,
+      "baseline_strict": true,
+      "plugin_strict": true,
+      "duplicate_read_pairs": 3
+    },
+    {
+      "task": "django_orderedset_reversed",
+      "repeat": 0,
+      "baseline_model_calls": 4,
+      "plugin_model_calls": 4,
+      "baseline_tool_calls": 6,
+      "plugin_tool_calls": 6,
+      "baseline_complete_total_tokens": 11245,
+      "plugin_complete_total_tokens": 9057,
+      "saving": 0.1946,
+      "trajectory_matched": true,
+      "baseline_strict": true,
+      "plugin_strict": true,
+      "duplicate_read_pairs": 3
+    },
+    {
+      "task": "django_orderedset_reversed",
+      "repeat": 1,
+      "baseline_model_calls": 3,
+      "plugin_model_calls": 4,
+      "baseline_tool_calls": 6,
+      "plugin_tool_calls": 6,
+      "baseline_complete_total_tokens": 8707,
+      "plugin_complete_total_tokens": 9053,
+      "saving": -0.0397,
+      "trajectory_matched": false,
+      "baseline_strict": true,
+      "plugin_strict": true,
+      "duplicate_read_pairs": 3
+    },
+    {
+      "task": "django_orderedset_reversed",
+      "repeat": 2,
+      "baseline_model_calls": 4,
+      "plugin_model_calls": 4,
+      "baseline_tool_calls": 6,
+      "plugin_tool_calls": 6,
+      "baseline_complete_total_tokens": 11246,
+      "plugin_complete_total_tokens": 9059,
+      "saving": 0.1945,
+      "trajectory_matched": true,
+      "baseline_strict": true,
+      "plugin_strict": true,
+      "duplicate_read_pairs": 3
+    },
+    {
+      "task": "django_field_hash_immutability",
+      "repeat": 0,
+      "baseline_model_calls": 2,
+      "plugin_model_calls": 3,
+      "baseline_tool_calls": 6,
+      "plugin_tool_calls": 6,
+      "baseline_complete_total_tokens": 5584,
+      "plugin_complete_total_tokens": 7161,
+      "saving": -0.2824,
+      "trajectory_matched": false,
+      "baseline_strict": true,
+      "plugin_strict": false,
+      "duplicate_read_pairs": 3
+    },
+    {
+      "task": "django_field_hash_immutability",
+      "repeat": 1,
+      "baseline_model_calls": 3,
+      "plugin_model_calls": 4,
+      "baseline_tool_calls": 6,
+      "plugin_tool_calls": 6,
+      "baseline_complete_total_tokens": 8329,
+      "plugin_complete_total_tokens": 9901,
+      "saving": -0.1887,
+      "trajectory_matched": false,
+      "baseline_strict": true,
+      "plugin_strict": false,
+      "duplicate_read_pairs": 3
+    },
+    {
+      "task": "django_field_hash_immutability",
+      "repeat": 2,
+      "baseline_model_calls": 4,
+      "plugin_model_calls": 2,
+      "baseline_tool_calls": 6,
+      "plugin_tool_calls": 6,
+      "baseline_complete_total_tokens": 12201,
+      "plugin_complete_total_tokens": 4439,
+      "saving": 0.6362,
+      "trajectory_matched": false,
+      "baseline_strict": false,
+      "plugin_strict": true,
+      "duplicate_read_pairs": 3
+    }
+  ],
+  "dispersion": {
+    "matched_trajectories": {
+      "n": 5,
+      "mean": 0.1461,
+      "stdev": 0.0442,
+      "min": 0.1132,
+      "max": 0.1946
+    },
+    "unmatched_trajectories": {
+      "n": 4,
+      "mean": 0.0314,
+      "stdev": 0.4154,
+      "min": -0.2824,
+      "max": 0.6362
+    },
+    "all_units": {
+      "n": 9,
+      "mean": 0.0951,
+      "stdev": 0.2634,
+      "min": -0.2824,
+      "max": 0.6362
+    },
+    "largest_saving_unit": {
+      "task": "django_field_hash_immutability",
+      "repeat": 2,
+      "baseline_model_calls": 4,
+      "plugin_model_calls": 2,
+      "baseline_tool_calls": 6,
+      "plugin_tool_calls": 6,
+      "baseline_complete_total_tokens": 12201,
+      "plugin_complete_total_tokens": 4439,
+      "saving": 0.6362,
+      "trajectory_matched": false,
+      "baseline_strict": false,
+      "plugin_strict": true,
+      "duplicate_read_pairs": 3
+    },
+    "attribution": "the largest saving comes from a unit where the two arms took a different number of model calls, so it measures the trajectory as much as the compression; the units with matched call counts cluster tightly"
+  },
+  "prediction": {
+    "question": "after the length diagnostic is made explicit (same criteria, installed in every arm), could track_a_all_tasks flip to true on this 27-sample design?",
+    "recorded_basis": {
+      "django_sqlite_version_floor": {
+        "baseline_strict": 3,
+        "plugin_strict": 3,
+        "gap": 0
+      },
+      "django_orderedset_reversed": {
+        "baseline_strict": 3,
+        "plugin_strict": 3,
+        "gap": 0
+      },
+      "django_field_hash_immutability": {
+        "baseline_strict": 2,
+        "plugin_strict": 1,
+        "gap": 1
+      }
+    },
+    "prediction": "plausibly yes, because the only task that fails the track fails it by one sample (baseline 2/3 versus plugin 1/3) and both plugin failures are over-length rejections whose retry did not shorten; an explicit diagnostic that names the bound and the literals to keep gives that retry a mechanism the previous wording lacked",
+    "not_a_conclusion": true,
+    "depends_on_unverified_assumptions": [
+      "the model complies with an explicit keep-these-literals instruction often enough to convert both over-length retries, which no zero-API check can establish",
+      "the same diagnostic, installed in every arm, must not also repair the baseline's own over-length sample; if it does, the gap can stay open (baseline 3/3 versus plugin 2/3 or 3/3)",
+      "with three repeats the granularity is one sample, i.e. 33 percentage points, so any single flip decides the track; three repeats cannot separate a stable effect from trajectory noise",
+      "the trajectory effect stays as large as it is here: the baseline's own calls varied between 2 and 4 per sample for the same task, and savings moved with it"
+    ],
+    "stability_question": {
+      "question": "is 'stable positive saving' reachable at three repeats?",
+      "answer": "not demonstrated. Compression-driven units (matched call counts) cluster tightly, but the unmatched units swing from -28.2% to +63.6%, so a 27-sample batch reports a pooled mean whose sign can be decided by one trajectory; stability would need either more repeats or a pairing that holds the number of model calls equal, and both would be design changes to be pre-registered, not post-hoc re-judgements"
+    }
+  },
+  "over_length_diagnostic": {
+    "django_sqlite_version_floor": {
+      "text": "the host rejected your previous JSON: over_160_chars. the rendered line 'RESULT issue=... cause=... fix=...' exceeded 160 characters. Shorten \"cause\" and \"fix\" while keeping every fact string and every required technical name. The rendered line must stay within 160 characters. These strings must still appear verbatim in it: 'check_sqlite_version', '3.8.3', '3.9.0'. The cause field must still contain 'check_sqlite_version'. The fix field must still contain '3.9.0'. Keep the answer as short as the required strings allow: drop explanations, restatements and repeated names, and never state the same fact twice. Remove wording, not requirements: a shorter line that loses a required string is rejected as well.",
+      "chars": 712,
+      "states_the_bound": true,
+      "names_every_required_literal": true,
+      "names_the_regex_tokens": true,
+      "forbids_restating": true
+    },
+    "django_orderedset_reversed": {
+      "text": "the host rejected your previous JSON: over_160_chars. the rendered line 'RESULT issue=... cause=... fix=...' exceeded 160 characters. Shorten \"cause\" and \"fix\" while keeping every fact string and every required technical name. The rendered line must stay within 160 characters. These strings must still appear verbatim in it: 'OrderedSet', '__iter__', '__reversed__'. The cause field must still contain 'OrderedSet'. The fix field must still contain '__reversed__'. Keep the answer as short as the required strings allow: drop explanations, restatements and repeated names, and never state the same fact twice. Remove wording, not requirements: a shorter line that loses a required string is rejected as well.",
+      "chars": 709,
+      "states_the_bound": true,
+      "names_every_required_literal": true,
+      "names_the_regex_tokens": true,
+      "forbids_restating": true
+    },
+    "django_field_hash_immutability": {
+      "text": "the host rejected your previous JSON: over_160_chars. the rendered line 'RESULT issue=... cause=... fix=...' exceeded 160 characters. Shorten \"cause\" and \"fix\" while keeping every fact string and every required technical name. The rendered line must stay within 160 characters. These strings must still appear verbatim in it: '__hash__', '__eq__', 'creation_counter'. The cause field must still contain '__hash__'. The fix field must still contain 'creation_counter'. Keep the answer as short as the required strings allow: drop explanations, restatements and repeated names, and never state the same fact twice. Remove wording, not requirements: a shorter line that loses a required string is rejected as well.",
+      "chars": 711,
+      "states_the_bound": true,
+      "names_every_required_literal": true,
+      "names_the_regex_tokens": true,
+      "forbids_restating": true
+    }
+  },
+  "results_boundary_statement": "在该主机配置下、3 任务 × 3 重复上，质量门未达成且成本不稳定；可引用的部分是独立审计本身与其账本（errors 为空），不是有效节省（不得当作有效节省）。",
+  "discipline": {
+    "criteria_unchanged": true,
+    "installed_in_every_arm": true,
+    "old_batches_untouched": true,
+    "sealed_candidates_untouched": [
+      "11820",
+      "12193",
+      "13089"
+    ],
+    "no_rejudge": "v12-v15 and attempts 01/02/03 and the pilot batch are not re-judged"
+  }
+}

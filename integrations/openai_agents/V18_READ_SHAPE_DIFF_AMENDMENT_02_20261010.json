@@ -1,0 +1,49 @@
+{
+  "schema": "openai_agents_v18_read_shape_diff_amendment_02",
+  "date": "20261010",
+  "amends": "integrations/openai_agents/V18_READ_SHAPE_DIFF_20261010.json",
+  "reason": "the plan amendment changed the shape from four rounds of three distinct views to four rounds with exactly one distinct view each: the round count, not the round size, is what the mechanism compresses, so the smaller shape keeps nearly all of the predicted effect while cutting the registration work and the confirmation cost",
+  "changes_applied": [
+    {
+      "file": "experiments/runners/openai_agents_v18_registry.py",
+      "label": "one_view_per_round",
+      "detail": "READS_PER_ROUND 3 -> 1, so READ_CALLS = 4 and EXPECTED_MODEL_CALLS = 5"
+    },
+    {
+      "file": "experiments/runners/openai_agents_v18_registry.py",
+      "label": "protocol_one_read_per_round",
+      "detail": "the protocol now asks for one read per round on its own turn, forbids two reads in one turn and forbids reading a view twice"
+    },
+    {
+      "file": "experiments/runners/openai_agents_v18_registry.py",
+      "label": "verify_message_names_four_views",
+      "detail": "the shape verification message now says one view per round"
+    },
+    {
+      "file": "experiments/runners/run_openai_agents_v18_acquisition.py",
+      "label": "cap_for_the_four_round_shape",
+      "detail": "PILOT_MAX_API_REQUESTS 200 -> 90, from the new worst case"
+    },
+    {
+      "file": "experiments/runners/run_openai_agents_v18_acquisition.py",
+      "label": "expected_calls_comment_for_one_view_rounds",
+      "detail": "the expected-calls comment now describes four read turns"
+    }
+  ],
+  "new_arithmetic": {
+    "read_calls": 4,
+    "max_turns": "READ_CALLS + 2 = 6",
+    "expected_requests_per_sample": 5,
+    "worst_case_requests_per_sample": "MAX_TURNS + one retry = 7",
+    "nine_samples_worst_case": "63 model requests + 6 summary requests = 69",
+    "cap": 90,
+    "margin_over_worst_case": 1.304,
+    "at_least_1_3": true
+  },
+  "current_file_sha256": {
+    "experiments/runners/openai_agents_v18_registry.py": "d885836a296479c3d166c37781faaca79710131c63ff3a2723dc09c30170457d",
+    "experiments/runners/run_openai_agents_v18_acquisition.py": "84e0249c90b1d6fb13bc7406da522e5f1e7923268fbf47590e264505826ec0fb"
+  },
+  "criteria_changed": false,
+  "paid_requests": 0
+}

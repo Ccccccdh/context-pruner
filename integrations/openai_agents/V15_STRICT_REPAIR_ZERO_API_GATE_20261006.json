@@ -1,0 +1,87 @@
+{
+  "schema": "openai_agents_v15_strict_repair_zero_api_gate",
+  "paid_requests": 0,
+  "source_sha256": {
+    "integrations/openai_agents/STRICT_FAILURE_INVENTORY_20261005.json": "7ea3e0073e58abc237d2207ed1610078a08da8ce6e5be0303c31f27e0e2f2904",
+    "runs/stage5-openai-agents-api/openai-repo-diagnostic-v14-multitask-confirm-01/samples.jsonl": "bf8d25a84c769842755627363669cf75c3e7d5d0aee7b55fe149b124b62699cf",
+    "integrations/openai_agents/V14_MULTITASK_FREEZE_20261005.json": "04425ae3bf15a1e20381bdbf2231ebe1e57c8a0b775c2558699682db36576532"
+  },
+  "old_strict_results_unchanged": true,
+  "observed_failures": [
+    {
+      "batch": "v12",
+      "task": "django_long_investigation",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "answer_chars": 208,
+      "checks": {
+        "prefix": true,
+        "one_line": true,
+        "max_160_chars": false,
+        "cause_fix_fields": true,
+        "required_terms": true,
+        "answer_pattern": true
+      }
+    },
+    {
+      "batch": "v14",
+      "task": "xarray_copy_dtype",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "answer_chars": 179,
+      "checks": {
+        "prefix": true,
+        "one_line": true,
+        "max_160_chars": false,
+        "cause_fix_fields": true,
+        "required_terms": true,
+        "answer_pattern": true
+      }
+    },
+    {
+      "batch": "v14",
+      "task": "xarray_copy_dtype",
+      "repeat": 1,
+      "method": "pruner_v1",
+      "answer_chars": 179,
+      "checks": {
+        "prefix": true,
+        "one_line": true,
+        "max_160_chars": false,
+        "cause_fix_fields": true,
+        "required_terms": true,
+        "answer_pattern": true
+      }
+    }
+  ],
+  "validator_negative_controls": {
+    "reject_newline": true,
+    "reject_missing_cause": true,
+    "reject_missing_literal": true,
+    "reject_bad_regex": true
+  },
+  "prospective_shared_host_config": {
+    "max_repair_calls_per_sample": 1,
+    "fail_closed_if_second_answer_invalid": true,
+    "all_arms_receive_same_validator": true,
+    "all_transport_attempts_and_provider_tokens_must_be_counted": true,
+    "logical_request_upper_bound_for_3_tasks_3_repeats_3_arms": 243,
+    "transport_attempt_upper_bound_with_two_model_retries": 675,
+    "one_task_one_repeat_three_arm_logical_upper_bound": 27,
+    "one_task_one_repeat_three_arm_transport_attempt_upper_bound": 75,
+    "transport_retry_buffer_not_yet_frozen": true
+  },
+  "gate": {
+    "old_payload_length_failure_reproduced": true,
+    "validator_negative_controls_pass": true,
+    "safe_fact_preserving_rewrite_demonstrated_on_real_payload": false,
+    "shared_runner_counts_repair_provider_usage": false,
+    "shared_wrapper_synthetic_accounting_controls_pass": true,
+    "exact_new_baseline_source_blobs_available": false,
+    "new_tasks_pre_registered_and_acquired": false,
+    "new_task_replay_four_invariants_pass": false,
+    "independent_auditor_positive_negative_source_drift_controls_pass": false,
+    "passed": false,
+    "decision": "STOP_BEFORE_PAID_REQUESTS"
+  }
+}

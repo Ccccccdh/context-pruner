@@ -1,0 +1,133 @@
+{
+  "schema": "openai_agents_v16_sealed_confirmation_freeze",
+  "status": "FROZEN",
+  "written_utc_date": "20261006",
+  "id": "V16-SEALED-CONFIRMATION-01",
+  "purpose": "sealed_confirmation",
+  "experiment_id": "openai-repo-diagnostic-v16-sealed-confirmation-01",
+  "citable_as_saving": false,
+  "citable_as_quality_equivalence": false,
+  "not_evidence_yet": "these flags stay false until the independent audit passes; the development tasks that took part in building this host configuration are not in this batch, but the configuration itself was built with them, so this batch confirms the configuration on untouched tasks rather than establishing a general result",
+  "task_set": [
+    "django_ordering_related_pk",
+    "django_splitarray_checkbox_attrs",
+    "django_db_cache_cull_none"
+  ],
+  "task_set_note": "the sealed confirmation candidates 11820/12193/13089, registered in V16_SEALED_SOURCE_REGISTRATION_20261006.json; they are spent once this batch runs and are never replaced by another id",
+  "matrix": {
+    "tasks": [
+      "django_ordering_related_pk",
+      "django_splitarray_checkbox_attrs",
+      "django_db_cache_cull_none"
+    ],
+    "arms": [
+      "none",
+      "pruner_v1",
+      "native_summary"
+    ],
+    "repeats": 5,
+    "samples": 45,
+    "max_api_requests": 520,
+    "repeats_rationale": "at three repeats one sample is about 11 to 13 percent of a task's strict track and therefore decides it on its own; five repeats bring the granularity to about 7 percent. This is a design change for this batch only: it is not applied to the pilots and it does not change any criterion."
+  },
+  "host_configuration": {
+    "structured_final_answer": "JSON issue/cause/fix/facts asked for in the prompt, identical for every arm, rendered by the frozen renderer, which is the final-answer path and the only validator; a rejected proposal is closed to an empty answer",
+    "renderer": {
+      "module": "experiments/runners/openai_agents_structured_final_v16.py",
+      "sha256": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+      "truncates": false,
+      "drops_fields": false
+    },
+    "retry": {
+      "budget_per_sample": 1,
+      "billed": true,
+      "carries_host_diagnostic": true,
+      "diagnostic_is_two_sided": true,
+      "diagnostic_states_the_bound_and_the_literals": true
+    },
+    "summary_cap_per_sample": 2,
+    "summary_requests_are_charged_to_the_arm": true,
+    "modules": {
+      "experiments/runners/run_openai_agents_v16_acquisition.py": "09b7d46eb27f86746d82fbd6b62a50bf092b1552d84f1618fff80297081ca814",
+      "experiments/runners/openai_agents_v16_live_contract.py": "ac05f40a353973911b7601ef3a9ff1b720ebf8ab90c196d470e3c151dc03f2d4",
+      "experiments/runners/openai_agents_v16_registry.py": "5b0c252f0e9252d08baa216592018673a0a33e0ea61ac5cfa00fcf7f09dab7e8",
+      "experiments/runners/openai_agents_structured_final_v16.py": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+      "experiments/runners/openai_agents_multitask_chain_v14.py": "bb2f5ad589e4ac0129a4cf01d2316e7f1cf7987e5dfd02e2f41aa72c7ebc1446"
+    }
+  },
+  "acceptance_line": {
+    "line": "per task, the plugin arm's strict track is at least the baseline's (the four conditions judged on the rendered line) AND the paired complete provider-token saving is positive for a majority of pairs AND the batch mean is positive. The verdict is decided on every pair of the frozen matrix; the trajectory-matched subset and the per-arm model-call distribution are reported for explanation only and never substitute for it. Failures, cap hits, retries and summary requests are all charged to their arm.",
+    "decided_on": "every pair of the frozen matrix",
+    "strict_track": "the four conditions judged on the rendered line: required facts present, frozen regex full match, single line with the contract prefix, at most 160 characters",
+    "paired_statistic": "paired complete provider-token totals per (task, repeat) pair, with retries and summary tokens charged to the arm they belong to",
+    "bounds_are_not_relaxed": "at most 160 characters remains an acceptance condition"
+  },
+  "report_only_items": [
+    {
+      "item": "trajectory-matched subset",
+      "why": "pilot 02: the pairs whose two arms took the same number of model calls moved together at +15.90 percent with a 4.16 point spread, while the whole matrix was decided by two units whose arms differed in calls",
+      "rule": "reported for explanation, never used to decide the verdict"
+    },
+    {
+      "item": "per-arm model-call distribution",
+      "why": "the sign of the paired mean is decided by how many turns each arm's model chose and by whether a retry was spent; the ledger shows no extra tool calls and no re-read after a pointer, so this distribution is what has to be reported",
+      "rule": "reported per arm; failures stay charged to their arm either way"
+    }
+  ],
+  "budget_arithmetic": {
+    "samples": 45,
+    "measured_requests_per_sample": 3.67,
+    "expected_requests": 165,
+    "worst_case_model_calls": 360,
+    "summary_calls_worst_case": 30,
+    "worst_case_requests": 390,
+    "cap": 520,
+    "headroom_factor_over_worst_case": 1.33,
+    "headroom_at_least_1_3": true,
+    "derivation": "expected: 45 samples x 3.67 measured requests per sample (pilot 02, retries included) = 167. worst case: 45 samples x the frozen per-sample shape of six reads, one answer and one retry = 360 model calls, plus 15 native samples x the frozen summary cap of 2 = 30 summary requests, so 390; the cap is 520, which is 1.33x the worst case and 3.1x the expectation"
+  },
+  "report_requirements": [
+    "per-task and pooled paired mean saving with dispersion, and the count of positive pairs",
+    "the trajectory-matched subset and the per-arm model-call distribution, labelled as report-only",
+    "per-arm failure decomposition and per-arm retry counts",
+    "per-sample first-answer and retried-answer length, to show whether the two-sided diagnostic shortened or grew the answer",
+    "actual requests and dollar cost with the cache split",
+    "the acceptance verdict recomputed independently by the audit",
+    "wording: under this host configuration; the batch is confirmation on untouched tasks"
+  ],
+  "stop_conditions": [
+    "batch mean at or below zero -> stop and report",
+    "any task whose plugin strict track is below its baseline -> stop and report, do not add samples and do not change the reading",
+    "audit errors non-empty -> the batch may not be cited as an effective saving",
+    "request cap reached -> stop, keep the partial directory, continue under a new id; --resume may never be used to bypass the budget",
+    "any recorded sample missing its four condition flags -> stop"
+  ],
+  "forbidden_wording": [
+    "compression alone saved X percent",
+    "the four criteria are met"
+  ],
+  "required_wording": "under this host configuration",
+  "expected_shape_warning": "if the trajectory effect repeats, the whole-matrix mean can be near zero or negative while the trajectory-matched subset stays near +16 percent; that must be reported as 'saving is stable when trajectories match, but the mechanism can be eaten by turn splitting and retries in some units', never as a stable positive saving",
+  "never_rejudge": "v12 to v15 freezes, scores and answers, the acquisition attempts 01 to 03, both three-arm pilots and their freezes are untouched and unrejudged",
+  "source_of_record": {
+    "integrations/openai_agents/V16_SEALED_SOURCE_REGISTRATION_20261006.json": "57fdd98c1d7a6642bfde178081632e920d4958f70499f433cf779ccc6e2b1f0a",
+    "integrations/openai_agents/V16_SEALED_VIEW_RULE_20261006.json": "a9e4995b075e4e796e2f68298cd634e77b9b3db5958ae55b527851121653d96d",
+    "integrations/openai_agents/V16_PRESELECT_20261006.json": "36a6897ee1cbad9d43046f805a5ce41f76380953a9dc2a0e5d1150e27c453b7d",
+    "integrations/openai_agents/V16_SOURCE_REGISTRATION_20261006.json": "0723258eb3b297752625af85e5f2264bf843da70fa7205735225ca45fdaa22eb",
+    "integrations/openai_agents/V16_STAGE1_20261006.json": "989785291638d4f6699f781e5d10c3bedb7b636d91f833355235fb265c4037d8",
+    "integrations/openai_agents/V16_GATE_PROBES_20261006.json": "491eac2f7ad1050e07012a2987f6c469c01d32afb0fd981b1347ab768e4dc9be",
+    "integrations/openai_agents/V16_CANDIDATE_POOL_20261006.json": "def85ab86093ae5bfc08f568a2172a29448effb09742d27825d6b979e40ba357"
+  },
+  "amendment": {
+    "path": "integrations/openai_agents/V16_ACQUISITION_FREEZE_AMENDMENT_20261006.json",
+    "sha256": "23cd877ba3d2405fe1e34bee9cc9a37696bbde8337c577c997563a9160a15026"
+  },
+  "discipline": {
+    "manifest_written_in_one_pass": true,
+    "writer_refuses_overwrite": true,
+    "no_resume_to_bypass_budget": true,
+    "no_git": true,
+    "old_batches_untouched": true,
+    "sealed_candidates_spent_once_used": true
+  }
+}

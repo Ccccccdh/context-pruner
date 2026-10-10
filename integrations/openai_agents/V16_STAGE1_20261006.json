@@ -1,0 +1,1130 @@
+{
+  "schema": "openai_agents_v16_stage1",
+  "date": "20261006",
+  "paid_requests": 0,
+  "registration_15315": {
+    "registered": true,
+    "task_id": "django_field_hash_immutability",
+    "instance_id": "django__django-15315",
+    "base_commit": "652c68ffeebd510a6f59e1b56b3e007d07683ad8",
+    "problem_statement_sha256": "eaa0886a8c61ddaacd3b4c5f1d60783315d8c0068090a2b6ed1804690ade9182",
+    "registered_tasks_before": 2,
+    "views": [
+      {
+        "file": "django/db/models/fields/__init__.py",
+        "first_line": 504,
+        "last_line": 556,
+        "role": "cause: the value-semantics comparison and hash pair",
+        "commit_path": "652c68ffeebd510a6f59e1b56b3e007d07683ad8:django/db/models/fields/__init__.py",
+        "blob_git_id": "88c9ca9f2849aa0e0f541564f3f780f90c162591",
+        "file_content_sha256": "9b225372cb92bec1b04aa9164140a3c057f2063a0fd8e069f8236e28408ca05d",
+        "view_content_sha256": "4d78a2a3bcf2669715281f88f0a28eee84d4f13ea26289a98c2d48039b54c3e8",
+        "view_bytes": 2572
+      },
+      {
+        "file": "django/db/models/fields/__init__.py",
+        "first_line": 85,
+        "last_line": 109,
+        "role": "context: the creation counters the fix must use",
+        "commit_path": "652c68ffeebd510a6f59e1b56b3e007d07683ad8:django/db/models/fields/__init__.py",
+        "blob_git_id": "88c9ca9f2849aa0e0f541564f3f780f90c162591",
+        "file_content_sha256": "9b225372cb92bec1b04aa9164140a3c057f2063a0fd8e069f8236e28408ca05d",
+        "view_content_sha256": "52b2a23416ce1e3201f6b5cda10574dba6044e817a7fe7bd0f1edf0a44ca2f0b",
+        "view_bytes": 1353
+      },
+      {
+        "file": "django/db/models/fields/__init__.py",
+        "first_line": 763,
+        "last_line": 795,
+        "role": "context: where the field is bound to a model class",
+        "commit_path": "652c68ffeebd510a6f59e1b56b3e007d07683ad8:django/db/models/fields/__init__.py",
+        "blob_git_id": "88c9ca9f2849aa0e0f541564f3f780f90c162591",
+        "file_content_sha256": "9b225372cb92bec1b04aa9164140a3c057f2063a0fd8e069f8236e28408ca05d",
+        "view_content_sha256": "92a442a7dcb7904565c0f73f9dc1ac9127374d56f88b40de9fd5a5ae82dd2f60",
+        "view_bytes": 1748
+      }
+    ],
+    "contract": {
+      "json_fields": [
+        "issue",
+        "cause",
+        "fix",
+        "facts"
+      ],
+      "issue_value": "django-15315",
+      "required_facts": [
+        "__hash__",
+        "__eq__",
+        "creation_counter"
+      ],
+      "forbidden_facts": [
+        "no bug",
+        "not a bug"
+      ],
+      "frozen_regex": "RESULT issue=django-15315 cause=.*__hash__.* fix=.*creation_counter.*",
+      "max_answer_chars": 160,
+      "renderer": "experiments/runners/openai_agents_structured_final_v16.py"
+    },
+    "defect_evidence": {
+      "probe_artifact": "integrations/openai_agents/V16_GATE_PROBES_20261006.json",
+      "probe_observed": "present",
+      "methods": {
+        "_description": 126,
+        "__init__": 132,
+        "__str__": 179,
+        "__repr__": 189,
+        "check": 197,
+        "_check_field_name": 208,
+        "_choices_is_value": 241,
+        "_check_choices": 244,
+        "_check_db_index": 308,
+        "_check_null_allowed_for_primary_keys": 320,
+        "_check_backend_specific_checks": 338,
+        "_check_validators": 348,
+        "_check_deprecation_details": 367,
+        "get_col": 395,
+        "cached_col": 405,
+        "select_format": 409,
+        "deconstruct": 417,
+        "clone": 508,
+        "__eq__": 516,
+        "__lt__": 525,
+        "__hash__": 544,
+        "__deepcopy__": 551,
+        "__copy__": 562,
+        "__reduce__": 570,
+        "get_pk_value_on_save": 590,
+        "to_python": 601,
+        "validators": 610,
+        "run_validators": 617,
+        "validate": 633,
+        "clean": 664,
+        "db_type_parameters": 675,
+        "db_check": 678,
+        "db_type": 690,
+        "rel_db_type": 716,
+        "cast_db_type": 724,
+        "db_parameters": 731,
+        "db_type_suffix": 744,
+        "get_db_converters": 747,
+        "unique": 753,
+        "db_tablespace": 757,
+        "db_returning": 761,
+        "set_attributes_from_name": 768,
+        "contribute_to_class": 775,
+        "get_filter_kwargs_for_object": 799,
+        "get_attname": 806,
+        "get_attname_column": 809,
+        "get_internal_type": 814,
+        "pre_save": 817,
+        "get_prep_value": 821,
+        "get_db_prep_value": 827,
+        "get_db_prep_save": 837,
+        "has_default": 841,
+        "get_default": 845,
+        "_get_default": 850,
+        "get_choices": 860,
+        "value_to_string": 886,
+        "_get_flatchoices": 893,
+        "save_form_data": 906,
+        "formfield": 909,
+        "value_from_object": 947
+      }
+    },
+    "problems": []
+  },
+  "development_set": {
+    "registered": 3,
+    "status": "3/3",
+    "task_ids": [
+      "django_sqlite_version_floor",
+      "django_orderedset_reversed",
+      "django_field_hash_immutability"
+    ]
+  },
+  "renderer_replay": {
+    "samples": 39,
+    "passed": 36,
+    "pass_rate": 0.9230769230769231,
+    "failures": [
+      {
+        "batch": "v12",
+        "task": "django_long_investigation",
+        "repeat": 0,
+        "method": "pruner_v1",
+        "source_chars": 208,
+        "rendered_chars": 0,
+        "render_accepted": false,
+        "render_reason": "over_160_chars",
+        "conditions": {
+          "facts_complete": false,
+          "frozen_regex": false,
+          "single_line_prefix": false,
+          "within_160": false
+        },
+        "first_failure": "facts_complete",
+        "literals_dropped": []
+      },
+      {
+        "batch": "v14",
+        "task": "xarray_copy_dtype",
+        "repeat": 0,
+        "method": "pruner_v1",
+        "source_chars": 179,
+        "rendered_chars": 0,
+        "render_accepted": false,
+        "render_reason": "over_160_chars",
+        "conditions": {
+          "facts_complete": false,
+          "frozen_regex": false,
+          "single_line_prefix": false,
+          "within_160": false
+        },
+        "first_failure": "facts_complete",
+        "literals_dropped": []
+      },
+      {
+        "batch": "v14",
+        "task": "xarray_copy_dtype",
+        "repeat": 1,
+        "method": "pruner_v1",
+        "source_chars": 179,
+        "rendered_chars": 0,
+        "render_accepted": false,
+        "render_reason": "over_160_chars",
+        "conditions": {
+          "facts_complete": false,
+          "frozen_regex": false,
+          "single_line_prefix": false,
+          "within_160": false
+        },
+        "first_failure": "facts_complete",
+        "literals_dropped": []
+      }
+    ],
+    "failure_decomposition": {
+      "facts_complete": 3,
+      "frozen_regex": 0,
+      "single_line_prefix": 0,
+      "within_160": 0
+    },
+    "literals_dropped_anywhere": 0,
+    "over_length_rejections": 3,
+    "over_length_rejections_note": "these samples were REJECTED by the renderer (render_accepted=false, rendered output empty); the host never truncates and never drops a field - the rendered length is 0, not a shortened answer",
+    "host_truncations": 0
+  },
+  "renderer_replay_rows": [
+    {
+      "batch": "v12",
+      "task": "django_long_investigation",
+      "repeat": 0,
+      "method": "none",
+      "source_chars": 154,
+      "rendered_chars": 154,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    },
+    {
+      "batch": "v12",
+      "task": "django_long_investigation",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "source_chars": 208,
+      "rendered_chars": 0,
+      "render_accepted": false,
+      "render_reason": "over_160_chars",
+      "conditions": {
+        "facts_complete": false,
+        "frozen_regex": false,
+        "single_line_prefix": false,
+        "within_160": false
+      },
+      "first_failure": "facts_complete",
+      "literals_dropped": []
+    },
+    {
+      "batch": "v12",
+      "task": "django_long_investigation",
+      "repeat": 0,
+      "method": "native_summary",
+      "source_chars": 154,
+      "rendered_chars": 154,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    },
+    {
+      "batch": "v13",
+      "task": "requests_digest_qop",
+      "repeat": 0,
+      "method": "none",
+      "source_chars": 145,
+      "rendered_chars": 145,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    },
+    {
+      "batch": "v13",
+      "task": "requests_digest_qop",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "source_chars": 139,
+      "rendered_chars": 139,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    },
+    {
+      "batch": "v13",
+      "task": "requests_digest_qop",
+      "repeat": 0,
+      "method": "native_summary",
+      "source_chars": 145,
+      "rendered_chars": 145,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    },
+    {
+      "batch": "v13",
+      "task": "requests_digest_qop",
+      "repeat": 1,
+      "method": "pruner_v1",
+      "source_chars": 139,
+      "rendered_chars": 139,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    },
+    {
+      "batch": "v13",
+      "task": "requests_digest_qop",
+      "repeat": 1,
+      "method": "native_summary",
+      "source_chars": 145,
+      "rendered_chars": 145,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    },
+    {
+      "batch": "v13",
+      "task": "requests_digest_qop",
+      "repeat": 1,
+      "method": "none",
+      "source_chars": 145,
+      "rendered_chars": 145,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    },
+    {
+      "batch": "v13",
+      "task": "requests_digest_qop",
+      "repeat": 2,
+      "method": "native_summary",
+      "source_chars": 145,
+      "rendered_chars": 145,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    },
+    {
+      "batch": "v13",
+      "task": "requests_digest_qop",
+      "repeat": 2,
+      "method": "none",
+      "source_chars": 145,
+      "rendered_chars": 145,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    },
+    {
+      "batch": "v13",
+      "task": "requests_digest_qop",
+      "repeat": 2,
+      "method": "pruner_v1",
+      "source_chars": 139,
+      "rendered_chars": 139,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    },
+    {
+      "batch": "v14",
+      "task": "requests_binary_payload",
+      "repeat": 0,
+      "method": "none",
+      "source_chars": 133,
+      "rendered_chars": 133,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    },
+    {
+      "batch": "v14",
+      "task": "requests_binary_payload",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "source_chars": 151,
+      "rendered_chars": 151,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    },
+    {
+      "batch": "v14",
+      "task": "requests_binary_payload",
+      "repeat": 0,
+      "method": "native_summary",
+      "source_chars": 133,
+      "rendered_chars": 133,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    },
+    {
+      "batch": "v14",
+      "task": "flask_empty_blueprint_name",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "source_chars": 148,
+      "rendered_chars": 148,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    },
+    {
+      "batch": "v14",
+      "task": "flask_empty_blueprint_name",
+      "repeat": 0,
+      "method": "native_summary",
+      "source_chars": 152,
+      "rendered_chars": 152,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    },
+    {
+      "batch": "v14",
+      "task": "flask_empty_blueprint_name",
+      "repeat": 0,
+      "method": "none",
+      "source_chars": 152,
+      "rendered_chars": 152,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    },
+    {
+      "batch": "v14",
+      "task": "xarray_copy_dtype",
+      "repeat": 0,
+      "method": "native_summary",
+      "source_chars": 128,
+      "rendered_chars": 128,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    },
+    {
+      "batch": "v14",
+      "task": "xarray_copy_dtype",
+      "repeat": 0,
+      "method": "none",
+      "source_chars": 128,
+      "rendered_chars": 128,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    },
+    {
+      "batch": "v14",
+      "task": "xarray_copy_dtype",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "source_chars": 179,
+      "rendered_chars": 0,
+      "render_accepted": false,
+      "render_reason": "over_160_chars",
+      "conditions": {
+        "facts_complete": false,
+        "frozen_regex": false,
+        "single_line_prefix": false,
+        "within_160": false
+      },
+      "first_failure": "facts_complete",
+      "literals_dropped": []
+    },
+    {
+      "batch": "v14",
+      "task": "requests_binary_payload",
+      "repeat": 1,
+      "method": "pruner_v1",
+      "source_chars": 133,
+      "rendered_chars": 133,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    },
+    {
+      "batch": "v14",
+      "task": "requests_binary_payload",
+      "repeat": 1,
+      "method": "native_summary",
+      "source_chars": 133,
+      "rendered_chars": 133,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    },
+    {
+      "batch": "v14",
+      "task": "requests_binary_payload",
+      "repeat": 1,
+      "method": "none",
+      "source_chars": 133,
+      "rendered_chars": 133,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    },
+    {
+      "batch": "v14",
+      "task": "flask_empty_blueprint_name",
+      "repeat": 1,
+      "method": "native_summary",
+      "source_chars": 152,
+      "rendered_chars": 152,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    },
+    {
+      "batch": "v14",
+      "task": "flask_empty_blueprint_name",
+      "repeat": 1,
+      "method": "none",
+      "source_chars": 152,
+      "rendered_chars": 152,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    },
+    {
+      "batch": "v14",
+      "task": "flask_empty_blueprint_name",
+      "repeat": 1,
+      "method": "pruner_v1",
+      "source_chars": 146,
+      "rendered_chars": 146,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    },
+    {
+      "batch": "v14",
+      "task": "xarray_copy_dtype",
+      "repeat": 1,
+      "method": "none",
+      "source_chars": 128,
+      "rendered_chars": 128,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    },
+    {
+      "batch": "v14",
+      "task": "xarray_copy_dtype",
+      "repeat": 1,
+      "method": "pruner_v1",
+      "source_chars": 179,
+      "rendered_chars": 0,
+      "render_accepted": false,
+      "render_reason": "over_160_chars",
+      "conditions": {
+        "facts_complete": false,
+        "frozen_regex": false,
+        "single_line_prefix": false,
+        "within_160": false
+      },
+      "first_failure": "facts_complete",
+      "literals_dropped": []
+    },
+    {
+      "batch": "v14",
+      "task": "xarray_copy_dtype",
+      "repeat": 1,
+      "method": "native_summary",
+      "source_chars": 128,
+      "rendered_chars": 128,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    },
+    {
+      "batch": "v14",
+      "task": "requests_binary_payload",
+      "repeat": 2,
+      "method": "native_summary",
+      "source_chars": 133,
+      "rendered_chars": 133,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    },
+    {
+      "batch": "v14",
+      "task": "requests_binary_payload",
+      "repeat": 2,
+      "method": "none",
+      "source_chars": 133,
+      "rendered_chars": 133,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    },
+    {
+      "batch": "v14",
+      "task": "requests_binary_payload",
+      "repeat": 2,
+      "method": "pruner_v1",
+      "source_chars": 136,
+      "rendered_chars": 136,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    },
+    {
+      "batch": "v14",
+      "task": "flask_empty_blueprint_name",
+      "repeat": 2,
+      "method": "none",
+      "source_chars": 152,
+      "rendered_chars": 152,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    },
+    {
+      "batch": "v14",
+      "task": "flask_empty_blueprint_name",
+      "repeat": 2,
+      "method": "pruner_v1",
+      "source_chars": 139,
+      "rendered_chars": 139,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    },
+    {
+      "batch": "v14",
+      "task": "flask_empty_blueprint_name",
+      "repeat": 2,
+      "method": "native_summary",
+      "source_chars": 148,
+      "rendered_chars": 148,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    },
+    {
+      "batch": "v14",
+      "task": "xarray_copy_dtype",
+      "repeat": 2,
+      "method": "pruner_v1",
+      "source_chars": 143,
+      "rendered_chars": 143,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    },
+    {
+      "batch": "v14",
+      "task": "xarray_copy_dtype",
+      "repeat": 2,
+      "method": "native_summary",
+      "source_chars": 128,
+      "rendered_chars": 128,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    },
+    {
+      "batch": "v14",
+      "task": "xarray_copy_dtype",
+      "repeat": 2,
+      "method": "none",
+      "source_chars": 128,
+      "rendered_chars": 128,
+      "render_accepted": true,
+      "render_reason": "accepted",
+      "conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "first_failure": null,
+      "literals_dropped": []
+    }
+  ],
+  "negative_controls": [
+    {
+      "control": "artificially_over_long",
+      "render_accepted": false,
+      "reason": "over_160_chars",
+      "chars": 250,
+      "expected": "render_rejected",
+      "ok": true
+    },
+    {
+      "control": "missing_literal",
+      "render_accepted": false,
+      "reason": "declared_fact_missing_from_rendered_answer",
+      "chars": 60,
+      "expected": "render_rejected",
+      "ok": true
+    },
+    {
+      "control": "one_character_tampered_output",
+      "render_accepted": true,
+      "tampered_matches_regex": false,
+      "expected": "regex_must_fail",
+      "ok": true
+    }
+  ],
+  "negative_controls_ok": true,
+  "cost_envelope": {
+    "rendering_is_host_side": true,
+    "rendering_is_billed": false,
+    "retry_budget_per_sample": 1,
+    "worst_case_extra_requests": 13,
+    "worst_case_extra_tokens": 39271,
+    "per_sample_worst_case_tokens": [
+      {
+        "batch": "v12",
+        "task": "django_long_investigation",
+        "repeat": 0,
+        "extra_requests": 1,
+        "extra_tokens": 2793,
+        "baseline_total": 14670
+      },
+      {
+        "batch": "v13",
+        "task": "requests_digest_qop",
+        "repeat": 0,
+        "extra_requests": 1,
+        "extra_tokens": 3182,
+        "baseline_total": 17567
+      },
+      {
+        "batch": "v13",
+        "task": "requests_digest_qop",
+        "repeat": 1,
+        "extra_requests": 1,
+        "extra_tokens": 3182,
+        "baseline_total": 17565
+      },
+      {
+        "batch": "v13",
+        "task": "requests_digest_qop",
+        "repeat": 2,
+        "extra_requests": 1,
+        "extra_tokens": 3185,
+        "baseline_total": 17570
+      },
+      {
+        "batch": "v14",
+        "task": "requests_binary_payload",
+        "repeat": 0,
+        "extra_requests": 1,
+        "extra_tokens": 2068,
+        "baseline_total": 11008
+      },
+      {
+        "batch": "v14",
+        "task": "flask_empty_blueprint_name",
+        "repeat": 0,
+        "extra_requests": 1,
+        "extra_tokens": 2512,
+        "baseline_total": 13105
+      },
+      {
+        "batch": "v14",
+        "task": "xarray_copy_dtype",
+        "repeat": 0,
+        "extra_requests": 1,
+        "extra_tokens": 4407,
+        "baseline_total": 24172
+      },
+      {
+        "batch": "v14",
+        "task": "requests_binary_payload",
+        "repeat": 1,
+        "extra_requests": 1,
+        "extra_tokens": 2063,
+        "baseline_total": 10999
+      },
+      {
+        "batch": "v14",
+        "task": "flask_empty_blueprint_name",
+        "repeat": 1,
+        "extra_requests": 1,
+        "extra_tokens": 2509,
+        "baseline_total": 13102
+      },
+      {
+        "batch": "v14",
+        "task": "xarray_copy_dtype",
+        "repeat": 1,
+        "extra_requests": 1,
+        "extra_tokens": 4404,
+        "baseline_total": 24165
+      },
+      {
+        "batch": "v14",
+        "task": "requests_binary_payload",
+        "repeat": 2,
+        "extra_requests": 1,
+        "extra_tokens": 2060,
+        "baseline_total": 10994
+      },
+      {
+        "batch": "v14",
+        "task": "flask_empty_blueprint_name",
+        "repeat": 2,
+        "extra_requests": 1,
+        "extra_tokens": 2511,
+        "baseline_total": 13106
+      },
+      {
+        "batch": "v14",
+        "task": "xarray_copy_dtype",
+        "repeat": 2,
+        "extra_requests": 1,
+        "extra_tokens": 4395,
+        "baseline_total": 24160
+      }
+    ],
+    "observed_replay_over_160_share": 0.0,
+    "expected_retry_rate_basis": "the replay's own share of answers that fail the length condition while the other three conditions hold; the retry only fires for those, and the renderer itself never truncates, so the host adds no retries of its own"
+  },
+  "freeze_draft": {
+    "status": "DRAFT_NOT_FROZEN",
+    "may_run_paid_batch": false,
+    "host_configuration": "v16 all-arm structured final answer: JSON issue/cause/fix/facts plus a deterministic RESULT renderer, identical for every arm, at most one billed format retry",
+    "bounds_are_not_relaxed": "at most 160 characters remains an acceptance condition",
+    "tasks": [
+      "django_sqlite_version_floor",
+      "django_orderedset_reversed",
+      "django_field_hash_immutability"
+    ],
+    "renderer": {
+      "module": "experiments/runners/openai_agents_structured_final_v16.py",
+      "sha256": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+      "truncates": false,
+      "fidelity_clause": "if a sample's fields cannot be rendered inside facts + frozen regex + 160 characters, the sample counts as a failure and the share is reported; no truncation and no dropped field may be used to fit the bound"
+    },
+    "criteria": {
+      "strict_track": "required facts + frozen regex + single line/prefix + <=160, per sample",
+      "length_track": "reported, not an acceptance condition of its own",
+      "coverage": "share of samples whose rendered answer satisfies all four conditions"
+    },
+    "request_budget": {
+      "acquisition": {
+        "tasks": 3,
+        "arms": [
+          "none"
+        ],
+        "repeats": 1,
+        "max_api_requests": 30,
+        "purpose": "payload_acquisition_only",
+        "citable_as_saving": false,
+        "citable_as_quality_equivalence": false
+      },
+      "development_pilot": {
+        "tasks": 3,
+        "repeats": 3,
+        "arms": 3,
+        "samples": 27,
+        "max_api_requests": 300
+      },
+      "confirmation": {
+        "tasks": 3,
+        "repeats": 3,
+        "arms": 3,
+        "samples": 27,
+        "max_api_requests": 300,
+        "candidates": [
+          "django__django-11820",
+          "django__django-12193",
+          "django__django-13089"
+        ]
+      }
+    },
+    "summary_cap": "declared per sample in the freeze and charged to the arm that makes the call",
+    "failure_lines": [
+      "strict track below baseline on any task or pooled",
+      "paired complete-total provider-token saving not positive in the majority or not positive pooled",
+      "zero actual duplicate replacements",
+      "a required literal loses presence or the renderer drops a field",
+      "request or summary cap exceeded",
+      "independent audit complete=false"
+    ],
+    "fidelity_reporting": [
+      "report strict track and length track together, never as a single quality number",
+      "no host truncation; failed renders count as failures",
+      "the phrase 'in this host configuration' is required in conclusions"
+    ],
+    "never_rejudge": "v12 (0/1), v13 (3/3), v14 (7/9 with acceptance.met=false) stand unchanged"
+  }
+}

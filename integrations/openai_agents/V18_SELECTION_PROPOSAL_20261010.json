@@ -1,0 +1,1507 @@
+{
+  "schema": "openai_agents_v18_selection_proposal",
+  "date": "20261010",
+  "plan": "integrations/openai_agents/V18_TASK_SHAPE_PLAN_20261010.json",
+  "plan_amendment": "integrations/openai_agents/V18_TASK_SHAPE_PLAN_AMENDMENT_20261010.json",
+  "supersedes": "an earlier run of this proposal in which the derivation rule could not handle a statement path that only exists on master and a module with fewer than four definitions; both are derivation repairs, and no criterion changed",
+  "derivation_rule": [
+    "the python path named in the statement is used when it exists at the base commit",
+    "otherwise its basename must match exactly one tracked python file at that commit",
+    "round 1 is the definition whose name the statement uses; further rounds are the following distinct definitions in the same module, then its lexical siblings"
+  ],
+  "selection_rule": "candidates are taken from the frozen available_order with no hand picking; a rejected candidate is reported and never replaced",
+  "read_shape": {
+    "rounds": 4,
+    "views_per_round": 1,
+    "read_calls": 4,
+    "max_turns": "READ_CALLS + 2 = 6"
+  },
+  "cap_arithmetic": {
+    "expected_requests_per_sample": 5,
+    "worst_case_requests_per_sample": "MAX_TURNS + one retry = 7",
+    "nine_samples": "63 model requests + 6 summary requests = 69",
+    "cap": 90,
+    "margin_over_worst_case": 1.304,
+    "at_least_1_3": true
+  },
+  "selected": {
+    "django__django-15572": {
+      "instance_id": "django__django-15572",
+      "task_id": "autoreload_template_changed",
+      "repo": "django/django",
+      "base_commit": "0b31e024873681e187b574fe1c4afe5e48aeeecf",
+      "difficulty": "<15 min fix",
+      "primary_file_derivation": {
+        "file": "django/template/autoreload.py",
+        "derived_by": "the python path named in the statement, present at the base commit"
+      },
+      "files_used": [
+        "django/template/autoreload.py",
+        "django/template/base.py",
+        "django/template/base.py",
+        "django/template/base.py"
+      ],
+      "statement_sha256": "f9d1889009c44a56a4487dbf777c536841b4b30a2472ee1d1e30b75007f12aa3",
+      "statement_hash_matches_preselection": false,
+      "views": [
+        {
+          "round": 1,
+          "file": "django/template/autoreload.py",
+          "symbol": "template_changed",
+          "first_line": 45,
+          "last_line": 54,
+          "blob_git_id": "84c8554165f871a994b6a3617b776df2cb5e2e32",
+          "file_content_sha256": "8b618b323b0689e2d9263491d91b474ae1c0e54cc8d84c66eaef644eeb976540",
+          "view_content_sha256": "6bb5a528d99a5f2b6597907b9f496487efebf345af1d672ede34d235493daa0b",
+          "tool_name": "read_template_changed"
+        },
+        {
+          "round": 2,
+          "file": "django/template/base.py",
+          "symbol": "TokenType",
+          "first_line": 91,
+          "last_line": 98,
+          "blob_git_id": "a1ab437eca5e692b9fd408972f623f7fc7301c1b",
+          "file_content_sha256": "92d1176aad999f406a3d5a9f50d8fd3cc4ff6b80751283835466a2300f728aa8",
+          "view_content_sha256": "69a64c69a8b352f2ed55cd36fb2a199be7a40e42f2fb0e7814c75266db140250",
+          "tool_name": "read_tokentype"
+        },
+        {
+          "round": 3,
+          "file": "django/template/base.py",
+          "symbol": "VariableDoesNotExist",
+          "first_line": 98,
+          "last_line": 107,
+          "blob_git_id": "a1ab437eca5e692b9fd408972f623f7fc7301c1b",
+          "file_content_sha256": "92d1176aad999f406a3d5a9f50d8fd3cc4ff6b80751283835466a2300f728aa8",
+          "view_content_sha256": "21f6c7077a2463e9720d873ce5222a3d1ff13f7c4135426a831ab28502f30494",
+          "tool_name": "read_variabledoesnotexist"
+        },
+        {
+          "round": 4,
+          "file": "django/template/base.py",
+          "symbol": "Origin",
+          "first_line": 107,
+          "last_line": 135,
+          "blob_git_id": "a1ab437eca5e692b9fd408972f623f7fc7301c1b",
+          "file_content_sha256": "92d1176aad999f406a3d5a9f50d8fd3cc4ff6b80751283835466a2300f728aa8",
+          "view_content_sha256": "a98d22f0cae54c01a1f1fb2d99a003b994c2faae6ab9e4c9dd6619cfa2bbc91c",
+          "tool_name": "read_origin"
+        }
+      ],
+      "distinct_ranges": true,
+      "distinct_tool_names": true,
+      "contract": {
+        "issue_value": "django-15572",
+        "cause_token": "template_changed",
+        "fix_token": "template",
+        "required_facts": [
+          "template_changed",
+          "template",
+          "None"
+        ],
+        "frozen_regex": "RESULT issue=django-15572 cause=.*template_changed.* fix=.*template.*",
+        "max_answer_chars": 160
+      },
+      "literal_sources_in_views": {
+        "template_changed": [
+          "round 1 (template_changed)"
+        ],
+        "template": [
+          "round 1 (template_changed)",
+          "round 2 (TokenType)",
+          "round 4 (Origin)"
+        ],
+        "None": [
+          "round 4 (Origin)"
+        ]
+      },
+      "minimal_feasible_line": {
+        "line": "RESULT issue=django-15572 cause=template_changed None fix=template",
+        "chars": 66,
+        "margin_to_bound": 94,
+        "problems": []
+      },
+      "why_the_defect_segment_is_included": "round 1 is the definition the statement's own symbol names (template_changed); the remaining rounds are the following distinct definitions of the same module or its lexical siblings"
+    },
+    "django__django-16255": {
+      "instance_id": "django__django-16255",
+      "task_id": "exception_convert_exception_to_response",
+      "repo": "django/django",
+      "base_commit": "444b6da7cc229a58a2c476a52e45233001dc7073",
+      "difficulty": "<15 min fix",
+      "primary_file_derivation": {
+        "file": "django/core/handlers/exception.py",
+        "derived_by": "the python path named in the statement, present at the base commit"
+      },
+      "files_used": [
+        "django/core/handlers/exception.py",
+        "django/core/handlers/exception.py",
+        "django/core/handlers/exception.py",
+        "django/core/handlers/exception.py"
+      ],
+      "statement_sha256": "2359a3443b4020179e535a3df289178a975a90472b1fb6c3c23adf85aee5c371",
+      "statement_hash_matches_preselection": false,
+      "views": [
+        {
+          "round": 1,
+          "file": "django/core/handlers/exception.py",
+          "symbol": "convert_exception_to_response",
+          "first_line": 21,
+          "last_line": 60,
+          "blob_git_id": "79577c2d0a6d806410d23bae3e2090f23e9ea3f5",
+          "file_content_sha256": "36cbe02bb446d560bd8d03b575f15aa464ac2544be1d20fd82884a090a8921ef",
+          "view_content_sha256": "e83036cd2729a4b95c727c0545e7cbff9205d7c511513cc8c69dae71801df2a6",
+          "tool_name": "read_convert_exception_to_response"
+        },
+        {
+          "round": 2,
+          "file": "django/core/handlers/exception.py",
+          "symbol": "response_for_exception",
+          "first_line": 60,
+          "last_line": 158,
+          "blob_git_id": "79577c2d0a6d806410d23bae3e2090f23e9ea3f5",
+          "file_content_sha256": "36cbe02bb446d560bd8d03b575f15aa464ac2544be1d20fd82884a090a8921ef",
+          "view_content_sha256": "56979e4089f275758b71d0e61d8d07df15658abe3f2a88e3305bc8487bb36098",
+          "tool_name": "read_response_for_exception"
+        },
+        {
+          "round": 3,
+          "file": "django/core/handlers/exception.py",
+          "symbol": "get_exception_response",
+          "first_line": 158,
+          "last_line": 169,
+          "blob_git_id": "79577c2d0a6d806410d23bae3e2090f23e9ea3f5",
+          "file_content_sha256": "36cbe02bb446d560bd8d03b575f15aa464ac2544be1d20fd82884a090a8921ef",
+          "view_content_sha256": "f828fa464bab247d7bd737ec2181a6f0ae7ce4438006ef86dacc50119fde7b2d",
+          "tool_name": "read_get_exception_response"
+        },
+        {
+          "round": 4,
+          "file": "django/core/handlers/exception.py",
+          "symbol": "handle_uncaught_exception",
+          "first_line": 169,
+          "last_line": 185,
+          "blob_git_id": "79577c2d0a6d806410d23bae3e2090f23e9ea3f5",
+          "file_content_sha256": "36cbe02bb446d560bd8d03b575f15aa464ac2544be1d20fd82884a090a8921ef",
+          "view_content_sha256": "e1f906e87b1a7cc23b77a00b686fb7da47189f13eba40c9d64a6fdcb6c2edf46",
+          "tool_name": "read_handle_uncaught_exception"
+        }
+      ],
+      "distinct_ranges": true,
+      "distinct_tool_names": true,
+      "contract": {
+        "issue_value": "django-16255",
+        "cause_token": "inner",
+        "fix_token": "raise",
+        "required_facts": [
+          "inner",
+          "raise",
+          "callable"
+        ],
+        "frozen_regex": "RESULT issue=django-16255 cause=.*inner.* fix=.*raise.*",
+        "max_answer_chars": 160
+      },
+      "literal_sources_in_views": {
+        "inner": [
+          "round 1 (convert_exception_to_response)",
+          "round 2 (response_for_exception)"
+        ],
+        "raise": [
+          "round 2 (response_for_exception)",
+          "round 4 (handle_uncaught_exception)"
+        ],
+        "callable": [
+          "round 1 (convert_exception_to_response)",
+          "round 2 (response_for_exception)"
+        ]
+      },
+      "minimal_feasible_line": {
+        "line": "RESULT issue=django-16255 cause=inner callable fix=raise",
+        "chars": 56,
+        "margin_to_bound": 104,
+        "problems": []
+      },
+      "why_the_defect_segment_is_included": "round 1 is the definition the statement's own symbol names (inner); the remaining rounds are the following distinct definitions of the same module or its lexical siblings"
+    },
+    "django__django-15569": {
+      "instance_id": "django__django-15569",
+      "task_id": "query_utils_RegisterLookupMixin",
+      "repo": "django/django",
+      "base_commit": "884b4c27f506b3c29d58509fc83a35c30ea10d94",
+      "difficulty": "<15 min fix",
+      "primary_file_derivation": {
+        "file": "django/db/models/query_utils.py",
+        "derived_by": "the statement's path django/django/blame/main/django/db/models/query_utils.py is not present at the base commit; its basename query_utils.py matched exactly one tracked file there"
+      },
+      "files_used": [
+        "django/db/models/query_utils.py",
+        "django/db/models/query_utils.py",
+        "django/db/models/query_utils.py",
+        "django/db/models/query_utils.py"
+      ],
+      "statement_sha256": "107938cd24f7bef580939d1998ce566f02fe292c37bcd14013c5f28ec5fb4f51",
+      "statement_hash_matches_preselection": false,
+      "views": [
+        {
+          "round": 1,
+          "file": "django/db/models/query_utils.py",
+          "symbol": "RegisterLookupMixin",
+          "first_line": 149,
+          "last_line": 219,
+          "blob_git_id": "0caa165e151b72df0345b39809e185a984873f6a",
+          "file_content_sha256": "79f44df9f8754429320b6d349bfee8b06d341335f2c4c343df006e41402d84c7",
+          "view_content_sha256": "e24340b4ad71ae739ab871b14c0715c5c5e52aa768dbdb096675949eadafb7ba",
+          "tool_name": "read_registerlookupmixin"
+        },
+        {
+          "round": 2,
+          "file": "django/db/models/query_utils.py",
+          "symbol": "select_related_descend",
+          "first_line": 219,
+          "last_line": 256,
+          "blob_git_id": "0caa165e151b72df0345b39809e185a984873f6a",
+          "file_content_sha256": "79f44df9f8754429320b6d349bfee8b06d341335f2c4c343df006e41402d84c7",
+          "view_content_sha256": "1172706fae7b8a8d6a4bb77cf76e81df60f379fc1eea12b30ea98a9cd8b3515f",
+          "tool_name": "read_select_related_descend"
+        },
+        {
+          "round": 3,
+          "file": "django/db/models/query_utils.py",
+          "symbol": "refs_expression",
+          "first_line": 256,
+          "last_line": 269,
+          "blob_git_id": "0caa165e151b72df0345b39809e185a984873f6a",
+          "file_content_sha256": "79f44df9f8754429320b6d349bfee8b06d341335f2c4c343df006e41402d84c7",
+          "view_content_sha256": "3c810534c7cde4b54e02eb6f97887f1399a3653df8302acefd964e3d178fead7",
+          "tool_name": "read_refs_expression"
+        },
+        {
+          "round": 4,
+          "file": "django/db/models/query_utils.py",
+          "symbol": "check_rel_lookup_compatibility",
+          "first_line": 269,
+          "last_line": 298,
+          "blob_git_id": "0caa165e151b72df0345b39809e185a984873f6a",
+          "file_content_sha256": "79f44df9f8754429320b6d349bfee8b06d341335f2c4c343df006e41402d84c7",
+          "view_content_sha256": "506616a48c7d86a630189fdabb43328e7eb17063084bb12af696f544ba51c35a",
+          "tool_name": "read_check_rel_lookup_compatibility"
+        }
+      ],
+      "distinct_ranges": true,
+      "distinct_tool_names": true,
+      "contract": {
+        "issue_value": "django-15569",
+        "cause_token": "RegisterLookupMixin",
+        "fix_token": "_unregister_lookup",
+        "required_facts": [
+          "RegisterLookupMixin",
+          "_unregister_lookup",
+          "should"
+        ],
+        "frozen_regex": "RESULT issue=django-15569 cause=.*RegisterLookupMixin.* fix=.*_unregister_lookup.*",
+        "max_answer_chars": 160
+      },
+      "literal_sources_in_views": {
+        "RegisterLookupMixin": [
+          "round 1 (RegisterLookupMixin)"
+        ],
+        "_unregister_lookup": [
+          "round 1 (RegisterLookupMixin)"
+        ],
+        "should": [
+          "round 2 (select_related_descend)"
+        ]
+      },
+      "minimal_feasible_line": {
+        "line": "RESULT issue=django-15569 cause=RegisterLookupMixin should fix=_unregister_lookup",
+        "chars": 81,
+        "margin_to_bound": 79,
+        "problems": []
+      },
+      "why_the_defect_segment_is_included": "round 1 is the definition the statement's own symbol names (RegisterLookupMixin); the remaining rounds are the following distinct definitions of the same module or its lexical siblings"
+    }
+  },
+  "selected_count": 3,
+  "rejected": [
+    {
+      "instance_id": "django__django-11239",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "support",
+        "postgresql",
+        "client",
+        "certificates",
+        "dbshell",
+        "Description",
+        "This",
+        "very",
+        "similar",
+        "common"
+      ]
+    },
+    {
+      "instance_id": "django__django-16145",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "runserver",
+        "Starting",
+        "development",
+        "server",
+        "address",
+        "doesn",
+        "work",
+        "Description",
+        "According",
+        "tutorial"
+      ]
+    },
+    {
+      "instance_id": "django__django-13741",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "disabled",
+        "prop",
+        "ReadOnlyPasswordHashField",
+        "Description",
+        "Currently",
+        "contrib",
+        "auth",
+        "forms",
+        "UserChangeForm",
+        "defines"
+      ]
+    },
+    {
+      "instance_id": "django__django-17087",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "Class",
+        "methods",
+        "from",
+        "nested",
+        "classes",
+        "cannot",
+        "used",
+        "Field",
+        "default",
+        "Description"
+      ]
+    },
+    {
+      "instance_id": "django__django-15127",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "LEVEL_TAGS",
+        "updated",
+        "when",
+        "using",
+        "override_settings",
+        "Description",
+        "When",
+        "reading",
+        "messages",
+        "inside"
+      ]
+    },
+    {
+      "instance_id": "django__django-11299",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "CheckConstraint",
+        "with",
+        "operator",
+        "generates",
+        "incorrect",
+        "SQLite",
+        "Oracle",
+        "Description",
+        "last",
+        "modified"
+      ]
+    },
+    {
+      "instance_id": "django__django-15499",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "Optimize",
+        "CreateModel",
+        "AlterModelManagers",
+        "CreateModel",
+        "Description",
+        "During",
+        "migration",
+        "optimization",
+        "CreateModel",
+        "AlterModelOptions"
+      ]
+    },
+    {
+      "instance_id": "django__django-10999",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "parse_duration",
+        "some",
+        "negative",
+        "durations",
+        "Description",
+        "docs",
+        "djangoproject",
+        "_modules",
+        "utils",
+        "dateparse"
+      ]
+    },
+    {
+      "instance_id": "django__django-13112",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "makemigrations",
+        "crashes",
+        "ForeignKey",
+        "with",
+        "mixed",
+        "case",
+        "name",
+        "Description",
+        "When",
+        "python3"
+      ]
+    },
+    {
+      "instance_id": "django__django-16595",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "Migration",
+        "optimizer",
+        "does",
+        "reduce",
+        "multiple",
+        "AlterField",
+        "Description",
+        "consider",
+        "following",
+        "operations"
+      ]
+    },
+    {
+      "instance_id": "django__django-11066",
+      "why": [
+        "django/contrib/contenttypes/management/__init__.py unreadable"
+      ]
+    },
+    {
+      "instance_id": "django__django-9296",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "Paginator",
+        "just",
+        "implement",
+        "__iter__",
+        "function",
+        "Description",
+        "last",
+        "modified",
+        "Alex",
+        "Gaynor"
+      ]
+    },
+    {
+      "instance_id": "django__django-14915",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "ModelChoiceIteratorValue",
+        "hashable",
+        "Description",
+        "Recently",
+        "migrated",
+        "from",
+        "Django",
+        "Django",
+        "code",
+        "custom"
+      ]
+    },
+    {
+      "instance_id": "django__django-11555",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "order_by",
+        "parent",
+        "model",
+        "crash",
+        "when",
+        "Meta",
+        "ordering",
+        "contains",
+        "expressions",
+        "Description"
+      ]
+    },
+    {
+      "instance_id": "django__django-11433",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "Allow",
+        "cleaned_data",
+        "overwrite",
+        "fields",
+        "default",
+        "values",
+        "Description",
+        "comments",
+        "here",
+        "pull"
+      ]
+    },
+    {
+      "instance_id": "django__django-12125",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "makemigrations",
+        "produces",
+        "incorrect",
+        "path",
+        "inner",
+        "classes",
+        "Description",
+        "When",
+        "define",
+        "subclass"
+      ]
+    },
+    {
+      "instance_id": "django__django-15741",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "utils",
+        "formats",
+        "get_format",
+        "should",
+        "allow",
+        "lazy",
+        "parameter",
+        "Description",
+        "Commit",
+        "d2421c7adb"
+      ]
+    },
+    {
+      "instance_id": "django__django-10880",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "Query",
+        "syntax",
+        "error",
+        "with",
+        "condition",
+        "distinct",
+        "combination",
+        "Description",
+        "Count",
+        "annotation"
+      ]
+    },
+    {
+      "instance_id": "django__django-14376",
+      "why": [
+        "django/db/backends/mysql/base.py unreadable"
+      ]
+    },
+    {
+      "instance_id": "django__django-16899",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "ModelAdmin",
+        "Error",
+        "message",
+        "readonly_fields",
+        "check",
+        "does",
+        "include",
+        "field",
+        "name",
+        "Description"
+      ]
+    },
+    {
+      "instance_id": "django__django-16333",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "UserCreationForm",
+        "should",
+        "save",
+        "data",
+        "from",
+        "ManyToMany",
+        "form",
+        "fields",
+        "Description",
+        "When"
+      ]
+    },
+    {
+      "instance_id": "django__django-13794",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "filter",
+        "unable",
+        "concatenate",
+        "strings",
+        "with",
+        "lazy",
+        "string",
+        "Description",
+        "concatenate",
+        "string"
+      ]
+    },
+    {
+      "instance_id": "django__django-15104",
+      "why": [
+        "django/core/management/__init__.py unreadable"
+      ]
+    },
+    {
+      "instance_id": "django__django-11490",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "Composed",
+        "queries",
+        "cannot",
+        "change",
+        "list",
+        "columns",
+        "with",
+        "values",
+        "values_list",
+        "Description"
+      ]
+    },
+    {
+      "instance_id": "django__django-11119",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "Engine",
+        "render_to_string",
+        "should",
+        "honor",
+        "autoescape",
+        "attribute",
+        "Description",
+        "Engine",
+        "render_to_string",
+        "Context"
+      ]
+    },
+    {
+      "instance_id": "django__django-15277",
+      "why": [
+        "django/core/validators.py unreadable"
+      ]
+    },
+    {
+      "instance_id": "django__django-12304",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "Enumeration",
+        "Types",
+        "usable",
+        "templates",
+        "Description",
+        "last",
+        "modified",
+        "Mariusz",
+        "Felisiak",
+        "enumeration"
+      ]
+    },
+    {
+      "instance_id": "django__django-13933",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "ModelChoiceField",
+        "does",
+        "provide",
+        "value",
+        "invalid",
+        "choice",
+        "when",
+        "raising",
+        "ValidationError",
+        "Description"
+      ]
+    },
+    {
+      "instance_id": "django__django-15930",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "Case",
+        "crashes",
+        "with",
+        "pk__in",
+        "Description",
+        "following",
+        "code",
+        "generates",
+        "syntax",
+        "error"
+      ]
+    },
+    {
+      "instance_id": "django__django-13297",
+      "why": [
+        "django/db/backends/sqlite3/operations.py unreadable"
+      ]
+    },
+    {
+      "instance_id": "django__django-15851",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "dbshell",
+        "additional",
+        "parameters",
+        "should",
+        "passed",
+        "before",
+        "dbname",
+        "PostgreSQL",
+        "Description",
+        "psql"
+      ]
+    },
+    {
+      "instance_id": "django__django-16139",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "Accessing",
+        "UserAdmin",
+        "to_field",
+        "leads",
+        "link",
+        "PasswordResetForm",
+        "being",
+        "broken",
+        "Description",
+        "last"
+      ]
+    },
+    {
+      "instance_id": "django__django-11133",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "HttpResponse",
+        "doesn",
+        "handle",
+        "memoryview",
+        "objects",
+        "Description",
+        "trying",
+        "write",
+        "BinaryField",
+        "retrieved"
+      ]
+    },
+    {
+      "instance_id": "django__django-15467",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "ModelAdmin",
+        "with",
+        "defined",
+        "radio_fields",
+        "override",
+        "empty_label",
+        "Description",
+        "ModelAdmin",
+        "drops",
+        "empty_label"
+      ]
+    },
+    {
+      "instance_id": "django__django-11163",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "model_to_dict",
+        "should",
+        "return",
+        "empty",
+        "dict",
+        "empty",
+        "list",
+        "fields",
+        "Description",
+        "Been"
+      ]
+    },
+    {
+      "instance_id": "django__django-12741",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "Simplify",
+        "signature",
+        "DatabaseOperations",
+        "execute_sql_flush",
+        "Description",
+        "current",
+        "signature",
+        "execute_sql_flush",
+        "self",
+        "using"
+      ]
+    },
+    {
+      "instance_id": "django__django-11951",
+      "why": [
+        "the statement's path 2.2.x/django/db/models/query.py is absent at the base commit and its basename matched 2 tracked files"
+      ]
+    },
+    {
+      "instance_id": "django__django-14315",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "database",
+        "client",
+        "runshell",
+        "doesn",
+        "respect",
+        "environ",
+        "values",
+        "some",
+        "cases",
+        "Description"
+      ]
+    },
+    {
+      "instance_id": "django__django-15380",
+      "why": [
+        "the statement's path django/django/core/management/__init__.py is absent at the base commit and its basename matched 625 tracked files"
+      ]
+    },
+    {
+      "instance_id": "django__django-14855",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "Wrong",
+        "generated",
+        "get_admin_url",
+        "readonly",
+        "field",
+        "custom",
+        "Admin",
+        "Site",
+        "Description",
+        "When"
+      ]
+    },
+    {
+      "instance_id": "django__django-12209",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "Change",
+        "behaviour",
+        "when",
+        "saving",
+        "model",
+        "instance",
+        "with",
+        "explcit",
+        "value",
+        "field"
+      ]
+    },
+    {
+      "instance_id": "django__django-12308",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "JSONField",
+        "properly",
+        "displayed",
+        "admin",
+        "when",
+        "they",
+        "readonly",
+        "Description",
+        "JSONField",
+        "values"
+      ]
+    },
+    {
+      "instance_id": "django__django-14792",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "Reverse",
+        "time",
+        "zone",
+        "conversion",
+        "Trunc",
+        "Extract",
+        "database",
+        "functions",
+        "Description",
+        "When"
+      ]
+    },
+    {
+      "instance_id": "django__django-15987",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "Fixture",
+        "dirs",
+        "duplicates",
+        "undetected",
+        "Path",
+        "instance",
+        "Description",
+        "When",
+        "FIXTURE_DIRS",
+        "contains"
+      ]
+    },
+    {
+      "instance_id": "django__django-11099",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "UsernameValidator",
+        "allows",
+        "trailing",
+        "newline",
+        "usernames",
+        "Description",
+        "ASCIIUsernameValidator",
+        "UnicodeUsernameValidator",
+        "regex",
+        "intent"
+      ]
+    },
+    {
+      "instance_id": "django__django-13406",
+      "why": [
+        "django/db/models/query.py unreadable"
+      ]
+    },
+    {
+      "instance_id": "django__django-14999",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "RenameModel",
+        "with",
+        "db_table",
+        "should",
+        "noop",
+        "Description",
+        "RenameModel",
+        "operation",
+        "that",
+        "already"
+      ]
+    },
+    {
+      "instance_id": "django__django-10914",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "default",
+        "FILE_UPLOAD_PERMISSION",
+        "o644",
+        "Description",
+        "Hello",
+        "File",
+        "Uploads",
+        "documentation",
+        "page",
+        "does"
+      ]
+    },
+    {
+      "instance_id": "django__django-11179",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "delete",
+        "instances",
+        "models",
+        "without",
+        "dependencies",
+        "doesn",
+        "clear",
+        "Description",
+        "Deleting",
+        "model"
+      ]
+    },
+    {
+      "instance_id": "django__django-14404",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "catch_all_view",
+        "does",
+        "support",
+        "FORCE_SCRIPT_NAME",
+        "Description",
+        "last",
+        "modified",
+        "SlavaSkvortsov",
+        "catch_all_view",
+        "returns"
+      ]
+    },
+    {
+      "instance_id": "django__django-10097",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "Make",
+        "URLValidator",
+        "reject",
+        "invalid",
+        "characters",
+        "username",
+        "password",
+        "Description",
+        "last",
+        "modified"
+      ]
+    },
+    {
+      "instance_id": "django__django-14608",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "nonform",
+        "class",
+        "form",
+        "errors",
+        "FormSets",
+        "Description",
+        "last",
+        "modified",
+        "Ties",
+        "Hefting"
+      ]
+    },
+    {
+      "instance_id": "django__django-15368",
+      "why": [
+        "django/db/models/query.py unreadable"
+      ]
+    },
+    {
+      "instance_id": "django__django-11603",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "DISTINCT",
+        "support",
+        "aggregates",
+        "Description",
+        "extension",
+        "aggregates",
+        "should",
+        "supported",
+        "other",
+        "general"
+      ]
+    },
+    {
+      "instance_id": "django__django-14752",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "Refactor",
+        "AutocompleteJsonView",
+        "support",
+        "extra",
+        "fields",
+        "autocomplete",
+        "response",
+        "Description",
+        "last",
+        "modified"
+      ]
+    },
+    {
+      "instance_id": "django__django-13023",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "DecimalField",
+        "to_python",
+        "raises",
+        "TypeError",
+        "dict",
+        "values",
+        "Description",
+        "call",
+        "DecimalField",
+        "to_python"
+      ]
+    },
+    {
+      "instance_id": "django__django-14580",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "Missing",
+        "import",
+        "statement",
+        "generated",
+        "migration",
+        "NameError",
+        "name",
+        "models",
+        "defined",
+        "Description"
+      ]
+    },
+    {
+      "instance_id": "django__django-13551",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "Changing",
+        "user",
+        "email",
+        "could",
+        "invalidate",
+        "password",
+        "reset",
+        "tokens",
+        "Description",
+        "Sequence"
+      ]
+    },
+    {
+      "instance_id": "django__django-16569",
+      "why": [
+        "django/forms/formsets.py unreadable"
+      ]
+    },
+    {
+      "instance_id": "django__django-17029",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "Apps",
+        "clear_cache",
+        "does",
+        "clear",
+        "get_swappable_settings_name",
+        "cache",
+        "Description",
+        "apps",
+        "clear_cache",
+        "stubs"
+      ]
+    },
+    {
+      "instance_id": "django__django-13363",
+      "why": [
+        "django/db/models/functions/datetime.py unreadable"
+      ]
+    },
+    {
+      "instance_id": "django__django-11451",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "ModelBackend",
+        "authenticate",
+        "shouldn",
+        "make",
+        "database",
+        "query",
+        "when",
+        "username",
+        "None",
+        "Description"
+      ]
+    },
+    {
+      "instance_id": "django__django-14373",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "DateFormat",
+        "zero",
+        "padded",
+        "Description",
+        "specifier",
+        "utils",
+        "dateformat",
+        "DateFormat",
+        "supposed",
+        "always"
+      ]
+    },
+    {
+      "instance_id": "django__django-14493",
+      "why": [
+        "django/contrib/staticfiles/storage.py unreadable"
+      ]
+    },
+    {
+      "instance_id": "django__django-14534",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "BoundWidget",
+        "id_for_label",
+        "ignores",
+        "ChoiceWidget",
+        "options",
+        "Description",
+        "look",
+        "implementation",
+        "BoundField",
+        "subwidgets"
+      ]
+    },
+    {
+      "instance_id": "django__django-13417",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "QuerySet",
+        "ordered",
+        "property",
+        "incorrect",
+        "GROUP",
+        "queries",
+        "models",
+        "with",
+        "Meta",
+        "ordering"
+      ]
+    },
+    {
+      "instance_id": "django__django-16642",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "Improper",
+        "guessing",
+        "Mime",
+        "Type",
+        "file",
+        "types",
+        "Description",
+        "Below",
+        "FileResponse",
+        "will"
+      ]
+    },
+    {
+      "instance_id": "django__django-12419",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "secure",
+        "default",
+        "SECURE_REFERRER_POLICY",
+        "Referrer",
+        "policy",
+        "header",
+        "Description",
+        "added",
+        "ability",
+        "SECURE_REFERRER_POLICY"
+      ]
+    },
+    {
+      "instance_id": "django__django-15863",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "Filter",
+        "floatformat",
+        "drops",
+        "precision",
+        "decimal",
+        "numbers",
+        "Description",
+        "discovered",
+        "that",
+        "floatformat"
+      ]
+    },
+    {
+      "instance_id": "django__django-16116",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "makemigrations",
+        "check",
+        "generating",
+        "migrations",
+        "inconsistent",
+        "with",
+        "other",
+        "uses",
+        "check",
+        "Description"
+      ]
+    },
+    {
+      "instance_id": "django__django-16801",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "ImageField",
+        "unnecessarily",
+        "adds",
+        "post_init",
+        "signal",
+        "handler",
+        "model",
+        "Description",
+        "While",
+        "debugging"
+      ]
+    },
+    {
+      "instance_id": "django__django-16429",
+      "why": [
+        "django/utils/timesince.py unreadable"
+      ]
+    },
+    {
+      "instance_id": "django__django-14765",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "ProjectState",
+        "__init__",
+        "assume",
+        "real_apps",
+        "argument",
+        "Description",
+        "made",
+        "calls",
+        "ProjectState",
+        "__init__"
+      ]
+    },
+    {
+      "instance_id": "django__django-14539",
+      "why": [
+        "no python file derived without a content scan"
+      ],
+      "tokens_tried": [
+        "urlize",
+        "does",
+        "handle",
+        "html",
+        "escaped",
+        "string",
+        "trailing",
+        "punctuation",
+        "correctly",
+        "Description"
+      ]
+    }
+  ],
+  "rejected_count": 74,
+  "paid_requests": 0,
+  "reads_no_reference_or_test_patch": true
+}

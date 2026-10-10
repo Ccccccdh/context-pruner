@@ -1,0 +1,203 @@
+{
+  "schema": "openai_agents_v13_heldout_task_freeze_draft",
+  "status": "DRAFT_NOT_FROZEN",
+  "may_run_paid_batch": false,
+  "frozen": false,
+  "amendment_required_for_any_change": true,
+  "note": "This file is a design draft only. It is not a freeze, it has no batch, and no paid request may be made under it. The v12 development pilot already showed that paying to tune a regex on a task that participated in earlier tuning is not acceptable; this draft therefore stops before any request until every item in required_before_freeze is satisfied and a separate final freeze file is written once.",
+  "created_utc_date": "20261005",
+  "round": "v12-follow-up-zero-api-analysis",
+  "paid_requests_this_round": 0,
+  "prescreen_alignment": {
+    "prescreen_document": "integrations/REAL_PAYLOAD_PRESCREEN_20261005.md",
+    "prescreen_machine_output": "integrations/REAL_PAYLOAD_PRESCREEN_20261005.json",
+    "accepted_premise": "'candidate old units != 0' does not predict an acceptable benefit; the design may not rest on candidate counts",
+    "counterexamples_openai_host": [
+      {"version": "v9", "potential_old_units_upper_bound": [0, 0, 0], "plugin_over_baseline_strict": "3/3 vs 3/3", "paired_complete_total_saving_percent": -0.000004, "reading": "zero candidates screen the batch out"},
+      {"version": "v10", "potential_old_units_upper_bound": [5, 5, 5], "plugin_over_baseline_strict": "0/3 vs 3/3", "paired_complete_total_saving_percent": 27.68, "reading": "non-zero candidates, benefit appears, quality collapses"},
+      {"version": "v11", "potential_old_units_upper_bound": [2, 2, 2], "plugin_over_baseline_strict": "2/3 vs 3/3", "paired_complete_total_saving_percent": 5.81, "reading": "non-zero candidates, small benefit, quality still drops"},
+      {"version": "v12", "guard_filtered_safe_candidates": 3, "plugin_over_baseline_strict": "0/1 vs 1/1", "paired_complete_total_saving_percent": 14.63, "invariant_gate": "clean at every boundary", "strict_failure_cause": "answer length (208 > 160), a model-side wording difference", "reading": "clean mechanism gate plus non-zero candidates still did not preserve strict quality"}
+    ],
+    "two_numbers_must_be_reported_separately": {
+      "potential_old_units_upper_bound": "older units the frozen rule may touch, before guards",
+      "guard_filtered_safe_candidates": "units surviving all five guard checks, counted on the deciding (final) boundary of the real payload"
+    },
+    "guard_checks": [
+      "every registered literal keeps presence >= 1",
+      "every distinct source keeps one full copy",
+      "the id-free tool-group hash is unchanged",
+      "every source pointer resolves to a newer full copy inside the same payload",
+      "no restore or whole-payload fallback, and none unaccounted"
+    ],
+    "rules": {
+      "zero_candidates": "stop; do not pay (v9 pattern)",
+      "non_zero_candidates": "no benefit or quality prediction may be made from the count",
+      "quality_prediction_from_candidates": "forbidden",
+      "mechanism_side_channel": "invariant gate only; a loss or an unaccounted fallback means fix the mechanism, never re-judge quality",
+      "model_side_channel": "the two quality tracks; must be measured, never inferred",
+      "payment_path": "sequential gates: evidence -> exposure -> non-zero safe-candidate space -> invariant -> pilot/confirmation"
+    },
+    "invariant_gate": {
+      "per_boundary_columns": ["task constraints", "current evidence", "tool-group hash", "restore and whole-payload fallback accounting", "source location"],
+      "reusable_implementation": "experiments/runners/openai_agents_decision_boundary_v12.py",
+      "worked_example": "integrations/openai_agents/V12_DECISION_BOUNDARY_ANALYSIS_20261005.md",
+      "stop_rule": "any loss or unaccounted fallback stops the gate and requires a mechanism fix; a clean gate never upgrades a quality verdict"
+    }
+  },
+  "payload_acquisition_run": {
+    "authorised_this_round": true,
+    "executed": false,
+    "bounded_shape_if_executed": {
+      "new_id_required": true,
+      "frozen_protocol_first": true,
+      "arms": ["none"],
+      "matrix": "1 task x 1 repeat",
+      "hard_max_api_requests": 12,
+      "must_not_be_reported_as_saving_evidence": true,
+      "all_attempts_and_failures_counted": true
+    },
+    "reason_not_executed": "the evidence gate (prescreen section 2, item 1) cannot be satisfied this round, and paying before it is satisfied is forbidden by that gate",
+    "blocking_evidence": [
+      "no public instance in this repository is unused by all three hosts: the ten instances under .tooling/swebench-verified/ belong either to this host's v1-v12 tasks (django-16263, pylint-8898, pytest-10356) or are referenced by OpenHands protocols/validators (django-15563, 15957, 16032, 16100, 16315, 16661, 17084)",
+      "acquiring a fresh instance needs a checkout or source fetch: git is forbidden this round, raw.githubusercontent.com resolves to 0.0.0.0 on this machine, and github.com/.../raw/... redirects there without being followed",
+      "the github.com blob HTML page returns only page chrome and is truncated, so it cannot serve as a hash-recorded baseline source"
+    ],
+    "what_unblocks_it": "a bounded checkout (or restored raw source access) so Stage 0 can record the instance file and baseline source SHA256"
+  },
+  "held_out_basis": {
+    "repo_unused_by_all_three_hosts": true,
+    "evidence": "grep for 'psf/requests', 'psf__requests' and 'requests-1766' over integrations/, experiments/, tests/, tasks/ returns 0 matches",
+    "not_used_by_openai_agents_v1_to_v12": true,
+    "different_repo_from_every_openai_task": true
+  },
+  "candidate_task": {
+    "instance_id": "psf__requests-1766",
+    "title": "quote qop options in Digest Auth",
+    "repo": "psf/requests",
+    "base_commit": "847735553aeda6e6633f2b32e14ba14ba86887a4",
+    "difficulty": "<15 min fix",
+    "fail_to_pass_contains": "test_requests.py::RequestsTestCase::test_DIGESTAUTH_QUOTES_QOP_VALUE",
+    "pass_to_pass_count": 79,
+    "public_basis": "RFC2617: the qop-options directive is a quoted string of one or more tokens; curl sends it quoted",
+    "selected": false,
+    "selection_rule": "selected only after Stage 0 acquires the instance file and the public baseline source with recorded SHA256; otherwise fall through to the next candidate",
+    "fallback_candidates": [
+      "psf__requests-1921",
+      "psf__requests-2317",
+      "mwaskom__seaborn-3187"
+    ]
+  },
+  "task_shape": {
+    "task_id": null,
+    "views": {
+      "V1": "public baseline source range that covers the cause-carrying function",
+      "V2": "context view",
+      "V3": "context view",
+      "rule": "at least one view must carry every registered literal verbatim",
+      "line_ranges": null,
+      "file_sha256": null
+    },
+    "read_protocol": "two rounds, one tool call per turn, V1 -> V2 -> V3 twice = 6 calls, answer only after the sixth output",
+    "answer_contract": "RESULT issue=requests-1766 cause=<...> fix=<...>",
+    "data_class": "public_source_diagnostic",
+    "sent_data": "public issue text and selected public baseline source ranges only; no reference patch, no host test patch, no local secret, no expected answer"
+  },
+  "quality_tracks": {
+    "track_A_strict": {
+      "role": "primary acceptance track",
+      "prefix": "RESULT issue=requests-1766 cause=",
+      "single_line": true,
+      "max_characters": 160,
+      "pattern": null,
+      "pattern_state": "must be frozen at Stage 0 from the public issue text and baseline source",
+      "required_literals": null,
+      "order_and_boundary": "tokens in order, separated only by the separators the pattern allows"
+    },
+    "track_B_semantic": {
+      "role": "diagnostic secondary track; reported separately and never merged with track A",
+      "prefix": "RESULT issue=requests-1766 cause=",
+      "single_line": true,
+      "both_fields_required": ["cause=", "fix="],
+      "required_literals": null,
+      "matching": "word-boundary ordered token search, field-local separators may be any non-alphanumeric characters",
+      "extra_explanation_inside_cause_allowed": true,
+      "max_characters_cause_plus_fix": 400,
+      "forbidden_literals": null,
+      "applicability_boundary": "Track B may only cover wording differences over the same facts and the same decision (order, punctuation, connectives, extra explanation inside the cause field). It may never cover a missing required literal, a missing fix= field, a wrong number or identifier, a different decision label, or an explanation that contradicts a registered fact.",
+      "reporting_rule": "if track B passes while track A fails, the result must be reported as 'strict track not met; semantic track passed (wording difference)' and never as 'quality unchanged'"
+    }
+  },
+  "replay_gate": {
+    "required_before_paid_stage_c": true,
+    "stage_A_record_run": {
+      "arms": ["none"],
+      "matrix": "1 task x 1 repeat",
+      "max_api_requests": 12,
+      "purpose": "obtain the task's real recorded model inputs and per-source output hashes; it contains no plugin arm and therefore produces no plugin cost or quality information",
+      "required_recorded_fields": [
+        "input_sha256",
+        "input_bytes",
+        "item_count",
+        "message_items",
+        "output_items",
+        "turn_count",
+        "per_output_sha256",
+        "per_output_chars"
+      ]
+    },
+    "conditions": [
+      "the zero-API rebuild reproduces every recorded boundary (structure, tool-item contiguity, per-output SHA256 and char counts); no self-made stub may be used",
+      "every plugin item is recomputable: kept items are byte-identical to the original, and a pointer equals '[Exact duplicate output; full source is at call_id=<newest call_id>; sha256=<source sha256>]' whose target full copy is still present later in the same payload",
+      "the replaced-position set equals the set of positions whose recorded hash/length differs from the baseline arm",
+      "fact presence is fail-closed: any required literal whose presence drops to zero on the reduced side fails the gate, and the negative control (replacing a unique evidence item with a pointer) must be reported as a lost fact"
+    ]
+  },
+  "stage_C_matrix": {
+    "arms": ["none", "pruner_v1", "native_summary"],
+    "mechanism": "exact_duplicate_output_v12 (frozen v12 code, hashes recorded before Stage A)",
+    "task_count": 1,
+    "repeats": 3,
+    "samples": 9,
+    "max_api_requests": 66,
+    "requests_per_repeat": 24,
+    "model": "deepseek-v4-flash",
+    "base_url": "https://api.deepseek.com",
+    "disable_thinking": true,
+    "max_output_tokens_per_request": 1024,
+    "provider_budget_tokens": {
+      "soft": 2000,
+      "target": 1500,
+      "hard": 6000
+    },
+    "filter_hard_bytes": 65216,
+    "bytes_per_estimated_token": 0.368,
+    "acceptance_line": "track A plugin quality >= baseline AND paired complete-total provider-token saving >= 3%",
+    "failure_lines": [
+      "track A below baseline",
+      "paired complete-total saving < 3%",
+      "zero actual duplicate replacements",
+      "a required literal loses presence",
+      "tool pairing, item count or item order broken",
+      "independent audit complete=false",
+      "request cap exceeded"
+    ],
+    "all_attempts_and_failed_samples_counted": true,
+    "no_retry_to_chase_a_positive_number": true
+  },
+  "required_before_freeze": [
+    "Stage 0: acquire instance.json and the public baseline source at base_commit, record every file SHA256",
+    "freeze pattern_A, the required/forbidden literal tables and the view line ranges",
+    "freeze the read protocol text, model, budgets, request cap, failure lines and data_class",
+    "Stage A: bounded single-arm record run producing the real payload records",
+    "zero-API replay gate green, including the negative control",
+    "write the final freeze once under a new id, and record the freeze file's own SHA256 in the batch manifest"
+  ],
+  "discipline": {
+    "old_batches_untouched": true,
+    "no_rescoring_of_v11_v12": true,
+    "no_contract_relaxation": true,
+    "no_cross_host_percentage_merging": true,
+    "semantic_track_not_applied_retroactively": true,
+    "no_git_commands_in_this_round": true
+  }
+}

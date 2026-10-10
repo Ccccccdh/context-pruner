@@ -1,0 +1,460 @@
+{
+  "experiment_id": "openai-repo-diagnostic-v14-requests_bad_host_unicode-acquisition-01",
+  "kind": "openai_agents_multitask_acquisition_v14",
+  "data_class": "public_source_diagnostic",
+  "disclosure": "Public SWE-bench issue statements and three read-only ranges of public baseline source at the pinned base commits are sent through real SDK tools. No reference patch, evaluation test patch, local secret or expected answer is sent.",
+  "sdk": "openai-agents",
+  "model": "deepseek-v4-flash",
+  "base_url": "https://api.deepseek.com",
+  "methods": [
+    "none"
+  ],
+  "scenarios": [
+    "requests_bad_host_unicode"
+  ],
+  "repeats": 1,
+  "minimum_planned_requests": 7,
+  "maximum_api_requests": 12,
+  "max_api_retries": 2,
+  "max_turns": 10,
+  "max_output_tokens": 1024,
+  "max_summary_tokens": 1024,
+  "max_summary_calls": 1,
+  "trigger_policy": "symmetric_budget",
+  "native_summary_contract": {
+    "trigger": "estimated input tokens > soft budget",
+    "retention": "last units up to target token budget, kept verbatim",
+    "pinned": "leading user statement always kept verbatim",
+    "boundary": "Responses groups are never split across a call/output pair",
+    "acceptance": "summary accepted only when it shrinks the payload",
+    "failure_policy": "provider error leaves the input untouched",
+    "accounting": "summary requests consume the same global request budget",
+    "regrowth_rule": "an already-summarised payload is not summarised again until it grows 25%"
+  },
+  "final_output_contract": {
+    "prefix": "RESULT ",
+    "single_line": true,
+    "max_chars": 160
+  },
+  "budget": {
+    "soft": 5435,
+    "hard": 16304,
+    "target": 4076,
+    "fixed_reserved_tokens": 512
+  },
+  "budget_calibration": {
+    "host": "openai_agents",
+    "calibration_ratio_provider_per_estimated": 0.368,
+    "provider_tokens": {
+      "soft": 2000,
+      "hard": 6000,
+      "target": 1500
+    },
+    "estimated_tokens": {
+      "soft": 5435,
+      "hard": 16304,
+      "target": 4076
+    },
+    "note": "Budgets are declared in provider tokens and converted with a measured ratio."
+  },
+  "cost_rates_per_million": {
+    "input": 0.0,
+    "output": 0.0
+  },
+  "purpose": "payload acquisition for the held-out task requests_bad_host_unicode: record the real model inputs at every boundary. This batch is single-arm and is neither saving evidence nor quality-equivalence evidence.",
+  "citable_as_saving": false,
+  "citable_as_quality_equivalence": false,
+  "citable_note": "the flags stay false unless the frozen acceptance line is met; a single batch of tasks is not multi-task stability on its own",
+  "held_out_task_ids": [
+    "requests_bad_host_unicode"
+  ],
+  "freeze_path": "integrations/openai_agents/V14_MULTITASK_FREEZE_20261005.json",
+  "freeze_sha256": "04425ae3bf15a1e20381bdbf2231ebe1e57c8a0b775c2558699682db36576532",
+  "v14_registry": {
+    "schema": "openai_agents_multitask_registry_v14",
+    "tasks_file": "integrations/openai_agents/V14_MULTITASK_TASKS_20261005.json",
+    "tasks_file_sha256": "5fa5197e37537f5bcfb30deca89af5ec2450225339ddeaee45deeff7f94eb9f9",
+    "task_ids": [
+      "requests_bad_host_unicode",
+      "requests_binary_payload",
+      "flask_empty_blueprint_name",
+      "xarray_copy_dtype"
+    ],
+    "per_task": {
+      "requests_bad_host_unicode": {
+        "instance_id": "psf__requests-5414",
+        "repo": "psf/requests",
+        "base_commit": "39d0fdd9096f7dceccbc8f82e1eda7dd64717a8e",
+        "views": [
+          {
+            "file": "requests/models.py",
+            "first_line": 345,
+            "last_line": 400,
+            "file_sha256": "c51202c76971a02910dd004688a4586ee1973ae3c354bf856a2c4575ebd1a888"
+          },
+          {
+            "file": "requests/exceptions.py",
+            "first_line": 85,
+            "last_line": 95,
+            "file_sha256": "d374f4f497332c86d5803a517842bc355e99073d9d9d9c4af23ae15a7ddb7211"
+          },
+          {
+            "file": "requests/models.py",
+            "first_line": 400,
+            "last_line": 440,
+            "file_sha256": "c51202c76971a02910dd004688a4586ee1973ae3c354bf856a2c4575ebd1a888"
+          }
+        ],
+        "tool_names": [
+          "read_requests_idna_host",
+          "read_requests_exceptions",
+          "read_requests_url_preparer"
+        ],
+        "request": "Diagnose why a URL whose host label is empty (for example http://.example.com) escapes as a UnicodeError instead of a requests URL error. Read the idna host encoding, the exception classes and the URL preparation body in order; name the method that lets the error escape and the exception the fix must raise instead.",
+        "protocol_steps": [
+          "Read the three baseline views twice, strictly one tool call per turn, and answer only after the sixth read returns.",
+          "Turn 1: call read_requests_idna_host alone, then stop and wait for its result.",
+          "Turn 2: after step 1 returns, call read_requests_exceptions alone, then stop and wait.",
+          "Turn 3: after step 2 returns, call read_requests_url_preparer alone, then stop and wait.",
+          "Turn 4: after step 3 returns, call read_requests_idna_host once more alone, then stop and wait.",
+          "Turn 5: after step 4 returns, call read_requests_exceptions once more alone, then stop and wait.",
+          "Turn 6: after step 5 returns, call read_requests_url_preparer once more alone, then stop and wait.",
+          "Turn 7: only after all six reads have returned, state the final diagnosis."
+        ],
+        "contract": "RESULT issue=requests-5414 cause=<...> fix=<...>",
+        "answer_pattern": "RESULT issue=requests-5414 cause=.*prepare_url.* fix=.*InvalidURL.*",
+        "required_terms": [
+          "prepare_url",
+          "InvalidURL"
+        ],
+        "literals": {
+          "url_preparer": [
+            "def prepare_url"
+          ],
+          "idna_host": [
+            "_get_idna_encoded_host"
+          ],
+          "invalid_url_class": [
+            "class InvalidURL"
+          ]
+        },
+        "fingerprint": "b0eb6f78a638ac9ba3cc9fbe49d8cbfca31738b8141a514a56279e2f137f6930",
+        "statement_sha256": "1f38966be0b93b34500848fe5cd15cfb844a172ce6b74dafc662f443c3f62de9",
+        "judging_metadata": {
+          "problem_statement_bytes": 1428,
+          "problem_statement_sha256": "08faa0ea47836476b5f4b3709c06a00569996ccc654011299f9c8587cd7007ba",
+          "test_patch_bytes": 516,
+          "test_patch_sha256": "46e0fcf881a426fb44dcd64c29be1f1d81113fcbfffe658404fc6298bc028a53",
+          "reference_patch_bytes": 511,
+          "reference_patch_sha256": "41e9433ac5e2cdb17a3972bec818a1118ea4a3f2b7485cd11fff7e27f6f3f680",
+          "fail_to_pass": [
+            "tests/test_requests.py::TestRequests::test_invalid_url[InvalidURL-http://.example.com]"
+          ],
+          "pass_to_pass_count": 130,
+          "read_by_this_host": [
+            "problem_statement"
+          ],
+          "not_read_by_this_host": [
+            "test_patch",
+            "reference_patch"
+          ]
+        },
+        "problems": []
+      },
+      "requests_binary_payload": {
+        "instance_id": "psf__requests-2931",
+        "repo": "psf/requests",
+        "base_commit": "5f7a3a74aab1625c2bb65f643197ee885e3da576",
+        "views": [
+          {
+            "file": "requests/utils.py",
+            "first_line": 680,
+            "last_line": 700,
+            "file_sha256": "f7e9abd57fe977e7d24bd4dc40c8c21c723c39058de4bd1d5b0d36b8bf9698cd"
+          },
+          {
+            "file": "requests/models.py",
+            "first_line": 400,
+            "last_line": 440,
+            "file_sha256": "a57e766a29b120c372e3bd236c80db1b2d696d96593cddb38c4fe150c41285ed"
+          },
+          {
+            "file": "requests/models.py",
+            "first_line": 75,
+            "last_line": 95,
+            "file_sha256": "a57e766a29b120c372e3bd236c80db1b2d696d96593cddb38c4fe150c41285ed"
+          }
+        ],
+        "tool_names": [
+          "read_requests_native_string",
+          "read_requests_prepare_body",
+          "read_requests_length_helper"
+        ],
+        "request": "Diagnose why a request whose body is an already-encoded bytes payload fails. Read the native-string helper, the body preparation and the length helper in order; name the helper that must not be applied to bytes and the method where the body is prepared.",
+        "protocol_steps": [
+          "Read the three baseline views twice, strictly one tool call per turn, and answer only after the sixth read returns.",
+          "Turn 1: call read_requests_native_string alone, then stop and wait for its result.",
+          "Turn 2: after step 1 returns, call read_requests_prepare_body alone, then stop and wait.",
+          "Turn 3: after step 2 returns, call read_requests_length_helper alone, then stop and wait.",
+          "Turn 4: after step 3 returns, call read_requests_native_string once more alone, then stop and wait.",
+          "Turn 5: after step 4 returns, call read_requests_prepare_body once more alone, then stop and wait.",
+          "Turn 6: after step 5 returns, call read_requests_length_helper once more alone, then stop and wait.",
+          "Turn 7: only after all six reads have returned, state the final diagnosis."
+        ],
+        "contract": "RESULT issue=requests-2931 cause=<...> fix=<...>",
+        "answer_pattern": "RESULT issue=requests-2931 cause=.*to_native_string.* fix=.*prepare_body.*",
+        "required_terms": [
+          "to_native_string",
+          "prepare_body"
+        ],
+        "literals": {
+          "native_string_helper": [
+            "def to_native_string"
+          ],
+          "body_preparer": [
+            "def prepare_body"
+          ],
+          "length_helper_use": [
+            "to_native_string(data)"
+          ]
+        },
+        "fingerprint": "5fdab64be4208905fbc5711b1cf2be4a068537df3a27680ec834da6ed7bad3c6",
+        "statement_sha256": "438259c166440e255c5c0f6c228206433b106ec5218d1160b997e071de446902",
+        "judging_metadata": {
+          "problem_statement_bytes": 274,
+          "problem_statement_sha256": "c36c337f6c5d918e8d193684510213e2eaed8633e575b819757674cca0d980fd",
+          "test_patch_bytes": 637,
+          "test_patch_sha256": "65b4e814631a631933cbeffa4bc9316c55a90bceeaabf6d08de988c9e9e4ffc7",
+          "reference_patch_bytes": 723,
+          "reference_patch_sha256": "5b5a77408b00928b0380cd6a40ccb53f0cf77b16f040e1743e313883aad104db",
+          "fail_to_pass": [
+            "test_requests.py::TestRequests::test_binary_put"
+          ],
+          "pass_to_pass_count": 84,
+          "read_by_this_host": [
+            "problem_statement"
+          ],
+          "not_read_by_this_host": [
+            "test_patch",
+            "reference_patch"
+          ]
+        },
+        "problems": []
+      },
+      "flask_empty_blueprint_name": {
+        "instance_id": "pallets__flask-5014",
+        "repo": "pallets/flask",
+        "base_commit": "7ee9ceb71e868944a46e1ff00b506772a53a4f1d",
+        "views": [
+          {
+            "file": "src/flask/blueprints.py",
+            "first_line": 172,
+            "last_line": 200,
+            "file_sha256": "9d296c3a0dffffbafd59ef15290a6d4c2061a470f3ad2b00709388d35d1dddc0"
+          },
+          {
+            "file": "src/flask/blueprints.py",
+            "first_line": 30,
+            "last_line": 80,
+            "file_sha256": "9d296c3a0dffffbafd59ef15290a6d4c2061a470f3ad2b00709388d35d1dddc0"
+          },
+          {
+            "file": "src/flask/app.py",
+            "first_line": 985,
+            "last_line": 1010,
+            "file_sha256": "d439102c7658f90f896556c557df89501f2c98ad498d6317453f10ef58508710"
+          }
+        ],
+        "tool_names": [
+          "read_flask_blueprint_init",
+          "read_flask_blueprint_state",
+          "read_flask_register_blueprint"
+        ],
+        "request": "Diagnose why an empty blueprint name is accepted even though the constructor already rejects a dotted name. Read the blueprint constructor, the setup state and the registration in order; name the class whose name must be validated and the exception the fix must raise.",
+        "protocol_steps": [
+          "Read the three baseline views twice, strictly one tool call per turn, and answer only after the sixth read returns.",
+          "Turn 1: call read_flask_blueprint_init alone, then stop and wait for its result.",
+          "Turn 2: after step 1 returns, call read_flask_blueprint_state alone, then stop and wait.",
+          "Turn 3: after step 2 returns, call read_flask_register_blueprint alone, then stop and wait.",
+          "Turn 4: after step 3 returns, call read_flask_blueprint_init once more alone, then stop and wait.",
+          "Turn 5: after step 4 returns, call read_flask_blueprint_state once more alone, then stop and wait.",
+          "Turn 6: after step 5 returns, call read_flask_register_blueprint once more alone, then stop and wait.",
+          "Turn 7: only after all six reads have returned, state the final diagnosis."
+        ],
+        "contract": "RESULT issue=flask-5014 cause=<...> fix=<...>",
+        "answer_pattern": "RESULT issue=flask-5014 cause=.*Blueprint.* fix=.*ValueError.*",
+        "required_terms": [
+          "Blueprint",
+          "ValueError"
+        ],
+        "literals": {
+          "blueprint_name": [
+            "self.name = name"
+          ],
+          "dot_check": [
+            "may not contain a dot"
+          ],
+          "register_blueprint": [
+            "def register_blueprint"
+          ]
+        },
+        "fingerprint": "f0316155ccdd924f630a1bbe4aca517e7b8d9276d8e72ba16ea049fbec8c2c72",
+        "statement_sha256": "8e8ac0930fa79d78385302a20fbf2f998fde8257e321b609c500598622ca2595",
+        "judging_metadata": {
+          "problem_statement_bytes": 195,
+          "problem_statement_sha256": "f77d8eab7dd608172aa78b3b50dfa7e0e9b3a6a1c52d14a1cb02417eb5a0ab00",
+          "test_patch_bytes": 465,
+          "test_patch_sha256": "e16f06b260b5169a49397e9d571b5af70317cd23792e1437232fabf718fe8871",
+          "reference_patch_bytes": 390,
+          "reference_patch_sha256": "087d51d66413bfa35111ac0eca31f1db1636572702cfd967c428049b453f451d",
+          "fail_to_pass": [
+            "tests/test_blueprints.py::test_empty_name_not_allowed"
+          ],
+          "pass_to_pass_count": 59,
+          "read_by_this_host": [
+            "problem_statement"
+          ],
+          "not_read_by_this_host": [
+            "test_patch",
+            "reference_patch"
+          ]
+        },
+        "problems": []
+      },
+      "xarray_copy_dtype": {
+        "instance_id": "pydata__xarray-3095",
+        "repo": "pydata/xarray",
+        "base_commit": "1757dffac2fa493d7b9a074b84cf8c830a706688",
+        "views": [
+          {
+            "file": "xarray/core/variable.py",
+            "first_line": 1834,
+            "last_line": 1935,
+            "file_sha256": "c3061ed6832cc78197118c32e6cb647cb11a237afa3fe670d7f00eab70ca3f44"
+          },
+          {
+            "file": "xarray/core/dataset.py",
+            "first_line": 842,
+            "last_line": 880,
+            "file_sha256": "878d68d031b88d53cfc37e513c3b7cf4ac98b9573ab525a60eba9682f74b2089"
+          },
+          {
+            "file": "xarray/core/variable.py",
+            "first_line": 120,
+            "last_line": 200,
+            "file_sha256": "c3061ed6832cc78197118c32e6cb647cb11a237afa3fe670d7f00eab70ca3f44"
+          }
+        ],
+        "tool_names": [
+          "read_xarray_index_variable",
+          "read_xarray_dataset_copy",
+          "read_xarray_compatible_data"
+        ],
+        "request": "Diagnose why copying a dataset with deep=True turns unicode index variables into object arrays. Read the index variable class, the dataset copy and the array coercion helper in order; name the class whose copying loses the dtype and the attribute the fix must preserve.",
+        "protocol_steps": [
+          "Read the three baseline views twice, strictly one tool call per turn, and answer only after the sixth read returns.",
+          "Turn 1: call read_xarray_index_variable alone, then stop and wait for its result.",
+          "Turn 2: after step 1 returns, call read_xarray_dataset_copy alone, then stop and wait.",
+          "Turn 3: after step 2 returns, call read_xarray_compatible_data alone, then stop and wait.",
+          "Turn 4: after step 3 returns, call read_xarray_index_variable once more alone, then stop and wait.",
+          "Turn 5: after step 4 returns, call read_xarray_dataset_copy once more alone, then stop and wait.",
+          "Turn 6: after step 5 returns, call read_xarray_compatible_data once more alone, then stop and wait.",
+          "Turn 7: only after all six reads have returned, state the final diagnosis."
+        ],
+        "contract": "RESULT issue=xarray-3095 cause=<...> fix=<...>",
+        "answer_pattern": "RESULT issue=xarray-3095 cause=.*IndexVariable.* fix=.*dtype.*",
+        "required_terms": [
+          "IndexVariable",
+          "dtype"
+        ],
+        "literals": {
+          "index_variable_class": [
+            "class IndexVariable"
+          ],
+          "dataset_copy": [
+            "def copy"
+          ],
+          "variable_copy": [
+            "def copy"
+          ]
+        },
+        "fingerprint": "459ab8fc72be090acfee3a03c04e277e898120e06f23579a5127127257ad7182",
+        "statement_sha256": "a08e849b6efdaf39042a8b7fe9e137f534554c71a2032a2ade9f2ad97b46b2af",
+        "judging_metadata": {
+          "problem_statement_bytes": 2811,
+          "problem_statement_sha256": "3d8f2d8422b56bd5980ec478be1413ef87805484446fc15dbd482342a59abb25",
+          "test_patch_bytes": 671,
+          "test_patch_sha256": "74e9567e31b72197c929b56e94c92b21f8fb62f9b8008bee43aba3ac81d33134",
+          "reference_patch_bytes": 4029,
+          "reference_patch_sha256": "15ee0073513dfa4723e55f92c67f7ca66c9651a6d627c08c06e7bada6bcd7525",
+          "fail_to_pass": [
+            "xarray/tests/test_variable.py::TestIndexVariable::test_copy[str-True]"
+          ],
+          "pass_to_pass_count": 253,
+          "read_by_this_host": [
+            "problem_statement"
+          ],
+          "not_read_by_this_host": [
+            "test_patch",
+            "reference_patch"
+          ]
+        },
+        "problems": []
+      }
+    },
+    "max_answer_chars": 160,
+    "track_b_max_chars": 400,
+    "track_b_forbidden": [
+      "no bug",
+      "not a bug"
+    ]
+  },
+  "task_registration_problems": {
+    "requests_bad_host_unicode": [],
+    "requests_binary_payload": [],
+    "flask_empty_blueprint_name": [],
+    "xarray_copy_dtype": []
+  },
+  "mechanism": {
+    "arm": "pruner_v1",
+    "name": "exact_duplicate_output_v14_multitask",
+    "schema": "exact_duplicate_multitask_v14",
+    "rule": "the frozen v12 rule: an older tool output whose text is byte-identical to a newer one is replaced by a pointer naming the newest call id and the source sha256; the newest full copy and every call/output item stay",
+    "frozen_rule_module": "experiments/runners/openai_agents_exact_duplicate_replay_v12.py",
+    "chain_module": "experiments/runners/openai_agents_multitask_chain_v14.py",
+    "persisted_extra_fields": [
+      "selective_retention_schema",
+      "exact_duplicate_schema",
+      "exact_duplicate_replacements",
+      "exact_duplicate_saved_bytes",
+      "exact_duplicate_rejected",
+      "selective_retention_saved_bytes_total",
+      "trigger_gate_calls",
+      "trigger_gate_triggered_calls",
+      "trigger_gate_passthrough_calls",
+      "trigger_gate_soft_limit_tokens",
+      "trigger_gate_last_estimated_tokens",
+      "narrow_guard_schema",
+      "narrow_guard_protected_unit_count",
+      "narrow_guard_protectable_unit_count",
+      "narrow_guard_full_statement_unit_count",
+      "narrow_guard_unprotected_statement_unit_count",
+      "narrow_guard_literal_labels",
+      "heldout_task",
+      "heldout_instance",
+      "heldout_registry_fingerprint"
+    ]
+  },
+  "request_budget": {
+    "max_api_requests": 12,
+    "methods": [
+      "none"
+    ],
+    "repeats": 1,
+    "tasks": 1,
+    "max_summary_calls_per_sample": 1,
+    "worst_case_model_calls": 7,
+    "worst_case_summary_calls": 1
+  },
+  "manifest_written_in_one_pass": true
+}

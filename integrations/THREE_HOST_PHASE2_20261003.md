@@ -168,6 +168,46 @@
 - **方差证据**：姊妹批 `…-v61-02`（同一冻结工具与提示词）走完阶梯**无合格前缀**——16661 在第 0/1/2 档分别 12/15/11 次请求且宿主**均未通过**，但视图只有 **17,342 / 21,745 / 16,219**，都低于 28,000；17084 与 16100 都在第 0 档通过。即「宿主未通过」在 v61 下稳定出现，**「视图越过 28,000」取决于该任务轨迹是否足够长（批 01 需要 38 次请求）**，两批差异来自模型自发工作量而非阈值或阶梯。
 - 分段计时（批 01，秒）：`host_test_seconds` **10,682.67**、`prefix_model_wait_seconds` 2,785.16、`prepare_copy_hash_seconds` 5,607.57、触发预测 10.15、前缀快照+校验 261.15/44.34、快照恢复 772.24、恢复后全哈希 87.27、分叉模型等待 584.48、逐分叉持久化 62.77；墙钟选择段 208.27 + 分叉段 1,114.70，付费段约 2 小时 15 分。磁盘 4.36 → 3.68 GB；凭据扫描 87 + 18 个生成物文件命中 0。
 - 文件：协议 `integrations/openhands/PILOT_PROTOCOL_V61.md`、runner `integrations/openhands/run_validation_v61.py`（包装 `run_validation_windows_v61.py`）、审计 `integrations/openhands/audit_validation_v61.py`、门控 `tests/test_openhands_v61_formal_runner_gate.py`、结果 `runs/stage5-openhands/django-multitask-v61-01/RESULTS.md`（批 01/02 均保留）。**按预注册失败线，本轮到此收口，不再开 v62。** 禁止与 CrewAI / OpenAI Agents 的百分比合并。
+## 2026-10-05 OpenHands v62（新任务 django__django-15957 + 有界前缀搜索：3/3 实测判定，1 项硬标志未达成）
+
+- **补 V62 门的两项失败项**：① `runner_and_audit_gate` —— 新增 `validation_tasks_v62.py`（新任务注册，旧任务条目从冻结 v49 表原样继承）、`run_validation_v62.py`、`run_validation_windows_v62.py`、`audit_validation_v62.py`、`tests/test_openhands_v62_formal_runner_gate.py`、`.tooling/gates/v62-django-15957.json`；② `authentic_prefix_gate` —— 本批的**有界付费前缀搜索**。阈值 28,000 / 22,400 / 39,200 / 33,600、阶梯 [24,26,28]、`initial_work_requests`、`132 = 42 + 30 × 3`、工具边界、强制只读调查提示词、逐分叉持久化**全部沿用 v61**；门控断言 v62 与 v61 的 PROTOCOL 数值逐项相等（`changed` 只有版本串与任务绑定/变更清单字段）。
+- **新任务**：`django__django-15957`（base commit f387d024fc75569d2a4a338bfda76cc2f328f627），可编辑 `django/db/models/fields/related_descriptors.py`，读集合 = allowed + `django/db/models/query.py`、`django/db/models/sql/query.py`、`tests/prefetch_related/tests.py`（共 4 个，提示词逐字列出并自报数量），4 条目标测试，回归模块 `prefetch_related`。零 API 宿主门：公开回归 **109 passed**、未改动基线宿主 **4 errors / 4**、参考修复 **4 passed / 4**；本批 `--check` 独立重测为 109 / **113 项 errors=4**（宿主评估跑整模块 + 4 条目标）逐项一致。**开发用途选择，不是盲测确认任务。**
+- **零 API 门控**：十一个文件（v54–v62）**120 passed**（v62 新增：与 v61 逐项相等、4 个 research_files 全部出现在提示词且数量相符、额度算术与保留恒等式、审计器拒绝非冻结批次、新任务表/编辑范围/宿主门记录三者一致、scoped_tests 工具已绑定 v62 任务表）。
+- **定价前缀搜索（预注册 ≤6 次尝试、每次 ≤42 请求）**：**第 1 次尝试即合格**——第 0 档、**18 次请求**、condenser 视图 **28,272 > 28,000**（余量 +272）、真实 condenser 重放 `Condensation`（28,272 → 15,914，忘 46 事件）、账本末次估算 34,391 ≥ 30,000、宿主目标测试**未通过**、`132 − 18 = 114 ≥ 90` 保留完好 → 触发即停、前缀冻结（前缀 334,369 完整总 token，事件 62）。尝试上限 1/6、请求上限 18/42，**没有事后挑前缀**。
+- **三臂分叉（携带前缀 18 次）**：`none` 19 次请求 / **794,145** token / 压缩 0；`native_summary` 30 次 / **877,564** / 压缩 3；`pruner_v1` 29 次 / **679,427** / 压缩 **3**；三者各改 `related_descriptors.py`。分叉后相对 `none`：**+14.45% / −10.50%**；全程（前缀只计一次）：**+10.17% / −7.39%**。**`branch_host_verdicts_measured: true`（3/3，全部 failed）**、`quality_verdict_obtained: true`、文件边界违规 0、失败请求 0。**质量边界**：三臂最终判定全部 failed —— 本批是「同样失败下的成本对比 + 3/3 实测判定」，不是质量等价证据。
+- **独立验证**（`.tooling/verify_v62_flags.py`，脚本自述不是冻结审计的替代品）：由每条分叉**自己持久化的字节**从冻结快照重建 → 全文件哈希表一致 ✔、最终源码摘要一致 ✔ → 在重建字节上重跑宿主目标测试 → 三条**均为 failed**，与记录一致（`branch_host_verdicts_reproduced_by_re_run: true`）。源哈希 **100/101 与冻结值一致**。
+- **未达成的硬标志：`frozen_experiment_sources_valid: false`**。唯一漂移是审计器：其**冻结版本本身有崩溃缺陷**（每分叉额度算术检查里先引用 `arithmetic` 后绑定 → `UnboundLocalError`，**根本没判定**），修正后按 v62 规则**正确地拒绝**判定本批。我尝试独立证明漂移范围并**失败**（撤销全部已记录的门控后编辑仍未复现冻结哈希），因此不声称「漂移仅限一处」。本批因此**没有 `audit.json`**，该标志记为 false 而不冒充。要取得它需用修正后工具重新冻结一个新批次（同一任务、同一规则）；按「不连开多版」的约定本轮不再开新批。
+- **三个真实缺陷（门控后/付费后发现，均入 RESULTS 与门控回归）**：① `scoped_tests` 工具用**它自己模块**的 TASKS/evaluate/code_revision，第一次付费尝试 1 次请求即 `KeyError` 崩溃（修法：`validation_tasks_v62` 导入时重绑定这三个模块级引用，不改任何冻结文件，并加回归断言）；② 宿主评估跑整模块（113 项）而非门记录的 4 项目标选择运行，首版 `EXPECTED_BASELINE` 写成 4 导致 `--check` 失败，按实测改为 113（付费前、零 API）；③ 冻结审计器崩溃（见上）。
+- **分段计时（秒）**：`host_test` **1,017.42**、模型等待 624.44、`prepare_reuse_verify` 87.44、快照 107.76 + 校验 17.91、恢复 297.71 + 全哈希 30.83、触发预测 2.70、分叉持久化 23.39、独立验证 **426.16**；墙钟选择段 25.65 + 分叉段 639.35。磁盘：为腾出冻结规则要求的 1.5 GB 余量删除了**已被取代的临时工作区**（v60/v61 的 `workspaces`/`snapshot`、v62 门控批 `workspaces`，均为可按冻结上游重建的副本，全部证据 JSON 保留），结束时空闲 **1.81 GB**；凭据扫描命中 0。
+- 文件：协议 `integrations/openhands/PILOT_PROTOCOL_V62.md`、任务表 `validation_tasks_v62.py`、runner `run_validation_v62.py`（包装 `run_validation_windows_v62.py`）、审计 `audit_validation_v62.py`、门控 `tests/test_openhands_v62_formal_runner_gate.py`、门记录 `.tooling/gates/v62-django-15957.json`、结果 `runs/stage5-openhands/django-multitask-v62-01/{RESULTS.md,verify-flags.json,post-gate-audit-drift.json}`。禁止与 CrewAI / OpenAI Agents 的百分比合并。
+
+### 2026-10-05 OpenHands v62 预筛补记（真实载荷五道顺序门，零 API）
+
+- **按 `integrations/REAL_PAYLOAD_PRESCREEN_20261005.md` 的五道顺序门回溯核 v62 的冻结前缀**（`.tooling/prescreen_v62.py` → `runs/stage5-openhands/django-multitask-v62-01/prescreen.json`，17.78 秒，零 API、不重跑宿主测试、不改冻结）：**4/5 通过**，唯一未通过的是第 5 道小试与确认门。
+- **门 1 证据门：通过（附限制）**——真实冻结前缀 62 事件、事件 ID 摘要 `efb770d5…`、manifest `52F5EE4D…`；但**独立审计未签署**（冻结审计器崩溃），故只用于机制诊断，证据侧数字来自对每条分叉自身字节重建后重跑宿主测试的工具级验证器。
+- **门 2 曝光门：通过**——实测视图 **28,272 ≥ 28,000**（余量 **+272**，三批里最薄的余量）、真实重放 `Condensation`（28,272 → 15,667）、账本末次估算 34,391、fork 点宿主目标测试**未通过**；保留恒等式 **`132 − 18 = 114 ≥ 90`**（每臂余 38 ≥ 分支窗口 30）。**非伪曝光**：前缀是该任务真实轨迹（强制只读调查 + 真实编辑），在触发判定成立那一刻停止，没有靠延长无效调查历史跨阈值。
+- **门 3 非零收益空间门：通过，且按要求分开报两个量**——**潜在旧单位上界 46**（冻结 condenser 在真实前缀视图上遗忘的事件数）与**守卫后安全候选 46**（扣除任务契约、字面证据、工具调用配对后仍允许丢弃的单位；重放显示守卫保留 16 个单位、12,542 保护 token），省略 token 体量 12,605。与 v58（183）/ v61-01（209）相比新任务的候选集合更小但仍非零。**逐调用累计口径**（§4 勘误要求、取代已作废的「首帧一次性文本」上界）：`none` 19 次调用累计估算输入 913,095 / 完整总 794,145；`pruner_v1` 29 次累计 684,070 / 完整总 679,427（3 次压缩）→ 累计节省 229,025 估算输入、完整总 **+14.45%**（与分叉后成本差独立复算一致）。
+- **门 4 不变量门：通过**——`restore_hash_equal` 全真、文件边界违规 0、失败分支请求 0、`trigger_prediction_matches_freeze` 全真。
+- **门 5 小试与确认门：未通过**——本批 1 任务 × 1 前缀 × 3 臂（单前缀单重复），且**三臂最终宿主判定全部 failed**：只能支持「等失败前提下的成本对比 + 3/3 实测判定」，**不能**写结项收益或质量等价。
+- **顺序说明（如实）**：预筛要求在付费前缀搜索**之前**核门；v62 的付费搜索已在此前完成，因此这是**在真实冻结载荷上的回溯预筛**（与预筛文档对 v58/v61 的回溯口径一致），不是运行前预测。若后续再开新任务批次，将在付费前先走这两道门。
+
+### 2026-10-05 OpenHands v62 收益口径更正（逐调用累计，旧"首帧一次性文本"口径作废）
+
+- **按勘误要求改用逐调用累计口径**：`Σ_calls (无压缩每调用输入 − 压缩后每调用输入)`，扣除项单列（`.tooling/percall_v62.py` → `runs/stage5-openhands/django-multitask-v62-01/percall-yield.json`，零 API，只读记录账本与 metrics）。**旧口径（只记"首帧一次性文本"）在本批的任何 token 读数一律作废、不得用于筛除或放行**——CrewAI r15 实测证伪该口径（旧口径 +10.247% vs 同工作量实测 +35.16%，3.43 倍；错因是整段首帧在之后每次调用被重复投递）。
+- **逐调用分解（v62 批次 01）**：无压缩 `none` **19** 次 Agent 调用、`Σ` 每调用输入 **913,095** token（33,955 / 36,751 / … / 61,767）、provider prompt/completion 911,360 / 2,785、完整总 **794,145**；压缩 `pruner_v1` **29** 次调用、`Σ` 每调用输入 **684,070**（16,481 / 17,051 / … / 32,363）、provider 660,986 / 18,441、完整总 **679,427**（3 次压缩）。
+- **差额与扣除项**：逐调用累计节省 **+229,025 输入 token**（每调用平均 **12,054**，对无压缩每调用均值 ≈ **19.2%**）、provider prompt 节省 +250,374、完整总节省 **+114,718 = +14.45%**。扣除项：辅助摘要请求 **0 次 / 0 token**（两臂一致，按自身 provider token 计入完整总口径）、**整份回退 0 次**、钉住/受保护内容 **12,855 token**（**留在压缩后的每调用输入里，因此不从节省中扣减**，单列以防误读）、插件多花 **10** 次调用（已在其自身合计内，不二次扣减）。
+- **两处必须分列的量**：**潜在旧单位上界 46**（单位计数）与**守卫后安全候选 46**（守卫保留 16 个单位、12,542 保护 token）——按预筛要求分列，且明确**单位计数不是 token 上界**，两者不可互相替代；token 侧判断只用上面第 2、3 条的逐调用口径。
+- **判定**：逐调用累计节省与完整总节省均为正（+14.45%），但**三臂最终宿主判定全部 failed** → 这是「等失败前提下的成本对比 + 3/3 实测判定」，**不是**质量等价证据，也不构成结项收益。
+
+### 2026-10-05 OpenHands v63 审计修正（防复发门）+ v62-01 非冻结版事后审计
+
+- **新审计器 `integrations/openhands/audit_validation_v63.py`**（新 ID，不动 v62 及更早文件）：把冻结前缀的额度算术**在每分叉循环之前绑定一次**，并把那段检查抽成可被门控直接调用的 `branch_arithmetic_checks(freeze, report, arithmetic, ceiling)`；其余规则不变（必须是被冻结的审计器版本、硬拒 `--accept-post-gate-tooling`、逐分叉从自身字节重建后重跑宿主测试）。它接受 v62/v63 两个批次族标记，因此能用于它存在的那一批。
+- **防复发门 `tests/test_openhands_v63_audit_gate.py`（4 passed）**：① 用 AST 断言 `arithmetic` 的绑定行号**早于**每分叉循环、且循环体确实调用 `branch_arithmetic_checks`（按模块代码对象检查，不是读文本）；② **直接执行那段曾经崩溃的代码**——在 v62-01 的三条真实冻结记录上跑完，并在把 `branch_total` 调成 10⁹ / 把 `identity_holds` 调成 False 时**必须**以具名断言失败（`reserved branch requests` / `cap identity`）；③ 事后逃逸开关仍被拒绝；④ 在**合成的极小批次**上把审计器从 `main()` 端到端驱动一遍，要求它**以判定或具名断言终止，且永不出现 `UnboundLocalError`**。含 v54–v62 全部文件复跑 **124 passed**。
+- **非冻结版事后审计（明确标注）**：用 v63 审计器对 v62-01 跑了一次，产物 `audit.json` + `AUDIT_REPORT.md` + `audit-posthoc-status.json`。**三件事同时写在批次里**：① 这是**非冻结版**事后审计（`post_hoc_non_frozen_audit: true`）；② 它**不是**本批冻结修订版的判定（`not_the_frozen_revision_verdict: true`，因为本批冻结的是崩溃的 v62 审计器）；③ **`frozen_experiment_sources_valid` 仍为 false**。
+- **该次机械核对的结果**（仅供参考，不作为冻结判定）：`branch_host_verdicts_measured: true` 且 **审计重跑复现**（`branch_verdicts_reproduced_by_the_audit: true`）；三条分叉 `host_verdict_measured: true` / `final_host_verdict: failed` / 均改 `related_descriptors.py` / 分叉后 794,145、877,564、**679,427** token / 各携带前缀 18 次请求；`plugin_compaction_count: 3`；`quality_verdict_obtained: true`；`branch_restores_hash_equal: true`、`branch_bytes_rebuilt_from_own_artifacts: true`、`file_boundary_violations: 0`、`failed_branch_requests: 0`、`shared_ceiling_respected: true`、`prefix_cap_arithmetic_holds: true`、`trigger_prediction_reproduced_offline: true`、`credential_matches: 0`；审计自身耗时 334.82 秒。
+- **保留的旧 drift 记录 + 新增更明确的表述**：`post-gate-audit-drift.json` 原样保留；`audit-posthoc-status.json` 另写明「**冻结版审计器崩溃**（`produced_a_verdict: false`）」与「**修正版无法复现冻结哈希**」（`frozen_auditor_sha256 017f4dab… vs reconstruction a131e1c0…`，`reconstruction_reproduces_frozen_auditor: false`），即漂移范围**不可自证**；源哈希普查 100/101 一致、唯一漂移是 `audit_validation_v62.py`。
+- **磁盘（硬约束）**：占用前几名——`runs/stage5-openhands/django-multitask-v49-pilot-01/workspaces` **2.149 GB**、`django-17084-v48-pilot-01/workspaces` **1.071 GB**、`django-17084-v47-pilot-02/workspaces` 0.357 GB、`django-multitask-v49-gate-01/baseline` 0.352 GB、`django-17084-v47-pilot-01/baseline` 0.119 GB、`django-17084-v48-gate-01/baseline` 0.119 GB、其余 `workspaces`/`baseline` 各 0.039–0.117 GB。删除提案只针对 `.gitignore` 已声明为**可重建**的类别（`workspaces/`、`baseline/`、`prefix-snapshot/`、`sdk-persistence/` 与 `.tooling/scratch/`），**禁止**删 RESULTS/audit/manifest/冻结/ledger/events/索引等证据文件。执行结果：空闲由 **1.811 GB → 5.647 GB（+3.836 GB）**；删除包含 `.tooling/scratch`（含 requests-probe）。因该文件系统上遍历极慢，清理**部分完成**（仍有 `baseline/` 类约 0.97 GB 与少量 `workspaces/` 可再释放），已验证 `RESULTS.md`/`audit.json`/`manifest.json`/`prefix-freeze.json` 等证据文件全部完好。
+
 ## 2026-10-04 CrewAI r12（结构保护：最近 K=1 个工具轮逐字保留，not-yet-valid 但机制生效）
 
 - **用结构取代指令**：新增 `experiments/runners/crewai_recency_tool_rounds_v12.py`——在 v9 三层之上，把压缩前列表里**最新的 K=1 个受保护工具轮占位消息**在压缩视图丢掉时**原样追加回**（追加的是适配器自己的占位 dict，因此适配器逐字恢复真实工具消息），更早轮次仍可压缩并逐调用/逐样本计数（`recency_omitted_tool_rounds_total`）。**全批不添加任何指令消息**，r11 的自我维持循环因此消失。付费批 `runs/stage5-crewai/crewai-two-role-r12-recency-toolrounds-01`：48/48 样本、327 请求（上限 440 未触顶）、0 错误、0 补救、0 全前缀回退。
@@ -227,3 +267,86 @@
 **本轮统一验证（`.tooling/verify_round.py --run-suites`，该脚本不入库）**：38 个冻结文件逐一核对一致——其中 v7/v9/v10/v11 的 14 处差异全部**精确等于** `REPO_DIAGNOSTIC_V11_FREEZE_AMENDMENT_20261004.json` 登记的当前内容，且该修订文件声称「冻结文件自身未被编辑」已用 SHA256 核对为真、缺失修订文件时一律不豁免；三宿主零 API 套件 **118 / 214 / 102 全通过**，含 v6–v11、r10–r13、v59–v61 的本轮门控。
 
 **引用禁令（仍然有效）**：三宿主的百分比禁止合并；CrewAI r10/r11/r12/r13 的审计为 `exit 1` / `not-yet-valid`，其配对均值不得作为有效节省引用；OpenAI Agents v7 的 `plugin_can_elide_anything` / `plugin_wins_possible` 字段与其结论矛盾，不得引用；v7 的离线数字（K=4、14,715）不得与付费数字（K=2、2,962）混用；OpenHands 各版本的节省率不得跨版本或跨任务合并。
+## 2026-10-05 CrewAI r15 载荷获取（仅无压缩臂）与三门判定：草案待批，不跑三臂
+
+- **为什么付费**：`R15_CANDIDATE_ZERO_API_GATE_20261005` 的停止原因是新任务**没有真实 CrewAI 宿主载荷**（第 1 门未过），而不是纪律问题——没有载荷就无法算第 2/3 门。因此做了一次**有界、预注册的工具性获取**：冻结 `PRE_RUN_FREEZE_R15_PAYLOAD_ACQUISITION_01.json`（SHA256 `40b5c385…`）与协议 `PILOT_PROTOCOL_R15_PAYLOAD_ACQUISITION_01.md`，**只跑无压缩臂**，批次 `runs/stage5-crewai/crewai-r15-payload-none-01`：12/12 样本（4 任务 × 3 重复）、**84 次请求**（上限 120 未触顶）、0 失败/0 触顶/0 错误、完整总 token 156,502。manifest 内 `purpose=payload_acquisition_only`、`citable_as_saving=false`、`citable_as_quality_equivalence=false`：**本批不得被表述为节省或质量等价证据**。
+- **四项新任务（同形质量合同）**：`tasks/stage5_autogen/natural_tasks_r15.json` —— `service_release_gate`(RELEASE/rel-2207/us-east-2)、`schema_migration_gate`(REVERT/schema-88/mig-7702)、`flag_promotion_gate`(PROMOTE/v16/flag-orion)、`cache_promotion_gate`(DISABLE/build-3341/cache-node-44)。每项都是第一角色按固定顺序读 4 份独立当前证据（配置 → 运行指标 → 变更记录 → 校验结果，4 个工具各一次），第二角色作一个可核验的发布/回滚决定；四项均有独立验收规则、固定事实、工具顺序与失败标签（禁用事实）；历史为自然产生的过期讨论（archive 片段），**不重复铺设合成"第 N 次历史交接"**；零 API 探测断言任务 id/工具名/事实/区域/版本/决策词均不与 r3–r13 复用。
+- **第 1–3 门（`experiments.commands.crewai_candidate_gate_r15_real_payload`，只读复算）**：**全部通过**。第 1 门真实载荷（mock 在非 `--force-mock` 下被拒）；第 2 门 12/12 单元工具序列 = 冻结工具表、首轮事实齐全、补救 0（四任务各 3 单元）；第 3 门可实现上界全批 **+10.25%**，逐任务 +9.90% / +10.35% / +10.35% / +10.38%（4 个任务非零，≥3 达标）。上界算法：`一次性文本 = 首次调用帧字符 − 后续调用帧增长`（后续增长=压缩替代文本被重复计费，必须扣除）→ 除以实测每 token 字符数 → 减去保护成本（钉住/整份回退/辅助摘要，本批全 0，接入插件臂后即生效）；另报更松的 ceiling 上界 +15.18% 并注明**不是**判定口径。同工作量由第 2 门强制，**少调工具/少调用模型不计作收益**。
+- **产出与边界**：三臂小试**预注册草案**见 `integrations/crewai/R15_THREE_ARM_DRAFT_20261005.md`（4×3×3=36 样本、上限 280 及其算术、三条验收线、与 +10.25% 上界的实现率对照义务、停止线与独立审计要求）——**本轮未运行三臂、未写三臂冻结、未发新请求**。冻结纪律照做：本批冻结写定后未修订、无 amendment。r9/r10/r13 的 results/audit/manifest 哈希核对**零漂移**，未覆盖、未重跑、未重打分任何旧批。
+## 2026-10-05 CrewAI r15 预筛对齐（分面报告 + 潜在/守卫后分离 + 门命令冻结修订）
+
+- **按 `REAL_PAYLOAD_PRESCREEN_20261005.md` §1/§2 对齐三项要求**（零 API 复算，未重跑已记录载荷）：①门命令现**逐任务分面报告**——历史可删量（assistant 747–755 / user 1,730–1,845 字符，占首帧 54.8–55.7%；与 r4/r9 的 572–646 同量级，但预筛已证该项不能单独预言收益，故只作结构描述）、当前证据与工具轮（4 工具 / 首角色 5 轮 / 证据标记 230–254 字节，逐字保护故永不可删）、角色决策行为（12/12 首轮齐全、补救 0、严格与语义全通过）、任务间离散度（上界 max−min **0.48 pp**、sd 0.20）；②第 3 门判定用**可实现上界 +10.25%**（≥3%，4 任务非零），更松的 ceiling +15.18% 仅作对照并注明非判定口径，**潜在旧单位上界（4）与守卫后安全候选（3）分开报告、不合并**；③**必要性判定：必须付费获取**——R15 门第 1 条要求真实宿主记录，且预筛记录假模型桩曾虚构 6 个工具轮／投影 +34.15% 的实际偏差，故 mock 不得用于上界；执行被限为仅无压缩臂、预注册冻结、84 请求（上限 120）、manifest 写死非节省证据。
+- **冻结纪律**：为对齐预筛新口径只改了**门命令**（`crewai_candidate_gate_r15_real_payload.py`，`048cc99b9148…` → `3705ea083da8…`）；runner／任务文件／协议／已记录 `results.jsonl`（`f09fa84e8037db84…`）**逐字节未变**，故按 r15 纪律另建 `R15_PAYLOAD_ACQUISITION_01_GATE_SCOPE_FREEZE_AMENDMENT_20261005.json`（改动内容／原因／新旧 SHA256），**原冻结文件一字未改**，未重跑、未重打分。
+- **判定与产出不变**：第 1–3 门仍全部通过，三臂草案 `R15_THREE_ARM_DRAFT_20261005.md` 待批（**本轮仍未运行三臂**）。对齐说明见 `crewai/R15_PAYLOAD_NECESSITY_AND_PRESCREEN_ALIGNMENT_20261005.md`。引用跨批数字时须同时引用 r9 勘误：**r9 自身质量不劣、成本为正**，其限制在集中度（`queue_backlog_replay` +22.2466%）与离散度（22.5023 pp）。
+## 2026-10-05 CrewAI r15 三臂小试（四项新任务 × r13 冻结机制）：未通过质量门，收口结论维持
+
+- **批次与冻结**：`runs/stage5-crewai/crewai-two-role-r15-release-gate-3arm-01`（前 35 样本，**恰好触顶 280/280**）+ 续跑 `...-resume-a-01`（**完整 36 样本，正式审计对象**）；冻结 `PRE_RUN_FREEZE_R15_RELEASE_GATE_3ARM_01.json`（self-hash `38cea63f…`，未修订）与 `..._RESUME_A_01.json`（`057a85ae…`），修订记录 `R15_RELEASE_GATE_3ARM_FREEZE_AMENDMENT_20261005.json`（含审计发现的 manifest 记账差与 runner 双哈希修正）。协议分母按批注改为**每臂 12/12**（非 r13 的 16/16），并写入同构性边界与失败计入口径。
+- **运行**：4 任务 × 3 重复 × 3 臂 = 36/36 样本；首批 280 次请求 + 续跑 6 次 = **286**（超预注册上限 280，审计如实报错）；插件机制 = **r13 冻结机制逐字复用**（v9 三层 + K=3 全轮保护 + r13 合同措辞），**不加任何指令消息**。
+- **判定：未通过质量门（审计 `verdict: not_passed_quality_gate`、`errors` 10、exit 1）**。①行为等价未过：插件 `tool_sequence_consistent` **6/12** vs 基线 11/12，`flag_promotion_gate`/`cache_promotion_gate` 逐任务 0/3；②质量不劣未过：插件严格/语义 **6/12 / 6/12** vs 基线 11/12、11/12；③成本为正通过：全批配对均值 **+37.98%**（11/12 正），同工作量子集 **+35.16%（6/6 正）**。首轮事实齐全插件 **12/12**（> 基线 11/12），失败全在工具序列轴，`contract_placeholder_echo` **0**。
+- **逐任务与离散度**：`service_release_gate` +34.43%、`schema_migration_gate` +35.89%（两者各 3/3 同工作量同序列）；`flag_promotion_gate` +49.03%、`cache_promotion_gate` +49.49%（**均无同工作量对**，收益来自少调一个工具，按口径不计作节省）。全批离散度 **16.45 pp**；同工作量子集 **1.46 pp**，但仅两个任务进入且四任务**同形同构**，均匀性**不代表**任务间异质性证据。
+- **两条附带事实（不改变判定）**：① 载荷批的机制上界 **+10.247% 被实测超出约 3 倍**（实现率 343%），该上界在本任务形状下**不成立**，今后不得再作成本门；② 保护成本占比 **9.48%**（钉住 20,625 字符 → 8,558 token、受保护轮 90、回退 0、摘要 0）。
+- **收口维持**：该宿主仍**没有可引用的正收益**；本批不得与任何宿主百分比合并。引用跨批数字须同时引用 r9 勘误（**r9 自身质量不劣、成本为正 +8.009%**，限制在集中度 +22.2466% 与离散度 22.5023 pp）。详见 `runs/stage5-crewai/crewai-two-role-r15-release-gate-3arm-resume-a-01/RESULTS.md`。
+
+- **2026-10-05 OpenAI Agents v13（留出任务 `psf__requests-1766`：首次通过预注册验收线，但只是单任务确认）**：(1) **任务**：`psf/requests` base_commit `847735553aeda6e6633f2b32e14ba14ba86887a4`，三宿主此前从未引用该 repo；三只读视图 `requests/auth.py` 58-149、`models.py` 451-472、`sessions.py` 232-270，两轮读取共 6 次工具调用；取源经两个独立 GitHub 镜像 HTTPS 完成（**未执行 git**），`auth.py` 两镜像 SHA256 一致，base 失败态由源码确立（`auth.py:147` 发出未加引号的 `qop=auth`；FTP 里的 `test_DIGESTAUTH_QUOTES_QOP_VALUE` 不在 base 树，属评测 test patch 引入）。(2) **一次性冻结** `V13_REQUESTS1766_FREEZE_20261005.json`（SHA256 `e1f5bb3a…3d694`，manifest 记录并由审计重算），Pattern A/字面表/视图行范围/两轮协议/预算/失败线/data_class 齐备；Stage C 前另建修订文件（登记 A1 补注册陈述侧字面 `qop-options` 使守卫保护集合由空变 2、A2 记录 v13 集成模块哈希、A3 说明请求下界算术）。(3) **Stage A 载荷获取**：单臂 `none`、1 任务×1 重复、**7/12 请求**、0 失败，逐边界项数 3/5/7/9/11/13/15、`turn_count≡1`、六个输出为三组逐字重复；该批 manifest 实际写入 `purpose`、`citable_as_saving=false`、`citable_as_quality_equivalence=false`，独立审计 `complete=true`。(4) **零 API replay 门**：重建逐边界复现记录（结构+每个输出 SHA256/字符数）、插件项指针文本逐字节可复算、presence fail-closed 且负控制通过、不变量五列全绿；**投影 +20.71 %（≥3 %）且守卫后安全候选 3（非空）→ 判定 proceed**。(5) **Stage C**：1 任务×3 重复×3 臂、**66/66 请求**、0 失败；**Track A 基线 3/3、插件 3/3**；配对完整总 token **+17.51 %/+17.52 %/+17.49 %（正 3/3，均值 +17.50 %）**；原生摘要臂 −4.07 %（正 0/3，其摘要预算被限为每样本 1 次以把 harness 下界压进 66 上限，故其成本是无界成本的下界）；独立审计 `complete=true`、`errors=[]`、`acceptance.met=true`。(6) **预注册验收线（Track A ≥ 基线 且 配对完整总节省 ≥ 3 %）两条都满足**——本宿主**首次在未参与 v1-v12 调参的任务上通过**。**但不得越读**：1 任务×3 重复不是多任务稳定性；预筛反例（候选数量不预测收益）仍然成立；Track B 通过 ≠ 质量不降且不追溯 v11/v12；`requests-1766` 自此为已用掉的留出任务（不得在其上调参重试，重试须换机制并另选新候选）。旧批冻结/评分/答案未动；跨宿主百分比不合并。
+## 2026-10-05 CrewAI r15 分裂诊断与收益上界作废（零 API，不付费）
+
+- **逐任务分裂已机械判定**（`.tooling/diagnose_crewai_r15_tool_loop.py`，只用已记录载荷）：`service_release_gate` 与 `schema_migration_gate` 是**同工作量 3/3 + 严格/语义 3/3 + 配对 +34.43% / +35.89%**；`flag_promotion_gate`（0/3）与 `cache_promotion_gate`（0/2）的 **+49% 来自插件少调用一个工具**（`run_flag_check` / `run_cache_check`），按预注册口径**不计作节省**。同工作量子集 = 6 个单元、**+35.16%（6/6 正）**。
+- **6 个失败单元逐边界结论：`mechanism_withheld_required_content = false`**。视图侧（冻结任务 + 冻结 14 组 filler + 记录工具轨 + r13 冻结机制重建）：4 个工具名全在、已执行工具证据逐字可见、`recency_omitted = 0`、`readded = 0`、整份回退 0、工具组恢复失败 0、`HANDOFF` 合同在位；记录侧（真实逐调用模型输入）：决定性调用（第一角色最后一次、索引 3）的系统提示**声明全部 4 个工具、含 JSON schema 块与列出全部工具名的工具选择行**，被跳过的那个工具在其中。→ **模型在内容齐备的前提下提前结束工具循环（模型行为），机制侧无缺陷**；`contract_placeholder_echo` 全程 0（r13 措辞修正继续有效）。
+- **收益上界口径作废**：载荷批"可实现上界 **+10.247%**"被同工作量实测 **+35.16%** 超出 **3.43 倍**。实测分解（service_release_gate / schema_migration_gate）：该上界只记账"首帧一次性文本"（1,267 / 1,270 token），而**整段首帧在之后每次调用被重复投递**（1,878 / 1,869 token 每调用，占实测节省 **42.6% / 40.3%**），这一项完全不在其记账范围内，其余差额来自少调工具与逐单元波动。→ **`REAL_PAYLOAD_PRESCREEN_20261005.md` §2 第 3 条的收益上界口径在此之前是错的，不得再用它筛除或放行任何批次**；正确形式须按 `(无压缩每调用输入 − 压缩后每调用输入) × 调用数` 逐调用累计并显式扣除钉住/受保护轮/回退/摘要。
+- **本批正确表述**：**批级不通过、不可引用**；结构事实如实写出——4 个同形任务里 **2 个**出现"同工作量 + 同质量 + 约 +35%"，另 **2 个**的 +49% 靠少调工具；边界为 **2 任务 × 3 重复、同构构造、均匀性不代表任务间异质性**，且 `none` 臂有 1 个触顶行。请求账目：首批 **280/280 恰好触顶**（35/36）+ 续跑 6 = **286 > 280**，已在 RESULTS 顶部显著标注；**两个 manifest 不回写**（冻结不可改，修订另建 amendment）。
+- 若后续仍要在该形状上试，唯一未被证伪的方向是**不改视图内容、只改运行控制器**（把"必须调用全部证据源"从提示词层提升为宿主层工具轮计数守卫）——本文件**只提议**，不在留出任务上直接调参、不发付费请求。诊断全文 `crewai/R15_SPLIT_DIAGNOSIS_AND_BOUND_ERRATUM_20261005.md`。
+
+- **2026-10-05 OpenAI Agents v14（多任务确认：成本稳、质量在 1/3 任务上掉 → 验收线未通过）**：(1) **付费前修好三处 runner 缺陷**：单臂批次不再在共享 report 步骤抛 `KeyError: paired_n`（运行时补丁，冻结哈希的共享模块未改）、manifest 由 runner **一次写全**（`purpose` + `citable_as_saving=false` + `citable_as_quality_equivalence=false` + 冻结哈希，**无任何事后修订工具**）、插件行现在直接持久化 `exact_duplicate_replacements` / `trigger_gate_*` / `narrow_guard_protected_unit_count`。(2) **四个全新留出实例**：`psf__requests-5414`、`psf__requests-2931`、`pallets__flask-5014`、`pydata__xarray-3095`——三宿主此前在 integrations/experiments/tests/tasks 中**零命中**、无已提取目录；只读取源（`fetch --depth 1` + `checkout FETCH_HEAD`，未 add/commit/push、未写上游），逐文件登记 SHA256。(3) **逐任务有界获取**：各 7/12 请求、0 失败；零 API replay 门四项全过（重建复现、指针可复算、presence fail-closed + 负控制、不变量五列），**逐调用投影 15.59/14.04/17.62/18.96 %、安全候选各 3**；按预注册准入规则 3 个合格、1 个被拒（其基线答案事实正确但未含冻结令牌 `prepare_url`——**不因看到答案而改契约**）。(4) **小试 3 任务 × 3 重复 × 3 臂 = 27 样本、207/300 请求、每样本摘要上限 3 次（预注册）**，0 触顶：插件逐任务均值 **+8.09 % / +12.98 % / +16.87 %（正 9/9，极差 8.77 个百分点）**、池化 **+12.65 %**；原生摘要臂 −9.13 %（正 0/9）；Track A 基线 9/9、插件 **7/9**（`xarray_copy_dtype` 1/3）。(5) **验收线：Track A 插件 ≥ 基线（逐任务与合计）且 配对 ≥3 % → 成本侧满足、质量侧不满足 → `acceptance.met=false`，多任务确认未达成**。两处失败**只违反 ≤160 字符长度条件**（179 字符），必需字面齐备、presence 台账无丢失、指针逐字节可复算 → **模型侧措辞，机制侧干净**（与 v12 同现象）。(6) 独立审计：四个获取批与 27 样本小试批均 `complete=true`、`errors=[]`，两轨质量按冻结合同自行计算，逐样本边界/指针/presence/配对/回退重算，验收判定独立重算为 false。(7) **如实局限**：3 任务 × 3 重复不足以称多任务稳定；这三个任务的守卫保护集合为空（字面在工具视图而非陈述单元），字面保全由机制不变量与 presence 台账证明；四个实例自本轮起**已用**，不得在其上调参重试。旧批冻结/评分未动；跨宿主百分比不合并。
+
+## 2026-10-06 OpenHands v64 审计器冻结输入 + v62 只读复盘（零 API，不付费）
+
+- **本轮为零 API**：未发出任何模型请求、未付费、未改动任何旧批字节、未执行 Git add/commit。对应
+  `THREE_HOST_NEXT_ROUND_PLAN_20261006.md` §2.B / §4.A / §4.B / §4.C。
+- **v62 只读复盘**（`integrations/openhands/V62_READONLY_POSTMORTEM_20261006.md`，复现脚本
+  `.tooling/v62_postmortem.py`，记录 `.tooling/tmp/v62-postmortem/branches.json`）：三条臂都只改
+  `django/db/models/fields/related_descriptors.py`，最终 SHA256 分别 `8e9702cb…`（none，8 个变更块）/
+  `069d91e5…`（native_summary，10 个）/`2c62717a…`（pruner_v1，3 个）。**关键事实：三条臂没有任何一条
+  收到过自己最新一次编辑之后的宿主反馈**——`none` 只在 burst 1 收到前缀反馈（随后 burst 以
+  `Budget policy blocked an unexpected tool` 终止，30 次窗口只用了 **19** 次、**剩 11 次作废**）；
+  `native_summary` 在同一 burst 内用光 **30/30**，第二轮 `send_message` 直接撞
+  `Frozen correction request limit`，**第 1 轮反馈从未进入上下文**；`pruner_v1` 第 1 轮反馈在 burst 2
+  开场送达（25+4=**29/30**），第 2 轮反馈因循环上限未送达。最终宿主判定：`none` `FAILED (failures=1)`
+  （对公开基线 112/113，**唯一没有引入新破坏的臂**）、`pruner_v1` `FAILED (failures=8)`、
+  `native_summary` `FAILED (failures=1, errors=19)`（多出 **20** 个失败/错误）。**隔离规则机器可读**：
+  `host_target_patch_read: false`、`hidden_test_patch_read: false`、`reference_fix_read: false`、
+  `scoring_target_patch_reachable_from_agent: false`；复盘用的 Agent 可见文本由 runner 当时**同一个**
+  `feedback_v42.format_correction_feedback` 在**同一批**宿主日志上重生成，故不引入新信息。
+- **审计器作为冻结输入**：预冻结门抽成可执行模块 `integrations/openhands/audit_gates_v63.py`
+  （`audit_validation_v63.py` 改为调用它；`branch_arithmetic_checks` 保留为兼容包装）。四类拒绝各有名字
+  —— `missing_field` / `path_escape` / `hash_drift` / `target_test_inconsistency`（另有 `provenance` /
+  `cap_arithmetic`），异常 `AuditGateError`（`AssertionError` 子类，带 `gate` 与 `detail`）。
+  **批次 manifest 必须登记审计器自身 SHA256**：缺登记 → `missing_field`；登记了别的修订 → `hash_drift`；
+  `audit.json` 新增 `auditor_provenance` 块。这使得"付费后发现审计器有问题、修好它再声称旧批通过"
+  在机制上不可能。**本轮冻结的审计器 SHA256：
+  `d8d5eaca1a630951268d90742da97a0ecb9ec4ebcad3bfc8a87a4487b65bb802`**
+  （`integrations/openhands/audit_validation_v63.py`；下一批 manifest 必须写下这个值）。该审计器接受的
+  批次版本集合由 `audit_gates_v63.manifest_gate` 统一决定（v54 分叉形状、v55–v68 prefix-selection 家族，
+  含 v59 的 `-b04` 后缀变体；v69 及以后按 `provenance` 拒绝，必须显式扩展）。
+- **冻结字节上的端到端烟测**：`integrations/openhands/V64_AUDIT_FROZEN_INPUT_SMOKE_20261006.json`
+  （`.tooling/v64_audit_frozen_input.py --write`）。在由 v62-01 真实冻结字节物化的**合成但完整的三分支
+  记录**上（快照 6,644 文件、分支账本、逐分支持久化字节、批次索引全部为真实字节）跑完整审计：
+  `complete: true`、3/3 分支、`frozen_experiment_sources_valid: true`、`changed_sources: []`、
+  `auditor_provenance.is_the_frozen_revision: true`、`branch_host_verdicts_measured: true`、
+  `plugin_compaction_count: 3`、三臂判定均 `failed` 且为实测、`file_boundary_violations: 0`、
+  `shared_ceiling_respected: true`、`prefix_cap_arithmetic_holds: true`、逐分支 `final_source_digest`
+  与 `artifacts.json` 记录**逐位一致**（`0d2910fa…` / `5dbb901a…` / `7eca1a65…`）。9 项负控制全部按预期
+  结果结束（8 项按名字拒绝，1 项为刻意的**非**拒绝：无宿主轮的臂必须记成 `final_host_verdict: null`
+  而不是判为失败）。该烟测**不跑 Django**，并在 `audit.json` 与产物里显式记录 `host_test_rerun: false`
+  与 `host_verdict_source: NOT re-run …`；其余每一步都在真实冻结字节上执行，**付费前完成**。
+- **门控测试**：新增 `tests/test_openhands_v64_audit_frozen_input.py`（8 项全过），覆盖 manifest 审计器
+  哈希登记 / 缺登记拒绝 / 登记别的修订按 drift 拒绝、三分支额度算术路径、三分支账本门、四类负控制、
+  篡改持久化字节必须被拒、冻结字节端到端、同一份字节两次审计结果一致。既有
+  `tests/test_openhands_v63_audit_gate.py` 同步更新（缺字段现在按 `missing_field` 具名拒绝）。
+- **环境修复（必要一步）**：`%TEMP%` 下 `pytest-of-LENOVO` 属于另一个 Windows 账户，pytest 旋转临时目录时
+  `PermissionError [WinError 5]`，导致**所有**使用 `tmp_path` 的门控无法启动。新增仓库根 `conftest.py`
+  把 base temp 固定在 `.tooling/tmp/pytest-basetemp`，无需机器级 ACL 改动。此修复对所有宿主的门控通用。
+- **质量优先的小试规则已写进协议**：`THREE_HOST_NEXT_ROUND_PLAN_20261006.md` §4.C —— 只改一个可归因变量
+  （候选变量：宿主失败反馈的传递时机 + 纠错预算按轮预留）、新 ID / 同前缀三臂 / 新冻结、三臂都必须取得
+  宿主判定、插件真实压缩、独立审计无错、且**至少看到成功路径的插件质量不低于基线**；三臂再次全 failed
+  则**立即停在开发观察**，不扩重复、不扩任务、不把更长轨迹解释为质量改善；旧 v62 不重判，v62 同任务
+  只能作**开发对照**，不得再称"未用留出任务"。

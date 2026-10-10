@@ -1,0 +1,84 @@
+{
+  "schema": "openai_agents_strict_failure_inventory",
+  "date": "20261005",
+  "scope": "every recorded strict-track (Track A) failure in v12, v13 and v14",
+  "total_failures": 3,
+  "all_failures_are_plugin_arm": true,
+  "all_only_length_failed": true,
+  "all_required_literals_present": true,
+  "all_frozen_regex_matched": true,
+  "presence_zero_loss_everywhere": true,
+  "pointers_recomputable": true,
+  "entries": [
+    {
+      "batch": "v12",
+      "task": "django_long_investigation",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "answer_chars": 208,
+      "answer": "RESULT issue=django-16263 cause=get_count clones query and get_aggregation keeps existing_annotations, forcing subquery/GROUP BY fix=prune annotations not referenced by filters, other annotations, or ordering",
+      "frozen_conditions_failed": [
+        "at_most_160_chars"
+      ],
+      "only_length_failed": true,
+      "required_literals_present": true,
+      "frozen_regex_fullmatch": true,
+      "presence_zero_loss": true,
+      "pointer_recomputable": true,
+      "frozen_contract": "RESULT issue=django-16263 cause=.*existing_annotations.*subquery.* fix=.*referenced.*",
+      "required_terms": [
+        "existing_annotations",
+        "subquery",
+        "referenced"
+      ],
+      "recorded_success": false
+    },
+    {
+      "batch": "v14",
+      "task": "xarray_copy_dtype",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "answer_chars": 179,
+      "answer": "RESULT issue=xarray-3095 cause=IndexVariable.copy passes data through as_compatible_data, which coerces unicode to object fix=preserve IndexVariable._data PandasIndexAdapter dtype",
+      "frozen_conditions_failed": [
+        "within_max_chars"
+      ],
+      "only_length_failed": true,
+      "required_literals_present": true,
+      "frozen_regex_fullmatch": true,
+      "presence_zero_loss": true,
+      "pointer_recomputable": true,
+      "frozen_contract": "RESULT issue=xarray-3095 cause=<...> fix=<...>",
+      "required_terms": [
+        "IndexVariable",
+        "dtype"
+      ],
+      "recorded_success": false,
+      "boundaries": 7
+    },
+    {
+      "batch": "v14",
+      "task": "xarray_copy_dtype",
+      "repeat": 1,
+      "method": "pruner_v1",
+      "answer_chars": 179,
+      "answer": "RESULT issue=xarray-3095 cause=IndexVariable.copy passes data through as_compatible_data, which coerces unicode to object fix=preserve IndexVariable._data PandasIndexAdapter dtype",
+      "frozen_conditions_failed": [
+        "within_max_chars"
+      ],
+      "only_length_failed": true,
+      "required_literals_present": true,
+      "frozen_regex_fullmatch": true,
+      "presence_zero_loss": true,
+      "pointer_recomputable": true,
+      "frozen_contract": "RESULT issue=xarray-3095 cause=<...> fix=<...>",
+      "required_terms": [
+        "IndexVariable",
+        "dtype"
+      ],
+      "recorded_success": false,
+      "boundaries": 7
+    }
+  ],
+  "reading": "every strict failure is the frozen at-most-160-characters condition on the plugin arm's wording; the answer facts, the frozen regex, literal presence and the pointer reconstruction all hold. This inventory is a description of what a relaxation would relax, and changes nothing."
+}

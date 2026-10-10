@@ -1,0 +1,27 @@
+{
+  "schema": "openai_agents_v16_sealed_confirmation_citation_record_amendment",
+  "amends": "integrations/openai_agents/V16_SEALED_CONFIRMATION_CITATION_RECORD_20261006.json",
+  "amendment_id": "openai-agents-v16-citation-amendment-01",
+  "date": "20261010",
+  "api_requests_spent": 0,
+  "reason": "the mechanism account behind the cited saving was measured after the citation record was written, and it narrows what the figure may be used to claim",
+
+  "what_changed": {
+    "the_figure": "unchanged: paired complete provider-token saving of 12.54 percent, 13 of 15 pairs positive, bootstrap interval 5.17 to 18.30 percent, three sealed tasks, five repeats, retries and summary requests charged to their arm",
+    "the_flag": "unchanged: citable_as_saving stays true and citable_as_quality_equivalence stays false",
+    "the_scope_statement": "the record's citable sentences must be read together with the mechanism finding recorded in MECHANISM_CORRECTION_DUPLICATE_COLLAPSE_20261010.json"
+  },
+
+  "added_required_sentence": "The saving in this batch is realised by collapsing exact duplicate tool outputs: the registered protocol reads each of the three views twice, so about half of the read payload in the baseline arm is a verbatim repeat of content still present in the context, and the plugin removes that repeat. When the same configuration is run on a shape in which each view is read once, so that no output repeats, the measured paired saving is 0.00 percent with per-arm token totals equal to within six tokens.",
+
+  "added_forbidden_wording": [
+    "the plugin saves about 12.5 percent of context",
+    "the saving scales with the length or the round count of a trajectory",
+    "the saving would appear on workloads without repeated tool output",
+    "quoting this batch as evidence of a general context-compression saving"
+  ],
+
+  "why_this_does_not_invalidate_the_batch": "the protocol that creates the repeats is part of the host configuration, the repeated tokens are real and were charged to the arms they belong to, the comparison is within batch and paired, and the strict track was met without loss because only exact duplicates are collapsed; what changes is the sentence a reader may build on top of the number, not the number",
+  "no_rejudging": "the sealed confirmation batch, its manifest, its samples, its audit and its freeze are untouched",
+  "citable": false
+}

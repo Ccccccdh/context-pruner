@@ -1,0 +1,302 @@
+{
+  "schema": "openai_agents_v18_selection_proposal_rev2",
+  "date": "20261010",
+  "revises": "integrations/openai_agents/V18_SELECTION_PROPOSAL_20261010.json",
+  "rule_applied": "integrations/openai_agents/V18_LITERAL_DISCRIMINATIVENESS_RULE_20261010.json",
+  "rule_id": "openai-agents-v18-code-anchored-literals-01",
+  "views_unchanged": true,
+  "statement_hash_diagnosis": {
+    "django__django-15572": {
+      "pool_value": "f9d1889009c44a56a4487dbf777c536841b4b30a2472ee1d1e30b75007f12aa3",
+      "true_sha256": "f9d1889009c44a56a4487dbf777c536841b4b30a2472ee1d1e30b75007f12aa3",
+      "matching_hypothesis": "sha256_of_statement",
+      "all_hypotheses": {
+        "sha256_of_statement": "f9d1889009c44a56a4487dbf777c536841b4b30a2472ee1d1e30b75007f12aa3",
+        "sha256_of_hex_text_of_that_hash": "f950ed7c542174d409a4c1f01a552c1e4103b4162823f503cad0f0a3408a371c",
+        "sha256_of_statement_without_zero_width": "6d393eed25bdab4db7f4e0cdae573d71cf11e93f136d08b725d813e36c56edb1",
+        "sha256_of_stripped_statement": "c1b4c2478010a876badf0ee032e3cc7db1516bb421ce0f2a8ad1e0deaf4307c9",
+        "sha256_of_whitespace_normalised_statement": "1ef5c68565e97486faa0566b115d3e7d59fce61d5166909f827d62ec324df502",
+        "sha256_of_statement_without_zero_width_or_tabs": "24b09a534888de5d8605009b91e5a2cd641d763368a0d12cce7840d7ac17b362"
+      },
+      "reconciled": true
+    },
+    "django__django-16255": {
+      "pool_value": "2359a3443b4020179e535a3df289178a975a90472b1fb6c3c23adf85aee5c371",
+      "true_sha256": "2359a3443b4020179e535a3df289178a975a90472b1fb6c3c23adf85aee5c371",
+      "matching_hypothesis": "sha256_of_statement",
+      "all_hypotheses": {
+        "sha256_of_statement": "2359a3443b4020179e535a3df289178a975a90472b1fb6c3c23adf85aee5c371",
+        "sha256_of_hex_text_of_that_hash": "7665ff4f18b6428ba6cd3b3eefe737c8c743042f96321d7e01b60db6ba1d22dc",
+        "sha256_of_statement_without_zero_width": "2359a3443b4020179e535a3df289178a975a90472b1fb6c3c23adf85aee5c371",
+        "sha256_of_stripped_statement": "3fb85be3042dd669c0dcc6ff06aebeb71f087598bdf99a2ab5d31d5f2e61b35a",
+        "sha256_of_whitespace_normalised_statement": "9dbafbabd1de9179917d17629ecc176380983bbbc9a01bd2eea620a82540c14b",
+        "sha256_of_statement_without_zero_width_or_tabs": "200a1185076f3703b72b999b46b53d53e9a75d650ce5591f41a4beebac929aa3"
+      },
+      "reconciled": true
+    },
+    "django__django-15569": {
+      "pool_value": "107938cd24f7bef580939d1998ce566f02fe292c37bcd14013c5f28ec5fb4f51",
+      "true_sha256": "107938cd24f7bef580939d1998ce566f02fe292c37bcd14013c5f28ec5fb4f51",
+      "matching_hypothesis": "sha256_of_statement",
+      "all_hypotheses": {
+        "sha256_of_statement": "107938cd24f7bef580939d1998ce566f02fe292c37bcd14013c5f28ec5fb4f51",
+        "sha256_of_hex_text_of_that_hash": "233cad9cbd04d561171e0fc18e2fd0edb0a4442267288408e7ccfe7e65598269",
+        "sha256_of_statement_without_zero_width": "1e0e5ef2a1117a092fc3e13f361fa7792f9a33ee60e15489a23edd7b254d9253",
+        "sha256_of_stripped_statement": "bd4a318e329a541891ca4592ce46e973d218d8f528b2d482ec90cbbd7eb09f80",
+        "sha256_of_whitespace_normalised_statement": "be9cb16542545293c703ab63f3dc0a6ac14592b3fb198c20ca23bc1394385676",
+        "sha256_of_statement_without_zero_width_or_tabs": "7a4e371ab49d26ed0cd9580b9f4d12e81a16f86ba2e5474d0b45d224f74de14f"
+      },
+      "reconciled": true
+    }
+  },
+  "statement_hash_reconciliation": "reconciled by a documented rule",
+  "selected": {
+    "django__django-15572": {
+      "instance_id": "django__django-15572",
+      "task_id": "autoreload_template_changed",
+      "repo": "django/django",
+      "base_commit": "0b31e024873681e187b574fe1c4afe5e48aeeecf",
+      "difficulty": "<15 min fix",
+      "primary_file_derivation": {
+        "file": "django/template/autoreload.py",
+        "derived_by": "the python path named in the statement, present at the base commit"
+      },
+      "files_used": [
+        "django/template/autoreload.py",
+        "django/template/base.py",
+        "django/template/base.py",
+        "django/template/base.py"
+      ],
+      "statement_sha256": "f9d1889009c44a56a4487dbf777c536841b4b30a2472ee1d1e30b75007f12aa3",
+      "statement_hash_matches_preselection": false,
+      "views": [
+        {
+          "round": 1,
+          "file": "django/template/autoreload.py",
+          "symbol": "template_changed",
+          "first_line": 45,
+          "last_line": 54,
+          "blob_git_id": "84c8554165f871a994b6a3617b776df2cb5e2e32",
+          "file_content_sha256": "8b618b323b0689e2d9263491d91b474ae1c0e54cc8d84c66eaef644eeb976540",
+          "view_content_sha256": "6bb5a528d99a5f2b6597907b9f496487efebf345af1d672ede34d235493daa0b",
+          "tool_name": "read_template_changed"
+        },
+        {
+          "round": 2,
+          "file": "django/template/base.py",
+          "symbol": "TokenType",
+          "first_line": 91,
+          "last_line": 98,
+          "blob_git_id": "a1ab437eca5e692b9fd408972f623f7fc7301c1b",
+          "file_content_sha256": "92d1176aad999f406a3d5a9f50d8fd3cc4ff6b80751283835466a2300f728aa8",
+          "view_content_sha256": "69a64c69a8b352f2ed55cd36fb2a199be7a40e42f2fb0e7814c75266db140250",
+          "tool_name": "read_tokentype"
+        },
+        {
+          "round": 3,
+          "file": "django/template/base.py",
+          "symbol": "VariableDoesNotExist",
+          "first_line": 98,
+          "last_line": 107,
+          "blob_git_id": "a1ab437eca5e692b9fd408972f623f7fc7301c1b",
+          "file_content_sha256": "92d1176aad999f406a3d5a9f50d8fd3cc4ff6b80751283835466a2300f728aa8",
+          "view_content_sha256": "21f6c7077a2463e9720d873ce5222a3d1ff13f7c4135426a831ab28502f30494",
+          "tool_name": "read_variabledoesnotexist"
+        },
+        {
+          "round": 4,
+          "file": "django/template/base.py",
+          "symbol": "Origin",
+          "first_line": 107,
+          "last_line": 135,
+          "blob_git_id": "a1ab437eca5e692b9fd408972f623f7fc7301c1b",
+          "file_content_sha256": "92d1176aad999f406a3d5a9f50d8fd3cc4ff6b80751283835466a2300f728aa8",
+          "view_content_sha256": "a98d22f0cae54c01a1f1fb2d99a003b994c2faae6ab9e4c9dd6619cfa2bbc91c",
+          "tool_name": "read_origin"
+        }
+      ],
+      "distinct_ranges": true,
+      "distinct_tool_names": true,
+      "why_the_defect_segment_is_included": "round 1 is the definition the statement's own symbol names (template_changed); the remaining rounds are the following distinct definitions of the same module or its lexical siblings",
+      "contract": {
+        "issue_value": "django-15572",
+        "cause_token": "template_changed",
+        "fix_token": "BLOCK",
+        "required_facts": [
+          "template_changed",
+          "BLOCK",
+          "COMMENT"
+        ],
+        "frozen_regex": "RESULT issue=django-15572 cause=.*template_changed.* fix=.*BLOCK.*",
+        "max_answer_chars": 160
+      },
+      "literal_anchoring": {
+        "template_changed": "defined name",
+        "BLOCK": "defined name",
+        "COMMENT": "defined name"
+      },
+      "code_anchored_literal_count": 3,
+      "lazy_answer_negative_control": {
+        "lazy_line": "RESULT issue=django-15572 cause=django django-15572 always anything app are auto autoreload fix=model field code method",
+        "satisfies_frozen_regex": false,
+        "satisfies_literal_requirement": false,
+        "control_failed_as_required": true
+      },
+      "minimal_feasible_line": {
+        "line": "RESULT issue=django-15572 cause=template_changed fix=BLOCK COMMENT",
+        "chars": 66,
+        "margin_to_bound": 94,
+        "conditions": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "all_conditions_hold": true
+      },
+      "statement_hash_diagnosis": {
+        "pool_value": "f9d1889009c44a56a4487dbf777c536841b4b30a2472ee1d1e30b75007f12aa3",
+        "true_sha256": "f9d1889009c44a56a4487dbf777c536841b4b30a2472ee1d1e30b75007f12aa3",
+        "matching_hypothesis": "sha256_of_statement",
+        "all_hypotheses": {
+          "sha256_of_statement": "f9d1889009c44a56a4487dbf777c536841b4b30a2472ee1d1e30b75007f12aa3",
+          "sha256_of_hex_text_of_that_hash": "f950ed7c542174d409a4c1f01a552c1e4103b4162823f503cad0f0a3408a371c",
+          "sha256_of_statement_without_zero_width": "6d393eed25bdab4db7f4e0cdae573d71cf11e93f136d08b725d813e36c56edb1",
+          "sha256_of_stripped_statement": "c1b4c2478010a876badf0ee032e3cc7db1516bb421ce0f2a8ad1e0deaf4307c9",
+          "sha256_of_whitespace_normalised_statement": "1ef5c68565e97486faa0566b115d3e7d59fce61d5166909f827d62ec324df502",
+          "sha256_of_statement_without_zero_width_or_tabs": "24b09a534888de5d8605009b91e5a2cd641d763368a0d12cce7840d7ac17b362"
+        },
+        "reconciled": true
+      }
+    },
+    "django__django-16255": {
+      "instance_id": "django__django-16255",
+      "task_id": "exception_convert_exception_to_response",
+      "repo": "django/django",
+      "base_commit": "444b6da7cc229a58a2c476a52e45233001dc7073",
+      "difficulty": "<15 min fix",
+      "primary_file_derivation": {
+        "file": "django/core/handlers/exception.py",
+        "derived_by": "the python path named in the statement, present at the base commit"
+      },
+      "files_used": [
+        "django/core/handlers/exception.py",
+        "django/core/handlers/exception.py",
+        "django/core/handlers/exception.py",
+        "django/core/handlers/exception.py"
+      ],
+      "statement_sha256": "2359a3443b4020179e535a3df289178a975a90472b1fb6c3c23adf85aee5c371",
+      "statement_hash_matches_preselection": false,
+      "views": [
+        {
+          "round": 1,
+          "file": "django/core/handlers/exception.py",
+          "symbol": "convert_exception_to_response",
+          "first_line": 21,
+          "last_line": 60,
+          "blob_git_id": "79577c2d0a6d806410d23bae3e2090f23e9ea3f5",
+          "file_content_sha256": "36cbe02bb446d560bd8d03b575f15aa464ac2544be1d20fd82884a090a8921ef",
+          "view_content_sha256": "e83036cd2729a4b95c727c0545e7cbff9205d7c511513cc8c69dae71801df2a6",
+          "tool_name": "read_convert_exception_to_response"
+        },
+        {
+          "round": 2,
+          "file": "django/core/handlers/exception.py",
+          "symbol": "response_for_exception",
+          "first_line": 60,
+          "last_line": 158,
+          "blob_git_id": "79577c2d0a6d806410d23bae3e2090f23e9ea3f5",
+          "file_content_sha256": "36cbe02bb446d560bd8d03b575f15aa464ac2544be1d20fd82884a090a8921ef",
+          "view_content_sha256": "56979e4089f275758b71d0e61d8d07df15658abe3f2a88e3305bc8487bb36098",
+          "tool_name": "read_response_for_exception"
+        },
+        {
+          "round": 3,
+          "file": "django/core/handlers/exception.py",
+          "symbol": "get_exception_response",
+          "first_line": 158,
+          "last_line": 169,
+          "blob_git_id": "79577c2d0a6d806410d23bae3e2090f23e9ea3f5",
+          "file_content_sha256": "36cbe02bb446d560bd8d03b575f15aa464ac2544be1d20fd82884a090a8921ef",
+          "view_content_sha256": "f828fa464bab247d7bd737ec2181a6f0ae7ce4438006ef86dacc50119fde7b2d",
+          "tool_name": "read_get_exception_response"
+        },
+        {
+          "round": 4,
+          "file": "django/core/handlers/exception.py",
+          "symbol": "handle_uncaught_exception",
+          "first_line": 169,
+          "last_line": 185,
+          "blob_git_id": "79577c2d0a6d806410d23bae3e2090f23e9ea3f5",
+          "file_content_sha256": "36cbe02bb446d560bd8d03b575f15aa464ac2544be1d20fd82884a090a8921ef",
+          "view_content_sha256": "e1f906e87b1a7cc23b77a00b686fb7da47189f13eba40c9d64a6fdcb6c2edf46",
+          "tool_name": "read_handle_uncaught_exception"
+        }
+      ],
+      "distinct_ranges": true,
+      "distinct_tool_names": true,
+      "why_the_defect_segment_is_included": "round 1 is the definition the statement's own symbol names (inner); the remaining rounds are the following distinct definitions of the same module or its lexical siblings",
+      "contract": {
+        "issue_value": "django-16255",
+        "cause_token": "get_response",
+        "fix_token": "inner",
+        "required_facts": [
+          "get_response",
+          "inner",
+          "request"
+        ],
+        "frozen_regex": "RESULT issue=django-16255 cause=.*get_response.* fix=.*inner.*",
+        "max_answer_chars": 160
+      },
+      "literal_anchoring": {
+        "get_response": "defined name",
+        "inner": "defined name",
+        "request": "defined name"
+      },
+      "code_anchored_literal_count": 3,
+      "lazy_answer_negative_control": {
+        "lazy_line": "RESULT issue=django-16255 cause=django django-16255 __init__ _get_response _wrapped_view arg args base fix=model field code method",
+        "satisfies_frozen_regex": false,
+        "satisfies_literal_requirement": false,
+        "control_failed_as_required": true
+      },
+      "minimal_feasible_line": {
+        "line": "RESULT issue=django-16255 cause=get_response fix=inner request",
+        "chars": 62,
+        "margin_to_bound": 98,
+        "conditions": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "all_conditions_hold": true
+      },
+      "statement_hash_diagnosis": {
+        "pool_value": "2359a3443b4020179e535a3df289178a975a90472b1fb6c3c23adf85aee5c371",
+        "true_sha256": "2359a3443b4020179e535a3df289178a975a90472b1fb6c3c23adf85aee5c371",
+        "matching_hypothesis": "sha256_of_statement",
+        "all_hypotheses": {
+          "sha256_of_statement": "2359a3443b4020179e535a3df289178a975a90472b1fb6c3c23adf85aee5c371",
+          "sha256_of_hex_text_of_that_hash": "7665ff4f18b6428ba6cd3b3eefe737c8c743042f96321d7e01b60db6ba1d22dc",
+          "sha256_of_statement_without_zero_width": "2359a3443b4020179e535a3df289178a975a90472b1fb6c3c23adf85aee5c371",
+          "sha256_of_stripped_statement": "3fb85be3042dd669c0dcc6ff06aebeb71f087598bdf99a2ab5d31d5f2e61b35a",
+          "sha256_of_whitespace_normalised_statement": "9dbafbabd1de9179917d17629ecc176380983bbbc9a01bd2eea620a82540c14b",
+          "sha256_of_statement_without_zero_width_or_tabs": "200a1185076f3703b72b999b46b53d53e9a75d650ce5591f41a4beebac929aa3"
+        },
+        "reconciled": true
+      }
+    }
+  },
+  "selected_count": 2,
+  "rejected_under_the_rule": [
+    {
+      "instance_id": "django__django-15569",
+      "why": [
+        "no code anchored name could serve as the regex tokens",
+        "a regex token is not code anchored"
+      ]
+    }
+  ],
+  "paid_requests": 0
+}

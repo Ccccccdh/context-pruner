@@ -1,0 +1,183 @@
+{
+  "schema": "openai_agents_v13_requests1766_stage0_registration",
+  "instance_id": "psf__requests-1766",
+  "repo": "psf/requests",
+  "base_commit": "847735553aeda6e6633f2b32e14ba14ba86887a4",
+  "version": "2.0",
+  "difficulty": "<15 min fix",
+  "baseline_source": {
+    "role": "mechanism input",
+    "checkout": ".tooling/scratch/psf-requests-1766",
+    "files": {
+      "requests/auth.py": {
+        "bytes": 6063,
+        "sha256": "e9ac12db8dfb81a4abe59e5e3b1764e01fe1f04dbdc5f57dc7deb7a47695087c",
+        "copy_used_by_the_batches": ".tooling/upstream/psf-requests-1766/requests/auth.py",
+        "copy_bytes": 6063,
+        "copy_sha256": "e9ac12db8dfb81a4abe59e5e3b1764e01fe1f04dbdc5f57dc7deb7a47695087c",
+        "copy_identical": true
+      },
+      "requests/models.py": {
+        "bytes": 24715,
+        "sha256": "d67cf75ca48670f07fbebfb53637f338111603fd41f58de87aaa4da2ff4c3d2e",
+        "copy_used_by_the_batches": ".tooling/upstream/psf-requests-1766/requests/models.py",
+        "copy_bytes": 24715,
+        "copy_sha256": "d67cf75ca48670f07fbebfb53637f338111603fd41f58de87aaa4da2ff4c3d2e",
+        "copy_identical": true
+      },
+      "requests/sessions.py": {
+        "bytes": 18844,
+        "sha256": "7519189c53263cb28b294dc79e42e6a0a9ce9290fc4c538b544e640867866b0e",
+        "copy_used_by_the_batches": ".tooling/upstream/psf-requests-1766/requests/sessions.py",
+        "copy_bytes": 18844,
+        "copy_sha256": "7519189c53263cb28b294dc79e42e6a0a9ce9290fc4c538b544e640867866b0e",
+        "copy_identical": true
+      },
+      "test_requests.py": {
+        "bytes": 31704,
+        "sha256": "2c482f0ad0b1c5e7465a95bcf19cab5834c3dca3c4c8b755c2dd990bdaac34cd",
+        "copy_used_by_the_batches": ".tooling/upstream/psf-requests-1766/test_requests.py",
+        "copy_bytes": 31704,
+        "copy_sha256": "2c482f0ad0b1c5e7465a95bcf19cab5834c3dca3c4c8b755c2dd990bdaac34cd",
+        "copy_identical": true
+      }
+    },
+    "views": [
+      {
+        "view": "V1",
+        "file": "requests/auth.py",
+        "first_line": 58,
+        "last_line": 149,
+        "sha256": "e9ac12db8dfb81a4abe59e5e3b1764e01fe1f04dbdc5f57dc7deb7a47695087c",
+        "bytes": 6063,
+        "role": "cause-carrying view (Digest header builder)"
+      },
+      {
+        "view": "V2",
+        "file": "requests/models.py",
+        "first_line": 451,
+        "last_line": 472,
+        "sha256": "d67cf75ca48670f07fbebfb53637f338111603fd41f58de87aaa4da2ff4c3d2e",
+        "bytes": 24715,
+        "role": "context view"
+      },
+      {
+        "view": "V3",
+        "file": "requests/sessions.py",
+        "first_line": 232,
+        "last_line": 270,
+        "sha256": "7519189c53263cb28b294dc79e42e6a0a9ce9290fc4c538b544e640867866b0e",
+        "bytes": 18844,
+        "role": "context view"
+      }
+    ],
+    "registered_literals": {
+      "digest_qop_header": {
+        "phrases": [
+          "qop=auth"
+        ],
+        "in_views": true,
+        "in_statement": false
+      },
+      "digest_header_builder": {
+        "phrases": [
+          "def build_digest_header"
+        ],
+        "in_views": true,
+        "in_statement": false
+      },
+      "digest_challenge": {
+        "phrases": [
+          "qop = self.chal.get('qop')"
+        ],
+        "in_views": true,
+        "in_statement": false
+      },
+      "auth_apply_step": {
+        "phrases": [
+          "def prepare_auth"
+        ],
+        "in_views": true,
+        "in_statement": false
+      },
+      "session_auth_merge": {
+        "phrases": [
+          "auth=merge_setting(auth, self.auth)"
+        ],
+        "in_views": true,
+        "in_statement": false
+      },
+      "issue_qop_options_directive": {
+        "phrases": [
+          "qop-options"
+        ],
+        "in_views": false,
+        "in_statement": true
+      }
+    }
+  },
+  "judging_metadata": {
+    "role": "fixes what the task is and what the host tests would be; never sent to the model and never an input to the mechanism",
+    "problem_statement": {
+      "bytes": 897,
+      "sha256": "90d541e87a05a5135b7ee242c82702e5cad1e2cae9e5571fcbc032d7d6d80682",
+      "sent_to_the_model": true,
+      "note": "the public issue text is the task's first message unit"
+    },
+    "test_patch": {
+      "bytes": 571,
+      "sha256": "8104cc2c46abb076affea41d2f19d40a908fbc696aee3115dfffc5b0354662b4",
+      "landed_at": ".tooling/swebench-verified/psf-requests-1766-harness/host-tests.patch",
+      "read_by_this_host": false,
+      "explains": "the evaluation test patch adds test_requests.py::RequestsTestCase::test_DIGESTAUTH_QUOTES_QOP_VALUE, which is therefore legitimately absent from the base tree - the normal SWE-bench mechanism, not a candidate or acquisition defect"
+    },
+    "reference_patch": {
+      "bytes": 621,
+      "sha256": "fdf4dc67f564bc801f1fe74b1e6000a3186f19acec083f7585caef1b58671b12",
+      "landed_at": ".tooling/swebench-verified/psf-requests-1766-harness/reference.patch",
+      "read_by_this_host": false,
+      "note": "hashed only; never opened, never sent, never used for scoring"
+    },
+    "instance_file": {
+      "path": ".tooling/swebench-verified/psf-requests-1766-harness/instance.json",
+      "bytes": 7318,
+      "sha256": "2ba9beacd49fedd1af112a5b6da1c8668d5d689e96e3bd4d19953a3aff6cb38d"
+    },
+    "fail_to_pass": {
+      "entries": [
+        "test_requests.py::RequestsTestCase::test_DIGESTAUTH_QUOTES_QOP_VALUE",
+        "test_requests.py::RequestsTestCase::test_HTTP_200_OK_GET_ALTERNATIVE",
+        "test_requests.py::RequestsTestCase::test_cookie_sent_on_redirect",
+        "test_requests.py::RequestsTestCase::test_custom_content_type",
+        "test_requests.py::RequestsTestCase::test_params_are_merged_case_sensitive",
+        "test_requests.py::RequestsTestCase::test_user_agent_transfers"
+      ],
+      "sha256": "70dac47af4893fb1bcd9d50fc6ccfb360792b03fec2edeec8dfb33db3cedba60",
+      "present_in_base_tree": [
+        "test_HTTP_200_OK_GET_ALTERNATIVE",
+        "test_cookie_sent_on_redirect",
+        "test_custom_content_type",
+        "test_params_are_merged_case_sensitive",
+        "test_user_agent_transfers"
+      ]
+    },
+    "pass_to_pass": {
+      "count": 79,
+      "sha256": "7d3e5614d5c106b37e39ed0ea489626af9e49a1a03eedd1b3209678b36b84ac3"
+    }
+  },
+  "provenance": {
+    "acquisition": "read-only git in .tooling/scratch/psf-requests-1766: git init, git remote add origin https://github.com/psf/requests.git, git fetch --depth 1 origin <base_commit>, git checkout FETCH_HEAD",
+    "checkout_head": "847735553aeda6e6633f2b32e14ba14ba86887a4",
+    "forbidden_operations_used": [],
+    "forbidden_operations": [
+      "git add/commit/push in this repository",
+      "any write to the upstream repository"
+    ],
+    "raw_githubusercontent_used": false,
+    "recorded_hashes_validated_not_replaced": true,
+    "reading_rule_going_forward": "baseline source is read from the checked-out working tree; the copies under .tooling/upstream/psf-requests-1766 are byte-identical to it (verified here), so every hash the freeze and the two batch manifests record stays valid"
+  },
+  "problems": [],
+  "verified": true
+}

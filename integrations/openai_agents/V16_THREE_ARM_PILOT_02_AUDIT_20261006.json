@@ -1,0 +1,876 @@
+{
+  "schema": "openai_agents_v16_three_arm_pilot_audit",
+  "audit_id": "openai-agents-v16-three-arm-pilot-02-audit-01",
+  "date": "20261006",
+  "batch": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v16-three-arm-pilot-02",
+  "batch_manifest_sha256": "a5a8a75821cd55c4e97ae825da49970e3bd979e11aadfa5b712254cd49967d38",
+  "freeze_sha256": "c9a4aad197f4a7d2565b822bb1943c061f5123c73e5d09952c481e4721bb451e",
+  "complete": false,
+  "errors": [
+    "host configuration module changed: experiments/runners/run_openai_agents_v16_acquisition.py",
+    "host configuration module changed: experiments/runners/openai_agents_v16_registry.py"
+  ],
+  "usable_as_saving": false,
+  "not_citable_statement": "errors 非空：不得当作有效节省",
+  "recomputed_acceptance": {
+    "track_a_all_tasks": true,
+    "majority_positive": true,
+    "positive_pairs": 7,
+    "paired_n": 9,
+    "pooled_mean_saving": 0.0028,
+    "pooled_stdev_saving": 0.3357,
+    "pooled_min_saving": -0.7909725953788286,
+    "pooled_max_saving": 0.1940193491644679,
+    "met": true,
+    "acceptance_line": "per task, the plugin arm's strict track is at least the baseline's (the four conditions judged on the rendered line) AND the paired complete provider-token saving is positive for a majority of pairs AND the batch mean is positive; failures, cap hits, retries and summary requests are all charged to their arm",
+    "recomputed_by": "openai-agents-v16-three-arm-pilot-02-audit-01"
+  },
+  "per_task": {
+    "django_sqlite_version_floor": {
+      "paired_n": 3,
+      "paired_savings": [
+        0.1146,
+        0.1147,
+        0.1146
+      ],
+      "mean_saving": 0.1146,
+      "min_saving": 0.1146,
+      "max_saving": 0.1147,
+      "positive_pairs": 3,
+      "strict_track_none": 3,
+      "strict_track_pruner_v1": 3,
+      "plugin_at_least_baseline": true
+    },
+    "django_orderedset_reversed": {
+      "paired_n": 3,
+      "paired_savings": [
+        0.194,
+        0.1932,
+        0.1935
+      ],
+      "mean_saving": 0.1936,
+      "min_saving": 0.1932,
+      "max_saving": 0.194,
+      "positive_pairs": 3,
+      "strict_track_none": 3,
+      "strict_track_pruner_v1": 3,
+      "plugin_at_least_baseline": true
+    },
+    "django_field_hash_immutability": {
+      "paired_n": 3,
+      "paired_savings": [
+        -0.2973,
+        -0.791,
+        0.1887
+      ],
+      "mean_saving": -0.2999,
+      "min_saving": -0.791,
+      "max_saving": 0.1887,
+      "positive_pairs": 1,
+      "strict_track_none": 2,
+      "strict_track_pruner_v1": 3,
+      "plugin_at_least_baseline": true
+    }
+  },
+  "request_ledger": {
+    "requests": 99,
+    "cap": 300,
+    "summary_calls": 10,
+    "summary_cap_per_sample": 2,
+    "retries": 14,
+    "model_calls": 89
+  },
+  "cache_ledger": {
+    "calls": 89,
+    "calls_with_fields": 89,
+    "calls_without_fields": 0,
+    "prompt_cache_hit_tokens": 163328,
+    "prompt_cache_miss_tokens": 62412,
+    "output_tokens": 5230,
+    "all_calls_off_peak": true,
+    "estimated_cost_usd": 0.006495,
+    "basis": "official rates per million tokens: input miss 0.15, input hit 0.003, output 0.60; off-peak applies the published half-price multiplier",
+    "unknown_fields_stay_null": false
+  },
+  "failure_decomposition": {
+    "none": {
+      "samples": 9,
+      "strict_pass": 8,
+      "render_accepted": 8,
+      "failures": {
+        "over_160_chars": 1
+      },
+      "retries": 4,
+      "retry_samples": 4,
+      "summary_calls": 0,
+      "requests": 29,
+      "complete_total_tokens": 79627
+    },
+    "pruner_v1": {
+      "samples": 9,
+      "strict_pass": 9,
+      "render_accepted": 9,
+      "failures": {},
+      "retries": 6,
+      "retry_samples": 6,
+      "summary_calls": 0,
+      "requests": 32,
+      "complete_total_tokens": 74254
+    },
+    "native_summary": {
+      "samples": 9,
+      "strict_pass": 8,
+      "render_accepted": 8,
+      "failures": {
+        "over_160_chars": 1
+      },
+      "retries": 4,
+      "retry_samples": 4,
+      "summary_calls": 10,
+      "requests": 38,
+      "complete_total_tokens": 84357
+    }
+  },
+  "per_sample": [
+    {
+      "task": "django_sqlite_version_floor",
+      "repeat": 0,
+      "method": "none",
+      "recomputed_conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "render_accepted": true,
+      "render_reason": "accepted_first",
+      "requests": 3,
+      "model_calls": 3,
+      "summary_calls": 0,
+      "retries": 0,
+      "complete_total_tokens": 7358,
+      "render_report": {
+        "source_chars": 150,
+        "rendered_chars": 85,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      }
+    },
+    {
+      "task": "django_sqlite_version_floor",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "recomputed_conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "render_accepted": true,
+      "render_reason": "accepted_first",
+      "requests": 3,
+      "model_calls": 3,
+      "summary_calls": 0,
+      "retries": 0,
+      "complete_total_tokens": 6515,
+      "render_report": {
+        "source_chars": 146,
+        "rendered_chars": 90,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      }
+    },
+    {
+      "task": "django_sqlite_version_floor",
+      "repeat": 0,
+      "method": "native_summary",
+      "recomputed_conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "render_accepted": true,
+      "render_reason": "accepted_first",
+      "requests": 4,
+      "model_calls": 3,
+      "summary_calls": 1,
+      "retries": 0,
+      "complete_total_tokens": 8122,
+      "render_report": {
+        "source_chars": 150,
+        "rendered_chars": 85,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      }
+    },
+    {
+      "task": "django_orderedset_reversed",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "recomputed_conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "render_accepted": true,
+      "render_reason": "accepted_retry",
+      "requests": 4,
+      "model_calls": 4,
+      "summary_calls": 0,
+      "retries": 1,
+      "complete_total_tokens": 9164,
+      "render_report": {
+        "source_chars": 161,
+        "rendered_chars": 105,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      }
+    },
+    {
+      "task": "django_orderedset_reversed",
+      "repeat": 0,
+      "method": "native_summary",
+      "recomputed_conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "render_accepted": true,
+      "render_reason": "accepted_retry",
+      "requests": 5,
+      "model_calls": 4,
+      "summary_calls": 1,
+      "retries": 1,
+      "complete_total_tokens": 11915,
+      "render_report": {
+        "source_chars": 161,
+        "rendered_chars": 105,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      }
+    },
+    {
+      "task": "django_orderedset_reversed",
+      "repeat": 0,
+      "method": "none",
+      "recomputed_conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "render_accepted": true,
+      "render_reason": "accepted_retry",
+      "requests": 4,
+      "model_calls": 4,
+      "summary_calls": 0,
+      "retries": 1,
+      "complete_total_tokens": 11370,
+      "render_report": {
+        "source_chars": 170,
+        "rendered_chars": 105,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      }
+    },
+    {
+      "task": "django_field_hash_immutability",
+      "repeat": 0,
+      "method": "native_summary",
+      "recomputed_conditions": {
+        "facts_complete": false,
+        "frozen_regex": false,
+        "single_line_prefix": false,
+        "within_160": false
+      },
+      "render_accepted": false,
+      "render_reason": "retry_rejected:over_160_chars",
+      "requests": 6,
+      "model_calls": 4,
+      "summary_calls": 2,
+      "retries": 1,
+      "complete_total_tokens": 13900,
+      "render_report": {
+        "source_chars": 214,
+        "rendered_chars": 149,
+        "render_accepted": false,
+        "facts_complete": false,
+        "frozen_regex": false,
+        "single_line_prefix": false,
+        "within_160": false
+      }
+    },
+    {
+      "task": "django_field_hash_immutability",
+      "repeat": 0,
+      "method": "none",
+      "recomputed_conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "render_accepted": true,
+      "render_reason": "accepted_first",
+      "requests": 2,
+      "model_calls": 2,
+      "summary_calls": 0,
+      "retries": 0,
+      "complete_total_tokens": 5584,
+      "render_report": {
+        "source_chars": 175,
+        "rendered_chars": 110,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      }
+    },
+    {
+      "task": "django_field_hash_immutability",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "recomputed_conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "render_accepted": true,
+      "render_reason": "accepted_retry",
+      "requests": 3,
+      "model_calls": 3,
+      "summary_calls": 0,
+      "retries": 1,
+      "complete_total_tokens": 7244,
+      "render_report": {
+        "source_chars": 203,
+        "rendered_chars": 138,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      }
+    },
+    {
+      "task": "django_sqlite_version_floor",
+      "repeat": 1,
+      "method": "pruner_v1",
+      "recomputed_conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "render_accepted": true,
+      "render_reason": "accepted_first",
+      "requests": 3,
+      "model_calls": 3,
+      "summary_calls": 0,
+      "retries": 0,
+      "complete_total_tokens": 6514,
+      "render_report": {
+        "source_chars": 170,
+        "rendered_chars": 114,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      }
+    },
+    {
+      "task": "django_sqlite_version_floor",
+      "repeat": 1,
+      "method": "native_summary",
+      "recomputed_conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "render_accepted": true,
+      "render_reason": "accepted_first",
+      "requests": 4,
+      "model_calls": 3,
+      "summary_calls": 1,
+      "retries": 0,
+      "complete_total_tokens": 8146,
+      "render_report": {
+        "source_chars": 150,
+        "rendered_chars": 85,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      }
+    },
+    {
+      "task": "django_sqlite_version_floor",
+      "repeat": 1,
+      "method": "none",
+      "recomputed_conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "render_accepted": true,
+      "render_reason": "accepted_first",
+      "requests": 3,
+      "model_calls": 3,
+      "summary_calls": 0,
+      "retries": 0,
+      "complete_total_tokens": 7358,
+      "render_report": {
+        "source_chars": 150,
+        "rendered_chars": 85,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      }
+    },
+    {
+      "task": "django_orderedset_reversed",
+      "repeat": 1,
+      "method": "native_summary",
+      "recomputed_conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "render_accepted": true,
+      "render_reason": "accepted_retry",
+      "requests": 4,
+      "model_calls": 3,
+      "summary_calls": 1,
+      "retries": 1,
+      "complete_total_tokens": 9340,
+      "render_report": {
+        "source_chars": 170,
+        "rendered_chars": 105,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      }
+    },
+    {
+      "task": "django_orderedset_reversed",
+      "repeat": 1,
+      "method": "none",
+      "recomputed_conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "render_accepted": true,
+      "render_reason": "accepted_retry",
+      "requests": 4,
+      "model_calls": 4,
+      "summary_calls": 0,
+      "retries": 1,
+      "complete_total_tokens": 11353,
+      "render_report": {
+        "source_chars": 162,
+        "rendered_chars": 106,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      }
+    },
+    {
+      "task": "django_orderedset_reversed",
+      "repeat": 1,
+      "method": "pruner_v1",
+      "recomputed_conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "render_accepted": true,
+      "render_reason": "accepted_retry",
+      "requests": 4,
+      "model_calls": 4,
+      "summary_calls": 0,
+      "retries": 1,
+      "complete_total_tokens": 9160,
+      "render_report": {
+        "source_chars": 161,
+        "rendered_chars": 105,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      }
+    },
+    {
+      "task": "django_field_hash_immutability",
+      "repeat": 1,
+      "method": "none",
+      "recomputed_conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "render_accepted": true,
+      "render_reason": "accepted_first",
+      "requests": 2,
+      "model_calls": 2,
+      "summary_calls": 0,
+      "retries": 0,
+      "complete_total_tokens": 5583,
+      "render_report": {
+        "source_chars": 170,
+        "rendered_chars": 105,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      }
+    },
+    {
+      "task": "django_field_hash_immutability",
+      "repeat": 1,
+      "method": "pruner_v1",
+      "recomputed_conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "render_accepted": true,
+      "render_reason": "accepted_retry",
+      "requests": 4,
+      "model_calls": 4,
+      "summary_calls": 0,
+      "retries": 1,
+      "complete_total_tokens": 9999,
+      "render_report": {
+        "source_chars": 215,
+        "rendered_chars": 150,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      }
+    },
+    {
+      "task": "django_field_hash_immutability",
+      "repeat": 1,
+      "method": "native_summary",
+      "recomputed_conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "render_accepted": true,
+      "render_reason": "accepted_first",
+      "requests": 3,
+      "model_calls": 2,
+      "summary_calls": 1,
+      "retries": 0,
+      "complete_total_tokens": 6394,
+      "render_report": {
+        "source_chars": 175,
+        "rendered_chars": 110,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      }
+    },
+    {
+      "task": "django_sqlite_version_floor",
+      "repeat": 2,
+      "method": "native_summary",
+      "recomputed_conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "render_accepted": true,
+      "render_reason": "accepted_first",
+      "requests": 4,
+      "model_calls": 3,
+      "summary_calls": 1,
+      "retries": 0,
+      "complete_total_tokens": 8198,
+      "render_report": {
+        "source_chars": 150,
+        "rendered_chars": 85,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      }
+    },
+    {
+      "task": "django_sqlite_version_floor",
+      "repeat": 2,
+      "method": "none",
+      "recomputed_conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "render_accepted": true,
+      "render_reason": "accepted_first",
+      "requests": 3,
+      "model_calls": 3,
+      "summary_calls": 0,
+      "retries": 0,
+      "complete_total_tokens": 7356,
+      "render_report": {
+        "source_chars": 165,
+        "rendered_chars": 109,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      }
+    },
+    {
+      "task": "django_sqlite_version_floor",
+      "repeat": 2,
+      "method": "pruner_v1",
+      "recomputed_conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "render_accepted": true,
+      "render_reason": "accepted_first",
+      "requests": 3,
+      "model_calls": 3,
+      "summary_calls": 0,
+      "retries": 0,
+      "complete_total_tokens": 6513,
+      "render_report": {
+        "source_chars": 141,
+        "rendered_chars": 85,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      }
+    },
+    {
+      "task": "django_orderedset_reversed",
+      "repeat": 2,
+      "method": "none",
+      "recomputed_conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "render_accepted": true,
+      "render_reason": "accepted_retry",
+      "requests": 4,
+      "model_calls": 4,
+      "summary_calls": 0,
+      "retries": 1,
+      "complete_total_tokens": 11367,
+      "render_report": {
+        "source_chars": 167,
+        "rendered_chars": 102,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      }
+    },
+    {
+      "task": "django_orderedset_reversed",
+      "repeat": 2,
+      "method": "pruner_v1",
+      "recomputed_conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "render_accepted": true,
+      "render_reason": "accepted_retry",
+      "requests": 4,
+      "model_calls": 4,
+      "summary_calls": 0,
+      "retries": 1,
+      "complete_total_tokens": 9168,
+      "render_report": {
+        "source_chars": 166,
+        "rendered_chars": 110,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      }
+    },
+    {
+      "task": "django_orderedset_reversed",
+      "repeat": 2,
+      "method": "native_summary",
+      "recomputed_conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "render_accepted": true,
+      "render_reason": "accepted_retry",
+      "requests": 5,
+      "model_calls": 4,
+      "summary_calls": 1,
+      "retries": 1,
+      "complete_total_tokens": 11945,
+      "render_report": {
+        "source_chars": 170,
+        "rendered_chars": 105,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      }
+    },
+    {
+      "task": "django_field_hash_immutability",
+      "repeat": 2,
+      "method": "pruner_v1",
+      "recomputed_conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "render_accepted": true,
+      "render_reason": "accepted_retry",
+      "requests": 4,
+      "model_calls": 4,
+      "summary_calls": 0,
+      "retries": 1,
+      "complete_total_tokens": 9977,
+      "render_report": {
+        "source_chars": 170,
+        "rendered_chars": 105,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      }
+    },
+    {
+      "task": "django_field_hash_immutability",
+      "repeat": 2,
+      "method": "native_summary",
+      "recomputed_conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "render_accepted": true,
+      "render_reason": "accepted_first",
+      "requests": 3,
+      "model_calls": 2,
+      "summary_calls": 1,
+      "retries": 0,
+      "complete_total_tokens": 6397,
+      "render_report": {
+        "source_chars": 175,
+        "rendered_chars": 110,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      }
+    },
+    {
+      "task": "django_field_hash_immutability",
+      "repeat": 2,
+      "method": "none",
+      "recomputed_conditions": {
+        "facts_complete": false,
+        "frozen_regex": false,
+        "single_line_prefix": false,
+        "within_160": false
+      },
+      "render_accepted": false,
+      "render_reason": "retry_rejected:over_160_chars",
+      "requests": 4,
+      "model_calls": 4,
+      "summary_calls": 0,
+      "retries": 1,
+      "complete_total_tokens": 12298,
+      "render_report": {
+        "source_chars": 214,
+        "rendered_chars": 149,
+        "render_accepted": false,
+        "facts_complete": false,
+        "frozen_regex": false,
+        "single_line_prefix": false,
+        "within_160": false
+      }
+    }
+  ],
+  "discipline": {
+    "recomputed_not_copied": [
+      "four conditions",
+      "tool pairing",
+      "request ledger",
+      "cache ledger",
+      "acceptance verdict"
+    ],
+    "old_batches_untouched": true,
+    "paid_requests_by_the_audit": 0
+  }
+}

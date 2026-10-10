@@ -1,0 +1,260 @@
+{
+  "schema": "openai_agents_v15_source_registration",
+  "status": "THREE_TASKS_REGISTERED_PENDING_ZERO_API_REPLAY",
+  "paid_requests": 0,
+  "preselect_sha256": "bd1177ac308a72cfc1672e12eeabe36a3c454a69bf232d4f6900ccc5d215bf66",
+  "source_origin": "exact Git blobs at Verified base commits; GIT_NO_LAZY_FETCH=1",
+  "workload_role": "controlled diagnostic workload with repeated exact source outputs; not evidence of natural agent behavior or broad plugin efficacy",
+  "excluded_from_registration": [
+    "reference patch",
+    "test patch",
+    "model answers",
+    "answer lengths"
+  ],
+  "tasks": {
+    "django_field_error_messages_copy": {
+      "instance_id": "django__django-11880",
+      "repo": "django/django",
+      "base_commit": "06909fe084f87a65459a83bd69d7cdbe4fce9a7c",
+      "problem_statement": "Form Field’s __deepcopy__ does not (deep)copy the error messages.\nDescription\n\t\nThe __deepcopy__ method defined for the formfields (​https://github.com/django/django/blob/146086f219d01dbb1cd8c089b5a5667e396e1cc4/django/forms/fields.py#L200) performs a shallow copy of self and does not include additional treatment for the error_messages dictionary. As a result, all copies of the same field share the same dictionary and any modification of either the dictionary or the error message itself for one formfield is immediately reflected on all other formfiels.\nThis is relevant for Forms and ModelForms that modify the error messages of their fields dynamically: while each instance of the specific form (e.g., ProfileForm) is expected to have a set of fields “sealed” away from other instances of the same ProfileForm (​https://github.com/django/django/blob/146086f219d01dbb1cd8c089b5a5667e396e1cc4/django/forms/forms.py#L95), in fact all these instances share the same error messages, resulting in incorrectly raised errors.\nConfirmed for versions of Django going back to 1.11.\n",
+      "problem_statement_sha256": "e602e90dd73a70f9faf006238dfda2347f4aa08bb29365ae2611b3ea92f3eff4",
+      "views": [
+        {
+          "file": "django/forms/fields.py",
+          "first_line": 95,
+          "last_line": 115,
+          "tool_name": "read_field_message_init",
+          "source_sha256": "dd16375bed23afdde95cb6b18adee464b9ab66355a5b0c3fab88aa98922c4d3a",
+          "view_sha256": "e27e882451652b07ff7976ec18b970f7d9f735e23d92de893ac13e574cb54ce9",
+          "view_bytes": 851
+        },
+        {
+          "file": "django/forms/fields.py",
+          "first_line": 195,
+          "last_line": 205,
+          "tool_name": "read_field_deepcopy",
+          "source_sha256": "dd16375bed23afdde95cb6b18adee464b9ab66355a5b0c3fab88aa98922c4d3a",
+          "view_sha256": "2036bf50cc22febf313530ab4b4adc30f2a9a33e05714b4b50a62ddad53e553c",
+          "view_bytes": 392
+        },
+        {
+          "file": "django/forms/fields.py",
+          "first_line": 120,
+          "last_line": 145,
+          "tool_name": "read_field_error_use",
+          "source_sha256": "dd16375bed23afdde95cb6b18adee464b9ab66355a5b0c3fab88aa98922c4d3a",
+          "view_sha256": "b6a09c7ecf0013d6b3ae1a52ff10ee5cb454c4710e61a98fc6fc5b186974fa0b",
+          "view_bytes": 1070
+        }
+      ],
+      "request": "Diagnose why editing one copied Form Field's error_messages changes another instance. Read Field message initialization, Field.__deepcopy__, and validation use in order; identify the shared object and the required copy fix.",
+      "protocol_steps": [
+        "Read the three baseline views twice, strictly one tool call per turn, and answer only after the sixth read returns.",
+        "Turn 1: call read_field_message_init alone, then stop and wait for its result.",
+        "Turn 2: call read_field_deepcopy alone, then stop and wait for its result.",
+        "Turn 3: call read_field_error_use alone, then stop and wait for its result.",
+        "Turn 4: call read_field_message_init alone, then stop and wait for its result.",
+        "Turn 5: call read_field_deepcopy alone, then stop and wait for its result.",
+        "Turn 6: call read_field_error_use alone, then stop and wait for its result.",
+        "Turn 7: only after all six reads have returned, state the final diagnosis."
+      ],
+      "contract": "RESULT issue=django-11880 cause=<...> fix=<...>",
+      "answer_pattern": "RESULT issue=django-11880 cause=.*error_messages.* fix=.*deepcopy.*",
+      "required_terms": [
+        "error_messages",
+        "deepcopy"
+      ],
+      "literals": {
+        "message_init": [
+          "self.error_messages = messages"
+        ],
+        "deepcopy": [
+          "def __deepcopy__",
+          "result.validators = self.validators[:]"
+        ],
+        "error_use": [
+          "self.error_messages['required']"
+        ]
+      },
+      "tool_names": [
+        "read_field_message_init",
+        "read_field_deepcopy",
+        "read_field_error_use"
+      ],
+      "tool_docs": [
+        "Read only the pinned public baseline source view 1 for django__django-11880.",
+        "Read only the pinned public baseline source view 2 for django__django-11880.",
+        "Read only the pinned public baseline source view 3 for django__django-11880."
+      ],
+      "read_calls": 6,
+      "expected_model_calls": 7,
+      "workload_role": "controlled_six_read_repeated_source_diagnostic; not natural agent behavior",
+      "natural_agent_behavior_claim": false,
+      "statement_sha256": "1d424eb1b27353f6368f3aa92c989d8d5e48b585b61ce1c187890cd8fa7804bb"
+    },
+    "django_method_decorator_partial": {
+      "instance_id": "django__django-14787",
+      "repo": "django/django",
+      "base_commit": "004b4620f6f4ad87261e149898940f2dcd5757ef",
+      "problem_statement": "method_decorator() should preserve wrapper assignments\nDescription\n\t\nthe function that is passed to the decorator is a partial object and does not have any of the attributes expected from a function i.e. __name__, __module__ etc...\nconsider the following case\ndef logger(func):\n\t@wraps(func)\n\tdef inner(*args, **kwargs):\n\t\ttry:\n\t\t\tresult = func(*args, **kwargs)\n\t\texcept Exception as e:\n\t\t\tresult = str(e)\n\t\tfinally:\n\t\t\tlogger.debug(f\"{func.__name__} called with args: {args} and kwargs: {kwargs} resulting: {result}\")\n\treturn inner\nclass Test:\n\t@method_decorator(logger)\n\tdef hello_world(self):\n\t\treturn \"hello\"\nTest().test_method()\nThis results in the following exception\nAttributeError: 'functools.partial' object has no attribute '__name__'\n",
+      "problem_statement_sha256": "b52409ced83e2b68e7961a34db6792ca6b89277456ea14c6c166c7f8c8e17c0d",
+      "views": [
+        {
+          "file": "django/utils/decorators.py",
+          "first_line": 10,
+          "last_line": 20,
+          "tool_name": "read_method_wrapper_helper",
+          "source_sha256": "3f722cec8fd77bf7af30a1f9868fecb07ca7b85993cc1eee4f2b272705be5e72",
+          "view_sha256": "70ebd7e56946e84a3d4642fb4b336554ad9b002d4886079234972b3296d2a909",
+          "view_bytes": 404
+        },
+        {
+          "file": "django/utils/decorators.py",
+          "first_line": 22,
+          "last_line": 51,
+          "tool_name": "read_multi_decorate",
+          "source_sha256": "3f722cec8fd77bf7af30a1f9868fecb07ca7b85993cc1eee4f2b272705be5e72",
+          "view_sha256": "0c7a71a16cf4d9994419893f71167e4daf2a1815d798497411d6be971ee984c0",
+          "view_bytes": 1493
+        },
+        {
+          "file": "django/utils/decorators.py",
+          "first_line": 53,
+          "last_line": 85,
+          "tool_name": "read_method_decorator",
+          "source_sha256": "3f722cec8fd77bf7af30a1f9868fecb07ca7b85993cc1eee4f2b272705be5e72",
+          "view_sha256": "6fe9ecd9470e43b9dd6fb3c7e0ee274f086089213094c0d10546d78fb0f2bac6",
+          "view_bytes": 1634
+        }
+      ],
+      "request": "Diagnose why a method decorator expecting the wrapped function's __name__ receives a partial without it. Read the wrapper helper, _multi_decorate and method_decorator in order; identify the object lacking metadata and where wrapper metadata must be copied.",
+      "protocol_steps": [
+        "Read the three baseline views twice, strictly one tool call per turn, and answer only after the sixth read returns.",
+        "Turn 1: call read_method_wrapper_helper alone, then stop and wait for its result.",
+        "Turn 2: call read_multi_decorate alone, then stop and wait for its result.",
+        "Turn 3: call read_method_decorator alone, then stop and wait for its result.",
+        "Turn 4: call read_method_wrapper_helper alone, then stop and wait for its result.",
+        "Turn 5: call read_multi_decorate alone, then stop and wait for its result.",
+        "Turn 6: call read_method_decorator alone, then stop and wait for its result.",
+        "Turn 7: only after all six reads have returned, state the final diagnosis."
+      ],
+      "contract": "RESULT issue=django-14787 cause=<...> fix=<...>",
+      "answer_pattern": "RESULT issue=django-14787 cause=.*partial.*__name__.* fix=.*update_wrapper.*",
+      "required_terms": [
+        "partial",
+        "__name__",
+        "update_wrapper"
+      ],
+      "literals": {
+        "helper": [
+          "def _update_method_wrapper",
+          "update_wrapper(_wrapper, dummy)"
+        ],
+        "partial": [
+          "bound_method = partial(method.__get__"
+        ],
+        "outer_wrapper": [
+          "update_wrapper(_wrapper, method)"
+        ],
+        "entry": [
+          "def method_decorator"
+        ]
+      },
+      "tool_names": [
+        "read_method_wrapper_helper",
+        "read_multi_decorate",
+        "read_method_decorator"
+      ],
+      "tool_docs": [
+        "Read only the pinned public baseline source view 1 for django__django-14787.",
+        "Read only the pinned public baseline source view 2 for django__django-14787.",
+        "Read only the pinned public baseline source view 3 for django__django-14787."
+      ],
+      "read_calls": 6,
+      "expected_model_calls": 7,
+      "workload_role": "controlled_six_read_repeated_source_diagnostic; not natural agent behavior",
+      "natural_agent_behavior_claim": false,
+      "statement_sha256": "5697569f022137d2ce5497afc0ffe72e634c3c3348cb851d50ae45d3fdf77be1"
+    },
+    "django_textchoices_string_value": {
+      "instance_id": "django__django-11964",
+      "repo": "django/django",
+      "base_commit": "fc2b1cc926e34041953738e58fa6ad3053059b22",
+      "problem_statement": "The value of a TextChoices/IntegerChoices field has a differing type\nDescription\n\t\nIf we create an instance of a model having a CharField or IntegerField with the keyword choices pointing to IntegerChoices or TextChoices, the value returned by the getter of the field will be of the same type as the one created by enum.Enum (enum value).\nFor example, this model:\nfrom django.db import models\nfrom django.utils.translation import gettext_lazy as _\nclass MyChoice(models.TextChoices):\n\tFIRST_CHOICE = \"first\", _(\"The first choice, it is\")\n\tSECOND_CHOICE = \"second\", _(\"The second choice, it is\")\nclass MyObject(models.Model):\n\tmy_str_value = models.CharField(max_length=10, choices=MyChoice.choices)\nThen this test:\nfrom django.test import TestCase\nfrom testing.pkg.models import MyObject, MyChoice\nclass EnumTest(TestCase):\n\tdef setUp(self) -> None:\n\t\tself.my_object = MyObject.objects.create(my_str_value=MyChoice.FIRST_CHOICE)\n\tdef test_created_object_is_str(self):\n\t\tmy_object = self.my_object\n\t\tself.assertIsInstance(my_object.my_str_value, str)\n\t\tself.assertEqual(str(my_object.my_str_value), \"first\")\n\tdef test_retrieved_object_is_str(self):\n\t\tmy_object = MyObject.objects.last()\n\t\tself.assertIsInstance(my_object.my_str_value, str)\n\t\tself.assertEqual(str(my_object.my_str_value), \"first\")\nAnd then the results:\n(django30-venv) ➜ django30 ./manage.py test\nCreating test database for alias 'default'...\nSystem check identified no issues (0 silenced).\nF.\n======================================================================\nFAIL: test_created_object_is_str (testing.tests.EnumTest)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n File \"/Users/mikailkocak/Development/django30/testing/tests.py\", line 14, in test_created_object_is_str\n\tself.assertEqual(str(my_object.my_str_value), \"first\")\nAssertionError: 'MyChoice.FIRST_CHOICE' != 'first'\n- MyChoice.FIRST_CHOICE\n+ first\n----------------------------------------------------------------------\nRan 2 tests in 0.002s\nFAILED (failures=1)\nWe notice when invoking __str__(...) we don't actually get the value property of the enum value which can lead to some unexpected issues, especially when communicating to an external API with a freshly created instance that will send MyEnum.MyValue, and the one that was retrieved would send my_value.\n",
+      "problem_statement_sha256": "9f510b2ad7d3833f07816f18dfa6dbb8dacf72061c288cfe399418bfe4da25ab",
+      "views": [
+        {
+          "file": "django/db/models/enums.py",
+          "first_line": 52,
+          "last_line": 72,
+          "tool_name": "read_text_choices_classes",
+          "source_sha256": "f6cdfb57102ad1ee977af08c8242defdc317066ff6da149b660654f893ff123f",
+          "view_sha256": "3a4f7b9b4cc18156f66bf34d7c5b741b9f9c2bc863ebdd0be91d4c52776d6c2a",
+          "view_bytes": 611
+        },
+        {
+          "file": "django/db/models/fields/__init__.py",
+          "first_line": 1004,
+          "last_line": 1018,
+          "tool_name": "read_charfield_conversion",
+          "source_sha256": "7b9ec11a44805e6e5ff3925886e3b7a27915a94ce2ffa1b7a7d988ebb0bb5b98",
+          "view_sha256": "30f3addee4e00018fa1801f103f5469eca1a308bc95b7d1072e24cf2f3ad5b96",
+          "view_bytes": 586
+        },
+        {
+          "file": "django/db/models/enums.py",
+          "first_line": 38,
+          "last_line": 51,
+          "tool_name": "read_choice_values",
+          "source_sha256": "f6cdfb57102ad1ee977af08c8242defdc317066ff6da149b660654f893ff123f",
+          "view_sha256": "71a4aa38bece9f4770194565dc87c58c74d9491941417d5e417c772249e11a3b",
+          "view_bytes": 608
+        }
+      ],
+      "request": "Diagnose why a fresh CharField value assigned from TextChoices stringifies as an Enum member name while the database-retrieved value is plain text. Read the choices classes, CharField conversion and choices values in order; name the representation method and value the fix must use.",
+      "protocol_steps": [
+        "Read the three baseline views twice, strictly one tool call per turn, and answer only after the sixth read returns.",
+        "Turn 1: call read_text_choices_classes alone, then stop and wait for its result.",
+        "Turn 2: call read_charfield_conversion alone, then stop and wait for its result.",
+        "Turn 3: call read_choice_values alone, then stop and wait for its result.",
+        "Turn 4: call read_text_choices_classes alone, then stop and wait for its result.",
+        "Turn 5: call read_charfield_conversion alone, then stop and wait for its result.",
+        "Turn 6: call read_choice_values alone, then stop and wait for its result.",
+        "Turn 7: only after all six reads have returned, state the final diagnosis."
+      ],
+      "contract": "RESULT issue=django-11964 cause=<...> fix=<...>",
+      "answer_pattern": "RESULT issue=django-11964 cause=.*TextChoices.*__str__.* fix=.*value.*",
+      "required_terms": [
+        "TextChoices",
+        "value"
+      ],
+      "literals": {
+        "text_choices": [
+          "class TextChoices(str, Choices)"
+        ],
+        "charfield": [
+          "def to_python(self, value):",
+          "if isinstance(value, str) or value is None:"
+        ],
+        "values": [
+          "def values(cls):"
+        ]
+      },
+      "tool_names": [
+        "read_text_choices_classes",
+        "read_charfield_conversion",
+        "read_choice_values"
+      ],
+      "tool_docs": [
+        "Read only the pinned public baseline source view 1 for django__django-11964.",
+        "Read only the pinned public baseline source view 2 for django__django-11964.",
+        "Read only the pinned public baseline source view 3 for django__django-11964."
+      ],
+      "read_calls": 6,
+      "expected_model_calls": 7,
+      "workload_role": "controlled_six_read_repeated_source_diagnostic; not natural agent behavior",
+      "natural_agent_behavior_claim": false,
+      "statement_sha256": "5941dfec0ed07e560b9456c76c6551beeb87514e5e3edf380eb3803da6c7ebdb"
+    }
+  }
+}

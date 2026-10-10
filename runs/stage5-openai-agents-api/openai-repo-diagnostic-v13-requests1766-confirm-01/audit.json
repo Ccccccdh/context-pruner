@@ -1,0 +1,650 @@
+{
+  "schema": "openai_agents_v13_requests1766_confirmation_audit",
+  "complete": true,
+  "errors": [],
+  "rows": 9,
+  "api_request_attempts": 66,
+  "track_A_baseline_pass": 3,
+  "track_A_plugin_pass": 3,
+  "track_B_plugin_pass": 3,
+  "paired": {
+    "pruner_v1": {
+      "per_repeat_complete_total_saving": [
+        0.17506456914768725,
+        0.17515848790795963,
+        0.1749236910072787
+      ],
+      "paired_n": 3,
+      "mean_saving": 0.1750489160209752,
+      "positive_pairs": 3
+    },
+    "native_summary": {
+      "per_repeat_complete_total_saving": [
+        -0.03864756985207795,
+        -0.041652970180793614,
+        -0.04174688894106598
+      ],
+      "paired_n": 3,
+      "mean_saving": -0.04068247632464585,
+      "positive_pairs": 0
+    }
+  },
+  "acceptance": {
+    "track_A_plugin_at_least_baseline": true,
+    "paired_saving_at_least_3_percent": true,
+    "zero_replacements": false,
+    "met": true
+  },
+  "recomputed_plugin_replacements_across_boundaries": 6,
+  "freeze_sha256_recorded": true,
+  "citable_as_saving": false,
+  "citable_as_quality_equivalence": false,
+  "quality": {
+    "native_summary:r0": {
+      "track_A": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "qop": true,
+          "build_digest_header": true,
+          "quot": true
+        },
+        "characters": 145
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "qop": true,
+          "build_digest_header": true,
+          "quot": true
+        },
+        "forbidden_found": [],
+        "cause_plus_fix_characters": 107
+      },
+      "recorded_success": true,
+      "recorded_answer_correct": true,
+      "recorded_final_format_correct": true,
+      "complete_total_tokens": 22118,
+      "actual_input_tokens": 21082,
+      "answer": "RESULT issue=requests-1766 cause=build_digest_header emits qop=auth unquoted, violating RFC2617 quoted-string fix=quote the qop value: qop=\"auth\""
+    },
+    "none:r0": {
+      "track_A": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "qop": true,
+          "build_digest_header": true,
+          "quot": true
+        },
+        "characters": 145
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "qop": true,
+          "build_digest_header": true,
+          "quot": true
+        },
+        "forbidden_found": [],
+        "cause_plus_fix_characters": 107
+      },
+      "recorded_success": true,
+      "recorded_answer_correct": true,
+      "recorded_final_format_correct": true,
+      "complete_total_tokens": 21295,
+      "actual_input_tokens": 21096,
+      "answer": "RESULT issue=requests-1766 cause=build_digest_header emits qop=auth unquoted, violating RFC2617 quoted-string fix=quote the qop value: qop=\"auth\""
+    },
+    "pruner_v1:r0": {
+      "track_A": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "qop": true,
+          "build_digest_header": true,
+          "quot": true
+        },
+        "characters": 139
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "qop": true,
+          "build_digest_header": true,
+          "quot": true
+        },
+        "forbidden_found": [],
+        "cause_plus_fix_characters": 101
+      },
+      "recorded_success": true,
+      "recorded_answer_correct": true,
+      "recorded_final_format_correct": true,
+      "complete_total_tokens": 17567,
+      "actual_input_tokens": 17369,
+      "answer": "RESULT issue=requests-1766 cause=build_digest_header emits qop=auth unquoted, rejected as non-quoted-string fix=quote qop value: qop=\"auth\""
+    },
+    "native_summary:r1": {
+      "track_A": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "qop": true,
+          "build_digest_header": true,
+          "quot": true
+        },
+        "characters": 145
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "qop": true,
+          "build_digest_header": true,
+          "quot": true
+        },
+        "forbidden_found": [],
+        "cause_plus_fix_characters": 107
+      },
+      "recorded_success": true,
+      "recorded_answer_correct": true,
+      "recorded_final_format_correct": true,
+      "complete_total_tokens": 22182,
+      "actual_input_tokens": 21096,
+      "answer": "RESULT issue=requests-1766 cause=build_digest_header emits qop=auth unquoted, violating RFC2617 quoted-string fix=quote the qop value: qop=\"auth\""
+    },
+    "none:r1": {
+      "track_A": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "qop": true,
+          "build_digest_header": true,
+          "quot": true
+        },
+        "characters": 145
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "qop": true,
+          "build_digest_header": true,
+          "quot": true
+        },
+        "forbidden_found": [],
+        "cause_plus_fix_characters": 107
+      },
+      "recorded_success": true,
+      "recorded_answer_correct": true,
+      "recorded_final_format_correct": true,
+      "complete_total_tokens": 21295,
+      "actual_input_tokens": 21096,
+      "answer": "RESULT issue=requests-1766 cause=build_digest_header emits qop=auth unquoted, violating RFC2617 quoted-string fix=quote the qop value: qop=\"auth\""
+    },
+    "pruner_v1:r1": {
+      "track_A": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "qop": true,
+          "build_digest_header": true,
+          "quot": true
+        },
+        "characters": 139
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "qop": true,
+          "build_digest_header": true,
+          "quot": true
+        },
+        "forbidden_found": [],
+        "cause_plus_fix_characters": 101
+      },
+      "recorded_success": true,
+      "recorded_answer_correct": true,
+      "recorded_final_format_correct": true,
+      "complete_total_tokens": 17565,
+      "actual_input_tokens": 17367,
+      "answer": "RESULT issue=requests-1766 cause=build_digest_header emits qop=auth unquoted, rejected as non-quoted-string fix=quote qop value: qop=\"auth\""
+    },
+    "native_summary:r2": {
+      "track_A": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "qop": true,
+          "build_digest_header": true,
+          "quot": true
+        },
+        "characters": 145
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "qop": true,
+          "build_digest_header": true,
+          "quot": true
+        },
+        "forbidden_found": [],
+        "cause_plus_fix_characters": 107
+      },
+      "recorded_success": true,
+      "recorded_answer_correct": true,
+      "recorded_final_format_correct": true,
+      "complete_total_tokens": 22184,
+      "actual_input_tokens": 21096,
+      "answer": "RESULT issue=requests-1766 cause=build_digest_header emits qop=auth unquoted, violating RFC2617 quoted-string fix=quote the qop value: qop=\"auth\""
+    },
+    "none:r2": {
+      "track_A": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "qop": true,
+          "build_digest_header": true,
+          "quot": true
+        },
+        "characters": 145
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "qop": true,
+          "build_digest_header": true,
+          "quot": true
+        },
+        "forbidden_found": [],
+        "cause_plus_fix_characters": 107
+      },
+      "recorded_success": true,
+      "recorded_answer_correct": true,
+      "recorded_final_format_correct": true,
+      "complete_total_tokens": 21295,
+      "actual_input_tokens": 21096,
+      "answer": "RESULT issue=requests-1766 cause=build_digest_header emits qop=auth unquoted, violating RFC2617 quoted-string fix=quote the qop value: qop=\"auth\""
+    },
+    "pruner_v1:r2": {
+      "track_A": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "qop": true,
+          "build_digest_header": true,
+          "quot": true
+        },
+        "characters": 139
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "qop": true,
+          "build_digest_header": true,
+          "quot": true
+        },
+        "forbidden_found": [],
+        "cause_plus_fix_characters": 101
+      },
+      "recorded_success": true,
+      "recorded_answer_correct": true,
+      "recorded_final_format_correct": true,
+      "complete_total_tokens": 17570,
+      "actual_input_tokens": 17372,
+      "answer": "RESULT issue=requests-1766 cause=build_digest_header emits qop=auth unquoted, rejected as non-quoted-string fix=quote qop value: qop=\"auth\""
+    }
+  },
+  "boundaries": [
+    {
+      "repeat": 0,
+      "method": "native_summary",
+      "model_calls": 7,
+      "api_request_attempts": 8,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        7,
+        8,
+        11,
+        13,
+        15
+      ],
+      "elided_outputs": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "repeat": 0,
+      "method": "none",
+      "model_calls": 7,
+      "api_request_attempts": 7,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15
+      ],
+      "elided_outputs": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "repeat": 0,
+      "method": "pruner_v1",
+      "model_calls": 7,
+      "api_request_attempts": 7,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15
+      ],
+      "elided_outputs": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "repeat": 1,
+      "method": "native_summary",
+      "model_calls": 7,
+      "api_request_attempts": 8,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15
+      ],
+      "elided_outputs": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "repeat": 1,
+      "method": "none",
+      "model_calls": 7,
+      "api_request_attempts": 7,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15
+      ],
+      "elided_outputs": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "repeat": 1,
+      "method": "pruner_v1",
+      "model_calls": 7,
+      "api_request_attempts": 7,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15
+      ],
+      "elided_outputs": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "repeat": 2,
+      "method": "native_summary",
+      "model_calls": 7,
+      "api_request_attempts": 8,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15
+      ],
+      "elided_outputs": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "repeat": 2,
+      "method": "none",
+      "model_calls": 7,
+      "api_request_attempts": 7,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15
+      ],
+      "elided_outputs": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "repeat": 2,
+      "method": "pruner_v1",
+      "model_calls": 7,
+      "api_request_attempts": 7,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15
+      ],
+      "elided_outputs": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "reporting_rule": "Track A is the acceptance track. If Track B passes while Track A fails, the result is 'strict track not met; semantic track passed (wording difference)' and never 'quality unchanged'. One task and three repeats are not multi-task stability."
+}

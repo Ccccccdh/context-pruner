@@ -1,0 +1,109 @@
+{
+  "experiment_id": "openai-repo-diagnostic-v15-django_field_error_messages_copy-acquisition-01",
+  "kind": "openai_agents_v15_public_payload_acquisition",
+  "data_class": "synthetic_only",
+  "disclosure": "Controlled six-read repeated-source diagnostic workload. Sends a public Verified issue statement and three read-only ranges of exact public Django baseline source at the pinned commit; no reference patch, evaluation test patch, expected answer or local secret.",
+  "sdk": "openai-agents",
+  "model": "deepseek-v4-flash",
+  "base_url": "https://api.deepseek.com",
+  "methods": [
+    "none"
+  ],
+  "scenarios": [
+    "django_field_error_messages_copy"
+  ],
+  "repeats": 1,
+  "minimum_planned_requests": 7,
+  "maximum_api_requests": 36,
+  "max_api_retries": 2,
+  "max_turns": 10,
+  "max_output_tokens": 1024,
+  "max_summary_tokens": 1024,
+  "max_summary_calls": 0,
+  "trigger_policy": "symmetric_budget",
+  "native_summary_contract": {
+    "trigger": "estimated input tokens > soft budget",
+    "retention": "last units up to target token budget, kept verbatim",
+    "pinned": "leading user statement always kept verbatim",
+    "boundary": "Responses groups are never split across a call/output pair",
+    "acceptance": "summary accepted only when it shrinks the payload",
+    "failure_policy": "provider error leaves the input untouched",
+    "accounting": "summary requests consume the same global request budget",
+    "regrowth_rule": "an already-summarised payload is not summarised again until it grows 25%"
+  },
+  "final_output_contract": {
+    "prefix": "RESULT ",
+    "single_line": true,
+    "max_chars": 160
+  },
+  "budget": {
+    "soft": 5435,
+    "hard": 16304,
+    "target": 4076,
+    "fixed_reserved_tokens": 512
+  },
+  "budget_calibration": {
+    "host": "openai_agents",
+    "calibration_ratio_provider_per_estimated": 0.368,
+    "provider_tokens": {
+      "soft": 2000,
+      "hard": 6000,
+      "target": 1500
+    },
+    "estimated_tokens": {
+      "soft": 5435,
+      "hard": 16304,
+      "target": 4076
+    },
+    "note": "Budgets are declared in provider tokens and converted with a measured ratio."
+  },
+  "cost_rates_per_million": {
+    "input": 0.0,
+    "output": 0.0
+  },
+  "purpose": "controlled six-read repeated-source real payload acquisition only",
+  "citable_as_saving": false,
+  "citable_as_quality_equivalence": false,
+  "natural_agent_behavior_claim": false,
+  "freeze_path": "integrations/openai_agents/V15_ACQUISITION_FREEZE_20261006.json",
+  "freeze_sha256": "4ed6152f9bca7e7f51cee18edecba9784cb10484242b81641b7f84c82e44aeab",
+  "v15_registry": {
+    "schema": "openai_agents_v15_exact_source_registry",
+    "tasks_file": "integrations/openai_agents/V15_SOURCE_REGISTRATION_20261006.json",
+    "tasks_file_sha256": "6e552f4fce15e08d6c1ef350b9c5030e1905441f7be197551de21355ed68668a",
+    "task_ids": [
+      "django_field_error_messages_copy",
+      "django_method_decorator_partial",
+      "django_textchoices_string_value"
+    ],
+    "per_task": {
+      "django_field_error_messages_copy": {
+        "instance_id": "django__django-11880",
+        "fingerprint": "9908cde284841c63241c8f00a77c9674b59ac739d52631f28d02d3bb63b98066",
+        "problems": []
+      },
+      "django_method_decorator_partial": {
+        "instance_id": "django__django-14787",
+        "fingerprint": "2588902f7e658522d290b4275ec409f3a04b405380daa359867d1a812254bd62",
+        "problems": []
+      },
+      "django_textchoices_string_value": {
+        "instance_id": "django__django-11964",
+        "fingerprint": "61eeef40afd7d9fc9cb5a1b977376cf358c63d4fad436bbe43d3ee03d5bd7552",
+        "problems": []
+      }
+    }
+  },
+  "task_registration_problems": {
+    "django_field_error_messages_copy": [],
+    "django_method_decorator_partial": [],
+    "django_textchoices_string_value": []
+  },
+  "request_budget": {
+    "max_api_requests": 36,
+    "max_turns": 10,
+    "max_repair_calls_per_sample": 1,
+    "max_transport_retries_per_model_call": 2,
+    "worst_case_attempts": 33
+  }
+}

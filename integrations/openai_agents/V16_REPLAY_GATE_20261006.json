@@ -1,0 +1,590 @@
+{
+  "schema": "openai_agents_v16_replay_gate_batch",
+  "date": "20261006",
+  "purpose": "zero-API proof that the recorded baseline payloads and the frozen compression rule preserve the five invariants the three-arm comparison depends on",
+  "tasks": [
+    "django_sqlite_version_floor",
+    "django_orderedset_reversed",
+    "django_field_hash_immutability"
+  ],
+  "per_task": {
+    "django_sqlite_version_floor": {
+      "schema": "openai_agents_v16_replay_gate",
+      "task_id": "django_sqlite_version_floor",
+      "instance_id": "django__django-13821",
+      "base_commit": "e64c1d8055a3e476122633da141f16b50f0c4a2d",
+      "registry_fingerprint": "e0c3fe6da263d99e456218021d4b907f2ea42206e09cc4296c21fede98bba216",
+      "batch": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v16-structured-acquisition-02",
+      "recorded_boundaries": 3,
+      "recorded_boundaries_matched_to_a_rebuild_stage": 3,
+      "rebuilt_boundaries": 7,
+      "retry_inputs_recorded": 0,
+      "boundaries": [
+        {
+          "boundary": 0,
+          "item_count": 3,
+          "tool_calls": 0,
+          "outputs": 0,
+          "replaced_output_positions": [],
+          "recorded": true,
+          "input_sha256_matches_record": null,
+          "output_manifest_matches": true,
+          "structure_matches": true,
+          "tool_pairing_consistent": true,
+          "unique_sources_without_full_copy": [],
+          "literals_lost": [],
+          "pointer_problems": [],
+          "tool_group_identical": true,
+          "visible_counts_after": {
+            "term:check_sqlite_version": 0,
+            "term:3.8.3": 0,
+            "term:3.9.0": 4,
+            "literal:required_facts": 4,
+            "literal:issue_value": 1
+          }
+        },
+        {
+          "boundary": 1,
+          "item_count": 5,
+          "tool_calls": 1,
+          "outputs": 1,
+          "replaced_output_positions": [],
+          "tool_pairing_consistent": true,
+          "unique_sources_without_full_copy": [],
+          "literals_lost": [],
+          "pointer_problems": [],
+          "tool_group_identical": true,
+          "visible_counts_after": {
+            "term:check_sqlite_version": 2,
+            "term:3.8.3": 1,
+            "term:3.9.0": 4,
+            "literal:required_facts": 7,
+            "literal:issue_value": 2
+          }
+        },
+        {
+          "boundary": 2,
+          "item_count": 7,
+          "tool_calls": 2,
+          "outputs": 2,
+          "replaced_output_positions": [],
+          "tool_pairing_consistent": true,
+          "unique_sources_without_full_copy": [],
+          "literals_lost": [],
+          "pointer_problems": [],
+          "tool_group_identical": true,
+          "visible_counts_after": {
+            "term:check_sqlite_version": 2,
+            "term:3.8.3": 1,
+            "term:3.9.0": 4,
+            "literal:required_facts": 7,
+            "literal:issue_value": 3
+          }
+        },
+        {
+          "boundary": 3,
+          "item_count": 9,
+          "tool_calls": 3,
+          "outputs": 3,
+          "replaced_output_positions": [],
+          "recorded": true,
+          "input_sha256_matches_record": null,
+          "output_manifest_matches": true,
+          "structure_matches": true,
+          "tool_pairing_consistent": true,
+          "unique_sources_without_full_copy": [],
+          "literals_lost": [],
+          "pointer_problems": [],
+          "tool_group_identical": true,
+          "visible_counts_after": {
+            "term:check_sqlite_version": 2,
+            "term:3.8.3": 1,
+            "term:3.9.0": 4,
+            "literal:required_facts": 7,
+            "literal:issue_value": 4
+          }
+        },
+        {
+          "boundary": 4,
+          "item_count": 11,
+          "tool_calls": 4,
+          "outputs": 4,
+          "replaced_output_positions": [
+            4
+          ],
+          "tool_pairing_consistent": true,
+          "unique_sources_without_full_copy": [],
+          "literals_lost": [],
+          "pointer_problems": [],
+          "tool_group_identical": true,
+          "visible_counts_after": {
+            "term:check_sqlite_version": 2,
+            "term:3.8.3": 1,
+            "term:3.9.0": 4,
+            "literal:required_facts": 7,
+            "literal:issue_value": 5
+          }
+        },
+        {
+          "boundary": 5,
+          "item_count": 13,
+          "tool_calls": 5,
+          "outputs": 5,
+          "replaced_output_positions": [
+            4,
+            6
+          ],
+          "tool_pairing_consistent": true,
+          "unique_sources_without_full_copy": [],
+          "literals_lost": [],
+          "pointer_problems": [],
+          "tool_group_identical": true,
+          "visible_counts_after": {
+            "term:check_sqlite_version": 2,
+            "term:3.8.3": 1,
+            "term:3.9.0": 4,
+            "literal:required_facts": 7,
+            "literal:issue_value": 6
+          }
+        },
+        {
+          "boundary": 6,
+          "item_count": 15,
+          "tool_calls": 6,
+          "outputs": 6,
+          "replaced_output_positions": [
+            4,
+            6,
+            8
+          ],
+          "recorded": true,
+          "input_sha256_matches_record": null,
+          "output_manifest_matches": true,
+          "structure_matches": true,
+          "tool_pairing_consistent": true,
+          "unique_sources_without_full_copy": [],
+          "literals_lost": [],
+          "pointer_problems": [],
+          "tool_group_identical": true,
+          "visible_counts_after": {
+            "term:check_sqlite_version": 2,
+            "term:3.8.3": 1,
+            "term:3.9.0": 4,
+            "literal:required_facts": 7,
+            "literal:issue_value": 7
+          }
+        }
+      ],
+      "five_items": {
+        "tool_pairing_consistent": true,
+        "every_unique_source_keeps_a_full_copy": true,
+        "literal_presence_never_zero": true,
+        "pointers_recomputable_byte_for_byte": true,
+        "guard_filtered_safe_candidates_non_zero": true
+      },
+      "guard_filtered_safe_candidate_count": 6,
+      "negative_control": {
+        "real_reduction_loses_nothing": true,
+        "damaged_component_lost": [
+          "term:3.8.3",
+          "term:check_sqlite_version"
+        ],
+        "damaged_component_decreased": [
+          "literal:required_facts",
+          "term:3.8.3",
+          "term:check_sqlite_version"
+        ],
+        "damaged_item_was_the_only_full_copy": true,
+        "target_found": true,
+        "caught": true
+      },
+      "problems": [],
+      "qualified": true,
+      "verdict": "proceed",
+      "paid_requests": 0
+    },
+    "django_orderedset_reversed": {
+      "schema": "openai_agents_v16_replay_gate",
+      "task_id": "django_orderedset_reversed",
+      "instance_id": "django__django-14089",
+      "base_commit": "d01709aae21de9cd2565b9c52f32732ea28a2d98",
+      "registry_fingerprint": "56a9a8ee699b85da6d6845c342f79c76c7e491a3b381cf5ec8cb8decf2aca7c5",
+      "batch": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v16-structured-acquisition-02",
+      "recorded_boundaries": 3,
+      "recorded_boundaries_matched_to_a_rebuild_stage": 2,
+      "rebuilt_boundaries": 7,
+      "retry_inputs_recorded": 1,
+      "boundaries": [
+        {
+          "boundary": 0,
+          "item_count": 3,
+          "tool_calls": 0,
+          "outputs": 0,
+          "replaced_output_positions": [],
+          "recorded": true,
+          "input_sha256_matches_record": null,
+          "output_manifest_matches": true,
+          "structure_matches": true,
+          "tool_pairing_consistent": true,
+          "unique_sources_without_full_copy": [],
+          "literals_lost": [],
+          "pointer_problems": [],
+          "tool_group_identical": true,
+          "visible_counts_after": {
+            "term:OrderedSet": 7,
+            "term:__iter__": 0,
+            "term:__reversed__": 1,
+            "literal:required_facts": 8,
+            "literal:issue_value": 1
+          }
+        },
+        {
+          "boundary": 1,
+          "item_count": 5,
+          "tool_calls": 1,
+          "outputs": 1,
+          "replaced_output_positions": [],
+          "tool_pairing_consistent": true,
+          "unique_sources_without_full_copy": [],
+          "literals_lost": [],
+          "pointer_problems": [],
+          "tool_group_identical": true,
+          "visible_counts_after": {
+            "term:OrderedSet": 8,
+            "term:__iter__": 1,
+            "term:__reversed__": 1,
+            "literal:required_facts": 10,
+            "literal:issue_value": 2
+          }
+        },
+        {
+          "boundary": 2,
+          "item_count": 7,
+          "tool_calls": 2,
+          "outputs": 2,
+          "replaced_output_positions": [],
+          "tool_pairing_consistent": true,
+          "unique_sources_without_full_copy": [],
+          "literals_lost": [],
+          "pointer_problems": [],
+          "tool_group_identical": true,
+          "visible_counts_after": {
+            "term:OrderedSet": 8,
+            "term:__iter__": 1,
+            "term:__reversed__": 1,
+            "literal:required_facts": 10,
+            "literal:issue_value": 3
+          }
+        },
+        {
+          "boundary": 3,
+          "item_count": 9,
+          "tool_calls": 3,
+          "outputs": 3,
+          "replaced_output_positions": [],
+          "tool_pairing_consistent": true,
+          "unique_sources_without_full_copy": [],
+          "literals_lost": [],
+          "pointer_problems": [],
+          "tool_group_identical": true,
+          "visible_counts_after": {
+            "term:OrderedSet": 8,
+            "term:__iter__": 2,
+            "term:__reversed__": 1,
+            "literal:required_facts": 11,
+            "literal:issue_value": 4
+          }
+        },
+        {
+          "boundary": 4,
+          "item_count": 11,
+          "tool_calls": 4,
+          "outputs": 4,
+          "replaced_output_positions": [
+            4
+          ],
+          "tool_pairing_consistent": true,
+          "unique_sources_without_full_copy": [],
+          "literals_lost": [],
+          "pointer_problems": [],
+          "tool_group_identical": true,
+          "visible_counts_after": {
+            "term:OrderedSet": 9,
+            "term:__iter__": 2,
+            "term:__reversed__": 1,
+            "literal:required_facts": 12,
+            "literal:issue_value": 5
+          }
+        },
+        {
+          "boundary": 5,
+          "item_count": 13,
+          "tool_calls": 5,
+          "outputs": 5,
+          "replaced_output_positions": [
+            4,
+            6
+          ],
+          "tool_pairing_consistent": true,
+          "unique_sources_without_full_copy": [],
+          "literals_lost": [],
+          "pointer_problems": [],
+          "tool_group_identical": true,
+          "visible_counts_after": {
+            "term:OrderedSet": 9,
+            "term:__iter__": 2,
+            "term:__reversed__": 1,
+            "literal:required_facts": 12,
+            "literal:issue_value": 6
+          }
+        },
+        {
+          "boundary": 6,
+          "item_count": 15,
+          "tool_calls": 6,
+          "outputs": 6,
+          "replaced_output_positions": [
+            4,
+            6,
+            8
+          ],
+          "recorded": true,
+          "input_sha256_matches_record": null,
+          "output_manifest_matches": true,
+          "structure_matches": true,
+          "tool_pairing_consistent": true,
+          "unique_sources_without_full_copy": [],
+          "literals_lost": [],
+          "pointer_problems": [],
+          "tool_group_identical": true,
+          "visible_counts_after": {
+            "term:OrderedSet": 9,
+            "term:__iter__": 2,
+            "term:__reversed__": 1,
+            "literal:required_facts": 12,
+            "literal:issue_value": 7
+          }
+        }
+      ],
+      "five_items": {
+        "tool_pairing_consistent": true,
+        "every_unique_source_keeps_a_full_copy": true,
+        "literal_presence_never_zero": true,
+        "pointers_recomputable_byte_for_byte": true,
+        "guard_filtered_safe_candidates_non_zero": true
+      },
+      "guard_filtered_safe_candidate_count": 6,
+      "negative_control": {
+        "real_reduction_loses_nothing": true,
+        "damaged_component_lost": [],
+        "damaged_component_decreased": [
+          "literal:required_facts",
+          "term:OrderedSet",
+          "term:__iter__"
+        ],
+        "damaged_item_was_the_only_full_copy": true,
+        "target_found": true,
+        "caught": true
+      },
+      "problems": [],
+      "qualified": true,
+      "verdict": "proceed",
+      "paid_requests": 0
+    },
+    "django_field_hash_immutability": {
+      "schema": "openai_agents_v16_replay_gate",
+      "task_id": "django_field_hash_immutability",
+      "instance_id": "django__django-15315",
+      "base_commit": "652c68ffeebd510a6f59e1b56b3e007d07683ad8",
+      "registry_fingerprint": "9f9a6b242d7d565d8128521c05d775d93b367fd3baca7c2aac9e2850eaef1a70",
+      "batch": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v16-structured-acquisition-02",
+      "recorded_boundaries": 2,
+      "recorded_boundaries_matched_to_a_rebuild_stage": 2,
+      "rebuilt_boundaries": 7,
+      "retry_inputs_recorded": 0,
+      "boundaries": [
+        {
+          "boundary": 0,
+          "item_count": 3,
+          "tool_calls": 0,
+          "outputs": 0,
+          "replaced_output_positions": [],
+          "recorded": true,
+          "input_sha256_matches_record": null,
+          "output_manifest_matches": true,
+          "structure_matches": true,
+          "tool_pairing_consistent": true,
+          "unique_sources_without_full_copy": [],
+          "literals_lost": [],
+          "pointer_problems": [],
+          "tool_group_identical": true,
+          "visible_counts_after": {
+            "term:__hash__": 3,
+            "term:__eq__": 0,
+            "term:creation_counter": 0,
+            "literal:required_facts": 3,
+            "literal:issue_value": 1
+          }
+        },
+        {
+          "boundary": 1,
+          "item_count": 5,
+          "tool_calls": 1,
+          "outputs": 1,
+          "replaced_output_positions": [],
+          "tool_pairing_consistent": true,
+          "unique_sources_without_full_copy": [],
+          "literals_lost": [],
+          "pointer_problems": [],
+          "tool_group_identical": true,
+          "visible_counts_after": {
+            "term:__hash__": 4,
+            "term:__eq__": 1,
+            "term:creation_counter": 9,
+            "literal:required_facts": 14,
+            "literal:issue_value": 2
+          }
+        },
+        {
+          "boundary": 2,
+          "item_count": 7,
+          "tool_calls": 2,
+          "outputs": 2,
+          "replaced_output_positions": [],
+          "tool_pairing_consistent": true,
+          "unique_sources_without_full_copy": [],
+          "literals_lost": [],
+          "pointer_problems": [],
+          "tool_group_identical": true,
+          "visible_counts_after": {
+            "term:__hash__": 4,
+            "term:__eq__": 1,
+            "term:creation_counter": 13,
+            "literal:required_facts": 18,
+            "literal:issue_value": 3
+          }
+        },
+        {
+          "boundary": 3,
+          "item_count": 9,
+          "tool_calls": 3,
+          "outputs": 3,
+          "replaced_output_positions": [],
+          "tool_pairing_consistent": true,
+          "unique_sources_without_full_copy": [],
+          "literals_lost": [],
+          "pointer_problems": [],
+          "tool_group_identical": true,
+          "visible_counts_after": {
+            "term:__hash__": 4,
+            "term:__eq__": 1,
+            "term:creation_counter": 13,
+            "literal:required_facts": 18,
+            "literal:issue_value": 4
+          }
+        },
+        {
+          "boundary": 4,
+          "item_count": 11,
+          "tool_calls": 4,
+          "outputs": 4,
+          "replaced_output_positions": [
+            4
+          ],
+          "tool_pairing_consistent": true,
+          "unique_sources_without_full_copy": [],
+          "literals_lost": [],
+          "pointer_problems": [],
+          "tool_group_identical": true,
+          "visible_counts_after": {
+            "term:__hash__": 4,
+            "term:__eq__": 1,
+            "term:creation_counter": 13,
+            "literal:required_facts": 18,
+            "literal:issue_value": 5
+          }
+        },
+        {
+          "boundary": 5,
+          "item_count": 13,
+          "tool_calls": 5,
+          "outputs": 5,
+          "replaced_output_positions": [
+            4,
+            6
+          ],
+          "tool_pairing_consistent": true,
+          "unique_sources_without_full_copy": [],
+          "literals_lost": [],
+          "pointer_problems": [],
+          "tool_group_identical": true,
+          "visible_counts_after": {
+            "term:__hash__": 4,
+            "term:__eq__": 1,
+            "term:creation_counter": 13,
+            "literal:required_facts": 18,
+            "literal:issue_value": 6
+          }
+        },
+        {
+          "boundary": 6,
+          "item_count": 15,
+          "tool_calls": 6,
+          "outputs": 6,
+          "replaced_output_positions": [
+            4,
+            6,
+            8
+          ],
+          "recorded": true,
+          "input_sha256_matches_record": null,
+          "output_manifest_matches": true,
+          "structure_matches": true,
+          "tool_pairing_consistent": true,
+          "unique_sources_without_full_copy": [],
+          "literals_lost": [],
+          "pointer_problems": [],
+          "tool_group_identical": true,
+          "visible_counts_after": {
+            "term:__hash__": 4,
+            "term:__eq__": 1,
+            "term:creation_counter": 13,
+            "literal:required_facts": 18,
+            "literal:issue_value": 7
+          }
+        }
+      ],
+      "five_items": {
+        "tool_pairing_consistent": true,
+        "every_unique_source_keeps_a_full_copy": true,
+        "literal_presence_never_zero": true,
+        "pointers_recomputable_byte_for_byte": true,
+        "guard_filtered_safe_candidates_non_zero": true
+      },
+      "guard_filtered_safe_candidate_count": 6,
+      "negative_control": {
+        "real_reduction_loses_nothing": true,
+        "damaged_component_lost": [
+          "term:__eq__"
+        ],
+        "damaged_component_decreased": [
+          "literal:required_facts",
+          "term:__eq__",
+          "term:__hash__",
+          "term:creation_counter"
+        ],
+        "damaged_item_was_the_only_full_copy": true,
+        "target_found": true,
+        "caught": true
+      },
+      "problems": [],
+      "qualified": true,
+      "verdict": "proceed",
+      "paid_requests": 0
+    }
+  },
+  "qualified": true,
+  "negative_control_caught": true,
+  "paid_requests": 0,
+  "batch": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v16-structured-acquisition-02"
+}

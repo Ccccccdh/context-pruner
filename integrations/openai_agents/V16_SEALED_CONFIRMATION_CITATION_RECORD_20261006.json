@@ -1,0 +1,170 @@
+{
+  "schema": "openai_agents_v16_sealed_confirmation_citation_record",
+  "record_id": "openai-agents-v16-sealed-confirmation-citation-01",
+  "date": "20261006",
+  "kind": "pre_registered_condition_discharge",
+  "status": "RECORDED",
+  "does_not_modify": [
+    "integrations/openai_agents/V16_CONFIRMATION_FREEZE_20261006.json",
+    "integrations/openai_agents/V16_SEALED_SOURCE_REGISTRATION_20261006.json",
+    "integrations/openai_agents/V16_SEALED_VIEW_RULE_20261006.json",
+    "integrations/openai_agents/V16_ACQUISITION_FREEZE_20261006.json",
+    "integrations/openai_agents/V16_ACQUISITION_FREEZE_AMENDMENT_20261006.json",
+    "runs/stage5-openai-agents-api/openai-repo-diagnostic-v16-sealed-confirmation-01/manifest.json",
+    "integrations/openai_agents/V16_SEALED_CONFIRMATION_AUDIT_20261006.json"
+  ],
+  "api_requests_spent": 0,
+  "purpose": "the confirmation freeze pre-registered that its two citation flags stay false until the independent audit passes; the audit has passed, so this record executes that pre-registered transition without editing any frozen artifact",
+
+  "pre_registered_condition": {
+    "freeze_field": "not_evidence_yet",
+    "text_verbatim": "these flags stay false until the independent audit passes; the development tasks that took part in building this host configuration are not in this batch, but the configuration itself was built with them, so this batch confirms the configuration on untouched tasks rather than establishing a general result",
+    "flags_at_freeze_time": {
+      "citable_as_saving": false,
+      "citable_as_quality_equivalence": false
+    },
+    "runner_enforcement": "run_openai_agents_v16_acquisition.verify_confirmation_freeze raises SystemExit if the confirmation freeze does not keep both citation flags false, so the flags could never be flipped inside the frozen file"
+  },
+
+  "discharge_evidence": {
+    "audit": "integrations/openai_agents/V16_SEALED_CONFIRMATION_AUDIT_20261006.json",
+    "audit_id": "openai-agents-v16-sealed-confirmation-audit-01",
+    "audit_sha256": "e045aac82dd53e7f1a150cbea8c91e052497b22581778cca64fb0aaf4fcdfecd",
+    "complete": true,
+    "errors": [],
+    "usable_as_saving": true,
+    "not_citable_statement": "",
+    "recomputed_acceptance_matches_runner": true,
+    "audit_fail_closed_demonstrated": "the audit's first run correctly refused the batch with two 'module hash changed' errors because the operator had pinned the pilot-02 constants; after the constants were corrected the audit recomputed every number independently",
+    "request_ledger": {
+      "requests": 192,
+      "cap": 520,
+      "model_calls": 167,
+      "summary_calls": 25,
+      "repair_retries": 32,
+      "identity_check": "192 = 167 model calls + 25 summary calls; 32 of the 167 model calls are billed repair retries"
+    }
+  },
+
+  "decision": {
+    "citable_as_saving": {
+      "value": true,
+      "condition_met": "the pre-registered condition was exactly 'until the independent audit passes'; the audit passed with complete=true, errors=[], usable_as_saving=true and an empty not_citable_statement",
+      "scope": "this batch only, in this host configuration, on the three sealed tasks, at five repeats, measured in complete provider tokens with retries and summary tokens charged to their arm",
+      "does_not_mean": "it does not mean compression alone saved anything, it does not mean the saving transfers to other host configurations, other hosts, other task shapes or other repeat counts, and it does not override the two negative pairs"
+    },
+    "citable_as_quality_equivalence": {
+      "value": false,
+      "why_kept_false": "no evidence in this batch justifies a general quality-equivalence claim, and the frozen forbidden wording already excludes the stronger reading",
+      "what_may_be_stated_instead": "on these three sealed tasks at five repeats, the plugin arm's strict track was at least the baseline's on every task (5/5 versus 5/5 on each), all three arms passed 45/45 samples, and the plugin arm produced zero render failures, zero over-length rejections and zero truncations"
+    }
+  },
+
+  "citable_numbers": {
+    "metric": "paired complete provider-token totals per (task, repeat) pair; failures, cap hits, retries and summary requests are charged to their arm",
+    "pooled_paired_mean_saving": 0.12539296933087418,
+    "rounding_note": "the audit artifact stores this figure rounded to four decimals (0.1254) in recomputed_acceptance.pooled_mean_saving; the full-precision value above comes from report.json paired.actual_total_token_savings_rate_vs_baseline and the two agree",
+    "pooled_paired_bootstrap_ci": [0.051677629093964915, 0.18301979941308436],
+    "bootstrap_basis": "2000 resamples, seed 42, percentile 2.5 and 97.5, function _bootstrap_mean_ci in experiments/runners/run_openai_agents_api_experiment.py",
+    "positive_pairs": 13,
+    "paired_n": 15,
+    "pooled_stdev_saving": 0.1375,
+    "pooled_min_saving": -0.19425778863775198,
+    "pooled_max_saving": 0.2346364786949796,
+    "peak_input_saving": 0.27273888271374425,
+    "per_task_saving": {
+      "django_ordering_related_pk": 0.23422718471251738,
+      "django_splitarray_checkbox_attrs": 0.13298733780069374,
+      "django_db_cache_cull_none": 0.008964385479411424
+    },
+    "per_task_strict_track_plugin_vs_baseline": {
+      "django_ordering_related_pk": "5/5 vs 5/5",
+      "django_splitarray_checkbox_attrs": "5/5 vs 5/5",
+      "django_db_cache_cull_none": "5/5 vs 5/5"
+    },
+    "report_only_never_decisive": {
+      "trajectory_matched_subset": {"n": 13, "mean_saving": 0.1745, "stdev_saving": 0.0493, "positive_pairs": 13},
+      "trajectory_unmatched_subset": {"n": 2, "mean_saving": -0.1939, "cause": "a unilateral billed render-repair retry in the pruner arm; see V16_CONFIRMATION_ATTRIBUTION_CORRECTION_20261006.json"},
+      "rule": "reported for explanation, never used to decide the verdict"
+    },
+    "native_summary_contrast": {
+      "metric": "same complete provider-token basis, all_arm comparison",
+      "pooled_paired_mean_saving": -0.1324841644367306,
+      "ci": [-0.17062759494381977, -0.1003549733490228],
+      "per_task_saving": {
+        "django_ordering_related_pk": -0.0925,
+        "django_splitarray_checkbox_attrs": -0.0749,
+        "django_db_cache_cull_none": -0.2301
+      }
+    }
+  },
+
+  "verified_token_accounting": {
+    "why_recorded": "the runner agent's prose split ('input 468105 plus output 10148') does not reconcile; the totals below are recomputed from the batch's own samples.jsonl and are the figures to cite",
+    "all_arm_total_tokens": 498253,
+    "input_total": 483125,
+    "input_breakdown": {"main_call_input": 468105, "summary_input": 15020},
+    "output_total": 15128,
+    "output_breakdown": {"main_call_output": 8757, "summary_output": 6371},
+    "identity_check": "483125 + 15128 = 498253 = 468105 + 8757 + 15020 + 6371",
+    "per_arm_complete_total_tokens": {"none": 166725, "pruner_v1": 143444, "native_summary": 188084},
+    "cache_split_covers_main_calls_only": {
+      "calls_with_cache_fields": 167,
+      "prompt_cache_hit_tokens": 363264,
+      "prompt_cache_miss_tokens": 104841,
+      "hit_rate": 0.776,
+      "identity_check": "363264 + 104841 = 468105 = main_call_input",
+      "does_not_mean": "the cache split does not cover the 25 summary calls, whose 15020 input tokens were never given a hit/miss split"
+    },
+    "dollar_cost": {
+      "audit_figure_for_main_calls": 0.011035,
+      "does_not_mean": "0.011035 is not the batch total; it is the cost of the 167 main calls only",
+      "summary_call_cost_bounds": {"low_all_hit": 0.003868, "high_all_miss": 0.006076},
+      "batch_total_bounds": {"low": 0.014903, "high": 0.017111},
+      "rates_per_million_off_peak": {"input_miss": 0.15, "input_hit": 0.003, "output": 0.60},
+      "off_peak": true,
+      "unknown": "the exact hit/miss split of the summary calls was not recorded, so the batch total is known only within these bounds"
+    }
+  },
+
+  "required_wording": "under this host configuration",
+  "forbidden_wording": [
+    "compression alone saved X percent",
+    "the four criteria are met"
+  ],
+  "citable_sentence_zh": "在该主机配置下（OpenAI Agents，结构化 JSON 合同 + 冻结渲染器 + 至多一次计费重试），对 3 个封存任务 × 5 重复 × 3 臂的 45 个样本，按全体配对的完整供应商 token 计（重试与摘要请求均计入所属臂），插件臂相对基线的配对均值为 +12.54%（13/15 配对为正，自助法区间 [+5.17%, +18.30%] 不含 0），三个任务的严格轨均不低于基线（各 5/5 对 5/5）；其中 2 个单元为负（−19.4%），成因是插件臂单向发生了一次修复重试，其输入（约 3.3k token）超过该单元的全部节省。同批原生摘要臂在同一口径下为 −13.25%（区间 [−17.06%, −10.04%]）。本批为该配置在未触碰任务上的确认，不构成跨宿主或跨配置的普遍结论。",
+  "citable_sentence_en": "Under this host configuration (OpenAI Agents, structured JSON contract with the frozen renderer and at most one billed retry), on 45 samples (3 sealed tasks x 5 repeats x 3 arms), the plugin arm's paired mean saving over the baseline in complete provider tokens, with retries and summary requests charged to their arm, is 12.54 percent (13 of 15 pairs positive, bootstrap interval [5.17, 18.30] percent excluding zero), and the strict track is at least the baseline's on every task (5/5 versus 5/5 each). Two units are negative (-19.4 percent) because the plugin arm spent a unilateral repair retry whose input (about 3.3k tokens) exceeded that unit's entire saving. The native summarisation arm is -13.25 percent on the same basis (interval [-17.06, -10.04] percent). This batch confirms the configuration on untouched tasks; it does not establish a general result across hosts or configurations.",
+
+  "integrity": {
+    "freeze": {"path": "integrations/openai_agents/V16_CONFIRMATION_FREEZE_20261006.json", "sha256": "69829716dcc9bad821bfc2af0d9de240887288723094f671671f0a7cf1b9bab1"},
+    "manifest": {"path": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v16-sealed-confirmation-01/manifest.json", "sha256": "f4ad7c38175b9de82f2f39722a9ac5e000d28c7d8f53243045cb30d0765165f8"},
+    "samples": {"path": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v16-sealed-confirmation-01/samples.jsonl", "sha256": "862d2201f5f61ba74f3430f0b96491ab7437605741e064e046099e288e33b604"},
+    "audit": {"path": "integrations/openai_agents/V16_SEALED_CONFIRMATION_AUDIT_20261006.json", "sha256": "e045aac82dd53e7f1a150cbea8c91e052497b22581778cca64fb0aaf4fcdfecd"},
+    "sealed_registration": {"path": "integrations/openai_agents/V16_SEALED_SOURCE_REGISTRATION_20261006.json", "sha256_prefix": "57fdd98c1d7a6642"},
+    "sealed_view_rule": {"path": "integrations/openai_agents/V16_SEALED_VIEW_RULE_20261006.json", "sha256_prefix": "a9e4995b075e4e79"},
+    "correction_record": "integrations/openai_agents/V16_CONFIRMATION_ATTRIBUTION_CORRECTION_20261006.json",
+    "host_configuration_module_hashes": {
+      "experiments/runners/run_openai_agents_v16_acquisition.py": "09b7d46eb27f86746d82fbd6b62a50bf092b1552d84f1618fff80297081ca814",
+      "experiments/runners/openai_agents_v16_live_contract.py": "ac05f40a353973911b7601ef3a9ff1b720ebf8ab90c196d470e3c151dc03f2d4",
+      "experiments/runners/openai_agents_v16_registry.py": "5b0c252f0e9252d08baa216592018673a0a33e0ea61ac5cfa00fcf7f09dab7e8",
+      "experiments/runners/openai_agents_structured_final_v16.py": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+      "experiments/runners/openai_agents_multitask_chain_v14.py": "bb2f5ad589e4ac0129a4cf01d2316e7f1cf7987e5dfd02e2f41aa72c7ebc1446"
+    },
+    "rejudged": false,
+    "frozen_files_changed": 0,
+    "git_operations": 0,
+    "modules_verified_at_record_time": true,
+    "modules_verification_note": "all five host-configuration module hashes recorded in the freeze were recomputed from the files on disk when this record was written and they still match, so no pinned source has changed since the freeze"
+  },
+
+  "still_not_established": [
+    "generality across host configurations, hosts, task shapes or repeat counts",
+    "that the plugin is preferable in every unit: two of fifteen pairs are negative in this very batch",
+    "whether the unilateral repair retry on django_db_cache_cull_none was induced by the pruned context; five repeats cannot separate an arm effect from an answer-format effect",
+    "that the three sealed tasks can be used to confirm anything again: they are spent once and are never replaced by another id"
+  ],
+  "never_rejudge": [
+    "attempt 01", "attempt 02", "attempt 03", "pilot-01", "pilot-02",
+    "v12", "v13", "v14", "v15"
+  ]
+}

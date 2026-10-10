@@ -1,0 +1,139 @@
+{
+  "schema": "openai_agents_v16_gate_probes",
+  "date": "20261006",
+  "paid_requests": 0,
+  "gate_definition": "the defect is established by a symbol/behaviour scan of the pinned base blobs OR by a registered mechanical probe (deterministic, read-only, source+command+stdout+returncode recorded, with positive and negative controls proving it is neither always-true nor always-false); probes never read the reference patch or the evaluation test patch, which stay hash-only records; a probe that cannot establish the defect leaves the candidate rejected (fail-closed)",
+  "probe_source": [
+    "text = git show <commit>:<path>            # read-only",
+    "tree = ast.parse(text)                     # no execution of the target code",
+    "defined = {n.name for c in tree.body if isinstance(c, ast.ClassDef) for n in c.body if isinstance(n, ast.FunctionDef)}",
+    "uses_model = any('self.model' in ast.dump(n) for c in tree.body if isinstance(c, ast.ClassDef) for n in c.body if isinstance(n, ast.FunctionDef) and n.name in ('__eq__', '__hash__'))"
+  ],
+  "reads_patch_or_test_patch": false,
+  "read_only": true,
+  "controls_ok": true,
+  "target": {
+    "instance_id": "django__django-15315",
+    "probe": {
+      "probe_id": "P4_field_hash_immutability",
+      "role": "target: does the pinned Field show the behaviour the issue describes?",
+      "commit": "652c68ffeebd510a6f59e1b56b3e007d07683ad8",
+      "path": "django/db/models/fields/__init__.py",
+      "class": "Field",
+      "functions": [
+        "__eq__",
+        "__hash__"
+      ],
+      "expect": "absent",
+      "question": "does Field define __eq__/__hash__ at the base, i.e. is there a value-based hash that can change when the field is assigned to a model class?",
+      "command": "git -C .tooling/upstream/django-15563 show 652c68ffeebd510a6f59e1b56b3e007d07683ad8:django/db/models/fields/__init__.py",
+      "returncode": 0,
+      "stdout": "{\"__eq__\": true, \"__hash__\": true}",
+      "blob_git_id": "88c9ca9f2849aa0e0f541564f3f780f90c162591",
+      "content_sha256": "9b225372cb92bec1b04aa9164140a3c057f2063a0fd8e069f8236e28408ca05d",
+      "functions_found": {
+        "__eq__": true,
+        "__hash__": true
+      },
+      "observed": "present",
+      "ok": false
+    },
+    "defect_present": true,
+    "verdict": "registered",
+    "reasoning": "the pinned Field defines a value-based hash, so the described behaviour is present"
+  },
+  "probes": [
+    {
+      "probe_id": "P1_sqlite_floor_present",
+      "role": "positive control: a defect that must be seen as present",
+      "commit": "e64c1d8055a3e476122633da141f16b50f0c4a2d",
+      "path": "django/db/backends/sqlite3/base.py",
+      "class": null,
+      "functions": [
+        "check_sqlite_version"
+      ],
+      "expect": "present",
+      "question": "does the pinned file define check_sqlite_version?",
+      "command": "git -C .tooling/upstream/django-15563 show e64c1d8055a3e476122633da141f16b50f0c4a2d:django/db/backends/sqlite3/base.py",
+      "returncode": 0,
+      "stdout": "{\"check_sqlite_version\": true}",
+      "blob_git_id": "ab4ea704920cd36540e305b939698abbe85d9328",
+      "content_sha256": "4c17e6ef5d0d83f8c5a6391f2eb07f82b6f7f2adb58930735037c51b03fad0ba",
+      "functions_found": {
+        "check_sqlite_version": true
+      },
+      "observed": "present",
+      "ok": true
+    },
+    {
+      "probe_id": "P2_orderedset_reversed_absent",
+      "role": "registered task expectation: the fix adds a missing method",
+      "commit": "d01709aae21de9cd2565b9c52f32732ea28a2d98",
+      "path": "django/utils/datastructures.py",
+      "class": "OrderedSet",
+      "functions": [
+        "__reversed__"
+      ],
+      "expect": "absent",
+      "question": "does OrderedSet define __reversed__ at the base?",
+      "command": "git -C .tooling/upstream/django-15563 show d01709aae21de9cd2565b9c52f32732ea28a2d98:django/utils/datastructures.py",
+      "returncode": 0,
+      "stdout": "{\"__reversed__\": false}",
+      "blob_git_id": "871b016715b2e83b0cb78ae1b04d91057a740104",
+      "content_sha256": "f76723cd0ff0f4f85329703a3a0c0e6149e62295f9bea7e8ac7a342622f612c0",
+      "functions_found": {
+        "__reversed__": false
+      },
+      "observed": "absent",
+      "ok": true
+    },
+    {
+      "probe_id": "P3_orderedset_iter_present",
+      "role": "negative control: the same probe must be able to report presence",
+      "commit": "d01709aae21de9cd2565b9c52f32732ea28a2d98",
+      "path": "django/utils/datastructures.py",
+      "class": "OrderedSet",
+      "functions": [
+        "__iter__",
+        "__len__"
+      ],
+      "expect": "present",
+      "question": "does OrderedSet define __iter__ and __len__ at the base?",
+      "command": "git -C .tooling/upstream/django-15563 show d01709aae21de9cd2565b9c52f32732ea28a2d98:django/utils/datastructures.py",
+      "returncode": 0,
+      "stdout": "{\"__iter__\": true, \"__len__\": true}",
+      "blob_git_id": "871b016715b2e83b0cb78ae1b04d91057a740104",
+      "content_sha256": "f76723cd0ff0f4f85329703a3a0c0e6149e62295f9bea7e8ac7a342622f612c0",
+      "functions_found": {
+        "__iter__": true,
+        "__len__": true
+      },
+      "observed": "present",
+      "ok": true
+    },
+    {
+      "probe_id": "P4_field_hash_immutability",
+      "role": "target: does the pinned Field show the behaviour the issue describes?",
+      "commit": "652c68ffeebd510a6f59e1b56b3e007d07683ad8",
+      "path": "django/db/models/fields/__init__.py",
+      "class": "Field",
+      "functions": [
+        "__eq__",
+        "__hash__"
+      ],
+      "expect": "absent",
+      "question": "does Field define __eq__/__hash__ at the base, i.e. is there a value-based hash that can change when the field is assigned to a model class?",
+      "command": "git -C .tooling/upstream/django-15563 show 652c68ffeebd510a6f59e1b56b3e007d07683ad8:django/db/models/fields/__init__.py",
+      "returncode": 0,
+      "stdout": "{\"__eq__\": true, \"__hash__\": true}",
+      "blob_git_id": "88c9ca9f2849aa0e0f541564f3f780f90c162591",
+      "content_sha256": "9b225372cb92bec1b04aa9164140a3c057f2063a0fd8e069f8236e28408ca05d",
+      "functions_found": {
+        "__eq__": true,
+        "__hash__": true
+      },
+      "observed": "present",
+      "ok": false
+    }
+  ]
+}

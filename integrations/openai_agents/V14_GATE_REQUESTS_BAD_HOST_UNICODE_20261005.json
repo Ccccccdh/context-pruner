@@ -1,0 +1,432 @@
+{
+  "schema": "openai_agents_v14_multitask_replay_gate",
+  "task_id": "requests_bad_host_unicode",
+  "instance_id": "psf__requests-5414",
+  "repo": "psf/requests",
+  "base_commit": "39d0fdd9096f7dceccbc8f82e1eda7dd64717a8e",
+  "registry_fingerprint": "b0eb6f78a638ac9ba3cc9fbe49d8cbfca31738b8141a514a56279e2f137f6930",
+  "recorded_boundaries": 7,
+  "rebuilt_boundaries": 7,
+  "boundaries": [
+    {
+      "boundary": 0,
+      "recorded_input_bytes": 3232,
+      "rebuilt_before_bytes": 2796,
+      "rebuilt_after_bytes": 2796,
+      "rebuilt_byte_delta": 0,
+      "tool_calls": 0,
+      "tool_outputs": 0,
+      "message_units": 3,
+      "replaced_output_positions": [],
+      "structure_matches_record": true,
+      "outputs_match_record": true,
+      "invariants": {
+        "task_constraints": {
+          "counts_before": {
+            "literal:url_preparer": 0,
+            "literal:idna_host": 0,
+            "literal:invalid_url_class": 0
+          },
+          "counts_after": {
+            "literal:url_preparer": 0,
+            "literal:idna_host": 0,
+            "literal:invalid_url_class": 0
+          },
+          "lost": []
+        },
+        "current_evidence": {
+          "distinct_sources": 0,
+          "full_copies_before": 0,
+          "full_copies_after": 0,
+          "sources_without_full_copy": []
+        },
+        "tool_group": {
+          "hash_before": "c1149c42964ac57f4a6138f7710937fef43818d68df4bb489035025fd3213d0d",
+          "hash_after": "c1149c42964ac57f4a6138f7710937fef43818d68df4bb489035025fd3213d0d",
+          "identical": true
+        },
+        "restore_and_fallback": {
+          "fallback_reason": "",
+          "task_anchor_restore_failures": 0,
+          "task_restore_fallbacks": 0,
+          "budget_fallbacks": 0
+        },
+        "unaccounted_fallback": [],
+        "source_location": {
+          "pointer_positions": [],
+          "pointer_resolves": true
+        }
+      }
+    },
+    {
+      "boundary": 1,
+      "recorded_input_bytes": 6108,
+      "rebuilt_before_bytes": 5591,
+      "rebuilt_after_bytes": 5591,
+      "rebuilt_byte_delta": 0,
+      "tool_calls": 1,
+      "tool_outputs": 1,
+      "message_units": 3,
+      "replaced_output_positions": [],
+      "structure_matches_record": true,
+      "outputs_match_record": true,
+      "invariants": {
+        "task_constraints": {
+          "counts_before": {
+            "literal:url_preparer": 1,
+            "literal:idna_host": 1,
+            "literal:invalid_url_class": 0
+          },
+          "counts_after": {
+            "literal:url_preparer": 1,
+            "literal:idna_host": 1,
+            "literal:invalid_url_class": 0
+          },
+          "lost": []
+        },
+        "current_evidence": {
+          "distinct_sources": 1,
+          "full_copies_before": 1,
+          "full_copies_after": 1,
+          "sources_without_full_copy": []
+        },
+        "tool_group": {
+          "hash_before": "2e5ef828f38a36949cdf15c1b8a36fdaa8cf90871750c25f52c7275db8878d39",
+          "hash_after": "2e5ef828f38a36949cdf15c1b8a36fdaa8cf90871750c25f52c7275db8878d39",
+          "identical": true
+        },
+        "restore_and_fallback": {
+          "fallback_reason": "",
+          "task_anchor_restore_failures": 0,
+          "task_restore_fallbacks": 0,
+          "budget_fallbacks": 0
+        },
+        "unaccounted_fallback": [],
+        "source_location": {
+          "pointer_positions": [],
+          "pointer_resolves": true
+        }
+      }
+    },
+    {
+      "boundary": 2,
+      "recorded_input_bytes": 6860,
+      "rebuilt_before_bytes": 6264,
+      "rebuilt_after_bytes": 6264,
+      "rebuilt_byte_delta": 0,
+      "tool_calls": 2,
+      "tool_outputs": 2,
+      "message_units": 3,
+      "replaced_output_positions": [],
+      "structure_matches_record": true,
+      "outputs_match_record": true,
+      "invariants": {
+        "task_constraints": {
+          "counts_before": {
+            "literal:url_preparer": 1,
+            "literal:idna_host": 1,
+            "literal:invalid_url_class": 1
+          },
+          "counts_after": {
+            "literal:url_preparer": 1,
+            "literal:idna_host": 1,
+            "literal:invalid_url_class": 1
+          },
+          "lost": []
+        },
+        "current_evidence": {
+          "distinct_sources": 2,
+          "full_copies_before": 2,
+          "full_copies_after": 2,
+          "sources_without_full_copy": []
+        },
+        "tool_group": {
+          "hash_before": "c7a831057c919e3a010fc438f5b6f6761abf2b4d0b4e127618cece353e81635a",
+          "hash_after": "c7a831057c919e3a010fc438f5b6f6761abf2b4d0b4e127618cece353e81635a",
+          "identical": true
+        },
+        "restore_and_fallback": {
+          "fallback_reason": "",
+          "task_anchor_restore_failures": 0,
+          "task_restore_fallbacks": 0,
+          "budget_fallbacks": 0
+        },
+        "unaccounted_fallback": [],
+        "source_location": {
+          "pointer_positions": [],
+          "pointer_resolves": true
+        }
+      }
+    },
+    {
+      "boundary": 3,
+      "recorded_input_bytes": 8876,
+      "rebuilt_before_bytes": 8205,
+      "rebuilt_after_bytes": 8205,
+      "rebuilt_byte_delta": 0,
+      "tool_calls": 3,
+      "tool_outputs": 3,
+      "message_units": 3,
+      "replaced_output_positions": [],
+      "structure_matches_record": true,
+      "outputs_match_record": true,
+      "invariants": {
+        "task_constraints": {
+          "counts_before": {
+            "literal:url_preparer": 1,
+            "literal:idna_host": 2,
+            "literal:invalid_url_class": 1
+          },
+          "counts_after": {
+            "literal:url_preparer": 1,
+            "literal:idna_host": 2,
+            "literal:invalid_url_class": 1
+          },
+          "lost": []
+        },
+        "current_evidence": {
+          "distinct_sources": 3,
+          "full_copies_before": 3,
+          "full_copies_after": 3,
+          "sources_without_full_copy": []
+        },
+        "tool_group": {
+          "hash_before": "d853af1eb973393a81c645a0211ff8a7b4c29bcca20170c6e14dedc53de91444",
+          "hash_after": "d853af1eb973393a81c645a0211ff8a7b4c29bcca20170c6e14dedc53de91444",
+          "identical": true
+        },
+        "restore_and_fallback": {
+          "fallback_reason": "",
+          "task_anchor_restore_failures": 0,
+          "task_restore_fallbacks": 0,
+          "budget_fallbacks": 0
+        },
+        "unaccounted_fallback": [],
+        "source_location": {
+          "pointer_positions": [],
+          "pointer_resolves": true
+        }
+      }
+    },
+    {
+      "boundary": 4,
+      "recorded_input_bytes": 11752,
+      "rebuilt_before_bytes": 11000,
+      "rebuilt_after_bytes": 8610,
+      "rebuilt_byte_delta": 2390,
+      "tool_calls": 4,
+      "tool_outputs": 4,
+      "message_units": 3,
+      "replaced_output_positions": [
+        0
+      ],
+      "structure_matches_record": true,
+      "outputs_match_record": true,
+      "invariants": {
+        "task_constraints": {
+          "counts_before": {
+            "literal:url_preparer": 2,
+            "literal:idna_host": 3,
+            "literal:invalid_url_class": 1
+          },
+          "counts_after": {
+            "literal:url_preparer": 1,
+            "literal:idna_host": 2,
+            "literal:invalid_url_class": 1
+          },
+          "lost": []
+        },
+        "current_evidence": {
+          "distinct_sources": 3,
+          "full_copies_before": 3,
+          "full_copies_after": 3,
+          "sources_without_full_copy": []
+        },
+        "tool_group": {
+          "hash_before": "67c1adcbb6a18b8024d7da1ba364c961fe1b4c2440a97da044e15fdde1eb9f52",
+          "hash_after": "67c1adcbb6a18b8024d7da1ba364c961fe1b4c2440a97da044e15fdde1eb9f52",
+          "identical": true
+        },
+        "restore_and_fallback": {
+          "fallback_reason": "",
+          "task_anchor_restore_failures": 0,
+          "task_restore_fallbacks": 0,
+          "budget_fallbacks": 0
+        },
+        "unaccounted_fallback": [],
+        "source_location": {
+          "pointer_positions": [
+            0
+          ],
+          "pointer_resolves": true
+        }
+      }
+    },
+    {
+      "boundary": 5,
+      "recorded_input_bytes": 12504,
+      "rebuilt_before_bytes": 11673,
+      "rebuilt_after_bytes": 9019,
+      "rebuilt_byte_delta": 2654,
+      "tool_calls": 5,
+      "tool_outputs": 5,
+      "message_units": 3,
+      "replaced_output_positions": [
+        0,
+        1
+      ],
+      "structure_matches_record": true,
+      "outputs_match_record": true,
+      "invariants": {
+        "task_constraints": {
+          "counts_before": {
+            "literal:url_preparer": 2,
+            "literal:idna_host": 3,
+            "literal:invalid_url_class": 2
+          },
+          "counts_after": {
+            "literal:url_preparer": 1,
+            "literal:idna_host": 2,
+            "literal:invalid_url_class": 1
+          },
+          "lost": []
+        },
+        "current_evidence": {
+          "distinct_sources": 3,
+          "full_copies_before": 3,
+          "full_copies_after": 3,
+          "sources_without_full_copy": []
+        },
+        "tool_group": {
+          "hash_before": "e9fab53e8e9d82eefaf429c68645fdb5a30de79a74b2196e88618ec63947b139",
+          "hash_after": "e9fab53e8e9d82eefaf429c68645fdb5a30de79a74b2196e88618ec63947b139",
+          "identical": true
+        },
+        "restore_and_fallback": {
+          "fallback_reason": "",
+          "task_anchor_restore_failures": 0,
+          "task_restore_fallbacks": 0,
+          "budget_fallbacks": 0
+        },
+        "unaccounted_fallback": [],
+        "source_location": {
+          "pointer_positions": [
+            0,
+            1
+          ],
+          "pointer_resolves": true
+        }
+      }
+    },
+    {
+      "boundary": 6,
+      "recorded_input_bytes": 14520,
+      "rebuilt_before_bytes": 13614,
+      "rebuilt_after_bytes": 9436,
+      "rebuilt_byte_delta": 4178,
+      "tool_calls": 6,
+      "tool_outputs": 6,
+      "message_units": 3,
+      "replaced_output_positions": [
+        0,
+        1,
+        2
+      ],
+      "structure_matches_record": true,
+      "outputs_match_record": true,
+      "invariants": {
+        "task_constraints": {
+          "counts_before": {
+            "literal:url_preparer": 2,
+            "literal:idna_host": 4,
+            "literal:invalid_url_class": 2
+          },
+          "counts_after": {
+            "literal:url_preparer": 1,
+            "literal:idna_host": 2,
+            "literal:invalid_url_class": 1
+          },
+          "lost": []
+        },
+        "current_evidence": {
+          "distinct_sources": 3,
+          "full_copies_before": 3,
+          "full_copies_after": 3,
+          "sources_without_full_copy": []
+        },
+        "tool_group": {
+          "hash_before": "2176444c6b466bf7f39a4090b31509ef637a9d6194d9df08afa6fa78214c7c14",
+          "hash_after": "2176444c6b466bf7f39a4090b31509ef637a9d6194d9df08afa6fa78214c7c14",
+          "identical": true
+        },
+        "restore_and_fallback": {
+          "fallback_reason": "",
+          "task_anchor_restore_failures": 0,
+          "task_restore_fallbacks": 0,
+          "budget_fallbacks": 0
+        },
+        "unaccounted_fallback": [],
+        "source_location": {
+          "pointer_positions": [
+            0,
+            1,
+            2
+          ],
+          "pointer_resolves": true
+        }
+      }
+    }
+  ],
+  "projection": {
+    "scope": "per model call: byte saving summed over every recorded boundary",
+    "before_bytes": 59143,
+    "after_bytes": 49921,
+    "byte_saving_rate": 0.15592715959623285,
+    "floor": 0.03,
+    "passes_floor": true
+  },
+  "safe_candidates": {
+    "potential_old_units_upper_bound": 3,
+    "guard_filtered_safe_candidates": 3,
+    "per_boundary_replaced_counts": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      2,
+      3
+    ],
+    "rule": "reported separately from the projection; non-zero is not a benefit prediction"
+  },
+  "invariant_gate": {
+    "all_invariants_hold": true,
+    "columns": [
+      "task constraints",
+      "current evidence",
+      "tool-group hash",
+      "restore and whole-payload fallback accounting",
+      "source location"
+    ]
+  },
+  "negative_control": {
+    "real_reduction_loses_nothing": true,
+    "damaged_component_lost": [
+      "literal:url_preparer",
+      "term:prepare_url"
+    ],
+    "damaged_component_decreased": [
+      "literal:idna_host",
+      "literal:invalid_url_class",
+      "literal:url_preparer",
+      "term:InvalidURL",
+      "term:prepare_url"
+    ],
+    "target_found": true,
+    "caught": true
+  },
+  "problems": [],
+  "qualified": true,
+  "verdict": "proceed",
+  "paid_requests": 0
+}

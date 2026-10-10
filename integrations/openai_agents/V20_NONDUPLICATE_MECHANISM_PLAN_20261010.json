@@ -1,0 +1,62 @@
+{
+  "schema": "openai_agents_v20_nonduplicate_mechanism_plan",
+  "plan_id": "openai-agents-v20-nonduplicate-retention-01",
+  "date": "20261010",
+  "status": "PRE_REGISTERED_BEFORE_ANY_PAID_REQUEST",
+  "api_requests_spent_when_written": 0,
+
+  "question": "can the plugin compress content that does not repeat, at or above the baseline strict track, in this host configuration?",
+  "why_it_is_open": "the mechanism wiring audit shows the plugin arm in every recent batch is the frozen v12 exact duplicate rule and nothing else; the span elision and pointer retention paths are not wired into the chain; on a shape where no view is read twice the measured paired saving is exactly 0.00 percent, so the plugin's ability to compress unique content has never been tested in this configuration",
+
+  "design": {
+    "control_shape": "N3 from the v19 dose: three views, one distinct view per round, three rounds, each view read once; the duplicates are absent by construction and the current configuration measures 0.00 percent on it",
+    "intervention": "wire a retention mechanism that elides unique content, with the literal guard kept, into the plugin arm of the same chain",
+    "why_this_is_a_clean_discriminator": "tasks, views, contracts, literals, tools, prompt, shape and baseline arm are all held fixed; only the plugin arm's filter changes; therefore any positive paired saving on this shape can only come from compressing unique content, because there is no duplicate content to collapse",
+    "tasks": "the three v16 development tasks, unchanged: views, ranges, hashes, contracts and literals are read from the existing registry and are not re-derived",
+    "arms": ["none", "native_summary", "pruner_v1"],
+    "samples": "3 tasks x 1 repeat x 3 arms = 9, with an optional second stage of 3 repeats = 27 only on the integrator's explicit approval",
+    "everything_else_fixed": "renderer unchanged and imported, the four strict track conditions, the 160 character bound, one billed retry per sample, arm charged summaries, read-only tools"
+  },
+
+  "mechanism_selection": {
+    "first_choice": "the evidence safe selective retention of the v5 lineage, because it is built to compress content while protecting the registered literals and it publishes the counters that say whether it engaged and whether the literal guard forced a fallback",
+    "second_choice": "the span and pointer retention of the v6 lineage, which elides inside outputs rather than dropping whole outputs",
+    "not_chosen": "the unguarded v4 retention, because it is the most likely to trade quality for tokens and this experiment must be able to attribute any quality loss to the mechanism rather than to a missing guard",
+    "note_on_lineage": "the chain's filter already inherits from the v9 and v6 and v5 classes, so the task is expected to be re enabling the ancestor behaviour that the v12 duplicate rule overrides, not writing a new mechanism; the exact switch or override must be identified in the wiring diff before any paid request"
+  },
+
+  "pre_flight_requirements_zero_api": [
+    "identify the exact code path that suppresses unique content elision today and record it as a machine readable wiring diff with old and new text plus hashes, like every previous configuration change",
+    "the zero API gates must pass, and the finalisation path must be exercised inside the gate: run a full local pilot and assert that the produced manifest carries every pre registered key and that the finalisation flag is true, because the v17 and v19 batches both lost their finalised manifest after the samples had been paid for",
+    "the gate must additionally prove that the new wiring engages at all: on a task with unique content and no duplicates the filter must report a non zero elision counter, and if it reports zero the wiring did not take effect and no paid run may start",
+    "the freeze must pin a sha256 for every module in the path, and the manifest must copy them, with a revision aware fail closed check, because the v17 batch could not be tied to a code revision"
+  ],
+
+  "decision_line": {
+    "capability_confirmed": "paired saving on the no duplicate shape at least 5 percent with three of three pairs positive, every arm's strict track at or above the baseline on all three tasks, zero render failures, zero truncations",
+    "capability_absent": "paired saving indistinguishable from zero on the no duplicate shape, meaning the wired mechanism still does not compress unique content in this configuration; stop and report",
+    "quality_traded_for_tokens": "any task whose pruner strict track falls below the baseline, any render failure or any truncation; stop and report, do not tune the guard to recover it",
+    "inconclusive": "positive but below 5 percent, or mixed signs; report and ask before any further spend",
+    "note": "the fallback counters matter as much as the saving: if the literal guard forces a fallback on most calls the honest reading is that the mechanism engaged and refused, which is a different result from not engaging"
+  },
+
+  "budget": {
+    "stage_one": "9 samples, expected about 0.006 dollars off peak, authorised",
+    "stage_two": "27 samples, expected about 0.018 dollars, only on explicit approval",
+    "cap_rule": "expected model calls per sample equals rounds plus one, worst equals maximum turns plus one retry, and the cap must keep at least 1.3 times the worst case",
+    "gates_first": "no paid request before the zero API gates and the wiring engagement proof pass"
+  },
+
+  "reporting_rules": {
+    "required_wording": "under this host configuration",
+    "forbidden_wording": [
+      "compression alone saved X percent",
+      "the four criteria are met",
+      "the retry tax is gone",
+      "the plugin saves about 12.5 percent of context"
+    ],
+    "evidence_level": "development evidence on tasks that took part in building the configuration, so it can demonstrate or refute a capability but it is never a confirmation and is never merged with the v16 sealed batch",
+    "if_the_capability_shows": "a citable confirmation would need fresh tasks; the paused v18 candidate branch already has four derived and hashed views per candidate and only needs its literals re derived under the discriminative rule, so that branch becomes the cheapest route to a citable number",
+    "never_rejudge": ["attempt 01", "attempt 02", "attempt 03", "pilot-01", "pilot-02", "v12 to v15", "the v16 sealed confirmation batch", "the v17 development pilots", "the v18 selection branch", "the v19 dose batches"]
+  }
+}

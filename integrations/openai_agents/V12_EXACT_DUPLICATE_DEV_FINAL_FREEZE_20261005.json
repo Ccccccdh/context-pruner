@@ -1,0 +1,78 @@
+{
+  "schema": "openai_agents_v12_development_freeze",
+  "batch": "openai-repo-diagnostic-v12-exact-duplicate-dev-01",
+  "purpose": "one-task development pilot; not held-out confirmation",
+  "mechanism": "replace older exact duplicate tool output only when newer full byte-identical copy is present; preserve every call/output item and newest full source",
+  "model": "deepseek-v4-flash",
+  "base_url": "https://api.deepseek.com",
+  "disable_thinking": true,
+  "data_class": "public_source_diagnostic",
+  "sent_data": "public SWE-bench issue text and selected public baseline source ranges only; no reference patch, host test patch, local secret, or expected answer",
+  "matrix": {
+    "tasks": [
+      "django_long_investigation"
+    ],
+    "repeats": 1,
+    "methods": [
+      "none",
+      "pruner_v1",
+      "native_summary"
+    ],
+    "samples": 3
+  },
+  "limits": {
+    "max_api_requests": 36,
+    "max_turns_per_sample": 10,
+    "max_output_tokens_per_request": 1024,
+    "provider_soft_tokens": 2000,
+    "provider_target_tokens": 1500,
+    "provider_hard_tokens": 6000,
+    "absolute_nominal_token_ceiling": 252864
+  },
+  "stop_line": "all attempts and failed samples counted; stop after this one pilot; quality plugin strict success >= baseline, complete-total provider token paired saving >=3%, actual duplicate replacements >0, independent audit complete, otherwise no confirmation claim",
+  "input_hashes": {
+    ".tooling/swebench-verified/django-16263/instance.json": "dc9b3b68d4ec74dcd68aad5e1699377781d58bc34152db074eebeb50dce2bb66",
+    ".tooling/swebench-verified/pylint-8898/instance.json": "a46d304951629812b27700e1612821b46f753fb85292c637b52f7b41d50f3c68",
+    ".tooling/swebench-verified/pytest-10356/instance.json": "ed22efd5ff4a83d343ea1d6d690074954d97dd385c5c57e44ee97452669d312a",
+    ".tooling/upstream/django-16263/django/db/models/query.py": "01df683d1cb1407298081ed147bb9bd7f261e1db2b51ce1173ef8e23ca586116",
+    ".tooling/upstream/django-16263/django/db/models/sql/query.py": "e8e8149c1994e52f53bd4e774c3d4ec6e8d79d1cba3661a2d594629e5b474fc2",
+    ".tooling/upstream/pylint-8898/pylint/checkers/base/name_checker/checker.py": "1a82f30f84e6939b9703f356520ca6dcc8eec0ae8985447761d58dbb359560d4",
+    ".tooling/upstream/pylint-8898/pylint/config/argument.py": "13d459e87e66fcff4e4c51d8695c5fc49c4fa7546d5eb12675fabbdc0269d218",
+    ".tooling/upstream/pylint-8898/pylint/utils/utils.py": "d9998962cd399acb3814277d8fd6ddd2127f497fe99aba2c95afc845c445d506",
+    ".tooling/upstream/pytest-10356/src/_pytest/mark/structures.py": "a62590ae817bb336c158d5a2121774eb58d3be8d3b36343e09b3ebc05cc7e340",
+    ".tooling/upstream/pytest-10356/testing/test_mark.py": "aaa4667c26802bded02cf86baaecfa3e00ffe0e2ff676d44edbc9c7d0afd3804"
+  },
+  "source_sha256": {
+    "experiments/runners/openai_agents_exact_duplicate_replay_v12.py": "2b511306fa433909c3ec72100be93adb9628a22937a7c502bfad8b9faac1f937",
+    "experiments/runners/run_openai_agents_exact_duplicate_v12.py": "5748480c0d4319ed2174b8aacc34850e79d6d8cf65b093815adbdcd7671fbca7",
+    "tests/test_openai_agents_exact_duplicate_replay_v12.py": "e520d3931c29fc2d70e4f1c0f397f8bd15b19bdff61f734edb99e4c49883f80b",
+    "experiments/audits/audit_openai_agents_exact_duplicate_v12.py": "119ecce87d29eea9bcbc1bb65d24ce004b858ae60940b3f2a893e2663fbdd62b"
+  },
+  "replay": {
+    "repeats": [
+      {
+        "repeat": 0,
+        "recorded_fixture_ok": true,
+        "actual_outputs_match": true,
+        "all_invariants_ok": true,
+        "projected_byte_saving_rate": 0.2004728207406467
+      },
+      {
+        "repeat": 1,
+        "recorded_fixture_ok": true,
+        "actual_outputs_match": true,
+        "all_invariants_ok": true,
+        "projected_byte_saving_rate": 0.2004728207406467
+      },
+      {
+        "repeat": 2,
+        "recorded_fixture_ok": true,
+        "actual_outputs_match": true,
+        "all_invariants_ok": true,
+        "projected_byte_saving_rate": 0.2004728207406467
+      }
+    ]
+  },
+  "immutable": "write once; later changes require a separate amendment; batch manifest records this file SHA256",
+  "supersedes_unused_draft_freeze": "V12_EXACT_DUPLICATE_DEV_FREEZE_20261005.json; no API request or batch was run under it"
+}

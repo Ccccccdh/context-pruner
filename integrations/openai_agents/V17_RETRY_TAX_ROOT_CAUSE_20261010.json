@@ -1,0 +1,75 @@
+{
+  "schema": "openai_agents_v17_retry_tax_root_cause",
+  "finding_id": "openai-agents-v16-retry-tax-root-cause-01",
+  "date": "20261010",
+  "kind": "zero_api_decomposition_of_a_rejection_class",
+  "api_requests_spent": 0,
+  "host_configuration_under_analysis": "v16 (structured JSON contract, frozen renderer, at most one billed retry)",
+  "subject": {
+    "batch": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v16-sealed-confirmation-01",
+    "manifest_sha256": "f4ad7c38175b9de82f2f39722a9ac5e000d28c7d8f53243045cb30d0765165f8",
+    "samples_sha256": "862d2201f5f61ba74f3430f0b96491ab7437605741e064e046099e288e33b604",
+    "registration": "integrations/openai_agents/V16_SEALED_SOURCE_REGISTRATION_20261006.json"
+  },
+  "method": "read every sample whose render_repair_calls is 1, parse the declared strings the host named as missing from the candidate line (the retry diagnostic carries them verbatim), and compare them with the task's registered required literals",
+
+  "findings": {
+    "retry_count": 32,
+    "requests_total": 192,
+    "retry_share_of_requests": 0.1667,
+    "single_rejection_class": "all 32 retries were rejected for exactly one reason: declared_fact_missing_from_rendered_answer",
+    "how_many_literals_were_missing": {"1": 32},
+    "missing_strings_outside_the_registered_required_set": 0,
+    "per_task": {
+      "django_ordering_related_pk": {"missing_one_required_literal": 15},
+      "django_splitarray_checkbox_attrs": {"missing_one_required_literal": 15},
+      "django_db_cache_cull_none": {"missing_one_required_literal": 2}
+    },
+    "retry_token_cost": {
+      "none": {"retries": 10, "retry_tokens": 38161, "share_of_arm_total": 0.229},
+      "pruner_v1": {"retries": 12, "retry_tokens": 33374, "share_of_arm_total": 0.233},
+      "native_summary": {"retries": 10, "retry_tokens": 38153, "share_of_arm_total": 0.203}
+    },
+    "root_cause": {
+      "statement": "the first prompt states the facts rule and the rendered line shape but never states that the declared strings must appear inside cause or fix, while the renderer rejects a proposal for exactly that",
+      "prompt_text_template_verbatim": "one JSON object with exactly the keys \"issue\", \"cause\", \"fix\" and \"facts\": \"issue\" is the fixed value \"{issue_value}\"; \"cause\" names the root cause and must contain {cause_token!r}; \"fix\" names the change the fix must make and must contain {fix_token!r}; \"facts\" is a list of the exact strings {facts} copied from the tool output. The host renders issue, cause and fix into one line of the shape \"RESULT issue=<issue> cause=<cause> fix=<fix>\"; keep cause and fix short so that the rendered line stays within 160 characters. Send nothing outside the JSON object.",
+      "prompt_text_concrete_example": "for django_db_cache_cull_none the placeholder {facts} becomes \"_cull\", \"NoneType\", \"cull_num\"",
+      "prompt_omission": "the template never says that the strings listed in facts must appear inside cause or fix; it asks for them to be copied from the tool output and separately describes the rendered line shape",
+      "prompt_source": "experiments/runners/openai_agents_v16_registry.py, function _contract_prompt, lines 309 to 321",
+      "enforcement_source": "experiments/runners/openai_agents_structured_final_v16.py, line 97: if not all(fact in output for fact in facts) -> declared_fact_missing_from_rendered_answer",
+      "why_this_is_a_host_defect_and_not_model_failure": "the model did what the prompt asked: it copied the required strings from the tool output into facts. It was never told that the rendered line, built from cause and fix alone, must contain every declared string, so one of the three landed outside the line and the host rejected the proposal",
+      "corroboration": "the retry diagnostic does state the rule ('Place each of them inside cause or fix, and keep the line within the bound at the same time'), and 31 of the 32 retries then produced an accepted line; the rule was available to the host all along, it was simply absent from the first prompt"
+    },
+
+    "what_the_retries_are_worth_to_quality": {
+      "statement": "the retries are load-bearing, not waste: in all 32 cases the missing string was a registered required literal, so those first answers would have failed the frozen strict track (facts_complete) had the host rendered them",
+      "consequence": "removing the check or refusing to retry would have turned 32 of 45 samples into strict-track failures; the correct repair is to raise first-attempt compliance, never to relax the check",
+      "does_not_mean": "this does not license calling the retry tax efficient; it means the tax was avoidable at the prompt, not at the criterion"
+    },
+
+    "projection_not_evidence": {
+      "basis": "the recorded trajectory of this batch, with each arm's repair calls removed from its own total",
+      "paired_mean_saving": 0.1388,
+      "stdev": 0.0338,
+      "min": 0.0942,
+      "max": 0.1777,
+      "positive_pairs": "15/15",
+      "label": "arithmetic projection for design targeting only; it is not a measurement, it must never be cited, and the batch it is derived from stays exactly as recorded"
+    },
+
+    "no_v16_number_changes": "this finding re-explains an already charged cost; it changes no v16 figure, no verdict and no frozen artifact, and the sealed confirmation batch is never re-judged"
+  },
+
+  "implications_for_the_next_configuration": [
+    "the one change worth making to the host configuration is a prompt completeness fix: state the literal-placement rule in the first prompt, byte-identical for every arm",
+    "the renderer, the strict track, the 160 character bound and the retry diagnostic are left exactly as they are, so the new configuration is comparable to v16 condition by condition",
+    "the expected effect is on first-attempt acceptance (v16 reference: 13 of 45 samples accepted on the first attempt, 28.9 percent) and therefore on the retry tax, not on the size of the compression saving",
+    "the instrumentation gap that made this decomposition necessary must be closed in the new configuration: record the first candidate line, the declared facts and the missing literals per sample"
+  ],
+
+  "citable": false,
+  "never_rejudge": [
+    "attempt 01", "attempt 02", "attempt 03", "pilot-01", "pilot-02",
+    "v12", "v13", "v14", "v15", "the sealed confirmation batch"
+  ]
+}

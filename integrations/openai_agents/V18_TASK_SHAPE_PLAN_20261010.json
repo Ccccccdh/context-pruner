@@ -1,0 +1,76 @@
+{
+  "schema": "openai_agents_v18_task_shape_plan",
+  "plan_id": "openai-agents-v18-read-round-shape-01",
+  "date": "20261010",
+  "status": "PRE_REGISTERED_BEFORE_TASK_SELECTION",
+  "written_before_any_selection_or_paid_request": true,
+  "api_requests_spent_when_written": 0,
+
+  "objective": "raise the paired complete-token saving of the plugin arm by choosing a task shape in which a larger share of each trajectory is compressible, without touching any acceptance condition",
+
+  "evidence_basis": {
+    "mechanism": "in the v16 sealed confirmation batch the active mechanism was selective_retention: it collapsed the first read batch of three outputs to 157 characters each and kept the most recent batch verbatim, and the saving was realised in exactly one later call",
+    "measured": "the affected call's input fell 22 to 35 percent while the whole trajectory fell 14.4 percent, because the first two calls of a six-read trajectory carry no compressible content",
+    "model": "for N read rounds with batch size B, per-call overhead P and collapse ratio c, the paired saving is approximately B(1-c)[(N-1)(N-2)/2 + (N-1)] / [(N+1)P + B(N(N-1)/2 + N)]; anchored on this batch it overstates N=2 by about two points",
+    "prediction": {"N_2": "14 to 17 percent, measured", "N_3": "25 to 34 percent", "N_4": "34 to 44 percent"},
+    "label": "the model is an arithmetic projection for design targeting, not evidence; it must never be cited as a result"
+  },
+
+  "selection_criteria_all_mandatory": [
+    "the registered protocol defines at least four read rounds, each round reading three distinct registered views, so the read shape is 12 or more read calls over distinct file ranges rather than repeated reads of the same ranges",
+    "every registered view is a real file range at a pinned base commit, taken through the existing source-registration and gate machinery, with the reference patch and the test patch registered by hash and never read",
+    "the number of registered required literals stays at three or fewer, and the minimum feasible rendered line for the task is computed and shown to be within 160 characters before any batch is frozen",
+    "the task passes the existing mechanical gate with a positive and a negative control, and no candidate is admitted that the gate rejects; no substitution rule is needed and none is used",
+    "the task's problem statement hashes reconcile with the public task table exactly as in v16"
+  ],
+
+  "configuration_under_test": {
+    "carried_from_v17": "the first prompt states that every string listed in facts must appear verbatim inside cause or fix while the line stays within 160 characters",
+    "new_axis": "the protocol's read shape changes from two rounds of three reads to four rounds of three reads over distinct views",
+    "unchanged": [
+      "the frozen renderer is imported unchanged and stays the final-answer path and the only validator",
+      "the four strict-track conditions and the 160 character bound",
+      "the one billed retry per sample, the retry diagnostic text, and arm-charged summary requests",
+      "the read-only tool guarantee: the tools cannot write, search or fetch"
+    ],
+    "does_not_mean": "this is a new host configuration on new tasks; its percentages are never merged with any earlier batch, they are reported side by side"
+  },
+
+  "expected_cost": {
+    "per_sample_complete_tokens_estimate": "about 25000 for the baseline arm against about 9800 at the two-round shape",
+    "confirmation_batch": "45 samples, estimated 0.04 to 0.05 dollars off peak",
+    "dev_pilot": "9 samples, estimated 0.006 dollars off peak",
+    "acquisition": "estimated 0.003 to 0.005 dollars per task",
+    "total_estimate": "0.06 dollars or less"
+  },
+
+  "sequence_with_a_mandatory_checkpoint": [
+    "1. build the multi-round protocol support as new modules, with the zero-API plan, stub and controls gates green and the existing test suite still passing",
+    "2. register three new sealed tasks under the criteria above, with gates, view hashes and reconciled problem-statement hashes",
+    "3. capture the payloads for the new tasks and record the cache split",
+    "4. capability probe, one request, failing closed",
+    "5. dev pilot on the development set at the new shape to check that first-attempt acceptance holds and that the strict track is not below the baseline",
+    "6. write the confirmation freeze, then STOP AND REPORT to the integrator before the confirmation batch is run"
+  ],
+
+  "stop_conditions": [
+    "any arm's strict track below the baseline's at any stage -> stop and report",
+    "any sample failing the strict track -> stop and report",
+    "minimum feasible rendered line above 160 characters for any candidate task -> reject the task, never relax the bound",
+    "first-attempt acceptance below 50 percent at the new shape -> stop and report, do not proceed to confirmation",
+    "request cap reached -> stop and keep the partial directory, never use resume to bypass the budget"
+  ],
+
+  "required_wording": "under this host configuration",
+  "forbidden_wording": [
+    "compression alone saved X percent",
+    "the four criteria are met",
+    "the retry tax is gone"
+  ],
+  "reporting_rule": "the new batch is reported on its own; the projection model is reported as a design estimate only; the v16 and v17 figures keep their own scope and are never merged with it",
+  "never_rejudge": [
+    "attempt 01", "attempt 02", "attempt 03", "pilot-01", "pilot-02",
+    "v12", "v13", "v14", "v15", "the v16 sealed confirmation batch",
+    "the v17 development pilots"
+  ]
+}

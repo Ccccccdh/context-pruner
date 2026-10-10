@@ -1,0 +1,162 @@
+{
+  "schema": "openai_agents_v17_pilot_integrator_verification",
+  "verification_id": "openai-agents-v17-dev-pilot-verification-01",
+  "date": "20261010",
+  "verifier": "integrator",
+  "api_requests_spent": 0,
+  "method": "recomputed every headline figure from the batch's own manifest.json, report.json and samples.jsonl, and read the prompt change and the provenance hashes from the diff artifact and the module sources; nothing here relies on the runner agent's prose",
+  "subject": {
+    "batch": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v17-first-attempt-compliance-pilot-02",
+    "manifest_sha256_prefix": "27ff37aadfb2c3c3",
+    "freeze": "integrations/openai_agents/V17_DEV_PILOT_FREEZE_20261010.json",
+    "freeze_sha256": "9c1424adf371dffe7f3068833f4fc5d56a2c568b2d6c1cc7753aeaa34fd959aa",
+    "pre_run_manifest_never_finalised": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v17-first-attempt-compliance-pilot-01"
+  },
+  "verified_figures": {
+    "samples": 9,
+    "first_attempt_accepted": {
+      "count": 7,
+      "of": 9,
+      "rate": 0.778,
+      "field": "v17_first_attempt_accepted"
+    },
+    "first_attempt_accepted_per_arm": {
+      "none": "2/3",
+      "pruner_v1": "3/3",
+      "native_summary": "2/3"
+    },
+    "v16_reference_first_attempt_rate": {
+      "count": 13,
+      "of": 45,
+      "rate": 0.289
+    },
+    "repair_retries_per_arm": {
+      "none": 1,
+      "pruner_v1": 0,
+      "native_summary": 1
+    },
+    "retry_tokens_per_arm": {
+      "none": 3954,
+      "pruner_v1": 0,
+      "native_summary": 3988
+    },
+    "retry_share_of_requests": {
+      "count": "2 of 30",
+      "rate": 0.067,
+      "v16_reference": 0.167
+    },
+    "retries_per_sample": {
+      "v17": 0.222,
+      "v16": 0.711,
+      "ratio": 0.31
+    },
+    "strict_track": "9 of 9 samples pass all four conditions (facts_complete, frozen_regex, single_line_prefix, within_160) and success is true for all nine; every arm is 3/3 on every task",
+    "render_failures": 0,
+    "truncations": 0,
+    "dropped_fields": 0,
+    "requests": {
+      "used": 30,
+      "cap": 110,
+      "rate": 0.273,
+      "stopped_early": false
+    },
+    "cache": {
+      "calls_with_fields": 27,
+      "calls_total": 27,
+      "prompt_cache_hit_tokens": 44788,
+      "prompt_cache_miss_tokens": 24363,
+      "hit_rate": 0.648,
+      "all_off_peak": true,
+      "identity_check": "44788 + 24363 = 69151 = total main-call input tokens, which reconciles with input + output = 70777 and output = 1626"
+    },
+    "cost_usd_off_peak": 0.002382,
+    "complete_provider_tokens_per_arm": {
+      "none": 27768,
+      "pruner_v1": 17946,
+      "native_summary": 27183
+    },
+    "pooled_paired_saving": 0.2952,
+    "pooled_positive_pairs": "3 of 3",
+    "pooled_label": "not citable: one repeat, three development tasks that took part in building this configuration, no confirmation"
+  },
+  "rejection_class_moved": {
+    "v16_class": "declared_fact_missing_from_rendered_answer: 32 of 32 retries, each missing exactly one registered required literal",
+    "v17_class": "over_160_chars: 2 of 2 retries, and v17_first_missing_required_literals is empty in both",
+    "reading": "the root-cause class disappeared and the length bound became the binding class instead, which is the expected consequence of the new prompt sentence: the model now puts all three required literals inside cause and fix, which lengthens those fields, and the first candidate line then exceeds 160 characters",
+    "not_a_regression_in_quality": "both length rejections were repaired by the single retry, so all nine samples still pass the strict track; the trade is visible in the retry rate, not in quality",
+    "implication_for_the_next_configuration": "the 160 character bound is now the first-attempt bottleneck, so any new task shape must keep the number of required literals small and must check the minimum feasible rendered line before the batch is frozen"
+  },
+  "corrections_to_the_runner_agents_self_report": [
+    {
+      "item": "native_summary complete provider tokens",
+      "reported": 28183,
+      "verified": 27183,
+      "evidence": "manifest pilot_report.per_task complete_total_tokens sums to 8294 + 8410 + 10479 = 27183, and samples.jsonl all_arm_total_tokens sums to 27183; the reported figure is exactly 1000 too high"
+    },
+    {
+      "item": "pilot-01 manifest state",
+      "reported": "the manifest was not written for pilot-01",
+      "verified": "runs/...-v17-first-attempt-compliance-pilot-01/manifest.json exists but is the pre-run manifest: every run field is null (api_calls, pilot_report, runner_status, stopped_early) and it was never finalised; its report.json records 31 charged requests and its samples.jsonl holds nine rows",
+      "correct_wording": "the pre-run manifest exists and was never finalised; the nine samples were produced and 31 requests were charged and are recorded"
+    },
+    {
+      "item": "all other headline figures",
+      "verified": true,
+      "note": "first-attempt rate, per-arm split, retries, retry tokens, strict track, render failures, requests, cache split, off-peak status and dollars all reproduce exactly"
+    }
+  ],
+  "integrity_gap_owned": {
+    "what": "the v17 pilot run cannot be tied to an exact code revision",
+    "evidence": [
+      "the v17 freeze names only the renderer hash (experiments/runners/openai_agents_structured_final_v16.py, 22fa96a5...), which is unchanged and verified",
+      "the pilot-02 manifest records host_configuration.modules as an empty object, so no module revision was pinned by the run",
+      "the diff artifact records the runner target as ba5cedef511fcd3f while the file on disk now hashes to be0b97b4100711e7, so the runner was edited after that target was recorded (the finalisation bug fix) and nothing states which revision produced the numbers",
+      "the registry and live-contract targets do still match the files on disk (aa67abea06d9a47b and b5be9165c8845579)"
+    ],
+    "impact": "bounded: the batch is non-citable development evidence by its own freeze, so no citable claim rests on it; the effect is on reproducibility, not on any published number",
+    "remediation_mandatory_for_the_next_run": [
+      "the next freeze must list host_configuration.modules with a sha256 for every module in the path, exactly as the v16 freeze did",
+      "the manifest must copy those hashes and a revision-aware fail-closed check must refuse the batch if any recorded hash no longer matches the file",
+      "the freeze and the driver modules must be frozen before the first paid request of the batch, and the batch id must be new"
+    ],
+    "post_hoc_provenance_recorded_now": {
+      "experiments/runners/openai_agents_v17_registry.py": "aa67abea06d9a47b5c5bb8fdef352ea975c7884620534bad10de44d828070392",
+      "experiments/runners/openai_agents_v17_live_contract.py": "b5be9165c8845579491e5541380f5f0766f97df77dfb933a12b26a1a1e3e1ca3",
+      "experiments/runners/run_openai_agents_v17_acquisition.py": "be0b97b4100711e726c85003933a6cf0357c3c2b5388442d28a4af69ae5fb45d",
+      "experiments/runners/openai_agents_structured_final_v16.py": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+      "note": "these hashes were taken after the run; they are provenance records, not pre-registered pins, and the runner hash differs from the diff artifact's target"
+    }
+  },
+  "verdict_against_the_frozen_decision_line": {
+    "region": "pass_and_continue_to_task_shape_and_confirmation",
+    "checks": {
+      "first_attempt_accepted_at_least_70_percent": true,
+      "every_arm_strict_track_at_least_baseline": true,
+      "zero_render_failures": true,
+      "zero_truncations": true,
+      "retries_at_most_4_of_9": true
+    },
+    "confirmed_independently": true
+  },
+  "may_be_stated": "under this host configuration, the one-sentence prompt completeness fix removed the rejection class that produced all 32 repair retries in the sealed confirmation batch, and in this nine-sample development pilot first-attempt acceptance rose from 28.9 percent to 77.8 percent while every sample kept passing the strict track and the length bound became the only remaining rejection class",
+  "may_not_be_stated": [
+    "any saving claim from this pilot",
+    "quality equivalence in general",
+    "that the retry tax is gone or that 77.8 percent generalises",
+    "anything about other hosts or other host configurations"
+  ],
+  "citable": false,
+  "never_rejudge": [
+    "attempt 01",
+    "attempt 02",
+    "attempt 03",
+    "pilot-01",
+    "pilot-02",
+    "v12",
+    "v13",
+    "v14",
+    "v15",
+    "the v16 sealed confirmation batch",
+    "the v17 pilot-01 partial directory"
+  ]
+}

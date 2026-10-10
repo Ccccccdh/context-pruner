@@ -1,0 +1,611 @@
+{
+  "amendment_schema": "openai_agents_freeze_amendment_v1",
+  "date": "20261006",
+  "policy": "A freeze file is written once and never edited. Every later change is recorded here with the field, the reason and both SHA256 values, and every batch manifest records the freeze file's own SHA256 and this amendment's own SHA256 so an after-the-fact edit is detectable from the batch alone.",
+  "amendments": [
+    {
+      "version": "v16",
+      "entry": 1,
+      "kind": "consolidated_pre_batch_pin",
+      "freeze": "integrations/openai_agents/V16_ACQUISITION_FREEZE_20261006.json",
+      "freeze_sha256": "18c0d49f5cec9e7deebe6054ec6bb79356d4d289072d063dd196dada2eababc8",
+      "freeze_sha256_unchanged": true,
+      "files_changed_after_freeze": 0,
+      "note": "The v16 acquisition freeze was not edited and no file it pins was edited. The freeze already records a SHA256 per source-of-record file; that block is reproduced below with the digests re-measured at amendment time, and the batch manifest records both the freeze's value and each file's hash at batch time. What the freeze does not pin is the runner-side implementation written after it, so those files are pinned here; and the host adapts two sentences of the frozen runner's own prompt at runtime, which is registered here because the file's content is unchanged while the prompt the model receives is not.",
+      "source_of_record_already_hashed": {
+        "note": "verbatim from the freeze's source_of_record field, with the digest re-measured on disk when this amendment was written; the batch re-verifies all four before any request is sent and records both values per file",
+        "files": {
+          "integrations/openai_agents/V16_SOURCE_REGISTRATION_20261006.json": {
+            "frozen_sha256": "0723258eb3b297752625af85e5f2264bf843da70fa7205735225ca45fdaa22eb",
+            "measured_at_amendment_sha256": "0723258eb3b297752625af85e5f2264bf843da70fa7205735225ca45fdaa22eb",
+            "matches": true
+          },
+          "integrations/openai_agents/V16_STAGE1_20261006.json": {
+            "frozen_sha256": "989785291638d4f6699f781e5d10c3bedb7b636d91f833355235fb265c4037d8",
+            "measured_at_amendment_sha256": "989785291638d4f6699f781e5d10c3bedb7b636d91f833355235fb265c4037d8",
+            "matches": true
+          },
+          "integrations/openai_agents/V16_GATE_PROBES_20261006.json": {
+            "frozen_sha256": "491eac2f7ad1050e07012a2987f6c469c01d32afb0fd981b1347ab768e4dc9be",
+            "measured_at_amendment_sha256": "491eac2f7ad1050e07012a2987f6c469c01d32afb0fd981b1347ab768e4dc9be",
+            "matches": true
+          },
+          "integrations/openai_agents/V16_CANDIDATE_POOL_20261006.json": {
+            "frozen_sha256": "def85ab86093ae5bfc08f568a2172a29448effb09742d27825d6b979e40ba357",
+            "measured_at_amendment_sha256": "def85ab86093ae5bfc08f568a2172a29448effb09742d27825d6b979e40ba357",
+            "matches": true
+          }
+        }
+      },
+      "additional_files_edited_after_freeze": [
+        {
+          "path": "experiments/runners/run_openai_agents_v16_acquisition.py",
+          "reason": "the batch entry point: fixed task matrix, cap 30, one-pass manifest that refuses to overwrite, and a preflight that re-verifies the freeze, this amendment and the four source-of-record files before any request",
+          "frozen_sha256_in_freeze": "",
+          "new_sha256": "8d87646e4dabd941b62824bb6b1e6de3921af9c5a6167c0c47d3b1e78518daa2",
+          "pin": true,
+          "recorded_at": "20261006 v16 acquisition, before the first paid request",
+          "record_policy": "this hash is the file's state when the amendment was written; a later edit is recorded by a new amendment entry, never by editing this one, and every batch manifest records this amendment's own SHA256 together with the current hash of every file pinned here and which entry it matched"
+        },
+        {
+          "path": "experiments/runners/openai_agents_v16_registry.py",
+          "reason": "reads the three registered view sets and contracts from the two frozen artifacts, re-verifies every view against the pinned base commits, and supplies the two fields the artifacts omit (the 15315 tool names, derived from the registered view order, and the protocol steps derived from the registered read shape)",
+          "frozen_sha256_in_freeze": "",
+          "new_sha256": "54323c8046881f207de3233bc3918c556352271dffec8b04df02c24a953c5798",
+          "pin": true,
+          "recorded_at": "20261006 v16 acquisition, before the first paid request",
+          "record_policy": "this hash is the file's state when the amendment was written; a later edit is recorded by a new amendment entry, never by editing this one, and every batch manifest records this amendment's own SHA256 together with the current hash of every file pinned here and which entry it matched"
+        },
+        {
+          "path": "experiments/runners/openai_agents_v16_live_contract.py",
+          "reason": "the host configuration itself: the structured answer type, the renderer as the final-answer path, the single metered retry, the per-boundary and per-call metering, the raw-request cache metering and the frozen-prompt adaptation",
+          "frozen_sha256_in_freeze": "",
+          "new_sha256": "16c62cade520b377041f9e71e08e77c8e0d019bf00a30b572bd4c086b1ff4230",
+          "pin": true,
+          "recorded_at": "20261006 v16 acquisition, before the first paid request",
+          "record_policy": "this hash is the file's state when the amendment was written; a later edit is recorded by a new amendment entry, never by editing this one, and every batch manifest records this amendment's own SHA256 together with the current hash of every file pinned here and which entry it matched"
+        },
+        {
+          "path": "experiments/runners/openai_agents_v16_stage1.py",
+          "reason": "the stage-1 generator whose registered 15315 request text the registry reads (the stage-1 artifact records the views, the contract and a statement hash but not the request text), pinned here even though the freeze does not pin it",
+          "frozen_sha256_in_freeze": "",
+          "new_sha256": "f13857bd1a4db69215f9ba4f763805addad59e2aafdfa3d9810f3d6d957e305f",
+          "pin": true,
+          "recorded_at": "20261006 v16 acquisition, before the first paid request",
+          "record_policy": "this hash is the file's state when the amendment was written; a later edit is recorded by a new amendment entry, never by editing this one, and every batch manifest records this amendment's own SHA256 together with the current hash of every file pinned here and which entry it matched"
+        },
+        {
+          "path": "experiments/runners/openai_agents_structured_final_v16.py",
+          "reason": "the renderer; the freeze pins it as host_configuration.renderer and it is pinned again here so the batch manifest carries its hash next to the other implementation hashes",
+          "frozen_sha256_in_freeze": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+          "new_sha256": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+          "pin": true,
+          "recorded_at": "20261006 v16 acquisition, before the first paid request",
+          "record_policy": "this hash is the file's state when the amendment was written; a later edit is recorded by a new amendment entry, never by editing this one, and every batch manifest records this amendment's own SHA256 together with the current hash of every file pinned here and which entry it matched"
+        },
+        {
+          "path": "experiments/runners/run_openai_agents_api_experiment.py",
+          "reason": "the shared frozen runner the batch executes (SDK agent, loop, scoring, manifests). Its content is unchanged - it is hashed by 24 freezes - and it is pinned here because this batch's runtime patches and prompt adaptation target it, so a later edit must be visible from the batch artifact",
+          "frozen_sha256_in_freeze": "1cafd67b5b4d649381c737ff2e97d15d7cbba95709311d3516ccdb266c7e8708",
+          "new_sha256": "1cafd67b5b4d649381c737ff2e97d15d7cbba95709311d3516ccdb266c7e8708",
+          "pin": true,
+          "recorded_at": "20261006 v16 acquisition, before the first paid request",
+          "record_policy": "this hash is the file's state when the amendment was written; a later edit is recorded by a new amendment entry, never by editing this one, and every batch manifest records this amendment's own SHA256 together with the current hash of every file pinned here and which entry it matched"
+        },
+        {
+          "path": "tests/test_openai_agents_v16_live_runner_zero_api.py",
+          "reason": "the zero-API validation module cited by this round (plan mode, stub mode, the four renderer controls, the cache-metering facts, the paid-path rehearsal). Archived rather than pinned: it is evidence, not part of the batch's execution path, so pinning it would report every later test edit as an implementation drift; its hash at amendment time is recorded here",
+          "frozen_sha256_in_freeze": "",
+          "new_sha256": "1b805402fc747cbc0fc9cb663d15623869082b1af0eef852ea5cc78e9647e122",
+          "pin": false,
+          "recorded_at": "20261006 v16 acquisition, before the first paid request",
+          "record_policy": "this hash is the file's state when the amendment was written; a later edit is recorded by a new amendment entry, never by editing this one, and every batch manifest records this amendment's own SHA256 together with the current hash of every file pinned here and which entry it matched"
+        }
+      ],
+      "runtime_prompt_replacement": {
+        "file": "experiments/runners/run_openai_agents_api_experiment.py",
+        "file_sha256": "1cafd67b5b4d649381c737ff2e97d15d7cbba95709311d3516ccdb266c7e8708",
+        "file_edited": false,
+        "how": "runtime, in memory: the runner replaces two sentences of the instructions it builds for every arm, identically, and records per sample which replacement applied; no file is written",
+        "replacements": [
+          {
+            "old_text": "The final response must be exactly one line, begin with RESULT, contain at most 160 characters, and follow this contract: ",
+            "old_sha256": "002e1fbd36f4cd92452d8bb3e2af868a99620f49e0c4874c2d7f28971557b98e",
+            "new_text": "Your final message must be exactly one JSON object and nothing else, following this contract: ",
+            "new_sha256": "1f524edfd7d18d1cb72411475c21a87dbba66d6f9ba12cfd2a43b5a128eea5b2"
+          },
+          {
+            "old_text": "Replace angle-bracket fields with tool values.",
+            "old_sha256": "761b3c4d10baae538b5c7dd88f60e75693c7b6f2603433b6d7c16e86811048ab",
+            "new_text": "Fill every field with the values the tools returned.",
+            "new_sha256": "421b9a2805117323b5fae74ffc7abc1c8931c42a45920e3ed76156f85bc62ef7"
+          }
+        ],
+        "reason": "the frozen prompt tells the model to write one RESULT line of at most 160 characters itself, and to replace angle-bracket fields with tool values. Under the v16 host configuration the model returns JSON and the host renders the line, so those two sentences would contradict the contract and make every sample fail for a reason that belongs to the prompt, not to the task. Both replacements are applied in every arm, so no arm is favoured.",
+        "canary": "each sample row records prompt_adaptations (applied / unapplied against the expected list); the zero-API stub path asserts both replacements applied in all four controls, the paid runner refuses to report a batch whose adaptation is incomplete, and the frozen file's own SHA256 is pinned above so a later edit cannot hide",
+        "evidence": [
+          "integrations/openai_agents/V16_LIVE_STUB_20261006.json",
+          "tests/test_openai_agents_v16_live_runner_zero_api.py"
+        ]
+      },
+      "pre_batch_drafts_consolidated": [
+        {
+          "draft_entry": 1,
+          "kind": "consolidated_pre_batch_pin",
+          "note": "The v16 acquisition freeze was not edited and no file it pins was edited. The freeze already records a SHA256 per source-of-record file; that block is reproduced below with the digests re-measured at amendment time, and the batch manifest records both the freeze's value and each file's hash at batch time. What the freeze does not pin is the runner-side implementation written after it, so those files are pinned here; and the host adapts two sentences of the frozen runner's own prompt at runtime, which is registered here because the file's content is unchanged while the prompt the model receives is not.",
+          "recorded_digests": {
+            "experiments/runners/run_openai_agents_v16_acquisition.py": "8d87646e4dabd941b62824bb6b1e6de3921af9c5a6167c0c47d3b1e78518daa2",
+            "experiments/runners/openai_agents_v16_registry.py": "54323c8046881f207de3233bc3918c556352271dffec8b04df02c24a953c5798",
+            "experiments/runners/openai_agents_v16_live_contract.py": "16c62cade520b377041f9e71e08e77c8e0d019bf00a30b572bd4c086b1ff4230",
+            "experiments/runners/openai_agents_v16_stage1.py": "f13857bd1a4db69215f9ba4f763805addad59e2aafdfa3d9810f3d6d957e305f",
+            "experiments/runners/openai_agents_structured_final_v16.py": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+            "experiments/runners/run_openai_agents_api_experiment.py": "1cafd67b5b4d649381c737ff2e97d15d7cbba95709311d3516ccdb266c7e8708"
+          },
+          "superseded_because": "written while the zero-API checks were still being finished; every correction was pre-batch (no paid request had been sent and no batch directory existed), so the three drafts are consolidated into the single entry below with their digests preserved here"
+        }
+      ],
+      "not_done": [
+        "no criteria were changed: at most 160 characters stays an acceptance condition",
+        "no v12, v13, v14 or v15 freeze, score or answer was touched or re-judged",
+        "no request was spent to write this amendment"
+      ]
+    },
+    {
+      "version": "v16",
+      "entry": 2,
+      "kind": "provider_capability_correction",
+      "freeze": "integrations/openai_agents/V16_ACQUISITION_FREEZE_20261006.json",
+      "freeze_sha256": "18c0d49f5cec9e7deebe6054ec6bb79356d4d289072d063dd196dada2eababc8",
+      "freeze_sha256_unchanged": true,
+      "files_changed_after_freeze": 0,
+      "criteria_changed": false,
+      "note": "The freeze was not edited and no acceptance criterion changed: at most 160 characters stays an acceptance condition, and the required facts, the frozen regex and the single-line contract prefix are unchanged. What changed is where the structured contract is enforced.",
+      "what_changed": {
+        "before": "the agent carried output_type=StructuredAnswer, so the OpenAI Agents SDK enforced the JSON schema provider-side through response_format",
+        "after": "the agent carries no output_type; the model is still asked, in the prompt, for the byte-identical JSON object, and the frozen renderer in experiments/runners/openai_agents_structured_final_v16.py is the final-answer path and the only validator: it parses the JSON, requires exactly the four fields, rejects duplicate keys, missing or extra fields, wrong types and unsafe strings, checks that every declared fact appears in the rendered line, and rejects anything longer than 160 characters. The rendered line replaces the model's JSON as the answer the frozen scoring sees; a rejected proposal is closed to an empty answer. At most one retry is billed, and it is metered.",
+        "unchanged": [
+          "the JSON contract text in the prompt, character for character",
+          "the frozen renderer module and its hash",
+          "the four conditions and the 160-character bound",
+          "the single retry budget and the per-call metering"
+        ]
+      },
+      "why": {
+        "provider_refusal": "HTTP 400 BadRequestError: 'This response_format type is unavailable now' on the first model call of all three samples of attempt 1; zero tool calls were made",
+        "sdk_evidence": "agents 0.22.3 OpenAIChatCompletionsModel sets response_format = Converter.convert_response_format(output_schema) on every request, and that path has no model_settings override, so output_type cannot be used without asking this deployment for a json_schema response format",
+        "user_ruling": "option A chosen: B is unavailable in this deployment, and C would have to go around the very SDK path that has no override point",
+        "evidence_artifacts": [
+          "integrations/openai_agents/V16_ACQUISITION_ATTEMPT_01_20261006.json",
+          "runs/stage5-openai-agents-api/openai-repo-diagnostic-v16-structured-acquisition-01/manifest.json"
+        ]
+      },
+      "methodology_lesson": "zero-API plan and stub checks cannot discover a provider capability gap, because they never contact the provider; every new host configuration must spend one real request as the first step of the acquisition batch, in a mode that fails cleanly, instead of risking a whole batch. Recorded in HANDOFF_THREE_HOST_20261006.md.",
+      "attempt_01": {
+        "requests_spent": 3,
+        "status": "kept unchanged as the failure record; nobody may edit or re-judge it",
+        "not_citable": true
+      },
+      "additional_files_edited_after_freeze": [
+        {
+          "path": "experiments/runners/openai_agents_v16_live_contract.py",
+          "reason": "host configuration: the agent no longer carries output_type, so the request sends no response_format; the host validator (the frozen renderer) is now the only one, the rendered line is put in place of the model's JSON so the frozen scoring scores the answer the contract defines, and a rejected proposal is closed to an empty answer",
+          "frozen_sha256_in_freeze": "",
+          "new_sha256": "496909d3bca778ae74c2063bea6136c59a30547cb8f3e133cb9b086563acb8b7",
+          "pin": true,
+          "recorded_at": "20261006 v16 acquisition, option A, before the second paid attempt",
+          "record_policy": "this hash is the file's state when this entry was written; a later edit is recorded by a further entry, never by editing an existing one, and every batch manifest records this amendment's own SHA256 together with the current hash of every pinned file and which entry it matched"
+        },
+        {
+          "path": "experiments/runners/run_openai_agents_v16_acquisition.py",
+          "reason": "entry point: the per-sample report now separates 'no answer produced' from 'rendered over-length' (attempt 1's field counted an empty answer as over-length), nine controls replace four, and a one-request capability probe mode runs before any batch",
+          "frozen_sha256_in_freeze": "",
+          "new_sha256": "6a3e803ffb3930afaa9b33a8607ac08762cc939332c4b5ee509fc307cfbbdb21",
+          "pin": true,
+          "recorded_at": "20261006 v16 acquisition, option A, before the second paid attempt",
+          "record_policy": "this hash is the file's state when this entry was written; a later edit is recorded by a further entry, never by editing an existing one, and every batch manifest records this amendment's own SHA256 together with the current hash of every pinned file and which entry it matched"
+        }
+      ]
+    },
+    {
+      "version": "v16",
+      "entry": 3,
+      "kind": "pre_batch_correction",
+      "freeze": "integrations/openai_agents/V16_ACQUISITION_FREEZE_20261006.json",
+      "freeze_sha256": "18c0d49f5cec9e7deebe6054ec6bb79356d4d289072d063dd196dada2eababc8",
+      "freeze_sha256_unchanged": true,
+      "files_changed_after_freeze": 0,
+      "note": "Entry 2's own drift check reported that the entry point had changed again: while the nine controls were being verified, the amendment-path reporting was made robust for a run against a temporary amendment copy. Still before the second paid attempt, so the corrected hash is recorded here rather than editing entry 2.",
+      "additional_files_edited_after_freeze": [
+        {
+          "path": "experiments/runners/run_openai_agents_v16_acquisition.py",
+          "reason": "the amendment record's own path handling no longer assumes the amendment file sits inside the repository, so a zero-API verification run against a temporary copy reports a path instead of failing",
+          "frozen_sha256_in_freeze": "",
+          "new_sha256": "a0dafdc9966c71ee59648cdbd597e527e9116ba9637c5950d635cbf36fa01820",
+          "pin": true,
+          "recorded_at": "20261006 v16 acquisition, option A, before the second paid attempt",
+          "record_policy": "this hash is the file's state when this entry was written; a later edit is recorded by a further entry, never by editing an existing one, and every batch manifest records this amendment's own SHA256 together with the current hash of every pinned file and which entry it matched"
+        },
+        {
+          "path": "tests/test_openai_agents_v16_live_runner_zero_api.py",
+          "reason": "archived evidence, not pinned: the validation module now covers the nine controls and the corrected share semantics; recorded here with its current hash",
+          "frozen_sha256_in_freeze": "",
+          "new_sha256": "91055c7203ade3017ce7c0012c60c81f7d38e7ba2735989194228b227f5da993",
+          "pin": false,
+          "recorded_at": "20261006 v16 acquisition, option A, before the second paid attempt",
+          "record_policy": "this hash is the file's state when this entry was written; a later edit is recorded by a further entry, never by editing an existing one, and every batch manifest records this amendment's own SHA256 together with the current hash of every pinned file and which entry it matched"
+        }
+      ]
+    },
+    {
+      "version": "v16",
+      "entry": 4,
+      "kind": "second_attempt_identifier",
+      "freeze": "integrations/openai_agents/V16_ACQUISITION_FREEZE_20261006.json",
+      "freeze_sha256": "18c0d49f5cec9e7deebe6054ec6bb79356d4d289072d063dd196dada2eababc8",
+      "freeze_sha256_unchanged": true,
+      "files_changed_after_freeze": 0,
+      "note": "The corrected host configuration runs as attempt 2 under its own experiment id, so nothing can overwrite attempt 1; the batch manifest also records attempt 1 and its outcome. The frozen matrix, cap and criteria are unchanged.",
+      "additional_files_edited_after_freeze": [
+        {
+          "path": "experiments/runners/run_openai_agents_v16_acquisition.py",
+          "reason": "the experiment id carries the attempt number and the manifest states the previous attempt, its spent requests and its outcome",
+          "frozen_sha256_in_freeze": "",
+          "new_sha256": "dc06ee7eb28a97a41c213dc575cab46539b53f46e37462fbc234099ad6f5a90b",
+          "pin": true,
+          "recorded_at": "20261006 v16 acquisition, option A, before the second paid attempt",
+          "record_policy": "this hash is the file's state when this entry was written; a later edit is recorded by a further entry, never by editing an existing one, and every batch manifest records this amendment's own SHA256 together with the current hash of every pinned file and which entry it matched"
+        },
+        {
+          "path": "tests/test_openai_agents_v16_live_runner_zero_api.py",
+          "reason": "archived evidence; recorded with its current hash",
+          "frozen_sha256_in_freeze": "",
+          "new_sha256": "fa097415f40a0aaed0df9e0c85b2b49d1aea23ac1f835077537ed293bf3ed355",
+          "pin": false,
+          "recorded_at": "20261006 v16 acquisition, option A, before the second paid attempt",
+          "record_policy": "this hash is the file's state when this entry was written; a later edit is recorded by a further entry, never by editing an existing one, and every batch manifest records this amendment's own SHA256 together with the current hash of every pinned file and which entry it matched"
+        }
+      ]
+    },
+    {
+      "version": "v16",
+      "entry": 5,
+      "kind": "probe_mode_correction",
+      "freeze": "integrations/openai_agents/V16_ACQUISITION_FREEZE_20261006.json",
+      "freeze_sha256": "18c0d49f5cec9e7deebe6054ec6bb79356d4d289072d063dd196dada2eababc8",
+      "freeze_sha256_unchanged": true,
+      "files_changed_after_freeze": 0,
+      "note": "The first probe invocation failed on its own argument handling before sending anything: the mode flag was still in the argument list handed to the frozen parser, so no request was spent. The flag is now stripped like the other host-mode flags, and a probe passes only when the provider answered at all (the run stops after its single turn, so 'max turns exceeded' is the expected successful shape, while an API refusal is not).",
+      "additional_files_edited_after_freeze": [
+        {
+          "path": "experiments/runners/run_openai_agents_v16_acquisition.py",
+          "reason": "probe mode strips its own flag before the frozen parser sees the arguments, and judges success by whether the provider produced a response rather than by the absence of any error name",
+          "frozen_sha256_in_freeze": "",
+          "new_sha256": "0daf1d3c8fb8e0734e16ca00ebac5b4d591f95652ebcf5c69658104ffbbb80f6",
+          "pin": true,
+          "recorded_at": "20261006 v16 acquisition, option A, before the second paid attempt",
+          "record_policy": "this hash is the file's state when this entry was written; a later edit is recorded by a further entry, never by editing an existing one, and every batch manifest records this amendment's own SHA256 together with the current hash of every pinned file and which entry it matched"
+        },
+        {
+          "path": "tests/test_openai_agents_v16_live_runner_zero_api.py",
+          "reason": "archived evidence; recorded with its current hash",
+          "frozen_sha256_in_freeze": "",
+          "new_sha256": "04ce1f4974d2cbed90fbe27d92b702b17a4533853a5db4e791621a6440436a84",
+          "pin": false,
+          "recorded_at": "20261006 v16 acquisition, option A, before the second paid attempt",
+          "record_policy": "this hash is the file's state when this entry was written; a later edit is recorded by a further entry, never by editing an existing one, and every batch manifest records this amendment's own SHA256 together with the current hash of every pinned file and which entry it matched"
+        }
+      ]
+    },
+    {
+      "version": "v16",
+      "entry": 6,
+      "kind": "probe_record_and_reader_correction",
+      "freeze": "integrations/openai_agents/V16_ACQUISITION_FREEZE_20261006.json",
+      "freeze_sha256": "18c0d49f5cec9e7deebe6054ec6bb79356d4d289072d063dd196dada2eababc8",
+      "freeze_sha256_unchanged": true,
+      "files_changed_after_freeze": 0,
+      "note": "The capability probe ran: the provider accepted the plain request (no response_format is sent now), answered, and the run stopped after its single turn with MaxTurnsExceeded, which is the expected successful shape. Its record read a non-existent row key for the request count and reported 0; the value is corrected once in the probe record with the original preserved, and the reader is fixed here.",
+      "probe_result": {
+        "artifact": "integrations/openai_agents/V16_CAPABILITY_PROBE_20261006.json",
+        "requests": 1,
+        "provider_accepted": true,
+        "model_calls": 1,
+        "tool_calls": 3,
+        "error": "MaxTurnsExceeded",
+        "note": "the model asked for all three registered views in one parallel batch, so the six-read protocol shape must be checked in the batch itself; the probe only establishes that the provider accepts this request"
+      },
+      "additional_files_edited_after_freeze": [
+        {
+          "path": "experiments/runners/run_openai_agents_v16_acquisition.py",
+          "reason": "the probe payload reads the frozen row's api_request_attempts key instead of a non-existent one",
+          "frozen_sha256_in_freeze": "",
+          "new_sha256": "3a74f902ab610e87d92674b41b588fe69edbeb37dbbc1eed576d695c9f528199",
+          "pin": true,
+          "recorded_at": "20261006 v16 acquisition, option A, before the second paid attempt",
+          "record_policy": "this hash is the file's state when this entry was written; a later edit is recorded by a further entry, never by editing an existing one, and every batch manifest records this amendment's own SHA256 together with the current hash of every pinned file and which entry it matched"
+        },
+        {
+          "path": "tests/test_openai_agents_v16_live_runner_zero_api.py",
+          "reason": "archived evidence; recorded with its current hash",
+          "frozen_sha256_in_freeze": "",
+          "new_sha256": "04ce1f4974d2cbed90fbe27d92b702b17a4533853a5db4e791621a6440436a84",
+          "pin": false,
+          "recorded_at": "20261006 v16 acquisition, option A, before the second paid attempt",
+          "record_policy": "this hash is the file's state when this entry was written; a later edit is recorded by a further entry, never by editing an existing one, and every batch manifest records this amendment's own SHA256 together with the current hash of every pinned file and which entry it matched"
+        }
+      ]
+    },
+    {
+      "version": "v16",
+      "entry": 7,
+      "kind": "retry_diagnostic_feedback",
+      "freeze": "integrations/openai_agents/V16_ACQUISITION_FREEZE_20261006.json",
+      "freeze_sha256": "18c0d49f5cec9e7deebe6054ec6bb79356d4d289072d063dd196dada2eababc8",
+      "freeze_sha256_unchanged": true,
+      "files_changed_after_freeze": 0,
+      "criteria_changed": false,
+      "note": "The single observed failure class under this host configuration was a declared fact that the rendered line cannot carry, and the one permitted retry repeated the same proposal blindly, which makes the retry a coin toss. The retry now receives the host's exact rejection reason. Nothing about the contract changed: the four conditions, the 160-character bound, the frozen regex, the single retry budget and the fail-closed rules are byte-identical, and the change is installed in every arm.",
+      "what_changed": {
+        "before": "the retry message asked for a shorter rewrite and said nothing about why the host had rejected the proposal",
+        "after": "the retry message carries the host's rejection reason verbatim, plus the declared strings that are missing when the reason is a declared-fact failure; the sentence is recorded per sample (render_diagnostic, render_diagnostic_carried) and in the render evidence",
+        "why": "it targets the only failure class actually observed in attempt 02 (1/3 samples) and it is symmetric across arms, cheap and verifiable with zero API",
+        "zero_api_proof": [
+          "stub control diagnostic_used_by_model: a stand-in that acts on the reason is accepted on the retry (accepted_retry)",
+          "stub control diagnostic_ignored_still_fails: a stand-in that ignores it repeats the failure and the answer is closed to empty",
+          "every rejected control records diagnostic_carried = true with a non-empty diagnostic; the two accepted controls record it false"
+        ]
+      },
+      "replay_gate": {
+        "artifact": "integrations/openai_agents/V16_REPLAY_GATE_20261006.json",
+        "batch": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v16-structured-acquisition-02",
+        "five_items_all_true": true,
+        "guard_filtered_safe_candidates_per_task": 6,
+        "negative_control_caught": true,
+        "paid_requests": 0
+      },
+      "additional_files_edited_after_freeze": [
+        {
+          "path": "experiments/runners/openai_agents_v16_live_contract.py",
+          "reason": "host configuration: the retry message now carries the host validator's exact rejection reason (and, for a declared-fact failure, the declared strings that are missing), recorded in the ledger and the per-sample fields; the four conditions, the 160-character bound and the frozen regex are unchanged",
+          "frozen_sha256_in_freeze": "",
+          "new_sha256": "b60411ea1dc079d9a99bad499201e07e58dcee54b5b694e9a393eb8f8b45dac1",
+          "pin": true,
+          "recorded_at": "20261006 v16 acquisition, before the confirmatory attempt",
+          "record_policy": "this hash is the file's state when this entry was written; a later edit is recorded by a further entry, never by editing an existing one, and every batch manifest records this amendment's own SHA256 together with the current hash of every pinned file and which entry it matched"
+        },
+        {
+          "path": "experiments/runners/run_openai_agents_v16_acquisition.py",
+          "reason": "entry point: the third attempt runs under its own experiment id and records both earlier attempts; the stub path grew the two diagnostic controls (a model that acts on the reason is accepted on the retry, a model that ignores it is still rejected)",
+          "frozen_sha256_in_freeze": "",
+          "new_sha256": "9a8e07570d89c5fee5e250bfb421979e8cfb1f6699903f6551c6b6a65bae1c9a",
+          "pin": true,
+          "recorded_at": "20261006 v16 acquisition, before the confirmatory attempt",
+          "record_policy": "this hash is the file's state when this entry was written; a later edit is recorded by a further entry, never by editing an existing one, and every batch manifest records this amendment's own SHA256 together with the current hash of every pinned file and which entry it matched"
+        },
+        {
+          "path": "experiments/runners/openai_agents_v16_replay_gate.py",
+          "reason": "zero-API replay gate over the recorded baseline payloads: the five invariants and the negative control, written for this host's parallel read batches (a recorded boundary is matched to the rebuilt stage with the same item count). Not executed by the batch, so archived with its hash rather than pinned",
+          "frozen_sha256_in_freeze": "",
+          "new_sha256": "1f31ce0e39e7e10cbb40c0f3b28212986279e052e0b47e79547527ed6ae2b06b",
+          "pin": false,
+          "recorded_at": "20261006 v16 acquisition, before the confirmatory attempt",
+          "record_policy": "this hash is the file's state when this entry was written; a later edit is recorded by a further entry, never by editing an existing one, and every batch manifest records this amendment's own SHA256 together with the current hash of every pinned file and which entry it matched"
+        },
+        {
+          "path": "tests/test_openai_agents_v16_live_runner_zero_api.py",
+          "reason": "archived evidence; recorded with its current hash",
+          "frozen_sha256_in_freeze": "",
+          "new_sha256": "19270a000624fd42341c481a99959fa5f3a86ccd8d70415ca0f1e998fefa9af1",
+          "pin": false,
+          "recorded_at": "20261006 v16 acquisition, before the confirmatory attempt",
+          "record_policy": "this hash is the file's state when this entry was written; a later edit is recorded by a further entry, never by editing an existing one, and every batch manifest records this amendment's own SHA256 together with the current hash of every pinned file and which entry it matched"
+        }
+      ]
+    },
+    {
+      "version": "v16",
+      "entry": 8,
+      "kind": "three_arm_pilot_mode",
+      "freeze": "integrations/openai_agents/V16_ACQUISITION_FREEZE_20261006.json",
+      "freeze_sha256": "18c0d49f5cec9e7deebe6054ec6bb79356d4d289072d063dd196dada2eababc8",
+      "freeze_sha256_unchanged": true,
+      "files_changed_after_freeze": 0,
+      "criteria_changed": false,
+      "note": "The three-arm pilot runs under its own freeze (integrations/openai_agents/V16_THREE_ARM_PILOT_FREEZE_20261006.json) with its own experiment id and its own cap of 300; the acquisition batch's cap of 30 is unrelated and closed. The host configuration is the same one the confirmatory batch verified - all-arm structured contract, frozen renderer as the only validator, and the single billed retry that carries the host's rejection reason - installed identically in every arm. No criterion changed and the freeze was not edited.",
+      "zero_api_rehearsal": {
+        "mode": "--pilot-stub",
+        "samples": 27,
+        "api_calls": 0,
+        "result": "all three arms ran through the production wiring with a deterministic local model; the plugin arm's frozen duplicate rule and the three-arm rotation were exercised for the first time under this registry, and the pilot report printed per-arm strict counts, retries, summary calls and requests"
+      },
+      "additional_files_edited_after_freeze": [
+        {
+          "path": "experiments/runners/run_openai_agents_v16_acquisition.py",
+          "reason": "entry point: a three-arm pilot mode (3 tasks x 3 repeats x 3 arms, own frozen matrix, own cap of 300, per-sample summary cap, paired per-task report, per-arm failure decomposition, one-pass pilot manifest) and a zero-API rehearsal of the whole pilot",
+          "frozen_sha256_in_freeze": "",
+          "new_sha256": "0e161cc12929f7d328bc414da07212231cc51a7d95dabcafa8cf06cf79e0bb12",
+          "pin": true,
+          "recorded_at": "20261006 v16 pilot, before the first request",
+          "record_policy": "this hash is the file's state when this entry was written; a later edit is recorded by a further entry, never by editing an existing one, and every batch manifest records this amendment's own SHA256 together with the current hash of every pinned file and which entry it matched"
+        },
+        {
+          "path": "tests/test_openai_agents_v16_live_runner_zero_api.py",
+          "reason": "archived evidence; recorded with its current hash",
+          "frozen_sha256_in_freeze": "",
+          "new_sha256": "d098c4f4b1cca010c71c2522ca190cd413b83a5376a6be3d90c7aeb49f05077b",
+          "pin": false,
+          "recorded_at": "20261006 v16 pilot, before the first request",
+          "record_policy": "this hash is the file's state when this entry was written; a later edit is recorded by a further entry, never by editing an existing one, and every batch manifest records this amendment's own SHA256 together with the current hash of every pinned file and which entry it matched"
+        }
+      ]
+    },
+    {
+      "version": "v16",
+      "entry": 9,
+      "kind": "two_sided_length_diagnostic",
+      "freeze": "integrations/openai_agents/V16_ACQUISITION_FREEZE_20261006.json",
+      "freeze_sha256": "18c0d49f5cec9e7deebe6054ec6bb79356d4d289072d063dd196dada2eababc8",
+      "freeze_sha256_unchanged": true,
+      "files_changed_after_freeze": 0,
+      "criteria_changed": false,
+      "note": "The three-arm pilot failed its quality gate, and the retrospective found the mechanism rather than a length limit: all four over-length rejections began as a declared-fact rejection whose one-sided diagnostic told the model to include the missing string without ever mentioning the 160-character bound, so the retry grew by 27 to 44 raw characters and then failed on length. The diagnostic is now two-sided for every class. The four conditions, the 160-character bound, the frozen regex, the single retry budget and the fail-closed rules are unchanged, and the change is installed in every arm.",
+      "evidence": {
+        "retro_artifact": "integrations/openai_agents/V16_PILOT_RETRO_20261006.json",
+        "over_length_cases": 4,
+        "all_in_one_task": "django_field_hash_immutability",
+        "first_reason_in_every_case": "declared_fact_missing_from_rendered_answer",
+        "repair_reason_in_every_case": "over_160_chars",
+        "repair_raw_delta_chars": [
+          27,
+          44,
+          44,
+          44
+        ],
+        "minimal_feasible_line_chars_per_task": 68,
+        "margin_to_bound_chars": 92,
+        "reading": "the bound was never the binding constraint: the shortest line that keeps every required literal and both regex tokens is 68 characters for each task, so the failures were caused by the diagnostic asking for more text while staying silent about the bound"
+      },
+      "zero_api_proof": [
+        "stub control diagnostic_shortening_used_by_model: accepted_retry with all three literals present and the line at 85 characters",
+        "stub control diagnostic_shortening_ignored_still_fails: still over-length, closed to an empty answer",
+        "unit tests assert that every rejection class's diagnostic states 160, names every required literal and both regex tokens, and forbids restatement"
+      ],
+      "additional_files_edited_after_freeze": [
+        {
+          "path": "experiments/runners/openai_agents_v16_live_contract.py",
+          "reason": "host configuration: the retry diagnostic is now two-sided for every rejection class - it always states the 160-character bound, names every required literal and both regex tokens that must survive, and forbids restating a fact; for the declared-fact class it also says to place the missing string inside cause or fix while staying within the bound",
+          "frozen_sha256_in_freeze": "",
+          "new_sha256": "c8d33bd42e6094edfabad46e1b4fc60b72a0c0b86aa48508224b023fce80c86b",
+          "pin": true,
+          "recorded_at": "20261006 v16 pilot retro, before any further request",
+          "record_policy": "this hash is the file's state when this entry was written; a later edit is recorded by a further entry, never by editing an existing one, and every batch manifest records this amendment's own SHA256 together with the current hash of every pinned file and which entry it matched"
+        },
+        {
+          "path": "experiments/runners/run_openai_agents_v16_acquisition.py",
+          "reason": "entry point: two controls were added - an over-length proposal whose retry acts on the length diagnostic is accepted with every literal intact, and the same proposal whose retry ignores it stays over-length and is closed to empty",
+          "frozen_sha256_in_freeze": "",
+          "new_sha256": "ea31a67d1f92e6bb7832025c8342d4ec66fd8fd271ab16d9f6bfaccc448209e4",
+          "pin": true,
+          "recorded_at": "20261006 v16 pilot retro, before any further request",
+          "record_policy": "this hash is the file's state when this entry was written; a later edit is recorded by a further entry, never by editing an existing one, and every batch manifest records this amendment's own SHA256 together with the current hash of every pinned file and which entry it matched"
+        },
+        {
+          "path": "tests/test_openai_agents_v16_live_runner_zero_api.py",
+          "reason": "archived evidence; recorded with its current hash",
+          "frozen_sha256_in_freeze": "",
+          "new_sha256": "7825b71bcbd5bc23337a18a1eaaaf14c72bb98860ca6c84aa017bd56199ff98d",
+          "pin": false,
+          "recorded_at": "20261006 v16 pilot retro, before any further request",
+          "record_policy": "this hash is the file's state when this entry was written; a later edit is recorded by a further entry, never by editing an existing one, and every batch manifest records this amendment's own SHA256 together with the current hash of every pinned file and which entry it matched"
+        }
+      ]
+    },
+    {
+      "version": "v16",
+      "entry": 10,
+      "kind": "pilot_02_reporting",
+      "freeze": "integrations/openai_agents/V16_ACQUISITION_FREEZE_20261006.json",
+      "freeze_sha256": "18c0d49f5cec9e7deebe6054ec6bb79356d4d289072d063dd196dada2eababc8",
+      "freeze_sha256_unchanged": true,
+      "files_changed_after_freeze": 0,
+      "criteria_changed": false,
+      "note": "The approved re-run after the two-sided diagnostic runs as pilot attempt 2 under its own freeze and experiment id; pilot 01 and its freeze stay untouched. Nothing about the matrix, the acceptance line, the four conditions or the cap changed. The report now also carries the trajectory-matched subset, which explains stability but never decides the verdict, and a per-sample first-versus-retry length table.",
+      "reporting_additions": [
+        "trajectory-matched subset (report only, never a substitute for the frozen reading)",
+        "per-sample first candidate length, retry candidate length and their delta",
+        "per-arm retries, samples whose retry carried the diagnostic, and first-answer reasons"
+      ],
+      "additional_files_edited_after_freeze": [
+        {
+          "path": "experiments/runners/openai_agents_v16_live_contract.py",
+          "reason": "host configuration: the ledger now records the first and the retried candidate length plus their delta, so a batch can show whether the two-sided diagnostic shortened the answer or let it grow",
+          "frozen_sha256_in_freeze": "",
+          "new_sha256": "ac05f40a353973911b7601ef3a9ff1b720ebf8ab90c196d470e3c151dc03f2d4",
+          "pin": true,
+          "recorded_at": "20261006 v16 pilot attempt 2, before the first request",
+          "record_policy": "this hash is the file's state when this entry was written; a later edit is recorded by a further entry, never by editing an existing one, and every batch manifest records this amendment's own SHA256 together with the current hash of every pinned file and which entry it matched"
+        },
+        {
+          "path": "experiments/runners/run_openai_agents_v16_acquisition.py",
+          "reason": "entry point: pilot attempt 2 under its own experiment id and its own freeze; the pilot report now carries the trajectory-matched subset next to the pre-registered reading and a per-sample length trajectory, and the per-arm decomposition counts the samples whose retry carried the diagnostic",
+          "frozen_sha256_in_freeze": "",
+          "new_sha256": "7d5dd3e6f62e39652d5d02f4e675c98fa830840c9183933aa129534cd8ad2095",
+          "pin": true,
+          "recorded_at": "20261006 v16 pilot attempt 2, before the first request",
+          "record_policy": "this hash is the file's state when this entry was written; a later edit is recorded by a further entry, never by editing an existing one, and every batch manifest records this amendment's own SHA256 together with the current hash of every pinned file and which entry it matched"
+        },
+        {
+          "path": "tests/test_openai_agents_v16_live_runner_zero_api.py",
+          "reason": "archived evidence; recorded with its current hash",
+          "frozen_sha256_in_freeze": "",
+          "new_sha256": "2365990fe4b96a77bb8db623e5dd719af73f1606cf6d665b09e891f6bec6a756",
+          "pin": false,
+          "recorded_at": "20261006 v16 pilot attempt 2, before the first request",
+          "record_policy": "this hash is the file's state when this entry was written; a later edit is recorded by a further entry, never by editing an existing one, and every batch manifest records this amendment's own SHA256 together with the current hash of every pinned file and which entry it matched"
+        }
+      ]
+    },
+    {
+      "version": "v16",
+      "entry": 11,
+      "kind": "sealed_confirmation_wiring",
+      "freeze": "integrations/openai_agents/V16_ACQUISITION_FREEZE_20261006.json",
+      "freeze_sha256": "18c0d49f5cec9e7deebe6054ec6bb79356d4d289072d063dd196dada2eababc8",
+      "freeze_sha256_unchanged": true,
+      "files_changed_after_freeze": 0,
+      "criteria_changed": false,
+      "note": "The three sealed confirmation candidates are registered from their own artifact and the runner can execute them as a sealed set under a freeze of its own. The development set, the acquisition attempts and both three-arm pilots are unchanged and are not re-run or re-judged. Nothing about the contract, the four conditions or the acceptance line changed.",
+      "sealed_registration": {
+        "artifact": "integrations/openai_agents/V16_SEALED_SOURCE_REGISTRATION_20261006.json",
+        "view_rule": "integrations/openai_agents/V16_SEALED_VIEW_RULE_20261006.json",
+        "candidates": 3,
+        "survivors": 3,
+        "note": "the first probe run reported two candidates as 'defect absent'; investigation showed both were probe defects (a 92-line method truncated by a fixed window, and the shared attrs dict living in SplitArrayWidget.get_context), so the rule was amended before any request and the earlier rule text and hash are kept in the rule artifact"
+      },
+      "zero_api_rehearsal": {
+        "mode": "--confirmation-stub",
+        "samples": 45,
+        "api_calls": 0,
+        "result": "all three arms ran the sealed tasks through the production wiring with a local model; the plugin arm's filter, the five-repeat rotation and the sealed-task report were exercised without contacting a provider"
+      },
+      "additional_files_edited_after_freeze": [
+        {
+          "path": "experiments/runners/openai_agents_v16_registry.py",
+          "reason": "registry: the sealed confirmation set is loaded from its own registration artifact and selected with set_active; the development set keeps its two artifacts and its behaviour",
+          "frozen_sha256_in_freeze": "",
+          "new_sha256": "5b0c252f0e9252d08baa216592018673a0a33e0ea61ac5cfa00fcf7f09dab7e8",
+          "pin": true,
+          "recorded_at": "20261006 sealed confirmation, before the first request",
+          "record_policy": "this hash is the file's state when this entry was written; a later edit is recorded by a further entry, never by editing an existing one, and every batch manifest records this amendment's own SHA256 together with the current hash of every pinned file and which entry it matched"
+        },
+        {
+          "path": "experiments/runners/run_openai_agents_v16_acquisition.py",
+          "reason": "entry point: a sealed confirmation mode (3 sealed tasks x 5 repeats x 3 arms, own frozen matrix, own cap, one-pass manifest with the pre-registered acceptance line and the two report-only items) plus its zero-API rehearsal, and the three-armed report helpers are parameterised by arm set and repeat count",
+          "frozen_sha256_in_freeze": "",
+          "new_sha256": "09b7d46eb27f86746d82fbd6b62a50bf092b1552d84f1618fff80297081ca814",
+          "pin": true,
+          "recorded_at": "20261006 sealed confirmation, before the first request",
+          "record_policy": "this hash is the file's state when this entry was written; a later edit is recorded by a further entry, never by editing an existing one, and every batch manifest records this amendment's own SHA256 together with the current hash of every pinned file and which entry it matched"
+        },
+        {
+          "path": "tests/test_openai_agents_v16_live_runner_zero_api.py",
+          "reason": "archived evidence; recorded with its current hash",
+          "frozen_sha256_in_freeze": "",
+          "new_sha256": "2365990fe4b96a77bb8db623e5dd719af73f1606cf6d665b09e891f6bec6a756",
+          "pin": false,
+          "recorded_at": "20261006 sealed confirmation, before the first request",
+          "record_policy": "this hash is the file's state when this entry was written; a later edit is recorded by a further entry, never by editing an existing one, and every batch manifest records this amendment's own SHA256 together with the current hash of every pinned file and which entry it matched"
+        },
+        {
+          "path": "experiments/runners/openai_agents_v16_sealed_registration.py",
+          "reason": "the sealed registration generator: derives view windows from the AST of the pinned blobs, runs the defect probes with both controls and verifies every hash; not executed by the batch, so archived with its hash",
+          "frozen_sha256_in_freeze": "",
+          "new_sha256": "b08eb4bf38e48101afbcd65d578e8465e81b2848dfd197bb9929ea60b156e3fb",
+          "pin": false,
+          "recorded_at": "20261006 sealed confirmation, before the first request",
+          "record_policy": "this hash is the file's state when this entry was written; a later edit is recorded by a further entry, never by editing an existing one, and every batch manifest records this amendment's own SHA256 together with the current hash of every pinned file and which entry it matched"
+        }
+      ]
+    }
+  ]
+}

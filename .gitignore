@@ -174,6 +174,27 @@ runs/stage5-openhands/*
 # 02 走完预注册阶梯但没有出现合格前缀（三条 rung 的视图 17342/21745/16219 < 28000）。
 !runs/stage5-openhands/django-multitask-v61-01/
 !runs/stage5-openhands/django-multitask-v61-02/
+# v62：新任务 django__django-15957 上的第二批同前缀分叉，三硬标志齐（实测判定 3/3、插件压缩 3 次），
+# 三臂宿主判定仍全部 failed（等失败前提下的成本对比）；逐调用口径 +14.45% 后缀 / +10.17% 全程。
+# 该批的冻结审计器崩溃（UnboundLocalError），审计以“非冻结版事后审计”补做并明确标注，
+# frozen_experiment_sources_valid 保持 false —— 见 batch RESULTS.md 与 post-gate-audit-drift.json。
+!runs/stage5-openhands/django-multitask-v62-01/
+# v62 功能门/预检目录：只有 gate.json 与三份基线文本（workspaces 由既有规则排除），
+# 是 V62_FUNCTIONAL_GATE_20261005.json 引用的证据来源，故入库。
+!runs/stage5-openhands/django-15957-v62-gate-02/
+!runs/stage5-openhands/django-15957-v62-preflight-01/
+# v64–v66 真实代码修复批次（v66 插件导入崩溃、0 项宿主测试启动 ⇒ 失败批也必须保留），
+# v67 质量门（0 API）+ 各版本审计正/负控制探针（证明审计会拒坏记录）。
+!runs/stage5-openhands/django-finish-v64-01/
+!runs/stage5-openhands/django-finish-v65-01/
+!runs/stage5-openhands/django-finish-v66-01/
+!runs/stage5-openhands/django-quality-gate-v67-01/
+!runs/stage5-openhands/v64-audit-derived-probe-01/
+!runs/stage5-openhands/v64-audit-derived-probe-02/
+!runs/stage5-openhands/v65-audit-derived-probe-01/
+!runs/stage5-openhands/v66-audit-derived-probe-01/
+!runs/stage5-openhands/v67-audit-negative-probe-01/
+!runs/stage5-openhands/v67-audit-positive-probe-01/
 # v53-pilot-01 / -02 是各只有 1 个样本的中断/演练目录，不作为结果入库。
 
 # 新主机三臂批次：只放行最终结果批次，中间/演练批次不入库。
@@ -197,6 +218,48 @@ runs/stage5-openai-agents-api/*
 !runs/stage5-openai-agents-api/openai-repo-diagnostic-v9-long-baseline-boundary/
 !runs/stage5-openai-agents-api/openai-repo-diagnostic-v10-tool-call-recency-boundary/
 !runs/stage5-openai-agents-api/openai-repo-diagnostic-v11-elision-ratio-boundary/
+# v12 逐字重复输出开发小试（+14.63% 但严格质量 0/1，格式长度失败 → 不得称有效节省）；
+# v13 留出任务 psf__requests-1766：获取批 + 确认批（Track A 3/3 = 基线、配对 +17.50%）；
+# v14 多任务确认：4 个获取批（其中 1 个被预注册准入规则筛掉）+ 确认批
+# （池化 +12.65%、9/9 正，但严格轨因答复 >160 字符在 1/3 任务上不达标 → acceptance.met=false）。
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v12-exact-duplicate-dev-01/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v13-requests1766-acquisition-01/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v13-requests1766-confirm-01/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v14-multitask-confirm-01/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v14-requests_bad_host_unicode-acquisition-01/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v14-requests_binary_payload-acquisition-01/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v14-flask_empty_blueprint_name-acquisition-01/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v14-xarray_copy_dtype-acquisition-01/
+# v15 获取链：acquisition-01 因沙箱网络连续失败、0 成功响应（按纪律原样保留，不覆盖），
+# acquisition-02 在批准的沙箱外网络下以新 ID 重跑；三批均为载荷获取，不作收益证据。
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v15-django_field_error_messages_copy-acquisition-01/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v15-django_field_error_messages_copy-acquisition-02/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v15-django_method_decorator_partial-acquisition-02/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v15-django_textchoices_string_value-acquisition-02/
+# v16 结构化主机配置链：三次载荷获取（01 因提供方拒绝 response_format 失败，按纪律原样保留）、
+# 两个开发集三臂小试（01 未达冻结验收线，02 通过）、封存三任务确认批（45 样本、唯一一批、候选一次性）。
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v16-structured-acquisition-01/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v16-structured-acquisition-02/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v16-structured-acquisition-03/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v16-three-arm-pilot-01/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v16-three-arm-pilot-02/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v16-sealed-confirmation-01/
+# v17 主机配置链：首答提示补一条"字面必须落在 cause/fix 内"的规则（判据零变化）。
+# pilot-01 因收尾函数读错冻结 schema 而未 finalised（9 样本已产生、31 请求照常计费，按纪律原样保留）；
+# pilot-02 为正式小试（9 样本、30/110 请求）。
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v17-first-attempt-compliance-pilot-01/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v17-first-attempt-compliance-pilot-02/
+# v19 形状剂量-反应（两批都没能 finalise：形状覆写漏 `source_of_record`，样本照常计费，按纪律原样保留）。
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v19-shape-n3-pilot-01/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v19-shape-n6-pilot-01/
+# 【临时块】在飞的 v21「保留字面载体的行级省略」尝试：模块与预注册尚未定稿，本次提交不要它。
+# v21 落地后，把下面这段整块删掉再入库（届时它的批次目录也要按同一格式加白名单）。
+experiments/runners/openai_agents_v21_carrier_elision.py
+experiments/runners/openai_agents_v21_chain.py
+experiments/runners/run_openai_agents_v21_acquisition.py
+tests/test_openai_agents_v21.py
+integrations/openai_agents/V21_LITERAL_CARRIER_ELISION_PLAN_20261010.json
+runs/stage5-openai-agents-api/openai-repo-diagnostic-v21-*
 !runs/stage5-crewai/
 runs/stage5-crewai/*
 !runs/stage5-crewai/crewai-natural-3arm-v133/
@@ -227,6 +290,38 @@ runs/stage5-crewai/*
 !runs/stage5-crewai/crewai-two-role-r12-recency-toolrounds-mock-01/
 !runs/stage5-crewai/crewai-two-role-r13-toolrounds-and-contract-01/
 !runs/stage5-crewai/crewai-two-role-r13-toolrounds-and-contract-mock-01/
+# r15/r16/r17：新任务链上的载荷获取批、三臂小试与续跑批（含 mock 接口检查，与既有约定一致）。
+# r15 三臂未过质量门（插件少调工具）；r16 三臂未过（守卫触发条件与模型裸交接形态不匹配，
+# 且冻结源在运行后被改 → frozen_experiment_sources_valid=false，已建修订台账）；
+# r17 按冻结原文三条预注册线全中（工具序列 12/12 = 基线、严格/语义 12/12/12、
+# 同工作量 8/8 正、均值 +35.606%），但属“装上工具轮守卫的主机配置下”的开发证据，
+# 且确认须用 r17 确认批任务；引用必须带归因模板与长度/离散度边界。
+!runs/stage5-crewai/crewai-r15-payload-none-01/
+!runs/stage5-crewai/crewai-r15-payload-mock-01/
+!runs/stage5-crewai/crewai-two-role-r15-release-gate-3arm-01/
+!runs/stage5-crewai/crewai-two-role-r15-release-gate-3arm-resume-a-01/
+!runs/stage5-crewai/crewai-two-role-r15-release-gate-3arm-mock-01/
+!runs/stage5-crewai/crewai-r16-payload-none-01/
+!runs/stage5-crewai/crewai-two-role-r16-release-gate-guarded-3arm-01/
+!runs/stage5-crewai/crewai-two-role-r16-release-gate-guarded-3arm-resume-a-01/
+!runs/stage5-crewai/crewai-two-role-r16-release-gate-guarded-mock-01/
+!runs/stage5-crewai/crewai-r17-payload-none-01/
+!runs/stage5-crewai/crewai-two-role-r17-guarded-3arm-01/
+!runs/stage5-crewai/crewai-r17-confirmation-payload-none-01/
+!runs/stage5-crewai/crewai-two-role-r17-confirmation-3arm-01/
+# r19 全捕获获取链的零 API 门：preflight ×2、冻结 mock、mock-handoff（3 行 / 21 次 mock 请求，
+# 独立审计 complete=true/errors=[]）。mock token 不是供应商成本，不得当收益证据。
+!runs/stage5-crewai/crewai-r19-fullcapture-acquisition-mock-preflight-01/
+!runs/stage5-crewai/crewai-r19-fullcapture-acquisition-mock-preflight-02/
+!runs/stage5-crewai/crewai-r19-fullcapture-acquisition-frozen-mock-01/
+!runs/stage5-crewai/crewai-r19-fullcapture-acquisition-mock-handoff-01/
+# r19 真实获取批（21/30 请求、非高峰、缓存命中 68.53%、审计 complete=true/errors=[]）
+# 与 mock readiness 复跑批：mock token 与真实 token 必须分列，真实批不作收益证据。
+!runs/stage5-crewai/crewai-r19-fullcapture-acquisition-api-01/
+!runs/stage5-crewai/crewai-r19-fullcapture-acquisition-mock-readiness-01/
+# r20 顺序无关（"至少各读一次/不限序/允许重复"）真实获取批：4/4 样本、28/30 请求、非高峰、
+# 缓存命中 68.58%、coverage 4/4、重复 0；仅 none 臂，不作收益或质量等价证据。
+!runs/stage5-crewai/crewai-r20-orderfree-fullcapture-acquisition-api-01/
 
 # 保留报告、manifest、ledger、SDK 事件和测试日志；跳过可重建的完整源码副本。
 runs/stage5-*/**/workspaces/

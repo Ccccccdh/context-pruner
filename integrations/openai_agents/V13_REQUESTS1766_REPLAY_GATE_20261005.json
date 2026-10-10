@@ -1,0 +1,450 @@
+{
+  "schema": "openai_agents_v13_requests1766_replay_gate",
+  "batch": "openai-repo-diagnostic-v13-requests1766-acquisition-01",
+  "task": "requests_digest_qop",
+  "freeze_sha256": "e1f5bb3ad3b03a13bc7048c7d0e1204df884e5ab0cf0e9c1ed753be4ee93d694",
+  "registry_fingerprint": "8a277286e274ea19664228d5d582174630172447594861b19199eff0b3d1afa1",
+  "recorded_boundaries": 7,
+  "rebuilt_boundaries": 7,
+  "boundaries": [
+    {
+      "boundary": 0,
+      "recorded_input_bytes": 2513,
+      "rebuilt_before_bytes": 2012,
+      "rebuilt_after_bytes": 2012,
+      "rebuilt_byte_delta": 0,
+      "tool_calls": 0,
+      "tool_outputs": 0,
+      "message_units": 3,
+      "replaced_output_positions": [],
+      "structure_matches_record": true,
+      "outputs_match_record": true,
+      "invariants": {
+        "task_constraints": {
+          "counts_before": {
+            "literal:digest_qop_header": 0,
+            "literal:digest_header_builder": 0,
+            "literal:digest_challenge": 0,
+            "literal:auth_apply_step": 0,
+            "literal:session_auth_merge": 0
+          },
+          "counts_after": {
+            "literal:digest_qop_header": 0,
+            "literal:digest_header_builder": 0,
+            "literal:digest_challenge": 0,
+            "literal:auth_apply_step": 0,
+            "literal:session_auth_merge": 0
+          },
+          "lost": []
+        },
+        "current_evidence": {
+          "distinct_sources": 0,
+          "full_copies_before": 0,
+          "full_copies_after": 0,
+          "sources_without_full_copy": []
+        },
+        "tool_group": {
+          "hash_before": "c1149c42964ac57f4a6138f7710937fef43818d68df4bb489035025fd3213d0d",
+          "hash_after": "c1149c42964ac57f4a6138f7710937fef43818d68df4bb489035025fd3213d0d",
+          "identical": true
+        },
+        "restore_and_fallback": {
+          "fallback_reason": "",
+          "task_anchor_restore_failures": 0,
+          "task_restore_fallbacks": 0,
+          "budget_fallbacks": 0
+        },
+        "unaccounted_fallback": [],
+        "source_location": {
+          "pointer_positions": [],
+          "pointer_resolves": true
+        }
+      }
+    },
+    {
+      "boundary": 1,
+      "recorded_input_bytes": 6479,
+      "rebuilt_before_bytes": 5901,
+      "rebuilt_after_bytes": 5901,
+      "rebuilt_byte_delta": 0,
+      "tool_calls": 1,
+      "tool_outputs": 1,
+      "message_units": 3,
+      "replaced_output_positions": [],
+      "structure_matches_record": true,
+      "outputs_match_record": true,
+      "invariants": {
+        "task_constraints": {
+          "counts_before": {
+            "literal:digest_qop_header": 1,
+            "literal:digest_header_builder": 1,
+            "literal:digest_challenge": 1,
+            "literal:auth_apply_step": 0,
+            "literal:session_auth_merge": 0
+          },
+          "counts_after": {
+            "literal:digest_qop_header": 1,
+            "literal:digest_header_builder": 1,
+            "literal:digest_challenge": 1,
+            "literal:auth_apply_step": 0,
+            "literal:session_auth_merge": 0
+          },
+          "lost": []
+        },
+        "current_evidence": {
+          "distinct_sources": 1,
+          "full_copies_before": 1,
+          "full_copies_after": 1,
+          "sources_without_full_copy": []
+        },
+        "tool_group": {
+          "hash_before": "fb3b1a01d1768fe1817c748c36733f7da6d92c88df95c4bc0a41fd039a24a780",
+          "hash_after": "fb3b1a01d1768fe1817c748c36733f7da6d92c88df95c4bc0a41fd039a24a780",
+          "identical": true
+        },
+        "restore_and_fallback": {
+          "fallback_reason": "",
+          "task_anchor_restore_failures": 0,
+          "task_restore_fallbacks": 0,
+          "budget_fallbacks": 0
+        },
+        "unaccounted_fallback": [],
+        "source_location": {
+          "pointer_positions": [],
+          "pointer_resolves": true
+        }
+      }
+    },
+    {
+      "boundary": 2,
+      "recorded_input_bytes": 7723,
+      "rebuilt_before_bytes": 7070,
+      "rebuilt_after_bytes": 7070,
+      "rebuilt_byte_delta": 0,
+      "tool_calls": 2,
+      "tool_outputs": 2,
+      "message_units": 3,
+      "replaced_output_positions": [],
+      "structure_matches_record": true,
+      "outputs_match_record": true,
+      "invariants": {
+        "task_constraints": {
+          "counts_before": {
+            "literal:digest_qop_header": 1,
+            "literal:digest_header_builder": 1,
+            "literal:digest_challenge": 1,
+            "literal:auth_apply_step": 1,
+            "literal:session_auth_merge": 0
+          },
+          "counts_after": {
+            "literal:digest_qop_header": 1,
+            "literal:digest_header_builder": 1,
+            "literal:digest_challenge": 1,
+            "literal:auth_apply_step": 1,
+            "literal:session_auth_merge": 0
+          },
+          "lost": []
+        },
+        "current_evidence": {
+          "distinct_sources": 2,
+          "full_copies_before": 2,
+          "full_copies_after": 2,
+          "sources_without_full_copy": []
+        },
+        "tool_group": {
+          "hash_before": "c3469e8f65ad91d211f3d7519bb2fb9e5088b563edaae6a59cc2d419d8ddc6b8",
+          "hash_after": "c3469e8f65ad91d211f3d7519bb2fb9e5088b563edaae6a59cc2d419d8ddc6b8",
+          "identical": true
+        },
+        "restore_and_fallback": {
+          "fallback_reason": "",
+          "task_anchor_restore_failures": 0,
+          "task_restore_fallbacks": 0,
+          "budget_fallbacks": 0
+        },
+        "unaccounted_fallback": [],
+        "source_location": {
+          "pointer_positions": [],
+          "pointer_resolves": true
+        }
+      }
+    },
+    {
+      "boundary": 3,
+      "recorded_input_bytes": 9814,
+      "rebuilt_before_bytes": 9086,
+      "rebuilt_after_bytes": 9086,
+      "rebuilt_byte_delta": 0,
+      "tool_calls": 3,
+      "tool_outputs": 3,
+      "message_units": 3,
+      "replaced_output_positions": [],
+      "structure_matches_record": true,
+      "outputs_match_record": true,
+      "invariants": {
+        "task_constraints": {
+          "counts_before": {
+            "literal:digest_qop_header": 1,
+            "literal:digest_header_builder": 1,
+            "literal:digest_challenge": 1,
+            "literal:auth_apply_step": 1,
+            "literal:session_auth_merge": 1
+          },
+          "counts_after": {
+            "literal:digest_qop_header": 1,
+            "literal:digest_header_builder": 1,
+            "literal:digest_challenge": 1,
+            "literal:auth_apply_step": 1,
+            "literal:session_auth_merge": 1
+          },
+          "lost": []
+        },
+        "current_evidence": {
+          "distinct_sources": 3,
+          "full_copies_before": 3,
+          "full_copies_after": 3,
+          "sources_without_full_copy": []
+        },
+        "tool_group": {
+          "hash_before": "0d6f22eb63853ac6978b9ca25816012122926b28f0cc691b0f1b23ff65702b9b",
+          "hash_after": "0d6f22eb63853ac6978b9ca25816012122926b28f0cc691b0f1b23ff65702b9b",
+          "identical": true
+        },
+        "restore_and_fallback": {
+          "fallback_reason": "",
+          "task_anchor_restore_failures": 0,
+          "task_restore_fallbacks": 0,
+          "budget_fallbacks": 0
+        },
+        "unaccounted_fallback": [],
+        "source_location": {
+          "pointer_positions": [],
+          "pointer_resolves": true
+        }
+      }
+    },
+    {
+      "boundary": 4,
+      "recorded_input_bytes": 13780,
+      "rebuilt_before_bytes": 12975,
+      "rebuilt_after_bytes": 9499,
+      "rebuilt_byte_delta": 3476,
+      "tool_calls": 4,
+      "tool_outputs": 4,
+      "message_units": 3,
+      "replaced_output_positions": [
+        0
+      ],
+      "structure_matches_record": true,
+      "outputs_match_record": true,
+      "invariants": {
+        "task_constraints": {
+          "counts_before": {
+            "literal:digest_qop_header": 2,
+            "literal:digest_header_builder": 2,
+            "literal:digest_challenge": 2,
+            "literal:auth_apply_step": 1,
+            "literal:session_auth_merge": 1
+          },
+          "counts_after": {
+            "literal:digest_qop_header": 1,
+            "literal:digest_header_builder": 1,
+            "literal:digest_challenge": 1,
+            "literal:auth_apply_step": 1,
+            "literal:session_auth_merge": 1
+          },
+          "lost": []
+        },
+        "current_evidence": {
+          "distinct_sources": 3,
+          "full_copies_before": 3,
+          "full_copies_after": 3,
+          "sources_without_full_copy": []
+        },
+        "tool_group": {
+          "hash_before": "6dd56c89e3f614e84034dfabee15a4b4a5ed2b669980c6874eebfb6f97d2c59b",
+          "hash_after": "6dd56c89e3f614e84034dfabee15a4b4a5ed2b669980c6874eebfb6f97d2c59b",
+          "identical": true
+        },
+        "restore_and_fallback": {
+          "fallback_reason": "",
+          "task_anchor_restore_failures": 0,
+          "task_restore_fallbacks": 0,
+          "budget_fallbacks": 0
+        },
+        "unaccounted_fallback": [],
+        "source_location": {
+          "pointer_positions": [
+            0
+          ],
+          "pointer_resolves": true
+        }
+      }
+    },
+    {
+      "boundary": 5,
+      "recorded_input_bytes": 15024,
+      "rebuilt_before_bytes": 14144,
+      "rebuilt_after_bytes": 9916,
+      "rebuilt_byte_delta": 4228,
+      "tool_calls": 5,
+      "tool_outputs": 5,
+      "message_units": 3,
+      "replaced_output_positions": [
+        0,
+        1
+      ],
+      "structure_matches_record": true,
+      "outputs_match_record": true,
+      "invariants": {
+        "task_constraints": {
+          "counts_before": {
+            "literal:digest_qop_header": 2,
+            "literal:digest_header_builder": 2,
+            "literal:digest_challenge": 2,
+            "literal:auth_apply_step": 2,
+            "literal:session_auth_merge": 1
+          },
+          "counts_after": {
+            "literal:digest_qop_header": 1,
+            "literal:digest_header_builder": 1,
+            "literal:digest_challenge": 1,
+            "literal:auth_apply_step": 1,
+            "literal:session_auth_merge": 1
+          },
+          "lost": []
+        },
+        "current_evidence": {
+          "distinct_sources": 3,
+          "full_copies_before": 3,
+          "full_copies_after": 3,
+          "sources_without_full_copy": []
+        },
+        "tool_group": {
+          "hash_before": "411f101b59338c2c3d5e0ebe3bf13dbe431d47dc098556b8efcf15cb5b7ac40f",
+          "hash_after": "411f101b59338c2c3d5e0ebe3bf13dbe431d47dc098556b8efcf15cb5b7ac40f",
+          "identical": true
+        },
+        "restore_and_fallback": {
+          "fallback_reason": "",
+          "task_anchor_restore_failures": 0,
+          "task_restore_fallbacks": 0,
+          "budget_fallbacks": 0
+        },
+        "unaccounted_fallback": [],
+        "source_location": {
+          "pointer_positions": [
+            0,
+            1
+          ],
+          "pointer_resolves": true
+        }
+      }
+    },
+    {
+      "boundary": 6,
+      "recorded_input_bytes": 17115,
+      "rebuilt_before_bytes": 16160,
+      "rebuilt_after_bytes": 10333,
+      "rebuilt_byte_delta": 5827,
+      "tool_calls": 6,
+      "tool_outputs": 6,
+      "message_units": 3,
+      "replaced_output_positions": [
+        0,
+        1,
+        2
+      ],
+      "structure_matches_record": true,
+      "outputs_match_record": true,
+      "invariants": {
+        "task_constraints": {
+          "counts_before": {
+            "literal:digest_qop_header": 2,
+            "literal:digest_header_builder": 2,
+            "literal:digest_challenge": 2,
+            "literal:auth_apply_step": 2,
+            "literal:session_auth_merge": 2
+          },
+          "counts_after": {
+            "literal:digest_qop_header": 1,
+            "literal:digest_header_builder": 1,
+            "literal:digest_challenge": 1,
+            "literal:auth_apply_step": 1,
+            "literal:session_auth_merge": 1
+          },
+          "lost": []
+        },
+        "current_evidence": {
+          "distinct_sources": 3,
+          "full_copies_before": 3,
+          "full_copies_after": 3,
+          "sources_without_full_copy": []
+        },
+        "tool_group": {
+          "hash_before": "18e92eb90369ca8b8b9d046defc000e62b46d2a673f5c718f36322aeda65f72a",
+          "hash_after": "18e92eb90369ca8b8b9d046defc000e62b46d2a673f5c718f36322aeda65f72a",
+          "identical": true
+        },
+        "restore_and_fallback": {
+          "fallback_reason": "",
+          "task_anchor_restore_failures": 0,
+          "task_restore_fallbacks": 0,
+          "budget_fallbacks": 0
+        },
+        "unaccounted_fallback": [],
+        "source_location": {
+          "pointer_positions": [
+            0,
+            1,
+            2
+          ],
+          "pointer_resolves": true
+        }
+      }
+    }
+  ],
+  "projection": {
+    "scope": "the six tool-carrying boundaries, Responses-item byte measure",
+    "before_bytes": 65336,
+    "after_bytes": 51805,
+    "byte_saving_rate": 0.2070986898493939,
+    "floor": 0.03,
+    "passes_floor": true
+  },
+  "safe_candidates": {
+    "potential_old_units_upper_bound": 3,
+    "guard_filtered_safe_candidates": 3,
+    "per_boundary_replaced_counts": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      2,
+      3
+    ],
+    "rule": "reported separately from the projection; a non-zero count is not a benefit prediction"
+  },
+  "invariant_gate": {
+    "all_invariants_hold": true,
+    "columns": [
+      "task constraints",
+      "current evidence",
+      "tool-group hash",
+      "restore and whole-payload fallback accounting",
+      "source location"
+    ],
+    "stop_rule": "any loss or unaccounted fallback means fix the mechanism, never re-judge quality"
+  },
+  "negative_control": {
+    "real_reduction_loses_nothing": true,
+    "damaged_reduction_lost": [
+      "literal:auth_apply_step"
+    ],
+    "caught": true
+  },
+  "problems": [],
+  "verdict": "proceed",
+  "paid_requests": 0
+}

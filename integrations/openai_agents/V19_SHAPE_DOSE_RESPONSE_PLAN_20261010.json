@@ -1,0 +1,59 @@
+{
+  "schema": "openai_agents_v19_shape_dose_response_plan",
+  "plan_id": "openai-agents-v19-read-round-dose-response-01",
+  "date": "20261010",
+  "status": "PRE_REGISTERED_BEFORE_ANY_PAID_REQUEST",
+  "api_requests_spent_when_written": 0,
+  "supersedes_for_immediate_execution": "integrations/openai_agents/V18_TASK_SHAPE_PLAN_20261010.json and its amendment: the new-sealed-task branch is paused",
+
+  "objective": "measure, on fixed tasks, how the paired saving responds to the number of read rounds, instead of projecting it",
+
+  "why_this_replaces_the_new_task_branch": {
+    "cost_of_the_old_branch": "it needed three new sealed tasks with four freshly derived ranges each, mechanical gates, view and statement hashes, and it kept failing on candidate selection rather than on the hypothesis",
+    "confound_removed": "running the dose response on the three existing development tasks holds the tasks, the views, the contracts, the literals, the tools and the prompt fixed and varies exactly one axis, the batching of the reads; a new task set would have varied the tasks at the same time",
+    "hypothesis_untouched": "the hypothesis under test is the one recorded in handover item 12: the saving scales with the number of compressible rounds, because the mechanism only compresses rounds that are no longer the most recent and realises the saving in the calls that follow them",
+    "evidence_level": "this is development evidence on tasks that took part in building the configuration, so it can show a dose response but can never be the confirmation; the citable confirmation stays the v16 sealed batch at the two round shape"
+  },
+
+  "design": {
+    "tasks": "the three v16 development tasks, unchanged: their registered views, ranges, hashes, literals and frozen regex are read from the existing registry and are not re-derived",
+    "arms": ["none", "native_summary", "pruner_v1"],
+    "shapes": {
+      "N2": "three views read twice, batched three per round: two read rounds; already measured, 9 samples in the v17 pilot, paired saving 29.52 percent unadjusted with three of three pairs positive",
+      "N3": "three views, one distinct view per round, three read rounds",
+      "N6": "three views, one view per round, two cycles, six read rounds; the content is exactly the content of the N2 shape, only the batching changes"
+    },
+    "repeats": 1,
+    "samples_per_shape": 9,
+    "everything_else_fixed": "same renderer, same contract, same literals, same four strict track conditions, same 160 character bound, same one billed retry, same arm charged summaries, same read-only tools"
+  },
+
+  "predictions_from_the_recorded_model": {
+    "model": "saving = B(1-c)S(N) / [(N+1)P + B M(N)], S(N) = (N-1)(N-2)/2 + (N-1), M(N) = N(N-1)/2 + N, c = 0.06, P = 1500, B = 1700",
+    "N2": "16.7 percent modelled, 14.4 percent measured on the v17 clean pairs, so the model overstates by about two points",
+    "N3": "29.6 percent modelled, about 27 percent after the anchor correction",
+    "N6": "51.9 percent modelled, about 50 percent after the anchor correction",
+    "dose_response_expected": "monotone increasing in the number of rounds, with the largest step between two and three rounds",
+    "if_the_prediction_fails": "a flat or falling dose response falsifies the mechanism account in handover item 12 and must be reported as such; the shape lever would then be withdrawn rather than tuned"
+  },
+
+  "decision_line": {
+    "confirms_the_model": "N3 above N2 and N6 above N3, each by more than the batch spread of the measurement, with every arm still at or above the baseline strict track",
+    "inconclusive": "ordering holds in direction but the steps are inside the spread; report and ask before spending on any confirmation",
+    "falsifies": "N6 not above N2, or any arm below the baseline strict track, or any sample failing the strict track; stop and report"
+  },
+
+  "budget": {
+    "expected_complete_tokens_per_sample": {"N3": "about 16000", "N6": "about 60000"},
+    "expected_cost_usd_off_peak": {"N3": "about 0.006", "N6": "about 0.017", "total": "about 0.025"},
+    "cap_rule": "expected model calls per sample = rounds + 1; worst = maximum turns + one retry, with maximum turns = read calls + 2; cap must keep at least 1.3 times the worst case",
+    "authorisation": "the zero API gates must pass first; the two paid development pilots below 0.03 dollars total are authorised; anything larger needs a new authorisation"
+  },
+
+  "carried_rules": {
+    "required_wording": "under this host configuration",
+    "forbidden_wording": ["compression alone saved X percent", "the four criteria are met", "the retry tax is gone"],
+    "no_merge": "these development figures are never merged with the v16 sealed confirmation or with any earlier batch; they are reported side by side with their own scope",
+    "never_rejudge": ["attempt 01", "attempt 02", "attempt 03", "pilot-01", "pilot-02", "v12 to v15", "the v16 sealed confirmation batch", "the v17 development pilots", "the v18 selection branch"]
+  }
+}

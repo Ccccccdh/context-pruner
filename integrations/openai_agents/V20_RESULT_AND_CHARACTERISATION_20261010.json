@@ -1,0 +1,96 @@
+{
+  "schema": "openai_agents_v20_result_and_mechanism_characterisation",
+  "finding_id": "openai-agents-evidence-preserving-redundancy-removal-01",
+  "date": "20261010",
+  "api_requests_spent": 0,
+  "status": "GATE_REFUSED_THE_PAID_RUN",
+
+  "headline": "the zero API gate refused the paid run (paid_run_allowed false), and the reason is the answer to the question that was asked: in this configuration the plugin cannot remove unique content because its own literal guard forbids removing anything that uniquely carries a registered required literal",
+
+  "gate_result": {
+    "ok": false,
+    "paid_run_allowed": false,
+    "a_finalise_really_runs": true,
+    "b_trigger_gate_fires_every_call": true,
+    "c_mechanism_engages_on_unique_content": false,
+    "d_every_module_pinned": true,
+    "paid_run_refused_in_practice": "the runner refuses --pilot with 'refusing to send a paid request: ... paid_run_allowed=False'",
+    "cost_of_this_answer": "zero"
+  },
+
+  "the_three_barriers_in_order": {
+    "barrier_1_budget_trigger_gate": {
+      "state": "addressed in v20: the gate now fires on every model input after the first, and the gate assertion passes with passthrough equal to one first call only",
+      "was": "at the N3 shape two of three tasks never crossed the soft limit of 5435 tokens, so the filter was never invoked at all",
+      "note": "trigger_gate_soft_limit_tokens reports 1 rather than 0 because the frozen class floors the value with max(1, ...); the semantics are unchanged"
+    },
+    "barrier_2_more_than_one_shadowed_method": {
+      "my_spec_was_wrong": "I told the implementer that re-opening the v5 entry point would suffice. It does not, and the implementer found this rather than assuming it",
+      "verified_independently_by_the_integrator": {
+        "method_ownership_on_the_chain_class": {
+          "filter_items": "openai_agents_exact_duplicate_replay_v12.ExactDuplicateFilter",
+          "_filter": "openai_agents_long_baseline_boundary_v8.LongBaselineBoundaryFilter",
+          "_output_decision": "openai_agents_long_baseline_boundary_v8.LongBaselineBoundaryFilter",
+          "classify_outputs": "openai_agents_span_retention_v6.SpanRetentionFilter",
+          "_carrier_loss": "openai_agents_evidence_safe_retention_v5.SelectiveRetentionFilter"
+        },
+        "state_writer_table": "last_elidable_indices is written only by RecencyBoundaryFilter.filter_items (openai_agents_recency_boundary_v7.py:190) and by the v10 variant, initialised empty at v7.py:165, and read as a criterion by v8 at openai_agents_long_baseline_boundary_v8.py:151",
+        "consequence": "v5's filter_items calls self._filter, which resolves to v8's implementation, whose _output_decision returns 'within_recent_turns_kept_verbatim' for every index because the only writer of the eligible index set is the very method that v12 shadows; the state is therefore permanently empty and there is no decision point that can ever delete anything",
+        "measured": "all three outputs keep reason within_recent_turns_kept_verbatim, while v5's own decision hook would have elided the first one"
+      },
+      "not_done": "populating that state would be a second change to the mechanism surface, beyond the single change the plan pre-registered, and it would still not produce a saving because of barrier 3"
+    },
+    "barrier_3_the_literal_guard_refuses_and_is_right_to": {
+      "what_happens": "even with barrier 2 set aside, deleting the round 1 view on the N3 shape would remove occurrences of registered literals, and _carrier_loss (openai_agents_evidence_safe_retention_v5.py:822) reports registered_literal_lost, so the whole call falls back",
+      "arithmetic_on_the_real_payload_second_call": {
+        "check_sqlite_version": {"before": 2, "after": 0},
+        "3.8.3": {"before": 1, "after": 0},
+        "3.9.0": {"before": 4, "after": 4},
+        "django-13821": {"before": 1, "after": 1}
+      },
+      "why_it_is_correct": "3.8.3 exists only in that one output, and 3.8.3 is a registered required literal; removing its only carrier would break the evidence bar that the strict track measures",
+      "therefore": "on a shape where each registered literal has exactly one carrier, this mechanism can remove zero bytes, for a literal safety reason rather than a wiring reason"
+    }
+  },
+
+  "characterisation": {
+    "statement": "in this host configuration the plugin is an evidence preserving redundancy remover: it removes exactly the part of the context that is redundant, and it refuses, by its own guard, to remove any content that uniquely carries a registered required literal",
+    "byte_identical_duplicates_are_the_degenerate_case": "when a whole output is repeated verbatim the redundant part is the entire output, which is why the exact duplicate rule was the only rule that ever moved a counter",
+    "this_single_sentence_explains_every_measurement": {
+      "sealed_confirmation_plus_12_54_percent": "the protocol reads each registered view twice, so about half of the read payload in the baseline arm is redundant with content still present, and that is what is removed",
+      "N3_zero_percent": "no output repeats, so there is nothing redundant, and the single candidate deletion is vetoed by the guard",
+      "45_of_45_strict_track": "only redundant content is removed, so no unique evidence is ever lost",
+      "native_summary_minus_13_25_percent": "its summaries are not redundant, they are additional tokens"
+    },
+    "why_this_is_a_better_claim_than_context_compression": "it is narrower, it is mechanically verifiable from the counters and the guard, and it is falsifiable: it predicts zero saving whenever the required evidence has a single carrier"
+  },
+
+  "decisions": {
+    "do_not_remove_barrier_2": "it would change the elision policy beyond the pre-registered single change, and barrier 3 would still veto on this shape",
+    "do_not_tune_the_guard": "the guard is behaving exactly as designed; weakening it would trade the strict track for tokens, which is the one trade this project refuses",
+    "do_not_manufacture_redundancy": "raising the headline by making the protocol read the same views more often is forbidden by the mechanism correction",
+    "stop_the_capability_pursuit": "the capability question is answered; further headroom would require a new mechanism that compresses unique content while preserving evidence, which is a design effort rather than a measurement, or a registration whose literals are multiply carried",
+    "what_the_line_can_now_say": "under this host configuration, on three sealed tasks at five repeats, this plugin removes redundant context and never removes uniquely carried required evidence: measured paired saving 12.54 percent with a bootstrap interval of 5.17 to 18.30 percent, 13 of 15 pairs positive and 45 of 45 strict track passes, against 0.00 percent on a shape with no redundancy"
+  },
+
+  "incidental_findings_recorded": {
+    "inert_attribution_half_of_the_guard": "v5._carrier_loss reads registry.SOURCES for the task, but the chain pins the task to a frozen registration id and openai_agents_multitask_chain_v14.py:78 only sets an empty tuple, so that half is inert for these tasks; this is true in v13 to v19 as well and was not introduced by v20; the plan's wording 'the literal guard is kept' is therefore broader than the implementation",
+    "pre_existing_test_failure": {
+      "test": "tests/test_openai_agents_v16_live_runner_zero_api.py::RegistryTests::test_problem_statement_hash_reconciliation_is_recorded",
+      "symptom": "KeyError: problem_statement_hash_reconciliation",
+      "verified_by_the_integrator": "it fails on its own in 10.45 seconds; the v20 files are not imported by any existing module",
+      "cause": "the v16 test expects the registry to record the reconciliation key unconditionally, while openai_agents_v17_registry.py:472-489 writes it only when the registered value differs from the public table and is the double hashed form; the third source registration corrected that value, so the branch no longer triggers",
+      "not_drift": "the current sha256 of the test file is 2365990fe4b96a77bb8db623e5dd719af73f1606cf6d665b09e891f6bec6a756 and it matches the pins recorded in V16_LIVE_PLAN, V16_LIVE_STUB, V17_LIVE_PLAN, V17_LIVE_STUB and V17_CAPABILITY_PROBE, so the file has not been modified",
+      "consequence_for_reporting": "the standing claim of '250 tests OK and 3 skipped' is stale for the current tree and must not be repeated without re-running the suite; the focused regression is 117 passed, 1 skipped and this 1 failure",
+      "environment_correction": ".venv has no pytest and .venv-openhands has no agents SDK, so the suite must be run as .venv-openhands python with PYTHONPATH pointing at .venv site-packages; my earlier instruction to use .venv for pytest was wrong"
+    }
+  },
+
+  "citable": false,
+  "never_rejudge": [
+    "attempt 01", "attempt 02", "attempt 03", "pilot-01", "pilot-02",
+    "v12", "v13", "v14", "v15", "the v16 sealed confirmation batch",
+    "the v17 development pilots", "the v18 selection branch", "the v19 dose batches",
+    "the v20 gate round"
+  ]
+}

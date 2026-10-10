@@ -1,0 +1,132 @@
+{
+  "schema": "openai_agents_v17_host_configuration_diff",
+  "date": "20261010",
+  "purpose": "the v17 host configuration is a fork of v16 with one prompt sentence added and recording-only instrumentation",
+  "renderer": {
+    "module": "experiments/runners/openai_agents_structured_final_v16.py",
+    "sha256": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+    "forked": false,
+    "note": "both v17 modules import the v16 renderer unchanged; it stays the final-answer path and the only validator"
+  },
+  "forks": [
+    {
+      "source": "experiments/runners/openai_agents_v16_registry.py",
+      "target": "experiments/runners/openai_agents_v17_registry.py",
+      "source_sha256": "5b0c252f0e9252d08baa216592018673a0a33e0ea61ac5cfa00fcf7f09dab7e8",
+      "target_sha256": "aa67abea06d9a47b5c5bb8fdef352ea975c7884620534bad10de44d828070392",
+      "changes": [
+        {
+          "label": "first_prompt_literal_placement_rule",
+          "line_in_v16": 317,
+          "old_sha256": "d20e213df13c6e8380b87d8ae1f6f91beb3960a633056dac13a947e2dbb460eb",
+          "new_sha256": "b08971e355f2fc4fddde3ecb23aa777e9c022d85183f3e3306df8f5691b86d78",
+          "old_text": "        f\"strings {facts} copied from the tool output. The host renders issue, cause and fix into \"\n",
+          "new_text": "        f\"strings {facts} copied from the tool output. \"\n        f\"Every one of those strings must also appear verbatim inside \\\"cause\\\" or \\\"fix\\\", because the host builds the rendered line from those two fields only, and all of them must be present at the same time as the 160 character bound. \"\n        \"The host renders issue, cause and fix into \"\n"
+        }
+      ],
+      "change_count": 1
+    },
+    {
+      "source": "experiments/runners/openai_agents_v16_live_contract.py",
+      "target": "experiments/runners/openai_agents_v17_live_contract.py",
+      "source_sha256": "ac05f40a353973911b7601ef3a9ff1b720ebf8ab90c196d470e3c151dc03f2d4",
+      "target_sha256": "b5be9165c8845579491e5541380f5f0766f97df77dfb933a12b26a1a1e3e1ca3",
+      "changes": [
+        {
+          "label": "first_attempt_instrumentation_ledger",
+          "line_in_v16": 644,
+          "old_sha256": "47194d74900e54b01d56841316e873e5acafd42ab37722ea6faa78edc750a411",
+          "new_sha256": "a57197b46571ccb97691cb2780a2b84e44dfeb940a00f0c8b127c03c70caaafb",
+          "old_text": "            \"first_candidate_chars\": int(first_verdict.chars),\n            \"repair_calls\": 0,\n        }\n",
+          "new_text": "            \"first_candidate_chars\": int(first_verdict.chars),\n            \"first_attempt_accepted\": first_verdict.accepted,\n            \"first_reject_class\": \"\" if first_verdict.accepted else first_verdict.reason,\n            \"first_candidate_line\": candidate_line(raw, expected_issue=self.expected_issue),\n            \"first_declared_facts\": declared_facts(raw),\n            \"first_missing_required_literals\": [\n                fact\n                for fact in self.required_facts\n                if fact not in candidate_line(raw, expected_issue=self.expected_issue)\n            ],\n            \"repair_calls\": 0,\n        }\n"
+        },
+        {
+          "label": "instrumentation_helpers",
+          "line_in_v16": 214,
+          "old_sha256": "7d9ee2c446a627acb76ed420da19b6775aa073f5c0397beb7567820c10f2ec4a",
+          "new_sha256": "e37537b04bfc548d39f8af2393fc44533809169668714202ffc43f1bdbfe97ef",
+          "old_text": "def missing_declared_facts(raw: str, *, expected_issue: str = \"\") -> list[str]:\n",
+          "new_text": "def candidate_line(raw: str, *, expected_issue: str = \"\") -> str:\n    \"\"\"The rendered line the host would build from this proposal, before its checks.\"\"\"\n\n    try:\n        proposal = json.loads(raw)\n    except Exception:\n        return \"\"\n    if not isinstance(proposal, dict):\n        return \"\"\n    cause, fix = proposal.get(\"cause\"), proposal.get(\"fix\")\n    if not all(isinstance(value, str) for value in (cause, fix)):\n        return \"\"\n    issue = proposal.get(\"issue\", expected_issue)\n    return f\"RESULT issue={issue} cause={cause} fix={fix}\"\n\n\ndef declared_facts(raw: str) -> list[str]:\n    \"\"\"The strings the proposal declared, or an empty list when it is unreadable.\"\"\"\n\n    try:\n        proposal = json.loads(raw)\n    except Exception:\n        return []\n    if not isinstance(proposal, dict):\n        return []\n    facts = proposal.get(\"facts\")\n    return [str(fact) for fact in facts] if isinstance(facts, list) else []\n\n\ndef missing_declared_facts(raw: str, *, expected_issue: str = \"\") -> list[str]:\n"
+        },
+        {
+          "label": "row_fields_for_instrumentation",
+          "line_in_v16": 1107,
+          "old_sha256": "d24329001a38a50f4fda76b17085b9e57738ed05ffe21d364db10becb3d6f897",
+          "new_sha256": "16db6924e736b4e0f0bfb8a9cd08420e1098d77e622ec9f1bccefe8ebf38366d",
+          "old_text": "        row[\"render_diagnostic\"] = str((entry or {}).get(\"diagnostic\", \"\"))\n",
+          "new_text": "        row[\"render_diagnostic\"] = str((entry or {}).get(\"diagnostic\", \"\"))\n        for name in (\n            \"first_attempt_accepted\",\n            \"first_reject_class\",\n            \"first_candidate_line\",\n            \"first_declared_facts\",\n            \"first_missing_required_literals\",\n        ):\n            row[\"v17_\" + name] = (entry or {}).get(name)\n"
+        }
+      ],
+      "change_count": 3
+    },
+    {
+      "source": "experiments/runners/run_openai_agents_v16_acquisition.py",
+      "target": "experiments/runners/run_openai_agents_v17_acquisition.py",
+      "source_sha256": "09b7d46eb27f86746d82fbd6b62a50bf092b1552d84f1618fff80297081ca814",
+      "target_sha256": "ba5cedef511fcd3f39fad67cbbdd69640deb611d4d0acc891c7e21910b29b7a3",
+      "changes": [
+        {
+          "label": "import_v17_modules",
+          "line_in_v16": 45,
+          "old_sha256": "10f21c1054cc78197778bf082c04c82cf7610350929a22267abf83bccaf4e454",
+          "new_sha256": "d7ab457d196b8b46e87623b208c8b9d7fe3f4e5be1f73096f14f739d33d3d028",
+          "old_text": "from experiments.runners import openai_agents_v16_live_contract as live\nfrom experiments.runners import openai_agents_v16_registry as registry\n",
+          "new_text": "from experiments.runners import openai_agents_v17_live_contract as live\nfrom experiments.runners import openai_agents_v17_registry as registry\n"
+        },
+        {
+          "label": "v17_acquisition_experiment_id",
+          "line_in_v16": 54,
+          "old_sha256": "178b5ca796f9760ff3fc7667df0f36ba14ef1cb3784c7ac00a9fe1b0b6a85bc5",
+          "new_sha256": "01a3e504b3a89dcd0d29d802408016064db843fe507e75b31d1dc129384b45b0",
+          "old_text": "EXPERIMENT_ID = \"openai-repo-diagnostic-v16-structured-acquisition-03\"",
+          "new_text": "EXPERIMENT_ID = \"openai-repo-diagnostic-v17-first-attempt-compliance-acquisition-01\""
+        },
+        {
+          "label": "v17_pilot_experiment_id",
+          "line_in_v16": 1448,
+          "old_sha256": "aae4c4afa2f5ad0f422a414aa8918e71c496ebe72316129517092fce4b667f08",
+          "new_sha256": "ad45503971cec65077f7a4f8965efffafa53b5718b8af9131218fd9c68b1877c",
+          "old_text": "PILOT_EXPERIMENT_ID = \"openai-repo-diagnostic-v16-three-arm-pilot-02\"",
+          "new_text": "PILOT_EXPERIMENT_ID = \"openai-repo-diagnostic-v17-first-attempt-compliance-pilot-01\""
+        },
+        {
+          "label": "v17_pilot_freeze_path",
+          "line_in_v16": 1445,
+          "old_sha256": "4c0917cee1b73ff3283512de046025902d4255ea3748f7e938d9e25740a4f5d9",
+          "new_sha256": "864628c2838b54b1aff4c3171edd3c5b2c77dbcd96bbc3ac68300b6ffc2b44b5",
+          "old_text": "PILOT_FREEZE_01 = REPO / \"integrations/openai_agents/V16_THREE_ARM_PILOT_FREEZE_20261006.json\"\nPILOT_FREEZE_02 = REPO / \"integrations/openai_agents/V16_THREE_ARM_PILOT_02_FREEZE_20261006.json\"\nPILOT_FREEZE = PILOT_FREEZE_02",
+          "new_text": "PILOT_FREEZE = REPO / \"integrations/openai_agents/V17_DEV_PILOT_FREEZE_20261010.json\""
+        },
+        {
+          "label": "v17_pilot_matrix",
+          "line_in_v16": 1449,
+          "old_sha256": "d7009c428e08557693b1527a25277fa9118ab3c213730fe7b6055359b4f249f4",
+          "new_sha256": "a18b7d69cb2e4744c2cc222ed600c9e59b95d0fd0cc138c6ddb0177ab45bf08c",
+          "old_text": "PILOT_REPEATS = 3\nPILOT_MAX_API_REQUESTS = 300",
+          "new_text": "PILOT_REPEATS = 1\nPILOT_MAX_API_REQUESTS = 110"
+        },
+        {
+          "label": "v17_plan_artifact",
+          "line_in_v16": 79,
+          "old_sha256": "e25d1803dee855a5f0a6719ce29ddacd7b8765f019e91982f2fd9da1b469b7ac",
+          "new_sha256": "996e104562636e5ac7bfb47ce54cfe3e29914ab74b88095e26a4ef8184c61ada",
+          "old_text": "PLAN_ARTIFACT = REPO / \"integrations/openai_agents/V16_LIVE_PLAN_20261006.json\"\nSTUB_ARTIFACT = REPO / \"integrations/openai_agents/V16_LIVE_STUB_20261006.json\"",
+          "new_text": "PLAN_ARTIFACT = REPO / \"integrations/openai_agents/V17_LIVE_PLAN_20261010.json\"\nSTUB_ARTIFACT = REPO / \"integrations/openai_agents/V17_LIVE_STUB_20261010.json\""
+        },
+        {
+          "label": "v17_probe_artifact",
+          "line_in_v16": 2600,
+          "old_sha256": "10a2fb196f2f087c210068942c405ac8396b0bb8cbdb0648f502297768455a7f",
+          "new_sha256": "9a8907e093bf687b7312604ba53a756328cdad12983f8bbe13af716df9def64e",
+          "old_text": "PROBE_ARTIFACT = REPO / \"integrations/openai_agents/V16_CAPABILITY_PROBE_20261006.json\"",
+          "new_text": "PROBE_ARTIFACT = REPO / \"integrations/openai_agents/V17_CAPABILITY_PROBE_20261010.json\""
+        }
+      ],
+      "change_count": 7
+    }
+  ],
+  "criteria_changed": false,
+  "frozen_files_changed_after_freeze": 0,
+  "retry_diagnostic_text_changed": false,
+  "paid_requests": 0
+}

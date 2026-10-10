@@ -1,0 +1,1345 @@
+{
+  "schema": "openai_agents_v12_decision_boundary_analysis",
+  "batch": "openai-repo-diagnostic-v12-exact-duplicate-dev-01",
+  "task": "django_long_investigation",
+  "repeat": 0,
+  "frozen_regex": "RESULT issue=django-16263 cause=.*existing_annotations.*subquery.* fix=.*referenced.*",
+  "required_terms": [
+    "existing_annotations",
+    "subquery",
+    "referenced"
+  ],
+  "boundaries": [
+    {
+      "boundary": 0,
+      "recorded_bytes_none": 2171,
+      "recorded_bytes_plugin": 2171,
+      "recorded_byte_delta": 0,
+      "rebuilt_item_count": 3,
+      "tool_calls": 0,
+      "tool_outputs": 0,
+      "message_units": 3,
+      "replaced_output_positions": [],
+      "difference_source": "none (payload byte-identical)",
+      "pairing_ok": true,
+      "message_units_verbatim_both_sides": true,
+      "structure_matches_record": true,
+      "baseline_outputs_match_record": true,
+      "plugin_outputs_match_record": true,
+      "component_occurrences": {
+        "frozen_regex": {
+          "none": 0,
+          "plugin": 0
+        },
+        "contract_prefix": {
+          "none": 0,
+          "plugin": 0
+        },
+        "cause_field": {
+          "none": 0,
+          "plugin": 0
+        },
+        "fix_field": {
+          "none": 0,
+          "plugin": 0
+        },
+        "term:existing_annotations": {
+          "none": 0,
+          "plugin": 0
+        },
+        "term:subquery": {
+          "none": 0,
+          "plugin": 0
+        },
+        "term:referenced": {
+          "none": 1,
+          "plugin": 1
+        }
+      },
+      "order_boundary_subquery_then_fix": {
+        "none": 0,
+        "plugin": 0
+      },
+      "frozen_regex_matches_on_visible_text": {
+        "none": 0,
+        "plugin": 0
+      },
+      "lost_presence": [],
+      "rebuilt_bytes_none": 1721,
+      "rebuilt_bytes_plugin": 1721,
+      "rebuilt_byte_delta": 0,
+      "invariants": {
+        "task_constraints": {
+          "recorded_presence_none": {
+            "aggregation_decision": false,
+            "filter_references": true,
+            "ordering_references": true,
+            "other_annotation_references": true
+          },
+          "recorded_presence_plugin": {
+            "aggregation_decision": false,
+            "filter_references": true,
+            "ordering_references": true,
+            "other_annotation_references": true
+          },
+          "identical": true,
+          "counts_none": {
+            "aggregation_decision": 0,
+            "filter_references": 2,
+            "ordering_references": 1,
+            "other_annotation_references": 1
+          },
+          "counts_plugin": {
+            "aggregation_decision": 0,
+            "filter_references": 2,
+            "ordering_references": 1,
+            "other_annotation_references": 1
+          },
+          "labels_lost": []
+        },
+        "current_evidence": {
+          "distinct_sources": 0,
+          "full_copies_none": 0,
+          "full_copies_plugin": 0,
+          "sources_without_full_copy_plugin": []
+        },
+        "tool_group": {
+          "hash_none": "c1149c42964ac57f4a6138f7710937fef43818d68df4bb489035025fd3213d0d",
+          "hash_plugin": "c1149c42964ac57f4a6138f7710937fef43818d68df4bb489035025fd3213d0d",
+          "identical": true,
+          "structure_none": [
+            [
+              "message",
+              "message:user"
+            ],
+            [
+              "message",
+              "message:user"
+            ],
+            [
+              "message",
+              "message:user"
+            ]
+          ]
+        },
+        "restore_and_fallback": {
+          "none": {
+            "fallback_reason": "",
+            "task_anchor_restore_failures": 0,
+            "task_restore_fallbacks": 0,
+            "budget_fallbacks": 0,
+            "outputs_elided": 0,
+            "elided_source_count": 0,
+            "elision_note_count": 0,
+            "pointer_completeness": true,
+            "pointer_coverage": true,
+            "most_recent_tool_group_kept_in_full": true
+          },
+          "plugin": {
+            "fallback_reason": "",
+            "task_anchor_restore_failures": 0,
+            "task_restore_fallbacks": 0,
+            "budget_fallbacks": 0,
+            "outputs_elided": 0,
+            "elided_source_count": 0,
+            "elision_note_count": 0,
+            "pointer_completeness": true,
+            "pointer_coverage": true,
+            "most_recent_tool_group_kept_in_full": true
+          }
+        },
+        "unaccounted_fallback": [],
+        "source_location": {
+          "pointer_positions": [],
+          "pointer_resolves": true,
+          "pointer_completeness_recorded": true,
+          "pointer_coverage_recorded": true
+        }
+      }
+    },
+    {
+      "boundary": 1,
+      "recorded_bytes_none": 3427,
+      "recorded_bytes_plugin": 3427,
+      "recorded_byte_delta": 0,
+      "rebuilt_item_count": 5,
+      "tool_calls": 1,
+      "tool_outputs": 1,
+      "message_units": 3,
+      "replaced_output_positions": [],
+      "difference_source": "none (payload byte-identical)",
+      "pairing_ok": true,
+      "message_units_verbatim_both_sides": true,
+      "structure_matches_record": true,
+      "baseline_outputs_match_record": true,
+      "plugin_outputs_match_record": true,
+      "component_occurrences": {
+        "frozen_regex": {
+          "none": 0,
+          "plugin": 0
+        },
+        "contract_prefix": {
+          "none": 0,
+          "plugin": 0
+        },
+        "cause_field": {
+          "none": 0,
+          "plugin": 0
+        },
+        "fix_field": {
+          "none": 0,
+          "plugin": 0
+        },
+        "term:existing_annotations": {
+          "none": 0,
+          "plugin": 0
+        },
+        "term:subquery": {
+          "none": 0,
+          "plugin": 0
+        },
+        "term:referenced": {
+          "none": 1,
+          "plugin": 1
+        }
+      },
+      "order_boundary_subquery_then_fix": {
+        "none": 0,
+        "plugin": 0
+      },
+      "frozen_regex_matches_on_visible_text": {
+        "none": 0,
+        "plugin": 0
+      },
+      "lost_presence": [],
+      "rebuilt_bytes_none": 2903,
+      "rebuilt_bytes_plugin": 2903,
+      "rebuilt_byte_delta": 0,
+      "invariants": {
+        "task_constraints": {
+          "recorded_presence_none": {
+            "aggregation_decision": false,
+            "filter_references": true,
+            "ordering_references": true,
+            "other_annotation_references": true
+          },
+          "recorded_presence_plugin": {
+            "aggregation_decision": false,
+            "filter_references": true,
+            "ordering_references": true,
+            "other_annotation_references": true
+          },
+          "identical": true,
+          "counts_none": {
+            "aggregation_decision": 0,
+            "filter_references": 2,
+            "ordering_references": 1,
+            "other_annotation_references": 1
+          },
+          "counts_plugin": {
+            "aggregation_decision": 0,
+            "filter_references": 2,
+            "ordering_references": 1,
+            "other_annotation_references": 1
+          },
+          "labels_lost": []
+        },
+        "current_evidence": {
+          "distinct_sources": 1,
+          "full_copies_none": 1,
+          "full_copies_plugin": 1,
+          "sources_without_full_copy_plugin": []
+        },
+        "tool_group": {
+          "hash_none": "ee3857268aaefb1772c001f9845c54ad475eec353747808fcbfa1a68cc38dbb6",
+          "hash_plugin": "ee3857268aaefb1772c001f9845c54ad475eec353747808fcbfa1a68cc38dbb6",
+          "identical": true,
+          "structure_none": [
+            [
+              "message",
+              "message:user"
+            ],
+            [
+              "message",
+              "message:user"
+            ],
+            [
+              "message",
+              "message:user"
+            ],
+            [
+              "function_call",
+              "call:read_django_count_entry"
+            ],
+            [
+              "function_call_output",
+              "output"
+            ]
+          ]
+        },
+        "restore_and_fallback": {
+          "none": {
+            "fallback_reason": "",
+            "task_anchor_restore_failures": 0,
+            "task_restore_fallbacks": 0,
+            "budget_fallbacks": 0,
+            "outputs_elided": 0,
+            "elided_source_count": 0,
+            "elision_note_count": 0,
+            "pointer_completeness": true,
+            "pointer_coverage": true,
+            "most_recent_tool_group_kept_in_full": true
+          },
+          "plugin": {
+            "fallback_reason": "",
+            "task_anchor_restore_failures": 0,
+            "task_restore_fallbacks": 0,
+            "budget_fallbacks": 0,
+            "outputs_elided": 0,
+            "elided_source_count": 0,
+            "elision_note_count": 0,
+            "pointer_completeness": true,
+            "pointer_coverage": true,
+            "most_recent_tool_group_kept_in_full": true
+          }
+        },
+        "unaccounted_fallback": [],
+        "source_location": {
+          "pointer_positions": [],
+          "pointer_resolves": true,
+          "pointer_completeness_recorded": true,
+          "pointer_coverage_recorded": true
+        }
+      }
+    },
+    {
+      "boundary": 2,
+      "recorded_bytes_none": 8752,
+      "recorded_bytes_plugin": 8752,
+      "recorded_byte_delta": 0,
+      "rebuilt_item_count": 7,
+      "tool_calls": 2,
+      "tool_outputs": 2,
+      "message_units": 3,
+      "replaced_output_positions": [],
+      "difference_source": "none (payload byte-identical)",
+      "pairing_ok": true,
+      "message_units_verbatim_both_sides": true,
+      "structure_matches_record": true,
+      "baseline_outputs_match_record": true,
+      "plugin_outputs_match_record": true,
+      "component_occurrences": {
+        "frozen_regex": {
+          "none": 0,
+          "plugin": 0
+        },
+        "contract_prefix": {
+          "none": 0,
+          "plugin": 0
+        },
+        "cause_field": {
+          "none": 0,
+          "plugin": 0
+        },
+        "fix_field": {
+          "none": 0,
+          "plugin": 0
+        },
+        "term:existing_annotations": {
+          "none": 3,
+          "plugin": 3
+        },
+        "term:subquery": {
+          "none": 7,
+          "plugin": 7
+        },
+        "term:referenced": {
+          "none": 1,
+          "plugin": 1
+        }
+      },
+      "order_boundary_subquery_then_fix": {
+        "none": 0,
+        "plugin": 0
+      },
+      "frozen_regex_matches_on_visible_text": {
+        "none": 0,
+        "plugin": 0
+      },
+      "lost_presence": [],
+      "rebuilt_bytes_none": 8154,
+      "rebuilt_bytes_plugin": 8154,
+      "rebuilt_byte_delta": 0,
+      "invariants": {
+        "task_constraints": {
+          "recorded_presence_none": {
+            "aggregation_decision": true,
+            "filter_references": true,
+            "ordering_references": true,
+            "other_annotation_references": true
+          },
+          "recorded_presence_plugin": {
+            "aggregation_decision": true,
+            "filter_references": true,
+            "ordering_references": true,
+            "other_annotation_references": true
+          },
+          "identical": true,
+          "counts_none": {
+            "aggregation_decision": 3,
+            "filter_references": 2,
+            "ordering_references": 4,
+            "other_annotation_references": 1
+          },
+          "counts_plugin": {
+            "aggregation_decision": 3,
+            "filter_references": 2,
+            "ordering_references": 4,
+            "other_annotation_references": 1
+          },
+          "labels_lost": []
+        },
+        "current_evidence": {
+          "distinct_sources": 2,
+          "full_copies_none": 2,
+          "full_copies_plugin": 2,
+          "sources_without_full_copy_plugin": []
+        },
+        "tool_group": {
+          "hash_none": "d8a50ad2aff3f4cee3dfb0132da351af4e3cf343c8a62c073dad26c804a9ccdb",
+          "hash_plugin": "d8a50ad2aff3f4cee3dfb0132da351af4e3cf343c8a62c073dad26c804a9ccdb",
+          "identical": true,
+          "structure_none": [
+            [
+              "message",
+              "message:user"
+            ],
+            [
+              "message",
+              "message:user"
+            ],
+            [
+              "message",
+              "message:user"
+            ],
+            [
+              "function_call",
+              "call:read_django_count_entry"
+            ],
+            [
+              "function_call_output",
+              "output"
+            ],
+            [
+              "function_call",
+              "call:read_django_aggregation"
+            ],
+            [
+              "function_call_output",
+              "output"
+            ]
+          ]
+        },
+        "restore_and_fallback": {
+          "none": {
+            "fallback_reason": "",
+            "task_anchor_restore_failures": 0,
+            "task_restore_fallbacks": 0,
+            "budget_fallbacks": 0,
+            "outputs_elided": 0,
+            "elided_source_count": 0,
+            "elision_note_count": 0,
+            "pointer_completeness": true,
+            "pointer_coverage": true,
+            "most_recent_tool_group_kept_in_full": true
+          },
+          "plugin": {
+            "fallback_reason": "",
+            "task_anchor_restore_failures": 0,
+            "task_restore_fallbacks": 0,
+            "budget_fallbacks": 0,
+            "outputs_elided": 0,
+            "elided_source_count": 0,
+            "elision_note_count": 0,
+            "pointer_completeness": true,
+            "pointer_coverage": true,
+            "most_recent_tool_group_kept_in_full": true
+          }
+        },
+        "unaccounted_fallback": [],
+        "source_location": {
+          "pointer_positions": [],
+          "pointer_resolves": true,
+          "pointer_completeness_recorded": true,
+          "pointer_coverage_recorded": true
+        }
+      }
+    },
+    {
+      "boundary": 3,
+      "recorded_bytes_none": 9889,
+      "recorded_bytes_plugin": 9889,
+      "recorded_byte_delta": 0,
+      "rebuilt_item_count": 9,
+      "tool_calls": 3,
+      "tool_outputs": 3,
+      "message_units": 3,
+      "replaced_output_positions": [],
+      "difference_source": "none (payload byte-identical)",
+      "pairing_ok": true,
+      "message_units_verbatim_both_sides": true,
+      "structure_matches_record": true,
+      "baseline_outputs_match_record": true,
+      "plugin_outputs_match_record": true,
+      "component_occurrences": {
+        "frozen_regex": {
+          "none": 0,
+          "plugin": 0
+        },
+        "contract_prefix": {
+          "none": 0,
+          "plugin": 0
+        },
+        "cause_field": {
+          "none": 0,
+          "plugin": 0
+        },
+        "fix_field": {
+          "none": 0,
+          "plugin": 0
+        },
+        "term:existing_annotations": {
+          "none": 3,
+          "plugin": 3
+        },
+        "term:subquery": {
+          "none": 7,
+          "plugin": 7
+        },
+        "term:referenced": {
+          "none": 1,
+          "plugin": 1
+        }
+      },
+      "order_boundary_subquery_then_fix": {
+        "none": 0,
+        "plugin": 0
+      },
+      "frozen_regex_matches_on_visible_text": {
+        "none": 0,
+        "plugin": 0
+      },
+      "lost_presence": [],
+      "rebuilt_bytes_none": 9215,
+      "rebuilt_bytes_plugin": 9215,
+      "rebuilt_byte_delta": 0,
+      "invariants": {
+        "task_constraints": {
+          "recorded_presence_none": {
+            "aggregation_decision": true,
+            "filter_references": true,
+            "ordering_references": true,
+            "other_annotation_references": true
+          },
+          "recorded_presence_plugin": {
+            "aggregation_decision": true,
+            "filter_references": true,
+            "ordering_references": true,
+            "other_annotation_references": true
+          },
+          "identical": true,
+          "counts_none": {
+            "aggregation_decision": 3,
+            "filter_references": 4,
+            "ordering_references": 4,
+            "other_annotation_references": 1
+          },
+          "counts_plugin": {
+            "aggregation_decision": 3,
+            "filter_references": 4,
+            "ordering_references": 4,
+            "other_annotation_references": 1
+          },
+          "labels_lost": []
+        },
+        "current_evidence": {
+          "distinct_sources": 3,
+          "full_copies_none": 3,
+          "full_copies_plugin": 3,
+          "sources_without_full_copy_plugin": []
+        },
+        "tool_group": {
+          "hash_none": "916db6a2761aecf4c53df19ee64263eb6301887fad12c12d901a8cee7fd715d6",
+          "hash_plugin": "916db6a2761aecf4c53df19ee64263eb6301887fad12c12d901a8cee7fd715d6",
+          "identical": true,
+          "structure_none": [
+            [
+              "message",
+              "message:user"
+            ],
+            [
+              "message",
+              "message:user"
+            ],
+            [
+              "message",
+              "message:user"
+            ],
+            [
+              "function_call",
+              "call:read_django_count_entry"
+            ],
+            [
+              "function_call_output",
+              "output"
+            ],
+            [
+              "function_call",
+              "call:read_django_aggregation"
+            ],
+            [
+              "function_call_output",
+              "output"
+            ],
+            [
+              "function_call",
+              "call:read_django_count_call"
+            ],
+            [
+              "function_call_output",
+              "output"
+            ]
+          ]
+        },
+        "restore_and_fallback": {
+          "none": {
+            "fallback_reason": "",
+            "task_anchor_restore_failures": 0,
+            "task_restore_fallbacks": 0,
+            "budget_fallbacks": 0,
+            "outputs_elided": 0,
+            "elided_source_count": 0,
+            "elision_note_count": 0,
+            "pointer_completeness": true,
+            "pointer_coverage": true,
+            "most_recent_tool_group_kept_in_full": true
+          },
+          "plugin": {
+            "fallback_reason": "",
+            "task_anchor_restore_failures": 0,
+            "task_restore_fallbacks": 0,
+            "budget_fallbacks": 0,
+            "outputs_elided": 0,
+            "elided_source_count": 0,
+            "elision_note_count": 0,
+            "pointer_completeness": true,
+            "pointer_coverage": true,
+            "most_recent_tool_group_kept_in_full": true
+          }
+        },
+        "unaccounted_fallback": [],
+        "source_location": {
+          "pointer_positions": [],
+          "pointer_resolves": true,
+          "pointer_completeness_recorded": true,
+          "pointer_coverage_recorded": true
+        }
+      }
+    },
+    {
+      "boundary": 4,
+      "recorded_bytes_none": 11145,
+      "recorded_bytes_plugin": 10373,
+      "recorded_byte_delta": 772,
+      "rebuilt_item_count": 11,
+      "tool_calls": 4,
+      "tool_outputs": 4,
+      "message_units": 3,
+      "replaced_output_positions": [
+        0
+      ],
+      "difference_source": "older exact-duplicate outputs replaced by a 157-character pointer: item#0",
+      "pairing_ok": true,
+      "message_units_verbatim_both_sides": true,
+      "structure_matches_record": true,
+      "baseline_outputs_match_record": true,
+      "plugin_outputs_match_record": true,
+      "component_occurrences": {
+        "frozen_regex": {
+          "none": 0,
+          "plugin": 0
+        },
+        "contract_prefix": {
+          "none": 0,
+          "plugin": 0
+        },
+        "cause_field": {
+          "none": 0,
+          "plugin": 0
+        },
+        "fix_field": {
+          "none": 0,
+          "plugin": 0
+        },
+        "term:existing_annotations": {
+          "none": 3,
+          "plugin": 3
+        },
+        "term:subquery": {
+          "none": 7,
+          "plugin": 7
+        },
+        "term:referenced": {
+          "none": 1,
+          "plugin": 1
+        }
+      },
+      "order_boundary_subquery_then_fix": {
+        "none": 0,
+        "plugin": 0
+      },
+      "frozen_regex_matches_on_visible_text": {
+        "none": 0,
+        "plugin": 0
+      },
+      "lost_presence": [],
+      "rebuilt_bytes_none": 10397,
+      "rebuilt_bytes_plugin": 9628,
+      "rebuilt_byte_delta": 769,
+      "invariants": {
+        "task_constraints": {
+          "recorded_presence_none": {
+            "aggregation_decision": true,
+            "filter_references": true,
+            "ordering_references": true,
+            "other_annotation_references": true
+          },
+          "recorded_presence_plugin": {
+            "aggregation_decision": true,
+            "filter_references": true,
+            "ordering_references": true,
+            "other_annotation_references": true
+          },
+          "identical": true,
+          "counts_none": {
+            "aggregation_decision": 3,
+            "filter_references": 4,
+            "ordering_references": 4,
+            "other_annotation_references": 1
+          },
+          "counts_plugin": {
+            "aggregation_decision": 3,
+            "filter_references": 4,
+            "ordering_references": 4,
+            "other_annotation_references": 1
+          },
+          "labels_lost": []
+        },
+        "current_evidence": {
+          "distinct_sources": 3,
+          "full_copies_none": 3,
+          "full_copies_plugin": 3,
+          "sources_without_full_copy_plugin": []
+        },
+        "tool_group": {
+          "hash_none": "87f1969f1f63638002e80f2053caa78fd65ee1dea9c96102fa60a6b7a2162573",
+          "hash_plugin": "87f1969f1f63638002e80f2053caa78fd65ee1dea9c96102fa60a6b7a2162573",
+          "identical": true,
+          "structure_none": [
+            [
+              "message",
+              "message:user"
+            ],
+            [
+              "message",
+              "message:user"
+            ],
+            [
+              "message",
+              "message:user"
+            ],
+            [
+              "function_call",
+              "call:read_django_count_entry"
+            ],
+            [
+              "function_call_output",
+              "output"
+            ],
+            [
+              "function_call",
+              "call:read_django_aggregation"
+            ],
+            [
+              "function_call_output",
+              "output"
+            ],
+            [
+              "function_call",
+              "call:read_django_count_call"
+            ],
+            [
+              "function_call_output",
+              "output"
+            ],
+            [
+              "function_call",
+              "call:read_django_count_entry"
+            ],
+            [
+              "function_call_output",
+              "output"
+            ]
+          ]
+        },
+        "restore_and_fallback": {
+          "none": {
+            "fallback_reason": "",
+            "task_anchor_restore_failures": 0,
+            "task_restore_fallbacks": 0,
+            "budget_fallbacks": 0,
+            "outputs_elided": 0,
+            "elided_source_count": 0,
+            "elision_note_count": 0,
+            "pointer_completeness": true,
+            "pointer_coverage": true,
+            "most_recent_tool_group_kept_in_full": true
+          },
+          "plugin": {
+            "fallback_reason": "",
+            "task_anchor_restore_failures": 0,
+            "task_restore_fallbacks": 0,
+            "budget_fallbacks": 0,
+            "outputs_elided": 0,
+            "elided_source_count": 0,
+            "elision_note_count": 0,
+            "pointer_completeness": true,
+            "pointer_coverage": true,
+            "most_recent_tool_group_kept_in_full": true
+          }
+        },
+        "unaccounted_fallback": [],
+        "source_location": {
+          "pointer_positions": [
+            0
+          ],
+          "pointer_resolves": true,
+          "pointer_completeness_recorded": true,
+          "pointer_coverage_recorded": true
+        }
+      }
+    },
+    {
+      "boundary": 5,
+      "recorded_bytes_none": 16470,
+      "recorded_bytes_plugin": 10857,
+      "recorded_byte_delta": 5613,
+      "rebuilt_item_count": 13,
+      "tool_calls": 5,
+      "tool_outputs": 5,
+      "message_units": 3,
+      "replaced_output_positions": [
+        0,
+        1
+      ],
+      "difference_source": "older exact-duplicate outputs replaced by a 157-character pointer: item#0, item#1",
+      "pairing_ok": true,
+      "message_units_verbatim_both_sides": true,
+      "structure_matches_record": true,
+      "baseline_outputs_match_record": true,
+      "plugin_outputs_match_record": true,
+      "component_occurrences": {
+        "frozen_regex": {
+          "none": 0,
+          "plugin": 0
+        },
+        "contract_prefix": {
+          "none": 0,
+          "plugin": 0
+        },
+        "cause_field": {
+          "none": 0,
+          "plugin": 0
+        },
+        "fix_field": {
+          "none": 0,
+          "plugin": 0
+        },
+        "term:existing_annotations": {
+          "none": 6,
+          "plugin": 3
+        },
+        "term:subquery": {
+          "none": 14,
+          "plugin": 7
+        },
+        "term:referenced": {
+          "none": 1,
+          "plugin": 1
+        }
+      },
+      "order_boundary_subquery_then_fix": {
+        "none": 0,
+        "plugin": 0
+      },
+      "frozen_regex_matches_on_visible_text": {
+        "none": 0,
+        "plugin": 0
+      },
+      "lost_presence": [],
+      "rebuilt_bytes_none": 15648,
+      "rebuilt_bytes_plugin": 10041,
+      "rebuilt_byte_delta": 5607,
+      "invariants": {
+        "task_constraints": {
+          "recorded_presence_none": {
+            "aggregation_decision": true,
+            "filter_references": true,
+            "ordering_references": true,
+            "other_annotation_references": true
+          },
+          "recorded_presence_plugin": {
+            "aggregation_decision": true,
+            "filter_references": true,
+            "ordering_references": true,
+            "other_annotation_references": true
+          },
+          "identical": true,
+          "counts_none": {
+            "aggregation_decision": 6,
+            "filter_references": 4,
+            "ordering_references": 7,
+            "other_annotation_references": 1
+          },
+          "counts_plugin": {
+            "aggregation_decision": 3,
+            "filter_references": 4,
+            "ordering_references": 4,
+            "other_annotation_references": 1
+          },
+          "labels_lost": []
+        },
+        "current_evidence": {
+          "distinct_sources": 3,
+          "full_copies_none": 3,
+          "full_copies_plugin": 3,
+          "sources_without_full_copy_plugin": []
+        },
+        "tool_group": {
+          "hash_none": "8a501a968e1bd876d329871ab8286ccd8a8bb4919187e27838caf038602c12ae",
+          "hash_plugin": "8a501a968e1bd876d329871ab8286ccd8a8bb4919187e27838caf038602c12ae",
+          "identical": true,
+          "structure_none": [
+            [
+              "message",
+              "message:user"
+            ],
+            [
+              "message",
+              "message:user"
+            ],
+            [
+              "message",
+              "message:user"
+            ],
+            [
+              "function_call",
+              "call:read_django_count_entry"
+            ],
+            [
+              "function_call_output",
+              "output"
+            ],
+            [
+              "function_call",
+              "call:read_django_aggregation"
+            ],
+            [
+              "function_call_output",
+              "output"
+            ],
+            [
+              "function_call",
+              "call:read_django_count_call"
+            ],
+            [
+              "function_call_output",
+              "output"
+            ],
+            [
+              "function_call",
+              "call:read_django_count_entry"
+            ],
+            [
+              "function_call_output",
+              "output"
+            ],
+            [
+              "function_call",
+              "call:read_django_aggregation"
+            ],
+            [
+              "function_call_output",
+              "output"
+            ]
+          ]
+        },
+        "restore_and_fallback": {
+          "none": {
+            "fallback_reason": "",
+            "task_anchor_restore_failures": 0,
+            "task_restore_fallbacks": 0,
+            "budget_fallbacks": 0,
+            "outputs_elided": 0,
+            "elided_source_count": 0,
+            "elision_note_count": 0,
+            "pointer_completeness": true,
+            "pointer_coverage": true,
+            "most_recent_tool_group_kept_in_full": true
+          },
+          "plugin": {
+            "fallback_reason": "",
+            "task_anchor_restore_failures": 0,
+            "task_restore_fallbacks": 0,
+            "budget_fallbacks": 0,
+            "outputs_elided": 0,
+            "elided_source_count": 0,
+            "elision_note_count": 0,
+            "pointer_completeness": true,
+            "pointer_coverage": true,
+            "most_recent_tool_group_kept_in_full": true
+          }
+        },
+        "unaccounted_fallback": [],
+        "source_location": {
+          "pointer_positions": [
+            0,
+            1
+          ],
+          "pointer_resolves": true,
+          "pointer_completeness_recorded": true,
+          "pointer_coverage_recorded": true
+        }
+      }
+    },
+    {
+      "boundary": 6,
+      "recorded_bytes_none": 17607,
+      "recorded_bytes_plugin": 11340,
+      "recorded_byte_delta": 6267,
+      "rebuilt_item_count": 15,
+      "tool_calls": 6,
+      "tool_outputs": 6,
+      "message_units": 3,
+      "replaced_output_positions": [
+        0,
+        1,
+        2
+      ],
+      "difference_source": "older exact-duplicate outputs replaced by a 157-character pointer: item#0, item#1, item#2",
+      "pairing_ok": true,
+      "message_units_verbatim_both_sides": true,
+      "structure_matches_record": true,
+      "baseline_outputs_match_record": true,
+      "plugin_outputs_match_record": true,
+      "component_occurrences": {
+        "frozen_regex": {
+          "none": 0,
+          "plugin": 0
+        },
+        "contract_prefix": {
+          "none": 0,
+          "plugin": 0
+        },
+        "cause_field": {
+          "none": 0,
+          "plugin": 0
+        },
+        "fix_field": {
+          "none": 0,
+          "plugin": 0
+        },
+        "term:existing_annotations": {
+          "none": 6,
+          "plugin": 3
+        },
+        "term:subquery": {
+          "none": 14,
+          "plugin": 7
+        },
+        "term:referenced": {
+          "none": 1,
+          "plugin": 1
+        }
+      },
+      "order_boundary_subquery_then_fix": {
+        "none": 0,
+        "plugin": 0
+      },
+      "frozen_regex_matches_on_visible_text": {
+        "none": 0,
+        "plugin": 0
+      },
+      "lost_presence": [],
+      "rebuilt_bytes_none": 16709,
+      "rebuilt_bytes_plugin": 10450,
+      "rebuilt_byte_delta": 6259,
+      "invariants": {
+        "task_constraints": {
+          "recorded_presence_none": {
+            "aggregation_decision": true,
+            "filter_references": true,
+            "ordering_references": true,
+            "other_annotation_references": true
+          },
+          "recorded_presence_plugin": {
+            "aggregation_decision": true,
+            "filter_references": true,
+            "ordering_references": true,
+            "other_annotation_references": true
+          },
+          "identical": true,
+          "counts_none": {
+            "aggregation_decision": 6,
+            "filter_references": 6,
+            "ordering_references": 7,
+            "other_annotation_references": 1
+          },
+          "counts_plugin": {
+            "aggregation_decision": 3,
+            "filter_references": 4,
+            "ordering_references": 4,
+            "other_annotation_references": 1
+          },
+          "labels_lost": []
+        },
+        "current_evidence": {
+          "distinct_sources": 3,
+          "full_copies_none": 3,
+          "full_copies_plugin": 3,
+          "sources_without_full_copy_plugin": []
+        },
+        "tool_group": {
+          "hash_none": "ec9dc3d113baf89dbb77d26071438e847acd8cd516995157452ad526cf7b85c7",
+          "hash_plugin": "ec9dc3d113baf89dbb77d26071438e847acd8cd516995157452ad526cf7b85c7",
+          "identical": true,
+          "structure_none": [
+            [
+              "message",
+              "message:user"
+            ],
+            [
+              "message",
+              "message:user"
+            ],
+            [
+              "message",
+              "message:user"
+            ],
+            [
+              "function_call",
+              "call:read_django_count_entry"
+            ],
+            [
+              "function_call_output",
+              "output"
+            ],
+            [
+              "function_call",
+              "call:read_django_aggregation"
+            ],
+            [
+              "function_call_output",
+              "output"
+            ],
+            [
+              "function_call",
+              "call:read_django_count_call"
+            ],
+            [
+              "function_call_output",
+              "output"
+            ],
+            [
+              "function_call",
+              "call:read_django_count_entry"
+            ],
+            [
+              "function_call_output",
+              "output"
+            ],
+            [
+              "function_call",
+              "call:read_django_aggregation"
+            ],
+            [
+              "function_call_output",
+              "output"
+            ],
+            [
+              "function_call",
+              "call:read_django_count_call"
+            ],
+            [
+              "function_call_output",
+              "output"
+            ]
+          ]
+        },
+        "restore_and_fallback": {
+          "none": {
+            "fallback_reason": "",
+            "task_anchor_restore_failures": 0,
+            "task_restore_fallbacks": 0,
+            "budget_fallbacks": 0,
+            "outputs_elided": 0,
+            "elided_source_count": 0,
+            "elision_note_count": 0,
+            "pointer_completeness": true,
+            "pointer_coverage": true,
+            "most_recent_tool_group_kept_in_full": true
+          },
+          "plugin": {
+            "fallback_reason": "",
+            "task_anchor_restore_failures": 0,
+            "task_restore_fallbacks": 0,
+            "budget_fallbacks": 0,
+            "outputs_elided": 0,
+            "elided_source_count": 0,
+            "elision_note_count": 0,
+            "pointer_completeness": true,
+            "pointer_coverage": true,
+            "most_recent_tool_group_kept_in_full": true
+          }
+        },
+        "unaccounted_fallback": [],
+        "source_location": {
+          "pointer_positions": [
+            0,
+            1,
+            2
+          ],
+          "pointer_resolves": true,
+          "pointer_completeness_recorded": true,
+          "pointer_coverage_recorded": true
+        }
+      }
+    }
+  ],
+  "quality": {
+    "none": {
+      "answer_chars": 154,
+      "required_terms_present": true,
+      "frozen_regex_fullmatch": true,
+      "format_conditions": {
+        "starts_with_RESULT": true,
+        "single_line": true,
+        "at_most_160_chars": true
+      },
+      "recorded_answer_correct": true,
+      "recorded_final_format_correct": true,
+      "is_at_instruction_contract": true,
+      "recorded_success": true,
+      "reproduces_recorded_flags": true,
+      "answer": "RESULT issue=django-16263 cause=existing_annotations force subquery/group_by fix=prune annotations unreferenced by filters, other annotations, or ordering"
+    },
+    "pruner_v1": {
+      "answer_chars": 208,
+      "required_terms_present": true,
+      "frozen_regex_fullmatch": true,
+      "format_conditions": {
+        "starts_with_RESULT": true,
+        "single_line": true,
+        "at_most_160_chars": false
+      },
+      "recorded_answer_correct": true,
+      "recorded_final_format_correct": false,
+      "is_at_instruction_contract": true,
+      "recorded_success": false,
+      "reproduces_recorded_flags": true,
+      "answer": "RESULT issue=django-16263 cause=get_count clones query and get_aggregation keeps existing_annotations, forcing subquery/GROUP BY fix=prune annotations not referenced by filters, other annotations, or ordering"
+    },
+    "native_summary": {
+      "answer_chars": 154,
+      "required_terms_present": true,
+      "frozen_regex_fullmatch": true,
+      "format_conditions": {
+        "starts_with_RESULT": true,
+        "single_line": true,
+        "at_most_160_chars": true
+      },
+      "recorded_answer_correct": true,
+      "recorded_final_format_correct": true,
+      "is_at_instruction_contract": true,
+      "recorded_success": true,
+      "reproduces_recorded_flags": true,
+      "answer": "RESULT issue=django-16263 cause=existing_annotations force subquery/group_by fix=prune annotations unreferenced by filters, other annotations, or ordering"
+    }
+  },
+  "invariant_gate": {
+    "all_invariants_hold": true,
+    "lost_constraints": [],
+    "lost_evidence": [],
+    "tool_group_hash_changes": [],
+    "unaccounted_fallbacks": [],
+    "broken_source_pointers": [],
+    "recorded_restore_ledger": {
+      "task_anchor_restore_failures": 0,
+      "task_restore_fallbacks": 0,
+      "budget_fallbacks": 0,
+      "restore_failures_by_model_call": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "restore_failure_is_whole_prefix_fallback": true,
+      "literal_guard_fallbacks": 0,
+      "fallback_reasons": {},
+      "unmatched_call_count": 0,
+      "pairing_integrity": true,
+      "structure_safe": true,
+      "constraint_preserved": true
+    },
+    "rule": "A loss or an unaccounted fallback means the mechanism must be fixed; it never means the quality verdict may be re-judged. A clean gate means the mechanism moved nothing - it does not by itself make the quality outcome acceptable."
+  },
+  "safe_candidate_accounting": {
+    "mechanism_rule": "an older tool output whose text is byte-identical to a newer one",
+    "potential_old_units_upper_bound": 3,
+    "guard_filtered_safe_candidates": 3,
+    "replacement_events_across_boundaries": 6,
+    "counting_rule": "counted on the deciding (final) model input, like the prescreen counts the older units a frozen rule may touch; the same logical copies persist across later boundaries, so summing over boundaries double counts and is reported separately",
+    "guard_checks_applied": [
+      "registered literal presence kept for every label at every boundary",
+      "every distinct source keeps one full copy",
+      "id-free tool-group hash unchanged",
+      "source pointer resolves to a newer full copy in the same payload",
+      "no restore / whole-payload fallback, none unaccounted"
+    ],
+    "strict_quality_outcome": "0/1 vs baseline 1/1",
+    "paired_complete_total_saving_percent": 14.63,
+    "interpretation": "Non-zero guard-filtered candidates (3) plus a clean invariant gate did NOT come with strict quality preservation on this task: the strict failure was the answer-length condition, a model-side wording difference, not a lost fact. So this row is a counterexample to using candidate counts as a benefit prediction, and it also shows the strict-quality channel and the mechanism-safety channel are different measurements."
+  },
+  "verdict": {
+    "call": "model-side-wording",
+    "plugin_failing_format_conditions": [
+      "at_most_160_chars"
+    ],
+    "plugin_answer_chars": 208,
+    "limit_chars": 160,
+    "plugin_required_terms_present": true,
+    "plugin_frozen_regex_fullmatch": true,
+    "explanation": "The frozen rule is a conjunction: contract prefix, one line, and at most 160 characters. The plugin answer satisfies the facts and the frozen regex (answer_correct records True) and fails only the length bound (208 > 160); the format constraint itself lives in the agent instructions, which are not a model-input item and are identical in every arm, and no visible fact loses presence on any boundary."
+  },
+  "recorded_total_bytes_none": 69461,
+  "recorded_total_bytes_plugin": 56809,
+  "recorded_total_byte_delta": 12652,
+  "rebuilt_total_byte_delta": 12635,
+  "projected_byte_delta_v12_gate": 12635,
+  "problems": [],
+  "all_checks_ok": true,
+  "paid_requests": 0
+}

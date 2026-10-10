@@ -1,0 +1,88 @@
+{
+  "schema": "openai_agents_v20_retention_engagement_diagnosis",
+  "diagnosis_id": "openai-agents-v20-retention-engagement-diagnosis-01",
+  "date": "20261010",
+  "api_requests_spent": 0,
+  "status": "GATE_MEASURED_MECHANISM_DID_NOT_ELIDE",
+  "amends": "integrations/openai_agents/V20_WIRING_DIFF_20261010.json",
+  "implements": "integrations/openai_agents/V20_NONDUPLICATE_MECHANISM_PLAN_20261010.json",
+  "gate_artifact": "integrations/openai_agents/V20_ZERO_API_GATE_20261010.json",
+
+  "question": "does re-opening the v5 entry point make the evidence-safe selective retention elide anything on the N3 no-duplicate shape?",
+  "answer": "no, and not for the reason the plan anticipated. The v5 entry point, its _filter and every helper it calls are reached and run - the composite publishes engaged=0, fallback=3 per plugin sample, so the stage was entered on every call after the first and returned None on each. Two independent barriers stop it, and neither is the one the wiring diff predicted.",
+
+  "what_the_wiring_diff_predicted": {
+    "prediction": "v12's filter_items shadows the v5 implementation, so re-enabling the v5 entry point restores the v5 elision with its literal guard",
+    "verdict": "partially right and materially incomplete: filter_items and _filter are indeed v5's after the composite calls the ancestor implementation explicitly, but two further barriers sit inside that call path"
+  },
+
+  "barrier_1_recency_gate_never_opens": {
+    "mechanism": "the entry method _filter is also shadowed",
+    "call_path": [
+      "v5.SelectiveRetentionFilter.filter_items (called explicitly by the v20 composite)",
+      "-> self._filter  resolves to LongBaselineBoundaryFilter._filter @ experiments/runners/openai_agents_long_baseline_boundary_v8.py",
+      "-> self._output_decision resolves to LongBaselineBoundaryFilter._output_decision @ experiments/runners/openai_agents_long_baseline_boundary_v8.py lines 149-162",
+      "-> this recency gate tests `if index not in self.last_elidable_indices` and returns (None, 'within_recent_turns_kept_verbatim') for every output",
+      "-> therefore _filter reports compacted == 0 and dropped == 0, and filter_items returns None"
+    ],
+    "why_the_state_is_stale": {
+      "writer_of_last_elidable_indices": "RecencyBoundaryFilter.filter_items @ experiments/runners/openai_agents_recency_boundary_v7.py, which sets self.last_elidable_indices = elidable_indices(items) at the start of every call",
+      "why_it_never_runs": "that same filter_items is shadowed by the v12 entry method, which is the very shadowing the v20 composite re-opens around - but re-opening the *v5* layer reaches v5's entry method, not v7's, and v7's name is a different method on a different class",
+      "initial_value": "RecencyBoundaryFilter.__init__ @ experiments/runners/openai_agents_recency_boundary_v7.py sets it to the empty set",
+      "measured": "empty on every call of every sample; recency_protected_outputs grows 1 -> 3 -> 6 across the three plugin calls, which is one increment per output per call, i.e. every output is classified 'within_recent_turns_kept_verbatim'"
+    },
+    "measured_on_real_payload": {
+      "task": "django_sqlite_version_floor",
+      "outputs_in_final_N3_payload": 3,
+      "v8_kept_reason_per_output": ["within_recent_turns_kept_verbatim", "within_recent_turns_kept_verbatim", "within_recent_turns_kept_verbatim"],
+      "v5_would_have_elided": [true, false, false],
+      "v5_kept_reason_per_output": ["", "registered_literal", "most_recent_tool_group"]
+    }
+  },
+
+  "barrier_2_literal_guard_refuses_anyway": {
+    "method": "type(composite)._output_decision was temporarily replaced with v5.SelectiveRetentionFilter._output_decision in a zero-API probe, so barrier 1 was removed and barrier 2 could be measured on its own",
+    "what_happens": "v5's own decision elides exactly one output (the first round's view), and v5's own guard then rejects the filtered payload and falls back the whole call",
+    "guard": "SelectiveRetentionFilter._carrier_loss @ experiments/runners/openai_agents_evidence_safe_retention_v5.py lines 822-856, occurrence-count half",
+    "guard_arithmetic_on_plugin_call_2_of_3": {
+      "outputs": [
+        "read_sqlite_version_check: 719 characters, the only carrier of the literals check_sqlite_version and 3.8.3",
+        "read_sqlite_features_a: 1273 characters, pinned because it carries a registered literal"
+      ],
+      "occurrences_before": {"check_sqlite_version": 2, "django-13821": 1, "3.8.3": 1, "3.9.0": 4},
+      "occurrences_after_eliding_the_first_output": {"check_sqlite_version": 0, "django-13821": 1, "3.8.3": 0, "3.9.0": 4},
+      "carrier_loss": ["check_sqlite_version", "3.8.3"],
+      "fallback_reason": "registered_literal_lost:check_sqlite_version,3.8.3",
+      "reading": "on this shape the first registered view is the sole carrier of two registered literals, so the guard is right to refuse. This is the mechanism refusing, not the mechanism failing to engage - but on the N3 shape it means no byte can be removed at all."
+    }
+  },
+
+  "third_finding_the_sources_attribution_half_is_inert": {
+    "what": "v5's _carrier_loss also has an attribution half that reads registry.SOURCES.get(self.task) - experiments/runners/openai_agents_evidence_safe_retention_v5.py lines 839-851",
+    "why_it_is_inert": "self.task is deliberately pinned to the frozen registration id 'django_count_annotations' by LongBaselineBoundaryFilter.__init__ @ experiments/runners/openai_agents_long_baseline_boundary_v8.py lines 111-133 (documented at lines 14-22 and 95-98), and openai_agents_multitask_chain_v14.register_task_data does `frozen_v5.SOURCES.setdefault(task_id, ())` @ openai_agents_multitask_chain_v14.py line 78 - an empty tuple",
+    "consequence": "for the v17 tasks the attribution half of the guard inspects nothing; only the occurrence-count half (over the chain's own registered literal_texts) is live. The guard is therefore narrower than the v5 documentation describes, and this is a property of the chain, not of the composite",
+    "not_a_regression_introduced_by_v20": "it is present in the v14 chain and therefore in every v13-v19 batch; it is recorded here because the v20 plan claims the literal guard is kept, and only half of it is"
+  },
+
+  "gate_consequence": {
+    "hard_assertion_c": "FAILED; per task v20_units_elided = 0 and v20_bytes_saved = 0",
+    "paid_run_allowed": false,
+    "gate_exit_code": 1,
+    "what_this_does_not_mean": "it does not mean the mechanism cannot compress unique content, and it does not reproduce the v19 false negative either: the trigger gate is measured firing on every model input after the first (triggered == 3 of 4 calls, one first-call passthrough, zero other passthrough), so the second barrier named in the gate addendum is genuinely removed and the remaining result is attributable to the two barriers above"
+  },
+
+  "what_would_have_to_be_decided_before_a_paid_run": [
+    "barrier 1: admit a change that lets the recency policy's state be computed on the call. The narrowest form is to invoke the v7 policy's own elidable_indices for the payload inside the composite (or to call v7's filter_items layer explicitly) so v8's gate sees a populated last_elidable_indices. That is re-enabling an ancestor policy that v12 shadowed, which the v20 plan's lineage note contemplates - but it is a second change to the mechanism surface, and the plan pre-registers exactly one.",
+    "barrier 2: the guard is behaving correctly on this shape. Refusing is the designed answer, so no change to the guard is admissible; the honest options are to accept that the N3 shape cannot show a saving for this mechanism at all, or to pre-register a different shape or a different task registration in which the literals are not solely carried by an elidable output.",
+    "third finding: whether the recorded statement 'the literal guard is kept' should be narrowed in the plan to 'the occurrence-count half of the literal guard is live', or whether register_task_data should populate frozen_v5.SOURCES for these tasks.",
+    "none of the three may be decided after seeing a saving number, and none has been implemented here"
+  ],
+
+  "evidence_files": {
+    "gate_artifact": "integrations/openai_agents/V20_ZERO_API_GATE_20261010.json",
+    "revision_ledger": "integrations/openai_agents/V20_MODULE_REVISIONS_20261010.json",
+    "diagnostic_probe": ".tooling/tmp/v20_barrier2_probe.py"
+  },
+  "paid_requests": 0,
+  "citable": false
+}

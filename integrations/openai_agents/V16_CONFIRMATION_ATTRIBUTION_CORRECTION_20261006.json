@@ -1,0 +1,119 @@
+{
+  "schema": "openai_agents_v16_attribution_correction",
+  "correction_id": "openai-agents-v16-sealed-confirmation-attribution-correction-01",
+  "date": "20261006",
+  "kind": "post_batch_attribution_correction",
+  "written_once": false,
+  "revision_log": [
+    {"revision": 1, "change": "first draft", "note": "single-batch attribution correction"},
+    {"revision": 2, "change": "added cross_batch_check", "note": "the first draft superseded turn splitting for this batch only; the cross-batch section records that pilot-02 did split reads in one unmatched unit, so the correction is scoped and does not overreach"}
+  ],
+  "api_requests_spent": 0,
+  "basis": "the recorded ledger of the sealed confirmation batch, re-read from disk; no model was called and no sample was re-judged",
+  "subject": {
+    "batch": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v16-sealed-confirmation-01",
+    "manifest_sha256": "f4ad7c38175b9de82f2f39722a9ac5e000d28c7d8f53243045cb30d0765165f8",
+    "samples_sha256": "862d2201f5f61ba74f3430f0b96491ab7437605741e064e046099e288e33b604",
+    "audit": "integrations/openai_agents/V16_SEALED_CONFIRMATION_AUDIT_20261006.json",
+    "audit_sha256": "e045aac82dd53e7f1a150cbea8c91e052497b22581778cca64fb0aaf4fcdfecd",
+    "freeze": "integrations/openai_agents/V16_CONFIRMATION_FREEZE_20261006.json",
+    "freeze_sha256": "69829716dcc9bad821bfc2af0d9de240887288723094f671671f0a7cf1b9bab1"
+  },
+  "claim_under_correction": {
+    "source": "the runner agent's batch report prose, and the report-only note carried in the finalised manifest",
+    "prose_claim": "the two unmatched pairs differ because the pruner arm split its six read calls into two batches (turn splitting), i.e. 4 model calls = 'six reads in two batches plus the answer' versus 3 model calls = 'six reads in one batch plus the answer'",
+    "manifest_note_claim": {
+      "field": "pilot_report.trajectory_unmatched_subset.note",
+      "text": "pairs whose arms differ in model calls; their spread is trajectory, not compression"
+    }
+  },
+  "ledger_evidence": {
+    "phase_census_all_45_samples": {
+      "(tool_turn, tool_turn, answer)": {"none": 5, "pruner_v1": 3, "native_summary": 5},
+      "(tool_turn, tool_turn, answer, retry)": {"none": 10, "pruner_v1": 12, "native_summary": 10},
+      "samples_with_three_or_more_tool_turns": 0
+    },
+    "finding": "in this batch every one of the 45 samples took exactly two tool turns and one answer turn; the only structural variation is the presence of a single billed render-repair retry. No sample split the six reads into more than two batches, and no sample differed between arms in the number of tool turns.",
+    "repair_rate_per_task": {
+      "django_ordering_related_pk": {"none": "5/5", "pruner_v1": "5/5", "native_summary": "5/5"},
+      "django_splitarray_checkbox_attrs": {"none": "5/5", "pruner_v1": "5/5", "native_summary": "5/5"},
+      "django_db_cache_cull_none": {"none": "0/5", "pruner_v1": "2/5", "native_summary": "0/5"}
+    },
+    "the_two_unmatched_pairs": {
+      "units": ["django_db_cache_cull_none repeat 0", "django_db_cache_cull_none repeat 1"],
+      "baseline_total_tokens": [9824, 9822],
+      "pruner_total_tokens": [11726, 11730],
+      "paired_saving": [-0.1936, -0.1943],
+      "baseline_model_calls": [3, 3],
+      "pruner_model_calls": [4, 4],
+      "baseline_repair_calls": [0, 0],
+      "pruner_repair_calls": [1, 1],
+      "pruner_input_tokens_by_call": [[1500, 3221, 3526, 3262], [1500, 3221, 3528, 3264]],
+      "arithmetic": "on this task the pruner saves about 1416 tokens (8403 versus 9821 in the three clean repeats, a 14.4 percent saving) while one unilateral repair call costs 3262 input tokens, so a repair borne by the pruner alone exceeds the whole saving and flips the pair to minus 19.4 percent",
+      "counterfactual_check": "the three repeats of the same task where the pruner did not repair are plus 14.4 percent (8403 to 8411 versus 9821 to 9825), so the negative sign of the two unmatched pairs is fully explained by the retry, not by any difference in the read path"
+    },
+    "symmetric_retry_stays_positive": {
+      "pairs_where_both_arms_repaired": 10,
+      "pairs_where_neither_arm_repaired": 3,
+      "matched_pairs_total": 13,
+      "matched_mean_saving": 0.1745,
+      "matched_stdev_saving": 0.0493,
+      "finding": "when the repair burden is symmetric the compression saving is 13.2 to 23.4 percent per task with a within-task spread of at most 0.5 percentage points, and all 13 pairs are positive"
+    },
+    "pruned_repairs_are_cheaper": {
+      "django_ordering_related_pk": {"baseline_retry_input_tokens": 4778, "pruner_retry_input_tokens": 3112, "change": -0.349},
+      "django_splitarray_checkbox_attrs": {"baseline_retry_input_tokens": 2748, "pruner_retry_input_tokens": 2131, "change": -0.225},
+      "finding": "where both arms repair, the pruner arm's repair call is 22.5 to 34.9 percent cheaper because its context is smaller, which is why the symmetric-retry pairs stay strongly positive"
+    },
+    "native_summary_on_complete_tokens": {
+      "per_task_saving_vs_baseline": {
+        "django_ordering_related_pk": -0.0925,
+        "django_splitarray_checkbox_attrs": -0.0749,
+        "django_db_cache_cull_none": -0.2301
+      },
+      "paired_all_arm_mean": -0.1325,
+      "paired_all_arm_ci": [-0.1706, -0.1004],
+      "finding": "on complete provider tokens the native summarisation arm is worse than the baseline in every one of the three tasks once its own summary calls are charged"
+    }
+  },
+  "correction": {
+    "attribution_superseded": "turn splitting",
+    "attribution_correct": "a unilateral billed render-repair retry in the pruner arm; the per-arm model-call difference in this batch is repair-retry asymmetry only",
+    "wording_that_must_not_be_used": [
+      "the pruner arm split its reads into an extra batch",
+      "the saving is eaten by turn splitting",
+      "the unmatched spread is trajectory rather than compression, stated as settled"
+    ],
+    "what_is_not_undecided": "that the extra call is a repair retry, that its input cost 3262 tokens, that it exceeded this task's 1416-token saving, and that the pair therefore turned negative",
+    "what_remains_undecided": "whether the pruned context caused the repair request on this task: the repair rate is 2/5 for the pruner against 0/5 for the baseline on the same task, but the repair rate is 5/5 in both arms on the other two tasks, so the batch cannot separate an arm effect from an answer-format effect at five repeats; the affected statement stays report-only and is not part of the frozen verdict",
+    "effect_on_frozen_numbers": "none: the freeze, the manifest counts, the audit recomputation and met=true are untouched; only the explanation of the two negative pairs changes",
+    "effect_on_the_manifest_note": "the note recorded in pilot_report.trajectory_unmatched_subset.note is weaker than the evidence in the opposite direction as well: it says the spread is not compression, while the batch cannot decide that question either way; the note stays frozen as written and this correction file is the record that overrides its reading"
+  },
+  "cross_batch_check": {
+    "why": "so that this correction is scoped to the sealed confirmation batch and does not silently overreach into pilot-02",
+    "pilot_02_ledger": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v16-three-arm-pilot-02/samples.jsonl",
+    "pilot_02_phase_census": {
+      "(tool_turn, answer)": {"none": 2, "pruner_v1": 0, "native_summary": 2},
+      "(tool_turn, answer, retry)": {"none": 0, "pruner_v1": 1, "native_summary": 1},
+      "(tool_turn, tool_turn, answer)": {"none": 3, "pruner_v1": 3, "native_summary": 3},
+      "(tool_turn, tool_turn, answer, retry)": {"none": 4, "pruner_v1": 5, "native_summary": 3},
+      "samples_with_three_or_more_tool_turns": 0
+    },
+    "pilot_02_unmatched_units": [
+      {"unit": "django_field_hash_immutability repeat 0", "baseline": {"model_calls": 2, "tool_turns": 1, "repairs": 0}, "pruner": {"model_calls": 3, "tool_turns": 1, "repairs": 1}, "paired_saving": -0.2973},
+      {"unit": "django_field_hash_immutability repeat 1", "baseline": {"model_calls": 2, "tool_turns": 1, "repairs": 0}, "pruner": {"model_calls": 4, "tool_turns": 2, "repairs": 1}, "paired_saving": -0.7910}
+    ],
+    "finding": "in pilot-02 the common factor of both negative units is again a pruner-only repair retry; repeat 1 additionally split the six reads into two batches where the baseline used one, so turn splitting is real in pilot-02 but secondary and absent in the confirmation batch",
+    "scope_of_this_correction": "the turn-splitting wording is superseded for the sealed confirmation batch only; the pilot-02 wording recorded in the handover stays as written, with the retry named as the common factor"
+  },
+  "method_lessons": [
+    "a difference in per-arm model calls must be attributed call by call from the recorded provider_calls phase ledger, never inferred from the call count alone",
+    "in this host configuration one repair retry costs 2.1k to 4.8k input tokens, comparable to or larger than a single task's compression saving, so the sign of a pair is governed by whether the retry burden is symmetric",
+    "report-only notes inside a finalised manifest are prose claims too: when the ledger contradicts them, the correction belongs in a separate artifact, not in a rewrite"
+  ],
+  "citable": false,
+  "never_rejudge": [
+    "attempt 01", "attempt 02", "attempt 03", "pilot-01", "pilot-02",
+    "v12", "v13", "v14", "v15"
+  ]
+}

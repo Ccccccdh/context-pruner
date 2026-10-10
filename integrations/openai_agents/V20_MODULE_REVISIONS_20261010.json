@@ -1,0 +1,57 @@
+{
+  "schema": "openai_agents_v20_module_revision_ledger",
+  "date": "20261010",
+  "generated_utc": "2026-10-10T14:52:45+00:00",
+  "plan_implements": "integrations/openai_agents/V20_NONDUPLICATE_MECHANISM_PLAN_20261010.json",
+  "gate_addendum": "integrations/openai_agents/V20_GATE_ADDENDUM_20261010.json",
+  "api_requests_spent": 0,
+  "purpose": "pin every module in the v20 path by SHA256 so the gate can fail closed on an unregistered change; the v17 batch could not be tied to a code revision, which is why the v20 plan requires this",
+  "rules": [
+    "a module whose digest is absent from this ledger fails the gate",
+    "a module whose digest differs from the digest recorded here fails the gate",
+    "a change is admitted only by registering a new revision of this ledger"
+  ],
+  "modules": {
+    "experiments/runners/openai_agents_v17_registry.py": "aa67abea06d9a47b5c5bb8fdef352ea975c7884620534bad10de44d828070392",
+    "experiments/runners/run_openai_agents_v17_acquisition.py": "be0b97b4100711e726c85003933a6cf0357c3c2b5388442d28a4af69ae5fb45d",
+    "experiments/runners/openai_agents_v17_live_contract.py": "b5be9165c8845579491e5541380f5f0766f97df77dfb933a12b26a1a1e3e1ca3",
+    "experiments/runners/openai_agents_structured_final_v16.py": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+    "experiments/runners/openai_agents_v20_retention.py": "a1dafbe624bdd7e88881d237df96448033687bb007f00f7e286a2cdfdeec1aa4",
+    "experiments/runners/openai_agents_v20_chain.py": "41d4ba547da42e659c7381927ccacf86543b97c74fc499885d8aa7059fff9259",
+    "experiments/runners/run_openai_agents_v20_acquisition.py": "b931a5b8914df5986b307aec2f6df91a80b824b1c30b72a7331717bf1d0351c7"
+  },
+  "plan_named_modules": [
+    "experiments/runners/openai_agents_v17_registry.py",
+    "experiments/runners/run_openai_agents_v17_acquisition.py",
+    "experiments/runners/openai_agents_v17_live_contract.py",
+    "experiments/runners/openai_agents_structured_final_v16.py"
+  ],
+  "revision": 3,
+  "previous_revisions": [
+    {
+      "revision": 1,
+      "modules": {
+        "experiments/runners/openai_agents_v17_registry.py": "aa67abea06d9a47b5c5bb8fdef352ea975c7884620534bad10de44d828070392",
+        "experiments/runners/run_openai_agents_v17_acquisition.py": "be0b97b4100711e726c85003933a6cf0357c3c2b5388442d28a4af69ae5fb45d",
+        "experiments/runners/openai_agents_v17_live_contract.py": "b5be9165c8845579491e5541380f5f0766f97df77dfb933a12b26a1a1e3e1ca3",
+        "experiments/runners/openai_agents_structured_final_v16.py": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+        "experiments/runners/openai_agents_v20_retention.py": "65650b10e8a6fb72e580245c8c0c9485b85874e4193dea5b421e8657abb0db2c",
+        "experiments/runners/openai_agents_v20_chain.py": "adfb48bbfc19237e8cf0bdafb86ede1a4a9102522c706a2534aa986832b10a2c",
+        "experiments/runners/run_openai_agents_v20_acquisition.py": "b6407a35ec50ffab89e8376c5a01b83aa01c9418f6fd86334cec97a7e35480b8"
+      }
+    },
+    {
+      "revision": 2,
+      "modules": {
+        "experiments/runners/openai_agents_v17_registry.py": "aa67abea06d9a47b5c5bb8fdef352ea975c7884620534bad10de44d828070392",
+        "experiments/runners/run_openai_agents_v17_acquisition.py": "be0b97b4100711e726c85003933a6cf0357c3c2b5388442d28a4af69ae5fb45d",
+        "experiments/runners/openai_agents_v17_live_contract.py": "b5be9165c8845579491e5541380f5f0766f97df77dfb933a12b26a1a1e3e1ca3",
+        "experiments/runners/openai_agents_structured_final_v16.py": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+        "experiments/runners/openai_agents_v20_retention.py": "65650b10e8a6fb72e580245c8c0c9485b85874e4193dea5b421e8657abb0db2c",
+        "experiments/runners/openai_agents_v20_chain.py": "41d4ba547da42e659c7381927ccacf86543b97c74fc499885d8aa7059fff9259",
+        "experiments/runners/run_openai_agents_v20_acquisition.py": "b931a5b8914df5986b307aec2f6df91a80b824b1c30b72a7331717bf1d0351c7"
+      }
+    }
+  ],
+  "gate_class": "experiments.runners.openai_agents_v20_chain.FirstCallPassthroughGate"
+}

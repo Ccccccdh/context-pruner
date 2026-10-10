@@ -1,0 +1,124 @@
+{
+  "schema": "openai_agents_v16_three_arm_pilot_freeze",
+  "status": "FROZEN",
+  "written_utc_date": "20261006",
+  "id": "V16-THREE-ARM-PILOT-02",
+  "purpose": "three_arm_pilot",
+  "experiment_id": "openai-repo-diagnostic-v16-three-arm-pilot-02",
+  "citable_as_saving": false,
+  "citable_as_quality_equivalence": false,
+  "not_evidence_yet": "the three development tasks took part in building this host configuration, so this batch is development evidence for the configuration under test; stability acceptance requires the sealed confirmation candidates in the same frozen configuration",
+  "matrix": {
+    "tasks": [
+      "django_sqlite_version_floor",
+      "django_orderedset_reversed",
+      "django_field_hash_immutability"
+    ],
+    "arms": [
+      "none",
+      "pruner_v1",
+      "native_summary"
+    ],
+    "repeats": 3,
+    "samples": 27,
+    "max_api_requests": 300
+  },
+  "host_configuration": {
+    "structured_final_answer": "JSON issue/cause/fix/facts asked for in the prompt, identical for every arm, rendered by the frozen renderer, which is the final-answer path and the only validator; a rejected proposal is closed to an empty answer",
+    "renderer": {
+      "module": "experiments/runners/openai_agents_structured_final_v16.py",
+      "sha256": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+      "truncates": false,
+      "drops_fields": false
+    },
+    "retry": {
+      "budget_per_sample": 1,
+      "billed": true,
+      "carries_host_diagnostic": true,
+      "diagnostic_is_the_host_rejection_reason": true,
+      "diagnostic_is_two_sided": true,
+      "diagnostic_states_the_bound_and_the_literals": true
+    },
+    "summary_cap_per_sample": 2,
+    "summary_requests_are_charged_to_the_arm": true,
+    "modules": {
+      "experiments/runners/run_openai_agents_v16_acquisition.py": "7d5dd3e6f62e39652d5d02f4e675c98fa830840c9183933aa129534cd8ad2095",
+      "experiments/runners/openai_agents_v16_live_contract.py": "ac05f40a353973911b7601ef3a9ff1b720ebf8ab90c196d470e3c151dc03f2d4",
+      "experiments/runners/openai_agents_v16_registry.py": "54323c8046881f207de3233bc3918c556352271dffec8b04df02c24a953c5798",
+      "experiments/runners/openai_agents_structured_final_v16.py": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+      "experiments/runners/openai_agents_multitask_chain_v14.py": "bb2f5ad589e4ac0129a4cf01d2316e7f1cf7987e5dfd02e2f41aa72c7ebc1446"
+    }
+  },
+  "acceptance_line": {
+    "line": "per task, the plugin arm's strict track is at least the baseline's (the four conditions judged on the rendered line) AND the paired complete provider-token saving is positive for a majority of pairs AND the batch mean is positive; failures, cap hits, retries and summary requests are all charged to their arm",
+    "strict_track": "the four conditions judged on the rendered line: required facts present, frozen regex full match, single line with the contract prefix, at most 160 characters",
+    "paired_statistic": "paired complete provider-token totals per (task, repeat) pair, summary tokens and retry usage included in the arm they belong to",
+    "reported_with": [
+      "per-task paired mean and dispersion",
+      "per-arm failure decomposition: declared fact missing, rendered over-length, no answer, other",
+      "per-arm retry counts",
+      "per-arm summary calls and requests"
+    ],
+    "bounds_are_not_relaxed": "at most 160 characters remains an acceptance condition"
+  },
+  "budget_arithmetic": {
+    "measured_model_calls_per_sample": {
+      "pilot_01": 3.22,
+      "attempt_02": 2.67,
+      "attempt_03": 3.0
+    },
+    "expected_requests": 108,
+    "worst_case_model_calls": 108,
+    "summary_calls_worst_case": 18,
+    "worst_case_requests": 234,
+    "cap": 300,
+    "headroom_factor": 2.38,
+    "cap_is_this_batches_own": "300 here; the acquisition batch's cap of 30 is unrelated and already closed",
+    "note": "expected uses the largest measured calls per sample (pilot 01 averaged 3.22 including retries) times 27 samples plus the summary allowance; the worst case keeps the frozen per-sample shape of six reads, one answer and one retry"
+  },
+  "report_requirements": [
+    "per-task and pooled paired mean saving with dispersion (stdev, min, max) and the count of positive pairs",
+    "per-arm failure decomposition: declared fact missing, rendered over-length, no answer, other",
+    "per-arm retry counts and per-arm summary calls",
+    "actual requests and dollar cost, with the cache split",
+    "the acceptance verdict recomputed independently by the audit, not copied from the runner",
+    "boundary wording: development evidence for this host configuration"
+  ],
+  "stop_conditions": [
+    "request cap 300 reached -> stop, keep the partial directory, continue later under a new experiment id; --resume may never be used to bypass the budget",
+    "any task whose plugin strict track is below its baseline -> the quality gate fails: stop and report, do not add samples to look for a positive",
+    "audit errors non-empty -> the batch may not be cited as an effective saving",
+    "any recorded sample missing its four condition flags -> stop"
+  ],
+  "forbidden_wording": [
+    "compression alone saved X percent",
+    "the four criteria are met"
+  ],
+  "required_wording": "under this host configuration",
+  "never_rejudge": "v12, v13, v14 and v15 freezes, scores and answers are untouched and unrejudged; the acquisition attempts 01, 02 and 03 are kept as they are and are not re-judged",
+  "source_of_record": {
+    "integrations/openai_agents/V16_SOURCE_REGISTRATION_20261006.json": "0723258eb3b297752625af85e5f2264bf843da70fa7205735225ca45fdaa22eb",
+    "integrations/openai_agents/V16_STAGE1_20261006.json": "989785291638d4f6699f781e5d10c3bedb7b636d91f833355235fb265c4037d8",
+    "integrations/openai_agents/V16_GATE_PROBES_20261006.json": "491eac2f7ad1050e07012a2987f6c469c01d32afb0fd981b1347ab768e4dc9be",
+    "integrations/openai_agents/V16_CANDIDATE_POOL_20261006.json": "def85ab86093ae5bfc08f568a2172a29448effb09742d27825d6b979e40ba357"
+  },
+  "amendment": {
+    "path": "integrations/openai_agents/V16_ACQUISITION_FREEZE_AMENDMENT_20261006.json",
+    "sha256": "815e4653bd2828f7879e5e1ad6270f344f08d211c549d6410ba740da35c978e7"
+  },
+  "discipline": {
+    "manifest_written_in_one_pass": true,
+    "writer_refuses_overwrite": true,
+    "no_resume_to_bypass_budget": true,
+    "no_git": true,
+    "old_batches_untouched": true
+  },
+  "supersedes_attempt": {
+    "attempt": 1,
+    "freeze": "integrations/openai_agents/V16_THREE_ARM_PILOT_FREEZE_20261006.json",
+    "freeze_sha256": "1492f6c3b789d5144d0b959abed164ba5f1b33528a841628eb4890514cd50774",
+    "batch": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v16-three-arm-pilot-01",
+    "outcome": "quality gate not met: the plugin strict track was below the baseline on one task, and every over-length rejection began as a declared-fact rejection whose diagnostic never named the 160-character bound (retro: V16_PILOT_RETRO_20261006.json)",
+    "note": "that batch and its freeze are kept unchanged and are not re-judged"
+  }
+}

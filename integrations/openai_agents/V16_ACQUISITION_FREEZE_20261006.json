@@ -1,0 +1,85 @@
+{
+  "schema": "openai_agents_v16_acquisition_freeze",
+  "status": "FROZEN",
+  "written_utc_date": "20261006",
+  "id": "v16-acquisition-01",
+  "purpose": "payload_acquisition_only",
+  "citable_as_saving": false,
+  "citable_as_quality_equivalence": false,
+  "not_evidence": "this batch only records real model inputs to test whether the all-arm structured contract is attainable; it is not saving evidence and not quality evidence",
+  "matrix": {
+    "tasks": [
+      "django_sqlite_version_floor",
+      "django_orderedset_reversed",
+      "django_field_hash_immutability"
+    ],
+    "task_count": 3,
+    "arms": [
+      "none"
+    ],
+    "repeats": 1,
+    "samples": 3,
+    "max_api_requests": 30
+  },
+  "host_configuration": {
+    "structured_final_answer": "JSON issue/cause/fix/facts, identical for every arm",
+    "renderer": {
+      "module": "experiments/runners/openai_agents_structured_final_v16.py",
+      "sha256": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+      "truncates": false,
+      "drops_fields": false
+    },
+    "retry_budget": 1,
+    "retry_is_billed": true
+  },
+  "criteria": {
+    "strict_track": [
+      "required facts present",
+      "frozen regex full match",
+      "single line with the contract prefix",
+      "at most 160 characters"
+    ],
+    "max_answer_chars": 160,
+    "bounds_are_not_relaxed": "at most 160 characters remains an acceptance condition",
+    "fidelity": "a sample whose fields cannot be rendered inside facts + frozen regex + 160 characters counts as a failure; the share is reported; truncation and dropped fields are forbidden",
+    "per_sample_report": [
+      "source_chars",
+      "rendered_chars",
+      "render_accepted",
+      "facts_complete",
+      "frozen_regex",
+      "single_line_prefix",
+      "within_160"
+    ]
+  },
+  "metering": {
+    "cache_fields_per_call": [
+      "prompt_cache_hit_tokens",
+      "prompt_cache_miss_tokens",
+      "call_timestamp_utc",
+      "off_peak",
+      "cache_fields_present",
+      "cache_usage_unknown"
+    ],
+    "cache_fields_fail_closed": "missing fields are recorded as unknown, never as zero",
+    "manifest_written_in_one_pass": true,
+    "writer_refuses_overwrite": true
+  },
+  "source_of_record": {
+    "integrations/openai_agents/V16_SOURCE_REGISTRATION_20261006.json": "0723258eb3b297752625af85e5f2264bf843da70fa7205735225ca45fdaa22eb",
+    "integrations/openai_agents/V16_STAGE1_20261006.json": "989785291638d4f6699f781e5d10c3bedb7b636d91f833355235fb265c4037d8",
+    "integrations/openai_agents/V16_GATE_PROBES_20261006.json": "491eac2f7ad1050e07012a2987f6c469c01d32afb0fd981b1347ab768e4dc9be",
+    "integrations/openai_agents/V16_CANDIDATE_POOL_20261006.json": "def85ab86093ae5bfc08f568a2172a29448effb09742d27825d6b979e40ba357"
+  },
+  "stop_conditions": [
+    "attainability fails: a material share of none-arm samples cannot render inside 160 characters -> stop and report, do not proceed to the three arms",
+    "request cap 30 exceeded -> stop",
+    "any recorded sample missing its four condition flags -> stop"
+  ],
+  "never_rejudge": "v12 (0/1), v13 (3/3), v14 (7/9, acceptance.met=false) stand unchanged",
+  "discipline": {
+    "no_resume_to_bypass_budget": true,
+    "old_batches_and_freezes_untouched": true,
+    "no_git": true
+  }
+}

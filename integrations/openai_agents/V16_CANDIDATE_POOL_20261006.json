@@ -1,0 +1,1978 @@
+{
+  "schema": "openai_agents_v16_candidate_pool",
+  "date": "20261006",
+  "paid_requests": 0,
+  "rule_text": "exclude when the id appears in a design-or-execution file: freeze files, protocols, batch manifests, audits, or anything under runs/**; do not exclude when the id appears only in .tooling/ drafts, preselection lists, memos/status documents or errata; any other file class counts as design, so the default is exclusion",
+  "rule_source": "user ruling on the v16 development-set block (2026-10-06)",
+  "rule_classes": {
+    "exclude": [
+      "freeze files",
+      "protocols",
+      "batch manifests",
+      "audits",
+      "anything under runs/**",
+      "task registries, runners, tests and task files (default: design)"
+    ],
+    "do_not_exclude": [
+      ".tooling/ drafts",
+      "preselection lists",
+      "memos/status documents",
+      "errata"
+    ]
+  },
+  "scan": {
+    "roots": [
+      "integrations",
+      "experiments",
+      "tests",
+      "tasks"
+    ],
+    "note": ".tooling/ is classified 'ignore' and never read for exclusion"
+  },
+  "salt": "v16-structured-final-2026-10-06",
+  "rows_in_scope": 92,
+  "excluded": 8,
+  "eligible_count": 84,
+  "recorded_six_reproduced": false,
+  "persisted_all_candidates": true,
+  "next_candidate_in_frozen_order": "django__django-11820",
+  "reserved_candidates": [
+    "django__django-11820",
+    "django__django-12193",
+    "django__django-13089",
+    "django__django-13512"
+  ],
+  "reservation_note": "the sealed untouched confirmation candidates and the unspent v15 candidate are excluded from development selection by reservation, not by hand-picking; the first available candidate in frozen order is taken without any manual choice",
+  "next_available_candidate_in_frozen_order": "django__django-15315",
+  "available_order": [
+    "django__django-15315",
+    "django__django-11239",
+    "django__django-16145",
+    "django__django-13741",
+    "django__django-17087",
+    "django__django-15127",
+    "django__django-11299",
+    "django__django-15499",
+    "django__django-10999",
+    "django__django-13112",
+    "django__django-16595",
+    "django__django-11066",
+    "django__django-9296",
+    "django__django-14915",
+    "django__django-11555",
+    "django__django-11433",
+    "django__django-12125",
+    "django__django-15741",
+    "django__django-10880",
+    "django__django-15572",
+    "django__django-16255",
+    "django__django-14376",
+    "django__django-16899",
+    "django__django-16333",
+    "django__django-13794",
+    "django__django-15104",
+    "django__django-11490",
+    "django__django-11119",
+    "django__django-15277",
+    "django__django-12304",
+    "django__django-13933",
+    "django__django-15930",
+    "django__django-13297",
+    "django__django-15851",
+    "django__django-16139",
+    "django__django-11133",
+    "django__django-15467",
+    "django__django-11163",
+    "django__django-12741",
+    "django__django-11951",
+    "django__django-14315",
+    "django__django-15380",
+    "django__django-14855",
+    "django__django-12209",
+    "django__django-12308",
+    "django__django-14792",
+    "django__django-15987",
+    "django__django-11099",
+    "django__django-13406",
+    "django__django-14999",
+    "django__django-10914",
+    "django__django-11179",
+    "django__django-14404",
+    "django__django-10097",
+    "django__django-14608",
+    "django__django-15368",
+    "django__django-11603",
+    "django__django-14752",
+    "django__django-13023",
+    "django__django-14580",
+    "django__django-13551",
+    "django__django-16569",
+    "django__django-17029",
+    "django__django-13363",
+    "django__django-11451",
+    "django__django-14373",
+    "django__django-14493",
+    "django__django-14534",
+    "django__django-13417",
+    "django__django-16642",
+    "django__django-12419",
+    "django__django-15863",
+    "django__django-16116",
+    "django__django-16801",
+    "django__django-16429",
+    "django__django-14765",
+    "django__django-14539",
+    "django__django-15569",
+    "django__django-13807",
+    "django__django-13109",
+    "django__django-12276"
+  ],
+  "candidates": [
+    {
+      "instance_id": "django__django-13821",
+      "base_commit": "e64c1d8055a3e476122633da141f16b50f0c4a2d",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "265686648c416aaf4879d6757538e5d9ee13c00496288e6fbd5fbdb9901cf3ec",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 14,
+      "selection_key": "07064647fdd88e08ef39c8688557a4908b97b347c33b4e8432e192d5f906df08",
+      "decision": "excluded",
+      "reason": "design_like_file_class_default",
+      "design_references": [],
+      "design_like_references": [
+        "other:experiments/runners/openai_agents_v16_blob_probe.py",
+        "other:experiments/runners/openai_agents_v16_source_registration.py",
+        "other:integrations/openai_agents/V16_REGISTRATION_AND_CONTROLS_20261006.md",
+        "other:integrations/openai_agents/V16_SOURCE_REGISTRATION_20261006.json"
+      ],
+      "mention_only_references": [
+        "ignore:integrations/openai_agents/V16_PRESELECT_20261006.json",
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-13410",
+      "base_commit": "580a4341cb0b4cbfc215a70afc004875a7e815f4",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "a0d73591704ec56dc81c6e7035614a8bd526166b9700b9f982c4c58c4b719676",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 40,
+      "selection_key": "078ac0f1ba45d48cfb7d402ee2e7ced4c92e07cbf95fb2951efdf94c7a416d62",
+      "decision": "excluded",
+      "reason": "design_like_file_class_default",
+      "design_references": [],
+      "design_like_references": [
+        "other:experiments/runners/openai_agents_v16_blob_probe.py",
+        "other:experiments/runners/openai_agents_v16_source_registration.py",
+        "other:integrations/openai_agents/V16_REGISTRATION_AND_CONTROLS_20261006.md",
+        "other:integrations/openai_agents/V16_SOURCE_REGISTRATION_20261006.json",
+        "other:tests/test_openai_agents_v16_zero_api.py"
+      ],
+      "mention_only_references": [
+        "ignore:integrations/openai_agents/V16_PRESELECT_20261006.json",
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-14089",
+      "base_commit": "d01709aae21de9cd2565b9c52f32732ea28a2d98",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "cbfb85cb9ea9b08049b15ffaff23b96640926088e725b8b70f7ef2a31b767118",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 43,
+      "selection_key": "09ac1f8c70d40166cef5903476d62c117211c23d2670e4e5574827bbb04f057b",
+      "decision": "excluded",
+      "reason": "design_like_file_class_default",
+      "design_references": [],
+      "design_like_references": [
+        "other:experiments/runners/openai_agents_v16_blob_probe.py",
+        "other:experiments/runners/openai_agents_v16_source_registration.py",
+        "other:integrations/openai_agents/V16_REGISTRATION_AND_CONTROLS_20261006.md",
+        "other:integrations/openai_agents/V16_SOURCE_REGISTRATION_20261006.json"
+      ],
+      "mention_only_references": [
+        "ignore:integrations/openai_agents/V16_PRESELECT_20261006.json",
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-11820",
+      "base_commit": "c2678e49759e5c4c329bff0eeca2886267005d21",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "8037de3210e730f87afe64ed1280846ba8d4d7e23c7720cba65ebe389ce36a7e",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 61,
+      "selection_key": "0bcbd7ab0d007be2c156f0cd963406a50a49a93819f4dc2d6809710fd6f238fa",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openai_agents/V16_PRESELECT_20261006.json",
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": true,
+      "reserved_reason": "sealed untouched confirmation candidate"
+    },
+    {
+      "instance_id": "django__django-12193",
+      "base_commit": "3fb7c12158a2402f0f80824f6778112071235803",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "6bd02eebf7c0609141d1497e235bcffa2070916542617dcee089b19d8d844eeb",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 11,
+      "selection_key": "0cc0137c358c4d32f629a243f823ae4c5ba3605ce1436d5ad5316bfe965a7001",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openai_agents/V16_PRESELECT_20261006.json",
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": true,
+      "reserved_reason": "sealed untouched confirmation candidate"
+    },
+    {
+      "instance_id": "django__django-15315",
+      "base_commit": "652c68ffeebd510a6f59e1b56b3e007d07683ad8",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "a26b3534bece469f866614b19fadd37e13c9a06ce293bfe21e32313b9cfa90fd",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 33,
+      "selection_key": "11aeca0fb83e0596a87f5c4699b849d342168299668c08d88120cb0ed6c3afff",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V47_RESELECTION_RECORD.md",
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-13089",
+      "base_commit": "27c09043da52ca1f02605bf28600bfd5ace95ae4",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "5825c5a4fb9c815c7ce346478818d9a0160ebaaa75534bf94f3992b25a3f6cc3",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 352,
+      "selection_key": "137d0943935c00f159760cdbf3442725c281858a950880408354065a7863e024",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openai_agents/V16_PRESELECT_20261006.json",
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": true,
+      "reserved_reason": "sealed untouched confirmation candidate"
+    },
+    {
+      "instance_id": "django__django-11239",
+      "base_commit": "d87bd29c4f8dfcdf3f4a4eb8340e6770a2416fe3",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "4f06ccec412dfd622e67248f35d24c93d00bfb755849a39f958b4e806969b86f",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 5,
+      "selection_key": "15db596cf96f72477f5f2bf5b8ed8260c25de9e7065d369ac29dd5f4889c39d5",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-16145",
+      "base_commit": "93d4c9ea1de24eb391cb2b3561b6703fd46374df",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "04c20c6816a5e01d7261a30182d4c5718c4758e2b629fbba7e2778fdec4cb77f",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 174,
+      "selection_key": "15e1ef3079e44d772c014c8af2d736a8b7e7f209f14d628c0d665dd42f949ef3",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-13741",
+      "base_commit": "d746f28949c009251a8741ba03d156964050717f",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "649548e0c7ba74a107750c961644b757d2d8465b58073945fa9b92ff29705aba",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 82,
+      "selection_key": "163cd49ef990606d8f2556a24407a1a5ea0a02c6c0048705d5191051a8ee38dd",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-17087",
+      "base_commit": "4a72da71001f154ea60906a2f74898d32b7322a7",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "70cad331a2b095ca612c98e2d2d81a549fb32f91f6ac261196d30d4a77bdb2fb",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 53,
+      "selection_key": "16d754149c8e02d0f5c9fb915f411bc561c866010cfbc0f45a82beeb86a946a1",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-15127",
+      "base_commit": "9a6e2df3a8f01ea761529bec48e5a8dc0ea9575b",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "c292bb768c1a7f54599f5232bf0ec130db16cae3504ab40183bf07f4ff3f3622",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 1,
+      "selection_key": "1b0ebc522127cf62f2fc0d273558388796fc50c9bc37d3b05fedd05947660916",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-11299",
+      "base_commit": "6866c91b638de5368c18713fa851bfe56253ea55",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "97b5f134c36100595809297bfa1c1ce5948944ca8c384e47b2b9df33fb94089c",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 103,
+      "selection_key": "1c1d90258a9dd7499332483e75516e38464ee3e1167132041d6bdb4d4316bccd",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-15499",
+      "base_commit": "d90e34c61b27fba2527834806639eebbcfab9631",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "5b157eb69d1b4d671f1f1751692541bfd58a51abda2269af5968a299640619ad",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 35,
+      "selection_key": "1c716926202599cac71f795d1126dd72788a5b1864e16aa69cd3db884c6197ae",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-10999",
+      "base_commit": "36300ef336e3f130a0dadc1143163ff3d23dc843",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "efbac10cda6c1ef780205a8d9fc176b5489d1da8f76d9cbd366ef303052fd8d3",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 10,
+      "selection_key": "1d7447a8da20d933ec016b70d7ef6848f06ece45e8572290b8627fdb46fce883",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-11964",
+      "base_commit": "fc2b1cc926e34041953738e58fa6ad3053059b22",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "9f510b2ad7d3833f07816f18dfa6dbb8dacf72061c288cfe399418bfe4da25ab",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 15,
+      "selection_key": "2039312ce0275cf9886c7b62be1a7021b44b8f15bf009d69d68fbe191a0c1766",
+      "decision": "excluded",
+      "reason": "v15_preselection",
+      "design_references": [
+        "exclude:integrations/openai_agents/V15_ACQUISITION_02_ADMISSION_20261006.json",
+        "exclude:integrations/openai_agents/V15_ACQUISITION_FREEZE_02_20261006.json",
+        "exclude:integrations/openai_agents/V15_ACQUISITION_FREEZE_20261006.json"
+      ],
+      "design_like_references": [
+        "other:experiments/runners/openai_agents_v15_register.py",
+        "other:integrations/openai_agents/V15_SOURCE_CONTRACT_GATE_20261006.json",
+        "other:integrations/openai_agents/V15_SOURCE_REGISTRATION_20261006.json"
+      ],
+      "mention_only_references": [
+        "ignore:experiments/runners/openai_agents_v15_preselect.py",
+        "ignore:integrations/openai_agents/V15_PRESELECT_20261006.json",
+        "ignore:integrations/openai_agents/V15_STRICT_NEXT_ROUND_STATUS_20261006.md",
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-13112",
+      "base_commit": "09914ccf688974e068941f55412b930729bafa06",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "23bc7cc79708f1a1396e96c7f125e2b8db60c77298639a055c9ba2d50dec1afd",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 63,
+      "selection_key": "218a7bc658c1b21319593a1d2afb5017c7f470688b8546734555fd1bbc838dd7",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-16595",
+      "base_commit": "f9fe062de5fc0896d6bbbf3f260b5c44473b3c77",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "9634961aa789b58bc0e66fae12245de8b9f826e5f69b752226458f5888fe2116",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 37,
+      "selection_key": "21d2b66442df8ec6b24eed7f34b11411194b19245eca400621c1b02b63c24a18",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-11066",
+      "base_commit": "4b45b6c8e4d7c9701a332e80d3b1c84209dc36e2",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "2c4cbca71895396f6bac73ad9454105f56828f542278e2e927483f6cac599db8",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 3,
+      "selection_key": "26713f0f3ba28535d0f9976649d72804a87d876d9d2c43c402eabeed1c1bfa2d",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-9296",
+      "base_commit": "84322a29ce9b0940335f8ab3d60e55192bef1e50",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "1dad6e4ae15cb47af74a688dc59b6a40fa55b6ec0086f587e16c784c78acfc23",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 20,
+      "selection_key": "39f7772faa52a381de399313292a205e17ce5048590f30ccdd08611c2cd5ca38",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json",
+        "ignore:integrations/openhands/V68_ZERO_API_STATUS_20261006.md"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-14915",
+      "base_commit": "903aaa35e5ceaa33bfc9b19b7f6da65ce5a91dd4",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "bf8158a727f6dc6c7342fadb1af16bfe69171e4a5a9e1db719367ce0dbacc849",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 23,
+      "selection_key": "3a8023c363ef8cafe5a28a0094670c0d611e732388cf29e404cbed45db21ab61",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V47_RESELECTION_RECORD.md",
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-11555",
+      "base_commit": "8dd5877f58f84f2b11126afbd0813e24545919ed",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "7ee01f2d7d71129328901b610c75e815c7dfb7ddd1ca605d87d8d02ba6851d1c",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 26,
+      "selection_key": "3e0bb0ba7abe26510d2d01ea32bc02739e536b9344cf50534da6f4c42e1b6cdc",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-11433",
+      "base_commit": "21b1d239125f1228e579b1ce8d94d4d5feadd2a6",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "65f0d2e3b24ac4220baeebaf2adbdb8124d975a8ea8397a95a0054bae9b585b7",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 142,
+      "selection_key": "3e3c8a3278e97c0b7e9bed8df2ea7a444bfbd259efc076d86340f2aff9ec8ae6",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-12125",
+      "base_commit": "89d41cba392b759732ba9f1db4ff29ed47da6a56",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "d466ceb9860bfb421821c9bab47b1fa2c11295523365b174ea0b2a5a3b125a65",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 45,
+      "selection_key": "402a97495fd9fc08c8d9d21c2c2b0d4687cab9b427d6bdc2339fad78ba6821e1",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-11880",
+      "base_commit": "06909fe084f87a65459a83bd69d7cdbe4fce9a7c",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "e602e90dd73a70f9faf006238dfda2347f4aa08bb29365ae2611b3ea92f3eff4",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 114,
+      "selection_key": "413e163a22b48cffcc9d227c2efa9df80cfd6730fd1e000251e584d2b3f35c6b",
+      "decision": "excluded",
+      "reason": "v15_preselection",
+      "design_references": [
+        "exclude:integrations/openai_agents/V15_ACQUISITION_02_ADMISSION_20261006.json",
+        "exclude:integrations/openai_agents/V15_ACQUISITION_FREEZE_02_20261006.json",
+        "exclude:integrations/openai_agents/V15_ACQUISITION_FREEZE_20261006.json"
+      ],
+      "design_like_references": [
+        "other:experiments/runners/openai_agents_v15_register.py",
+        "other:integrations/openai_agents/V15_SOURCE_CONTRACT_GATE_20261006.json",
+        "other:integrations/openai_agents/V15_SOURCE_REGISTRATION_20261006.json"
+      ],
+      "mention_only_references": [
+        "ignore:experiments/runners/openai_agents_v15_preselect.py",
+        "ignore:integrations/openai_agents/V15_PRESELECT_20261006.json",
+        "ignore:integrations/openai_agents/V15_STRICT_NEXT_ROUND_STATUS_20261006.md",
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-15741",
+      "base_commit": "8c0886b068ba4e224dd78104b93c9638b860b398",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "885e417777d572d47461e7ec0c9eb4ea29ec0e446a60f4515cbf32625a3a9cbf",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 104,
+      "selection_key": "4800c07a0e91f3b16cb9b37f9083c396d5ae01e84033667daefbcd022ccb4f17",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-10880",
+      "base_commit": "838e432e3e5519c5383d12018e6c78f8ec7833c1",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "d554ba8ef84e2e4dc22c291d413e4cb58070d5d730dae3aca383a4cdb77c20b2",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 55,
+      "selection_key": "4af5150020445b6b87016fa9c3ce4a098e6f45e3c6d22d9194461b99ad308ad7",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-15572",
+      "base_commit": "0b31e024873681e187b574fe1c4afe5e48aeeecf",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "f9d1889009c44a56a4487dbf777c536841b4b30a2472ee1d1e30b75007f12aa3",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 10,
+      "selection_key": "4f139a6195c4aeaec1643e56dd1d83f06ff7b017e3fe1ae6cf93cc912b4f6855",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-16255",
+      "base_commit": "444b6da7cc229a58a2c476a52e45233001dc7073",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "2359a3443b4020179e535a3df289178a975a90472b1fb6c3c23adf85aee5c371",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 36,
+      "selection_key": "55b42347dee910a14c5cdb243ad562a8ee696bf7ccdc8ac5ad9c9877c5a83330",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-14376",
+      "base_commit": "d06c5b358149c02a62da8a5469264d05f29ac659",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "5365417653d0973045c8b9dad432b1ea4300765b3114a94b249824beb70ec215",
+      "fail_to_pass_count": 3,
+      "pass_to_pass_count": 6,
+      "selection_key": "561a84cc0a921a742ff5133483a778cfd14683caef48ea1547f39d58cae88955",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-16899",
+      "base_commit": "d3d173425fc0a1107836da5b4567f1c88253191b",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "9c9351066a13a3059571433afaff2b7a9948b725fdf47c3c39f8f0b73fc1394f",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 54,
+      "selection_key": "5c06a207c4d2ae753c9c3696d33ca0bb8042592d80b0d34957c25bcf7c2306c2",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-16333",
+      "base_commit": "60a7bd89860e504c0c33b02c78edcac87f6d1b5a",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "603fcbce6271954ca24171d4ae19dcaba962abf158fc04f53d3fd18dbcd20cb3",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 87,
+      "selection_key": "5c9064125d22a4175d61c45b29eabcd3f1cf4cad0e5286dd689da705faa48231",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-13794",
+      "base_commit": "fe886eee36be8022f34cfe59aa61ff1c21fe01d9",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "8fec230311b96c7a82993e454ee4cb7288e74ba228b16cf24b991b4894bcffea",
+      "fail_to_pass_count": 3,
+      "pass_to_pass_count": 24,
+      "selection_key": "5da36f22ab41d27b0be939d7dbaad443f8d96d7c4cda1be9a00a7bb4bb887140",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-15104",
+      "base_commit": "a7e7043c8746933dafce652507d3b821801cdc7d",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "28a48760ccbbb8e549a66edeae834de8a47f4a34d06ba80e4c929c6ea55626d2",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 131,
+      "selection_key": "6032a53fffcfc862db916630ef11311a3dd40ee91fc130755dba4b53bcf46e6f",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V47_RESELECTION_RECORD.md",
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-11490",
+      "base_commit": "a7038adbd02c916315b16939b835f021c2ee8880",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "3e617e299646332b07e60d86867a3c5246fd7fd6cf0263a94ae5585f0fd30d00",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 23,
+      "selection_key": "631e86a128acea232d833a95f3304105ebcdc03a7c95da3474b94469e33440f4",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-11119",
+      "base_commit": "d4df5e1b0b1c643fe0fc521add0236764ec8e92a",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "264fad964e8d5a49cd04509eb503175aed31535e29c9262cb9eee4b251192728",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 7,
+      "selection_key": "647c72f252bbf5c8e5f40100edec25afafd5410ea2e1f8ad532c28bac1d98b17",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-15277",
+      "base_commit": "30613d6a748fce18919ff8b0da166d9fda2ed9bc",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "98525d608a2e031433d4b7356a5bfc0143c43f0e34ab84fd9f2a2d6e15f8359d",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 158,
+      "selection_key": "69c80aac2e005ed992d816fd422b698737efca00c08e2685f74b62ec56205f14",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-12304",
+      "base_commit": "4c1b401e8250f9f520b3c7dc369554477ce8b15a",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "99dceeb9e23295f6b10e7778f737b9bfb3cf49f99eca1cfae9b10505324c3901",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 17,
+      "selection_key": "6a0c6c54e0341107d2de8b6a0f2e7cc4a87058be197c51515fb2e736484d4597",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-13933",
+      "base_commit": "42e8cf47c7ee2db238bf91197ea398126c546741",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "401348caf9cb639acfea61bb1f3bbc93a59d3e8a025d2fb99dd17c4a512723dd",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 19,
+      "selection_key": "725ed5981ba85a6fed665f022ab2ef68900b97a21fbcb8044311d798be56c61d",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-15930",
+      "base_commit": "63884829acd207404f2a5c3cc1d6b4cd0a822b70",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "e2c63560dec85eba8d54e55e16e39c352b0db782bc1b1f06aef31819757e9732",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 88,
+      "selection_key": "72a9a3977b111e1bec479e360b5fbf43e1aba98cabaa84c83e3b4a3bf92f2039",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V47_RESELECTION_RECORD.md",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-13297",
+      "base_commit": "8954f255bbf5f4ee997fd6de62cb50fc9b5dd697",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "e61d15a6ceed56f64d664100196a3313d242c09e49317661ec6aa85c8c980c36",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 52,
+      "selection_key": "75c1575b1b932e200d28bddb3efe66978455bd88202e461838365da43bc6aba9",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-15851",
+      "base_commit": "b4817d20b9e55df30be0b1b2ca8c8bb6d61aab07",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "f4d50fcd56c36967abc5518f3cf22d8f7cdec73d9ee380ead21efd6c4e434526",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 8,
+      "selection_key": "7835d1cb4e59107f7918f6c68c286261f84679c38c2f9886e9c543c311a647a1",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-16139",
+      "base_commit": "d559cb02da30f74debbb1fc3a46de0df134d2d80",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "b995147ec63f69ca6a39f0fdbf6e8d9f5647458bc7e76a693157834c38435ec2",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 86,
+      "selection_key": "78383e19fc3d2c7d626f3ac6da8a29abb297e64a29636b06386f9c90e9bd9265",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-11133",
+      "base_commit": "879cc3da6249e920b8d54518a0ae06de835d7373",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "a7f427b7eb3f746b6985030b467a99099e6e3453319297a41e35effa7c32b8ed",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 64,
+      "selection_key": "79893b01f164feacc9eb784fddcbccae5f2da8a1af1bf24149f7afe8c23171da",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-15467",
+      "base_commit": "e0442a628eb480eac6a7888aed5a86f83499e299",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "fc7443424d0b936393fb4f7cf0d1c3045fbd138a736a563d555bbf5cafccd99b",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 62,
+      "selection_key": "7a373da71b00bc28846d5f93afc1f63ed5cecb0e6a26a3b5ab45010712ea9406",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V47_RESELECTION_RECORD.md",
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-11163",
+      "base_commit": "e6588aa4e793b7f56f4cadbfa155b581e0efc59a",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "8dbd8cae38c3a82b681a79bdfe8ffaa78aa6f1fad9744a1ca197f90265e5c80b",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 141,
+      "selection_key": "7e637cc68fc9307f6f76919474c8c004353b05502a479ed8a7c7ba79fca350da",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-12741",
+      "base_commit": "537d422942b53bc0a2b6a51968f379c0de07793c",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "06e228f603008bf1f807cfa5e10f0e54802d174667e2297d56503df2a19ac25d",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 67,
+      "selection_key": "850320ebe17ff12b75110076e07a719597d143c894d4de68a60e8930add0a62d",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-11951",
+      "base_commit": "312049091288dbba2299de8d07ea3e3311ed7238",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "7c7ff1d81171a59af83ad9d0934053aa7c4e9bf6698ae2b3acde3e4d6353c169",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 21,
+      "selection_key": "8a0e97d6868f69333b758ddf5161aaa3d335897b9897d5ec4ff6f7d40b056248",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-14315",
+      "base_commit": "187118203197801c6cb72dc8b06b714b23b6dd3d",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "bef4cf98805c60cd26812114b20594a4cf19b71cbd87b68f2424e16bb288c768",
+      "fail_to_pass_count": 11,
+      "pass_to_pass_count": 0,
+      "selection_key": "8c3b3de0ee8f392058d2a446e0fb8ae955b9012d6ff59d10e227baa1a5fb1e96",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-15380",
+      "base_commit": "71e7c8e73712419626f1c2b6ec036e8559a2d667",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "53100fe4bc9f478124a2d09309952bdae262d1f27673d79613eaea157cf20191",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 133,
+      "selection_key": "8c86dbf60a1baa15f3770111df780f82510404129a413ceea42ecd21970a3675",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V47_RESELECTION_RECORD.md",
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-14855",
+      "base_commit": "475cffd1d64c690cdad16ede4d5e81985738ceb4",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "7c113fe11bfa67ad47de43ed350aab131ae71456dec54707251ac2e79d5de7b9",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 325,
+      "selection_key": "8caf734ec6660a82275c3c8204f1083c0577344cee08ad1a48ebe3ad63619ef3",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-12209",
+      "base_commit": "5a68f024987e6d16c2626a31bf653a2edddea579",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "5e48c4a578224647481334cf10311fff1141a4897260744d719b8af678daf53c",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0,
+      "selection_key": "90fad8c39a818516e2d7f6dbb72d3b67290eaa095e5a4363509e19bf62052769",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-12308",
+      "base_commit": "2e0f04507b17362239ba49830d26fec504d46978",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "3a5c42ef1352e5d34855a9b6efc54b08f2e6122a861306f8f47e323775851784",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 20,
+      "selection_key": "9423b189b72eadf3c5356b9994f21e31e64138e794ec6cba9f0dfd71cd0dbd0e",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-14792",
+      "base_commit": "d89f976bddb49fb168334960acc8979c3de991fa",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "b5f5a0d21a40deb0fea2a4a0dfa0b0c5f45c891648de9e0d622db437f3b84e3e",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 23,
+      "selection_key": "9806f9897944370992aa7b79d9aba1f2efdf4a1e5458e1125c69c9db2cde6371",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-13512",
+      "base_commit": "b79088306513d5ed76d31ac40ab3c15f858946ea",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "77633ba2243ab634f8e720517e2dea5dee17f839be6ad5ae87c58b4bf021cbf6",
+      "fail_to_pass_count": 3,
+      "pass_to_pass_count": 32,
+      "selection_key": "98c87275e4bc82c0b1f99c892d7fb8750401532cf0e7cbd937cefa5e4a2bde7f",
+      "decision": "excluded",
+      "reason": "v15_preselection",
+      "design_references": [
+        "exclude:integrations/openai_agents/V15_ACQUISITION_02_ADMISSION_20261006.json",
+        "exclude:integrations/openai_agents/V15_ACQUISITION_02_RESULT_20261006.md"
+      ],
+      "design_like_references": [
+        "other:experiments/runners/openai_agents_v15_summarize_acquisition.py"
+      ],
+      "mention_only_references": [
+        "ignore:experiments/runners/openai_agents_v15_preselect.py",
+        "ignore:integrations/openai_agents/V15_PRESELECT_20261006.json",
+        "ignore:integrations/openai_agents/V15_STRICT_NEXT_ROUND_STATUS_20261006.md",
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": true,
+      "reserved_reason": "unspent v15 candidate"
+    },
+    {
+      "instance_id": "django__django-15987",
+      "base_commit": "7e6b537f5b92be152779fc492bb908d27fe7c52a",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "74fc422f95f0cc73e0782cafc65260bc6805ce03753bea993d58c0641edc8a5d",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 52,
+      "selection_key": "98d2427f9edf4f647f1f2a833f189653338ba02fec0bec4d47133eb316fb6f3a",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-11099",
+      "base_commit": "d26b2424437dabeeca94d7900b37d2df4410da0c",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "b0526bc6d9268fe373bf624621c8d5f560fc6b0ffae7e64b460d84f6726f3ed5",
+      "fail_to_pass_count": 3,
+      "pass_to_pass_count": 19,
+      "selection_key": "9a4029009b07040d623783ed12a7e19b6bc8447e59080df84a9b5234cc5d90a0",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-13406",
+      "base_commit": "84609b3205905097d7d3038d32e6101f012c0619",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "ca2ece66b44ccf60d98ae4b1e6f5bdc9bcfefc640ea3b3bac0bfa7554a49fa2a",
+      "fail_to_pass_count": 3,
+      "pass_to_pass_count": 32,
+      "selection_key": "9ae27224bf6af68e009a9c41d0cba7bf31ffbce36ae9d05a37b114ef06059dcd",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-16100",
+      "base_commit": "c6350d594c359151ee17b0c4f354bb44f28ff69e",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "1348b1dd6ab1cb64b3178fe8cf3fa0b9998eaa9eb0a7c522fb5eed67f62254ba",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 59,
+      "selection_key": "9c2281d445117cf7e144b3b191926fd7059ffb2f6ddb6461590e74127d680666",
+      "decision": "excluded",
+      "reason": "design_or_execution_reference",
+      "design_references": [
+        "exclude:integrations/openhands/PILOT_PROTOCOL_V49.md",
+        "exclude:integrations/openhands/PILOT_PROTOCOL_V55.md",
+        "exclude:integrations/openhands/PILOT_PROTOCOL_V56.md",
+        "exclude:integrations/openhands/PILOT_PROTOCOL_V57.md",
+        "exclude:integrations/openhands/PILOT_PROTOCOL_V58.md",
+        "exclude:integrations/openhands/PILOT_PROTOCOL_V59.md",
+        "exclude:integrations/openhands/PILOT_PROTOCOL_V60.md",
+        "exclude:integrations/openhands/PILOT_PROTOCOL_V61.md"
+      ],
+      "design_like_references": [
+        "other:integrations/openhands/validation_tasks_v49.py",
+        "other:tests/test_openhands_v55_formal_runner_gate.py",
+        "other:tests/test_openhands_v56_formal_runner_gate.py",
+        "other:tests/test_openhands_v57_formal_runner_gate.py",
+        "other:tests/test_openhands_v58_formal_runner_gate.py",
+        "other:tests/test_openhands_v59_formal_runner_gate.py",
+        "other:tests/test_openhands_v60_formal_runner_gate.py",
+        "other:tests/test_openhands_v61_formal_runner_gate.py"
+      ],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V47_RESELECTION_RECORD.md",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-14787",
+      "base_commit": "004b4620f6f4ad87261e149898940f2dcd5757ef",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "b52409ced83e2b68e7961a34db6792ca6b89277456ea14c6c166c7f8c8e17c0d",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 20,
+      "selection_key": "9c7ccd492cdf416489eafbc0af85e1063e37cd4365f857163bee4a419bf2b3be",
+      "decision": "excluded",
+      "reason": "v15_preselection",
+      "design_references": [
+        "exclude:integrations/openai_agents/V15_ACQUISITION_02_ADMISSION_20261006.json",
+        "exclude:integrations/openai_agents/V15_ACQUISITION_FREEZE_02_20261006.json",
+        "exclude:integrations/openai_agents/V15_ACQUISITION_FREEZE_20261006.json"
+      ],
+      "design_like_references": [
+        "other:experiments/runners/openai_agents_v15_register.py",
+        "other:integrations/openai_agents/V15_SOURCE_CONTRACT_GATE_20261006.json",
+        "other:integrations/openai_agents/V15_SOURCE_REGISTRATION_20261006.json"
+      ],
+      "mention_only_references": [
+        "ignore:experiments/runners/openai_agents_v15_preselect.py",
+        "ignore:integrations/openai_agents/V15_PRESELECT_20261006.json",
+        "ignore:integrations/openai_agents/V15_STRICT_NEXT_ROUND_STATUS_20261006.md",
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-14999",
+      "base_commit": "a754b82dac511475b6276039471ccd17cc64aeb8",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "5264ba42b6576487dbd71edab4f86f5c7e2642f728562861bea1a0fad04da819",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 113,
+      "selection_key": "9f6840d5e69af6cd81b239bc49ad8b636ecdbd7f80bfb6573e86618a38dcd2d4",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-10914",
+      "base_commit": "e7fd69d051eaa67cb17f172a39b57253e9cb831a",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "ba101c6d80094fe56bc64d74dcb7efe033a6e0d43dd77e8f00e65806fdbcdb8b",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 98,
+      "selection_key": "a87ea3607b07d7dea20cfaff86ed47576cb1811d1223891566dfeafd88a21d80",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-11179",
+      "base_commit": "19fc6376ce67d01ca37a91ef2f55ef769f50513a",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "9f6cb755dfdc0db5536cba40dae20c41d4750fd6a87acc18677c929ca896d136",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 40,
+      "selection_key": "aca57f4c33683dceffbb418ca8d9e15b00a0154178028f03c93c2adf4c1a5382",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-14404",
+      "base_commit": "de32fe83a2e4a20887972c69a0693b94eb25a88b",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "def9177a98fb70db5e820c239d7c624fe8e84ef5b3c0a48fdda3cbf03e2e004b",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 323,
+      "selection_key": "ad2c6b5a25fee203d97870848eee9595b91158434cb9b2360041d1a53ce0e84e",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-10097",
+      "base_commit": "b9cf764be62e77b4777b3a75ec256f6209a57671",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "2288319e7e72693551b8454b5c63f165f23dfb32bc6579ad03602d3cd311bdaa",
+      "fail_to_pass_count": 438,
+      "pass_to_pass_count": 1427,
+      "selection_key": "b4ea166b4f7b6a81ceb4cdb4d3e61eec8f1861fe395e9940eae8e0e5569ed706",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-14608",
+      "base_commit": "7f33c1e22dbc34a7afae7967783725b10f1f13b1",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "28120c6f6a8b2a68dc45ba85d6154eb892ad4040da4961ffc4d8d34a60fd992e",
+      "fail_to_pass_count": 4,
+      "pass_to_pass_count": 394,
+      "selection_key": "b64911a5ded5cf4cb15aed144a8ab5addf56c1b282fb5a4090eafb2df33ed763",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-15368",
+      "base_commit": "e972620ada4f9ed7bc57f28e133e85c85b0a7b20",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "1bced2e7a3d9d1a655c00e9057eca1f32180b3ef8cbdb43fa560b580531f07d0",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 29,
+      "selection_key": "b8354f41490300c42a88a22265fe837b80510fad916d8e5d3fa02afd037ecbf4",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V47_RESELECTION_RECORD.md",
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-11603",
+      "base_commit": "f618e033acd37d59b536d6e6126e6c5be18037f6",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "cc6c06c69faae4c8e525b22f032272081f2dbc5d7d732f3589ca3f5723a0215b",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 58,
+      "selection_key": "b8419ba71a6d52208c2e8331f3b44e18bfbd76b8c208b4ed5cf75865f0c584b5",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-14752",
+      "base_commit": "b64db05b9cedd96905d637a2d824cbbf428e40e7",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "1b904159e732bdd60114e919ef960bb89f645abf72dad8ca4ecb0897e11bea66",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 15,
+      "selection_key": "b88204a55d78ad0a7caa20be597c4802e7b2c5df8ce7c7651c9d0973330f7585",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-13023",
+      "base_commit": "f83b44075dafa429d59e8755aa47e15577cc49f9",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "c05085a58a67bb3f452db083e2f011b6b0a4706ec1f8ef24df17fc6e6756cb70",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 9,
+      "selection_key": "baef4d90821e985ab80a845f30489b5211b93a267a7ef187a2aeef12ec4abf1a",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-14580",
+      "base_commit": "36fa071d6ebd18a61c4d7f1b5c9d17106134bd44",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "636298273b9a33484b44d2319b239719d8913afa944d0659f8af13415e8f2c7c",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 49,
+      "selection_key": "c2ed3190a304277da32bfee53f6a0a583e5ade06a3b9f34271356f17f6cf1a9a",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-13551",
+      "base_commit": "7f9e4524d6b23424cf44fbe1bf1f4e70f6bb066e",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "e6346f8aa9161943a4e9cb982869c271a849cf3a8988e926d32bb177ee8f02e6",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 56,
+      "selection_key": "c319c3ea3d2833a97a2818b2fdae6e767a5a7470f3d8bf0f25d30004d6e1e6f2",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-16569",
+      "base_commit": "278881e37619278789942513916acafaa88d26f3",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "06d476280f43c0739d98b1cc072683c8b766243ba66ee1ad7c4c86bc1c62cfcb",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 111,
+      "selection_key": "c908cb3ccfb96eacc1fb789287c3f2c1b855853e5c6a8ac3509719f23d828246",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-17029",
+      "base_commit": "953f29f700a60fc09b08b2c2270c12c447490c6a",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "4de1d6b3ae651b2f319eab80284de337f4a85e6bb7ea0b00ebbe2713b2ad5e38",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 43,
+      "selection_key": "cd49a8f131b3b19dcb8dcb4e4869e1d6c9d05b7316e07e623c9dc8ec4f2e8384",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-13363",
+      "base_commit": "76e0151ea0e0f56dca66cee846a78b89346d2c4c",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "097d83cb362b6f57378d29dc14641c115abeeb3aabfa8bf57ed92f2da0b790ea",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 76,
+      "selection_key": "cd628612b4ccb7bec6f23d39130d2a61285da3eb73ccb5bc2a970f459f506db1",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-11451",
+      "base_commit": "e065b293878b1e3ea56655aa9d33e87576cd77ff",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "3b394ef33a4c2eb7541dfa1eb6dd8672bd86a4de24b7c674cccf909c32b1f346",
+      "fail_to_pass_count": 6,
+      "pass_to_pass_count": 45,
+      "selection_key": "cfb661098ff77eb83ce3c592ba850c35adc7960e31fc7609c869072a2546187f",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-14373",
+      "base_commit": "b1a4b1f0bdf05adbd3dc4dde14228e68da54c1a3",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "3a92f914a19e30131524e7b737d800631f22bc13950e775dd3a81e75e702b45c",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 19,
+      "selection_key": "d3f0575e1b914d2ea1203ea95db7a415b2599a1e7b08e95397ebe962790c0adf",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-14493",
+      "base_commit": "7272e1963ffdf39c1d4fe225d5425a45dd095d11",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "cc9de371234c2f0d9b3de4138b2ce9166d023f8c0862aee47daabf371d863356",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 36,
+      "selection_key": "d7ad7b129b82fec32e8c3c72931abd75ad67100d4af986bceafc1d6da6932c62",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-14534",
+      "base_commit": "910ecd1b8df7678f45c3d507dde6bcb1faafa243",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "2dfdaf218918ae65f7a8279d0c7bb35685a56cfa459949bed8d8765ac33511f9",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 118,
+      "selection_key": "ddb5fbe86f1ac2882772ca2517f9d6835d30c94ca1e12bb3e5468edd3281bd5b",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-13417",
+      "base_commit": "71ae1ab0123582cc5bfe0f7d5f4cc19a9412f396",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "7778fbb63ad2655872035b872bbaba9e904a8547fb6d3ef5fd8aa0e0997c054e",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 280,
+      "selection_key": "e1a06a2643fd3d1253b29ed75d3a989ebdbab2e42ca66c98c209d8f9eaa72078",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-16642",
+      "base_commit": "fbe850106b2e4b85f838219cb9e1df95fba6c164",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "8c925b62cf8a6164ad42e17af5c693af15ee49cf2295d42ed29c83ca9300895f",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 21,
+      "selection_key": "e2076ea4329ce6a1b3dcb8713ee31b5f11325a560f29b17aaaf3542b913129a2",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-12419",
+      "base_commit": "7fa1a93c6c8109010a6ff3f604fda83b604e0e97",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "1f07796a60c95eb7974ea0084d52158fa47471e45dff3dde4ad328aeff3a17f6",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 0,
+      "selection_key": "e47cbe0defaf93b89f2353902beade54a469ffeb7e4c82ab68544cf623cd6cfa",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-15863",
+      "base_commit": "37c5b8c07be104fd5288cd87f101e48cb7a40298",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "1ebdb648984e2cfa5ad5cfa36fddb9ee9dc83e08d602602194b729276ee6a3fc",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 9,
+      "selection_key": "e6576980494accf6234d4001febcac6836498e2b71e9f0cda3ab1d1363ae5624",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-16116",
+      "base_commit": "5d36a8266c7d5d1994d7a7eeb4016f80d9cb0401",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "2f9755e00c736ae0fd1d1b7f5361f1a3928b5efcbf3abc6736b8589c723fc6bf",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 137,
+      "selection_key": "e8c5d86eb8efa608ae3d00a6dbb8d78a3ae4d15ad34895d6947dcffb3c68e599",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-16801",
+      "base_commit": "3b62d8c83e3e48d2ed61cfa32a61c56d9e030293",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "f7f76c637955914a37f86dce9b70030f0740b9013c976a1aa0240db988a4591a",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 17,
+      "selection_key": "e95fdaa29af3bc8b6cd0e026d284a8a64e32550b3042e9a066c1d288b1e30090",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-16429",
+      "base_commit": "6c86495bcee22eac19d7fb040b2988b830707cbd",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "b6ca3283813884840693619432ca2d9fe158676400cb3c3524f3b059d57b1200",
+      "fail_to_pass_count": 4,
+      "pass_to_pass_count": 21,
+      "selection_key": "ec7a2f6ff86502a789c8cbb3650a7ea470d465c989c5122e8c71e4704cb506e1",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-14765",
+      "base_commit": "4e8121e8e42a24acc3565851c9ef50ca8322b15c",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "9fc69efed0cf0027e31a1ce26ac09b72d66e7d3e2125a055188e2ac870ff4d90",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 64,
+      "selection_key": "eee95ac8c70d9a6ad8ca701da6ec2173e214ce6cfbbe0d77b17c8fcc76603c81",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-14539",
+      "base_commit": "6a5ef557f80a8eb6a758ebe99c8bb477ca47459e",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "914210188a0f0d3164757e5694efc608a1a55b5bdd8710f9bb72926cd6e599bf",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 14,
+      "selection_key": "eefeca30ff6a2440db46a584a085590ac31fcdbde433a66e0ab85600b1b5e542",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-15569",
+      "base_commit": "884b4c27f506b3c29d58509fc83a35c30ea10d94",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "107938cd24f7bef580939d1998ce566f02fe292c37bcd14013c5f28ec5fb4f51",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 242,
+      "selection_key": "f2e123ef16f5f0758dc477856a8c60a1a1d5cd804d32f1393a14b8b760e5c1ea",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-13807",
+      "base_commit": "89fc144dedc737a79929231438f035b1d4a993c9",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "76117df0c07f45dd32c37f2b6b6c60218d89e2785ce40cca9378dd771f5d19e6",
+      "fail_to_pass_count": 1,
+      "pass_to_pass_count": 38,
+      "selection_key": "f43f03e9b9b2fe16040739b62c1ddc6bb1ff96c5101ea3eea48e626f2fcf571b",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-13109",
+      "base_commit": "fbe82f82555bc25dccb476c749ca062f0b522be3",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "ae5dcc3d81e5961ced793da00ad311e186b174c968bb7c2cec7c8fae00577545",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 170,
+      "selection_key": "fd4fbd6e4507e964f0f6ef25da19d7534fc38112bfd54faffe5325077af776e0",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    },
+    {
+      "instance_id": "django__django-12276",
+      "base_commit": "53d8646f799de7f92ab9defe9dc56c6125448102",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "e8baf7faea7833b073ddc3bc0336ed0bbc8dae41004fbaf398cb6b8c8f667a8b",
+      "fail_to_pass_count": 2,
+      "pass_to_pass_count": 117,
+      "selection_key": "ffa75830f6ede9425e401e95b29d016c247a475e872f254aa481b792a4b4e1f0",
+      "decision": "eligible",
+      "reason": "no_design_or_execution_reference",
+      "design_references": [],
+      "design_like_references": [],
+      "mention_only_references": [
+        "ignore:integrations/openhands/V68_CANDIDATE_GATES_20261006.json",
+        "ignore:integrations/openhands/V68_SELECTION_PRESCREEN_20261006.json"
+      ],
+      "reserved": false,
+      "reserved_reason": ""
+    }
+  ],
+  "recovery_note": "every candidate id, its sort key and its exclusion decision are persisted, so the next item is recoverable from this artifact rather than from a truncated list",
+  "gate_attempts": [
+    {
+      "order": 6,
+      "instance_id": "django__django-15315",
+      "base_commit": "652c68ffeebd510a6f59e1b56b3e007d07683ad8",
+      "issue": "Model Field.__hash__() should be immutable",
+      "inspected_file": "django/db/models/fields/__init__.py",
+      "git_blob_id": null,
+      "observations": {
+        "def __hash__ present": false,
+        "def __eq__ present": false,
+        "creation_counter present": true
+      },
+      "gate": "source_defect_present",
+      "gate_result": "registered",
+      "why": "the pinned Field defines a value-based hash, so the described behaviour is present",
+      "next_queued": "django__django-11239",
+      "probe_id": "P4_field_hash_immutability",
+      "probe_observed": "present",
+      "probe_expected": "absent",
+      "probe_controls_ok": true
+    }
+  ],
+  "development_set_status": "2/3 registered; third candidate re-judged by registered probe and registered",
+  "gate_definition": "the defect is established by a symbol/behaviour scan of the pinned base blobs OR by a registered mechanical probe (deterministic, read-only, source+command+stdout+returncode recorded, with positive and negative controls proving it is neither always-true nor always-false); probes never read the reference patch or the evaluation test patch, which stay hash-only records; a probe that cannot establish the defect leaves the candidate rejected (fail-closed)",
+  "gate_probes_artifact": "integrations/openai_agents/V16_GATE_PROBES_20261006.json"
+}

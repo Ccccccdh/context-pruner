@@ -1,0 +1,221 @@
+{
+  "schema": "openai_agents_v17_zero_api_gate",
+  "date": "20261010",
+  "freeze": {
+    "path": "integrations/openai_agents/V17_DEV_PILOT_FREEZE_20261010.json",
+    "sha256": "9c1424adf371dffe7f3068833f4fc5d56a2c568b2d6c1cc7753aeaa34fd959aa"
+  },
+  "diff": {
+    "path": "integrations/openai_agents/V17_HOST_CONFIGURATION_DIFF_20261010.json",
+    "sha256": "dd402880346f10dcb92bc789ee6ae21feb053c4a6b16ff81080a1a14e95850b5"
+  },
+  "checks": [
+    {
+      "check": "rule_sentence_present_in_every_task_prompt",
+      "ok": true,
+      "detail": {
+        "django_sqlite_version_floor": {
+          "sentence_present": true,
+          "prompt_sha256": "7c0c5bdcac4978d98266deb9cda511ac5504756a459b750319c660f428d85d63"
+        },
+        "django_orderedset_reversed": {
+          "sentence_present": true,
+          "prompt_sha256": "f9992269ee741300ff43828a087a054727c31f0980ac9356ea82088f17c7512e"
+        },
+        "django_field_hash_immutability": {
+          "sentence_present": true,
+          "prompt_sha256": "b2c9feac4d7ba204933a3cc970aa35f34262565e0a6aed79059c6764bc2d2970"
+        }
+      }
+    },
+    {
+      "check": "prompt_text_byte_identical_across_arms",
+      "ok": true,
+      "detail": {
+        "per_arm": {
+          "none": {
+            "instructions_sha256": [
+              "56ed8e281e26095c7c0ba3377b8a54d9a7a49ba3a659969e3494d02d49bd8bc6",
+              "56ed8e281e26095c7c0ba3377b8a54d9a7a49ba3a659969e3494d02d49bd8bc6",
+              "56ed8e281e26095c7c0ba3377b8a54d9a7a49ba3a659969e3494d02d49bd8bc6",
+              "56ed8e281e26095c7c0ba3377b8a54d9a7a49ba3a659969e3494d02d49bd8bc6",
+              "56ed8e281e26095c7c0ba3377b8a54d9a7a49ba3a659969e3494d02d49bd8bc6",
+              "56ed8e281e26095c7c0ba3377b8a54d9a7a49ba3a659969e3494d02d49bd8bc6",
+              "56ed8e281e26095c7c0ba3377b8a54d9a7a49ba3a659969e3494d02d49bd8bc6",
+              "56ed8e281e26095c7c0ba3377b8a54d9a7a49ba3a659969e3494d02d49bd8bc6"
+            ],
+            "instruction_count": 8,
+            "sentence_present": true,
+            "prompt_adaptations": {
+              "applied": [
+                "The final response must be exactly one line, begin with RESULT, contain at most 160 characters, and follow this contract: ",
+                "Replace angle-bracket fields with tool values."
+              ],
+              "unapplied": []
+            }
+          },
+          "pruner_v1": {
+            "instructions_sha256": [
+              "56ed8e281e26095c7c0ba3377b8a54d9a7a49ba3a659969e3494d02d49bd8bc6",
+              "56ed8e281e26095c7c0ba3377b8a54d9a7a49ba3a659969e3494d02d49bd8bc6",
+              "56ed8e281e26095c7c0ba3377b8a54d9a7a49ba3a659969e3494d02d49bd8bc6",
+              "56ed8e281e26095c7c0ba3377b8a54d9a7a49ba3a659969e3494d02d49bd8bc6",
+              "56ed8e281e26095c7c0ba3377b8a54d9a7a49ba3a659969e3494d02d49bd8bc6",
+              "56ed8e281e26095c7c0ba3377b8a54d9a7a49ba3a659969e3494d02d49bd8bc6",
+              "56ed8e281e26095c7c0ba3377b8a54d9a7a49ba3a659969e3494d02d49bd8bc6",
+              "56ed8e281e26095c7c0ba3377b8a54d9a7a49ba3a659969e3494d02d49bd8bc6"
+            ],
+            "instruction_count": 8,
+            "sentence_present": true,
+            "prompt_adaptations": {
+              "applied": [
+                "The final response must be exactly one line, begin with RESULT, contain at most 160 characters, and follow this contract: ",
+                "Replace angle-bracket fields with tool values."
+              ],
+              "unapplied": []
+            }
+          },
+          "native_summary": {
+            "instructions_sha256": [
+              "56ed8e281e26095c7c0ba3377b8a54d9a7a49ba3a659969e3494d02d49bd8bc6",
+              "56ed8e281e26095c7c0ba3377b8a54d9a7a49ba3a659969e3494d02d49bd8bc6",
+              "56ed8e281e26095c7c0ba3377b8a54d9a7a49ba3a659969e3494d02d49bd8bc6",
+              "56ed8e281e26095c7c0ba3377b8a54d9a7a49ba3a659969e3494d02d49bd8bc6",
+              "56ed8e281e26095c7c0ba3377b8a54d9a7a49ba3a659969e3494d02d49bd8bc6",
+              "56ed8e281e26095c7c0ba3377b8a54d9a7a49ba3a659969e3494d02d49bd8bc6",
+              "56ed8e281e26095c7c0ba3377b8a54d9a7a49ba3a659969e3494d02d49bd8bc6",
+              "56ed8e281e26095c7c0ba3377b8a54d9a7a49ba3a659969e3494d02d49bd8bc6"
+            ],
+            "instruction_count": 8,
+            "sentence_present": true,
+            "prompt_adaptations": {
+              "applied": [
+                "The final response must be exactly one line, begin with RESULT, contain at most 160 characters, and follow this contract: ",
+                "Replace angle-bracket fields with tool values."
+              ],
+              "unapplied": []
+            }
+          }
+        },
+        "distinct_hash_sets": 1
+      }
+    },
+    {
+      "check": "retry_diagnostic_identical_to_v16",
+      "ok": true,
+      "detail": {
+        "over_160_chars": {
+          "v16_sha256": "d5ff3ad32bcbf7071992d9f8746b07140df85a74126e6f922b47ab2d580dce1f",
+          "v17_sha256": "d5ff3ad32bcbf7071992d9f8746b07140df85a74126e6f922b47ab2d580dce1f",
+          "identical": true
+        },
+        "declared_fact_missing_from_rendered_answer": {
+          "v16_sha256": "28756fe6709e0fd89770cddda1ecf7a93024631d60520e692b734d01b6ee8347",
+          "v17_sha256": "28756fe6709e0fd89770cddda1ecf7a93024631d60520e692b734d01b6ee8347",
+          "identical": true
+        },
+        "invalid_json_or_duplicate_key": {
+          "v16_sha256": "e628ebf5ec2c6b05a43f23ad1dbd056af417965ce64b02051d25cedc731b1131",
+          "v17_sha256": "e628ebf5ec2c6b05a43f23ad1dbd056af417965ce64b02051d25cedc731b1131",
+          "identical": true
+        },
+        "missing_or_extra_field": {
+          "v16_sha256": "e637a80e6dc93fc57b4cf3af0dee5e7fc5386f0dddee3149c3f4f2615a441f15",
+          "v17_sha256": "e637a80e6dc93fc57b4cf3af0dee5e7fc5386f0dddee3149c3f4f2615a441f15",
+          "identical": true
+        },
+        "invalid_fact_list": {
+          "v16_sha256": "279366d8d7bdfaa3d37d7ef310cb32b877dd887d9c7eb044d1b027a31c20277f",
+          "v17_sha256": "279366d8d7bdfaa3d37d7ef310cb32b877dd887d9c7eb044d1b027a31c20277f",
+          "identical": true
+        },
+        "invalid_cause_or_fix": {
+          "v16_sha256": "994c311a4a3a3a365bea7ddcef6d0ddf15f9d8ea1ddd3ac4e6957952d07bb3a1",
+          "v17_sha256": "994c311a4a3a3a365bea7ddcef6d0ddf15f9d8ea1ddd3ac4e6957952d07bb3a1",
+          "identical": true
+        },
+        "embedded_field_delimiter": {
+          "v16_sha256": "461fc8214c4d3911b59fafb0d543b5772496d30b36bb4481edfd8bb13aec4d26",
+          "v17_sha256": "461fc8214c4d3911b59fafb0d543b5772496d30b36bb4481edfd8bb13aec4d26",
+          "identical": true
+        },
+        "issue_mismatch": {
+          "v16_sha256": "aebc870647ac210f2ef17921adc5054c47d9cce32753eff3658977ba4f59acc1",
+          "v17_sha256": "aebc870647ac210f2ef17921adc5054c47d9cce32753eff3658977ba4f59acc1",
+          "identical": true
+        },
+        "invalid_issue": {
+          "v16_sha256": "253a1fdd152ef646133c224b86b107729ca839e7cc1e22a927d585f3908638cd",
+          "v17_sha256": "253a1fdd152ef646133c224b86b107729ca839e7cc1e22a927d585f3908638cd",
+          "identical": true
+        }
+      }
+    },
+    {
+      "check": "declared_literal_outside_cause_fix_still_rejected",
+      "ok": true,
+      "detail": {
+        "reason": "declared_fact_missing_from_rendered_answer",
+        "missing": [
+          "__iter__"
+        ]
+      }
+    },
+    {
+      "check": "declared_string_outside_the_line_still_rejected",
+      "ok": true,
+      "detail": {
+        "reason": "declared_fact_missing_from_rendered_answer",
+        "note": "the renderer enforces declared-subset-of-rendered; a declared string that IS in the line is accepted, exactly as in v16, because neither version filters facts against the registered set"
+      }
+    },
+    {
+      "check": "four_conditions_identical_to_v16",
+      "ok": true,
+      "detail": {
+        "v16": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "v17": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "check": "cap_arithmetic_keeps_a_1_3x_margin",
+      "ok": true,
+      "detail": {
+        "samples": 9,
+        "worst_case_requests_computed": 78,
+        "frozen_worst_case": 78,
+        "cap": 110,
+        "margin": 1.41
+      }
+    },
+    {
+      "check": "renderer_not_forked_and_unchanged",
+      "ok": true,
+      "detail": {
+        "sha256": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+        "freeze_states": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a"
+      }
+    },
+    {
+      "check": "no_frozen_file_changed_and_criteria_unchanged",
+      "ok": true,
+      "detail": {
+        "criteria_changed": false,
+        "frozen_files_changed_after_freeze": 0,
+        "missing_literal_count_is_one_per_case": true
+      }
+    }
+  ],
+  "ok": true,
+  "api_calls": 0
+}

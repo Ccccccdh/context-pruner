@@ -1,0 +1,315 @@
+{
+  "schema": "openai_agents_v16_sealed_source_registration",
+  "date": "20261006",
+  "status": "the sealed confirmation candidates are registered here; the three development tasks keep their own registration artifacts and are not re-registered",
+  "view_rule": {
+    "path": "integrations/openai_agents/V16_SEALED_VIEW_RULE_20261006.json",
+    "sha256": "a9e4995b075e4e796e2f68298cd634e77b9b3db5958ae55b527851121653d96d",
+    "written_before_probes": true
+  },
+  "candidates": 3,
+  "registered_task_count": 3,
+  "registered_task_ids": [
+    "django_ordering_related_pk",
+    "django_splitarray_checkbox_attrs",
+    "django_db_cache_cull_none"
+  ],
+  "survivors": 3,
+  "rejected_candidates": [],
+  "tasks": {
+    "django_ordering_related_pk": {
+      "task_id": "django_ordering_related_pk",
+      "instance_id": "django__django-11820",
+      "repo": "django/django",
+      "base_commit": "c2678e49759e5c4c329bff0eeca2886267005d21",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "8037de3210e730f87afe64ed1280846ba8d4d7e23c7720cba65ebe389ce36a7e",
+      "problem_statement_sha256_matches_preselection": true,
+      "selection_key": "0bcbd7ab0d007be2c156f0cd963406a50a49a93819f4dc2d6809710fd6f238fa",
+      "views": [
+        {
+          "slot": "A",
+          "role": "cause: the ordering check that raises E015",
+          "file": "django/db/models/base.py",
+          "symbol": "_check_ordering",
+          "first_line": 1657,
+          "last_line": 1751,
+          "file_lines": 1903,
+          "commit_path": "c2678e49759e5c4c329bff0eeca2886267005d21:django/db/models/base.py",
+          "blob_git_id": "3ce711f3f1a81e7be5b2bdd045a9ce680f724f87",
+          "file_content_sha256": "22a9b8324f87781d605b3c7573c49e705dee898c723676e79a2b73f16339ae15",
+          "view_content_sha256": "f958f85112f31c6109a4a46f47357e7f257dbb05fcb1de4675e90fdbea42872d",
+          "view_bytes": 4010
+        },
+        {
+          "slot": "B",
+          "role": "context: the caller that runs the ordering check",
+          "file": "django/db/models/base.py",
+          "symbol": "Model.check",
+          "first_line": 1246,
+          "last_line": 1277,
+          "file_lines": 1903,
+          "commit_path": "c2678e49759e5c4c329bff0eeca2886267005d21:django/db/models/base.py",
+          "blob_git_id": "3ce711f3f1a81e7be5b2bdd045a9ce680f724f87",
+          "file_content_sha256": "22a9b8324f87781d605b3c7573c49e705dee898c723676e79a2b73f16339ae15",
+          "view_content_sha256": "28011e170fe7343e84816be5c59e121eb0ef02ddfc14cfa8c6ddfe318108867f",
+          "view_bytes": 1485
+        },
+        {
+          "slot": "C",
+          "role": "context: the model class the check belongs to",
+          "file": "django/db/models/base.py",
+          "symbol": "Model",
+          "first_line": 403,
+          "last_line": 442,
+          "file_lines": 1903,
+          "commit_path": "c2678e49759e5c4c329bff0eeca2886267005d21:django/db/models/base.py",
+          "blob_git_id": "3ce711f3f1a81e7be5b2bdd045a9ce680f724f87",
+          "file_content_sha256": "22a9b8324f87781d605b3c7573c49e705dee898c723676e79a2b73f16339ae15",
+          "view_content_sha256": "98f17485b15e185c21515280bbdb56869c4d07e3a7eac87bab089ff82747716e",
+          "view_bytes": 1985
+        }
+      ],
+      "view_texts_sha256": [
+        "f958f85112f31c6109a4a46f47357e7f257dbb05fcb1de4675e90fdbea42872d",
+        "28011e170fe7343e84816be5c59e121eb0ef02ddfc14cfa8c6ddfe318108867f",
+        "98f17485b15e185c21515280bbdb56869c4d07e3a7eac87bab089ff82747716e"
+      ],
+      "tool_names": [
+        "read_ordering_check",
+        "read_model_check",
+        "read_model_class"
+      ],
+      "request": "Diagnose why this baseline rejects Meta.ordering entries such as option__pk. Read the ordering check, the model check method that calls it and the model class they belong to, in that order; name the method whose field validation rejects the lookup and the lookup form the fix must accept.",
+      "contract": {
+        "shape": "RESULT issue=<issue> cause=<cause> fix=<fix>",
+        "json_fields": [
+          "issue",
+          "cause",
+          "fix",
+          "facts"
+        ],
+        "issue_value": "django-11820",
+        "required_facts": [
+          "_check_ordering",
+          "E015",
+          "__pk"
+        ],
+        "cause_token": "_check_ordering",
+        "fix_token": "__pk",
+        "frozen_regex": "RESULT issue=django-11820 cause=.*_check_ordering.* fix=.*__pk.*",
+        "max_answer_chars": 160,
+        "renderer": "experiments/runners/openai_agents_structured_final_v16.py"
+      },
+      "defect_evidence": {
+        "check": "the ordering check excludes only the bare pk and the module still raises E015",
+        "patterns": {
+          "!=\\s*'pk'": true,
+          "models\\.E015": true
+        },
+        "positive_control_found": true,
+        "negative_control_found": false,
+        "defect_present": true
+      },
+      "problems": []
+    },
+    "django_splitarray_checkbox_attrs": {
+      "task_id": "django_splitarray_checkbox_attrs",
+      "instance_id": "django__django-12193",
+      "repo": "django/django",
+      "base_commit": "3fb7c12158a2402f0f80824f6778112071235803",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "6bd02eebf7c0609141d1497e235bcffa2070916542617dcee089b19d8d844eeb",
+      "problem_statement_sha256_matches_preselection": true,
+      "selection_key": "0cc0137c358c4d32f629a243f823ae4c5ba3605ce1436d5ad5316bfe965a7001",
+      "views": [
+        {
+          "slot": "A",
+          "role": "cause: the context method that mutates the attrs it is given",
+          "file": "django/forms/widgets.py",
+          "symbol": "CheckboxInput.get_context",
+          "first_line": 520,
+          "last_line": 528,
+          "file_lines": 1076,
+          "commit_path": "3fb7c12158a2402f0f80824f6778112071235803:django/forms/widgets.py",
+          "blob_git_id": "6fe220bea7034670e5fcbe11d6cf0f65933d39d7",
+          "file_content_sha256": "87533f33aad54161239238e914b7222553166b64ddd6163fe4428e023fec3ab4",
+          "view_content_sha256": "6d99a72e144bcb67ee0f8709192424248b93d1fd0e13cea359c06e9282f07da1",
+          "view_bytes": 369
+        },
+        {
+          "slot": "B",
+          "role": "context: the site that passes one attrs dict to every sub-widget",
+          "file": "django/contrib/postgres/forms/array.py",
+          "symbol": "SplitArrayWidget.get_context",
+          "first_line": 130,
+          "last_line": 152,
+          "file_lines": 234,
+          "commit_path": "3fb7c12158a2402f0f80824f6778112071235803:django/contrib/postgres/forms/array.py",
+          "blob_git_id": "2e19cd574a0d67285b8c9f8fc62e31982784923f",
+          "file_content_sha256": "a969b1303968e547ca4c44f4de4ab2857175f9bdeb1829eeb803a1caf6f31cbf",
+          "view_content_sha256": "bd260e49b8d296649e4ddcef151f26bca139d30157a54799cd8924af8c420188",
+          "view_bytes": 1073
+        },
+        {
+          "slot": "C",
+          "role": "context: the widget class the mutating method belongs to",
+          "file": "django/forms/widgets.py",
+          "symbol": "CheckboxInput",
+          "first_line": 507,
+          "last_line": 546,
+          "file_lines": 1076,
+          "commit_path": "3fb7c12158a2402f0f80824f6778112071235803:django/forms/widgets.py",
+          "blob_git_id": "6fe220bea7034670e5fcbe11d6cf0f65933d39d7",
+          "file_content_sha256": "87533f33aad54161239238e914b7222553166b64ddd6163fe4428e023fec3ab4",
+          "view_content_sha256": "3b3c768c83e0ad10cb5e946be8b7a790b7f07c20606780fef19dfa33f65ed6fb",
+          "view_bytes": 1826
+        }
+      ],
+      "view_texts_sha256": [
+        "6d99a72e144bcb67ee0f8709192424248b93d1fd0e13cea359c06e9282f07da1",
+        "bd260e49b8d296649e4ddcef151f26bca139d30157a54799cd8924af8c420188",
+        "3b3c768c83e0ad10cb5e946be8b7a790b7f07c20606780fef19dfa33f65ed6fb"
+      ],
+      "tool_names": [
+        "read_checkbox_context",
+        "read_split_array_init",
+        "read_checkbox_class"
+      ],
+      "request": "Diagnose why this baseline renders every checkbox of a SplitArrayField as checked once the initial data contains one True value. Read the checkbox context method, the split array field constructor and the checkbox widget class, in that order; name the method that mutates shared state and the attribute key it sets.",
+      "contract": {
+        "shape": "RESULT issue=<issue> cause=<cause> fix=<fix>",
+        "json_fields": [
+          "issue",
+          "cause",
+          "fix",
+          "facts"
+        ],
+        "issue_value": "django-12193",
+        "required_facts": [
+          "get_context",
+          "checked",
+          "SplitArrayField"
+        ],
+        "cause_token": "get_context",
+        "fix_token": "checked",
+        "frozen_regex": "RESULT issue=django-12193 cause=.*get_context.* fix=.*checked.*",
+        "max_answer_chars": 160,
+        "renderer": "experiments/runners/openai_agents_structured_final_v16.py"
+      },
+      "defect_evidence": {
+        "check": "the checkbox context method assigns into the attrs mapping it receives, and the split array widget passes one attrs dict to every sub-widget without copying it",
+        "patterns": {
+          "attrs\\['checked'\\]\\s*=\\s*True": true,
+          "widget_value, final_attrs": true
+        },
+        "positive_control_found": true,
+        "negative_control_found": false,
+        "defect_present": true
+      },
+      "problems": []
+    },
+    "django_db_cache_cull_none": {
+      "task_id": "django_db_cache_cull_none",
+      "instance_id": "django__django-13089",
+      "repo": "django/django",
+      "base_commit": "27c09043da52ca1f02605bf28600bfd5ace95ae4",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "5825c5a4fb9c815c7ce346478818d9a0160ebaaa75534bf94f3992b25a3f6cc3",
+      "problem_statement_sha256_matches_preselection": true,
+      "selection_key": "137d0943935c00f159760cdbf3442725c281858a950880408354065a7863e024",
+      "views": [
+        {
+          "slot": "A",
+          "role": "cause: the culling routine that subscripts a missing row",
+          "file": "django/core/cache/backends/db.py",
+          "symbol": "_cull",
+          "first_line": 252,
+          "last_line": 272,
+          "file_lines": 279,
+          "commit_path": "27c09043da52ca1f02605bf28600bfd5ace95ae4:django/core/cache/backends/db.py",
+          "blob_git_id": "33c79c5a148118ce1b3de2e5eff69b35dc4dba22",
+          "file_content_sha256": "78485fef88b1ae7f64e5bc49c815d66e269ddec0ab816de61f58615c42329581",
+          "view_content_sha256": "3c53292d0c1d24f6e6a639472deaf922ade02287cf4a20a7bf4af806ef14b6b3",
+          "view_bytes": 1086
+        },
+        {
+          "slot": "B",
+          "role": "context: the caller that triggers the culling",
+          "file": "django/core/cache/backends/db.py",
+          "symbol": "_base_set",
+          "first_line": 109,
+          "last_line": 197,
+          "file_lines": 279,
+          "commit_path": "27c09043da52ca1f02605bf28600bfd5ace95ae4:django/core/cache/backends/db.py",
+          "blob_git_id": "33c79c5a148118ce1b3de2e5eff69b35dc4dba22",
+          "file_content_sha256": "78485fef88b1ae7f64e5bc49c815d66e269ddec0ab816de61f58615c42329581",
+          "view_content_sha256": "1bfd779af93b9950d855a8f6fcb0d255d6911ac44e3bfc6697c1c9cac1179324",
+          "view_bytes": 4701
+        },
+        {
+          "slot": "C",
+          "role": "context: the cache backend class they belong to",
+          "file": "django/core/cache/backends/db.py",
+          "symbol": "DatabaseCache",
+          "first_line": 40,
+          "last_line": 79,
+          "file_lines": 279,
+          "commit_path": "27c09043da52ca1f02605bf28600bfd5ace95ae4:django/core/cache/backends/db.py",
+          "blob_git_id": "33c79c5a148118ce1b3de2e5eff69b35dc4dba22",
+          "file_content_sha256": "78485fef88b1ae7f64e5bc49c815d66e269ddec0ab816de61f58615c42329581",
+          "view_content_sha256": "b2d5a5a1773359add4adfb99ad6c9e7a9527cbeee7e94aa57f38026d7bd68017",
+          "view_bytes": 1681
+        }
+      ],
+      "view_texts_sha256": [
+        "3c53292d0c1d24f6e6a639472deaf922ade02287cf4a20a7bf4af806ef14b6b3",
+        "1bfd779af93b9950d855a8f6fcb0d255d6911ac44e3bfc6697c1c9cac1179324",
+        "b2d5a5a1773359add4adfb99ad6c9e7a9527cbeee7e94aa57f38026d7bd68017"
+      ],
+      "tool_names": [
+        "read_cache_cull",
+        "read_cache_base_set",
+        "read_cache_class"
+      ],
+      "request": "Diagnose why this baseline's database cache backend can fail with 'NoneType' object is not subscriptable while culling. Read the culling routine, the method that calls it and the backend class, in that order; name the routine that subscripts the row and the value the fix must check before using it.",
+      "contract": {
+        "shape": "RESULT issue=<issue> cause=<cause> fix=<fix>",
+        "json_fields": [
+          "issue",
+          "cause",
+          "fix",
+          "facts"
+        ],
+        "issue_value": "django-13089",
+        "required_facts": [
+          "_cull",
+          "NoneType",
+          "cull_num"
+        ],
+        "cause_token": "_cull",
+        "fix_token": "cull_num",
+        "frozen_regex": "RESULT issue=django-13089 cause=.*_cull.* fix=.*cull_num.*",
+        "max_answer_chars": 160,
+        "renderer": "experiments/runners/openai_agents_structured_final_v16.py"
+      },
+      "defect_evidence": {
+        "check": "the culling routine subscripts the result of fetchone without a None guard",
+        "patterns": {
+          "fetchone\\(\\)\\[": true,
+          "def _cull": true
+        },
+        "positive_control_found": true,
+        "negative_control_found": false,
+        "defect_present": true
+      },
+      "problems": []
+    }
+  },
+  "reading_reference_patch_or_test_patch": false,
+  "paid_requests": 0,
+  "not_done": [
+    "no request is spent by this artifact",
+    "the confirmation batch itself is not started here"
+  ]
+}

@@ -1,0 +1,562 @@
+{
+  "shape": "N3",
+  "arithmetic": {
+    "shape": "N3",
+    "rounds": 3,
+    "reads_per_round": 1,
+    "read_calls": 3,
+    "plan_order": [
+      0,
+      1,
+      2
+    ],
+    "views": 3,
+    "views_read_once_each": true,
+    "duplicate_content_by_construction": false,
+    "expected_requests_per_sample": 4,
+    "max_turns": 5,
+    "worst_case_requests_per_sample": 6,
+    "samples": 9,
+    "arms": [
+      "none",
+      "native_summary",
+      "pruner_v1"
+    ],
+    "repeats": 1,
+    "worst_case_requests": 60,
+    "cap": 100,
+    "margin": 1.667,
+    "at_least_1_3": true,
+    "stage_two_samples": 27,
+    "stage_two_authorised": false
+  },
+  "checks": [
+    {
+      "check": "plan_is_zero_api",
+      "ok": true,
+      "detail": {
+        "api_calls": 0
+      }
+    },
+    {
+      "check": "stub_controls_all_pass_and_at_least_twelve",
+      "ok": true,
+      "detail": {
+        "controls": 13,
+        "ok": true
+      }
+    },
+    {
+      "check": "stub_is_zero_api",
+      "ok": true,
+      "detail": {
+        "api_calls": 0
+      }
+    },
+    {
+      "check": "a_local_pilot_produces_a_finalised_manifest_with_every_pre_registered_key",
+      "ok": true,
+      "detail": {
+        "pilot_status": 0,
+        "samples": 9,
+        "manifest_missing_keys": [],
+        "v16_manifest_finalized": true,
+        "api_calls": 37,
+        "required_keys_checked": 32
+      }
+    },
+    {
+      "check": "trigger_gate_fires_on_every_model_input_after_the_first",
+      "ok": true,
+      "detail": {
+        "check": "trigger_gate_fires_on_every_model_input_after_the_first",
+        "ok": true,
+        "rule": "for every pruner_v1 sample: trigger_gate_calls == model_calls, trigger_gate_triggered_calls == model_calls - 1, trigger_gate_passthrough_calls == 1 (the first input only) and trigger_gate_first_call_passthrough_calls == 1; any other passthrough fails",
+        "samples_checked": 3,
+        "detail": [
+          {
+            "task": "django_field_hash_immutability",
+            "repeat": 0,
+            "model_calls": 4,
+            "trigger_gate_calls": 4,
+            "expected_triggered_calls": 3,
+            "trigger_gate_triggered_calls": 3,
+            "trigger_gate_passthrough_calls": 1,
+            "trigger_gate_first_call_passthrough_calls": 1,
+            "trigger_gate_soft_limit_tokens": 1,
+            "trigger_gate_last_estimated_tokens": 6105,
+            "gate_calls_equal_model_calls": true,
+            "triggered_equals_after_first": true,
+            "exactly_one_passthrough_the_first_call": true,
+            "ok": true
+          },
+          {
+            "task": "django_orderedset_reversed",
+            "repeat": 0,
+            "model_calls": 4,
+            "trigger_gate_calls": 4,
+            "expected_triggered_calls": 3,
+            "trigger_gate_triggered_calls": 3,
+            "trigger_gate_passthrough_calls": 1,
+            "trigger_gate_first_call_passthrough_calls": 1,
+            "trigger_gate_soft_limit_tokens": 1,
+            "trigger_gate_last_estimated_tokens": 5055,
+            "gate_calls_equal_model_calls": true,
+            "triggered_equals_after_first": true,
+            "exactly_one_passthrough_the_first_call": true,
+            "ok": true
+          },
+          {
+            "task": "django_sqlite_version_floor",
+            "repeat": 0,
+            "model_calls": 4,
+            "trigger_gate_calls": 4,
+            "expected_triggered_calls": 3,
+            "trigger_gate_triggered_calls": 3,
+            "trigger_gate_passthrough_calls": 1,
+            "trigger_gate_first_call_passthrough_calls": 1,
+            "trigger_gate_soft_limit_tokens": 1,
+            "trigger_gate_last_estimated_tokens": 4544,
+            "gate_calls_equal_model_calls": true,
+            "triggered_equals_after_first": true,
+            "exactly_one_passthrough_the_first_call": true,
+            "ok": true
+          }
+        ]
+      }
+    },
+    {
+      "check": "mechanism_engages_on_unique_content_per_task",
+      "ok": false,
+      "detail": {
+        "check": "mechanism_engages_on_unique_content_per_task",
+        "ok": false,
+        "rule": "for every task on this no-duplicate shape: v20_units_elided > 0 and v20_bytes_saved > 0; a zero means the wiring did not take effect and no paid run may start",
+        "per_task": {
+          "django_field_hash_immutability": {
+            "samples": 1,
+            "v20_units_elided": 0,
+            "v20_bytes_saved": 0,
+            "v20_retention_engaged_calls": 0,
+            "v20_retention_fallback_calls": 3,
+            "exact_duplicate_replacements": 0
+          },
+          "django_orderedset_reversed": {
+            "samples": 1,
+            "v20_units_elided": 0,
+            "v20_bytes_saved": 0,
+            "v20_retention_engaged_calls": 0,
+            "v20_retention_fallback_calls": 3,
+            "exact_duplicate_replacements": 0
+          },
+          "django_sqlite_version_floor": {
+            "samples": 1,
+            "v20_units_elided": 0,
+            "v20_bytes_saved": 0,
+            "v20_retention_engaged_calls": 0,
+            "v20_retention_fallback_calls": 3,
+            "exact_duplicate_replacements": 0
+          }
+        },
+        "tasks_failing": [
+          "django_field_hash_immutability",
+          "django_orderedset_reversed",
+          "django_sqlite_version_floor"
+        ],
+        "total_units_elided": 0,
+        "total_bytes_saved": 0
+      }
+    },
+    {
+      "check": "every_module_in_the_path_is_pinned_with_revision_aware_fail_closed",
+      "ok": true,
+      "detail": {
+        "check": "every_module_in_the_path_is_pinned_with_revision_aware_fail_closed",
+        "ok": true,
+        "rule": "every module in the path must have a SHA256 recorded in the revision ledger; a module whose digest is absent from the ledger, or differs from its recorded digest, fails the gate until the change is registered in a new revision",
+        "modules": {
+          "experiments/runners/openai_agents_v17_registry.py": "aa67abea06d9a47b5c5bb8fdef352ea975c7884620534bad10de44d828070392",
+          "experiments/runners/run_openai_agents_v17_acquisition.py": "be0b97b4100711e726c85003933a6cf0357c3c2b5388442d28a4af69ae5fb45d",
+          "experiments/runners/openai_agents_v17_live_contract.py": "b5be9165c8845579491e5541380f5f0766f97df77dfb933a12b26a1a1e3e1ca3",
+          "experiments/runners/openai_agents_structured_final_v16.py": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+          "experiments/runners/openai_agents_v20_retention.py": "65650b10e8a6fb72e580245c8c0c9485b85874e4193dea5b421e8657abb0db2c",
+          "experiments/runners/openai_agents_v20_chain.py": "41d4ba547da42e659c7381927ccacf86543b97c74fc499885d8aa7059fff9259",
+          "experiments/runners/run_openai_agents_v20_acquisition.py": "b931a5b8914df5986b307aec2f6df91a80b824b1c30b72a7331717bf1d0351c7"
+        },
+        "plan_named_modules": {
+          "experiments/runners/openai_agents_v17_registry.py": "aa67abea06d9a47b5c5bb8fdef352ea975c7884620534bad10de44d828070392",
+          "experiments/runners/run_openai_agents_v17_acquisition.py": "be0b97b4100711e726c85003933a6cf0357c3c2b5388442d28a4af69ae5fb45d",
+          "experiments/runners/openai_agents_v17_live_contract.py": "b5be9165c8845579491e5541380f5f0766f97df77dfb933a12b26a1a1e3e1ca3",
+          "experiments/runners/openai_agents_structured_final_v16.py": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a"
+        },
+        "revision_ledger_entries": [
+          "experiments/runners/openai_agents_structured_final_v16.py",
+          "experiments/runners/openai_agents_v17_live_contract.py",
+          "experiments/runners/openai_agents_v17_registry.py",
+          "experiments/runners/openai_agents_v20_chain.py",
+          "experiments/runners/openai_agents_v20_retention.py",
+          "experiments/runners/run_openai_agents_v17_acquisition.py",
+          "experiments/runners/run_openai_agents_v20_acquisition.py"
+        ],
+        "unregistered_modules": [],
+        "drifted_modules": [],
+        "module_count": 7
+      }
+    },
+    {
+      "check": "protocol_matches_the_shape",
+      "ok": true,
+      "detail": {
+        "rounds": 3,
+        "read_calls": 3
+      }
+    },
+    {
+      "check": "one_read_per_turn_rule_matches_the_batching",
+      "ok": true,
+      "detail": {
+        "reads_per_round": 1
+      }
+    },
+    {
+      "check": "dedupe_and_no_merge_rules_present",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "check": "old_shape_wording_absent",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "check": "case_shape_matches_the_plan",
+      "ok": true,
+      "detail": {
+        "expected_model_calls": 4,
+        "tool_calls": 3
+      }
+    },
+    {
+      "check": "retry_diagnostic_still_byte_identical_to_v16",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "check": "four_conditions_still_identical_to_v16",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "check": "declared_literal_missing_from_the_line_still_rejected",
+      "ok": true,
+      "detail": {
+        "reason": "declared_fact_missing_from_rendered_answer"
+      }
+    },
+    {
+      "check": "over_160_still_rejected",
+      "ok": true,
+      "detail": {
+        "reason": "over_160_chars"
+      }
+    },
+    {
+      "check": "cap_arithmetic_written_into_the_gate_and_at_least_1_3x",
+      "ok": true,
+      "detail": {
+        "shape": "N3",
+        "rounds": 3,
+        "reads_per_round": 1,
+        "read_calls": 3,
+        "plan_order": [
+          0,
+          1,
+          2
+        ],
+        "views": 3,
+        "views_read_once_each": true,
+        "duplicate_content_by_construction": false,
+        "expected_requests_per_sample": 4,
+        "max_turns": 5,
+        "worst_case_requests_per_sample": 6,
+        "samples": 9,
+        "arms": [
+          "none",
+          "native_summary",
+          "pruner_v1"
+        ],
+        "repeats": 1,
+        "worst_case_requests": 60,
+        "cap": 100,
+        "margin": 1.667,
+        "at_least_1_3": true,
+        "stage_two_samples": 27,
+        "stage_two_authorised": false
+      }
+    },
+    {
+      "check": "composite_filter_declares_the_shadowed_v5_entry_point",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "check": "trigger_gate_threshold_is_the_pre_registered_zero",
+      "ok": true,
+      "detail": {
+        "soft_limit_tokens_setting": 0
+      }
+    },
+    {
+      "check": "the_gate_assertions_can_fail",
+      "ok": true,
+      "detail": {
+        "assertion_c_rejects_a_zero_saving_sample": true,
+        "assertion_b_rejects_a_passthrough_sample": true,
+        "assertion_d_rejects_an_unregistered_module_set": true
+      }
+    }
+  ],
+  "ok": false,
+  "hard_assertions": {
+    "a_finalise_really_runs": true,
+    "b_trigger_gate_fires_every_call": true,
+    "c_mechanism_engages_on_unique_content": false,
+    "d_every_module_pinned": true
+  },
+  "per_sample_mechanism": [
+    {
+      "task": "django_field_hash_immutability",
+      "repeat": 0,
+      "method": "native_summary",
+      "model_calls": 4,
+      "api_request_attempts": 5,
+      "v20_retention_engaged_calls": 0,
+      "v20_retention_fallback_calls": 0,
+      "v20_units_elided": 0,
+      "v20_bytes_saved": 0,
+      "exact_duplicate_replacements": 0,
+      "selective_retention_saved_bytes_total": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 1,
+      "trigger_gate_passthrough_calls": 3,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 5435,
+      "trigger_gate_last_estimated_tokens": 6105
+    },
+    {
+      "task": "django_field_hash_immutability",
+      "repeat": 0,
+      "method": "none",
+      "model_calls": 4,
+      "api_request_attempts": 4,
+      "v20_retention_engaged_calls": 0,
+      "v20_retention_fallback_calls": 0,
+      "v20_units_elided": 0,
+      "v20_bytes_saved": 0,
+      "exact_duplicate_replacements": 0,
+      "selective_retention_saved_bytes_total": 0,
+      "trigger_gate_calls": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 0,
+      "trigger_gate_last_estimated_tokens": 0
+    },
+    {
+      "task": "django_field_hash_immutability",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "model_calls": 4,
+      "api_request_attempts": 4,
+      "v20_retention_engaged_calls": 0,
+      "v20_retention_fallback_calls": 3,
+      "v20_units_elided": 0,
+      "v20_bytes_saved": 0,
+      "exact_duplicate_replacements": 0,
+      "selective_retention_saved_bytes_total": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 3,
+      "trigger_gate_passthrough_calls": 1,
+      "trigger_gate_first_call_passthrough_calls": 1,
+      "trigger_gate_soft_limit_tokens": 1,
+      "trigger_gate_last_estimated_tokens": 6105
+    },
+    {
+      "task": "django_orderedset_reversed",
+      "repeat": 0,
+      "method": "native_summary",
+      "model_calls": 4,
+      "api_request_attempts": 4,
+      "v20_retention_engaged_calls": 0,
+      "v20_retention_fallback_calls": 0,
+      "v20_units_elided": 0,
+      "v20_bytes_saved": 0,
+      "exact_duplicate_replacements": 0,
+      "selective_retention_saved_bytes_total": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 4,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 5435,
+      "trigger_gate_last_estimated_tokens": 5055
+    },
+    {
+      "task": "django_orderedset_reversed",
+      "repeat": 0,
+      "method": "none",
+      "model_calls": 4,
+      "api_request_attempts": 4,
+      "v20_retention_engaged_calls": 0,
+      "v20_retention_fallback_calls": 0,
+      "v20_units_elided": 0,
+      "v20_bytes_saved": 0,
+      "exact_duplicate_replacements": 0,
+      "selective_retention_saved_bytes_total": 0,
+      "trigger_gate_calls": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 0,
+      "trigger_gate_last_estimated_tokens": 0
+    },
+    {
+      "task": "django_orderedset_reversed",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "model_calls": 4,
+      "api_request_attempts": 4,
+      "v20_retention_engaged_calls": 0,
+      "v20_retention_fallback_calls": 3,
+      "v20_units_elided": 0,
+      "v20_bytes_saved": 0,
+      "exact_duplicate_replacements": 0,
+      "selective_retention_saved_bytes_total": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 3,
+      "trigger_gate_passthrough_calls": 1,
+      "trigger_gate_first_call_passthrough_calls": 1,
+      "trigger_gate_soft_limit_tokens": 1,
+      "trigger_gate_last_estimated_tokens": 5055
+    },
+    {
+      "task": "django_sqlite_version_floor",
+      "repeat": 0,
+      "method": "native_summary",
+      "model_calls": 4,
+      "api_request_attempts": 4,
+      "v20_retention_engaged_calls": 0,
+      "v20_retention_fallback_calls": 0,
+      "v20_units_elided": 0,
+      "v20_bytes_saved": 0,
+      "exact_duplicate_replacements": 0,
+      "selective_retention_saved_bytes_total": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 4,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 5435,
+      "trigger_gate_last_estimated_tokens": 4544
+    },
+    {
+      "task": "django_sqlite_version_floor",
+      "repeat": 0,
+      "method": "none",
+      "model_calls": 4,
+      "api_request_attempts": 4,
+      "v20_retention_engaged_calls": 0,
+      "v20_retention_fallback_calls": 0,
+      "v20_units_elided": 0,
+      "v20_bytes_saved": 0,
+      "exact_duplicate_replacements": 0,
+      "selective_retention_saved_bytes_total": 0,
+      "trigger_gate_calls": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 0,
+      "trigger_gate_last_estimated_tokens": 0
+    },
+    {
+      "task": "django_sqlite_version_floor",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "model_calls": 4,
+      "api_request_attempts": 4,
+      "v20_retention_engaged_calls": 0,
+      "v20_retention_fallback_calls": 3,
+      "v20_units_elided": 0,
+      "v20_bytes_saved": 0,
+      "exact_duplicate_replacements": 0,
+      "selective_retention_saved_bytes_total": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 3,
+      "trigger_gate_passthrough_calls": 1,
+      "trigger_gate_first_call_passthrough_calls": 1,
+      "trigger_gate_soft_limit_tokens": 1,
+      "trigger_gate_last_estimated_tokens": 4544
+    }
+  ],
+  "v20_counters_per_task": {
+    "django_field_hash_immutability": {
+      "samples": 1,
+      "v20_units_elided": 0,
+      "v20_bytes_saved": 0,
+      "v20_retention_engaged_calls": 0,
+      "v20_retention_fallback_calls": 3,
+      "exact_duplicate_replacements": 0
+    },
+    "django_orderedset_reversed": {
+      "samples": 1,
+      "v20_units_elided": 0,
+      "v20_bytes_saved": 0,
+      "v20_retention_engaged_calls": 0,
+      "v20_retention_fallback_calls": 3,
+      "exact_duplicate_replacements": 0
+    },
+    "django_sqlite_version_floor": {
+      "samples": 1,
+      "v20_units_elided": 0,
+      "v20_bytes_saved": 0,
+      "v20_retention_engaged_calls": 0,
+      "v20_retention_fallback_calls": 3,
+      "exact_duplicate_replacements": 0
+    }
+  },
+  "paid_run_allowed": false,
+  "paid_run_allowed_rule": "true only when every check passes; assertion (c) is the one that speaks to whether the wiring took effect at all, and a zero elision counter writes false here",
+  "module_hashes": {
+    "experiments/runners/openai_agents_v17_registry.py": "aa67abea06d9a47b5c5bb8fdef352ea975c7884620534bad10de44d828070392",
+    "experiments/runners/run_openai_agents_v17_acquisition.py": "be0b97b4100711e726c85003933a6cf0357c3c2b5388442d28a4af69ae5fb45d",
+    "experiments/runners/openai_agents_v17_live_contract.py": "b5be9165c8845579491e5541380f5f0766f97df77dfb933a12b26a1a1e3e1ca3",
+    "experiments/runners/openai_agents_structured_final_v16.py": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+    "experiments/runners/openai_agents_v20_retention.py": "65650b10e8a6fb72e580245c8c0c9485b85874e4193dea5b421e8657abb0db2c",
+    "experiments/runners/openai_agents_v20_chain.py": "41d4ba547da42e659c7381927ccacf86543b97c74fc499885d8aa7059fff9259",
+    "experiments/runners/run_openai_agents_v20_acquisition.py": "b931a5b8914df5986b307aec2f6df91a80b824b1c30b72a7331717bf1d0351c7"
+  },
+  "mechanism": {
+    "arm": "pruner_v1",
+    "name": "nonduplicate_selective_retention_v20",
+    "schema": "openai_agents_v20_nonduplicate_chain",
+    "composition_schema": "duplicate_then_selective_retention_v20",
+    "rule": "the frozen v12 exact duplicate rule runs first; the v5 lineage evidence-safe selective retention then runs on the deduplicated list, with its registered-literal guard, its recovery-pointer requirement and its whole-payload fallback unchanged. Any exception from the retention stage, or a None return, sends the deduplicated list verbatim and is counted in v20_retention_fallback_calls",
+    "frozen_rule_module": "experiments/runners/openai_agents_exact_duplicate_replay_v12.py",
+    "retention_module": "experiments/runners/openai_agents_evidence_safe_retention_v5.py",
+    "composite_module": "experiments/runners/openai_agents_v20_retention.py",
+    "chain_module": "experiments/runners/openai_agents_v20_chain.py",
+    "chain_blueprint": "experiments/runners/openai_agents_multitask_chain_v14.py",
+    "trigger_gate": {
+      "soft_limit_tokens": 0,
+      "policy": "the plugin arm's BudgetTriggeredFilter is installed with soft_limit_tokens=0, which the frozen class floors to 1 (trigger_gate_soft_limit_tokens therefore reports 1), so its condition last_estimated_tokens <= soft_limit_tokens is false for every non-empty payload and the gate fires on every model input after the first; the gate stays in place, keeps measuring each payload and keeps publishing its counters. Trigger policy stays symmetric_budget so the wrapper is not removed from the plugin arm.",
+      "arm_scope": "plugin arm only; the none and native_summary arms are untouched",
+      "comparability": "because the threshold changed, v20 is not comparable as a whole configuration to v16 or v19; only its paired within-batch comparison is"
+    },
+    "counter_names": {
+      "engaged": "v20_retention_engaged_calls",
+      "fallback": "v20_retention_fallback_calls",
+      "units": "v20_units_elided",
+      "bytes": "v20_bytes_saved"
+    }
+  },
+  "plan_implements": "integrations/openai_agents/V20_NONDUPLICATE_MECHANISM_PLAN_20261010.json",
+  "gate_addendum": "integrations/openai_agents/V20_GATE_ADDENDUM_20261010.json"
+}

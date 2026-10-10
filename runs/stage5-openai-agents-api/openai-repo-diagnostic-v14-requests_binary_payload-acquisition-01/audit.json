@@ -1,0 +1,116 @@
+{
+  "schema": "openai_agents_v14_multitask_audit",
+  "mode": "acquisition",
+  "complete": true,
+  "errors": [],
+  "rows": 1,
+  "tasks": [
+    "requests_binary_payload"
+  ],
+  "api_request_attempts": 7,
+  "summary_calls": 0,
+  "per_task": {
+    "requests_binary_payload": {
+      "track_A_baseline_pass": 1,
+      "track_B_baseline_pass": 1,
+      "pruner_v1_track_A_pass": 0,
+      "pruner_v1_track_B_pass": 0,
+      "pruner_v1_per_repeat_saving": [],
+      "pruner_v1_mean_saving": 0.0,
+      "pruner_v1_positive_pairs": 0,
+      "native_summary_track_A_pass": 0,
+      "native_summary_track_B_pass": 0,
+      "native_summary_per_repeat_saving": [],
+      "native_summary_mean_saving": 0.0,
+      "native_summary_positive_pairs": 0
+    }
+  },
+  "pooled": {
+    "pruner_v1": {
+      "paired_n": 0,
+      "mean_saving": 0.0,
+      "min_saving": 0.0,
+      "max_saving": 0.0,
+      "positive_pairs": 0
+    },
+    "native_summary": {
+      "paired_n": 0,
+      "mean_saving": 0.0,
+      "min_saving": 0.0,
+      "max_saving": 0.0,
+      "positive_pairs": 0
+    }
+  },
+  "dispersion": {
+    "per_task_means": [
+      0.0
+    ],
+    "spread": 0.0,
+    "all_tasks_positive": false,
+    "all_tasks_above_floor": false,
+    "note": "the spread between task means is the stability evidence; the pooled mean alone is not multi-task stability"
+  },
+  "acceptance": {
+    "track_A_all_tasks": false,
+    "pooled_saving_at_least_3_percent": false,
+    "all_tasks_positive": false,
+    "met": false
+  },
+  "quality": {
+    "requests_binary_payload|none|r0": {
+      "track_A": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "to_native_string": true,
+          "prepare_body": true
+        }
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "to_native_string": true,
+          "prepare_body": true
+        },
+        "forbidden_found": []
+      },
+      "recorded_success": true,
+      "complete_total_tokens": 11965,
+      "answer_chars": 115
+    }
+  },
+  "boundaries": [
+    {
+      "task_id": "requests_binary_payload",
+      "repeat": 0,
+      "method": "none",
+      "model_calls": 7,
+      "requests": 7,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15
+      ]
+    }
+  ],
+  "reporting_rule": "Track A is the acceptance track. If Track B passes while Track A fails, the result is 'strict track not met; semantic track passed (wording difference)' and never 'quality unchanged'."
+}

@@ -1,0 +1,109 @@
+{
+  "schema": "openai_agents_v13_requests1766_freeze_amendment",
+  "date": "20261005",
+  "policy": "the freeze file is written once and never edited; every later change is recorded here with the field, the reason and both values, and each batch manifest records the freeze file's own SHA256",
+  "freeze": "integrations/openai_agents/V13_REQUESTS1766_FREEZE_20261005.json",
+  "freeze_sha256": "e1f5bb3ad3b03a13bc7048c7d0e1204df884e5ab0cf0e9c1ed753be4ee93d694",
+  "freeze_sha256_unchanged": true,
+  "amendments": [
+    {
+      "id": "A1",
+      "kind": "registration_change_before_stage_c",
+      "when": "after Stage A payload acquisition, before any Stage C request",
+      "field": "task_registration.literal_labels",
+      "change": "added the statement-side literal label issue_qop_options_directive",
+      "reason": "every other registered literal for this task lives in the read-only tool views, so the guard's protected statement-unit set was empty; the held-out task's public issue text itself names the qop-options directive, and registering it makes the guard protect 2 statement units, matching the v12 configuration instead of running with a vacuous guard",
+      "direction": "stricter (more protection), never looser",
+      "old_registry_fingerprint": "8a277286e274ea19664228d5d582174630172447594861b19199eff0b3d1afa1",
+      "new_registry_fingerprint": "df542a10711d152ece157ea78af7813500137bf007cb4da2ee651168fb58d18e",
+      "files": [
+        {
+          "path": "experiments/runners/openai_agents_requests_task_registry_v13.py",
+          "sha256": "27613725f4003057d07f662dc7026bad7055eaa75396ee483939b0701d40988d"
+        }
+      ],
+      "effect_on_stage_A": "Stage A's manifest carries the pre-amendment registration snapshot. The payload record itself (structure, bytes, per-output hashes) does not depend on the literal label set, so the batch remains a valid payload record; no Stage A sample is re-run or re-scored."
+    },
+    {
+      "id": "A2",
+      "kind": "stage_c_integration_recorded",
+      "when": "before the Stage C batch",
+      "reason": "the frozen v12 rule needs a v13 filter that supplies this task's own registration, and the evidence recorder needs this task's own registration fields; both are new files, so their hashes are recorded here before the batch that uses them",
+      "mechanism_rule_unchanged": "experiments/runners/openai_agents_exact_duplicate_replay_v12.py is the frozen rule module named in the freeze and its hash is unchanged",
+      "files": [
+        {
+          "path": "experiments/runners/openai_agents_requests_duplicate_filter_v13.py",
+          "role": "plugin filter: frozen rule, held-out registration",
+          "sha256": "e6be118eef3311e63ae20cbd1e4cece7e96e93a06b23ee1570b5d94e61b1a984"
+        },
+        {
+          "path": "experiments/runners/openai_agents_evidence_requests_v13.py",
+          "role": "evidence recorder for this task's registration",
+          "sha256": "4e8825d6f6ee7a60febae70591cef84f130a2656e84a3dc7630fb94455b924be"
+        },
+        {
+          "path": "experiments/runners/run_openai_agents_requests_confirm_v13.py",
+          "role": "Stage C entry point",
+          "sha256": "6ff68ef50f9db2fbbdf22a6753b9d7cdd0cfccd42fad756b93a70e893d43677d"
+        },
+        {
+          "path": "experiments/runners/run_openai_agents_requests_acquisition_v13.py",
+          "role": "Stage A entry point (already used)",
+          "sha256": "82cd3e6abfb40d24faee6da568ab74ddb8ad0b4ed71119bc2db2e6ea325d6ecd"
+        },
+        {
+          "path": "experiments/runners/openai_agents_requests_replay_gate_v13.py",
+          "role": "zero-API replay gate (verdict: proceed)",
+          "sha256": "3f8155a8bcc92c2c333c5d1d920d5f5d108abf506fadce32539132d533031a50"
+        }
+      ]
+    },
+    {
+      "id": "A3",
+      "kind": "batch_shape_note",
+      "when": "before the Stage C batch",
+      "field": "stage_C_confirmation.max_api_requests = 66 (unchanged)",
+      "reason": "the harness refuses to start unless its own worst-case bound fits the cap: 3 repeats x 3 arms x 7 model calls = 63, plus 3 repeats x max_summary_calls. With the default 16 the bound is 111 > 66, so the native arm's summary budget is set to one call per sample, which makes the bound exactly 66 - the frozen cap. The cap itself is unchanged, no cap was raised, and the acceptance line does not involve the native arm.",
+      "consequence": "the native summary arm's measured cost on this batch is a bounded lower bound of its unbounded cost; it is reported with that qualifier"
+    },
+    {
+      "id": "A4",
+      "kind": "acquisition_provenance_correction",
+      "when": "after Stage C, before any further request",
+      "field": "stage0_acquisition.acquisition_method (freeze text unchanged)",
+      "change": "the sanctioned read-only acquisition path was used: git init / remote add / fetch --depth 1 / checkout FETCH_HEAD inside .tooling/scratch/psf-requests-1766 (inside the ignored .tooling/ tree). No git add/commit/push was run in this repository and nothing was written upstream. raw.githubusercontent.com was not used.",
+      "result": "checkout HEAD equals the pinned base commit, and all four baseline files are byte-identical to the copies the batches used",
+      "recorded_hashes": "validated, not replaced",
+      "file_level_hashes": {
+        "requests/auth.py": "e9ac12db8dfb81a4abe59e5e3b1764e01fe1f04dbdc5f57dc7deb7a47695087c",
+        "requests/models.py": "d67cf75ca48670f07fbebfb53637f338111603fd41f58de87aaa4da2ff4c3d2e",
+        "requests/sessions.py": "7519189c53263cb28b294dc79e42e6a0a9ce9290fc4c538b544e640867866b0e",
+        "test_requests.py": "2c482f0ad0b1c5e7465a95bcf19cab5834c3dca3c4c8b755c2dd990bdaac34cd"
+      },
+      "reading_rule": "baseline source is read from the checked-out working tree; the copies under .tooling/upstream/psf-requests-1766 are byte-identical to it (verified here), so every hash the freeze and the two batch manifests record stays valid",
+      "correction": "test_requests.py::RequestsTestCase::test_DIGESTAUTH_QUOTES_QOP_VALUE is absent from the base tree because the evaluation test patch (571 B, sha256 8104cc2c46abb076...) adds it. That is the normal SWE-bench mechanism and is not a defect of the candidate or of the source acquisition. The base-state failure is established from the source itself: requests/auth.py:147 emits the qop value unquoted.",
+      "judging_metadata_recorded_only": [
+        "problem_statement",
+        "test_patch",
+        "reference_patch (hashed, never opened)",
+        "FAIL_TO_PASS",
+        "PASS_TO_PASS"
+      ],
+      "files": [
+        {
+          "path": "integrations/openai_agents/V13_REQUESTS1766_STAGE0_REGISTRATION_20261005.json",
+          "role": "Stage 0 registration artifact",
+          "sha256": "61d01e42df5af56fd7037c2f7ee284e00a60317fb85505eaacd07400e0e6d8d0"
+        },
+        {
+          "path": "experiments/runners/openai_agents_requests_stage0_registration_v13.py",
+          "role": "Stage 0 registration module (new file)",
+          "sha256": "2c22d73246d51a14c2371abc0a3f736c8b719b3a8f356ae77a4c0ac25456d26f"
+        }
+      ],
+      "effect_on_registry": "the registry module is unchanged, so its fingerprint and the two batch manifests' recorded registration stay valid; it reads the copy under .tooling/upstream/psf-requests-1766, which this amendment verifies is byte-identical to the checkout",
+      "post_batch_note": "Stage C ran while this amendment file held A1-A3, and its manifest records the SHA256 of that state (c700ed22c75ca35c2af6cfc7c4721d6f4309e197fda080eb2112e47fce1cdf7b). A4 was appended after the batch, so the recorded value is the historical one rather than drift, and the freeze file itself is byte-identical throughout (e1f5bb3ad3b03a13bc7048c7d0e1204df884e5ab0cf0e9c1ed753be4ee93d694)."
+    }
+  ],
+  "amendment_file_is_append_only": true
+}

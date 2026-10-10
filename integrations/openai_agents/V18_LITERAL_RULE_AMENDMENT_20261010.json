@@ -1,0 +1,25 @@
+{
+  "schema": "openai_agents_v18_literal_rule_amendment",
+  "amends": "integrations/openai_agents/V18_LITERAL_DISCRIMINATIVENESS_RULE_20261010.json",
+  "amendment_id": "openai-agents-v18-literal-rule-amendment-01",
+  "date": "20261010",
+  "api_requests_spent": 0,
+
+  "why": {
+    "trigger": "after the code-anchored rule was implemented, the two surviving candidate contracts carried the literals template_changed / BLOCK / COMMENT and get_response / inner / request",
+    "what_went_wrong": "the rule tested whether a literal is bound by the code, which is necessary but not sufficient: a bound name can still be semantically unrelated to the defect or so common in the framework that a model which read nothing can produce it",
+    "BLOCK_and_COMMENT": "these are TokenType members from the later views of django-15572; they are bound by the code and pass the letter of the rule, but they have nothing to do with the defect the statement describes, which concerns the autoreload template_changed signal",
+    "get_response_inner_request": "these are generic Django names; a model that knows the framework but read no view can write all three, so the strict track stops testing the diagnosis",
+    "my_own_error_corrected": "the calibration table in the original rule listed inner as 'not bound by the views'. That was wrong: inner is a parameter name in the first view of django-16255 and is bound under clause (a). The runner agent's reading was correct and this amendment records the correction rather than defending the original table"
+  },
+
+  "amendments": {
+    "requirement_1_tightened": "every required literal must appear verbatim in the view that carries the defect, meaning the view whose symbol the problem statement names, and not merely in any one of the four views",
+    "requirement_5_extended": "the lazy answer negative control must use a vocabulary frozen before selection that contains the problem statement's own tokens, Python keywords and builtins, and a declared list of framework generic names such as request, response, get_response, view, model, field, template, inner, value, error, object, class, method; if a line assembled from that vocabulary alone satisfies the frozen regex and the literal requirement, the candidate is rejected",
+    "requirement_6_added": "at least two of the at most three literals must be, in addition, absent from the frozen framework generic list, so the contract cannot rest entirely on framework common nouns",
+    "unchanged": "views, ranges and view hashes are untouched; the four strict track conditions, the 160 character bound, the retry budget and the paired statistic are untouched; a failing candidate is still rejected and never replaced by a weaker one"
+  },
+
+  "status_of_the_registration_branch": "paused, not abandoned: the rule, the three candidate derivations, the view hashes and the statement hash reconciliation rule stay on record and are reusable if a citable confirmation at the new shape is ever wanted; nothing from this branch was registered, spent or discarded",
+  "citable": false
+}

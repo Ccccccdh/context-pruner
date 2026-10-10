@@ -1,0 +1,1524 @@
+{
+  "schema": "openai_agents_v14_multitask_audit",
+  "mode": "pilot",
+  "complete": true,
+  "errors": [],
+  "rows": 27,
+  "tasks": [
+    "requests_binary_payload",
+    "flask_empty_blueprint_name",
+    "xarray_copy_dtype"
+  ],
+  "api_request_attempts": 207,
+  "summary_calls": 18,
+  "per_task": {
+    "requests_binary_payload": {
+      "track_A_baseline_pass": 3,
+      "track_B_baseline_pass": 3,
+      "pruner_v1_track_A_pass": 3,
+      "pruner_v1_track_B_pass": 3,
+      "pruner_v1_per_repeat_saving": [
+        0.08029075110702648,
+        0.08104269362519843,
+        0.08146043946862729
+      ],
+      "pruner_v1_mean_saving": 0.08093129473361739,
+      "pruner_v1_positive_pairs": 3,
+      "native_summary_track_A_pass": 3,
+      "native_summary_track_B_pass": 3,
+      "native_summary_per_repeat_saving": [
+        -0.0652519007435876,
+        -0.04870916534380483,
+        -0.04118974016208539
+      ],
+      "native_summary_mean_saving": -0.0517169354164926,
+      "native_summary_positive_pairs": 0
+    },
+    "flask_empty_blueprint_name": {
+      "track_A_baseline_pass": 3,
+      "track_B_baseline_pass": 3,
+      "pruner_v1_track_A_pass": 3,
+      "pruner_v1_track_B_pass": 3,
+      "pruner_v1_per_repeat_saving": [
+        0.1297562919184541,
+        0.12995550833388672,
+        0.1296898864466432
+      ],
+      "pruner_v1_mean_saving": 0.12980056223299466,
+      "pruner_v1_positive_pairs": 3,
+      "native_summary_track_A_pass": 3,
+      "native_summary_track_B_pass": 3,
+      "native_summary_per_repeat_saving": [
+        -0.08433494919981406,
+        -0.09283484959160634,
+        -0.09276844411979547
+      ],
+      "native_summary_mean_saving": -0.08997941430373863,
+      "native_summary_positive_pairs": 0
+    },
+    "xarray_copy_dtype": {
+      "track_A_baseline_pass": 3,
+      "track_B_baseline_pass": 3,
+      "pruner_v1_track_A_pass": 1,
+      "pruner_v1_track_B_pass": 3,
+      "pruner_v1_per_repeat_saving": [
+        0.16843264070455483,
+        0.16867345534608505,
+        0.16884546580432092
+      ],
+      "pruner_v1_mean_saving": 0.16865052061832028,
+      "pruner_v1_positive_pairs": 3,
+      "native_summary_track_A_pass": 3,
+      "native_summary_track_B_pass": 3,
+      "native_summary_per_repeat_saving": [
+        -0.131691206825375,
+        -0.13361772395761662,
+        -0.13114077335902022
+      ],
+      "native_summary_mean_saving": -0.13214990138067062,
+      "native_summary_positive_pairs": 0
+    }
+  },
+  "pooled": {
+    "pruner_v1": {
+      "paired_n": 9,
+      "mean_saving": 0.12646079252831077,
+      "min_saving": 0.08029075110702648,
+      "max_saving": 0.16884546580432092,
+      "positive_pairs": 9
+    },
+    "native_summary": {
+      "paired_n": 9,
+      "mean_saving": -0.09128208370030061,
+      "min_saving": -0.13361772395761662,
+      "max_saving": -0.04118974016208539,
+      "positive_pairs": 0
+    }
+  },
+  "dispersion": {
+    "per_task_means": [
+      0.08093129473361739,
+      0.12980056223299466,
+      0.16865052061832028
+    ],
+    "spread": 0.08771922588470289,
+    "all_tasks_positive": true,
+    "all_tasks_above_floor": true,
+    "note": "the spread between task means is the stability evidence; the pooled mean alone is not multi-task stability"
+  },
+  "acceptance": {
+    "track_A_all_tasks": false,
+    "pooled_saving_at_least_3_percent": true,
+    "all_tasks_positive": true,
+    "met": false
+  },
+  "quality": {
+    "flask_empty_blueprint_name|native_summary|r0": {
+      "track_A": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "Blueprint": true,
+          "ValueError": true
+        }
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "Blueprint": true,
+          "ValueError": true
+        },
+        "forbidden_found": []
+      },
+      "recorded_success": true,
+      "complete_total_tokens": 16329,
+      "answer_chars": 152
+    },
+    "flask_empty_blueprint_name|none|r0": {
+      "track_A": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "Blueprint": true,
+          "ValueError": true
+        }
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "Blueprint": true,
+          "ValueError": true
+        },
+        "forbidden_found": []
+      },
+      "recorded_success": true,
+      "complete_total_tokens": 15059,
+      "answer_chars": 152
+    },
+    "flask_empty_blueprint_name|pruner_v1|r0": {
+      "track_A": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "Blueprint": true,
+          "ValueError": true
+        }
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "Blueprint": true,
+          "ValueError": true
+        },
+        "forbidden_found": []
+      },
+      "recorded_success": true,
+      "complete_total_tokens": 13105,
+      "answer_chars": 148
+    },
+    "flask_empty_blueprint_name|native_summary|r1": {
+      "track_A": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "Blueprint": true,
+          "ValueError": true
+        }
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "Blueprint": true,
+          "ValueError": true
+        },
+        "forbidden_found": []
+      },
+      "recorded_success": true,
+      "complete_total_tokens": 16457,
+      "answer_chars": 152
+    },
+    "flask_empty_blueprint_name|none|r1": {
+      "track_A": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "Blueprint": true,
+          "ValueError": true
+        }
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "Blueprint": true,
+          "ValueError": true
+        },
+        "forbidden_found": []
+      },
+      "recorded_success": true,
+      "complete_total_tokens": 15059,
+      "answer_chars": 152
+    },
+    "flask_empty_blueprint_name|pruner_v1|r1": {
+      "track_A": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "Blueprint": true,
+          "ValueError": true
+        }
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "Blueprint": true,
+          "ValueError": true
+        },
+        "forbidden_found": []
+      },
+      "recorded_success": true,
+      "complete_total_tokens": 13102,
+      "answer_chars": 146
+    },
+    "flask_empty_blueprint_name|native_summary|r2": {
+      "track_A": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "Blueprint": true,
+          "ValueError": true
+        }
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "Blueprint": true,
+          "ValueError": true
+        },
+        "forbidden_found": []
+      },
+      "recorded_success": true,
+      "complete_total_tokens": 16456,
+      "answer_chars": 148
+    },
+    "flask_empty_blueprint_name|none|r2": {
+      "track_A": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "Blueprint": true,
+          "ValueError": true
+        }
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "Blueprint": true,
+          "ValueError": true
+        },
+        "forbidden_found": []
+      },
+      "recorded_success": true,
+      "complete_total_tokens": 15059,
+      "answer_chars": 152
+    },
+    "flask_empty_blueprint_name|pruner_v1|r2": {
+      "track_A": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "Blueprint": true,
+          "ValueError": true
+        }
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "Blueprint": true,
+          "ValueError": true
+        },
+        "forbidden_found": []
+      },
+      "recorded_success": true,
+      "complete_total_tokens": 13106,
+      "answer_chars": 139
+    },
+    "requests_binary_payload|native_summary|r0": {
+      "track_A": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "to_native_string": true,
+          "prepare_body": true
+        }
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "to_native_string": true,
+          "prepare_body": true
+        },
+        "forbidden_found": []
+      },
+      "recorded_success": true,
+      "complete_total_tokens": 12750,
+      "answer_chars": 133
+    },
+    "requests_binary_payload|none|r0": {
+      "track_A": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "to_native_string": true,
+          "prepare_body": true
+        }
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "to_native_string": true,
+          "prepare_body": true
+        },
+        "forbidden_found": []
+      },
+      "recorded_success": true,
+      "complete_total_tokens": 11969,
+      "answer_chars": 133
+    },
+    "requests_binary_payload|pruner_v1|r0": {
+      "track_A": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "to_native_string": true,
+          "prepare_body": true
+        }
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "to_native_string": true,
+          "prepare_body": true
+        },
+        "forbidden_found": []
+      },
+      "recorded_success": true,
+      "complete_total_tokens": 11008,
+      "answer_chars": 151
+    },
+    "requests_binary_payload|native_summary|r1": {
+      "track_A": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "to_native_string": true,
+          "prepare_body": true
+        }
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "to_native_string": true,
+          "prepare_body": true
+        },
+        "forbidden_found": []
+      },
+      "recorded_success": true,
+      "complete_total_tokens": 12552,
+      "answer_chars": 133
+    },
+    "requests_binary_payload|none|r1": {
+      "track_A": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "to_native_string": true,
+          "prepare_body": true
+        }
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "to_native_string": true,
+          "prepare_body": true
+        },
+        "forbidden_found": []
+      },
+      "recorded_success": true,
+      "complete_total_tokens": 11969,
+      "answer_chars": 133
+    },
+    "requests_binary_payload|pruner_v1|r1": {
+      "track_A": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "to_native_string": true,
+          "prepare_body": true
+        }
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "to_native_string": true,
+          "prepare_body": true
+        },
+        "forbidden_found": []
+      },
+      "recorded_success": true,
+      "complete_total_tokens": 10999,
+      "answer_chars": 133
+    },
+    "requests_binary_payload|native_summary|r2": {
+      "track_A": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "to_native_string": true,
+          "prepare_body": true
+        }
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "to_native_string": true,
+          "prepare_body": true
+        },
+        "forbidden_found": []
+      },
+      "recorded_success": true,
+      "complete_total_tokens": 12462,
+      "answer_chars": 133
+    },
+    "requests_binary_payload|none|r2": {
+      "track_A": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "to_native_string": true,
+          "prepare_body": true
+        }
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "to_native_string": true,
+          "prepare_body": true
+        },
+        "forbidden_found": []
+      },
+      "recorded_success": true,
+      "complete_total_tokens": 11969,
+      "answer_chars": 133
+    },
+    "requests_binary_payload|pruner_v1|r2": {
+      "track_A": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "to_native_string": true,
+          "prepare_body": true
+        }
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "to_native_string": true,
+          "prepare_body": true
+        },
+        "forbidden_found": []
+      },
+      "recorded_success": true,
+      "complete_total_tokens": 10994,
+      "answer_chars": 136
+    },
+    "xarray_copy_dtype|native_summary|r0": {
+      "track_A": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "IndexVariable": true,
+          "dtype": true
+        }
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "IndexVariable": true,
+          "dtype": true
+        },
+        "forbidden_found": []
+      },
+      "recorded_success": true,
+      "complete_total_tokens": 32896,
+      "answer_chars": 128
+    },
+    "xarray_copy_dtype|none|r0": {
+      "track_A": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "IndexVariable": true,
+          "dtype": true
+        }
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "IndexVariable": true,
+          "dtype": true
+        },
+        "forbidden_found": []
+      },
+      "recorded_success": true,
+      "complete_total_tokens": 29068,
+      "answer_chars": 128
+    },
+    "xarray_copy_dtype|pruner_v1|r0": {
+      "track_A": {
+        "pass": false,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": false,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "IndexVariable": true,
+          "dtype": true
+        }
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "IndexVariable": true,
+          "dtype": true
+        },
+        "forbidden_found": []
+      },
+      "recorded_success": false,
+      "complete_total_tokens": 24172,
+      "answer_chars": 179
+    },
+    "xarray_copy_dtype|native_summary|r1": {
+      "track_A": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "IndexVariable": true,
+          "dtype": true
+        }
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "IndexVariable": true,
+          "dtype": true
+        },
+        "forbidden_found": []
+      },
+      "recorded_success": true,
+      "complete_total_tokens": 32952,
+      "answer_chars": 128
+    },
+    "xarray_copy_dtype|none|r1": {
+      "track_A": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "IndexVariable": true,
+          "dtype": true
+        }
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "IndexVariable": true,
+          "dtype": true
+        },
+        "forbidden_found": []
+      },
+      "recorded_success": true,
+      "complete_total_tokens": 29068,
+      "answer_chars": 128
+    },
+    "xarray_copy_dtype|pruner_v1|r1": {
+      "track_A": {
+        "pass": false,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": false,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "IndexVariable": true,
+          "dtype": true
+        }
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "IndexVariable": true,
+          "dtype": true
+        },
+        "forbidden_found": []
+      },
+      "recorded_success": false,
+      "complete_total_tokens": 24165,
+      "answer_chars": 179
+    },
+    "xarray_copy_dtype|native_summary|r2": {
+      "track_A": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "IndexVariable": true,
+          "dtype": true
+        }
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "IndexVariable": true,
+          "dtype": true
+        },
+        "forbidden_found": []
+      },
+      "recorded_success": true,
+      "complete_total_tokens": 32880,
+      "answer_chars": 128
+    },
+    "xarray_copy_dtype|none|r2": {
+      "track_A": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "IndexVariable": true,
+          "dtype": true
+        }
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "IndexVariable": true,
+          "dtype": true
+        },
+        "forbidden_found": []
+      },
+      "recorded_success": true,
+      "complete_total_tokens": 29068,
+      "answer_chars": 128
+    },
+    "xarray_copy_dtype|pruner_v1|r2": {
+      "track_A": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "within_max_chars": true,
+          "frozen_regex_fullmatch": true,
+          "required_terms": true
+        },
+        "required_terms": {
+          "IndexVariable": true,
+          "dtype": true
+        }
+      },
+      "track_B": {
+        "pass": true,
+        "conditions": {
+          "prefix": true,
+          "single_line": true,
+          "cause_and_fix_fields": true,
+          "required_terms_ordered": true,
+          "within_track_b_chars": true,
+          "no_forbidden_claim": true
+        },
+        "required_terms": {
+          "IndexVariable": true,
+          "dtype": true
+        },
+        "forbidden_found": []
+      },
+      "recorded_success": true,
+      "complete_total_tokens": 24160,
+      "answer_chars": 143
+    }
+  },
+  "boundaries": [
+    {
+      "task_id": "flask_empty_blueprint_name",
+      "repeat": 0,
+      "method": "native_summary",
+      "model_calls": 7,
+      "requests": 9,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        7,
+        9,
+        10,
+        12,
+        15
+      ]
+    },
+    {
+      "task_id": "flask_empty_blueprint_name",
+      "repeat": 0,
+      "method": "none",
+      "model_calls": 7,
+      "requests": 7,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15
+      ]
+    },
+    {
+      "task_id": "flask_empty_blueprint_name",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "model_calls": 7,
+      "requests": 7,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15
+      ]
+    },
+    {
+      "task_id": "flask_empty_blueprint_name",
+      "repeat": 1,
+      "method": "native_summary",
+      "model_calls": 7,
+      "requests": 9,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        7,
+        9,
+        10,
+        12,
+        15
+      ]
+    },
+    {
+      "task_id": "flask_empty_blueprint_name",
+      "repeat": 1,
+      "method": "none",
+      "model_calls": 7,
+      "requests": 7,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15
+      ]
+    },
+    {
+      "task_id": "flask_empty_blueprint_name",
+      "repeat": 1,
+      "method": "pruner_v1",
+      "model_calls": 7,
+      "requests": 7,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15
+      ]
+    },
+    {
+      "task_id": "flask_empty_blueprint_name",
+      "repeat": 2,
+      "method": "native_summary",
+      "model_calls": 7,
+      "requests": 9,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        7,
+        9,
+        10,
+        12,
+        15
+      ]
+    },
+    {
+      "task_id": "flask_empty_blueprint_name",
+      "repeat": 2,
+      "method": "none",
+      "model_calls": 7,
+      "requests": 7,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15
+      ]
+    },
+    {
+      "task_id": "flask_empty_blueprint_name",
+      "repeat": 2,
+      "method": "pruner_v1",
+      "model_calls": 7,
+      "requests": 7,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15
+      ]
+    },
+    {
+      "task_id": "requests_binary_payload",
+      "repeat": 0,
+      "method": "native_summary",
+      "model_calls": 7,
+      "requests": 8,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        12,
+        15
+      ]
+    },
+    {
+      "task_id": "requests_binary_payload",
+      "repeat": 0,
+      "method": "none",
+      "model_calls": 7,
+      "requests": 7,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15
+      ]
+    },
+    {
+      "task_id": "requests_binary_payload",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "model_calls": 7,
+      "requests": 7,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15
+      ]
+    },
+    {
+      "task_id": "requests_binary_payload",
+      "repeat": 1,
+      "method": "native_summary",
+      "model_calls": 7,
+      "requests": 8,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        12,
+        15
+      ]
+    },
+    {
+      "task_id": "requests_binary_payload",
+      "repeat": 1,
+      "method": "none",
+      "model_calls": 7,
+      "requests": 7,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15
+      ]
+    },
+    {
+      "task_id": "requests_binary_payload",
+      "repeat": 1,
+      "method": "pruner_v1",
+      "model_calls": 7,
+      "requests": 7,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15
+      ]
+    },
+    {
+      "task_id": "requests_binary_payload",
+      "repeat": 2,
+      "method": "native_summary",
+      "model_calls": 7,
+      "requests": 8,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        12,
+        15
+      ]
+    },
+    {
+      "task_id": "requests_binary_payload",
+      "repeat": 2,
+      "method": "none",
+      "model_calls": 7,
+      "requests": 7,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15
+      ]
+    },
+    {
+      "task_id": "requests_binary_payload",
+      "repeat": 2,
+      "method": "pruner_v1",
+      "model_calls": 7,
+      "requests": 7,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15
+      ]
+    },
+    {
+      "task_id": "xarray_copy_dtype",
+      "repeat": 0,
+      "method": "native_summary",
+      "model_calls": 7,
+      "requests": 10,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        6,
+        8,
+        11,
+        13,
+        15
+      ]
+    },
+    {
+      "task_id": "xarray_copy_dtype",
+      "repeat": 0,
+      "method": "none",
+      "model_calls": 7,
+      "requests": 7,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15
+      ]
+    },
+    {
+      "task_id": "xarray_copy_dtype",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "model_calls": 7,
+      "requests": 7,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15
+      ]
+    },
+    {
+      "task_id": "xarray_copy_dtype",
+      "repeat": 1,
+      "method": "native_summary",
+      "model_calls": 7,
+      "requests": 10,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        6,
+        8,
+        11,
+        13,
+        15
+      ]
+    },
+    {
+      "task_id": "xarray_copy_dtype",
+      "repeat": 1,
+      "method": "none",
+      "model_calls": 7,
+      "requests": 7,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15
+      ]
+    },
+    {
+      "task_id": "xarray_copy_dtype",
+      "repeat": 1,
+      "method": "pruner_v1",
+      "model_calls": 7,
+      "requests": 7,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15
+      ]
+    },
+    {
+      "task_id": "xarray_copy_dtype",
+      "repeat": 2,
+      "method": "native_summary",
+      "model_calls": 7,
+      "requests": 10,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        6,
+        8,
+        11,
+        13,
+        15
+      ]
+    },
+    {
+      "task_id": "xarray_copy_dtype",
+      "repeat": 2,
+      "method": "none",
+      "model_calls": 7,
+      "requests": 7,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15
+      ]
+    },
+    {
+      "task_id": "xarray_copy_dtype",
+      "repeat": 2,
+      "method": "pruner_v1",
+      "model_calls": 7,
+      "requests": 7,
+      "boundaries": 7,
+      "item_counts": [
+        3,
+        5,
+        7,
+        9,
+        11,
+        13,
+        15
+      ]
+    }
+  ],
+  "reporting_rule": "Track A is the acceptance track. If Track B passes while Track A fails, the result is 'strict track not met; semantic track passed (wording difference)' and never 'quality unchanged'."
+}

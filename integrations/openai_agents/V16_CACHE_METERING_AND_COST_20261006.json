@@ -1,0 +1,317 @@
+{
+  "schema": "openai_agents_v16_cache_metering_and_cost",
+  "date": "20261006",
+  "paid_requests": 0,
+  "prices_usd_per_million_tokens": {
+    "input_cache_miss": 0.15,
+    "input_cache_hit": 0.003,
+    "output": 0.6,
+    "off_peak_multiplier": 0.5,
+    "peak_hours_utc": "Mon-Fri 01:00-04:00 and 06:00-10:00"
+  },
+  "price_ratios": {
+    "cache_hit_vs_miss": 50.0,
+    "output_vs_cache_hit": 200.0
+  },
+  "v14": {
+    "batch": "openai-repo-diagnostic-v14-multitask-confirm-01",
+    "arms": {
+      "native_summary": {
+        "samples": 9,
+        "requests": 81,
+        "input_tokens": 180087,
+        "output_tokens": 5647,
+        "input_all_miss_usd": 0.027013,
+        "input_all_hit_usd": 0.00054,
+        "output_usd": 0.003388,
+        "input_all_miss_off_peak_usd": 0.013507,
+        "output_off_peak_usd": 0.001694,
+        "total_all_miss_usd": 0.030401,
+        "total_hypothetical_all_hit_usd": 0.003928
+      },
+      "none": {
+        "samples": 9,
+        "requests": 63,
+        "input_tokens": 166623,
+        "output_tokens": 1665,
+        "input_all_miss_usd": 0.024993,
+        "input_all_hit_usd": 0.0005,
+        "output_usd": 0.000999,
+        "input_all_miss_off_peak_usd": 0.012497,
+        "output_off_peak_usd": 0.000499,
+        "total_all_miss_usd": 0.025992,
+        "total_hypothetical_all_hit_usd": 0.001499
+      },
+      "pruner_v1": {
+        "samples": 9,
+        "requests": 63,
+        "input_tokens": 143131,
+        "output_tokens": 1680,
+        "input_all_miss_usd": 0.02147,
+        "input_all_hit_usd": 0.000429,
+        "output_usd": 0.001008,
+        "input_all_miss_off_peak_usd": 0.010735,
+        "output_off_peak_usd": 0.000504,
+        "total_all_miss_usd": 0.022478,
+        "total_hypothetical_all_hit_usd": 0.001437
+      }
+    },
+    "all_arms": {
+      "input_tokens": 489841,
+      "output_tokens": 8992,
+      "input_all_miss_usd": 0.073476,
+      "input_all_hit_usd": 0.00147,
+      "output_usd": 0.005395,
+      "input_all_miss_off_peak_usd": 0.036738,
+      "output_off_peak_usd": 0.002698,
+      "total_all_miss_usd": 0.078871,
+      "total_hypothetical_all_hit_usd": 0.006865
+    },
+    "cache_fields_recorded": false,
+    "cache_note": "run before cache metering existed, so only the all-miss and all-hit bounds are available for this batch"
+  },
+  "v15": [
+    {
+      "batch": "openai-repo-diagnostic-v15-django_field_error_messages_copy-acquisition-02",
+      "arms": {
+        "none": {
+          "samples": 1,
+          "requests": 7,
+          "input_tokens": 11573,
+          "output_tokens": 180,
+          "input_all_miss_usd": 0.001736,
+          "input_all_hit_usd": 3.5e-05,
+          "output_usd": 0.000108,
+          "input_all_miss_off_peak_usd": 0.000868,
+          "output_off_peak_usd": 5.4e-05,
+          "total_all_miss_usd": 0.001844,
+          "total_hypothetical_all_hit_usd": 0.000143
+        }
+      },
+      "all_arms": {
+        "input_tokens": 11573,
+        "output_tokens": 180,
+        "input_all_miss_usd": 0.001736,
+        "input_all_hit_usd": 3.5e-05,
+        "output_usd": 0.000108,
+        "input_all_miss_off_peak_usd": 0.000868,
+        "output_off_peak_usd": 5.4e-05,
+        "total_all_miss_usd": 0.001844,
+        "total_hypothetical_all_hit_usd": 0.000143
+      },
+      "cache_fields_recorded": false,
+      "cache_note": "run before cache metering existed, so only the all-miss and all-hit bounds are available for this batch"
+    },
+    {
+      "batch": "openai-repo-diagnostic-v15-django_method_decorator_partial-acquisition-02",
+      "arms": {
+        "none": {
+          "samples": 1,
+          "requests": 7,
+          "input_tokens": 13391,
+          "output_tokens": 186,
+          "input_all_miss_usd": 0.002009,
+          "input_all_hit_usd": 4e-05,
+          "output_usd": 0.000112,
+          "input_all_miss_off_peak_usd": 0.001004,
+          "output_off_peak_usd": 5.6e-05,
+          "total_all_miss_usd": 0.00212,
+          "total_hypothetical_all_hit_usd": 0.000152
+        }
+      },
+      "all_arms": {
+        "input_tokens": 13391,
+        "output_tokens": 186,
+        "input_all_miss_usd": 0.002009,
+        "input_all_hit_usd": 4e-05,
+        "output_usd": 0.000112,
+        "input_all_miss_off_peak_usd": 0.001004,
+        "output_off_peak_usd": 5.6e-05,
+        "total_all_miss_usd": 0.00212,
+        "total_hypothetical_all_hit_usd": 0.000152
+      },
+      "cache_fields_recorded": false,
+      "cache_note": "run before cache metering existed, so only the all-miss and all-hit bounds are available for this batch"
+    },
+    {
+      "batch": "openai-repo-diagnostic-v15-django_textchoices_string_value-acquisition-02",
+      "arms": {
+        "none": {
+          "samples": 1,
+          "requests": 8,
+          "input_tokens": 15360,
+          "output_tokens": 220,
+          "input_all_miss_usd": 0.002304,
+          "input_all_hit_usd": 4.6e-05,
+          "output_usd": 0.000132,
+          "input_all_miss_off_peak_usd": 0.001152,
+          "output_off_peak_usd": 6.6e-05,
+          "total_all_miss_usd": 0.002436,
+          "total_hypothetical_all_hit_usd": 0.000178
+        }
+      },
+      "all_arms": {
+        "input_tokens": 15360,
+        "output_tokens": 220,
+        "input_all_miss_usd": 0.002304,
+        "input_all_hit_usd": 4.6e-05,
+        "output_usd": 0.000132,
+        "input_all_miss_off_peak_usd": 0.001152,
+        "output_off_peak_usd": 6.6e-05,
+        "total_all_miss_usd": 0.002436,
+        "total_hypothetical_all_hit_usd": 0.000178
+      },
+      "cache_fields_recorded": false,
+      "cache_note": "run before cache metering existed, so only the all-miss and all-hit bounds are available for this batch"
+    }
+  ],
+  "v15_all_arms": {
+    "input_tokens": 40324,
+    "output_tokens": 586,
+    "input_all_miss_usd": 0.006049,
+    "input_all_hit_usd": 0.000121,
+    "output_usd": 0.000352,
+    "input_all_miss_off_peak_usd": 0.003024,
+    "output_off_peak_usd": 0.000176,
+    "total_all_miss_usd": 0.0064,
+    "total_hypothetical_all_hit_usd": 0.000473
+  },
+  "v14_output_delta_plugin_vs_baseline": {
+    "batch": "openai-repo-diagnostic-v14-multitask-confirm-01",
+    "pairs": [
+      {
+        "task": "flask_empty_blueprint_name",
+        "repeat": 0,
+        "baseline_output_tokens": 195,
+        "plugin_output_tokens": 194,
+        "delta_output_tokens": -1,
+        "delta_usd": -1e-06,
+        "answer_chars": 148,
+        "strict_success": true
+      },
+      {
+        "task": "flask_empty_blueprint_name",
+        "repeat": 1,
+        "baseline_output_tokens": 195,
+        "plugin_output_tokens": 192,
+        "delta_output_tokens": -3,
+        "delta_usd": -2e-06,
+        "answer_chars": 146,
+        "strict_success": true
+      },
+      {
+        "task": "flask_empty_blueprint_name",
+        "repeat": 2,
+        "baseline_output_tokens": 195,
+        "plugin_output_tokens": 191,
+        "delta_output_tokens": -4,
+        "delta_usd": -2e-06,
+        "answer_chars": 139,
+        "strict_success": true
+      },
+      {
+        "task": "requests_binary_payload",
+        "repeat": 0,
+        "baseline_output_tokens": 181,
+        "plugin_output_tokens": 184,
+        "delta_output_tokens": 3,
+        "delta_usd": 2e-06,
+        "answer_chars": 151,
+        "strict_success": true
+      },
+      {
+        "task": "requests_binary_payload",
+        "repeat": 1,
+        "baseline_output_tokens": 181,
+        "plugin_output_tokens": 181,
+        "delta_output_tokens": 0,
+        "delta_usd": 0.0,
+        "answer_chars": 133,
+        "strict_success": true
+      },
+      {
+        "task": "requests_binary_payload",
+        "repeat": 2,
+        "baseline_output_tokens": 181,
+        "plugin_output_tokens": 181,
+        "delta_output_tokens": 0,
+        "delta_usd": 0.0,
+        "answer_chars": 136,
+        "strict_success": true
+      },
+      {
+        "task": "xarray_copy_dtype",
+        "repeat": 0,
+        "baseline_output_tokens": 179,
+        "plugin_output_tokens": 189,
+        "delta_output_tokens": 10,
+        "delta_usd": 6e-06,
+        "answer_chars": 179,
+        "strict_success": false
+      },
+      {
+        "task": "xarray_copy_dtype",
+        "repeat": 1,
+        "baseline_output_tokens": 179,
+        "plugin_output_tokens": 189,
+        "delta_output_tokens": 10,
+        "delta_usd": 6e-06,
+        "answer_chars": 179,
+        "strict_success": false
+      },
+      {
+        "task": "xarray_copy_dtype",
+        "repeat": 2,
+        "baseline_output_tokens": 179,
+        "plugin_output_tokens": 179,
+        "delta_output_tokens": 0,
+        "delta_usd": 0.0,
+        "answer_chars": 143,
+        "strict_success": true
+      }
+    ],
+    "total_delta_output_tokens": 15,
+    "total_delta_usd": 9e-06,
+    "over_length_pairs": [
+      {
+        "task": "xarray_copy_dtype",
+        "repeat": 0,
+        "baseline_output_tokens": 179,
+        "plugin_output_tokens": 189,
+        "delta_output_tokens": 10,
+        "delta_usd": 6e-06,
+        "answer_chars": 179,
+        "strict_success": false
+      },
+      {
+        "task": "xarray_copy_dtype",
+        "repeat": 1,
+        "baseline_output_tokens": 179,
+        "plugin_output_tokens": 189,
+        "delta_output_tokens": 10,
+        "delta_usd": 6e-06,
+        "answer_chars": 179,
+        "strict_success": false
+      }
+    ],
+    "note": "output is billed at 200x the cache-hit input price, so an answer that grows is a cost event as well as a format event; this table shows the billed difference and does not decide the contract question"
+  },
+  "over_length_samples": [
+    {
+      "batch": "v12",
+      "sample": "django_long_investigation r0 pruner_v1",
+      "chars": 208
+    },
+    {
+      "batch": "v14",
+      "sample": "xarray_copy_dtype r0 pruner_v1",
+      "chars": 179
+    },
+    {
+      "batch": "v14",
+      "sample": "xarray_copy_dtype r1 pruner_v1",
+      "chars": 179
+    }
+  ],
+  "reading": "every decisive conclusion in v13 and v14 was reached on a batch whose whole cost is in these tables; the cost side is positive on v14 while the strict quality track failed on one of its three tasks, and the two statements belong together"
+}

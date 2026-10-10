@@ -1,0 +1,108 @@
+{
+  "schema": "openai_agents_v15_acquisition_02_admission",
+  "freeze_sha256": "6eb15545efd8953032ce5109a03d2ad8cde899530f63f9a388752df277670241",
+  "controlled_diagnostic_workload": true,
+  "natural_agent_behavior_claim": false,
+  "paid_request_attempts": 22,
+  "complete_provider_tokens_all_acquisitions": 40910,
+  "rows": [
+    {
+      "task": "django_field_error_messages_copy",
+      "instance_id": "django__django-11880",
+      "batch_id": "openai-repo-diagnostic-v15-django_field_error_messages_copy-acquisition-02",
+      "requests": 7,
+      "complete_provider_tokens": 11753,
+      "strict_baseline_success": true,
+      "answer_correct": true,
+      "final_format_correct": true,
+      "final_output_chars": 142,
+      "format_repair_calls": 0,
+      "repair_ledger": [],
+      "audit_complete": true,
+      "real_payload_replay_qualified": true,
+      "replay_byte_projection_not_provider_tokens": 0.09974431660274581,
+      "safe_candidates": 3,
+      "artifact_sha256": {
+        "samples.jsonl": "621e9011eab51065537d326faf10a6efe25f75b818965a14439703757a234b42",
+        "manifest.json": "f94fa61fd8e88ce90fe3b57ed3477ab13036b1bbe73a58208004b574fe7f98c6",
+        "v15_acquisition_audit.json": "abc8f953acf19ad20922523f3d44a5646ba80e89bae64a67b2de0d69c5c6feaa"
+      }
+    },
+    {
+      "task": "django_method_decorator_partial",
+      "instance_id": "django__django-14787",
+      "batch_id": "openai-repo-diagnostic-v15-django_method_decorator_partial-acquisition-02",
+      "requests": 7,
+      "complete_provider_tokens": 13577,
+      "strict_baseline_success": true,
+      "answer_correct": true,
+      "final_format_correct": true,
+      "final_output_chars": 149,
+      "format_repair_calls": 0,
+      "repair_ledger": [],
+      "audit_complete": true,
+      "real_payload_replay_qualified": true,
+      "replay_byte_projection_not_provider_tokens": 0.12303440854955858,
+      "safe_candidates": 3,
+      "artifact_sha256": {
+        "samples.jsonl": "1ac99126b6f02196ddaef4891b232c9f9b966369841b7bbed4245315e8b7f228",
+        "manifest.json": "2b4757ad069c9d05186aa9572652ee1b948287142e9c7102ad4ec66222fc86ec",
+        "v15_acquisition_audit.json": "2aaaa244938b57fd86522b63df4b8b6958f7bb88ba6edfd0d85ae26c726b4a98"
+      }
+    },
+    {
+      "task": "django_textchoices_string_value",
+      "instance_id": "django__django-11964",
+      "batch_id": "openai-repo-diagnostic-v15-django_textchoices_string_value-acquisition-02",
+      "requests": 8,
+      "complete_provider_tokens": 15580,
+      "strict_baseline_success": false,
+      "answer_correct": true,
+      "final_format_correct": false,
+      "final_output_chars": 166,
+      "format_repair_calls": 1,
+      "repair_ledger": [
+        {
+          "trigger_answer_sha256": "9c10f713aa59296e9a4b125245328f4922ab33beb76cb320b9d8b2eca3ac4b2d",
+          "trigger_chars": 166,
+          "original_usage": {
+            "input_tokens": 2488,
+            "output_tokens": 39
+          },
+          "repair_input_sha256": "492a90d5f870dedb53c1035e76642c990ad807efa252c6d8894514789d41a6dc",
+          "repair_input_item_count": 17,
+          "repair_tool_count": 0,
+          "attempted": true,
+          "repair_usage": {
+            "input_tokens": 2186,
+            "output_tokens": 39
+          },
+          "repair_answer_sha256": "9c10f713aa59296e9a4b125245328f4922ab33beb76cb320b9d8b2eca3ac4b2d",
+          "repair_chars": 166,
+          "accepted_format": false
+        }
+      ],
+      "audit_complete": true,
+      "real_payload_replay_qualified": true,
+      "replay_byte_projection_not_provider_tokens": 0.06556728845885472,
+      "safe_candidates": 3,
+      "artifact_sha256": {
+        "samples.jsonl": "c0c8a84f5deaab42cd9a8681b0dbc2fd86edad83c4388c4d075e5fa120f45c1e",
+        "manifest.json": "7d6e5971de8d732f00b3913f3c97bb95f70b9e4a513f26def9eba99167c0689c",
+        "v15_acquisition_audit.json": "e87f22bc47fe76e823fdd0792ac98e0df6832d90e26846c43c638c3827c88790"
+      }
+    }
+  ],
+  "admitted_tasks": [
+    "django_field_error_messages_copy",
+    "django_method_decorator_partial"
+  ],
+  "required_admitted_tasks": 3,
+  "pilot_gate_met": false,
+  "decision": "STOP_BEFORE_THREE_ARM_PILOT",
+  "citable_as_saving": false,
+  "citable_as_quality_equivalence": false,
+  "spent_task_not_retuned": "django_textchoices_string_value",
+  "fourth_preselected_candidate": "django__django-13512; using it now would be a new exploratory selection requiring fresh registration and holdout status, not completion of the original three-task gate",
+  "failed_sandbox_batch_kept": "openai-repo-diagnostic-v15-django_field_error_messages_copy-acquisition-01"
+}

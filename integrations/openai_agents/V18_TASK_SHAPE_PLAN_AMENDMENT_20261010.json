@@ -1,0 +1,44 @@
+{
+  "schema": "openai_agents_v18_task_shape_plan_amendment",
+  "amends": "integrations/openai_agents/V18_TASK_SHAPE_PLAN_20261010.json",
+  "amendment_id": "openai-agents-v18-read-shape-amendment-01",
+  "date": "20261010",
+  "written_before_any_selection_or_paid_request": true,
+  "api_requests_spent_when_written": 0,
+  "sealed_candidates_consumed_when_written": 0,
+
+  "what_changed": {
+    "before": "at least four read rounds, each round reading three distinct registered views, so twelve or more read calls over twelve distinct ranges per task",
+    "after": "at least four read rounds with exactly one distinct registered view read per round, so four read calls over four distinct ranges per task, issued one round per turn",
+    "unchanged": "everything else in the plan, including all five mandatory selection criteria, the no-merge rule, the stop conditions, the checkpoint before the confirmation batch and the wording rules"
+  },
+
+  "why": {
+    "the_binding_variable_is_the_round_count_not_the_round_size": "the mechanism compresses rounds that are no longer the most recent, so the number of compressible rounds is set by the number of rounds, not by how many ranges each round carries",
+    "prediction_model_checked_for_both_variants": {
+      "formula": "saving = B(1-c)S(N) / [(N+1)P + B M(N)], with S(N) = (N-1)(N-2)/2 + (N-1) and M(N) = N(N-1)/2 + N, c = 0.06, P = 1500 tokens per call, B = payload per round",
+      "anchor": "N=2, B=1720 reproduces 16.7 percent against 14.4 percent measured, an overstatement of about two points",
+      "four_rounds_one_view_per_round": "B = 1720, S = 6, M = 10 gives 39.3 percent before the anchor correction, about 37 percent after it",
+      "four_rounds_three_views_per_round": "B = 5160, S = 6, M = 10 gives 49.2 percent before the anchor correction, about 47 percent after it",
+      "reading": "both four-round variants land in the same band that the plan predicted for N=4, so the smaller variant buys nearly all of the effect"
+    },
+    "cost_and_effort": {
+      "derivation_work": "twelve ranges instead of thirty-six, with four distinct views per task rather than twelve",
+      "per_sample_complete_tokens": "about 24700 for the baseline arm at the one-view variant against about 59100 at the three-view variant",
+      "confirmation_batch_estimate": "about 0.03 dollars at the one-view variant against about 0.05 to 0.07 at the three-view variant",
+      "also": "the turn budget becomes READ_CALLS + 2 = 6 instead of 14, so the failure surface for a mis-batched trajectory shrinks"
+    },
+    "task_quality": "the v16 tasks read the same three views twice; reading four distinct views once each is a strictly more natural read shape and removes the artificial repetition, so this amendment also removes a design criticism rather than adding one"
+  },
+
+  "risk_recorded_honestly": "the one-view variant has a smaller payload per round, so the fixed per-call overhead P is amortised over a smaller trajectory and the predicted percentage is about ten points lower than the three-view variant; the amendment chooses the cheaper, simpler shape because the difference between roughly 37 and roughly 47 percent does not justify tripling the registration work and doubling the confirmation cost, and because the design estimate carries its own error of a few points",
+
+  "hard_criteria_after_amendment": [
+    "exactly four read rounds, one distinct registered view per round, four read calls per task, issued one round per turn",
+    "the four views are four distinct real file ranges at a pinned base commit, with the defect carrying view among them, each recorded by blob id, file sha256 and view sha256",
+    "three or fewer registered required literals, and the minimum feasible rendered line computed and shown to be within 160 characters before any freeze",
+    "the mechanical gate passes with a positive and a negative control, and the problem statement hash reconciles with the public task table exactly",
+    "the reference patch and the test patch are registered by hash and never read"
+  ],
+  "sealed_candidate_rule": "three candidates are taken from the frozen available_order of V16_CANDIDATE_POOL_20261006.json, skipping the consumed development and sealed candidates, with no hand picking; if fewer than three satisfy the criteria the selection stops and reports every candidate's rejection reason and no criterion is relaxed"
+}

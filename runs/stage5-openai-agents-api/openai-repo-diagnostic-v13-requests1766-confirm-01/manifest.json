@@ -1,0 +1,227 @@
+{
+  "experiment_id": "openai-repo-diagnostic-v13-requests1766-confirm-01",
+  "kind": "openai_agents_requests1766_confirmation_v13",
+  "data_class": "public_source_diagnostic",
+  "disclosure": "The public issue text of psf__requests-1766 and three read-only ranges of the public baseline requests source at the pinned base commit are sent through real SDK tools. No reference patch, evaluation test patch, local secret or expected answer is sent.",
+  "sdk": "openai-agents",
+  "model": "deepseek-v4-flash",
+  "base_url": "https://api.deepseek.com",
+  "methods": [
+    "none",
+    "pruner_v1",
+    "native_summary"
+  ],
+  "scenarios": [
+    "requests_digest_qop"
+  ],
+  "repeats": 3,
+  "minimum_planned_requests": 66,
+  "maximum_api_requests": 66,
+  "max_api_retries": 2,
+  "max_turns": 10,
+  "max_output_tokens": 1024,
+  "max_summary_tokens": 1024,
+  "max_summary_calls": 1,
+  "trigger_policy": "symmetric_budget",
+  "native_summary_contract": {
+    "trigger": "estimated input tokens > soft budget",
+    "retention": "last units up to target token budget, kept verbatim",
+    "pinned": "leading user statement always kept verbatim",
+    "boundary": "Responses groups are never split across a call/output pair",
+    "acceptance": "summary accepted only when it shrinks the payload",
+    "failure_policy": "provider error leaves the input untouched",
+    "accounting": "summary requests consume the same global request budget",
+    "regrowth_rule": "an already-summarised payload is not summarised again until it grows 25%"
+  },
+  "final_output_contract": {
+    "prefix": "RESULT ",
+    "single_line": true,
+    "max_chars": 160
+  },
+  "budget": {
+    "soft": 5435,
+    "hard": 16304,
+    "target": 4076,
+    "fixed_reserved_tokens": 512
+  },
+  "budget_calibration": {
+    "host": "openai_agents",
+    "calibration_ratio_provider_per_estimated": 0.368,
+    "provider_tokens": {
+      "soft": 2000,
+      "hard": 6000,
+      "target": 1500
+    },
+    "estimated_tokens": {
+      "soft": 5435,
+      "hard": 16304,
+      "target": 4076
+    },
+    "note": "Budgets are declared in provider tokens and converted with a measured ratio."
+  },
+  "cost_rates_per_million": {
+    "input": 0.0,
+    "output": 0.0
+  },
+  "purpose": "held-out confirmation of the duplicate-output mechanism on psf__requests-1766: one task, three repeats, three arms. Track A is the acceptance track; Track B is a diagnostic wording track and never a quality-equivalence claim.",
+  "citable_as_saving": false,
+  "citable_as_quality_equivalence": false,
+  "citable_note": "one task and three repeats are not multi-task stability; the flags stay false",
+  "freeze_path": "integrations/openai_agents/V13_REQUESTS1766_FREEZE_20261005.json",
+  "freeze_sha256": "e1f5bb3ad3b03a13bc7048c7d0e1204df884e5ab0cf0e9c1ed753be4ee93d694",
+  "freeze_amendment_path": "integrations/openai_agents/V13_REQUESTS1766_FREEZE_AMENDMENT_20261005.json",
+  "freeze_amendment_sha256": "c700ed22c75ca35c2af6cfc7c4721d6f4309e197fda080eb2112e47fce1cdf7b",
+  "mechanism": {
+    "arm": "pruner_v1",
+    "name": "exact_duplicate_output_v13_requests1766",
+    "schema": "exact_duplicate_requests_v13",
+    "rule": "the frozen v12 rule: an older tool output whose text is byte-identical to a newer one is replaced by a pointer naming the newest call id and the source sha256; the newest full copy and every call/output item stay",
+    "frozen_rule_module": "experiments/runners/openai_agents_exact_duplicate_replay_v12.py",
+    "integration_module": "experiments/runners/openai_agents_requests_duplicate_filter_v13.py",
+    "mechanism_fingerprint": "18f0e727499a239e4b6519c5994009621372030b81a2ced68d4d5e0057890673"
+  },
+  "v13_registry": {
+    "schema": "openai_agents_requests_task_registry_v13",
+    "task": "requests_digest_qop",
+    "issue": "psf__requests-1766",
+    "repo": "psf/requests",
+    "base_commit": "847735553aeda6e6633f2b32e14ba14ba86887a4",
+    "tool_names": [
+      "read_requests_digest_auth",
+      "read_requests_prepare_auth",
+      "read_requests_session_auth"
+    ],
+    "views": [
+      {
+        "file": "requests/auth.py",
+        "first_line": 58,
+        "last_line": 149
+      },
+      {
+        "file": "requests/models.py",
+        "first_line": 451,
+        "last_line": 472
+      },
+      {
+        "file": "requests/sessions.py",
+        "first_line": 232,
+        "last_line": 270
+      }
+    ],
+    "literal_labels": {
+      "digest_qop_header": [
+        "qop=auth"
+      ],
+      "digest_header_builder": [
+        "def build_digest_header"
+      ],
+      "digest_challenge": [
+        "qop = self.chal.get('qop')"
+      ],
+      "auth_apply_step": [
+        "def prepare_auth"
+      ],
+      "session_auth_merge": [
+        "auth=merge_setting(auth, self.auth)"
+      ],
+      "issue_qop_options_directive": [
+        "qop-options"
+      ]
+    },
+    "required_terms": [
+      "qop",
+      "build_digest_header",
+      "quot"
+    ],
+    "answer_pattern": "RESULT issue=requests-1766 cause=.*qop.* fix=.*quot.*",
+    "final_contract": "RESULT issue=requests-1766 cause=<offending header parameter and why it is rejected> fix=<the exact quoting rule>",
+    "max_answer_chars": 160,
+    "track_b_max_chars": 400,
+    "request": "Diagnose why a server that enforces RFC2617 rejects the Digest Authorization header produced here. Read the digest header builder, the prepared-request auth step and the session auth merge in order; name the function that emits the offending parameter and state the exact quoting rule the fix must apply. Issue: psf__requests-1766.",
+    "protocol_steps": [
+      "STEP 1: call read_requests_digest_auth alone, then stop and wait for its result.",
+      "STEP 2: after step 1 returns, call read_requests_prepare_auth alone, then stop and wait.",
+      "STEP 3: after step 2 returns, call read_requests_session_auth alone, then stop and wait.",
+      "STEP 4: after step 3 returns, call read_requests_digest_auth once more alone, then stop and wait.",
+      "STEP 5: after step 4 returns, call read_requests_prepare_auth once more alone, then stop and wait.",
+      "STEP 6: after step 5 returns, call read_requests_session_auth once more alone, then stop and wait.",
+      "STEP 7: only after all six reads have returned, state the final diagnosis."
+    ],
+    "expected_model_calls": 7,
+    "fingerprint": "df542a10711d152ece157ea78af7813500137bf007cb4da2ee651168fb58d18e",
+    "input_hashes": {
+      ".tooling/swebench-verified/psf-requests-1766/instance.json": "daabed7ba113157cdd2beda19de482b94dc690ceb582efa012d9c722cbfe28fd",
+      ".tooling/upstream/psf-requests-1766/requests/auth.py": "e9ac12db8dfb81a4abe59e5e3b1764e01fe1f04dbdc5f57dc7deb7a47695087c",
+      ".tooling/upstream/psf-requests-1766/requests/models.py": "d67cf75ca48670f07fbebfb53637f338111603fd41f58de87aaa4da2ff4c3d2e",
+      ".tooling/upstream/psf-requests-1766/requests/sessions.py": "7519189c53263cb28b294dc79e42e6a0a9ce9290fc4c538b544e640867866b0e",
+      ".tooling/upstream/psf-requests-1766/test_requests.py": "2c482f0ad0b1c5e7465a95bcf19cab5834c3dca3c4c8b755c2dd990bdaac34cd"
+    }
+  },
+  "task_registration_problems": [],
+  "held_out_task": {
+    "instance_id": "psf__requests-1766",
+    "repo": "psf/requests",
+    "base_commit": "847735553aeda6e6633f2b32e14ba14ba86887a4",
+    "views": [
+      "requests/auth.py",
+      "requests/models.py",
+      "requests/sessions.py"
+    ],
+    "read_protocol": [
+      "STEP 1: call read_requests_digest_auth alone, then stop and wait for its result.",
+      "STEP 2: after step 1 returns, call read_requests_prepare_auth alone, then stop and wait.",
+      "STEP 3: after step 2 returns, call read_requests_session_auth alone, then stop and wait.",
+      "STEP 4: after step 3 returns, call read_requests_digest_auth once more alone, then stop and wait.",
+      "STEP 5: after step 4 returns, call read_requests_prepare_auth once more alone, then stop and wait.",
+      "STEP 6: after step 5 returns, call read_requests_session_auth once more alone, then stop and wait.",
+      "STEP 7: only after all six reads have returned, state the final diagnosis."
+    ],
+    "expected_model_calls": 7
+  },
+  "quality_contract": {
+    "track_A_pattern": "RESULT issue=requests-1766 cause=.*qop.* fix=.*quot.*",
+    "track_A_required_terms": [
+      "qop",
+      "build_digest_header",
+      "quot"
+    ],
+    "track_A_max_characters": 160,
+    "track_B_max_characters": 400,
+    "track_B_forbidden_literals": [
+      "no bug",
+      "not a bug"
+    ],
+    "acceptance_line": "track A plugin strict success >= baseline AND paired complete-total provider token saving >= 3%"
+  },
+  "request_budget": {
+    "max_api_requests": 66,
+    "requests_per_repeat": 24,
+    "recorded_attempts": 66,
+    "minimum_planned_requests": 63,
+    "summary_budget_note": "the harness's worst-case bound (63 model calls + 3 x max_summary_calls) must fit the frozen 66 cap, so the native arm's summary budget is one call per sample; its measured cost is a bounded lower bound of its unbounded cost"
+  },
+  "manifest_amendments": [
+    {
+      "reason": "the runner's own manifest amendment raised ValueError on a wrong relative-path base after the batch finished; all nine samples and their evidence were already written. This tool re-verified the matrix (9 samples, cap respected) before adding the frozen keys",
+      "added_keys": [
+        "kind",
+        "purpose",
+        "citable_as_saving",
+        "citable_as_quality_equivalence",
+        "citable_note",
+        "data_class",
+        "freeze_path",
+        "freeze_sha256",
+        "freeze_amendment_path",
+        "freeze_amendment_sha256",
+        "mechanism",
+        "v13_registry",
+        "task_registration_problems",
+        "held_out_task",
+        "quality_contract",
+        "request_budget"
+      ],
+      "tool": ".tooling/amend_v13_stage_c_manifest.py"
+    }
+  ]
+}

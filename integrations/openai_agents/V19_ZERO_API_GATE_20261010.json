@@ -1,0 +1,228 @@
+{
+  "schema": "openai_agents_v19_zero_api_gate",
+  "date": "20261010",
+  "shapes": {
+    "N3": {
+      "shape": "N3",
+      "checks": [
+        {
+          "check": "plan_is_zero_api",
+          "ok": true,
+          "detail": {
+            "api_calls": 0
+          }
+        },
+        {
+          "check": "stub_controls_all_pass_and_at_least_twelve",
+          "ok": true,
+          "detail": {
+            "controls": 13,
+            "ok": true
+          }
+        },
+        {
+          "check": "stub_is_zero_api",
+          "ok": true,
+          "detail": {
+            "api_calls": 0
+          }
+        },
+        {
+          "check": "pilot_finalise_path_exercised_with_a_local_model",
+          "ok": true,
+          "detail": {
+            "pilot_stub_status": 0
+          }
+        },
+        {
+          "check": "protocol_matches_the_shape",
+          "ok": true,
+          "detail": {
+            "rounds": 3,
+            "read_calls": 3
+          }
+        },
+        {
+          "check": "one_read_per_turn_rule_matches_the_batching",
+          "ok": true,
+          "detail": {
+            "reads_per_round": 1
+          }
+        },
+        {
+          "check": "dedupe_and_no_merge_rules_present",
+          "ok": true,
+          "detail": null
+        },
+        {
+          "check": "old_shape_wording_absent",
+          "ok": true,
+          "detail": null
+        },
+        {
+          "check": "case_shape_matches_the_plan",
+          "ok": true,
+          "detail": {
+            "expected_model_calls": 4,
+            "tool_calls": 3
+          }
+        },
+        {
+          "check": "retry_diagnostic_still_byte_identical_to_v16",
+          "ok": true,
+          "detail": null
+        },
+        {
+          "check": "four_conditions_still_identical_to_v16",
+          "ok": true,
+          "detail": null
+        },
+        {
+          "check": "declared_literal_missing_from_the_line_still_rejected",
+          "ok": true,
+          "detail": {
+            "reason": "declared_fact_missing_from_rendered_answer"
+          }
+        },
+        {
+          "check": "over_160_still_rejected",
+          "ok": true,
+          "detail": {
+            "reason": "over_160_chars"
+          }
+        },
+        {
+          "check": "cap_arithmetic_written_into_the_gate_and_at_least_1_3x",
+          "ok": true,
+          "detail": {
+            "shape": "N3",
+            "rounds": 3,
+            "reads_per_round": 1,
+            "read_calls": 3,
+            "expected_requests_per_sample": 4,
+            "max_turns": 5,
+            "worst_case_requests_per_sample": 6,
+            "samples": 9,
+            "worst_case_requests": 60,
+            "cap": 80,
+            "margin": 1.333,
+            "at_least_1_3": true
+          }
+        }
+      ],
+      "ok": true
+    },
+    "N6": {
+      "shape": "N6",
+      "checks": [
+        {
+          "check": "plan_is_zero_api",
+          "ok": true,
+          "detail": {
+            "api_calls": 0
+          }
+        },
+        {
+          "check": "stub_controls_all_pass_and_at_least_twelve",
+          "ok": true,
+          "detail": {
+            "controls": 13,
+            "ok": true
+          }
+        },
+        {
+          "check": "stub_is_zero_api",
+          "ok": true,
+          "detail": {
+            "api_calls": 0
+          }
+        },
+        {
+          "check": "pilot_finalise_path_exercised_with_a_local_model",
+          "ok": true,
+          "detail": {
+            "pilot_stub_status": 0
+          }
+        },
+        {
+          "check": "protocol_matches_the_shape",
+          "ok": true,
+          "detail": {
+            "rounds": 6,
+            "read_calls": 6
+          }
+        },
+        {
+          "check": "one_read_per_turn_rule_matches_the_batching",
+          "ok": true,
+          "detail": {
+            "reads_per_round": 1
+          }
+        },
+        {
+          "check": "dedupe_and_no_merge_rules_present",
+          "ok": true,
+          "detail": null
+        },
+        {
+          "check": "old_shape_wording_absent",
+          "ok": true,
+          "detail": null
+        },
+        {
+          "check": "case_shape_matches_the_plan",
+          "ok": true,
+          "detail": {
+            "expected_model_calls": 7,
+            "tool_calls": 6
+          }
+        },
+        {
+          "check": "retry_diagnostic_still_byte_identical_to_v16",
+          "ok": true,
+          "detail": null
+        },
+        {
+          "check": "four_conditions_still_identical_to_v16",
+          "ok": true,
+          "detail": null
+        },
+        {
+          "check": "declared_literal_missing_from_the_line_still_rejected",
+          "ok": true,
+          "detail": {
+            "reason": "declared_fact_missing_from_rendered_answer"
+          }
+        },
+        {
+          "check": "over_160_still_rejected",
+          "ok": true,
+          "detail": {
+            "reason": "over_160_chars"
+          }
+        },
+        {
+          "check": "cap_arithmetic_written_into_the_gate_and_at_least_1_3x",
+          "ok": true,
+          "detail": {
+            "shape": "N6",
+            "rounds": 6,
+            "reads_per_round": 1,
+            "read_calls": 6,
+            "expected_requests_per_sample": 7,
+            "max_turns": 8,
+            "worst_case_requests_per_sample": 9,
+            "samples": 9,
+            "worst_case_requests": 87,
+            "cap": 120,
+            "margin": 1.379,
+            "at_least_1_3": true
+          }
+        }
+      ],
+      "ok": true
+    }
+  },
+  "paid_requests": 0,
+  "all_shapes_ok": true
+}

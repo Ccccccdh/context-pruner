@@ -1,0 +1,64 @@
+{
+  "schema": "openai_agents_v15_acquisition_freeze",
+  "status": "FROZEN",
+  "date_local": "2026-10-06",
+  "purpose": "real SDK payload acquisition for exact-source replay; controlled repeated-source diagnostic only",
+  "task_ids": [
+    "django_field_error_messages_copy",
+    "django_method_decorator_partial",
+    "django_textchoices_string_value"
+  ],
+  "per_task": {
+    "django_field_error_messages_copy": {
+      "instance_id": "django__django-11880",
+      "base_commit": "06909fe084f87a65459a83bd69d7cdbe4fce9a7c",
+      "fingerprint": "9908cde284841c63241c8f00a77c9674b59ac739d52631f28d02d3bb63b98066"
+    },
+    "django_method_decorator_partial": {
+      "instance_id": "django__django-14787",
+      "base_commit": "004b4620f6f4ad87261e149898940f2dcd5757ef",
+      "fingerprint": "2588902f7e658522d290b4275ec409f3a04b405380daa359867d1a812254bd62"
+    },
+    "django_textchoices_string_value": {
+      "instance_id": "django__django-11964",
+      "base_commit": "fc2b1cc926e34041953738e58fa6ad3053059b22",
+      "fingerprint": "61eeef40afd7d9fc9cb5a1b977376cf358c63d4fad436bbe43d3ee03d5bd7552"
+    }
+  },
+  "methods": [
+    "none"
+  ],
+  "repeats": 1,
+  "max_api_requests_per_task": 36,
+  "max_turns": 10,
+  "max_format_repair_calls_per_sample": 1,
+  "max_transport_retries_per_model_call": 2,
+  "max_summary_calls_per_sample": 0,
+  "worst_case_model_attempts_per_task": 33,
+  "model": "deepseek-v4-flash",
+  "endpoint": "https://api.deepseek.com",
+  "max_output_tokens_per_request": 1024,
+  "strict_primary": "RESULT one line, cause= and fix=, <=160 chars, frozen per-task full regex and required terms",
+  "all_requests_and_tokens_counted": true,
+  "citable_as_saving": false,
+  "citable_as_quality_equivalence": false,
+  "source_sha256": {
+    "integrations/openai_agents/V15_PRESELECT_20261006.json": "bd1177ac308a72cfc1672e12eeabe36a3c454a69bf232d4f6900ccc5d215bf66",
+    "integrations/openai_agents/V15_SOURCE_REGISTRATION_20261006.json": "6e552f4fce15e08d6c1ef350b9c5030e1905441f7be197551de21355ed68668a",
+    "integrations/openai_agents/V15_SOURCE_CONTRACT_GATE_20261006.json": "f7df452f749a69e99ec820dd8b2e228713f07baa0db151b9eb0cf4b1693d39b2",
+    "experiments/runners/openai_agents_v15_registry.py": "8e0f941c6561c1e28540a679b8ed2f958beece814e6f6a3b1a5fb1941ec52a78",
+    "experiments/runners/run_openai_agents_v15_acquisition.py": "30caaada66e0147336d78cb6a2caef9266e8fc2dbf4f53b224a6a47b3a6e1aba",
+    "experiments/audits/audit_openai_agents_v15_acquisition.py": "7a093d2e06c34c1810b9c0aabe674a00df20898947656d9620fd93772820d993",
+    "experiments/runners/openai_agents_bounded_final_v15.py": "2baf70eb4b476c3a9490344926043ea394ee88152078579b1a2f2aba6d5b2760",
+    "experiments/runners/openai_agents_strict_wiring_v15.py": "c087f1a466632c6be4894fd642f3f272f41a0fe0f39f55a500f610b17fd495a4",
+    "experiments/audits/audit_openai_agents_strict_v15.py": "b96bbe5f4d5daea0f1a5971324d3675efad27e05192b3be69be5ad07e328e765",
+    "experiments/runners/openai_agents_multitask_chain_v14.py": "bb2f5ad589e4ac0129a4cf01d2316e7f1cf7987e5dfd02e2f41aa72c7ebc1446",
+    "experiments/runners/run_openai_agents_multitask_acquisition_v14.py": "d4bad20de2e6113c8bfa57b6e90ac46698af0de487195e7e438a9abcc8a6ffd9",
+    "experiments/runners/run_openai_agents_repo_diagnostic_v8.py": "9f929163a14a401d6ea5280c351a1ede8a98083f7ffc4fef4e57ce750c09f6b0",
+    "experiments/runners/openai_agents_multitask_replay_gate_v14.py": "efe19228c8af20d2dfc7260fa9d143b2f8dcfbe3e85b03028614dd05b652ae3b",
+    "experiments/runners/openai_agents_exact_duplicate_replay_v12.py": "2b511306fa433909c3ec72100be93adb9628a22937a7c502bfad8b9faac1f937",
+    "experiments/runners/run_openai_agents_api_experiment.py": "1cafd67b5b4d649381c737ff2e97d15d7cbba95709311d3516ccdb266c7e8708"
+  },
+  "admission_after_acquisition": "independent audit complete, real-payload seven-boundary replay all invariants pass, safe candidates >=1 and byte projection >=3%; baseline strict pass required before any three-arm pilot",
+  "old_batches_unchanged": true
+}

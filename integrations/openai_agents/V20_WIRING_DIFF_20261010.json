@@ -1,0 +1,134 @@
+{
+  "schema": "openai_agents_v20_wiring_diff",
+  "date": "20261010",
+  "method": "zero API inspection of the plugin arm's filter chain: the class MRO of the chain's retention filter, which class owns each entry method, and the chain wiring function",
+  "mro": [
+    "ExactDuplicateFilter@experiments.runners.openai_agents_exact_duplicate_replay_v12",
+    "NarrowGuardBoundaryFilter@experiments.runners.openai_agents_long_baseline_boundary_v9",
+    "LongBaselineBoundaryFilter@experiments.runners.openai_agents_long_baseline_boundary_v8",
+    "RecencyBoundaryFilter@experiments.runners.openai_agents_recency_boundary_v7",
+    "SpanRetentionFilter@experiments.runners.openai_agents_span_retention_v6",
+    "SelectiveRetentionFilter@experiments.runners.openai_agents_evidence_safe_retention_v5"
+  ],
+  "entry_method_owners": {
+    "filter_items": "ExactDuplicateFilter@experiments.runners.openai_agents_exact_duplicate_replay_v12",
+    "filter_items_shadowed_implementations": [
+      "RecencyBoundaryFilter@experiments.runners.openai_agents_recency_boundary_v7",
+      "SelectiveRetentionFilter@experiments.runners.openai_agents_evidence_safe_retention_v5"
+    ],
+    "classify_outputs_owners": [
+      "SpanRetentionFilter@experiments.runners.openai_agents_span_retention_v6",
+      "SelectiveRetentionFilter@experiments.runners.openai_agents_evidence_safe_retention_v5"
+    ],
+    "literal_counts_owner": "SelectiveRetentionFilter@experiments.runners.openai_agents_evidence_safe_retention_v5",
+    "note": "reduce and apply do not exist in this lineage; the entry method is filter_items"
+  },
+  "class_own_methods": {
+    "ExactDuplicateFilter": [
+      "__init__",
+      "filter_items",
+      "metrics_dict"
+    ],
+    "NarrowGuardBoundaryFilter": [
+      "__init__",
+      "metrics_dict"
+    ],
+    "LongBaselineBoundaryFilter": [
+      "__init__",
+      "metrics_dict"
+    ],
+    "RecencyBoundaryFilter": [
+      "__init__",
+      "filter_items",
+      "metrics_dict"
+    ],
+    "SpanRetentionFilter": [
+      "__init__",
+      "classify_outputs",
+      "metrics_dict"
+    ],
+    "SelectiveRetentionFilter": [
+      "__init__",
+      "classify_outputs",
+      "filter_items",
+      "literal_counts",
+      "metrics_dict",
+      "observe",
+      "observe_delivered"
+    ]
+  },
+  "chain_filter_bases": [
+    "ExactDuplicateFilter",
+    "NarrowGuardBoundaryFilter",
+    "LongBaselineBoundaryFilter",
+    "RecencyBoundaryFilter",
+    "SpanRetentionFilter",
+    "SelectiveRetentionFilter"
+  ],
+  "v12_class_source_sha256": "d0e5f255c42cf8c0e56fa9803f3ca949725d85e3278747b5abd2a98b00fae756",
+  "v12_class_markers": [],
+  "chain_wiring_function_sha256": "0356c890f474f9b7722e7b89698a8a92d4fb778855d4c7c99b56d176f3ae404d",
+  "chain_wiring_function_text": "def build_retentive_filter(original, method: str, *, filter_hard_bytes: int = 0, **kwargs):\n    \"\"\"Install this task's duplicate filter in the plugin arm only.\"\"\"\n    from experiments.runners.trigger_gate import BudgetTriggeredFilter\n\n    case = kwargs.get(\"case\")\n    if method != \"pruner_v1\" or case is None:\n        return original(method, **kwargs)\n    wrapper = original(method, **kwargs)\n    retention = MultitaskDuplicateFilter(\n        task=str(case.scenario),\n        task_statement=str(case.task_statement),\n        hard_limit_bytes=int(filter_hard_bytes or 65536),\n    )\n    if isinstance(wrapper, BudgetTriggeredFilter):\n        wrapper.inner = retention\n        return v8._GateAware(wrapper, retention)\n    return retention\n\n\n",
+  "finding": {
+    "unique_content_entry_point_today": "ExactDuplicateFilter (v12) owns filter_items, so the plugin arm runs the v12 exact duplicate rule; the v19 N3 shape measured exactly 0.00 percent on it because there is no duplicate content to replace",
+    "what_is_missing": "v12's filter_items shadows the two ancestor implementations of the same method (RecencyBoundaryFilter in v7 and SelectiveRetentionFilter in v5), so the v5 evidence-safe selective retention with its literal guard and the v6 span retention are dead code in the plugin arm: no elision of unique content runs, which is why exact_duplicate_replacements is the only counter that moves (v16 three, N6 six, N3 zero)",
+    "ancestor_that_carries_elision": "SelectiveRetentionFilter@v5 (filter_items, classify_outputs, literal_counts, observe, observe_delivered) and SpanRetentionFilter@v6 (classify_outputs); both are present in the MRO but shadowed at the entry method",
+    "chosen_mechanism": "v5 lineage evidence-safe selective retention with the literal guard, its fallback counter and its elision counter, composed with the duplicate rule inside a new v20 filter and installed through a new chain module; no frozen file is edited"
+  },
+  "proposed_change": {
+    "shape_of_the_fix": "add a new v20 retention filter module that composes the duplicate rule with the v5 lineage evidence-safe selective retention (literal guard kept and its counters published), and install it in the plugin arm through a new chain module; no frozen file changes",
+    "why_not_v4": "the unguarded v4 retention would make any quality loss unattributable, and this experiment must be able to say whether a guard refused rather than whether a guard was missing",
+    "counters_required": [
+      "elision_engaged_calls",
+      "literal_guard_fallback_calls",
+      "units_elided",
+      "bytes_saved"
+    ]
+  },
+  "paid_requests": 0,
+  "probe_correction": {
+    "first_probe_looked_for": [
+      "reduce",
+      "apply",
+      "should_replace",
+      "elide",
+      "reduce_output"
+    ],
+    "why_that_was_wrong": "this lineage names its entry method filter_items, so the first probe reported that no class owned the entry method and that no ancestor carried elision. Both statements were artifacts of the wrong method names, not findings",
+    "corrected_from": "the class MRO and the per class own method lists printed by the same probe"
+  },
+  "correction_sha256_before": "d0e5f255c42cf8c0e56fa9803f3ca949725d85e3278747b5abd2a98b00fae756",
+  "helper_ownership": {
+    "v5_filter_items_helpers": {
+      "_filter": "SelectiveRetentionFilter@v5",
+      "_fallback": "SelectiveRetentionFilter@v5",
+      "_carrier_loss": "SelectiveRetentionFilter@v5",
+      "_group_change": "SelectiveRetentionFilter@v5",
+      "_missing_literal_units": "SelectiveRetentionFilter@v5",
+      "_missing_protected_units": "SelectiveRetentionFilter@v5",
+      "_structural_violation": "SelectiveRetentionFilter@v5",
+      "observe": "SelectiveRetentionFilter@v5"
+    },
+    "v6_own_methods": [
+      "classify_outputs",
+      "metrics_dict"
+    ],
+    "does_v5_filter_items_call_classify_outputs": false,
+    "reading": "measured facts only: v5's filter_items calls exactly the helpers listed above and every one of them is owned by SelectiveRetentionFilter@v5; SpanRetentionFilter@v6 owns classify_outputs and metrics_dict. The literal string classify_outputs( does NOT appear in the captured source of v5's _filter, so whether v6's override is reached from v5's entry point is UNDETERMINED by this probe and must not be assumed in either direction. The genuinely shadowed entry methods are v7's and v5's filter_items, which v12's filter_items overrides.",
+    "correction_of_age": "this corrects the first version of this artifact, which inferred dead code from method ownership alone",
+    "long_task_alias": "django_count_annotations",
+    "undetermined": "whether re-enabling the v5 entry point also restores the v6 span behaviour; it depends on the call graph inside v5 (for example through an indirect or aliased call), which this probe did not establish. The first action of the next turn is a call-graph check on v5._filter and its callees before any composite is written."
+  },
+  "entry_signature_requirements_for_the_composite": {
+    "why_recorded": "the composite filter must construct both the duplicate rule and the v5 retention with arguments they accept; the exact signatures were not captured within this turn's budget, so they are recorded as the first thing the next turn must read before writing code",
+    "to_read_next": [
+      "openai_agents_evidence_safe_retention_v5.SelectiveRetentionFilter.__init__",
+      "openai_agents_multitask_chain_v14.MultitaskDuplicateFilter.__init__ and its super() call",
+      "openai_agents_long_task_registry_v8.SHORT_TASK_ID usage in the v9/v8 boundary classes"
+    ]
+  },
+  "probe_correction_2": {
+    "what_happened": "this artifact first asserted that v6's span retention was dead code (inferred from method ownership, wrong), then asserted that v5's inner _filter calls self.classify_outputs (checked afterwards and false), so that second claim is withdrawn here",
+    "kept": "the measured MRO and the measured helper ownership lists"
+  }
+}

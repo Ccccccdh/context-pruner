@@ -1,0 +1,267 @@
+{
+  "schema": "openai_agents_v16_source_registration",
+  "status": "SOURCE_AND_CONTRACT_REGISTERED_NO_API_ADMISSION",
+  "date": "20261006",
+  "paid_requests": 0,
+  "preselection": "integrations/openai_agents/V16_PRESELECT_20261006.json",
+  "source_read": "read-only git object reads against the local partial clone (.tooling/upstream/django-15563): git rev-parse <commit>:<path> for the blob hash and git show <commit>:<path> for the content. No fetch, no write, no staging.",
+  "registered_task_count": 2,
+  "registered_task_ids": [
+    "django_sqlite_version_floor",
+    "django_orderedset_reversed"
+  ],
+  "tasks": {
+    "django_sqlite_version_floor": {
+      "task_id": "django_sqlite_version_floor",
+      "instance_id": "django__django-13821",
+      "repo": "django/django",
+      "base_commit": "e64c1d8055a3e476122633da141f16b50f0c4a2d",
+      "difficulty": "<15 min fix",
+      "problem_statement_bytes": 540,
+      "problem_statement_sha256": "265686648c416aaf4879d6757538e5d9ee13c00496288e6fbd5fbdb9901cf3ec",
+      "problem_statement_sha256_matches_preselection": true,
+      "views": [
+        {
+          "file": "django/db/backends/sqlite3/base.py",
+          "first_line": 60,
+          "last_line": 75,
+          "file_lines": 614,
+          "commit_path": "e64c1d8055a3e476122633da141f16b50f0c4a2d:django/db/backends/sqlite3/base.py",
+          "blob_sha256_git": "ab4ea704920cd36540e305b939698abbe85d9328",
+          "file_content_sha256": "4c17e6ef5d0d83f8c5a6391f2eb07f82b6f7f2adb58930735037c51b03fad0ba",
+          "view_content_sha256": "50c421b02fd753c883d42174d4ead10ea898fad3d535f3db45ae640c36e18f65",
+          "view_bytes": 719
+        },
+        {
+          "file": "django/db/backends/sqlite3/features.py",
+          "first_line": 30,
+          "last_line": 50,
+          "file_lines": 113,
+          "commit_path": "e64c1d8055a3e476122633da141f16b50f0c4a2d:django/db/backends/sqlite3/features.py",
+          "blob_sha256_git": "3348256c747c299ba77160b238beaa8ecfadd805",
+          "file_content_sha256": "ffea1db3d6f8ec36305ee7b27b83e9462a81c2f3dc678a14413386f60c4de5c2",
+          "view_content_sha256": "7dd2809b746ffc40039ff04658e0b521578f26e562734ba9c8a94231959cfb0f",
+          "view_bytes": 1273
+        },
+        {
+          "file": "django/db/backends/sqlite3/features.py",
+          "first_line": 60,
+          "last_line": 95,
+          "file_lines": 113,
+          "commit_path": "e64c1d8055a3e476122633da141f16b50f0c4a2d:django/db/backends/sqlite3/features.py",
+          "blob_sha256_git": "3348256c747c299ba77160b238beaa8ecfadd805",
+          "file_content_sha256": "ffea1db3d6f8ec36305ee7b27b83e9462a81c2f3dc678a14413386f60c4de5c2",
+          "view_content_sha256": "a2e91e99b1f1e612e5481e2f8cd0280184faa3b1db49514cff25fffccf19b41c",
+          "view_bytes": 1843
+        }
+      ],
+      "view_texts_sha256": [
+        "50c421b02fd753c883d42174d4ead10ea898fad3d535f3db45ae640c36e18f65",
+        "7dd2809b746ffc40039ff04658e0b521578f26e562734ba9c8a94231959cfb0f",
+        "a2e91e99b1f1e612e5481e2f8cd0280184faa3b1db49514cff25fffccf19b41c"
+      ],
+      "tool_names": [
+        "read_sqlite_version_check",
+        "read_sqlite_features_a",
+        "read_sqlite_features_b"
+      ],
+      "request": "Diagnose why this baseline still accepts an SQLite version below 3.9.0. Read the version check, the version-gated feature flags and the json field support code in order; name the function that sets the floor and the version the fix must require.",
+      "read_calls": 6,
+      "expected_model_calls": 7,
+      "contract": {
+        "shape": "RESULT issue=<issue> cause=<cause> fix=<fix>",
+        "json_fields": [
+          "issue",
+          "cause",
+          "fix",
+          "facts"
+        ],
+        "issue_value": "django-13821",
+        "required_facts": [
+          "check_sqlite_version",
+          "3.8.3",
+          "3.9.0"
+        ],
+        "cause_token": "check_sqlite_version",
+        "fix_token": "3.9.0",
+        "frozen_regex": "RESULT issue=django-13821 cause=.*check_sqlite_version.* fix=.*3.9.0.*",
+        "max_answer_chars": 160,
+        "renderer": "experiments/runners/openai_agents_structured_final_v16.py",
+        "render_rule": "the host renders the JSON fields verbatim, rejects any proposal whose declared facts do not appear in the rendered answer, and never truncates"
+      },
+      "defect_evidence": {
+        "marker": "(3, 8, 3)",
+        "expected": "present",
+        "observed": "present",
+        "ok": true
+      },
+      "registration_problems": []
+    },
+    "django_orderedset_reversed": {
+      "task_id": "django_orderedset_reversed",
+      "instance_id": "django__django-14089",
+      "repo": "django/django",
+      "base_commit": "d01709aae21de9cd2565b9c52f32732ea28a2d98",
+      "difficulty": "<15 min fix",
+      "problem_statement_bytes": 322,
+      "problem_statement_sha256": "cbfb85cb9ea9b08049b15ffaff23b96640926088e725b8b70f7ef2a31b767118",
+      "problem_statement_sha256_matches_preselection": true,
+      "views": [
+        {
+          "file": "django/utils/datastructures.py",
+          "first_line": 5,
+          "last_line": 37,
+          "file_lines": 335,
+          "commit_path": "d01709aae21de9cd2565b9c52f32732ea28a2d98:django/utils/datastructures.py",
+          "blob_sha256_git": "871b016715b2e83b0cb78ae1b04d91057a740104",
+          "file_content_sha256": "f76723cd0ff0f4f85329703a3a0c0e6149e62295f9bea7e8ac7a342622f612c0",
+          "view_content_sha256": "380eef292700f23792aa2bfe91f3a1d9a5b2bdf7e37e0084a5fe6611842005da",
+          "view_bytes": 829
+        },
+        {
+          "file": "django/utils/datastructures.py",
+          "first_line": 42,
+          "last_line": 75,
+          "file_lines": 335,
+          "commit_path": "d01709aae21de9cd2565b9c52f32732ea28a2d98:django/utils/datastructures.py",
+          "blob_sha256_git": "871b016715b2e83b0cb78ae1b04d91057a740104",
+          "file_content_sha256": "f76723cd0ff0f4f85329703a3a0c0e6149e62295f9bea7e8ac7a342622f612c0",
+          "view_content_sha256": "a33a973ba86c301d300605cca20d86f537c38be98fe9c4b4845c7c3733269354",
+          "view_bytes": 1284
+        },
+        {
+          "file": "django/utils/datastructures.py",
+          "first_line": 265,
+          "last_line": 335,
+          "file_lines": 335,
+          "commit_path": "d01709aae21de9cd2565b9c52f32732ea28a2d98:django/utils/datastructures.py",
+          "blob_sha256_git": "871b016715b2e83b0cb78ae1b04d91057a740104",
+          "file_content_sha256": "f76723cd0ff0f4f85329703a3a0c0e6149e62295f9bea7e8ac7a342622f612c0",
+          "view_content_sha256": "0de32bf349431e0b8542fcae9c1471f3e84f75a0140e806f2ab44cadc5d074b9",
+          "view_bytes": 2591
+        }
+      ],
+      "view_texts_sha256": [
+        "380eef292700f23792aa2bfe91f3a1d9a5b2bdf7e37e0084a5fe6611842005da",
+        "a33a973ba86c301d300605cca20d86f537c38be98fe9c4b4845c7c3733269354",
+        "0de32bf349431e0b8542fcae9c1471f3e84f75a0140e806f2ab44cadc5d074b9"
+      ],
+      "tool_names": [
+        "read_orderedset_class",
+        "read_datastructures_mvd",
+        "read_datastructures_mapping"
+      ],
+      "request": "Diagnose why this baseline OrderedSet cannot be passed to Python's reversed(). Read the OrderedSet class, the multi-value container conventions and the mapping iteration code in order; name the class that is missing the method and the method the fix must add.",
+      "read_calls": 6,
+      "expected_model_calls": 7,
+      "contract": {
+        "shape": "RESULT issue=<issue> cause=<cause> fix=<fix>",
+        "json_fields": [
+          "issue",
+          "cause",
+          "fix",
+          "facts"
+        ],
+        "issue_value": "django-14089",
+        "required_facts": [
+          "OrderedSet",
+          "__iter__",
+          "__reversed__"
+        ],
+        "cause_token": "OrderedSet",
+        "fix_token": "__reversed__",
+        "frozen_regex": "RESULT issue=django-14089 cause=.*OrderedSet.* fix=.*__reversed__.*",
+        "max_answer_chars": 160,
+        "renderer": "experiments/runners/openai_agents_structured_final_v16.py",
+        "render_rule": "the host renders the JSON fields verbatim, rejects any proposal whose declared facts do not appear in the rendered answer, and never truncates"
+      },
+      "defect_evidence": {
+        "marker": "def __reversed__",
+        "expected": "absent",
+        "observed": "absent",
+        "ok": true
+      },
+      "registration_problems": []
+    }
+  },
+  "rejected_candidates": [
+    {
+      "instance_id": "django__django-13410",
+      "task_id": "django_locks_posix_return",
+      "gate": "source_defect_present",
+      "decision": "rejected_not_substituted",
+      "why": "the public issue describes a posix lock() that returns the result of fcntl.lockf(), which is None on success and therefore always falsy; the pinned base source contains no 'lockf' call at all - its posix branch already calls fcntl.flock() and returns 'ret == 0', and its fallback branch returns False/True by design - so the described defect is not present in the registered baseline and no defensible cause/fix contract can be registered from these views",
+      "not_done": [
+        "no substitution from the preselection list",
+        "the untouched confirmation candidates were not consumed",
+        "the unspent fourth v15 candidate was not consumed"
+      ],
+      "base_commit": "580a4341cb0b4cbfc215a70afc004875a7e815f4",
+      "repo": "django/django",
+      "checked_files": [
+        {
+          "path": "django/core/files/locks.py",
+          "git_blob_id": "c46b00b90576cca644e9dae1870b3a944ae1e4fa",
+          "content_sha256": "4e8fb6c3366a48774d48808926049abdf298ca21c527ed11db85522c3286e5b2",
+          "file_lines": 115,
+          "blob_bytes": 3513
+        }
+      ],
+      "occurrence_counts": {
+        "lockf": 0,
+        "flock": 2
+      },
+      "defect_signature_count": 0,
+      "gate_rule": "the defect the public issue describes must be present in the pinned base source before a cause/fix contract can be registered from those views",
+      "read_method": "read-only git object reads (no fetch, no write, no staging): `git -C .tooling/upstream/django-15563 rev-parse 580a4341cb0b4cbfc215a70afc004875a7e815f4:django/core/files/locks.py` for the git blob id and `git -C .tooling/upstream/django-15563 show 580a4341cb0b4cbfc215a70afc004875a7e815f4:django/core/files/locks.py` for the content",
+      "commands": [
+        "git -C .tooling/upstream/django-15563 rev-parse 580a4341cb0b4cbfc215a70afc004875a7e815f4:django/core/files/locks.py",
+        "git -C .tooling/upstream/django-15563 show 580a4341cb0b4cbfc215a70afc004875a7e815f4:django/core/files/locks.py"
+      ],
+      "evidence": {
+        "path": "django/core/files/locks.py",
+        "blob_sha_at_base": "c46b00b90576cca644e9dae1870b3a944ae1e4fa",
+        "file_lines": 115,
+        "posix_lock_body": [
+          "            ret = fcntl.flock(_fd(f), flags)",
+          "            return ret == 0",
+          "            ret = fcntl.flock(_fd(f), fcntl.LOCK_UN)",
+          "            return ret == 0"
+        ],
+        "occurences_of_lockf": 0,
+        "occurences_of_flock": 2,
+        "occurrences_lockf": 0,
+        "occurrences_flock": 2
+      }
+    }
+  ],
+  "selection_block": {
+    "status": "NO_FRESH_CANDIDATE_UNDER_THE_SAME_RULE",
+    "measured": {
+      "django_15min_rows_in_parquet": 92,
+      "excluded_by_v15_preselection": 4,
+      "excluded_as_referenced_in_the_repository": 88,
+      "eligible_after_exclusions": 0,
+      "distinct_django_ids_referenced_in_the_repository": 231
+    },
+    "why": "the preselection rule excludes every instance whose id is referenced anywhere in integrations/, experiments/, tests/ or tasks/. That reference set has grown (231 django ids), so a fresh run of the identical rule now yields no eligible candidate at all; the recorded preselection artifact kept only its top six ids, so a next item cannot be recovered from it either.",
+    "not_done": [
+      "no candidate was substituted for the rejected slot",
+      "the untouched confirmation candidates were not consumed",
+      "the unspent v15 candidate 13512 was not consumed",
+      "the exclusion rule was not relaxed to reach a third task"
+    ],
+    "options_for_the_user": [
+      "approve a narrower exclusion: only instances actually spent in a paid batch (computable from run records) rather than any textual mention",
+      "widen the candidate pool beyond django/django under the same metadata rule",
+      "accept a two-task development set and keep the three-task pilot gate unmet"
+    ]
+  },
+  "problems": [],
+  "verified": true,
+  "not_yet_done": [
+    "the three-arm run is not started and must not start from this file alone",
+    "one development task is short (two registered, one rejected), so the development set is 2/3 until a new candidate is registered under a new decision",
+    "no paid request has been made for any v16 task"
+  ]
+}

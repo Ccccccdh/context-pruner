@@ -1,0 +1,438 @@
+{
+  "schema": "openai_agents_v14_multitask_tasks",
+  "written_utc_date": "20261005",
+  "purpose": "four held-out closed-book diagnostic tasks for the multi-task confirmation of the duplicate-output mechanism",
+  "protocol_template": [
+    "Read the three baseline views twice, strictly one tool call per turn, and answer only after the sixth read returns.",
+    "Turn 1: call {t0} alone, then stop and wait for its result.",
+    "Turn 2: after step 1 returns, call {t1} alone, then stop and wait.",
+    "Turn 3: after step 2 returns, call {t2} alone, then stop and wait.",
+    "Turn 4: after step 3 returns, call {t0} once more alone, then stop and wait.",
+    "Turn 5: after step 4 returns, call {t1} once more alone, then stop and wait.",
+    "Turn 6: after step 5 returns, call {t2} once more alone, then stop and wait.",
+    "Turn 7: only after all six reads have returned, state the final diagnosis."
+  ],
+  "answer_contract_shape": "RESULT issue=<short-id> cause=<...> fix=<...>",
+  "max_answer_chars": 160,
+  "track_b_max_chars": 400,
+  "track_b_forbidden": [
+    "no bug",
+    "not a bug"
+  ],
+  "tasks": {
+    "requests_bad_host_unicode": {
+      "task_id": "requests_bad_host_unicode",
+      "instance_id": "psf__requests-5414",
+      "short_id": "requests-5414",
+      "repo": "psf/requests",
+      "base_commit": "39d0fdd9096f7dceccbc8f82e1eda7dd64717a8e",
+      "difficulty": "<15 min fix",
+      "checkout": ".tooling/scratch/psf-requests-5414",
+      "head_matches_base_commit": true,
+      "views": [
+        {
+          "file": "requests/models.py",
+          "first_line": 345,
+          "last_line": 400,
+          "file_bytes": 35043,
+          "file_sha256": "c51202c76971a02910dd004688a4586ee1973ae3c354bf856a2c4575ebd1a888",
+          "file_lines": 973,
+          "view_bytes": 2154
+        },
+        {
+          "file": "requests/exceptions.py",
+          "first_line": 85,
+          "last_line": 95,
+          "file_bytes": 3411,
+          "file_sha256": "d374f4f497332c86d5803a517842bc355e99073d9d9d9c4af23ae15a7ddb7211",
+          "file_lines": 133,
+          "view_bytes": 304
+        },
+        {
+          "file": "requests/models.py",
+          "first_line": 400,
+          "last_line": 440,
+          "file_bytes": 35043,
+          "file_sha256": "c51202c76971a02910dd004688a4586ee1973ae3c354bf856a2c4575ebd1a888",
+          "file_lines": 973,
+          "view_bytes": 1397
+        }
+      ],
+      "tool_names": [
+        "read_requests_idna_host",
+        "read_requests_exceptions",
+        "read_requests_url_preparer"
+      ],
+      "tool_docs": [
+        "Read the public baseline idna host encoding and URL preparation code.",
+        "Read the public baseline requests exception classes.",
+        "Read the public baseline URL preparation body."
+      ],
+      "request": "Diagnose why a URL whose host label is empty (for example http://.example.com) escapes as a UnicodeError instead of a requests URL error. Read the idna host encoding, the exception classes and the URL preparation body in order; name the method that lets the error escape and the exception the fix must raise instead.",
+      "protocol_steps": [
+        "Read the three baseline views twice, strictly one tool call per turn, and answer only after the sixth read returns.",
+        "Turn 1: call read_requests_idna_host alone, then stop and wait for its result.",
+        "Turn 2: after step 1 returns, call read_requests_exceptions alone, then stop and wait.",
+        "Turn 3: after step 2 returns, call read_requests_url_preparer alone, then stop and wait.",
+        "Turn 4: after step 3 returns, call read_requests_idna_host once more alone, then stop and wait.",
+        "Turn 5: after step 4 returns, call read_requests_exceptions once more alone, then stop and wait.",
+        "Turn 6: after step 5 returns, call read_requests_url_preparer once more alone, then stop and wait.",
+        "Turn 7: only after all six reads have returned, state the final diagnosis."
+      ],
+      "read_calls": 6,
+      "expected_model_calls": 7,
+      "contract": "RESULT issue=requests-5414 cause=<...> fix=<...>",
+      "answer_pattern": "RESULT issue=requests-5414 cause=.*prepare_url.* fix=.*InvalidURL.*",
+      "required_terms": [
+        "prepare_url",
+        "InvalidURL"
+      ],
+      "literals": {
+        "url_preparer": [
+          "def prepare_url"
+        ],
+        "idna_host": [
+          "_get_idna_encoded_host"
+        ],
+        "invalid_url_class": [
+          "class InvalidURL"
+        ]
+      },
+      "statement_sha256": "1f38966be0b93b34500848fe5cd15cfb844a172ce6b74dafc662f443c3f62de9",
+      "baseline_source_hashes": {
+        "requests/models.py": "c51202c76971a02910dd004688a4586ee1973ae3c354bf856a2c4575ebd1a888",
+        "requests/exceptions.py": "d374f4f497332c86d5803a517842bc355e99073d9d9d9c4af23ae15a7ddb7211"
+      },
+      "judging_metadata": {
+        "problem_statement_bytes": 1428,
+        "problem_statement_sha256": "08faa0ea47836476b5f4b3709c06a00569996ccc654011299f9c8587cd7007ba",
+        "test_patch_bytes": 516,
+        "test_patch_sha256": "46e0fcf881a426fb44dcd64c29be1f1d81113fcbfffe658404fc6298bc028a53",
+        "reference_patch_bytes": 511,
+        "reference_patch_sha256": "41e9433ac5e2cdb17a3972bec818a1118ea4a3f2b7485cd11fff7e27f6f3f680",
+        "fail_to_pass": [
+          "tests/test_requests.py::TestRequests::test_invalid_url[InvalidURL-http://.example.com]"
+        ],
+        "pass_to_pass_count": 130,
+        "read_by_this_host": [
+          "problem_statement"
+        ],
+        "not_read_by_this_host": [
+          "test_patch",
+          "reference_patch"
+        ]
+      }
+    },
+    "requests_binary_payload": {
+      "task_id": "requests_binary_payload",
+      "instance_id": "psf__requests-2931",
+      "short_id": "requests-2931",
+      "repo": "psf/requests",
+      "base_commit": "5f7a3a74aab1625c2bb65f643197ee885e3da576",
+      "difficulty": "15 min - 1 hour",
+      "checkout": ".tooling/scratch/psf-requests-2931",
+      "head_matches_base_commit": true,
+      "views": [
+        {
+          "file": "requests/utils.py",
+          "first_line": 680,
+          "last_line": 700,
+          "file_bytes": 21628,
+          "file_sha256": "f7e9abd57fe977e7d24bd4dc40c8c21c723c39058de4bd1d5b0d36b8bf9698cd",
+          "file_lines": 717,
+          "view_bytes": 553
+        },
+        {
+          "file": "requests/models.py",
+          "first_line": 400,
+          "last_line": 440,
+          "file_bytes": 29203,
+          "file_sha256": "a57e766a29b120c372e3bd236c80db1b2d696d96593cddb38c4fe150c41285ed",
+          "file_lines": 848,
+          "view_bytes": 1250
+        },
+        {
+          "file": "requests/models.py",
+          "first_line": 75,
+          "last_line": 95,
+          "file_bytes": 29203,
+          "file_sha256": "a57e766a29b120c372e3bd236c80db1b2d696d96593cddb38c4fe150c41285ed",
+          "file_lines": 848,
+          "view_bytes": 845
+        }
+      ],
+      "tool_names": [
+        "read_requests_native_string",
+        "read_requests_prepare_body",
+        "read_requests_length_helper"
+      ],
+      "tool_docs": [
+        "Read the public baseline native-string helper.",
+        "Read the public baseline request body preparation.",
+        "Read the public baseline length helper."
+      ],
+      "request": "Diagnose why a request whose body is an already-encoded bytes payload fails. Read the native-string helper, the body preparation and the length helper in order; name the helper that must not be applied to bytes and the method where the body is prepared.",
+      "protocol_steps": [
+        "Read the three baseline views twice, strictly one tool call per turn, and answer only after the sixth read returns.",
+        "Turn 1: call read_requests_native_string alone, then stop and wait for its result.",
+        "Turn 2: after step 1 returns, call read_requests_prepare_body alone, then stop and wait.",
+        "Turn 3: after step 2 returns, call read_requests_length_helper alone, then stop and wait.",
+        "Turn 4: after step 3 returns, call read_requests_native_string once more alone, then stop and wait.",
+        "Turn 5: after step 4 returns, call read_requests_prepare_body once more alone, then stop and wait.",
+        "Turn 6: after step 5 returns, call read_requests_length_helper once more alone, then stop and wait.",
+        "Turn 7: only after all six reads have returned, state the final diagnosis."
+      ],
+      "read_calls": 6,
+      "expected_model_calls": 7,
+      "contract": "RESULT issue=requests-2931 cause=<...> fix=<...>",
+      "answer_pattern": "RESULT issue=requests-2931 cause=.*to_native_string.* fix=.*prepare_body.*",
+      "required_terms": [
+        "to_native_string",
+        "prepare_body"
+      ],
+      "literals": {
+        "native_string_helper": [
+          "def to_native_string"
+        ],
+        "body_preparer": [
+          "def prepare_body"
+        ],
+        "length_helper_use": [
+          "to_native_string(data)"
+        ]
+      },
+      "statement_sha256": "438259c166440e255c5c0f6c228206433b106ec5218d1160b997e071de446902",
+      "baseline_source_hashes": {
+        "requests/utils.py": "f7e9abd57fe977e7d24bd4dc40c8c21c723c39058de4bd1d5b0d36b8bf9698cd",
+        "requests/models.py": "a57e766a29b120c372e3bd236c80db1b2d696d96593cddb38c4fe150c41285ed"
+      },
+      "judging_metadata": {
+        "problem_statement_bytes": 274,
+        "problem_statement_sha256": "c36c337f6c5d918e8d193684510213e2eaed8633e575b819757674cca0d980fd",
+        "test_patch_bytes": 637,
+        "test_patch_sha256": "65b4e814631a631933cbeffa4bc9316c55a90bceeaabf6d08de988c9e9e4ffc7",
+        "reference_patch_bytes": 723,
+        "reference_patch_sha256": "5b5a77408b00928b0380cd6a40ccb53f0cf77b16f040e1743e313883aad104db",
+        "fail_to_pass": [
+          "test_requests.py::TestRequests::test_binary_put"
+        ],
+        "pass_to_pass_count": 84,
+        "read_by_this_host": [
+          "problem_statement"
+        ],
+        "not_read_by_this_host": [
+          "test_patch",
+          "reference_patch"
+        ]
+      }
+    },
+    "flask_empty_blueprint_name": {
+      "task_id": "flask_empty_blueprint_name",
+      "instance_id": "pallets__flask-5014",
+      "short_id": "flask-5014",
+      "repo": "pallets/flask",
+      "base_commit": "7ee9ceb71e868944a46e1ff00b506772a53a4f1d",
+      "difficulty": "<15 min fix",
+      "checkout": ".tooling/scratch/pallets-flask-5014",
+      "head_matches_base_commit": true,
+      "views": [
+        {
+          "file": "src/flask/blueprints.py",
+          "first_line": 172,
+          "last_line": 200,
+          "file_bytes": 24356,
+          "file_sha256": "9d296c3a0dffffbafd59ef15290a6d4c2061a470f3ad2b00709388d35d1dddc0",
+          "file_lines": 621,
+          "view_bytes": 1018
+        },
+        {
+          "file": "src/flask/blueprints.py",
+          "first_line": 30,
+          "last_line": 80,
+          "file_bytes": 24356,
+          "file_sha256": "9d296c3a0dffffbafd59ef15290a6d4c2061a470f3ad2b00709388d35d1dddc0",
+          "file_lines": 621,
+          "view_bytes": 1823
+        },
+        {
+          "file": "src/flask/app.py",
+          "first_line": 985,
+          "last_line": 1010,
+          "file_bytes": 88074,
+          "file_sha256": "d439102c7658f90f896556c557df89501f2c98ad498d6317453f10ef58508710",
+          "file_lines": 2228,
+          "view_bytes": 1284
+        }
+      ],
+      "tool_names": [
+        "read_flask_blueprint_init",
+        "read_flask_blueprint_state",
+        "read_flask_register_blueprint"
+      ],
+      "tool_docs": [
+        "Read the public baseline Blueprint constructor.",
+        "Read the public baseline blueprint setup state.",
+        "Read the public baseline blueprint registration."
+      ],
+      "request": "Diagnose why an empty blueprint name is accepted even though the constructor already rejects a dotted name. Read the blueprint constructor, the setup state and the registration in order; name the class whose name must be validated and the exception the fix must raise.",
+      "protocol_steps": [
+        "Read the three baseline views twice, strictly one tool call per turn, and answer only after the sixth read returns.",
+        "Turn 1: call read_flask_blueprint_init alone, then stop and wait for its result.",
+        "Turn 2: after step 1 returns, call read_flask_blueprint_state alone, then stop and wait.",
+        "Turn 3: after step 2 returns, call read_flask_register_blueprint alone, then stop and wait.",
+        "Turn 4: after step 3 returns, call read_flask_blueprint_init once more alone, then stop and wait.",
+        "Turn 5: after step 4 returns, call read_flask_blueprint_state once more alone, then stop and wait.",
+        "Turn 6: after step 5 returns, call read_flask_register_blueprint once more alone, then stop and wait.",
+        "Turn 7: only after all six reads have returned, state the final diagnosis."
+      ],
+      "read_calls": 6,
+      "expected_model_calls": 7,
+      "contract": "RESULT issue=flask-5014 cause=<...> fix=<...>",
+      "answer_pattern": "RESULT issue=flask-5014 cause=.*Blueprint.* fix=.*ValueError.*",
+      "required_terms": [
+        "Blueprint",
+        "ValueError"
+      ],
+      "literals": {
+        "blueprint_name": [
+          "self.name = name"
+        ],
+        "dot_check": [
+          "may not contain a dot"
+        ],
+        "register_blueprint": [
+          "def register_blueprint"
+        ]
+      },
+      "statement_sha256": "8e8ac0930fa79d78385302a20fbf2f998fde8257e321b609c500598622ca2595",
+      "baseline_source_hashes": {
+        "src/flask/blueprints.py": "9d296c3a0dffffbafd59ef15290a6d4c2061a470f3ad2b00709388d35d1dddc0",
+        "src/flask/app.py": "d439102c7658f90f896556c557df89501f2c98ad498d6317453f10ef58508710"
+      },
+      "judging_metadata": {
+        "problem_statement_bytes": 195,
+        "problem_statement_sha256": "f77d8eab7dd608172aa78b3b50dfa7e0e9b3a6a1c52d14a1cb02417eb5a0ab00",
+        "test_patch_bytes": 465,
+        "test_patch_sha256": "e16f06b260b5169a49397e9d571b5af70317cd23792e1437232fabf718fe8871",
+        "reference_patch_bytes": 390,
+        "reference_patch_sha256": "087d51d66413bfa35111ac0eca31f1db1636572702cfd967c428049b453f451d",
+        "fail_to_pass": [
+          "tests/test_blueprints.py::test_empty_name_not_allowed"
+        ],
+        "pass_to_pass_count": 59,
+        "read_by_this_host": [
+          "problem_statement"
+        ],
+        "not_read_by_this_host": [
+          "test_patch",
+          "reference_patch"
+        ]
+      }
+    },
+    "xarray_copy_dtype": {
+      "task_id": "xarray_copy_dtype",
+      "instance_id": "pydata__xarray-3095",
+      "short_id": "xarray-3095",
+      "repo": "pydata/xarray",
+      "base_commit": "1757dffac2fa493d7b9a074b84cf8c830a706688",
+      "difficulty": "15 min - 1 hour",
+      "checkout": ".tooling/scratch/pydata-xarray-3095",
+      "head_matches_base_commit": true,
+      "views": [
+        {
+          "file": "xarray/core/variable.py",
+          "first_line": 1834,
+          "last_line": 1935,
+          "file_bytes": 81599,
+          "file_sha256": "c3061ed6832cc78197118c32e6cb647cb11a237afa3fe670d7f00eab70ca3f44",
+          "file_lines": 2160,
+          "view_bytes": 3872
+        },
+        {
+          "file": "xarray/core/dataset.py",
+          "first_line": 842,
+          "last_line": 880,
+          "file_bytes": 185800,
+          "file_sha256": "878d68d031b88d53cfc37e513c3b7cf4ac98b9573ab525a60eba9682f74b2089",
+          "file_lines": 4780,
+          "view_bytes": 1519
+        },
+        {
+          "file": "xarray/core/variable.py",
+          "first_line": 120,
+          "last_line": 200,
+          "file_bytes": 81599,
+          "file_sha256": "c3061ed6832cc78197118c32e6cb647cb11a237afa3fe670d7f00eab70ca3f44",
+          "file_lines": 2160,
+          "view_bytes": 2740
+        }
+      ],
+      "tool_names": [
+        "read_xarray_index_variable",
+        "read_xarray_dataset_copy",
+        "read_xarray_compatible_data"
+      ],
+      "tool_docs": [
+        "Read the public baseline IndexVariable class and its copy method.",
+        "Read the public baseline Dataset.copy.",
+        "Read the public baseline array coercion helper."
+      ],
+      "request": "Diagnose why copying a dataset with deep=True turns unicode index variables into object arrays. Read the index variable class, the dataset copy and the array coercion helper in order; name the class whose copying loses the dtype and the attribute the fix must preserve.",
+      "protocol_steps": [
+        "Read the three baseline views twice, strictly one tool call per turn, and answer only after the sixth read returns.",
+        "Turn 1: call read_xarray_index_variable alone, then stop and wait for its result.",
+        "Turn 2: after step 1 returns, call read_xarray_dataset_copy alone, then stop and wait.",
+        "Turn 3: after step 2 returns, call read_xarray_compatible_data alone, then stop and wait.",
+        "Turn 4: after step 3 returns, call read_xarray_index_variable once more alone, then stop and wait.",
+        "Turn 5: after step 4 returns, call read_xarray_dataset_copy once more alone, then stop and wait.",
+        "Turn 6: after step 5 returns, call read_xarray_compatible_data once more alone, then stop and wait.",
+        "Turn 7: only after all six reads have returned, state the final diagnosis."
+      ],
+      "read_calls": 6,
+      "expected_model_calls": 7,
+      "contract": "RESULT issue=xarray-3095 cause=<...> fix=<...>",
+      "answer_pattern": "RESULT issue=xarray-3095 cause=.*IndexVariable.* fix=.*dtype.*",
+      "required_terms": [
+        "IndexVariable",
+        "dtype"
+      ],
+      "literals": {
+        "index_variable_class": [
+          "class IndexVariable"
+        ],
+        "dataset_copy": [
+          "def copy"
+        ],
+        "variable_copy": [
+          "def copy"
+        ]
+      },
+      "statement_sha256": "a08e849b6efdaf39042a8b7fe9e137f534554c71a2032a2ade9f2ad97b46b2af",
+      "baseline_source_hashes": {
+        "xarray/core/variable.py": "c3061ed6832cc78197118c32e6cb647cb11a237afa3fe670d7f00eab70ca3f44",
+        "xarray/core/dataset.py": "878d68d031b88d53cfc37e513c3b7cf4ac98b9573ab525a60eba9682f74b2089"
+      },
+      "judging_metadata": {
+        "problem_statement_bytes": 2811,
+        "problem_statement_sha256": "3d8f2d8422b56bd5980ec478be1413ef87805484446fc15dbd482342a59abb25",
+        "test_patch_bytes": 671,
+        "test_patch_sha256": "74e9567e31b72197c929b56e94c92b21f8fb62f9b8008bee43aba3ac81d33134",
+        "reference_patch_bytes": 4029,
+        "reference_patch_sha256": "15ee0073513dfa4723e55f92c67f7ca66c9651a6d627c08c06e7bada6bcd7525",
+        "fail_to_pass": [
+          "xarray/tests/test_variable.py::TestIndexVariable::test_copy[str-True]"
+        ],
+        "pass_to_pass_count": 253,
+        "read_by_this_host": [
+          "problem_statement"
+        ],
+        "not_read_by_this_host": [
+          "test_patch",
+          "reference_patch"
+        ]
+      }
+    }
+  },
+  "problems": [],
+  "verified": true
+}

@@ -1,0 +1,129 @@
+{
+  "schema": "openai_agents_v18_read_shape_diff",
+  "date": "20261010",
+  "plan": "integrations/openai_agents/V18_TASK_SHAPE_PLAN_20261010.json",
+  "new_axis": "four read rounds of three distinct registered views: twelve read calls over twelve distinct ranges",
+  "carried_from_v17": "the first prompt states the literal-placement rule; the retry diagnostic and the one billed retry are unchanged",
+  "renderer": {
+    "module": "experiments/runners/openai_agents_structured_final_v16.py",
+    "sha256": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+    "forked": false
+  },
+  "live_contract": {
+    "module": "experiments/runners/openai_agents_v17_live_contract.py",
+    "sha256": "b5be9165c8845579491e5541380f5f0766f97df77dfb933a12b26a1a1e3e1ca3",
+    "forked": false,
+    "note": "the shape lives in the registry and its registration artifact, so the v17 contract is imported unchanged"
+  },
+  "forks": [
+    {
+      "source": "experiments/runners/openai_agents_v17_registry.py",
+      "target": "experiments/runners/openai_agents_v18_registry.py",
+      "source_sha256": "aa67abea06d9a47b5c5bb8fdef352ea975c7884620534bad10de44d828070392",
+      "target_sha256": "7a8dc0d2c51764951314473883d72b10cece1fd7c065f8c63ba9a45635399263",
+      "changes": [
+        {
+          "label": "read_shape_constants",
+          "line_in_source": 51,
+          "old_sha256": "20f360e94529ddd42e41a1ee74ca568fcaec62ab5e31c8a246ee9e624f947023",
+          "new_sha256": "07522a8136a437cf619afa13fcbdbe039dcfb8a9ebfbcb5b259834ab1ee47547",
+          "old_text": "REGISTRY_SCHEMA = \"openai_agents_v16_registry\"\nMAX_ANSWER_CHARS = 160\nREAD_CALLS = 6\nEXPECTED_MODEL_CALLS = 7",
+          "new_text": "REGISTRY_SCHEMA = \"openai_agents_v18_registry\"\nMAX_ANSWER_CHARS = 160\n#: the four-round shape: four rounds of three distinct registered views, then one answer turn\nREAD_ROUNDS = 4\nREADS_PER_ROUND = 3\nREAD_CALLS = READ_ROUNDS * READS_PER_ROUND\nEXPECTED_MODEL_CALLS = READ_CALLS + 1"
+        },
+        {
+          "label": "registration_artifact",
+          "line_in_source": 40,
+          "old_sha256": "6b045bb3d2b0281d71a6f1017888efd984b20464cdaa9494512089fe57eac714",
+          "new_sha256": "9b5b6d767cbb9f013efd2031b9ae5801531e91e0ce5d25df101951a07df10050",
+          "old_text": "REGISTRATION = REPO / \"integrations/openai_agents/V16_SOURCE_REGISTRATION_20261006.json\"",
+          "new_text": "REGISTRATION = REPO / \"integrations/openai_agents/V18_SOURCE_REGISTRATION_20261010.json\""
+        },
+        {
+          "label": "protocol_steps_describe_four_rounds",
+          "line_in_source": 269,
+          "old_sha256": "5cfc1b307102b855387e32dc27ab1818a4b2981e52a910a5b9fcc37493d98381",
+          "new_sha256": "1ae6d082db0b23ffd132b00629ae08ac0e93788ec4c980332d34564e7ea98103",
+          "old_text": "    order = \", \".join(\n        f\"{name} ({view['file']} {view['first_line']}-{view['last_line']})\"\n        for name, view in zip(entry[\"tool_names\"], entry[\"views\"])\n    )\n    return [\n        \"Call the three read-only tools twice each, in this order and then repeated once: \"\n        f\"{order}. That is {READ_CALLS} read calls.\",\n        \"After the sixth read, answer with the JSON object the request describes and call no \"\n        \"more tools: the host renders your JSON into the single RESULT line.\",\n    ]",
+          "new_text": "    rounds = []\n    names = list(entry[\"tool_names\"])\n    views = list(entry[\"views\"])\n    for round_index in range(READ_ROUNDS):\n        chunk = list(\n            zip(\n                names[round_index * READS_PER_ROUND : (round_index + 1) * READS_PER_ROUND],\n                views[round_index * READS_PER_ROUND : (round_index + 1) * READS_PER_ROUND],\n            )\n        )\n        rounds.append(\n            f\"round {round_index + 1}: \"\n            + \", \".join(\n                f\"{name} ({view['file']} {view['first_line']}-{view['last_line']})\"\n                for name, view in chunk\n            )\n        )\n    return [\n        \"Call three read-only tools in each of \"\n        f\"{READ_ROUNDS} rounds, in this order, and never read the same registered view twice: \"\n        + \"; \".join(rounds)\n        + f\". That is {READ_CALLS} read calls over {len(views)} distinct registered views.\",\n        \"After the twelfth read, answer with the JSON object the request describes and call no \"\n        \"more tools: the host renders your JSON into the single RESULT line.\",\n    ]"
+        },
+        {
+          "label": "verify_the_new_shape",
+          "line_in_source": 508,
+          "old_sha256": "4820609de5a0f6585534386c30efd6b9ef49a623ed381724039f0d1ef9c5f253",
+          "new_sha256": "0898b37a3908e8bd364c438c4717797d0571c796b70dd3cf7a3dc8b1f19f8da6",
+          "old_text": "    if len(entry[\"views\"]) != 3 or len(entry[\"tool_names\"]) != 3:\n        problems.append(f\"{task_id}: three views and three tools are required\")",
+          "new_text": "    if len(entry[\"views\"]) != READ_CALLS or len(entry[\"tool_names\"]) != READ_CALLS:\n        problems.append(\n            f\"{task_id}: the four-round shape requires {READ_CALLS} distinct views and tools\"\n        )\n    ranges = {(view[\"file\"], view[\"first_line\"], view[\"last_line\"]) for view in entry[\"views\"]}\n    if len(ranges) != len(entry[\"views\"]):\n        problems.append(f\"{task_id}: two registered views cover the same file range\")\n    if len(set(entry[\"tool_names\"])) != len(entry[\"tool_names\"]):\n        problems.append(f\"{task_id}: two registered views share a tool name\")\n    if len(entry[\"contract\"][\"required_facts\"]) > 3:\n        problems.append(f\"{task_id}: more than three required literals are registered\")\n    feasible = minimal_feasible_line(task_id)\n    if feasible[\"chars\"] > MAX_ANSWER_CHARS or feasible[\"problems\"]:\n        problems.append(\n            f\"{task_id}: the shortest feasible rendered line is {feasible['chars']} characters \"\n            \"or does not satisfy the frozen conditions\"\n        )"
+        },
+        {
+          "label": "minimal_feasible_line_helper",
+          "line_in_source": 475,
+          "old_sha256": "61fd781d965c9eb02186663c6063475256b334c6416dcfa442c374019907bc40",
+          "new_sha256": "09aa826736f5a784327db36c1927b6e11b2354601ad7b9d5bb5a27655487d86e",
+          "old_text": "def verify(task_id: str) -> list[str]:",
+          "new_text": "def minimal_feasible_line(task_id: str) -> dict[str, Any]:\n    \"\"\"The shortest rendered line that keeps every required literal and both regex tokens.\"\"\"\n\n    entry = task(task_id)\n    pattern = str(entry[\"contract\"][\"frozen_regex\"])\n    facts = [str(fact) for fact in entry[\"contract\"][\"required_facts\"]]\n    before_fix, _, after_fix = pattern.partition(\" fix=\")\n    token_re = re.compile(r\"[A-Za-z_][A-Za-z0-9_]*\")\n    skip = {\"result\", \"issue\", \"cause\", \"fix\", \"django\"}\n\n    def tokens(segment: str) -> list[str]:\n        found: list[str] = []\n        for token in token_re.findall(segment):\n            if token.lower() in skip or token in found:\n                continue\n            found.append(token)\n        return found\n\n    cause_bits = tokens(before_fix)\n    fix_bits = tokens(after_fix)\n    for fact in facts:\n        if fact in cause_bits or fact in fix_bits:\n            continue\n        if after_fix and fact in after_fix:\n            fix_bits.append(fact)\n        else:\n            cause_bits.append(fact)\n    line = (\n        f\"RESULT issue={entry['contract']['issue_value']} cause={' '.join(cause_bits)} \"\n        f\"fix={' '.join(fix_bits)}\"\n    )\n    problems = []\n    if not re.fullmatch(pattern, line, flags=re.IGNORECASE):\n        problems.append(\"the shortest line does not match the frozen regex\")\n    for fact in facts:\n        if fact not in line:\n            problems.append(f\"the shortest line lost the required literal {fact!r}\")\n    if len(line) > MAX_ANSWER_CHARS:\n        problems.append(\"the shortest line exceeds the bound\")\n    return {\n        \"task_id\": task_id,\n        \"line\": line,\n        \"chars\": len(line),\n        \"margin_to_bound\": MAX_ANSWER_CHARS - len(line),\n        \"problems\": problems,\n    }\n\n\ndef verify(task_id: str) -> list[str]:"
+        },
+        {
+          "label": "manifest_block_reports_the_shape",
+          "line_in_source": 652,
+          "old_sha256": "16366dfcf52f5af2d56a05bd8df30222cbc7ac01e1698587aaef03464976f6cf",
+          "new_sha256": "a9f2048826ed74a047c4e45b0b153cdd9fd0aaeb9ba64de7e0b8df00592a91cf",
+          "old_text": "        \"max_answer_chars\": MAX_ANSWER_CHARS,\n        \"read_calls\": READ_CALLS,\n        \"expected_model_calls\": EXPECTED_MODEL_CALLS,",
+          "new_text": "        \"max_answer_chars\": MAX_ANSWER_CHARS,\n        \"read_shape\": {\n            \"rounds\": READ_ROUNDS,\n            \"reads_per_round\": READS_PER_ROUND,\n            \"read_calls\": READ_CALLS,\n            \"expected_model_calls\": EXPECTED_MODEL_CALLS,\n            \"distinct_views\": \"every round reads three views that no other round reads\",\n        },\n        \"minimal_feasible_lines\": {\n            task_id: minimal_feasible_line(task_id) for task_id in task_ids()\n        },\n        \"read_calls\": READ_CALLS,\n        \"expected_model_calls\": EXPECTED_MODEL_CALLS,"
+        }
+      ],
+      "change_count": 6
+    },
+    {
+      "source": "experiments/runners/run_openai_agents_v17_acquisition.py",
+      "target": "experiments/runners/run_openai_agents_v18_acquisition.py",
+      "source_sha256": "be0b97b4100711e726c85003933a6cf0357c3c2b5388442d28a4af69ae5fb45d",
+      "target_sha256": "097b7e8de89f5b4a12dffd043dcb6c03fe6f745a9d1ad23c24feeb310232f63d",
+      "changes": [
+        {
+          "label": "import_v18_modules",
+          "line_in_source": 45,
+          "old_sha256": "d7ab457d196b8b46e87623b208c8b9d7fe3f4e5be1f73096f14f739d33d3d028",
+          "new_sha256": "4a8d9f1d4666e821ec8c6d7277391aa346349224fc37123a2838cacd2c94dcee",
+          "old_text": "from experiments.runners import openai_agents_v17_live_contract as live\nfrom experiments.runners import openai_agents_v17_registry as registry\n",
+          "new_text": "from experiments.runners import openai_agents_v17_live_contract as live\nfrom experiments.runners import openai_agents_v18_registry as registry\n"
+        },
+        {
+          "label": "v18_pilot_experiment_id",
+          "line_in_source": 1446,
+          "old_sha256": "049925b7ecb9f1a33f323d070f9e29e8057f6a847587783e547435338870af12",
+          "new_sha256": "f09373660dde4fa98bdb8849f689e9e52d1b674b0f8e8753acdd943b07f55c49",
+          "old_text": "PILOT_EXPERIMENT_ID = \"openai-repo-diagnostic-v17-first-attempt-compliance-pilot-02\"",
+          "new_text": "PILOT_EXPERIMENT_ID = \"openai-repo-diagnostic-v18-four-round-shape-pilot-01\""
+        },
+        {
+          "label": "v18_acquisition_experiment_id",
+          "line_in_source": 54,
+          "old_sha256": "01a3e504b3a89dcd0d29d802408016064db843fe507e75b31d1dc129384b45b0",
+          "new_sha256": "19c313bff067792712d7e127a99a1442b960f7ed83f6f44c3cb32c8e43858ebb",
+          "old_text": "EXPERIMENT_ID = \"openai-repo-diagnostic-v17-first-attempt-compliance-acquisition-01\"",
+          "new_text": "EXPERIMENT_ID = \"openai-repo-diagnostic-v18-four-round-shape-acquisition-01\""
+        },
+        {
+          "label": "v18_artifacts",
+          "line_in_source": 79,
+          "old_sha256": "996e104562636e5ac7bfb47ce54cfe3e29914ab74b88095e26a4ef8184c61ada",
+          "new_sha256": "b857b8b30959c815dc36e04da109d0978952eea21f37b089674718f81906a378",
+          "old_text": "PLAN_ARTIFACT = REPO / \"integrations/openai_agents/V17_LIVE_PLAN_20261010.json\"\nSTUB_ARTIFACT = REPO / \"integrations/openai_agents/V17_LIVE_STUB_20261010.json\"",
+          "new_text": "PLAN_ARTIFACT = REPO / \"integrations/openai_agents/V18_LIVE_PLAN_20261010.json\"\nSTUB_ARTIFACT = REPO / \"integrations/openai_agents/V18_LIVE_STUB_20261010.json\""
+        },
+        {
+          "label": "v18_probe_artifact",
+          "line_in_source": 2623,
+          "old_sha256": "9a8907e093bf687b7312604ba53a756328cdad12983f8bbe13af716df9def64e",
+          "new_sha256": "95711cf9c0749a90815a50a01a895d7eb4a2fc86f91a81bcdc2b22fd2401abcc",
+          "old_text": "PROBE_ARTIFACT = REPO / \"integrations/openai_agents/V17_CAPABILITY_PROBE_20261010.json\"",
+          "new_text": "PROBE_ARTIFACT = REPO / \"integrations/openai_agents/V18_CAPABILITY_PROBE_20261010.json\""
+        }
+      ],
+      "change_count": 5
+    }
+  ],
+  "criteria_changed": false,
+  "frozen_files_changed_after_freeze": 0,
+  "paid_requests": 0
+}

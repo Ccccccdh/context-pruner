@@ -1,0 +1,720 @@
+{
+  "experiment_id": "openai-repo-diagnostic-v17-first-attempt-compliance-pilot-02",
+  "kind": "openai_agents_v16_three_arm_pilot",
+  "data_class": "public_source_diagnostic",
+  "disclosure": "Public SWE-bench issue statements and three read-only ranges of public Django baseline source at the pinned base commits are sent through real SDK tools. No reference patch, evaluation test patch, local secret or expected answer is sent.",
+  "sdk": "openai-agents",
+  "model": "deepseek-v4-flash",
+  "base_url": "https://api.deepseek.com",
+  "methods": [
+    "none",
+    "pruner_v1",
+    "native_summary"
+  ],
+  "scenarios": [
+    "django_sqlite_version_floor",
+    "django_orderedset_reversed",
+    "django_field_hash_immutability"
+  ],
+  "repeats": 1,
+  "minimum_planned_requests": 69,
+  "maximum_api_requests": 110,
+  "max_api_retries": 2,
+  "max_turns": 10,
+  "max_output_tokens": 1024,
+  "max_summary_tokens": 1024,
+  "max_summary_calls": 2,
+  "trigger_policy": "symmetric_budget",
+  "native_summary_contract": {
+    "trigger": "estimated input tokens > soft budget",
+    "retention": "last units up to target token budget, kept verbatim",
+    "pinned": "leading user statement always kept verbatim",
+    "boundary": "Responses groups are never split across a call/output pair",
+    "acceptance": "summary accepted only when it shrinks the payload",
+    "failure_policy": "provider error leaves the input untouched",
+    "accounting": "summary requests consume the same global request budget",
+    "regrowth_rule": "an already-summarised payload is not summarised again until it grows 25%"
+  },
+  "final_output_contract": {
+    "prefix": "RESULT ",
+    "single_line": true,
+    "max_chars": 160
+  },
+  "budget": {
+    "soft": 5435,
+    "hard": 16304,
+    "target": 4076,
+    "fixed_reserved_tokens": 512
+  },
+  "budget_calibration": {
+    "host": "openai_agents",
+    "calibration_ratio_provider_per_estimated": 0.368,
+    "provider_tokens": {
+      "soft": 2000,
+      "hard": 6000,
+      "target": 1500
+    },
+    "estimated_tokens": {
+      "soft": 5435,
+      "hard": 16304,
+      "target": 4076
+    },
+    "note": "Budgets are declared in provider tokens and converted with a measured ratio."
+  },
+  "cost_rates_per_million": {
+    "input": 0.0,
+    "output": 0.0
+  },
+  "purpose": "three_arm_pilot",
+  "citable_as_saving": false,
+  "citable_as_quality_equivalence": false,
+  "citable_note": "the flags stay false until an independent audit passes; this pilot is development evidence for this host configuration, because the three development tasks took part in building it",
+  "freeze_path": "integrations/openai_agents/V17_DEV_PILOT_FREEZE_20261010.json",
+  "freeze_sha256": "9c1424adf371dffe7f3068833f4fc5d56a2c568b2d6c1cc7753aeaa34fd959aa",
+  "freeze_matrix": {
+    "tasks": [
+      "django_sqlite_version_floor",
+      "django_orderedset_reversed",
+      "django_field_hash_immutability"
+    ],
+    "arms": [
+      "none",
+      "pruner_v1",
+      "native_summary"
+    ],
+    "arms_as_frozen": [
+      "none",
+      "native_summary",
+      "pruner_v1"
+    ],
+    "repeats": 1,
+    "samples": 9,
+    "max_api_requests": 110
+  },
+  "source_of_record": {},
+  "source_of_record_verified": {},
+  "host_configuration": {
+    "structured_final_answer": "JSON issue/cause/fix/facts asked for in the prompt, identical for every arm, rendered by the frozen renderer, which is the final-answer path and the only validator",
+    "renderer": {
+      "module": "experiments/runners/openai_agents_structured_final_v16.py",
+      "sha256": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+      "truncates": false,
+      "drops_fields": false
+    },
+    "retry_budget": 1,
+    "retry_is_billed": true,
+    "retry_carries_host_diagnostic": true,
+    "diagnostic_module": "experiments.runners.openai_agents_v17_live_contract",
+    "modules": {},
+    "summary_cap_per_sample": 2,
+    "frozen_prompt_adaptation": {
+      "applied": [
+        "The final response must be exactly one line, begin with RESULT, contain at most 160 characters, and follow this contract: ",
+        "Replace angle-bracket fields with tool values."
+      ],
+      "complete_in_every_sample": true
+    }
+  },
+  "criteria": {
+    "strict_track": [
+      "required facts present",
+      "frozen regex full match",
+      "single line with the contract prefix",
+      "at most 160 characters"
+    ],
+    "max_answer_chars": 160,
+    "bounds_are_not_relaxed": "at most 160 characters remains an acceptance condition",
+    "per_sample_report": [
+      "source_chars",
+      "rendered_chars",
+      "render_accepted",
+      "facts_complete",
+      "frozen_regex",
+      "single_line_prefix",
+      "within_160"
+    ]
+  },
+  "acceptance_line": {
+    "line": "first_attempt_accepted at least 70 percent of samples overall AND every arm's strict track at least the baseline's AND zero render failures AND zero truncations AND retries at most 4 of 9 samples",
+    "source": "the v17 freeze decides on first-attempt compliance and the retry tax"
+  },
+  "pilot_report": {
+    "per_task": {
+      "django_sqlite_version_floor": {
+        "paired_n": 1,
+        "paired_savings": [
+          0.1114
+        ],
+        "mean_saving": 0.1114,
+        "positive_pairs": 1,
+        "min_saving": 0.1114,
+        "max_saving": 0.1114,
+        "strict_track": {
+          "none": 1,
+          "pruner_v1": 1,
+          "native_summary": 1
+        },
+        "strict_track_plugin_at_least_baseline": true,
+        "complete_total_tokens": {
+          "none": 7505,
+          "pruner_v1": 6669,
+          "native_summary": 8294
+        }
+      },
+      "django_orderedset_reversed": {
+        "paired_n": 1,
+        "paired_savings": [
+          0.1392
+        ],
+        "mean_saving": 0.1392,
+        "positive_pairs": 1,
+        "min_saving": 0.1392,
+        "max_saving": 0.1392,
+        "strict_track": {
+          "none": 1,
+          "pruner_v1": 1,
+          "native_summary": 1
+        },
+        "strict_track_plugin_at_least_baseline": true,
+        "complete_total_tokens": {
+          "none": 7825,
+          "pruner_v1": 6736,
+          "native_summary": 8410
+        }
+      },
+      "django_field_hash_immutability": {
+        "paired_n": 1,
+        "paired_savings": [
+          0.6349
+        ],
+        "mean_saving": 0.6349,
+        "positive_pairs": 1,
+        "min_saving": 0.6349,
+        "max_saving": 0.6349,
+        "strict_track": {
+          "none": 1,
+          "pruner_v1": 1,
+          "native_summary": 1
+        },
+        "strict_track_plugin_at_least_baseline": true,
+        "complete_total_tokens": {
+          "none": 12438,
+          "pruner_v1": 4541,
+          "native_summary": 10479
+        }
+      }
+    },
+    "pooled": {
+      "paired_n": 3,
+      "mean_saving": 0.2952,
+      "median_saving": 0.1392,
+      "stdev_saving": 0.2946,
+      "min_saving": 0.11139240506329114,
+      "max_saving": 0.6349091493809295,
+      "positive_pairs": 3,
+      "majority_positive": true,
+      "mean_positive": true
+    },
+    "trajectory_matched_subset": {
+      "n": 2,
+      "mean_saving": 0.1253,
+      "stdev_saving": 0.0196,
+      "min_saving": 0.1114,
+      "max_saving": 0.1392,
+      "positive_pairs": 2,
+      "note": "reported for explanation only: these are the pairs whose two arms took the same number of model calls, so they isolate the compression effect; the frozen verdict is decided on every pair of the matrix, never on this subset"
+    },
+    "trajectory_unmatched_subset": {
+      "n": 1,
+      "mean_saving": 0.6349,
+      "stdev_saving": 0.0,
+      "min_saving": 0.6349,
+      "max_saving": 0.6349,
+      "positive_pairs": 1,
+      "note": "pairs whose arms differ in model calls; their spread is trajectory, not compression"
+    },
+    "acceptance_line": "per task, the plugin arm's strict track is at least the baseline's (the four conditions judged on the rendered line) AND the paired complete provider-token saving is positive for a majority of pairs AND the batch mean is positive; failures, cap hits, retries and summary requests are all charged to their arm",
+    "track_a_all_tasks": true,
+    "met": true
+  },
+  "length_trajectory": {
+    "samples": [
+      {
+        "task": "django_sqlite_version_floor",
+        "repeat": 0,
+        "method": "none",
+        "first_render_reason": "accepted",
+        "first_raw_chars": 150,
+        "first_candidate_chars": 85,
+        "retried": false,
+        "repair_raw_chars": null,
+        "repair_candidate_chars": null,
+        "repair_candidate_delta_chars": null,
+        "repair_render_reason": null,
+        "retry_shortened_the_candidate": false,
+        "retry_grew_the_candidate": false,
+        "diagnostic_carried": false,
+        "diagnostic_named_the_bound": false,
+        "accepted_final": true,
+        "render_reason": "accepted_first"
+      },
+      {
+        "task": "django_sqlite_version_floor",
+        "repeat": 0,
+        "method": "pruner_v1",
+        "first_render_reason": "accepted",
+        "first_raw_chars": 155,
+        "first_candidate_chars": 90,
+        "retried": false,
+        "repair_raw_chars": null,
+        "repair_candidate_chars": null,
+        "repair_candidate_delta_chars": null,
+        "repair_render_reason": null,
+        "retry_shortened_the_candidate": false,
+        "retry_grew_the_candidate": false,
+        "diagnostic_carried": false,
+        "diagnostic_named_the_bound": false,
+        "accepted_final": true,
+        "render_reason": "accepted_first"
+      },
+      {
+        "task": "django_sqlite_version_floor",
+        "repeat": 0,
+        "method": "native_summary",
+        "first_render_reason": "accepted",
+        "first_raw_chars": 150,
+        "first_candidate_chars": 85,
+        "retried": false,
+        "repair_raw_chars": null,
+        "repair_candidate_chars": null,
+        "repair_candidate_delta_chars": null,
+        "repair_render_reason": null,
+        "retry_shortened_the_candidate": false,
+        "retry_grew_the_candidate": false,
+        "diagnostic_carried": false,
+        "diagnostic_named_the_bound": false,
+        "accepted_final": true,
+        "render_reason": "accepted_first"
+      },
+      {
+        "task": "django_orderedset_reversed",
+        "repeat": 0,
+        "method": "pruner_v1",
+        "first_render_reason": "accepted",
+        "first_raw_chars": 195,
+        "first_candidate_chars": 139,
+        "retried": false,
+        "repair_raw_chars": null,
+        "repair_candidate_chars": null,
+        "repair_candidate_delta_chars": null,
+        "repair_render_reason": null,
+        "retry_shortened_the_candidate": false,
+        "retry_grew_the_candidate": false,
+        "diagnostic_carried": false,
+        "diagnostic_named_the_bound": false,
+        "accepted_final": true,
+        "render_reason": "accepted_first"
+      },
+      {
+        "task": "django_orderedset_reversed",
+        "repeat": 0,
+        "method": "native_summary",
+        "first_render_reason": "accepted",
+        "first_raw_chars": 199,
+        "first_candidate_chars": 134,
+        "retried": false,
+        "repair_raw_chars": null,
+        "repair_candidate_chars": null,
+        "repair_candidate_delta_chars": null,
+        "repair_render_reason": null,
+        "retry_shortened_the_candidate": false,
+        "retry_grew_the_candidate": false,
+        "diagnostic_carried": false,
+        "diagnostic_named_the_bound": false,
+        "accepted_final": true,
+        "render_reason": "accepted_first"
+      },
+      {
+        "task": "django_orderedset_reversed",
+        "repeat": 0,
+        "method": "none",
+        "first_render_reason": "accepted",
+        "first_raw_chars": 174,
+        "first_candidate_chars": 118,
+        "retried": false,
+        "repair_raw_chars": null,
+        "repair_candidate_chars": null,
+        "repair_candidate_delta_chars": null,
+        "repair_render_reason": null,
+        "retry_shortened_the_candidate": false,
+        "retry_grew_the_candidate": false,
+        "diagnostic_carried": false,
+        "diagnostic_named_the_bound": false,
+        "accepted_final": true,
+        "render_reason": "accepted_first"
+      },
+      {
+        "task": "django_field_hash_immutability",
+        "repeat": 0,
+        "method": "native_summary",
+        "first_render_reason": "over_160_chars",
+        "first_raw_chars": 252,
+        "first_candidate_chars": 196,
+        "retried": true,
+        "repair_raw_chars": 193,
+        "repair_candidate_chars": 137,
+        "repair_candidate_delta_chars": -59,
+        "repair_render_reason": "accepted",
+        "retry_shortened_the_candidate": true,
+        "retry_grew_the_candidate": false,
+        "diagnostic_carried": true,
+        "diagnostic_named_the_bound": true,
+        "accepted_final": true,
+        "render_reason": "accepted_retry"
+      },
+      {
+        "task": "django_field_hash_immutability",
+        "repeat": 0,
+        "method": "none",
+        "first_render_reason": "over_160_chars",
+        "first_raw_chars": 225,
+        "first_candidate_chars": 169,
+        "retried": true,
+        "repair_raw_chars": 150,
+        "repair_candidate_chars": 94,
+        "repair_candidate_delta_chars": -75,
+        "repair_render_reason": "accepted",
+        "retry_shortened_the_candidate": true,
+        "retry_grew_the_candidate": false,
+        "diagnostic_carried": true,
+        "diagnostic_named_the_bound": true,
+        "accepted_final": true,
+        "render_reason": "accepted_retry"
+      },
+      {
+        "task": "django_field_hash_immutability",
+        "repeat": 0,
+        "method": "pruner_v1",
+        "first_render_reason": "accepted",
+        "first_raw_chars": 210,
+        "first_candidate_chars": 154,
+        "retried": false,
+        "repair_raw_chars": null,
+        "repair_candidate_chars": null,
+        "repair_candidate_delta_chars": null,
+        "repair_render_reason": null,
+        "retry_shortened_the_candidate": false,
+        "retry_grew_the_candidate": false,
+        "diagnostic_carried": false,
+        "diagnostic_named_the_bound": false,
+        "accepted_final": true,
+        "render_reason": "accepted_first"
+      }
+    ],
+    "retried_samples": 2,
+    "retries_that_shortened": 2,
+    "retries_that_grew": 0,
+    "retries_carrying_the_diagnostic": 2,
+    "retries_naming_the_bound": 2
+  },
+  "failure_decomposition": {
+    "none": {
+      "samples": 3,
+      "strict_pass": 3,
+      "render_accepted": 3,
+      "failures": {},
+      "retries": 1,
+      "diagnostic_carried_samples": 1,
+      "retry_rate": 0.3333,
+      "summary_calls": 0,
+      "requests": 10,
+      "complete_total_tokens": 27768
+    },
+    "pruner_v1": {
+      "samples": 3,
+      "strict_pass": 3,
+      "render_accepted": 3,
+      "failures": {},
+      "retries": 0,
+      "diagnostic_carried_samples": 0,
+      "retry_rate": 0.0,
+      "summary_calls": 0,
+      "requests": 8,
+      "complete_total_tokens": 17946
+    },
+    "native_summary": {
+      "samples": 3,
+      "strict_pass": 3,
+      "render_accepted": 3,
+      "failures": {},
+      "retries": 1,
+      "diagnostic_carried_samples": 1,
+      "retry_rate": 0.3333,
+      "summary_calls": 3,
+      "requests": 12,
+      "complete_total_tokens": 27183
+    }
+  },
+  "attempt": 2,
+  "previous_attempt": {
+    "batch": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v16-three-arm-pilot-01",
+    "outcome": "pilot 01 failed the frozen quality gate: one task's plugin strict track was below its baseline, and every over-length rejection there began as a declared-fact rejection whose diagnostic never named the 160-character bound",
+    "detail": "integrations/openai_agents/V16_PILOT_RETRO_20261006.json"
+  },
+  "batch_report": {
+    "per_sample": [
+      {
+        "task": "django_field_hash_immutability",
+        "repeat": 0,
+        "method": "native_summary",
+        "source_chars": 193,
+        "rendered_chars": 137,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true,
+        "render_reason": "accepted_retry",
+        "had_candidate": true,
+        "candidate_chars": 137,
+        "repair_calls": 1,
+        "requests": 4,
+        "success": true,
+        "error_type": ""
+      },
+      {
+        "task": "django_field_hash_immutability",
+        "repeat": 0,
+        "method": "none",
+        "source_chars": 150,
+        "rendered_chars": 94,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true,
+        "render_reason": "accepted_retry",
+        "had_candidate": true,
+        "candidate_chars": 94,
+        "repair_calls": 1,
+        "requests": 4,
+        "success": true,
+        "error_type": ""
+      },
+      {
+        "task": "django_field_hash_immutability",
+        "repeat": 0,
+        "method": "pruner_v1",
+        "source_chars": 210,
+        "rendered_chars": 154,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true,
+        "render_reason": "accepted_first",
+        "had_candidate": true,
+        "candidate_chars": 154,
+        "repair_calls": 0,
+        "requests": 2,
+        "success": true,
+        "error_type": ""
+      },
+      {
+        "task": "django_orderedset_reversed",
+        "repeat": 0,
+        "method": "pruner_v1",
+        "source_chars": 195,
+        "rendered_chars": 139,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true,
+        "render_reason": "accepted_first",
+        "had_candidate": true,
+        "candidate_chars": 139,
+        "repair_calls": 0,
+        "requests": 3,
+        "success": true,
+        "error_type": ""
+      },
+      {
+        "task": "django_orderedset_reversed",
+        "repeat": 0,
+        "method": "native_summary",
+        "source_chars": 199,
+        "rendered_chars": 134,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true,
+        "render_reason": "accepted_first",
+        "had_candidate": true,
+        "candidate_chars": 134,
+        "repair_calls": 0,
+        "requests": 4,
+        "success": true,
+        "error_type": ""
+      },
+      {
+        "task": "django_orderedset_reversed",
+        "repeat": 0,
+        "method": "none",
+        "source_chars": 174,
+        "rendered_chars": 118,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true,
+        "render_reason": "accepted_first",
+        "had_candidate": true,
+        "candidate_chars": 118,
+        "repair_calls": 0,
+        "requests": 3,
+        "success": true,
+        "error_type": ""
+      },
+      {
+        "task": "django_sqlite_version_floor",
+        "repeat": 0,
+        "method": "none",
+        "source_chars": 150,
+        "rendered_chars": 85,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true,
+        "render_reason": "accepted_first",
+        "had_candidate": true,
+        "candidate_chars": 85,
+        "repair_calls": 0,
+        "requests": 3,
+        "success": true,
+        "error_type": ""
+      },
+      {
+        "task": "django_sqlite_version_floor",
+        "repeat": 0,
+        "method": "pruner_v1",
+        "source_chars": 155,
+        "rendered_chars": 90,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true,
+        "render_reason": "accepted_first",
+        "had_candidate": true,
+        "candidate_chars": 90,
+        "repair_calls": 0,
+        "requests": 3,
+        "success": true,
+        "error_type": ""
+      },
+      {
+        "task": "django_sqlite_version_floor",
+        "repeat": 0,
+        "method": "native_summary",
+        "source_chars": 150,
+        "rendered_chars": 85,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true,
+        "render_reason": "accepted_first",
+        "had_candidate": true,
+        "candidate_chars": 85,
+        "repair_calls": 0,
+        "requests": 4,
+        "success": true,
+        "error_type": ""
+      }
+    ],
+    "samples": 9,
+    "render_accepted_count": 9,
+    "render_rejected_count": 0,
+    "render_failure_share": 0.0,
+    "samples_with_a_candidate": 9,
+    "samples_without_a_candidate": 0,
+    "samples_without_a_candidate_reasons": {},
+    "post_render_over_160_count": 0,
+    "post_render_over_160_share_over_candidates": 0.0,
+    "post_render_over_160_share_over_all_samples": 0.0,
+    "post_render_over_160_note": "measured over samples that produced an answer candidate; a sample that never reached the answer turn is counted under samples_without_a_candidate and is not a length measurement",
+    "retry_count": 2,
+    "observed_retry_rate_over_candidates": 0.2222,
+    "truncations": 0,
+    "fields_dropped": 0,
+    "attainability_rule": "every sample of the batch must render inside facts + frozen regex + 160 characters; a sample that cannot render counts as a failure and its share is reported",
+    "attainable_on_this_batch": true
+  },
+  "request_budget": {
+    "samples": 9,
+    "measured_model_calls_per_sample_low": 2.67,
+    "measured_model_calls_per_sample_high": 3.0,
+    "expected_requests": 27,
+    "worst_case_requests": 78,
+    "best_case_requests": 21,
+    "summary_calls_expected": 3,
+    "summary_calls_worst_case": 6,
+    "cap": 110,
+    "cap_has_headroom": true,
+    "headroom_factor": 1.41,
+    "baseline_formula_minimum": 69,
+    "frozen_cap_is_the_batches_own": true,
+    "api_calls": 30,
+    "summary_calls": 3,
+    "max_summary_calls_per_sample": 2,
+    "samples_over_the_summary_cap": []
+  },
+  "api_calls": 30,
+  "metering": {
+    "cache_fields_per_call": [
+      "prompt_cache_hit_tokens",
+      "prompt_cache_miss_tokens",
+      "call_timestamp_utc",
+      "off_peak",
+      "cache_fields_present",
+      "cache_usage_unknown"
+    ],
+    "cache_fields_fail_closed": "missing fields are recorded as unknown, never as zero",
+    "cache_source": "raw_provider_usage",
+    "prompt_cache": {
+      "calls": 27,
+      "calls_with_cache_fields": 27,
+      "calls_without_cache_fields": 0,
+      "prompt_cache_hit_tokens_total": 44788,
+      "prompt_cache_miss_tokens_total": 24363,
+      "all_calls_off_peak": true,
+      "note": "a batch whose provider omits the cache fields records them as unknown; the totals stay null rather than being reported as zero"
+    },
+    "manifest_written_in_one_pass": true,
+    "writer_refuses_overwrite": true
+  },
+  "prompt_adaptation_complete": true,
+  "stopped_early": false,
+  "stop_reason": "",
+  "stop_conditions": [
+    "request cap reached -> stop, keep the partial directory, and never use resume to bypass the budget",
+    "any arm's strict track below the baseline's -> stop and report, do not add samples",
+    "any sample failing the strict track -> stop and report",
+    "probe failure -> stop before the pilot and report",
+    "missing cache fields -> record unknown, never zero, and keep the totals null where they are unknown"
+  ],
+  "report_requirements": [
+    "first-attempt acceptance rate overall and per arm, against the v16 reference of 28.9 percent",
+    "retry count per arm and retry tokens per arm, against the v16 numbers 38161 / 33374 / 38153",
+    "the strict track per task and per arm, with the four conditions reported separately",
+    "the reject-class decomposition from the new instrumentation, with the missing literals named, so the root cause stays checkable",
+    "requests used against the cap, cache fields present or unknown, dollar cost with the cache split and the off-peak status",
+    "complete provider token totals per arm, with summary tokens charged",
+    "an explicit statement of what this pilot cannot show"
+  ],
+  "runner_status": 0,
+  "v16_manifest_finalized": true
+}

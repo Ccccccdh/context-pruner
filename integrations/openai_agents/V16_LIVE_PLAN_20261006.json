@@ -1,0 +1,362 @@
+{
+  "schema": "openai_agents_v16_live_plan",
+  "date": "20261010",
+  "generated_utc": "2026-10-10T09:36:46+00:00",
+  "mode": "plan",
+  "api_calls": 0,
+  "zero_api_enforced_by": [
+    "base.AsyncOpenAI replaced by a client whose completions call raises",
+    "base.OpenAIChatCompletionsModel replaced by a model whose responses raise",
+    "the frozen runner returns from --plan before any client is built"
+  ],
+  "runner_status": 0,
+  "freeze": {
+    "path": "integrations/openai_agents/V16_ACQUISITION_FREEZE_20261006.json",
+    "sha256": "18c0d49f5cec9e7deebe6054ec6bb79356d4d289072d063dd196dada2eababc8",
+    "status": "FROZEN",
+    "matrix": {
+      "tasks": [
+        "django_sqlite_version_floor",
+        "django_orderedset_reversed",
+        "django_field_hash_immutability"
+      ],
+      "task_count": 3,
+      "arms": [
+        "none"
+      ],
+      "repeats": 1,
+      "samples": 3,
+      "max_api_requests": 30
+    },
+    "renderer_sha256": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+    "source_of_record": {
+      "integrations/openai_agents/V16_SOURCE_REGISTRATION_20261006.json": "0723258eb3b297752625af85e5f2264bf843da70fa7205735225ca45fdaa22eb",
+      "integrations/openai_agents/V16_STAGE1_20261006.json": "989785291638d4f6699f781e5d10c3bedb7b636d91f833355235fb265c4037d8",
+      "integrations/openai_agents/V16_GATE_PROBES_20261006.json": "491eac2f7ad1050e07012a2987f6c469c01d32afb0fd981b1347ab768e4dc9be",
+      "integrations/openai_agents/V16_CANDIDATE_POOL_20261006.json": "def85ab86093ae5bfc08f568a2172a29448effb09742d27825d6b979e40ba357"
+    },
+    "per_sample_report": [
+      "source_chars",
+      "rendered_chars",
+      "render_accepted",
+      "facts_complete",
+      "frozen_regex",
+      "single_line_prefix",
+      "within_160"
+    ]
+  },
+  "freeze_amendment": {
+    "path": "integrations/openai_agents/V16_ACQUISITION_FREEZE_AMENDMENT_20261006.json",
+    "sha256": "815e4653bd2828f7879e5e1ad6270f344f08d211c549d6410ba740da35c978e7",
+    "freeze_sha256": "18c0d49f5cec9e7deebe6054ec6bb79356d4d289072d063dd196dada2eababc8",
+    "freeze_unchanged": true,
+    "pinned_files": {
+      "experiments/runners/run_openai_agents_v16_acquisition.py": {
+        "recorded_digests": [
+          "8d87646e4dabd941b62824bb6b1e6de3921af9c5a6167c0c47d3b1e78518daa2",
+          "6a3e803ffb3930afaa9b33a8607ac08762cc939332c4b5ee509fc307cfbbdb21",
+          "a0dafdc9966c71ee59648cdbd597e527e9116ba9637c5950d635cbf36fa01820",
+          "dc06ee7eb28a97a41c213dc575cab46539b53f46e37462fbc234099ad6f5a90b",
+          "0daf1d3c8fb8e0734e16ca00ebac5b4d591f95652ebcf5c69658104ffbbb80f6",
+          "3a74f902ab610e87d92674b41b588fe69edbeb37dbbc1eed576d695c9f528199",
+          "9a8e07570d89c5fee5e250bfb421979e8cfb1f6699903f6551c6b6a65bae1c9a",
+          "0e161cc12929f7d328bc414da07212231cc51a7d95dabcafa8cf06cf79e0bb12",
+          "ea31a67d1f92e6bb7832025c8342d4ec66fd8fd271ab16d9f6bfaccc448209e4",
+          "7d5dd3e6f62e39652d5d02f4e675c98fa830840c9183933aa129534cd8ad2095"
+        ],
+        "matched_entry": 9,
+        "current_sha256": "7d5dd3e6f62e39652d5d02f4e675c98fa830840c9183933aa129534cd8ad2095",
+        "matches": true,
+        "in_freeze": "",
+        "reason": "entry point: pilot attempt 2 under its own experiment id and its own freeze; the pilot report now carries the trajectory-matched subset next to the pre-registered reading and a per-sample length trajectory, and the per-arm decomposition counts the samples whose retry carried the diagnostic",
+        "recorded_sha256": "7d5dd3e6f62e39652d5d02f4e675c98fa830840c9183933aa129534cd8ad2095"
+      },
+      "experiments/runners/openai_agents_v16_registry.py": {
+        "recorded_digests": [
+          "54323c8046881f207de3233bc3918c556352271dffec8b04df02c24a953c5798"
+        ],
+        "matched_entry": 0,
+        "current_sha256": "54323c8046881f207de3233bc3918c556352271dffec8b04df02c24a953c5798",
+        "matches": true,
+        "in_freeze": "",
+        "reason": "reads the three registered view sets and contracts from the two frozen artifacts, re-verifies every view against the pinned base commits, and supplies the two fields the artifacts omit (the 15315 tool names, derived from the registered view order, and the protocol steps derived from the registered read shape)",
+        "recorded_sha256": "54323c8046881f207de3233bc3918c556352271dffec8b04df02c24a953c5798"
+      },
+      "experiments/runners/openai_agents_v16_live_contract.py": {
+        "recorded_digests": [
+          "16c62cade520b377041f9e71e08e77c8e0d019bf00a30b572bd4c086b1ff4230",
+          "496909d3bca778ae74c2063bea6136c59a30547cb8f3e133cb9b086563acb8b7",
+          "b60411ea1dc079d9a99bad499201e07e58dcee54b5b694e9a393eb8f8b45dac1",
+          "c8d33bd42e6094edfabad46e1b4fc60b72a0c0b86aa48508224b023fce80c86b",
+          "ac05f40a353973911b7601ef3a9ff1b720ebf8ab90c196d470e3c151dc03f2d4"
+        ],
+        "matched_entry": 4,
+        "current_sha256": "ac05f40a353973911b7601ef3a9ff1b720ebf8ab90c196d470e3c151dc03f2d4",
+        "matches": true,
+        "in_freeze": "",
+        "reason": "host configuration: the ledger now records the first and the retried candidate length plus their delta, so a batch can show whether the two-sided diagnostic shortened the answer or let it grow",
+        "recorded_sha256": "ac05f40a353973911b7601ef3a9ff1b720ebf8ab90c196d470e3c151dc03f2d4"
+      },
+      "experiments/runners/openai_agents_v16_stage1.py": {
+        "recorded_digests": [
+          "f13857bd1a4db69215f9ba4f763805addad59e2aafdfa3d9810f3d6d957e305f"
+        ],
+        "matched_entry": 0,
+        "current_sha256": "f13857bd1a4db69215f9ba4f763805addad59e2aafdfa3d9810f3d6d957e305f",
+        "matches": true,
+        "in_freeze": "",
+        "reason": "the stage-1 generator whose registered 15315 request text the registry reads (the stage-1 artifact records the views, the contract and a statement hash but not the request text), pinned here even though the freeze does not pin it",
+        "recorded_sha256": "f13857bd1a4db69215f9ba4f763805addad59e2aafdfa3d9810f3d6d957e305f"
+      },
+      "experiments/runners/openai_agents_structured_final_v16.py": {
+        "recorded_digests": [
+          "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a"
+        ],
+        "matched_entry": 0,
+        "current_sha256": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+        "matches": true,
+        "in_freeze": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+        "reason": "the renderer; the freeze pins it as host_configuration.renderer and it is pinned again here so the batch manifest carries its hash next to the other implementation hashes",
+        "recorded_sha256": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a"
+      },
+      "experiments/runners/run_openai_agents_api_experiment.py": {
+        "recorded_digests": [
+          "1cafd67b5b4d649381c737ff2e97d15d7cbba95709311d3516ccdb266c7e8708"
+        ],
+        "matched_entry": 0,
+        "current_sha256": "1cafd67b5b4d649381c737ff2e97d15d7cbba95709311d3516ccdb266c7e8708",
+        "matches": true,
+        "in_freeze": "1cafd67b5b4d649381c737ff2e97d15d7cbba95709311d3516ccdb266c7e8708",
+        "reason": "the shared frozen runner the batch executes (SDK agent, loop, scoring, manifests). Its content is unchanged - it is hashed by 24 freezes - and it is pinned here because this batch's runtime patches and prompt adaptation target it, so a later edit must be visible from the batch artifact",
+        "recorded_sha256": "1cafd67b5b4d649381c737ff2e97d15d7cbba95709311d3516ccdb266c7e8708"
+      }
+    },
+    "pinned_count": 6,
+    "archived_files": {
+      "tests/test_openai_agents_v16_live_runner_zero_api.py": {
+        "recorded_sha256": "2365990fe4b96a77bb8db623e5dd719af73f1606cf6d665b09e891f6bec6a756",
+        "reason": "archived evidence; recorded with its current hash"
+      },
+      "experiments/runners/openai_agents_v16_replay_gate.py": {
+        "recorded_sha256": "1f31ce0e39e7e10cbb40c0f3b28212986279e052e0b47e79547527ed6ae2b06b",
+        "reason": "zero-API replay gate over the recorded baseline payloads: the five invariants and the negative control, written for this host's parallel read batches (a recorded boundary is matched to the rebuilt stage with the same item count). Not executed by the batch, so archived with its hash rather than pinned"
+      }
+    },
+    "amendment_entries": 10,
+    "runtime_prompt_replacement": {
+      "file": "experiments/runners/run_openai_agents_api_experiment.py",
+      "file_sha256": "1cafd67b5b4d649381c737ff2e97d15d7cbba95709311d3516ccdb266c7e8708",
+      "file_edited": false,
+      "how": "runtime, in memory: the runner replaces two sentences of the instructions it builds for every arm, identically, and records per sample which replacement applied; no file is written",
+      "replacements": [
+        {
+          "old_text": "The final response must be exactly one line, begin with RESULT, contain at most 160 characters, and follow this contract: ",
+          "old_sha256": "002e1fbd36f4cd92452d8bb3e2af868a99620f49e0c4874c2d7f28971557b98e",
+          "new_text": "Your final message must be exactly one JSON object and nothing else, following this contract: ",
+          "new_sha256": "1f524edfd7d18d1cb72411475c21a87dbba66d6f9ba12cfd2a43b5a128eea5b2"
+        },
+        {
+          "old_text": "Replace angle-bracket fields with tool values.",
+          "old_sha256": "761b3c4d10baae538b5c7dd88f60e75693c7b6f2603433b6d7c16e86811048ab",
+          "new_text": "Fill every field with the values the tools returned.",
+          "new_sha256": "421b9a2805117323b5fae74ffc7abc1c8931c42a45920e3ed76156f85bc62ef7"
+        }
+      ],
+      "reason": "the frozen prompt tells the model to write one RESULT line of at most 160 characters itself, and to replace angle-bracket fields with tool values. Under the v16 host configuration the model returns JSON and the host renders the line, so those two sentences would contradict the contract and make every sample fail for a reason that belongs to the prompt, not to the task. Both replacements are applied in every arm, so no arm is favoured.",
+      "canary": "each sample row records prompt_adaptations (applied / unapplied against the expected list); the zero-API stub path asserts both replacements applied in all four controls, the paid runner refuses to report a batch whose adaptation is incomplete, and the frozen file's own SHA256 is pinned above so a later edit cannot hide",
+      "evidence": [
+        "integrations/openai_agents/V16_LIVE_STUB_20261006.json",
+        "tests/test_openai_agents_v16_live_runner_zero_api.py"
+      ]
+    },
+    "files_changed_after_freeze": 0
+  },
+  "source_of_record_verified": {
+    "note": "the freeze's source_of_record already carries a SHA256 per file; this block records both that hash and the file's hash at batch time so the check is reproducible from the batch artifact alone",
+    "files": {
+      "integrations/openai_agents/V16_SOURCE_REGISTRATION_20261006.json": {
+        "recorded_sha256": "0723258eb3b297752625af85e5f2264bf843da70fa7205735225ca45fdaa22eb",
+        "current_sha256": "0723258eb3b297752625af85e5f2264bf843da70fa7205735225ca45fdaa22eb",
+        "matches": true
+      },
+      "integrations/openai_agents/V16_STAGE1_20261006.json": {
+        "recorded_sha256": "989785291638d4f6699f781e5d10c3bedb7b636d91f833355235fb265c4037d8",
+        "current_sha256": "989785291638d4f6699f781e5d10c3bedb7b636d91f833355235fb265c4037d8",
+        "matches": true
+      },
+      "integrations/openai_agents/V16_GATE_PROBES_20261006.json": {
+        "recorded_sha256": "491eac2f7ad1050e07012a2987f6c469c01d32afb0fd981b1347ab768e4dc9be",
+        "current_sha256": "491eac2f7ad1050e07012a2987f6c469c01d32afb0fd981b1347ab768e4dc9be",
+        "matches": true
+      },
+      "integrations/openai_agents/V16_CANDIDATE_POOL_20261006.json": {
+        "recorded_sha256": "def85ab86093ae5bfc08f568a2172a29448effb09742d27825d6b979e40ba357",
+        "current_sha256": "def85ab86093ae5bfc08f568a2172a29448effb09742d27825d6b979e40ba357",
+        "matches": true
+      }
+    },
+    "all_match": true,
+    "count": 4
+  },
+  "registration": {
+    "task_ids": [
+      "django_sqlite_version_floor",
+      "django_orderedset_reversed",
+      "django_field_hash_immutability"
+    ],
+    "problems": {
+      "django_sqlite_version_floor": [],
+      "django_orderedset_reversed": [],
+      "django_field_hash_immutability": []
+    },
+    "artifact_hashes": {
+      "integrations/openai_agents/V16_SOURCE_REGISTRATION_20261006.json": "0723258eb3b297752625af85e5f2264bf843da70fa7205735225ca45fdaa22eb",
+      "integrations/openai_agents/V16_STAGE1_20261006.json": "989785291638d4f6699f781e5d10c3bedb7b636d91f833355235fb265c4037d8",
+      "experiments/runners/openai_agents_v16_stage1.py": "f13857bd1a4db69215f9ba4f763805addad59e2aafdfa3d9810f3d6d957e305f"
+    },
+    "tool_name_sources": {
+      "django_sqlite_version_floor": "registered_artifact",
+      "django_orderedset_reversed": "registered_artifact",
+      "django_field_hash_immutability": "runner_supplied_in_registered_view_order"
+    },
+    "derived_fields": {
+      "django_sqlite_version_floor": [
+        "protocol_steps",
+        "tool_docs"
+      ],
+      "django_orderedset_reversed": [
+        "protocol_steps",
+        "tool_docs"
+      ],
+      "django_field_hash_immutability": [
+        "protocol_steps",
+        "tool_docs",
+        "tool_names",
+        "cause_token",
+        "fix_token"
+      ]
+    }
+  },
+  "renderer_self_test": {
+    "checks": [
+      {
+        "check": "max_chars_is_160",
+        "ok": true,
+        "detail": 160
+      },
+      {
+        "check": "over_long_input_rejected_empty_output",
+        "ok": true,
+        "detail": {
+          "reason": "over_160_chars",
+          "chars": 238
+        }
+      },
+      {
+        "check": "raw_duplicate_key",
+        "ok": true,
+        "detail": {
+          "reason": "invalid_json_or_duplicate_key",
+          "expected": "invalid_json_or_duplicate_key"
+        }
+      },
+      {
+        "check": "raw_extra_field",
+        "ok": true,
+        "detail": {
+          "reason": "missing_or_extra_field",
+          "expected": "missing_or_extra_field"
+        }
+      },
+      {
+        "check": "raw_unsafe_field",
+        "ok": true,
+        "detail": {
+          "reason": "invalid_cause_or_fix",
+          "expected": "invalid_cause_or_fix"
+        }
+      },
+      {
+        "check": "raw_embedded_delimiter",
+        "ok": true,
+        "detail": {
+          "reason": "embedded_field_delimiter",
+          "expected": "embedded_field_delimiter"
+        }
+      },
+      {
+        "check": "raw_declared_fact_missing",
+        "ok": true,
+        "detail": {
+          "reason": "declared_fact_missing_from_rendered_answer",
+          "expected": "declared_fact_missing_from_rendered_answer"
+        }
+      },
+      {
+        "check": "raw_issue_mismatch",
+        "ok": true,
+        "detail": {
+          "reason": "issue_mismatch",
+          "expected": "issue_mismatch"
+        }
+      },
+      {
+        "check": "raw_valid",
+        "ok": true,
+        "detail": {
+          "reason": "accepted",
+          "expected": "accepted"
+        }
+      },
+      {
+        "check": "final_answer_path_is_render",
+        "ok": true,
+        "detail": "RESULT issue=django-13821 cause=c fix=c"
+      },
+      {
+        "check": "over_long_instance_renders_empty",
+        "ok": true,
+        "detail": "''"
+      }
+    ],
+    "ok": true,
+    "max_answer_chars": 160,
+    "renderer_module": "experiments/runners/openai_agents_structured_final_v16.py",
+    "api_calls": 0
+  },
+  "planned_requests": {
+    "samples": 3,
+    "reads_plus_answer_per_sample": 7,
+    "minimum_planned_requests": 21,
+    "worst_case_logical_requests_with_one_retry_each": 24,
+    "max_api_requests": 30,
+    "max_api_retries_per_model_call": 2,
+    "transport_retries_share_the_cap": true,
+    "worst_case_fits_the_cap": true
+  },
+  "sdk_wiring": {
+    "agent_output_type": "StructuredAnswer (pydantic, issue/cause/fix/facts)",
+    "final_answer_path": "experiments/runners/openai_agents_structured_final_v16.py",
+    "retry_budget_per_sample": 1,
+    "retry_is_billed": true,
+    "per_sample_report_fields": [
+      "source_chars",
+      "rendered_chars",
+      "render_accepted",
+      "facts_complete",
+      "frozen_regex",
+      "single_line_prefix",
+      "within_160"
+    ],
+    "per_boundary_recording": "input_sha256 / item_count / message_items / output_manifest(call_id, output_sha256, output_chars) are persisted per boundary by the v9 recorder",
+    "per_call_cache_fields": [
+      "prompt_cache_hit_tokens",
+      "prompt_cache_miss_tokens",
+      "call_timestamp_utc",
+      "off_peak",
+      "cache_fields_present",
+      "cache_usage_unknown"
+    ]
+  },
+  "paid_batch_started": false
+}

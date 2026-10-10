@@ -1,0 +1,1590 @@
+{
+  "schema": "openai_agents_v16_length_feasibility",
+  "date": "20261006",
+  "paid_requests": 0,
+  "host_configuration": "new host configuration (all-arm shared output constraint/validator with a bounded repair path); nothing here is written back to v12-v14 and no recorded result is re-scored or re-judged",
+  "recorded_samples": 39,
+  "over_length_samples": 3,
+  "over_length_and_only_length": 3,
+  "feasibility": [
+    {
+      "batch": "openai-repo-diagnostic-v12-exact-duplicate-dev-01",
+      "task": "django_long_investigation",
+      "repeat": 0,
+      "method": "none",
+      "answer_chars": 154,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=django-16263 cause=existing_annotations subquery fix=referenced",
+        "minimal_chars": 76,
+        "within_160": true,
+        "kept_tokens": [
+          "existing_annotations",
+          "subquery",
+          "referenced"
+        ],
+        "dropped_chars": 78,
+        "kept_fraction": 0.4935,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v12-exact-duplicate-dev-01",
+      "task": "django_long_investigation",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "answer_chars": 208,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": false
+      },
+      "over_length": true,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=django-16263 cause=existing_annotations subquery fix=referenced",
+        "minimal_chars": 76,
+        "within_160": true,
+        "kept_tokens": [
+          "existing_annotations",
+          "subquery",
+          "referenced"
+        ],
+        "dropped_chars": 132,
+        "kept_fraction": 0.3654,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v12-exact-duplicate-dev-01",
+      "task": "django_long_investigation",
+      "repeat": 0,
+      "method": "native_summary",
+      "answer_chars": 154,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=django-16263 cause=existing_annotations subquery fix=referenced",
+        "minimal_chars": 76,
+        "within_160": true,
+        "kept_tokens": [
+          "existing_annotations",
+          "subquery",
+          "referenced"
+        ],
+        "dropped_chars": 78,
+        "kept_fraction": 0.4935,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v13-requests1766-confirm-01",
+      "task": "requests_digest_qop",
+      "repeat": 0,
+      "method": "none",
+      "answer_chars": 145,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=requests-1766 cause=qop fix=build_digest_header quot",
+        "minimal_chars": 65,
+        "within_160": true,
+        "kept_tokens": [
+          "qop",
+          "build_digest_header",
+          "quot"
+        ],
+        "dropped_chars": 80,
+        "kept_fraction": 0.4483,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v13-requests1766-confirm-01",
+      "task": "requests_digest_qop",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "answer_chars": 139,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=requests-1766 cause=qop fix=build_digest_header quot",
+        "minimal_chars": 65,
+        "within_160": true,
+        "kept_tokens": [
+          "qop",
+          "build_digest_header",
+          "quot"
+        ],
+        "dropped_chars": 74,
+        "kept_fraction": 0.4676,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v13-requests1766-confirm-01",
+      "task": "requests_digest_qop",
+      "repeat": 0,
+      "method": "native_summary",
+      "answer_chars": 145,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=requests-1766 cause=qop fix=build_digest_header quot",
+        "minimal_chars": 65,
+        "within_160": true,
+        "kept_tokens": [
+          "qop",
+          "build_digest_header",
+          "quot"
+        ],
+        "dropped_chars": 80,
+        "kept_fraction": 0.4483,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v13-requests1766-confirm-01",
+      "task": "requests_digest_qop",
+      "repeat": 1,
+      "method": "pruner_v1",
+      "answer_chars": 139,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=requests-1766 cause=qop fix=build_digest_header quot",
+        "minimal_chars": 65,
+        "within_160": true,
+        "kept_tokens": [
+          "qop",
+          "build_digest_header",
+          "quot"
+        ],
+        "dropped_chars": 74,
+        "kept_fraction": 0.4676,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v13-requests1766-confirm-01",
+      "task": "requests_digest_qop",
+      "repeat": 1,
+      "method": "native_summary",
+      "answer_chars": 145,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=requests-1766 cause=qop fix=build_digest_header quot",
+        "minimal_chars": 65,
+        "within_160": true,
+        "kept_tokens": [
+          "qop",
+          "build_digest_header",
+          "quot"
+        ],
+        "dropped_chars": 80,
+        "kept_fraction": 0.4483,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v13-requests1766-confirm-01",
+      "task": "requests_digest_qop",
+      "repeat": 1,
+      "method": "none",
+      "answer_chars": 145,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=requests-1766 cause=qop fix=build_digest_header quot",
+        "minimal_chars": 65,
+        "within_160": true,
+        "kept_tokens": [
+          "qop",
+          "build_digest_header",
+          "quot"
+        ],
+        "dropped_chars": 80,
+        "kept_fraction": 0.4483,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v13-requests1766-confirm-01",
+      "task": "requests_digest_qop",
+      "repeat": 2,
+      "method": "native_summary",
+      "answer_chars": 145,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=requests-1766 cause=qop fix=build_digest_header quot",
+        "minimal_chars": 65,
+        "within_160": true,
+        "kept_tokens": [
+          "qop",
+          "build_digest_header",
+          "quot"
+        ],
+        "dropped_chars": 80,
+        "kept_fraction": 0.4483,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v13-requests1766-confirm-01",
+      "task": "requests_digest_qop",
+      "repeat": 2,
+      "method": "none",
+      "answer_chars": 145,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=requests-1766 cause=qop fix=build_digest_header quot",
+        "minimal_chars": 65,
+        "within_160": true,
+        "kept_tokens": [
+          "qop",
+          "build_digest_header",
+          "quot"
+        ],
+        "dropped_chars": 80,
+        "kept_fraction": 0.4483,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v13-requests1766-confirm-01",
+      "task": "requests_digest_qop",
+      "repeat": 2,
+      "method": "pruner_v1",
+      "answer_chars": 139,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=requests-1766 cause=qop fix=build_digest_header quot",
+        "minimal_chars": 65,
+        "within_160": true,
+        "kept_tokens": [
+          "qop",
+          "build_digest_header",
+          "quot"
+        ],
+        "dropped_chars": 74,
+        "kept_fraction": 0.4676,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v14-multitask-confirm-01",
+      "task": "requests_binary_payload",
+      "repeat": 0,
+      "method": "none",
+      "answer_chars": 133,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=requests-2931 cause=to_native_string fix=prepare_body",
+        "minimal_chars": 66,
+        "within_160": true,
+        "kept_tokens": [
+          "to_native_string",
+          "prepare_body"
+        ],
+        "dropped_chars": 67,
+        "kept_fraction": 0.4962,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v14-multitask-confirm-01",
+      "task": "requests_binary_payload",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "answer_chars": 151,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=requests-2931 cause=to_native_string fix=prepare_body",
+        "minimal_chars": 66,
+        "within_160": true,
+        "kept_tokens": [
+          "to_native_string",
+          "prepare_body"
+        ],
+        "dropped_chars": 85,
+        "kept_fraction": 0.4371,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v14-multitask-confirm-01",
+      "task": "requests_binary_payload",
+      "repeat": 0,
+      "method": "native_summary",
+      "answer_chars": 133,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=requests-2931 cause=to_native_string fix=prepare_body",
+        "minimal_chars": 66,
+        "within_160": true,
+        "kept_tokens": [
+          "to_native_string",
+          "prepare_body"
+        ],
+        "dropped_chars": 67,
+        "kept_fraction": 0.4962,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v14-multitask-confirm-01",
+      "task": "flask_empty_blueprint_name",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "answer_chars": 148,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=flask-5014 cause=Blueprint fix=ValueError",
+        "minimal_chars": 54,
+        "within_160": true,
+        "kept_tokens": [
+          "Blueprint",
+          "ValueError"
+        ],
+        "dropped_chars": 94,
+        "kept_fraction": 0.3649,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v14-multitask-confirm-01",
+      "task": "flask_empty_blueprint_name",
+      "repeat": 0,
+      "method": "native_summary",
+      "answer_chars": 152,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=flask-5014 cause=Blueprint fix=ValueError",
+        "minimal_chars": 54,
+        "within_160": true,
+        "kept_tokens": [
+          "Blueprint",
+          "ValueError"
+        ],
+        "dropped_chars": 98,
+        "kept_fraction": 0.3553,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v14-multitask-confirm-01",
+      "task": "flask_empty_blueprint_name",
+      "repeat": 0,
+      "method": "none",
+      "answer_chars": 152,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=flask-5014 cause=Blueprint fix=ValueError",
+        "minimal_chars": 54,
+        "within_160": true,
+        "kept_tokens": [
+          "Blueprint",
+          "ValueError"
+        ],
+        "dropped_chars": 98,
+        "kept_fraction": 0.3553,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v14-multitask-confirm-01",
+      "task": "xarray_copy_dtype",
+      "repeat": 0,
+      "method": "native_summary",
+      "answer_chars": 128,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=xarray-3095 cause=IndexVariable fix=dtype",
+        "minimal_chars": 54,
+        "within_160": true,
+        "kept_tokens": [
+          "IndexVariable",
+          "dtype"
+        ],
+        "dropped_chars": 74,
+        "kept_fraction": 0.4219,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v14-multitask-confirm-01",
+      "task": "xarray_copy_dtype",
+      "repeat": 0,
+      "method": "none",
+      "answer_chars": 128,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=xarray-3095 cause=IndexVariable fix=dtype",
+        "minimal_chars": 54,
+        "within_160": true,
+        "kept_tokens": [
+          "IndexVariable",
+          "dtype"
+        ],
+        "dropped_chars": 74,
+        "kept_fraction": 0.4219,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v14-multitask-confirm-01",
+      "task": "xarray_copy_dtype",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "answer_chars": 179,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": false
+      },
+      "over_length": true,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=xarray-3095 cause=IndexVariable fix=dtype",
+        "minimal_chars": 54,
+        "within_160": true,
+        "kept_tokens": [
+          "IndexVariable",
+          "dtype"
+        ],
+        "dropped_chars": 125,
+        "kept_fraction": 0.3017,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v14-multitask-confirm-01",
+      "task": "requests_binary_payload",
+      "repeat": 1,
+      "method": "pruner_v1",
+      "answer_chars": 133,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=requests-2931 cause=to_native_string fix=prepare_body",
+        "minimal_chars": 66,
+        "within_160": true,
+        "kept_tokens": [
+          "to_native_string",
+          "prepare_body"
+        ],
+        "dropped_chars": 67,
+        "kept_fraction": 0.4962,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v14-multitask-confirm-01",
+      "task": "requests_binary_payload",
+      "repeat": 1,
+      "method": "native_summary",
+      "answer_chars": 133,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=requests-2931 cause=to_native_string fix=prepare_body",
+        "minimal_chars": 66,
+        "within_160": true,
+        "kept_tokens": [
+          "to_native_string",
+          "prepare_body"
+        ],
+        "dropped_chars": 67,
+        "kept_fraction": 0.4962,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v14-multitask-confirm-01",
+      "task": "requests_binary_payload",
+      "repeat": 1,
+      "method": "none",
+      "answer_chars": 133,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=requests-2931 cause=to_native_string fix=prepare_body",
+        "minimal_chars": 66,
+        "within_160": true,
+        "kept_tokens": [
+          "to_native_string",
+          "prepare_body"
+        ],
+        "dropped_chars": 67,
+        "kept_fraction": 0.4962,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v14-multitask-confirm-01",
+      "task": "flask_empty_blueprint_name",
+      "repeat": 1,
+      "method": "native_summary",
+      "answer_chars": 152,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=flask-5014 cause=Blueprint fix=ValueError",
+        "minimal_chars": 54,
+        "within_160": true,
+        "kept_tokens": [
+          "Blueprint",
+          "ValueError"
+        ],
+        "dropped_chars": 98,
+        "kept_fraction": 0.3553,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v14-multitask-confirm-01",
+      "task": "flask_empty_blueprint_name",
+      "repeat": 1,
+      "method": "none",
+      "answer_chars": 152,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=flask-5014 cause=Blueprint fix=ValueError",
+        "minimal_chars": 54,
+        "within_160": true,
+        "kept_tokens": [
+          "Blueprint",
+          "ValueError"
+        ],
+        "dropped_chars": 98,
+        "kept_fraction": 0.3553,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v14-multitask-confirm-01",
+      "task": "flask_empty_blueprint_name",
+      "repeat": 1,
+      "method": "pruner_v1",
+      "answer_chars": 146,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=flask-5014 cause=Blueprint fix=ValueError",
+        "minimal_chars": 54,
+        "within_160": true,
+        "kept_tokens": [
+          "Blueprint",
+          "ValueError"
+        ],
+        "dropped_chars": 92,
+        "kept_fraction": 0.3699,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v14-multitask-confirm-01",
+      "task": "xarray_copy_dtype",
+      "repeat": 1,
+      "method": "none",
+      "answer_chars": 128,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=xarray-3095 cause=IndexVariable fix=dtype",
+        "minimal_chars": 54,
+        "within_160": true,
+        "kept_tokens": [
+          "IndexVariable",
+          "dtype"
+        ],
+        "dropped_chars": 74,
+        "kept_fraction": 0.4219,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v14-multitask-confirm-01",
+      "task": "xarray_copy_dtype",
+      "repeat": 1,
+      "method": "pruner_v1",
+      "answer_chars": 179,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": false
+      },
+      "over_length": true,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=xarray-3095 cause=IndexVariable fix=dtype",
+        "minimal_chars": 54,
+        "within_160": true,
+        "kept_tokens": [
+          "IndexVariable",
+          "dtype"
+        ],
+        "dropped_chars": 125,
+        "kept_fraction": 0.3017,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v14-multitask-confirm-01",
+      "task": "xarray_copy_dtype",
+      "repeat": 1,
+      "method": "native_summary",
+      "answer_chars": 128,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=xarray-3095 cause=IndexVariable fix=dtype",
+        "minimal_chars": 54,
+        "within_160": true,
+        "kept_tokens": [
+          "IndexVariable",
+          "dtype"
+        ],
+        "dropped_chars": 74,
+        "kept_fraction": 0.4219,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v14-multitask-confirm-01",
+      "task": "requests_binary_payload",
+      "repeat": 2,
+      "method": "native_summary",
+      "answer_chars": 133,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=requests-2931 cause=to_native_string fix=prepare_body",
+        "minimal_chars": 66,
+        "within_160": true,
+        "kept_tokens": [
+          "to_native_string",
+          "prepare_body"
+        ],
+        "dropped_chars": 67,
+        "kept_fraction": 0.4962,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v14-multitask-confirm-01",
+      "task": "requests_binary_payload",
+      "repeat": 2,
+      "method": "none",
+      "answer_chars": 133,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=requests-2931 cause=to_native_string fix=prepare_body",
+        "minimal_chars": 66,
+        "within_160": true,
+        "kept_tokens": [
+          "to_native_string",
+          "prepare_body"
+        ],
+        "dropped_chars": 67,
+        "kept_fraction": 0.4962,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v14-multitask-confirm-01",
+      "task": "requests_binary_payload",
+      "repeat": 2,
+      "method": "pruner_v1",
+      "answer_chars": 136,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=requests-2931 cause=to_native_string fix=prepare_body",
+        "minimal_chars": 66,
+        "within_160": true,
+        "kept_tokens": [
+          "to_native_string",
+          "prepare_body"
+        ],
+        "dropped_chars": 70,
+        "kept_fraction": 0.4853,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v14-multitask-confirm-01",
+      "task": "flask_empty_blueprint_name",
+      "repeat": 2,
+      "method": "none",
+      "answer_chars": 152,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=flask-5014 cause=Blueprint fix=ValueError",
+        "minimal_chars": 54,
+        "within_160": true,
+        "kept_tokens": [
+          "Blueprint",
+          "ValueError"
+        ],
+        "dropped_chars": 98,
+        "kept_fraction": 0.3553,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v14-multitask-confirm-01",
+      "task": "flask_empty_blueprint_name",
+      "repeat": 2,
+      "method": "pruner_v1",
+      "answer_chars": 139,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=flask-5014 cause=Blueprint fix=ValueError",
+        "minimal_chars": 54,
+        "within_160": true,
+        "kept_tokens": [
+          "Blueprint",
+          "ValueError"
+        ],
+        "dropped_chars": 85,
+        "kept_fraction": 0.3885,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v14-multitask-confirm-01",
+      "task": "flask_empty_blueprint_name",
+      "repeat": 2,
+      "method": "native_summary",
+      "answer_chars": 148,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=flask-5014 cause=Blueprint fix=ValueError",
+        "minimal_chars": 54,
+        "within_160": true,
+        "kept_tokens": [
+          "Blueprint",
+          "ValueError"
+        ],
+        "dropped_chars": 94,
+        "kept_fraction": 0.3649,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v14-multitask-confirm-01",
+      "task": "xarray_copy_dtype",
+      "repeat": 2,
+      "method": "pruner_v1",
+      "answer_chars": 143,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=xarray-3095 cause=IndexVariable fix=dtype",
+        "minimal_chars": 54,
+        "within_160": true,
+        "kept_tokens": [
+          "IndexVariable",
+          "dtype"
+        ],
+        "dropped_chars": 89,
+        "kept_fraction": 0.3776,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v14-multitask-confirm-01",
+      "task": "xarray_copy_dtype",
+      "repeat": 2,
+      "method": "native_summary",
+      "answer_chars": 128,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=xarray-3095 cause=IndexVariable fix=dtype",
+        "minimal_chars": 54,
+        "within_160": true,
+        "kept_tokens": [
+          "IndexVariable",
+          "dtype"
+        ],
+        "dropped_chars": 74,
+        "kept_fraction": 0.4219,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    },
+    {
+      "batch": "openai-repo-diagnostic-v14-multitask-confirm-01",
+      "task": "xarray_copy_dtype",
+      "repeat": 2,
+      "method": "none",
+      "answer_chars": 128,
+      "conditions": {
+        "fields_present": true,
+        "facts_present": true,
+        "full_regex": true,
+        "within_160": true
+      },
+      "over_length": false,
+      "minimal": {
+        "feasible": true,
+        "minimal_answer": "RESULT issue=xarray-3095 cause=IndexVariable fix=dtype",
+        "minimal_chars": 54,
+        "within_160": true,
+        "kept_tokens": [
+          "IndexVariable",
+          "dtype"
+        ],
+        "dropped_chars": 74,
+        "kept_fraction": 0.4219,
+        "conditions": {
+          "fields_present": true,
+          "facts_present": true,
+          "full_regex": true,
+          "within_160": true
+        }
+      }
+    }
+  ],
+  "retry_estimates": [
+    {
+      "batch": "openai-repo-diagnostic-v12-exact-duplicate-dev-01",
+      "task": "django_long_investigation",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "answer_chars": 208,
+      "extra_requests": 1,
+      "extra_input_tokens": 2747,
+      "extra_output_tokens": 46,
+      "extra_total_tokens": 2793
+    },
+    {
+      "batch": "openai-repo-diagnostic-v14-multitask-confirm-01",
+      "task": "xarray_copy_dtype",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "answer_chars": 179,
+      "extra_requests": 1,
+      "extra_input_tokens": 4366,
+      "extra_output_tokens": 41,
+      "extra_total_tokens": 4407
+    },
+    {
+      "batch": "openai-repo-diagnostic-v14-multitask-confirm-01",
+      "task": "xarray_copy_dtype",
+      "repeat": 1,
+      "method": "pruner_v1",
+      "answer_chars": 179,
+      "extra_requests": 1,
+      "extra_input_tokens": 4363,
+      "extra_output_tokens": 41,
+      "extra_total_tokens": 4404
+    }
+  ],
+  "per_batch_cost": {
+    "openai-repo-diagnostic-v12-exact-duplicate-dev-01": {
+      "samples": 3,
+      "over_length_samples": 1,
+      "observed_extra_requests": 1,
+      "observed_extra_tokens": 2793,
+      "worst_case_extra_requests": 3,
+      "worst_case_extra_tokens": 10859,
+      "worst_case_extra_tokens_share_of_batch": 0.2141,
+      "paired_with_repairs": {
+        "observed": {
+          "pairs": [
+            {
+              "task": "django_long_investigation",
+              "repeat": 0,
+              "baseline_total": 17185,
+              "plugin_total": 17463,
+              "saving": -0.01617689845795752
+            }
+          ],
+          "paired_n": 1,
+          "mean_saving": -0.01617689845795752,
+          "positive_pairs": 0
+        },
+        "worst_case": {
+          "pairs": [
+            {
+              "task": "django_long_investigation",
+              "repeat": 0,
+              "baseline_total": 21218,
+              "plugin_total": 17463,
+              "saving": 0.1769723819398624
+            }
+          ],
+          "paired_n": 1,
+          "mean_saving": 0.1769723819398624,
+          "positive_pairs": 1
+        }
+      }
+    },
+    "openai-repo-diagnostic-v13-requests1766-confirm-01": {
+      "samples": 9,
+      "over_length_samples": 0,
+      "observed_extra_requests": 0,
+      "observed_extra_tokens": 0,
+      "worst_case_extra_requests": 9,
+      "worst_case_extra_tokens": 37785,
+      "worst_case_extra_tokens_share_of_batch": 0.2064,
+      "paired_with_repairs": {
+        "observed": {
+          "pairs": [
+            {
+              "task": "requests_digest_qop",
+              "repeat": 0,
+              "baseline_total": 21295,
+              "plugin_total": 17567,
+              "saving": 0.17506456914768725
+            },
+            {
+              "task": "requests_digest_qop",
+              "repeat": 1,
+              "baseline_total": 21295,
+              "plugin_total": 17565,
+              "saving": 0.17515848790795963
+            },
+            {
+              "task": "requests_digest_qop",
+              "repeat": 2,
+              "baseline_total": 21295,
+              "plugin_total": 17570,
+              "saving": 0.1749236910072787
+            }
+          ],
+          "paired_n": 3,
+          "mean_saving": 0.1750489160209752,
+          "positive_pairs": 3
+        },
+        "worst_case": {
+          "pairs": [
+            {
+              "task": "requests_digest_qop",
+              "repeat": 0,
+              "baseline_total": 26001,
+              "plugin_total": 20749,
+              "saving": 0.20199223106803585
+            },
+            {
+              "task": "requests_digest_qop",
+              "repeat": 1,
+              "baseline_total": 26001,
+              "plugin_total": 20747,
+              "saving": 0.20206915118649282
+            },
+            {
+              "task": "requests_digest_qop",
+              "repeat": 2,
+              "baseline_total": 26001,
+              "plugin_total": 20755,
+              "saving": 0.2017614707126649
+            }
+          ],
+          "paired_n": 3,
+          "mean_saving": 0.20194095098906453,
+          "positive_pairs": 3
+        }
+      }
+    },
+    "openai-repo-diagnostic-v14-multitask-confirm-01": {
+      "samples": 27,
+      "over_length_samples": 2,
+      "observed_extra_requests": 2,
+      "observed_extra_tokens": 8811,
+      "worst_case_extra_requests": 27,
+      "worst_case_extra_tokens": 103950,
+      "worst_case_extra_tokens_share_of_batch": 0.2084,
+      "paired_with_repairs": {
+        "observed": {
+          "pairs": [
+            {
+              "task": "flask_empty_blueprint_name",
+              "repeat": 0,
+              "baseline_total": 15059,
+              "plugin_total": 13105,
+              "saving": 0.1297562919184541
+            },
+            {
+              "task": "flask_empty_blueprint_name",
+              "repeat": 1,
+              "baseline_total": 15059,
+              "plugin_total": 13102,
+              "saving": 0.12995550833388672
+            },
+            {
+              "task": "flask_empty_blueprint_name",
+              "repeat": 2,
+              "baseline_total": 15059,
+              "plugin_total": 13106,
+              "saving": 0.1296898864466432
+            },
+            {
+              "task": "requests_binary_payload",
+              "repeat": 0,
+              "baseline_total": 11969,
+              "plugin_total": 11008,
+              "saving": 0.08029075110702648
+            },
+            {
+              "task": "requests_binary_payload",
+              "repeat": 1,
+              "baseline_total": 11969,
+              "plugin_total": 10999,
+              "saving": 0.08104269362519843
+            },
+            {
+              "task": "requests_binary_payload",
+              "repeat": 2,
+              "baseline_total": 11969,
+              "plugin_total": 10994,
+              "saving": 0.08146043946862729
+            },
+            {
+              "task": "xarray_copy_dtype",
+              "repeat": 0,
+              "baseline_total": 29068,
+              "plugin_total": 28579,
+              "saving": 0.01682262281546718
+            },
+            {
+              "task": "xarray_copy_dtype",
+              "repeat": 1,
+              "baseline_total": 29068,
+              "plugin_total": 28569,
+              "saving": 0.0171666437319389
+            },
+            {
+              "task": "xarray_copy_dtype",
+              "repeat": 2,
+              "baseline_total": 29068,
+              "plugin_total": 24160,
+              "saving": 0.16884546580432092
+            }
+          ],
+          "paired_n": 9,
+          "mean_saving": 0.09278114480572924,
+          "positive_pairs": 9
+        },
+        "worst_case": {
+          "pairs": [
+            {
+              "task": "flask_empty_blueprint_name",
+              "repeat": 0,
+              "baseline_total": 18571,
+              "plugin_total": 15617,
+              "saving": 0.15906520919713532
+            },
+            {
+              "task": "flask_empty_blueprint_name",
+              "repeat": 1,
+              "baseline_total": 18571,
+              "plugin_total": 15611,
+              "saving": 0.1593882935760056
+            },
+            {
+              "task": "flask_empty_blueprint_name",
+              "repeat": 2,
+              "baseline_total": 18571,
+              "plugin_total": 15617,
+              "saving": 0.15906520919713532
+            },
+            {
+              "task": "requests_binary_payload",
+              "repeat": 0,
+              "baseline_total": 14601,
+              "plugin_total": 13076,
+              "saving": 0.10444490103417574
+            },
+            {
+              "task": "requests_binary_payload",
+              "repeat": 1,
+              "baseline_total": 14601,
+              "plugin_total": 13062,
+              "saving": 0.10540373946989932
+            },
+            {
+              "task": "requests_binary_payload",
+              "repeat": 2,
+              "baseline_total": 14601,
+              "plugin_total": 13054,
+              "saving": 0.10595164714745565
+            },
+            {
+              "task": "xarray_copy_dtype",
+              "repeat": 0,
+              "baseline_total": 35761,
+              "plugin_total": 28579,
+              "saving": 0.20083331003048013
+            },
+            {
+              "task": "xarray_copy_dtype",
+              "repeat": 1,
+              "baseline_total": 35761,
+              "plugin_total": 28569,
+              "saving": 0.20111294426889628
+            },
+            {
+              "task": "xarray_copy_dtype",
+              "repeat": 2,
+              "baseline_total": 35761,
+              "plugin_total": 28555,
+              "saving": 0.20150443220267888
+            }
+          ],
+          "paired_n": 9,
+          "mean_saving": 0.15519663179154025,
+          "positive_pairs": 9
+        }
+      }
+    }
+  },
+  "v15_recorded_repair_anchor": {
+    "task": "django_textchoices_string_value",
+    "requests": 1,
+    "input_tokens": 2186,
+    "output_tokens": 39,
+    "same_answer_returned": true,
+    "accepted_format": false
+  },
+  "conclusion": {
+    "all_four_conditions_achievable_by_deletion_only": true,
+    "minimal_answer_chars": [
+      54,
+      65,
+      66,
+      76
+    ],
+    "model_can_produce_it": "unknown",
+    "model_can_produce_it_note": "a zero-API replay cannot show that a live model will answer inside 160 characters; it only shows that such an answer exists and what a repair costs",
+    "host_rewrite_degrades_content": "the deletion-only minimal answer keeps the required tokens and drops everything else; it is mechanically compliant and humanly degenerate, so a host rewrite is not recommended as an all-arm validator"
+  },
+  "limits": [
+    "descriptive projection on recorded answers; no request, no re-scoring, no write-back",
+    "repair input tokens assume a resend of that sample's own last-boundary payload",
+    "the worst case assumes every sample in every arm needs one repair"
+  ]
+}

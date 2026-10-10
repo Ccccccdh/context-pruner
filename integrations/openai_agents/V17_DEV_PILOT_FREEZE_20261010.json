@@ -1,0 +1,114 @@
+{
+  "schema": "openai_agents_v17_dev_pilot_freeze",
+  "id": "openai-agents-v17-dev-pilot-first-attempt-compliance-01",
+  "date": "20261010",
+  "status": "FROZEN",
+  "purpose": "dev_pilot_first_attempt_compliance",
+  "written_before_any_v17_request": true,
+  "api_requests_spent_when_written": 0,
+
+  "why_this_pilot_exists": {
+    "finding": "integrations/openai_agents/V17_RETRY_TAX_ROOT_CAUSE_20261010.json",
+    "summary": "in the v16 sealed confirmation batch all 32 repair retries were one class (declared_fact_missing_from_rendered_answer), each missing exactly one registered required literal, and the first prompt never stated that the declared strings must appear inside cause or fix while the renderer enforced exactly that",
+    "hypothesis_h1": "stating the literal-placement rule in the first prompt raises first-attempt acceptance from the v16 reference 13 of 45 samples (28.9 percent) to at least 70 percent, cutting the retry tax without touching any acceptance condition"
+  },
+
+  "host_configuration_diff_against_v16": {
+    "added": [
+      "one sentence in the first prompt, byte-identical for every arm: every string listed in \"facts\" must appear verbatim inside \"cause\" or \"fix\", because the host builds the rendered line from those two fields only, and all of them must be present at the same time as the 160 character bound"
+    ],
+    "unchanged": [
+      "the renderer (experiments/runners/openai_agents_structured_final_v16.py, sha256 22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a) is imported unchanged and stays the final-answer path and the only validator",
+      "the four frozen strict-track conditions on the rendered line: registered required facts present, frozen regex full match, single line with the contract prefix, at most 160 characters",
+      "the retry budget (at most one billed retry per sample), the retry diagnostic text, and the rule that every request is charged to its arm",
+      "the summary cap of two per sample and the rule that summary requests are charged to their arm",
+      "the read-only tool set, the six read calls, the request metering and the cache metering"
+    ],
+    "instrumentation_added_for_recording_only": [
+      "per sample: first_reject_class, first_candidate_line, first_declared_facts, first_missing_required_literals",
+      "per sample: first_attempt_accepted (boolean) so the compliance rate is computable without inference"
+    ],
+    "does_not_mean": "recording extra fields changes no decision, no acceptance and no number; it only removes the inference gap that this round had to close by reading retry diagnostics"
+  },
+
+  "no_relaxation_check": {
+    "condition_by_condition": {
+      "registered required facts present in the rendered line": "unchanged; the renderer's declared-facts check is an additional host condition and is also unchanged, so a proposal that the strict track rejects is still rejected",
+      "frozen regex full match": "unchanged",
+      "single line with the contract prefix": "unchanged",
+      "at most 160 characters": "unchanged; the bound is not relaxed and the prompt repeats it",
+      "retry budget and charging": "unchanged; retries stay billed to their arm"
+    },
+    "statement": "this configuration adds a requirement to the prompt and nothing else; it cannot accept an answer the v16 strict track would have rejected, and it removes no evidence condition"
+  },
+
+  "matrix": {
+    "task_set": "the three v16 development tasks, taken from the v16 registry with ACTIVE=development",
+    "tasks": 3,
+    "repeats": 1,
+    "arms": ["none", "native_summary", "pruner_v1"],
+    "samples": 9,
+    "new_experiment_id": true
+  },
+
+  "budget_arithmetic": {
+    "worst_case_model_calls_per_sample": 8,
+    "worst_case_model_calls": 72,
+    "worst_case_summary_calls": 6,
+    "worst_case_requests": 78,
+    "max_api_requests": 110,
+    "cap_over_worst_case": 1.41,
+    "expected_requests": "33 to 45",
+    "expected_cost_usd_off_peak": "0.003 to 0.005",
+    "cap_cost_usd_off_peak_upper_bound": 0.012,
+    "probe": "one separate capability request before the pilot, counted separately, failing closed",
+    "resume_may_never_bypass_the_budget": true
+  },
+
+  "decision_line": {
+    "pass_and_continue_to_task_shape_and_confirmation": "first_attempt_accepted at least 70 percent of samples overall AND every arm's strict track at least the baseline's AND zero render failures AND zero truncations AND retries at most 4 of 9 samples",
+    "report_and_ask_before_continuing": "first_attempt_accepted between 50 and 70 percent, or retries between 5 and 6 of 9 samples, with quality intact",
+    "stop_and_redesign": "first_attempt_accepted below 50 percent, or any arm's strict track below the baseline's, or any sample failing the strict track, or any render failure",
+    "note": "the decision is about the retry tax only; this pilot decides nothing about savings, and its savings numbers are not citable"
+  },
+
+  "report_requirements": [
+    "first-attempt acceptance rate overall and per arm, against the v16 reference of 28.9 percent",
+    "retry count per arm and retry tokens per arm, against the v16 numbers 38161 / 33374 / 38153",
+    "the strict track per task and per arm, with the four conditions reported separately",
+    "the reject-class decomposition from the new instrumentation, with the missing literals named, so the root cause stays checkable",
+    "requests used against the cap, cache fields present or unknown, dollar cost with the cache split and the off-peak status",
+    "complete provider token totals per arm, with summary tokens charged",
+    "an explicit statement of what this pilot cannot show"
+  ],
+
+  "cannot_show": [
+    "any saving claim: one repeat, three development tasks that took part in building this host configuration, and no confirmation",
+    "quality equivalence in general: only that the strict track was not below the baseline on these nine samples",
+    "that the retry tax generalises away: nine samples bound the compliance rate loosely",
+    "anything about other hosts or other host configurations"
+  ],
+
+  "stop_conditions": [
+    "request cap reached -> stop, keep the partial directory, and never use resume to bypass the budget",
+    "any arm's strict track below the baseline's -> stop and report, do not add samples",
+    "any sample failing the strict track -> stop and report",
+    "probe failure -> stop before the pilot and report",
+    "missing cache fields -> record unknown, never zero, and keep the totals null where they are unknown"
+  ],
+
+  "required_wording": "under this host configuration",
+  "forbidden_wording": [
+    "compression alone saved X percent",
+    "the four criteria are met",
+    "the retry tax is gone"
+  ],
+  "citable_as_saving": false,
+  "citable_as_quality_equivalence": false,
+  "never_rejudge": [
+    "attempt 01", "attempt 02", "attempt 03", "pilot-01", "pilot-02",
+    "v12", "v13", "v14", "v15", "the v16 sealed confirmation batch"
+  ],
+  "sealed_candidates_spent": true,
+  "note_on_scope": "the sealed confirmation candidates are spent; this pilot runs on the development set by design, and any later confirmation needs a new sealed task set chosen under the pre-registered shape criteria"
+}

@@ -1,0 +1,262 @@
+{
+  "schema": "openai_agents_v13_requests1766_freeze",
+  "status": "FROZEN",
+  "written_utc_date": "20261005",
+  "purpose": "held-out task confirmation chain for the exact-duplicate-output mechanism: Stage A payload acquisition (single arm, no saving or quality claim), then a zero-API replay gate, then Stage C only if the projection clears 3%",
+  "amendment_policy": "write once; the only later change is a separate amendment file recording the new file, the reason and both SHA256 values, written before the batch that needs it. The Stage-C integration module is recorded that way.",
+  "held_out_basis": {
+    "repo": "psf/requests",
+    "repo_referenced_by_any_host_before_this_round": false,
+    "not_used_by_openai_agents_v1_to_v12": true,
+    "search_note": "'psf/requests', 'psf__requests' and 'requests-1766' had zero references in experiments/, integrations/, tasks/ and tests/ before this round"
+  },
+  "stage0_acquisition": {
+    "instance_record": ".tooling/swebench-verified/psf-requests-1766/instance.json",
+    "instance_id": "psf__requests-1766",
+    "repo": "psf/requests",
+    "base_commit": "847735553aeda6e6633f2b32e14ba14ba86887a4",
+    "difficulty": "<15 min fix",
+    "created_at": "2013-11-29T08:38:09Z",
+    "version": "2.0",
+    "fail_to_pass": [
+      "test_requests.py::RequestsTestCase::test_DIGESTAUTH_QUOTES_QOP_VALUE",
+      "test_requests.py::RequestsTestCase::test_HTTP_200_OK_GET_ALTERNATIVE",
+      "test_requests.py::RequestsTestCase::test_cookie_sent_on_redirect",
+      "test_requests.py::RequestsTestCase::test_custom_content_type",
+      "test_requests.py::RequestsTestCase::test_params_are_merged_case_sensitive",
+      "test_requests.py::RequestsTestCase::test_user_agent_transfers"
+    ],
+    "pass_to_pass_count": 79,
+    "reference_patch_included": false,
+    "test_patch_included": false,
+    "acquisition_method": "HTTPS GET of the pinned commit through GitHub mirrors (cdn.jsdelivr.net and cdn.statically.io); no git command was executed; requests/auth.py returned the same SHA256 from both mirrors",
+    "input_hashes": {
+      ".tooling/swebench-verified/psf-requests-1766/instance.json": "daabed7ba113157cdd2beda19de482b94dc690ceb582efa012d9c722cbfe28fd",
+      ".tooling/upstream/psf-requests-1766/requests/auth.py": "e9ac12db8dfb81a4abe59e5e3b1764e01fe1f04dbdc5f57dc7deb7a47695087c",
+      ".tooling/upstream/psf-requests-1766/requests/models.py": "d67cf75ca48670f07fbebfb53637f338111603fd41f58de87aaa4da2ff4c3d2e",
+      ".tooling/upstream/psf-requests-1766/requests/sessions.py": "7519189c53263cb28b294dc79e42e6a0a9ce9290fc4c538b544e640867866b0e",
+      ".tooling/upstream/psf-requests-1766/test_requests.py": "2c482f0ad0b1c5e7465a95bcf19cab5834c3dca3c4c8b755c2dd990bdaac34cd"
+    },
+    "ftp_consistency": {
+      "fail_to_pass_entries": [
+        "test_requests.py::RequestsTestCase::test_DIGESTAUTH_QUOTES_QOP_VALUE",
+        "test_requests.py::RequestsTestCase::test_HTTP_200_OK_GET_ALTERNATIVE",
+        "test_requests.py::RequestsTestCase::test_cookie_sent_on_redirect",
+        "test_requests.py::RequestsTestCase::test_custom_content_type",
+        "test_requests.py::RequestsTestCase::test_params_are_merged_case_sensitive",
+        "test_requests.py::RequestsTestCase::test_user_agent_transfers"
+      ],
+      "present_in_base_tree": [
+        "test_HTTP_200_OK_GET_ALTERNATIVE",
+        "test_cookie_sent_on_redirect",
+        "test_custom_content_type",
+        "test_params_are_merged_case_sensitive",
+        "test_user_agent_transfers"
+      ],
+      "absent_from_base_tree": [
+        "test_DIGESTAUTH_QUOTES_QOP_VALUE"
+      ],
+      "expected_absent": [
+        "test_DIGESTAUTH_QUOTES_QOP_VALUE"
+      ],
+      "reading": "the quoting test is the one the evaluation test patch adds; the other entries already exist in the base tree and are regression entries. The base tree is the pinned commit, the test patch is not read, and the defect is established from the source itself."
+    },
+    "defect_evidence": {
+      "unquoted_emission_present": true,
+      "quoted_emission_present": false,
+      "emitting_line": "147:             base += ', qop=auth, nc=%s, cnonce=\"%s\"' % (ncvalue, cnonce)",
+      "reading": "the baseline builds the Digest header with an unquoted qop value, which is the state the frozen Track A contract is about; a quoted emission would mean the fix is already present and the task would be void"
+    }
+  },
+  "task_registration": {
+    "schema": "openai_agents_requests_task_registry_v13",
+    "task": "requests_digest_qop",
+    "issue": "psf__requests-1766",
+    "repo": "psf/requests",
+    "base_commit": "847735553aeda6e6633f2b32e14ba14ba86887a4",
+    "tool_names": [
+      "read_requests_digest_auth",
+      "read_requests_prepare_auth",
+      "read_requests_session_auth"
+    ],
+    "views": [
+      {
+        "file": "requests/auth.py",
+        "first_line": 58,
+        "last_line": 149
+      },
+      {
+        "file": "requests/models.py",
+        "first_line": 451,
+        "last_line": 472
+      },
+      {
+        "file": "requests/sessions.py",
+        "first_line": 232,
+        "last_line": 270
+      }
+    ],
+    "literal_labels": {
+      "digest_qop_header": [
+        "qop=auth"
+      ],
+      "digest_header_builder": [
+        "def build_digest_header"
+      ],
+      "digest_challenge": [
+        "qop = self.chal.get('qop')"
+      ],
+      "auth_apply_step": [
+        "def prepare_auth"
+      ],
+      "session_auth_merge": [
+        "auth=merge_setting(auth, self.auth)"
+      ]
+    },
+    "required_terms": [
+      "qop",
+      "build_digest_header",
+      "quot"
+    ],
+    "answer_pattern": "RESULT issue=requests-1766 cause=.*qop.* fix=.*quot.*",
+    "final_contract": "RESULT issue=requests-1766 cause=<offending header parameter and why it is rejected> fix=<the exact quoting rule>",
+    "max_answer_chars": 160,
+    "track_b_max_chars": 400,
+    "request": "Diagnose why a server that enforces RFC2617 rejects the Digest Authorization header produced here. Read the digest header builder, the prepared-request auth step and the session auth merge in order; name the function that emits the offending parameter and state the exact quoting rule the fix must apply. Issue: psf__requests-1766.",
+    "protocol_steps": [
+      "STEP 1: call read_requests_digest_auth alone, then stop and wait for its result.",
+      "STEP 2: after step 1 returns, call read_requests_prepare_auth alone, then stop and wait.",
+      "STEP 3: after step 2 returns, call read_requests_session_auth alone, then stop and wait.",
+      "STEP 4: after step 3 returns, call read_requests_digest_auth once more alone, then stop and wait.",
+      "STEP 5: after step 4 returns, call read_requests_prepare_auth once more alone, then stop and wait.",
+      "STEP 6: after step 5 returns, call read_requests_session_auth once more alone, then stop and wait.",
+      "STEP 7: only after all six reads have returned, state the final diagnosis."
+    ],
+    "expected_model_calls": 7,
+    "fingerprint": "8a277286e274ea19664228d5d582174630172447594861b19199eff0b3d1afa1",
+    "input_hashes": {
+      ".tooling/swebench-verified/psf-requests-1766/instance.json": "daabed7ba113157cdd2beda19de482b94dc690ceb582efa012d9c722cbfe28fd",
+      ".tooling/upstream/psf-requests-1766/requests/auth.py": "e9ac12db8dfb81a4abe59e5e3b1764e01fe1f04dbdc5f57dc7deb7a47695087c",
+      ".tooling/upstream/psf-requests-1766/requests/models.py": "d67cf75ca48670f07fbebfb53637f338111603fd41f58de87aaa4da2ff4c3d2e",
+      ".tooling/upstream/psf-requests-1766/requests/sessions.py": "7519189c53263cb28b294dc79e42e6a0a9ce9290fc4c538b544e640867866b0e",
+      ".tooling/upstream/psf-requests-1766/test_requests.py": "2c482f0ad0b1c5e7465a95bcf19cab5834c3dca3c4c8b755c2dd990bdaac34cd"
+    }
+  },
+  "quality_contract": {
+    "track_A_strict_primary": {
+      "prefix": "RESULT issue=requests-1766 cause=",
+      "single_line": true,
+      "max_characters": 160,
+      "pattern": "RESULT issue=requests-1766 cause=.*qop.* fix=.*quot.*",
+      "pattern_flags": [
+        "re.IGNORECASE",
+        "re.fullmatch"
+      ],
+      "required_terms": [
+        "qop",
+        "build_digest_header",
+        "quot"
+      ],
+      "role": "the only acceptance track"
+    },
+    "track_B_semantic_diagnostic": {
+      "prefix": "RESULT issue=requests-1766 cause=",
+      "single_line": true,
+      "both_fields_required": [
+        "cause=",
+        "fix="
+      ],
+      "required_terms": [
+        "qop",
+        "build_digest_header",
+        "quot"
+      ],
+      "matching": "word-boundary ordered token search; separators inside a field may be any non-alphanumeric characters; extra explanation inside cause= is allowed",
+      "max_characters_cause_plus_fix": 400,
+      "forbidden_literals": [
+        "no bug",
+        "not a bug"
+      ],
+      "applicability_boundary": "only wording differences over the same facts and the same decision; never a missing required literal, a missing fix= field, a wrong number or identifier, a different decision label, or a claim contradicting a registered fact",
+      "reporting_rule": "if track B passes while track A fails, the result is 'strict track not met; semantic track passed (wording difference)' and never 'quality unchanged'; not applied retroactively to v11 or v12",
+      "role": "diagnostic only; never merged with track A"
+    }
+  },
+  "mechanism_under_test": {
+    "rule": "an older tool output whose text is byte-identical to a newer one is replaced by '[Exact duplicate output; full source is at call_id=<newest>; sha256=<source sha256>]'; the newest full copy, every call item and every output item stay in the payload",
+    "frozen_rule_module": "experiments/runners/openai_agents_exact_duplicate_replay_v12.py",
+    "frozen_rule_module_sha256": "2b511306fa433909c3ec72100be93adb9628a22937a7c502bfad8b9faac1f937",
+    "integration_module": null,
+    "integration_module_note": "Stage C needs a v13 filter that applies this frozen rule to the held-out task's own registration; that new file's SHA256 is recorded in V13_REQUESTS1766_FREEZE_AMENDMENT_20261005.json before Stage C runs"
+  },
+  "stage_A_payload_acquisition": {
+    "batch": "openai-repo-diagnostic-v13-requests1766-acquisition-01",
+    "arms": [
+      "none"
+    ],
+    "tasks": 1,
+    "repeats": 1,
+    "samples": 1,
+    "max_api_requests": 12,
+    "max_turns": 10,
+    "citable_as_saving": false,
+    "citable_as_quality_equivalence": false,
+    "purpose": "payload acquisition only: record the held-out task's real model inputs",
+    "rule": "all attempts and failures count; this batch is never saving evidence"
+  },
+  "stage_C_confirmation": {
+    "batch": "openai-repo-diagnostic-v13-requests1766-confirm-01",
+    "arms": [
+      "none",
+      "pruner_v1",
+      "native_summary"
+    ],
+    "tasks": 1,
+    "repeats": 3,
+    "samples": 9,
+    "max_api_requests": 66,
+    "requests_per_repeat": 24,
+    "requires_replay_gate_pass": true,
+    "requires_projection_at_least": 0.03,
+    "purpose": "held-out confirmation of the duplicate-output mechanism on one task and three repeats; it is not a multi-task stability claim"
+  },
+  "limits": {
+    "model": "deepseek-v4-flash",
+    "base_url": "https://api.deepseek.com",
+    "disable_thinking": true,
+    "max_output_tokens_per_request": 1024,
+    "provider_soft_tokens": 2000,
+    "provider_target_tokens": 1500,
+    "provider_hard_tokens": 6000,
+    "filter_hard_bytes": 65216,
+    "bytes_per_estimated_token": 0.368,
+    "data_class": "public_source_diagnostic",
+    "sent_data": "the public issue text of psf__requests-1766 and three read-only ranges of the public baseline source at the pinned base commit; no reference patch, no evaluation test patch, no local secret, no expected answer"
+  },
+  "failure_lines": [
+    "stage A exceeds 12 api requests or loses its per-boundary evidence",
+    "replay gate: rebuilt payload does not reproduce the recorded boundaries",
+    "replay gate: a plugin item is not recomputable (pointer text or surviving full copy)",
+    "replay gate: a required literal loses presence, or the negative control is not caught",
+    "replay gate: projection below 3% or the guard-filtered safe set is empty",
+    "stage C: track A plugin quality below baseline",
+    "stage C: paired complete-total provider-token saving below 3%",
+    "stage C: zero actual duplicate replacements",
+    "stage C: tool pairing, item count or order broken",
+    "stage C: independent audit complete=false",
+    "stage C: request cap exceeded"
+  ],
+  "manifest_required_keys": {
+    "purpose": "must state that the batch is payload acquisition, not evidence",
+    "citable_as_saving": false,
+    "citable_as_quality_equivalence": false,
+    "freeze_sha256": "SHA256 of this file, recomputed by the audit"
+  },
+  "pollution_discipline": "requests-1766 is spent as a held-out task from here on: if the projection or Stage C fails, the mechanism is not tuned on this task; a retry needs a different mechanism and a new candidate task, and the report must say the held-out task was used",
+  "old_batches": {
+    "untouched": true,
+    "no_rescoring": true,
+    "no_contract_relaxation": true,
+    "cross_host_percentages_not_merged": true
+  }
+}

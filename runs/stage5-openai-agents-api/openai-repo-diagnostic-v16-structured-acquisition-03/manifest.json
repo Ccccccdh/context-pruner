@@ -1,0 +1,740 @@
+{
+  "experiment_id": "openai-repo-diagnostic-v16-structured-acquisition-03",
+  "kind": "openai_agents_v16_structured_payload_acquisition",
+  "data_class": "public_source_diagnostic",
+  "disclosure": "Public SWE-bench issue statements and three read-only ranges of public Django baseline source at the pinned base commits are sent through real SDK tools. No reference patch, evaluation test patch, local secret or expected answer is sent.",
+  "sdk": "openai-agents",
+  "model": "deepseek-v4-flash",
+  "base_url": "https://api.deepseek.com",
+  "methods": [
+    "none"
+  ],
+  "scenarios": [
+    "django_sqlite_version_floor",
+    "django_orderedset_reversed",
+    "django_field_hash_immutability"
+  ],
+  "repeats": 1,
+  "minimum_planned_requests": 21,
+  "maximum_api_requests": 30,
+  "max_api_retries": 2,
+  "max_turns": 10,
+  "max_output_tokens": 1024,
+  "max_summary_tokens": 1024,
+  "max_summary_calls": 0,
+  "trigger_policy": "symmetric_budget",
+  "native_summary_contract": {
+    "trigger": "estimated input tokens > soft budget",
+    "retention": "last units up to target token budget, kept verbatim",
+    "pinned": "leading user statement always kept verbatim",
+    "boundary": "Responses groups are never split across a call/output pair",
+    "acceptance": "summary accepted only when it shrinks the payload",
+    "failure_policy": "provider error leaves the input untouched",
+    "accounting": "summary requests consume the same global request budget",
+    "regrowth_rule": "an already-summarised payload is not summarised again until it grows 25%"
+  },
+  "final_output_contract": {
+    "prefix": "RESULT ",
+    "single_line": true,
+    "max_chars": 160
+  },
+  "budget": {
+    "soft": 5435,
+    "hard": 16304,
+    "target": 4076,
+    "fixed_reserved_tokens": 512
+  },
+  "budget_calibration": {
+    "host": "openai_agents",
+    "calibration_ratio_provider_per_estimated": 0.368,
+    "provider_tokens": {
+      "soft": 2000,
+      "hard": 6000,
+      "target": 1500
+    },
+    "estimated_tokens": {
+      "soft": 5435,
+      "hard": 16304,
+      "target": 4076
+    },
+    "note": "Budgets are declared in provider tokens and converted with a measured ratio."
+  },
+  "cost_rates_per_million": {
+    "input": 0.0,
+    "output": 0.0
+  },
+  "purpose": "payload acquisition only: record the real model inputs and the rendered answers of the three development tasks under the all-arm structured contract, so that the frozen criteria can be checked per sample",
+  "citable_as_saving": false,
+  "citable_as_quality_equivalence": false,
+  "not_evidence": "this batch is not saving evidence and not quality evidence; a single repeat of the baseline arm cannot support either claim",
+  "freeze_path": "integrations/openai_agents/V16_ACQUISITION_FREEZE_20261006.json",
+  "freeze_sha256": "18c0d49f5cec9e7deebe6054ec6bb79356d4d289072d063dd196dada2eababc8",
+  "freeze_matrix": {
+    "tasks": [
+      "django_sqlite_version_floor",
+      "django_orderedset_reversed",
+      "django_field_hash_immutability"
+    ],
+    "task_count": 3,
+    "arms": [
+      "none"
+    ],
+    "repeats": 1,
+    "samples": 3,
+    "max_api_requests": 30
+  },
+  "source_of_record": {
+    "integrations/openai_agents/V16_SOURCE_REGISTRATION_20261006.json": "0723258eb3b297752625af85e5f2264bf843da70fa7205735225ca45fdaa22eb",
+    "integrations/openai_agents/V16_STAGE1_20261006.json": "989785291638d4f6699f781e5d10c3bedb7b636d91f833355235fb265c4037d8",
+    "integrations/openai_agents/V16_GATE_PROBES_20261006.json": "491eac2f7ad1050e07012a2987f6c469c01d32afb0fd981b1347ab768e4dc9be",
+    "integrations/openai_agents/V16_CANDIDATE_POOL_20261006.json": "def85ab86093ae5bfc08f568a2172a29448effb09742d27825d6b979e40ba357"
+  },
+  "source_of_record_verified": {
+    "note": "the freeze's source_of_record already carries a SHA256 per file; this block records both that hash and the file's hash at batch time so the check is reproducible from the batch artifact alone",
+    "files": {
+      "integrations/openai_agents/V16_SOURCE_REGISTRATION_20261006.json": {
+        "recorded_sha256": "0723258eb3b297752625af85e5f2264bf843da70fa7205735225ca45fdaa22eb",
+        "current_sha256": "0723258eb3b297752625af85e5f2264bf843da70fa7205735225ca45fdaa22eb",
+        "matches": true
+      },
+      "integrations/openai_agents/V16_STAGE1_20261006.json": {
+        "recorded_sha256": "989785291638d4f6699f781e5d10c3bedb7b636d91f833355235fb265c4037d8",
+        "current_sha256": "989785291638d4f6699f781e5d10c3bedb7b636d91f833355235fb265c4037d8",
+        "matches": true
+      },
+      "integrations/openai_agents/V16_GATE_PROBES_20261006.json": {
+        "recorded_sha256": "491eac2f7ad1050e07012a2987f6c469c01d32afb0fd981b1347ab768e4dc9be",
+        "current_sha256": "491eac2f7ad1050e07012a2987f6c469c01d32afb0fd981b1347ab768e4dc9be",
+        "matches": true
+      },
+      "integrations/openai_agents/V16_CANDIDATE_POOL_20261006.json": {
+        "recorded_sha256": "def85ab86093ae5bfc08f568a2172a29448effb09742d27825d6b979e40ba357",
+        "current_sha256": "def85ab86093ae5bfc08f568a2172a29448effb09742d27825d6b979e40ba357",
+        "matches": true
+      }
+    },
+    "all_match": true,
+    "count": 4
+  },
+  "freeze_amendment": {
+    "path": "integrations/openai_agents/V16_ACQUISITION_FREEZE_AMENDMENT_20261006.json",
+    "sha256": "08dc3ee2d5b0efe35203e8ca4785c5deb8276da4803aa96aaf8f3abcbb831b81",
+    "freeze_sha256": "18c0d49f5cec9e7deebe6054ec6bb79356d4d289072d063dd196dada2eababc8",
+    "freeze_unchanged": true,
+    "pinned_files": {
+      "experiments/runners/run_openai_agents_v16_acquisition.py": {
+        "recorded_digests": [
+          "8d87646e4dabd941b62824bb6b1e6de3921af9c5a6167c0c47d3b1e78518daa2",
+          "6a3e803ffb3930afaa9b33a8607ac08762cc939332c4b5ee509fc307cfbbdb21",
+          "a0dafdc9966c71ee59648cdbd597e527e9116ba9637c5950d635cbf36fa01820",
+          "dc06ee7eb28a97a41c213dc575cab46539b53f46e37462fbc234099ad6f5a90b",
+          "0daf1d3c8fb8e0734e16ca00ebac5b4d591f95652ebcf5c69658104ffbbb80f6",
+          "3a74f902ab610e87d92674b41b588fe69edbeb37dbbc1eed576d695c9f528199",
+          "9a8e07570d89c5fee5e250bfb421979e8cfb1f6699903f6551c6b6a65bae1c9a"
+        ],
+        "matched_entry": 6,
+        "current_sha256": "9a8e07570d89c5fee5e250bfb421979e8cfb1f6699903f6551c6b6a65bae1c9a",
+        "matches": true,
+        "in_freeze": "",
+        "reason": "entry point: the third attempt runs under its own experiment id and records both earlier attempts; the stub path grew the two diagnostic controls (a model that acts on the reason is accepted on the retry, a model that ignores it is still rejected)",
+        "recorded_sha256": "9a8e07570d89c5fee5e250bfb421979e8cfb1f6699903f6551c6b6a65bae1c9a"
+      },
+      "experiments/runners/openai_agents_v16_registry.py": {
+        "recorded_digests": [
+          "54323c8046881f207de3233bc3918c556352271dffec8b04df02c24a953c5798"
+        ],
+        "matched_entry": 0,
+        "current_sha256": "54323c8046881f207de3233bc3918c556352271dffec8b04df02c24a953c5798",
+        "matches": true,
+        "in_freeze": "",
+        "reason": "reads the three registered view sets and contracts from the two frozen artifacts, re-verifies every view against the pinned base commits, and supplies the two fields the artifacts omit (the 15315 tool names, derived from the registered view order, and the protocol steps derived from the registered read shape)",
+        "recorded_sha256": "54323c8046881f207de3233bc3918c556352271dffec8b04df02c24a953c5798"
+      },
+      "experiments/runners/openai_agents_v16_live_contract.py": {
+        "recorded_digests": [
+          "16c62cade520b377041f9e71e08e77c8e0d019bf00a30b572bd4c086b1ff4230",
+          "496909d3bca778ae74c2063bea6136c59a30547cb8f3e133cb9b086563acb8b7",
+          "b60411ea1dc079d9a99bad499201e07e58dcee54b5b694e9a393eb8f8b45dac1"
+        ],
+        "matched_entry": 2,
+        "current_sha256": "b60411ea1dc079d9a99bad499201e07e58dcee54b5b694e9a393eb8f8b45dac1",
+        "matches": true,
+        "in_freeze": "",
+        "reason": "host configuration: the retry message now carries the host validator's exact rejection reason (and, for a declared-fact failure, the declared strings that are missing), recorded in the ledger and the per-sample fields; the four conditions, the 160-character bound and the frozen regex are unchanged",
+        "recorded_sha256": "b60411ea1dc079d9a99bad499201e07e58dcee54b5b694e9a393eb8f8b45dac1"
+      },
+      "experiments/runners/openai_agents_v16_stage1.py": {
+        "recorded_digests": [
+          "f13857bd1a4db69215f9ba4f763805addad59e2aafdfa3d9810f3d6d957e305f"
+        ],
+        "matched_entry": 0,
+        "current_sha256": "f13857bd1a4db69215f9ba4f763805addad59e2aafdfa3d9810f3d6d957e305f",
+        "matches": true,
+        "in_freeze": "",
+        "reason": "the stage-1 generator whose registered 15315 request text the registry reads (the stage-1 artifact records the views, the contract and a statement hash but not the request text), pinned here even though the freeze does not pin it",
+        "recorded_sha256": "f13857bd1a4db69215f9ba4f763805addad59e2aafdfa3d9810f3d6d957e305f"
+      },
+      "experiments/runners/openai_agents_structured_final_v16.py": {
+        "recorded_digests": [
+          "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a"
+        ],
+        "matched_entry": 0,
+        "current_sha256": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+        "matches": true,
+        "in_freeze": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+        "reason": "the renderer; the freeze pins it as host_configuration.renderer and it is pinned again here so the batch manifest carries its hash next to the other implementation hashes",
+        "recorded_sha256": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a"
+      },
+      "experiments/runners/run_openai_agents_api_experiment.py": {
+        "recorded_digests": [
+          "1cafd67b5b4d649381c737ff2e97d15d7cbba95709311d3516ccdb266c7e8708"
+        ],
+        "matched_entry": 0,
+        "current_sha256": "1cafd67b5b4d649381c737ff2e97d15d7cbba95709311d3516ccdb266c7e8708",
+        "matches": true,
+        "in_freeze": "1cafd67b5b4d649381c737ff2e97d15d7cbba95709311d3516ccdb266c7e8708",
+        "reason": "the shared frozen runner the batch executes (SDK agent, loop, scoring, manifests). Its content is unchanged - it is hashed by 24 freezes - and it is pinned here because this batch's runtime patches and prompt adaptation target it, so a later edit must be visible from the batch artifact",
+        "recorded_sha256": "1cafd67b5b4d649381c737ff2e97d15d7cbba95709311d3516ccdb266c7e8708"
+      }
+    },
+    "pinned_count": 6,
+    "archived_files": {
+      "tests/test_openai_agents_v16_live_runner_zero_api.py": {
+        "recorded_sha256": "19270a000624fd42341c481a99959fa5f3a86ccd8d70415ca0f1e998fefa9af1",
+        "reason": "archived evidence; recorded with its current hash"
+      },
+      "experiments/runners/openai_agents_v16_replay_gate.py": {
+        "recorded_sha256": "1f31ce0e39e7e10cbb40c0f3b28212986279e052e0b47e79547527ed6ae2b06b",
+        "reason": "zero-API replay gate over the recorded baseline payloads: the five invariants and the negative control, written for this host's parallel read batches (a recorded boundary is matched to the rebuilt stage with the same item count). Not executed by the batch, so archived with its hash rather than pinned"
+      }
+    },
+    "amendment_entries": 7,
+    "runtime_prompt_replacement": {
+      "file": "experiments/runners/run_openai_agents_api_experiment.py",
+      "file_sha256": "1cafd67b5b4d649381c737ff2e97d15d7cbba95709311d3516ccdb266c7e8708",
+      "file_edited": false,
+      "how": "runtime, in memory: the runner replaces two sentences of the instructions it builds for every arm, identically, and records per sample which replacement applied; no file is written",
+      "replacements": [
+        {
+          "old_text": "The final response must be exactly one line, begin with RESULT, contain at most 160 characters, and follow this contract: ",
+          "old_sha256": "002e1fbd36f4cd92452d8bb3e2af868a99620f49e0c4874c2d7f28971557b98e",
+          "new_text": "Your final message must be exactly one JSON object and nothing else, following this contract: ",
+          "new_sha256": "1f524edfd7d18d1cb72411475c21a87dbba66d6f9ba12cfd2a43b5a128eea5b2"
+        },
+        {
+          "old_text": "Replace angle-bracket fields with tool values.",
+          "old_sha256": "761b3c4d10baae538b5c7dd88f60e75693c7b6f2603433b6d7c16e86811048ab",
+          "new_text": "Fill every field with the values the tools returned.",
+          "new_sha256": "421b9a2805117323b5fae74ffc7abc1c8931c42a45920e3ed76156f85bc62ef7"
+        }
+      ],
+      "reason": "the frozen prompt tells the model to write one RESULT line of at most 160 characters itself, and to replace angle-bracket fields with tool values. Under the v16 host configuration the model returns JSON and the host renders the line, so those two sentences would contradict the contract and make every sample fail for a reason that belongs to the prompt, not to the task. Both replacements are applied in every arm, so no arm is favoured.",
+      "canary": "each sample row records prompt_adaptations (applied / unapplied against the expected list); the zero-API stub path asserts both replacements applied in all four controls, the paid runner refuses to report a batch whose adaptation is incomplete, and the frozen file's own SHA256 is pinned above so a later edit cannot hide",
+      "evidence": [
+        "integrations/openai_agents/V16_LIVE_STUB_20261006.json",
+        "tests/test_openai_agents_v16_live_runner_zero_api.py"
+      ]
+    },
+    "files_changed_after_freeze": 0
+  },
+  "implementation_hashes": {
+    "experiments/runners/run_openai_agents_v16_acquisition.py": "9a8e07570d89c5fee5e250bfb421979e8cfb1f6699903f6551c6b6a65bae1c9a",
+    "experiments/runners/openai_agents_v16_registry.py": "54323c8046881f207de3233bc3918c556352271dffec8b04df02c24a953c5798",
+    "experiments/runners/openai_agents_v16_live_contract.py": "b60411ea1dc079d9a99bad499201e07e58dcee54b5b694e9a393eb8f8b45dac1",
+    "experiments/runners/openai_agents_v16_stage1.py": "f13857bd1a4db69215f9ba4f763805addad59e2aafdfa3d9810f3d6d957e305f",
+    "experiments/runners/openai_agents_structured_final_v16.py": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+    "experiments/runners/run_openai_agents_api_experiment.py": "1cafd67b5b4d649381c737ff2e97d15d7cbba95709311d3516ccdb266c7e8708"
+  },
+  "v16_registry": {
+    "schema": "openai_agents_v16_registry",
+    "task_ids": [
+      "django_sqlite_version_floor",
+      "django_orderedset_reversed",
+      "django_field_hash_immutability"
+    ],
+    "task_count": 3,
+    "artifact_hashes": {
+      "integrations/openai_agents/V16_SOURCE_REGISTRATION_20261006.json": "0723258eb3b297752625af85e5f2264bf843da70fa7205735225ca45fdaa22eb",
+      "integrations/openai_agents/V16_STAGE1_20261006.json": "989785291638d4f6699f781e5d10c3bedb7b636d91f833355235fb265c4037d8",
+      "experiments/runners/openai_agents_v16_stage1.py": "f13857bd1a4db69215f9ba4f763805addad59e2aafdfa3d9810f3d6d957e305f"
+    },
+    "derived_fields": [
+      "protocol_steps",
+      "tool_docs"
+    ],
+    "tool_name_sources": {
+      "django_sqlite_version_floor": "registered_artifact",
+      "django_orderedset_reversed": "registered_artifact",
+      "django_field_hash_immutability": "runner_supplied_in_registered_view_order"
+    },
+    "stage1_tool_names_note": "the stage-1 artifact registered the three 15315 views and their roles but no tool names; the three names are supplied here (runner_supplied_in_registered_view_order) and the view contents they return stay byte-verified against the artifact's view hashes",
+    "protocol_steps_note": "derived from the registered read shape: three views read twice (six read calls) then one answer call, which is the registered expected_model_calls of 7",
+    "max_answer_chars": 160,
+    "read_calls": 6,
+    "expected_model_calls": 7,
+    "per_task": {
+      "django_sqlite_version_floor": {
+        "instance_id": "django__django-13821",
+        "repo": "django/django",
+        "base_commit": "e64c1d8055a3e476122633da141f16b50f0c4a2d",
+        "views": [
+          {
+            "file": "django/db/backends/sqlite3/base.py",
+            "first_line": 60,
+            "last_line": 75,
+            "role": "registered view 1 of 3",
+            "blob_git_id": "ab4ea704920cd36540e305b939698abbe85d9328",
+            "view_content_sha256": "50c421b02fd753c883d42174d4ead10ea898fad3d535f3db45ae640c36e18f65"
+          },
+          {
+            "file": "django/db/backends/sqlite3/features.py",
+            "first_line": 30,
+            "last_line": 50,
+            "role": "registered view 2 of 3",
+            "blob_git_id": "3348256c747c299ba77160b238beaa8ecfadd805",
+            "view_content_sha256": "7dd2809b746ffc40039ff04658e0b521578f26e562734ba9c8a94231959cfb0f"
+          },
+          {
+            "file": "django/db/backends/sqlite3/features.py",
+            "first_line": 60,
+            "last_line": 95,
+            "role": "registered view 3 of 3",
+            "blob_git_id": "3348256c747c299ba77160b238beaa8ecfadd805",
+            "view_content_sha256": "a2e91e99b1f1e612e5481e2f8cd0280184faa3b1db49514cff25fffccf19b41c"
+          }
+        ],
+        "tool_names": [
+          "read_sqlite_version_check",
+          "read_sqlite_features_a",
+          "read_sqlite_features_b"
+        ],
+        "tool_name_source": "registered_artifact",
+        "request": "Diagnose why this baseline still accepts an SQLite version below 3.9.0. Read the version check, the version-gated feature flags and the json field support code in order; name the function that sets the floor and the version the fix must require.",
+        "protocol_steps": [
+          "Call the three read-only tools twice each, in this order and then repeated once: read_sqlite_version_check (django/db/backends/sqlite3/base.py 60-75), read_sqlite_features_a (django/db/backends/sqlite3/features.py 30-50), read_sqlite_features_b (django/db/backends/sqlite3/features.py 60-95). That is 6 read calls.",
+          "After the sixth read, answer with the JSON object the request describes and call no more tools: the host renders your JSON into the single RESULT line."
+        ],
+        "contract": {
+          "shape": "RESULT issue=<issue> cause=<cause> fix=<fix>",
+          "json_fields": [
+            "issue",
+            "cause",
+            "fix",
+            "facts"
+          ],
+          "issue_value": "django-13821",
+          "required_facts": [
+            "check_sqlite_version",
+            "3.8.3",
+            "3.9.0"
+          ],
+          "cause_token": "check_sqlite_version",
+          "fix_token": "3.9.0",
+          "frozen_regex": "RESULT issue=django-13821 cause=.*check_sqlite_version.* fix=.*3.9.0.*",
+          "max_answer_chars": 160,
+          "renderer": "experiments/runners/openai_agents_structured_final_v16.py",
+          "render_rule": "the host renders the JSON fields verbatim, rejects any proposal whose declared facts do not appear in the rendered answer, and never truncates"
+        },
+        "contract_prompt": "one JSON object with exactly the keys \"issue\", \"cause\", \"fix\" and \"facts\": \"issue\" is the fixed value \"django-13821\"; \"cause\" names the root cause and must contain 'check_sqlite_version'; \"fix\" names the change the fix must make and must contain '3.9.0'; \"facts\" is a list of the exact strings \"check_sqlite_version\", \"3.8.3\", \"3.9.0\" copied from the tool output. The host renders issue, cause and fix into one line of the shape \"RESULT issue=<issue> cause=<cause> fix=<fix>\"; keep cause and fix short so that the rendered line stays within 160 characters. Send nothing outside the JSON object.",
+        "answer_pattern": "RESULT issue=django-13821 cause=.*check_sqlite_version.* fix=.*3.9.0.*",
+        "required_terms": [
+          "check_sqlite_version",
+          "3.8.3",
+          "3.9.0"
+        ],
+        "literals": {
+          "required_facts": [
+            "check_sqlite_version",
+            "3.8.3",
+            "3.9.0"
+          ],
+          "issue_value": [
+            "django-13821"
+          ]
+        },
+        "fingerprint": "e0c3fe6da263d99e456218021d4b907f2ea42206e09cc4296c21fede98bba216",
+        "statement_sha256": "a9c9d3fd6649afa460559bf3bcc1fb8cc17357ffec03403474b598c310c78b10",
+        "problem_statement_sha256_registered": "265686648c416aaf4879d6757538e5d9ee13c00496288e6fbd5fbdb9901cf3ec",
+        "problem_statement_hash_reconciliation": null,
+        "derived_fields": [
+          "protocol_steps",
+          "tool_docs"
+        ],
+        "problems": []
+      },
+      "django_orderedset_reversed": {
+        "instance_id": "django__django-14089",
+        "repo": "django/django",
+        "base_commit": "d01709aae21de9cd2565b9c52f32732ea28a2d98",
+        "views": [
+          {
+            "file": "django/utils/datastructures.py",
+            "first_line": 5,
+            "last_line": 37,
+            "role": "registered view 1 of 3",
+            "blob_git_id": "871b016715b2e83b0cb78ae1b04d91057a740104",
+            "view_content_sha256": "380eef292700f23792aa2bfe91f3a1d9a5b2bdf7e37e0084a5fe6611842005da"
+          },
+          {
+            "file": "django/utils/datastructures.py",
+            "first_line": 42,
+            "last_line": 75,
+            "role": "registered view 2 of 3",
+            "blob_git_id": "871b016715b2e83b0cb78ae1b04d91057a740104",
+            "view_content_sha256": "a33a973ba86c301d300605cca20d86f537c38be98fe9c4b4845c7c3733269354"
+          },
+          {
+            "file": "django/utils/datastructures.py",
+            "first_line": 265,
+            "last_line": 335,
+            "role": "registered view 3 of 3",
+            "blob_git_id": "871b016715b2e83b0cb78ae1b04d91057a740104",
+            "view_content_sha256": "0de32bf349431e0b8542fcae9c1471f3e84f75a0140e806f2ab44cadc5d074b9"
+          }
+        ],
+        "tool_names": [
+          "read_orderedset_class",
+          "read_datastructures_mvd",
+          "read_datastructures_mapping"
+        ],
+        "tool_name_source": "registered_artifact",
+        "request": "Diagnose why this baseline OrderedSet cannot be passed to Python's reversed(). Read the OrderedSet class, the multi-value container conventions and the mapping iteration code in order; name the class that is missing the method and the method the fix must add.",
+        "protocol_steps": [
+          "Call the three read-only tools twice each, in this order and then repeated once: read_orderedset_class (django/utils/datastructures.py 5-37), read_datastructures_mvd (django/utils/datastructures.py 42-75), read_datastructures_mapping (django/utils/datastructures.py 265-335). That is 6 read calls.",
+          "After the sixth read, answer with the JSON object the request describes and call no more tools: the host renders your JSON into the single RESULT line."
+        ],
+        "contract": {
+          "shape": "RESULT issue=<issue> cause=<cause> fix=<fix>",
+          "json_fields": [
+            "issue",
+            "cause",
+            "fix",
+            "facts"
+          ],
+          "issue_value": "django-14089",
+          "required_facts": [
+            "OrderedSet",
+            "__iter__",
+            "__reversed__"
+          ],
+          "cause_token": "OrderedSet",
+          "fix_token": "__reversed__",
+          "frozen_regex": "RESULT issue=django-14089 cause=.*OrderedSet.* fix=.*__reversed__.*",
+          "max_answer_chars": 160,
+          "renderer": "experiments/runners/openai_agents_structured_final_v16.py",
+          "render_rule": "the host renders the JSON fields verbatim, rejects any proposal whose declared facts do not appear in the rendered answer, and never truncates"
+        },
+        "contract_prompt": "one JSON object with exactly the keys \"issue\", \"cause\", \"fix\" and \"facts\": \"issue\" is the fixed value \"django-14089\"; \"cause\" names the root cause and must contain 'OrderedSet'; \"fix\" names the change the fix must make and must contain '__reversed__'; \"facts\" is a list of the exact strings \"OrderedSet\", \"__iter__\", \"__reversed__\" copied from the tool output. The host renders issue, cause and fix into one line of the shape \"RESULT issue=<issue> cause=<cause> fix=<fix>\"; keep cause and fix short so that the rendered line stays within 160 characters. Send nothing outside the JSON object.",
+        "answer_pattern": "RESULT issue=django-14089 cause=.*OrderedSet.* fix=.*__reversed__.*",
+        "required_terms": [
+          "OrderedSet",
+          "__iter__",
+          "__reversed__"
+        ],
+        "literals": {
+          "required_facts": [
+            "OrderedSet",
+            "__iter__",
+            "__reversed__"
+          ],
+          "issue_value": [
+            "django-14089"
+          ]
+        },
+        "fingerprint": "56a9a8ee699b85da6d6845c342f79c76c7e491a3b381cf5ec8cb8decf2aca7c5",
+        "statement_sha256": "0c116cbbeedf05f7a34288f6f6a6c932abf1d0f666b9430803bfea18cb0ee517",
+        "problem_statement_sha256_registered": "cbfb85cb9ea9b08049b15ffaff23b96640926088e725b8b70f7ef2a31b767118",
+        "problem_statement_hash_reconciliation": null,
+        "derived_fields": [
+          "protocol_steps",
+          "tool_docs"
+        ],
+        "problems": []
+      },
+      "django_field_hash_immutability": {
+        "instance_id": "django__django-15315",
+        "repo": "django/django",
+        "base_commit": "652c68ffeebd510a6f59e1b56b3e007d07683ad8",
+        "views": [
+          {
+            "file": "django/db/models/fields/__init__.py",
+            "first_line": 504,
+            "last_line": 556,
+            "role": "cause: the value-semantics comparison and hash pair",
+            "blob_git_id": "88c9ca9f2849aa0e0f541564f3f780f90c162591",
+            "view_content_sha256": "4d78a2a3bcf2669715281f88f0a28eee84d4f13ea26289a98c2d48039b54c3e8"
+          },
+          {
+            "file": "django/db/models/fields/__init__.py",
+            "first_line": 85,
+            "last_line": 109,
+            "role": "context: the creation counters the fix must use",
+            "blob_git_id": "88c9ca9f2849aa0e0f541564f3f780f90c162591",
+            "view_content_sha256": "52b2a23416ce1e3201f6b5cda10574dba6044e817a7fe7bd0f1edf0a44ca2f0b"
+          },
+          {
+            "file": "django/db/models/fields/__init__.py",
+            "first_line": 763,
+            "last_line": 795,
+            "role": "context: where the field is bound to a model class",
+            "blob_git_id": "88c9ca9f2849aa0e0f541564f3f780f90c162591",
+            "view_content_sha256": "92a442a7dcb7904565c0f73f9dc1ac9127374d56f88b40de9fd5a5ae82dd2f60"
+          }
+        ],
+        "tool_names": [
+          "read_field_semantics",
+          "read_field_counters",
+          "read_field_binding"
+        ],
+        "tool_name_source": "runner_supplied_in_registered_view_order",
+        "request": "Diagnose why a Field instance cannot be used as a stable dictionary key once it has been assigned to a model class. Read the field comparison and hashing methods, the field class header with the creation counters, and the contribution method in order; name the method pair whose value semantics depend on the model and the counter the fix must base the hash on.",
+        "protocol_steps": [
+          "Call the three read-only tools twice each, in this order and then repeated once: read_field_semantics (django/db/models/fields/__init__.py 504-556), read_field_counters (django/db/models/fields/__init__.py 85-109), read_field_binding (django/db/models/fields/__init__.py 763-795). That is 6 read calls.",
+          "After the sixth read, answer with the JSON object the request describes and call no more tools: the host renders your JSON into the single RESULT line."
+        ],
+        "contract": {
+          "json_fields": [
+            "issue",
+            "cause",
+            "fix",
+            "facts"
+          ],
+          "issue_value": "django-15315",
+          "required_facts": [
+            "__hash__",
+            "__eq__",
+            "creation_counter"
+          ],
+          "forbidden_facts": [
+            "no bug",
+            "not a bug"
+          ],
+          "frozen_regex": "RESULT issue=django-15315 cause=.*__hash__.* fix=.*creation_counter.*",
+          "max_answer_chars": 160,
+          "renderer": "experiments/runners/openai_agents_structured_final_v16.py"
+        },
+        "contract_prompt": "one JSON object with exactly the keys \"issue\", \"cause\", \"fix\" and \"facts\": \"issue\" is the fixed value \"django-15315\"; \"cause\" names the root cause and must contain '__hash__'; \"fix\" names the change the fix must make and must contain 'creation_counter'; \"facts\" is a list of the exact strings \"__hash__\", \"__eq__\", \"creation_counter\" copied from the tool output. The host renders issue, cause and fix into one line of the shape \"RESULT issue=<issue> cause=<cause> fix=<fix>\"; keep cause and fix short so that the rendered line stays within 160 characters. Send nothing outside the JSON object.",
+        "answer_pattern": "RESULT issue=django-15315 cause=.*__hash__.* fix=.*creation_counter.*",
+        "required_terms": [
+          "__hash__",
+          "__eq__",
+          "creation_counter"
+        ],
+        "literals": {
+          "required_facts": [
+            "__hash__",
+            "__eq__",
+            "creation_counter"
+          ],
+          "issue_value": [
+            "django-15315"
+          ]
+        },
+        "fingerprint": "9f9a6b242d7d565d8128521c05d775d93b367fd3baca7c2aac9e2850eaef1a70",
+        "statement_sha256": "203dde8a035b5be2c9c61d138d5e10b64a8710dc65e9e6abb427f58f416c5637",
+        "problem_statement_sha256_registered": "eaa0886a8c61ddaacd3b4c5f1d60783315d8c0068090a2b6ed1804690ade9182",
+        "problem_statement_hash_reconciliation": {
+          "registered_artifact_value": "eaa0886a8c61ddaacd3b4c5f1d60783315d8c0068090a2b6ed1804690ade9182",
+          "public_table_statement_sha256": "a26b3534bece469f866614b19fadd37e13c9a06ce293bfe21e32313b9cfa90fd",
+          "reconciliation": "the artifact value is sha256 of the hex text of this hash",
+          "candidate_pool_value": "a26b3534bece469f866614b19fadd37e13c9a06ce293bfe21e32313b9cfa90fd",
+          "statement_bytes": 793
+        },
+        "derived_fields": [
+          "protocol_steps",
+          "tool_docs",
+          "tool_names",
+          "cause_token",
+          "fix_token"
+        ],
+        "problems": []
+      }
+    }
+  },
+  "host_configuration": {
+    "structured_final_answer": "JSON issue/cause/fix/facts, identical for every arm",
+    "renderer": {
+      "module": "experiments/runners/openai_agents_structured_final_v16.py",
+      "sha256": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+      "truncates": false,
+      "drops_fields": false,
+      "final_answer_path": true
+    },
+    "retry_budget": 1,
+    "retry_is_billed": true,
+    "agent_output_type": "StructuredAnswer",
+    "frozen_prompt_adaptation": {
+      "applied": [
+        "The final response must be exactly one line, begin with RESULT, contain at most 160 characters, and follow this contract: ",
+        "Replace angle-bracket fields with tool values."
+      ],
+      "complete_in_every_sample": true,
+      "registered_in_amendment": "integrations/openai_agents/V16_ACQUISITION_FREEZE_AMENDMENT_20261006.json",
+      "source_file": "experiments/runners/run_openai_agents_api_experiment.py",
+      "canary": "every sample records prompt_adaptations; a sample whose frozen prompt no longer contains the replaced sentences is reported and stops the run",
+      "why": "the frozen runner prompt describes the old model-written RESULT line; under this host configuration the model writes JSON and the host renders the line, so those two sentences are replaced identically in every arm"
+    }
+  },
+  "criteria": {
+    "strict_track": [
+      "required facts present",
+      "frozen regex full match",
+      "single line with the contract prefix",
+      "at most 160 characters"
+    ],
+    "max_answer_chars": 160,
+    "bounds_are_not_relaxed": "at most 160 characters remains an acceptance condition",
+    "fidelity": "a sample whose fields cannot be rendered inside facts + frozen regex + 160 characters counts as a failure; the share is reported; truncation and dropped fields are forbidden",
+    "per_sample_report": [
+      "source_chars",
+      "rendered_chars",
+      "render_accepted",
+      "facts_complete",
+      "frozen_regex",
+      "single_line_prefix",
+      "within_160"
+    ]
+  },
+  "metering": {
+    "cache_fields_per_call": [
+      "prompt_cache_hit_tokens",
+      "prompt_cache_miss_tokens",
+      "call_timestamp_utc",
+      "off_peak",
+      "cache_fields_present",
+      "cache_usage_unknown"
+    ],
+    "cache_fields_fail_closed": "missing fields are recorded as unknown, never as zero",
+    "cache_source": "raw_provider_usage",
+    "cache_note": "the SDK's own Usage type keeps only the standard counters, so the vendor cache split is read from each raw chat-completion response; when a call has no raw entry (a transport retry) its cache fields stay unknown and the totals stay null rather than being reported as zero",
+    "prompt_cache": {
+      "calls": 9,
+      "calls_with_cache_fields": 9,
+      "calls_without_cache_fields": 0,
+      "prompt_cache_hit_tokens_total": 16256,
+      "prompt_cache_miss_tokens_total": 7393,
+      "all_calls_off_peak": true,
+      "note": "a batch whose provider omits the cache fields records them as unknown; the totals stay null rather than being reported as zero"
+    },
+    "manifest_written_in_one_pass": true,
+    "writer_refuses_overwrite": true
+  },
+  "request_budget": {
+    "samples": 3,
+    "reads_plus_answer_per_sample": 7,
+    "minimum_planned_requests": 21,
+    "worst_case_logical_requests_with_one_retry_each": 24,
+    "max_api_requests": 30,
+    "max_api_retries_per_model_call": 2,
+    "transport_retries_share_the_cap": true,
+    "worst_case_fits_the_cap": true,
+    "api_calls": 9,
+    "recorded_attempts_all_samples": 9
+  },
+  "api_calls": 9,
+  "attempt": 3,
+  "attempt_purpose": "confirmatory acquisition after the retry gained the host validator's rejection reason: the only observed failure class was a declared fact that the rendered line cannot carry, and the retry previously repeated it blindly",
+  "previous_attempts": {
+    "attempt_01": {
+      "batch": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v16-structured-acquisition-01",
+      "requests_spent": 3,
+      "outcome": "the provider refused the structured-output request type (HTTP 400)",
+      "detail": "integrations/openai_agents/V16_ACQUISITION_ATTEMPT_01_20261006.json"
+    },
+    "attempt_02": {
+      "batch": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v16-structured-acquisition-02",
+      "requests_spent": 8,
+      "outcome": "informative baseline under option A: 2/3 samples rendered, 0/3 over-length, and the single failure was a declared fact missing from the rendered line, repeated by the retry",
+      "detail": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v16-structured-acquisition-02/manifest.json"
+    }
+  },
+  "batch_report": {
+    "per_sample": [
+      {
+        "task": "django_field_hash_immutability",
+        "repeat": 0,
+        "method": "none",
+        "source_chars": 170,
+        "rendered_chars": 105,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true,
+        "render_reason": "accepted_first",
+        "had_candidate": true,
+        "candidate_chars": 105,
+        "repair_calls": 0,
+        "requests": 2,
+        "success": true,
+        "error_type": ""
+      },
+      {
+        "task": "django_orderedset_reversed",
+        "repeat": 0,
+        "method": "none",
+        "source_chars": 169,
+        "rendered_chars": 113,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true,
+        "render_reason": "accepted_retry",
+        "had_candidate": true,
+        "candidate_chars": 113,
+        "repair_calls": 1,
+        "requests": 4,
+        "success": true,
+        "error_type": ""
+      },
+      {
+        "task": "django_sqlite_version_floor",
+        "repeat": 0,
+        "method": "none",
+        "source_chars": 150,
+        "rendered_chars": 85,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true,
+        "render_reason": "accepted_first",
+        "had_candidate": true,
+        "candidate_chars": 85,
+        "repair_calls": 0,
+        "requests": 3,
+        "success": true,
+        "error_type": ""
+      }
+    ],
+    "samples": 3,
+    "render_accepted_count": 3,
+    "render_rejected_count": 0,
+    "render_failure_share": 0.0,
+    "samples_with_a_candidate": 3,
+    "samples_without_a_candidate": 0,
+    "samples_without_a_candidate_reasons": {},
+    "post_render_over_160_count": 0,
+    "post_render_over_160_share_over_candidates": 0.0,
+    "post_render_over_160_share_over_all_samples": 0.0,
+    "post_render_over_160_note": "measured over samples that produced an answer candidate; a sample that never reached the answer turn is counted under samples_without_a_candidate and is not a length measurement",
+    "retry_count": 1,
+    "observed_retry_rate_over_candidates": 0.3333,
+    "truncations": 0,
+    "fields_dropped": 0,
+    "attainability_rule": "every sample of the batch must render inside facts + frozen regex + 160 characters; a sample that cannot render counts as a failure and its share is reported",
+    "attainable_on_this_batch": true
+  },
+  "prompt_adaptation_complete": true,
+  "runner_status": 0,
+  "stopped_early": false,
+  "stop_reason": "",
+  "stop_conditions": [
+    "attainability fails: a material share of none-arm samples cannot render inside 160 characters -> stop and report, do not proceed to the three arms",
+    "request cap 30 exceeded -> stop",
+    "any recorded sample missing its four condition flags -> stop"
+  ],
+  "never_rejudge": "v12, v13, v14 and v15 freezes, scores and answers are untouched and unrejudged",
+  "v16_manifest_finalized": true
+}

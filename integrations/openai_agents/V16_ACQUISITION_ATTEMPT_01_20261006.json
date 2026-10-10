@@ -1,0 +1,105 @@
+{
+  "schema": "openai_agents_v16_acquisition_attempt_outcome",
+  "date": "20261006",
+  "attempt": 1,
+  "batch": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v16-structured-acquisition-01",
+  "batch_manifest_sha256": "522509f901c4ee023b99f7807c1f935883da7fdd0781e1546e730e294e61e8d1",
+  "freeze_sha256": "18c0d49f5cec9e7deebe6054ec6bb79356d4d289072d063dd196dada2eababc8",
+  "freeze_amendment_sha256": "a0f4138f27575425fb8e84edbdecae456bcae6c3701569aad41d521564e84c5d",
+  "approved_cap": 30,
+  "requests_spent_this_attempt": 3,
+  "requests_spent_total_against_the_approved_cap": 3,
+  "outcome": "stopped: the provider rejects the structured-output request type",
+  "self_switched_track": false,
+  "samples": [
+    {
+      "task": "django_sqlite_version_floor",
+      "repeat": 0,
+      "method": "none",
+      "model_calls": 0,
+      "requests": 1,
+      "tool_calls": 0,
+      "error_type": "BadRequestError",
+      "error_message": "Error code: 400 - {'error': {'message': 'This response_format type is unavailable now (request_id: 3043d202-59b4-434c-b750-6fdeda3dfa92)', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_request_error'}}",
+      "render_reason": "no_final_answer",
+      "final_output_chars": 0
+    },
+    {
+      "task": "django_orderedset_reversed",
+      "repeat": 0,
+      "method": "none",
+      "model_calls": 0,
+      "requests": 1,
+      "tool_calls": 0,
+      "error_type": "BadRequestError",
+      "error_message": "Error code: 400 - {'error': {'message': 'This response_format type is unavailable now (request_id: da7788d8-eada-4da9-ab14-bce218823bf5)', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_request_error'}}",
+      "render_reason": "no_final_answer",
+      "final_output_chars": 0
+    },
+    {
+      "task": "django_field_hash_immutability",
+      "repeat": 0,
+      "method": "none",
+      "model_calls": 0,
+      "requests": 1,
+      "tool_calls": 0,
+      "error_type": "BadRequestError",
+      "error_message": "Error code: 400 - {'error': {'message': 'This response_format type is unavailable now (request_id: 51a6e6e1-ec95-4aec-9369-56863b94eab8)', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_request_error'}}",
+      "render_reason": "no_final_answer",
+      "final_output_chars": 0
+    }
+  ],
+  "first_failure_point": "the first model call of every sample: no tool call was ever made, so no view was read and no answer turn was reached",
+  "root_cause": {
+    "observed": "Error code: 400 - {'error': {'message': 'This response_format type is unavailable now (request_id: 3043d202-59b4-434c-b750-6fdeda3dfa92)', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_request_error'}}",
+    "mechanism": "agents 0.22.3 OpenAIChatCompletionsModel always sends response_format = Converter.convert_response_format(output_schema), and output_schema is the agent's output_type; on this SDK version that path has no model_settings override, so setting Agent(output_type=...) necessarily asks the provider for a json_schema response format",
+    "why_v13_v14_v15_never_hit_it": "those versions validated the final answer as text host-side (a regex plus a character bound), so no output_type was set and the provider never received a response_format parameter",
+    "why_the_zero_api_checks_could_not_catch_it": "the plan and stub paths never contact the provider (by design), so a provider capability gap is invisible to them; only a real request could reveal it. This is the first time the v16 host configuration was exercised against the real endpoint"
+  },
+  "corrected_decomposition": {
+    "note": "the batch report's post_render_over_160_share counts an empty answer as over-length; these samples produced no answer candidate at all, so that share is not a length measurement and must not be read as an over-length rate. The report field needs the fix listed under follow_ups before any later batch is summarised.",
+    "samples": 3,
+    "samples_with_a_candidate": 0,
+    "samples_without_a_candidate": 3,
+    "render_accepted": 0,
+    "rendered_over_160": 0,
+    "retries": 0,
+    "post_render_over_length_share_over_candidates": null,
+    "retry_rate_measured": false,
+    "per_sample_report": []
+  },
+  "attainability": "not assessed: no sample reached the answer turn, so nothing about rendering inside facts + frozen regex + 160 characters was measured, and the pre-registered over-length estimate (7.7 percent under the old contract) remains the only basis",
+  "options_for_the_user": [
+    {
+      "id": "A",
+      "change": "drop output_type from the agent and keep the identical JSON contract in the prompt, with the frozen renderer as the final-answer path and the only validator (it already rejects malformed JSON, duplicate or unexpected keys, unsafe fields, a declared fact missing from the rendered line and more than 160 characters)",
+      "contract_effect": "none on the answer contract: the model still returns issue/cause/fix/facts and the host still renders the RESULT line; only the enforcement point moves from the provider to the host, which never trusted the provider anyway",
+      "cost": "one host-configuration change plus an amendment entry; fits the remaining 27 requests",
+      "recommended": true
+    },
+    {
+      "id": "B",
+      "change": "keep output_type and use a provider or model that supports response_format json_schema",
+      "contract_effect": "none",
+      "cost": "not available in this deployment: the configured endpoint refuses the type",
+      "recommended": false
+    },
+    {
+      "id": "C",
+      "change": "keep output_type and patch the chat-completions request to send response_format {\"type\": \"json_object\"} instead of json_schema, parsing and validating against the structured type host-side",
+      "contract_effect": "none expected, but it changes more of the request path than A",
+      "cost": "a larger host change, still needs its own amendment entry",
+      "recommended": false
+    }
+  ],
+  "follow_ups": [
+    "the batch report must separate 'no answer produced' from 'rendered over-length' before any later batch is summarised",
+    "the chosen option must be registered as an amendment entry, because it changes the host configuration the freeze describes",
+    "a second attempt needs a new experiment id: no --resume, and the frozen manifest writer refuses to overwrite"
+  ],
+  "untouched": [
+    "the freeze is byte-identical",
+    "no v12, v13, v14 or v15 freeze, score or answer was touched or re-judged",
+    "the batch manifest keeps both citation flags false and is not saving or quality evidence"
+  ]
+}

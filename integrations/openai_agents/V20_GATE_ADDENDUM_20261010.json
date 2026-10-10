@@ -1,0 +1,34 @@
+{
+  "schema": "openai_agents_v20_gate_addendum",
+  "amends": "integrations/openai_agents/V20_NONDUPLICATE_MECHANISM_PLAN_20261010.json",
+  "addendum_id": "openai-agents-v20-gate-addendum-01",
+  "date": "20261010",
+  "api_requests_spent": 0,
+  "reason": "reading the trigger gate counters in the existing batches showed that the plugin arm has a second, previously unrecorded gate in front of the filter, and at the N3 control shape that gate does not fire on most calls",
+
+  "finding": {
+    "the_second_gate": "the plugin arm's filter is wrapped in a budget triggered gate: openai_agents_multitask_chain_v14.build_retentive_filter lines 245 to 247 install the retention filter as the inner filter of a BudgetTriggeredFilter and return v8._GATE_AWARE, and the counters are persisted as trigger_gate_calls, trigger_gate_triggered_calls, trigger_gate_passthrough_calls, trigger_gate_soft_limit_tokens and trigger_gate_last_estimated_tokens",
+    "measured_soft_limit_tokens": 5435,
+    "measured_behaviour": {
+      "v16_sealed_confirmation": {"calls_per_sample": 3, "triggered": {"django_ordering_related_pk": 2, "django_splitarray_checkbox_attrs": 1, "django_db_cache_cull_none": 2}, "passthrough": {"django_ordering_related_pk": 1, "django_splitarray_checkbox_attrs": 2, "django_db_cache_cull_none": 1}},
+      "v19_N3": {"calls_per_sample": 4, "triggered": {"django_sqlite_version_floor": 0, "django_orderedset_reversed": 0, "django_field_hash_immutability": 1}, "passthrough": {"django_sqlite_version_floor": 4, "django_orderedset_reversed": 4, "django_field_hash_immutability": 3}, "last_estimated_tokens": {"django_sqlite_version_floor": 4698, "django_orderedset_reversed": 5211, "django_field_hash_immutability": 6263}},
+      "v19_N6": {"calls_per_sample": 7, "triggered": {"django_sqlite_version_floor": 3, "django_orderedset_reversed": 3, "django_field_hash_immutability": 4}}
+    },
+    "reading": "at the N3 control shape two of the three tasks never reach the trigger threshold at all, so on those samples the plugin arm never even invoked its filter; on the third task the gate fired once and still removed nothing, because there were no duplicates to remove",
+    "consequence_for_the_N3_baseline_claim": "the earlier statement 'at N3 there is no duplicate content so the plugin saves nothing' is correct for the calls where the gate did fire and is silent about the calls where it did not; the honest full statement is that at N3 the gate fired on at most one of four calls and the rule had nothing to remove on the calls where it did fire"
+  },
+
+  "why_this_would_have_produced_a_false_negative": "if the v20 intervention only re-enables the v5 selective retention behind the same gate, the gate will still pass through most N3 calls, the retention will rarely run, the measured saving will again be about zero, and the conclusion would wrongly be 'the mechanism cannot compress unique content' when the real cause is that the gate never let it run",
+
+  "required_design_change": {
+    "gate_setting": "for the v20 plugin arm the budget gate must be set to fire on every model input after the first, so that the mechanism actually runs; the threshold used and every gate counter must be reported per sample",
+    "scope_of_the_change": "the gate is installed in the plugin arm only, so the baseline and native summary arms are untouched and the paired within batch comparison stays valid",
+    "what_must_be_pre_registered": "the new threshold value, the reason for changing it, and the explicit statement that v20 is therefore not comparable as a whole configuration to v16 or v19, only its paired comparison is",
+    "what_must_not_happen": "the threshold may not be lowered in one arm only, may not be tuned per task, and may not be changed after seeing any saving number"
+  },
+
+  "added_gate_assertion": "the zero API gate must prove that the mechanism ran: on the N3 shape with the new threshold, trigger_gate_triggered_calls must equal the number of model inputs after the first for every sample, and the retention counters must move; if the gate still passes through, no paid run may start",
+
+  "correction_to_the_v19_wiring_audit": "the audit said the non duplicate paths were not gated but simply not wired. The sharper statement is that there are two independent barriers: the budget gate decides whether any filter runs at all, and the v12 method shadowing decides which rule runs when it does. Both must be addressed for the capability question to be answerable",
+  "citable": false
+}

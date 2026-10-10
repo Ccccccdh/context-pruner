@@ -1,0 +1,18 @@
+{
+  "schema": "openai_agents_v18_read_shape_diff_amendment_03",
+  "date": "20261010",
+  "changes": [
+    {
+      "file": "experiments/runners/openai_agents_v18_registry.py",
+      "detail": "EXPECTED_MODEL_CALLS is now written as READ_ROUNDS + 1",
+      "applied": true
+    },
+    {
+      "file": "experiments/runners/run_openai_agents_v18_acquisition.py",
+      "detail": "pilot cap 90 -> 100 for a 1.45x margin over the worst case of 69",
+      "applied": true
+    }
+  ],
+  "criteria_changed": false,
+  "paid_requests": 0
+}

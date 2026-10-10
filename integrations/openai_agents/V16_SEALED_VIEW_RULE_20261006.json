@@ -1,0 +1,124 @@
+{
+  "schema": "openai_agents_v16_sealed_view_rule",
+  "date": "20261006",
+  "rule": "Views are chosen from the statement alone and are written here before any probe or any model-facing work. For each candidate: view A is the definition the statement names as the faulty behaviour; view B is the definition the statement names as the construction or call site that reaches it; view C is the header region of the class that owns view A. Line windows are computed by AST from the named symbol: A and B span from three lines before the def statement to the end of that definition, so a long method is shown whole, and C spans the forty lines after the class statement; every window is clipped to the file. No view may be re-chosen after any probe result or model output is seen.",
+  "rule_amendment": {
+    "superseded_rule_sha256": "38f5bfd1edaf818d1298b0860d17d1cbc0bcdce3c024c1af86ef5b52fe2b2eab",
+    "why": "the first rule used a fixed thirty-line window. The first probe run then reported 'defect signature absent' for django__django-11820 and django__django-12193; both were probe defects rather than absent defects: Model._check_ordering spans lines 1660-1751 at that commit, so a thirty-line window cut off the bare-pk exclusion at line 1727, and the shared attrs dict of django__django-12193 is built in SplitArrayWidget.get_context (django/contrib/postgres/forms/array.py line 140, passed un-copied at line 150), not in SplitArrayField.__init__ as the first site table assumed.",
+    "amended_before_any_request": true,
+    "what_changed": [
+      "windows now run to the end of the named definition instead of a fixed thirty lines",
+      "view B for django__django-12193 is SplitArrayWidget.get_context, the site the statement describes when it says the final_attrs dict is updated",
+      "the defect probes now name the two halves of that defect explicitly"
+    ],
+    "note": "no request was spent, no model output was seen, and the earlier rule text is kept verbatim in this artifact with its hash"
+  },
+  "superseded_rule": "Views are chosen from the statement alone and are written here before any probe or any model-facing work. For each candidate: view A is the enclosing definition of the symbol the statement names as the faulty behaviour; view B is the definition the statement names as the construction or call site that reaches it; view C is the header region of the class that owns view A. Line windows are computed by AST from the named symbol - A and B span from three lines before the def to thirty lines after it, C spans the forty lines after the class statement - and are clipped to the file. No view may be re-chosen after any probe result or model output is seen.",
+  "written_before_probes": true,
+  "paid_requests": 0,
+  "sites": {
+    "django__django-11820": {
+      "task_id": "django_ordering_related_pk",
+      "statement_signal": "the statement says models.E015 is raised when Meta.ordering contains __pk of a related field, and calls it a regression",
+      "views": [
+        {
+          "slot": "A",
+          "file": "django/db/models/base.py",
+          "symbol": "_check_ordering",
+          "role": "cause: the ordering check that raises E015"
+        },
+        {
+          "slot": "B",
+          "file": "django/db/models/base.py",
+          "symbol": "Model.check",
+          "role": "context: the caller that runs the ordering check"
+        },
+        {
+          "slot": "C",
+          "file": "django/db/models/base.py",
+          "symbol": "Model",
+          "role": "context: the model class the check belongs to"
+        }
+      ],
+      "contract": {
+        "issue": "django-11820",
+        "cause_token": "_check_ordering",
+        "fix_token": "__pk",
+        "required_facts": [
+          "_check_ordering",
+          "E015",
+          "__pk"
+        ]
+      }
+    },
+    "django__django-12193": {
+      "task_id": "django_splitarray_checkbox_attrs",
+      "statement_signal": "the statement says SplitArrayField with BooleanField leaves every widget checked after the first True value, because CheckboxInput.get_context modifies the attrs dict passed into it",
+      "views": [
+        {
+          "slot": "A",
+          "file": "django/forms/widgets.py",
+          "symbol": "CheckboxInput.get_context",
+          "role": "cause: the context method that mutates the attrs it is given"
+        },
+        {
+          "slot": "B",
+          "file": "django/contrib/postgres/forms/array.py",
+          "symbol": "SplitArrayWidget.get_context",
+          "role": "context: the site that passes one attrs dict to every sub-widget"
+        },
+        {
+          "slot": "C",
+          "file": "django/forms/widgets.py",
+          "symbol": "CheckboxInput",
+          "role": "context: the widget class the mutating method belongs to"
+        }
+      ],
+      "contract": {
+        "issue": "django-12193",
+        "cause_token": "get_context",
+        "fix_token": "checked",
+        "required_facts": [
+          "get_context",
+          "checked",
+          "SplitArrayField"
+        ]
+      }
+    },
+    "django__django-13089": {
+      "task_id": "django_db_cache_cull_none",
+      "statement_signal": "the statement says the database cache backend's _cull sometimes fails with 'NoneType' object is not subscriptable and gives a backtrace through _base_set",
+      "views": [
+        {
+          "slot": "A",
+          "file": "django/core/cache/backends/db.py",
+          "symbol": "_cull",
+          "role": "cause: the culling routine that subscripts a missing row"
+        },
+        {
+          "slot": "B",
+          "file": "django/core/cache/backends/db.py",
+          "symbol": "_base_set",
+          "role": "context: the caller that triggers the culling"
+        },
+        {
+          "slot": "C",
+          "file": "django/core/cache/backends/db.py",
+          "symbol": "DatabaseCache",
+          "role": "context: the cache backend class they belong to"
+        }
+      ],
+      "contract": {
+        "issue": "django-13089",
+        "cause_token": "_cull",
+        "fix_token": "cull_num",
+        "required_facts": [
+          "_cull",
+          "NoneType",
+          "cull_num"
+        ]
+      }
+    }
+  },
+  "reading_reference_patch_or_test_patch": false
+}

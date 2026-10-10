@@ -1,0 +1,44 @@
+{
+  "schema": "openai_agents_v14_multitask_freeze_amendment",
+  "date": "20261005",
+  "policy": "the freeze file is written once and never edited; every later change is recorded here with the field, the reason and both values",
+  "freeze": "integrations/openai_agents/V14_MULTITASK_FREEZE_20261005.json",
+  "freeze_sha256": "04425ae3bf15a1e20381bdbf2231ebe1e57c8a0b775c2558699682db36576532",
+  "freeze_sha256_unchanged": true,
+  "amendments": [
+    {
+      "id": "A1",
+      "kind": "task_file_correction_before_any_request",
+      "when": "after the freeze was written, before any v14 API request",
+      "field": "held_out_basis.tasks_file_sha256",
+      "old_sha256": "4d0a1fa44cb6923759b191a1c0a774cc9cb43d6e09e94fa6b395e0290431f95d",
+      "new_sha256": "5fa5197e37537f5bcfb30deca89af5ec2450225339ddeaee45deeff7f94eb9f9",
+      "reason": "the read protocol's closing line (state the final diagnosis) was miscounted as a read call, so the task file declared eight model calls and the gate rebuilt seven reads. Corrected to six reads plus one answer = seven model calls, which is what the frozen worst-case arithmetic assumes (3 repeats x 4 tasks x 3 arms x 7 = 252 model calls, plus 36 summary calls, inside the frozen 300-request cap).",
+      "direction": "correction to match the frozen protocol text and caps",
+      "fields_changed": [
+        "read_calls",
+        "expected_model_calls (per task)"
+      ],
+      "fields_unchanged": [
+        "views and their line ranges and file hashes",
+        "contract, answer pattern, required terms, literals",
+        "task ids, instances, base commits, repositories"
+      ],
+      "effect_on_any_batch": "none: no v14 batch existed when this was recorded, and the freeze's per-task blocks do not embed the corrected field",
+      "files": [
+        {
+          "path": "integrations/openai_agents/V14_MULTITASK_TASKS_20261005.json",
+          "sha256": "5fa5197e37537f5bcfb30deca89af5ec2450225339ddeaee45deeff7f94eb9f9"
+        },
+        {
+          "path": ".tooling/build_v14_multitask_tasks.py",
+          "sha256": "3dc362a9695f2138ac61af3f745c848208c4c28d48574834723ff7c224d343ea"
+        },
+        {
+          "path": "experiments/runners/openai_agents_multitask_replay_gate_v14.py",
+          "sha256": "4fa64d062a5c762bad1850e6c9d5b70741ad21516eed97f8bba6a736bed693e6"
+        }
+      ]
+    }
+  ]
+}

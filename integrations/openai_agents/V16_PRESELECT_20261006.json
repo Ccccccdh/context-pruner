@@ -1,0 +1,70 @@
+{
+  "schema": "openai_agents_v16_metadata_preselection",
+  "status": "CANDIDATE_ONLY_NO_SOURCE_CONTRACT_OR_API_ADMISSION",
+  "paid_requests": 0,
+  "selection_rule": "Verified django/django <15 min fix; exclude every v15 preselected ID including unspent fourth, previously referenced IDs and extracted instances; sort SHA256(salt + NUL + instance_id)",
+  "salt": "v16-structured-final-2026-10-06",
+  "eligible_count": 80,
+  "development_candidates": [
+    {
+      "instance_id": "django__django-13821",
+      "repo": "django/django",
+      "base_commit": "e64c1d8055a3e476122633da141f16b50f0c4a2d",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "265686648c416aaf4879d6757538e5d9ee13c00496288e6fbd5fbdb9901cf3ec",
+      "selection_key": "07064647fdd88e08ef39c8688557a4908b97b347c33b4e8432e192d5f906df08"
+    },
+    {
+      "instance_id": "django__django-13410",
+      "repo": "django/django",
+      "base_commit": "580a4341cb0b4cbfc215a70afc004875a7e815f4",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "a0d73591704ec56dc81c6e7035614a8bd526166b9700b9f982c4c58c4b719676",
+      "selection_key": "078ac0f1ba45d48cfb7d402ee2e7ced4c92e07cbf95fb2951efdf94c7a416d62"
+    },
+    {
+      "instance_id": "django__django-14089",
+      "repo": "django/django",
+      "base_commit": "d01709aae21de9cd2565b9c52f32732ea28a2d98",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "cbfb85cb9ea9b08049b15ffaff23b96640926088e725b8b70f7ef2a31b767118",
+      "selection_key": "09ac1f8c70d40166cef5903476d62c117211c23d2670e4e5574827bbb04f057b"
+    }
+  ],
+  "untouched_confirmation_candidates": [
+    {
+      "instance_id": "django__django-11820",
+      "repo": "django/django",
+      "base_commit": "c2678e49759e5c4c329bff0eeca2886267005d21",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "8037de3210e730f87afe64ed1280846ba8d4d7e23c7720cba65ebe389ce36a7e",
+      "selection_key": "0bcbd7ab0d007be2c156f0cd963406a50a49a93819f4dc2d6809710fd6f238fa"
+    },
+    {
+      "instance_id": "django__django-12193",
+      "repo": "django/django",
+      "base_commit": "3fb7c12158a2402f0f80824f6778112071235803",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "6bd02eebf7c0609141d1497e235bcffa2070916542617dcee089b19d8d844eeb",
+      "selection_key": "0cc0137c358c4d32f629a243f823ae4c5ba3605ce1436d5ad5316bfe965a7001"
+    },
+    {
+      "instance_id": "django__django-13089",
+      "repo": "django/django",
+      "base_commit": "27c09043da52ca1f02605bf28600bfd5ace95ae4",
+      "difficulty": "<15 min fix",
+      "problem_statement_sha256": "5825c5a4fb9c815c7ce346478818d9a0160ebaaa75534bf94f3992b25a3f6cc3",
+      "selection_key": "137d0943935c00f159760cdbf3442725c281858a950880408354065a7863e024"
+    }
+  ],
+  "not_read_for_selection": [
+    "reference patch",
+    "test patch",
+    "model answer",
+    "answer length",
+    "answer regex result",
+    "provider cost"
+  ],
+  "rule_after_selection": "all selected outcomes count; no replacing a baseline-format failure with the next ID; new task or endpoint requires new explicit freeze",
+  "v15_fourth_candidate_not_substituted": true
+}

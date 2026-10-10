@@ -1,0 +1,59 @@
+{
+  "schema": "openai_agents_v18_read_shape_diff_amendment",
+  "date": "20261010",
+  "amends": "integrations/openai_agents/V18_READ_SHAPE_DIFF_20261010.json",
+  "why": "the reviewer found that MAX_TURNS was 10 while the nominal call count of the new shape is 13; a model that issues single reads would have hit MaxTurnsExceeded and been truncated in one arm only, which is the asymmetry this design exists to avoid. The protocol now requires each round's three reads in one turn, MAX_TURNS admits the single-read path, and the cap is re-derived from the new worst case",
+  "registry_changes": [
+    {
+      "label": "protocol_requires_one_batch_per_round",
+      "line_before": 286,
+      "old_sha256": "bd0d9d7a9dffcf88ba242cce4f594773aff670aa8eeca60d843596996def5692",
+      "new_sha256": "a542d772f7ae6d28dc89eee8de5769a0f9ad2bb1ad2e418cd1618bc9033169a7",
+      "old_text": "    return [\n        \"Call three read-only tools in each of \"\n        f\"{READ_ROUNDS} rounds, in this order, and never read the same registered view twice: \"\n        + \"; \".join(rounds)\n        + f\". That is {READ_CALLS} read calls over {len(views)} distinct registered views.\",\n        \"After the twelfth read, answer with the JSON object the request describes and call no \"\n        \"more tools: the host renders your JSON into the single RESULT line.\",\n    ]",
+      "new_text": "    return [\n        \"Call three read-only tools in each of \"\n        f\"{READ_ROUNDS} rounds, in this order, and never read the same registered view twice: \"\n        + \"; \".join(rounds)\n        + f\". That is {READ_CALLS} read calls over {len(views)} distinct registered views.\",\n        \"Issue the three calls of a round together in one turn, as a single batch of three \"\n        \"calls, and wait for their results before starting the next round. Do not split a round \"\n        \"into separate turns and do not issue a single read on its own.\",\n        f\"After the last round, having issued all {READ_CALLS} reads, answer with the JSON \"\n        \"object the request describes and call no more tools: the host renders your JSON into \"\n        \"the single RESULT line.\",\n    ]"
+    }
+  ],
+  "runner_changes": [
+    {
+      "label": "max_turns_admits_the_legal_single_read_path",
+      "line_before": 87,
+      "old_sha256": "22be9a78e9c9fc27c0d505ab00c6a3a530ace484ba6f37b5638964be97f5df21",
+      "new_sha256": "ed0878962a15a4c989b3cb8d5c99092e9e19f813a2ea81f7c591aeb454e06047",
+      "old_text": "MAX_TURNS = 10",
+      "new_text": "#: twelve reads, an answer and a retry must all fit: the protocol asks for four\n#: batches, but a model that issues single reads still needs twelve turns, and\n#: truncating one arm silently is exactly the asymmetry this design must avoid.\nMAX_TURNS = registry.READ_CALLS + 2"
+    },
+    {
+      "label": "pilot_cap_from_the_new_worst_case",
+      "line_before": 1452,
+      "old_sha256": "a18b7d69cb2e4744c2cc222ed600c9e59b95d0fd0cc138c6ddb0177ab45bf08c",
+      "new_sha256": "dce859e621fe22eda9c30e9b0fb35bbea451bb475f8d4f84ce3edf322f1b36ca",
+      "old_text": "PILOT_REPEATS = 1\nPILOT_MAX_API_REQUESTS = 110",
+      "new_text": "PILOT_REPEATS = 1\n#: worst case per sample is MAX_TURNS + one retry = 15 requests, so nine samples need\n#: at most 135 model requests plus six summary requests; the cap keeps a 1.32x margin\nPILOT_MAX_API_REQUESTS = 200"
+    },
+    {
+      "label": "pilot_arithmetic_uses_the_frozen_turn_budget",
+      "line_before": 1547,
+      "old_sha256": "9c30407b8eb57aad0ff559ede6192fefd7617da9f2394ab8a3dc7bf81b381d9a",
+      "new_sha256": "a64738ad3f6ad17671c41da2c26c76f477dbac74fc5efd38c0d47923ccbe3eae",
+      "old_text": "    samples = len(registry.task_ids()) * PILOT_REPEATS * len(PILOT_METHODS)\n    measured_low, measured_high = 2.67, 3.0\n    expected = samples * measured_high\n    worst_calls = samples * (registry.EXPECTED_MODEL_CALLS + live.RETRY_BUDGET_PER_SAMPLE)",
+      "new_text": "    samples = len(registry.task_ids()) * PILOT_REPEATS * len(PILOT_METHODS)\n    #: the four-round shape issues four read batches and one answer turn per sample when the\n    #: protocol is followed, and twelve reads, an answer and a retry when it is not\n    measured_low, measured_high = 2.67, 3.0\n    expected_per_sample = registry.READ_ROUNDS + 1\n    expected = samples * expected_per_sample\n    worst_per_sample = MAX_TURNS + live.RETRY_BUDGET_PER_SAMPLE\n    worst_calls = samples * worst_per_sample"
+    },
+    {
+      "label": "pilot_arithmetic_reports_both_numbers",
+      "line_before": 1560,
+      "old_sha256": "16cfa3e5c089bfe4b3616e3f48d3dbfdb41cd20fa97b7b001656be3da5a43846",
+      "new_sha256": "45d312bc1a6cdb9c62b0f2b9b7517fb7b0af184cbe77a288386edf574d066065",
+      "old_text": "        \"measured_model_calls_per_sample_low\": measured_low,\n        \"measured_model_calls_per_sample_high\": measured_high,",
+      "new_text": "        \"expected_model_calls_per_sample\": registry.READ_ROUNDS + 1,\n        \"worst_case_model_calls_per_sample\": MAX_TURNS + live.RETRY_BUDGET_PER_SAMPLE,\n        \"max_turns\": MAX_TURNS,\n        \"read_calls\": registry.READ_CALLS,\n        \"measured_model_calls_per_sample_low_of_the_two_round_shape\": measured_low,\n        \"measured_model_calls_per_sample_high_of_the_two_round_shape\": measured_high,"
+    }
+  ],
+  "new_worst_case": {
+    "per_sample": "MAX_TURNS + one retry = 15 requests",
+    "nine_samples": "135 model requests plus six summary requests = 141",
+    "cap": 200,
+    "margin": 1.418,
+    "expected_per_sample": "four read batches plus one answer = 5; nine samples plus summaries = about 48"
+  },
+  "criteria_changed": false,
+  "paid_requests": 0
+}

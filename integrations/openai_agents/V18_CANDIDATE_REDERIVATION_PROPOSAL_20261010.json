@@ -1,0 +1,79 @@
+{
+  "schema": "openai_agents_v18_candidate_rederivation_proposal",
+  "proposal_id": "openai-agents-v18-candidate-rederivation-02",
+  "date": "20261010",
+  "status": "PROPOSAL_ONLY_NOT_REGISTERED",
+  "api_requests_spent": 0,
+  "supersedes_the_rule_finding_of": "integrations/openai_agents/V18_SELECTION_PROPOSAL_REV2_20261010.json",
+  "does_not_touch": [
+    "the four views of each candidate: files, line ranges, symbols and view hashes are byte-identical to the selection branch and are not re-derived here",
+    "no registration is written and no confirmation batch is started: both await a separate authorisation"
+  ],
+  "rule_applied": "integrations/openai_agents/V18_LITERAL_DISCRIMINATIVENESS_RULE_20261010.json (rule id openai-agents-v18-code-anchored-literals-01)",
+
+  "what_was_re_derived": "only the required literals and the two regex tokens of each candidate. Everything else about the three candidates is the selection branch's own material, re-read from the pinned base commits in the local clone",
+
+  "problem_statement_reconciliation": {
+    "method": "the statement text was read from the public SWE-bench table and hashed, and the digest compared with the value the selection branch pinned",
+    "result": {
+      "django__django-15569": {"pinned": "107938cd24f7bef580939d1998ce566f02fe292c37bcd14013c5f28ec5fb4f51", "recomputed": "107938cd24f7bef580939d1998ce566f02fe292c37bcd14013c5f28ec5fb4f51", "matches": true},
+      "django__django-15572": {"pinned": "f9d1889009c44a56a4487dbf777c536841b4b30a2472ee1d1e30b75007f12aa3", "recomputed": "f9d1889009c44a56a4487dbf777c536841b4b30a2472ee1d1e30b75007f12aa3", "matches": true},
+      "django__django-16255": {"pinned": "2359a3443b4020179e535a3df289178a975a90472b1fb6c3c23adf85aee5c371", "recomputed": "2359a3443b4020179e535a3df289178a975a90472b1fb6c3c23adf85aee5c371", "matches": true}
+    },
+    "matching_hypothesis": "sha256 of the raw statement string, with no normalisation",
+    "the_stale_field": "all three entries in both selection proposals carry statement_hash_matches_preselection = false. That boolean is stale: it records a comparison made before the diagnosis, and the diagnosis itself (in the same artifact) already shows pool value equal to true sha256 for all three. A registration must write the recomputed boolean, not carry the stale one forward",
+    "required_action_before_registration": "write statement_hash_matches_preselection from a fresh comparison at registration time, and record this artifact as the reconciliation of record"
+  },
+
+  "candidate_material_re_derived_from_the_views": {
+    "method": "the view text was read at the pinned base commit; AST extraction over the view code records what the code binds (definitions, assignment targets, attribute targets and parameters), constants are the all-caps tokens, dotted versions and exception or type names appearing verbatim, and quoted strings are recorded separately because rule 1(c) admits them only outside the frozen stoplist",
+    "correction_of_the_earlier_extraction": "the first attempt of this pass recorded a docstring as a bound name and missed parameter names; that is fixed here, and it is the reason the material below differs from a naive name dump",
+    "django__django-15572": {
+      "views": ["django/template/autoreload.py:45-54 template_changed", "django/template/base.py:91-98 TokenType", "django/template/base.py:98-107 VariableDoesNotExist", "django/template/base.py:107-135 Origin"],
+      "code_anchored_available": ["BLOCK", "COMMENT", "Origin", "TEXT", "TokenType", "VAR", "VariableDoesNotExist", "file_path", "kwargs", "loader", "loader_name", "logger", "msg", "name", "other", "params", "self", "sender", "template_changed", "template_dir", "template_name"],
+      "names_failing_requirement_4": [],
+      "read_of_the_rev2_contract": "required template_changed, BLOCK, COMMENT with cause=template_changed and fix=BLOCK: all three are code anchored (a defined name and two enum members bound in view 2), neither regex token is a keyword or builtin, so requirements 1 to 4 hold. Rule 1(c) is satisfied without leaning on a quoted string"
+    },
+    "django__django-16255": {
+      "views": ["django/core/handlers/exception.py:21-60 convert_exception_to_response", "django/core/handlers/exception.py:60-158 response_for_exception", "django/core/handlers/exception.py:158-169 get_exception_response", "django/core/handlers/exception.py:169-185 handle_uncaught_exception"],
+      "code_anchored_available": ["DEBUG", "DEBUG_PROPAGATE_EXCEPTIONS", "HTTP", "MultiPartParserError", "POST", "callback", "convert_exception_to_response", "exc", "exc_info", "exception", "get_exception_response", "get_response", "handle_uncaught_exception", "inner", "request", "resolver", "response", "response_for_exception", "security_logger", "status_code"],
+      "names_failing_requirement_4": [],
+      "read_of_the_rev2_contract": "required get_response, inner, request with cause=get_response and fix=inner: get_response and inner are parameters bound in view 1, request is a parameter bound in every view, and neither regex token is a keyword or builtin, so requirements 1 to 4 hold",
+      "note_on_the_statement": "the statement is about sitemaps and callable lastmod, which does not match this view set; the views and the contract are the selection branch's own material and the mismatch is recorded here rather than silently repaired, because repairing it would mean deriving different views"
+    },
+    "django__django-15569": {
+      "views": ["django/db/models/query_utils.py:149-219 RegisterLookupMixin", "django/db/models/query_utils.py:219-256 select_related_descend", "django/db/models/query_utils.py:256-269 refs_expression", "django/db/models/query_utils.py:269-298 check_rel_lookup_compatibility"],
+      "code_anchored_available": ["FieldError", "LOOKUP_SEP", "RegisterLookupMixin", "_clear_cached_lookups", "_get_lookup", "_unregister_lookup", "annotations", "check_rel_lookup_compatibility", "get_lookup", "get_lookups", "get_transform", "level_n_lookup", "lookup", "lookup_name", "lookup_parts", "merge_dicts", "refs_expression", "register_lookup", "select_related_descend"],
+      "names_failing_requirement_4": [],
+      "the_rev2_rejection_is_wrong": "rev2 rejected this candidate with 'no code anchored name could serve as the regex tokens' and 'a regex token is not code anchored'. Both regex tokens are in fact code anchored in view 1: `class RegisterLookupMixin:` is at line 152 and `def _unregister_lookup(cls, lookup, lookup_name=None):` at line 212 of django/db/models/query_utils.py at commit 884b4c27f506b3c29d58509fc83a35c30ea10d94, and both are inside the registered range 149-219. Requirement 3 is therefore satisfied on the verified source, and the rejection was mistaken",
+      "proposed_contract": {
+        "issue_value": "django-15569",
+        "required_facts": ["RegisterLookupMixin", "_unregister_lookup", "LOOKUP_SEP"],
+        "cause_token": "RegisterLookupMixin",
+        "fix_token": "_unregister_lookup",
+        "frozen_regex": "RESULT issue=django-15569 cause=.*RegisterLookupMixin.* fix=.*_unregister_lookup.*",
+        "max_answer_chars": 160,
+        "why_the_third_literal_changed": "the selection branch's third literal was `should`, which fails requirement 2 as a non code anchored common word. LOOKUP_SEP is bound in view 3 and is a constant token, so it replaces it and the contract keeps three code anchored literals"
+      },
+      "minimal_feasible_line": {
+        "line": "RESULT issue=django-15569 cause=RegisterLookupMixin fix=_unregister_lookup LOOKUP_SEP",
+        "conditions_to_be_checked_at_registration": ["facts_complete", "frozen_regex", "single_line_prefix", "within_160"]
+      },
+      "why_this_candidate_is_the_best_of_the_three": "its statement literally names both regex tokens - 'RegisterLookupMixin._unregister_lookup() should clear the lookup cache' - so the contract is anchored in the same place the statement is, which is what the rule asks for"
+    }
+  },
+
+  "what_is_not_done_and_why": {
+    "not_registered": "registration writes a frozen artifact and freezes the task set; the integrator said the proposal is the stopping point",
+    "no_checks_executed_here": "the computational checks of policy (requirement 5, the lazy answer control on the new 15569 contract, and a lexer level re-verification of every literal against the four views) are computations over the views and need to run before registration",
+    "what_the_next_zero_api_step_must_do": [
+      "run the lazy answer negative control for each candidate against the re-derived contract",
+      "lexer verify every required literal and both regex tokens against the four view texts and record the source view and line for each",
+      "assert the 160 character bound on the minimal feasible line for each candidate",
+      "confirm token counts, tool names, distinct ranges and distinct file hashes are unchanged from the selection branch, since none of them may move",
+      "produce the registration artifact with a freshly recomputed statement_hash_matches_preselection"
+    ]
+  },
+
+  "citable": false
+}

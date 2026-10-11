@@ -1,0 +1,383 @@
+{
+  "schema": "openai_agents_v24_length_compliance_k1_amended_gate",
+  "amended_gate_id": "openai-agents-v24-k1-amended-gate-01",
+  "date": "20261010",
+  "generated_utc": "2026-10-10T23:38:24+00:00",
+  "api_calls": 0,
+  "mode": "gate-amendment",
+  "experiment_id": "openai-repo-diagnostic-v24-length-compliance-k1-02",
+  "produced_by": "experiments/runners/run_openai_agents_v24_gate_amendment.py",
+  "amendment": {
+    "path": "integrations/openai_agents/V24_RECALIBRATION_GATE_AMENDMENT_20261010.json",
+    "sha256": "143250ba9d8899b8d744d8c9d06b3aad8b68483c2f6eeba49e389936334afd72",
+    "pinned_sha256": "143250ba9d8899b8d744d8c9d06b3aad8b68483c2f6eeba49e389936334afd72",
+    "digest_matches_the_pin": true,
+    "present": true,
+    "amendment_id": "openai-agents-v24-gate-amendment-01",
+    "amends": "integrations/openai_agents/V24_LENGTH_COMPLIANCE_FIX_PLAN_20261010.json",
+    "decided_by": "integrator",
+    "citable": false,
+    "api_requests_spent_when_written": 0
+  },
+  "amendment_is_fail_closed": "the paid pass re-reads the amendment file, recomputes its digest and compares it with the pin recorded here and in this module before it sends anything; a missing file or one byte of drift refuses the batch",
+  "the_frozen_runners_own_gate_artifact_is_untouched": "this mode reads the v24 gate artifact, re-runs the frozen gate body in this process and writes this amended artifact; the original file's digest is recorded here and below, and no mode of this module writes it",
+  "installed_for_the_gate_re_run": "runner.sealed_v24_registry_installed() then runner.select_window(K) then runner.configure(), which is the frozen runner's own --gate preamble",
+  "recorded_frozen_gate": {
+    "path": "integrations/openai_agents/V24_LENGTH_COMPLIANCE_K1_ZERO_API_GATE_20261010.json",
+    "sha256": "eb2fc69d1a78952be9887c886cd0576d133802e176de22a1879d63de8d8fe0d0",
+    "written_utc": "2026-10-10T18:30:07+00:00",
+    "paid_run_allowed": true,
+    "ok": true,
+    "amendment_sha256": "143250ba9d8899b8d744d8c9d06b3aad8b68483c2f6eeba49e389936334afd72",
+    "delegate_sha256": "0704ef2a7b0e9d5eab455a262d60368c6026fc604f04c205026e02044404fa8f",
+    "batch_experiment_id": "openai-repo-diagnostic-v24-length-compliance-k1-02"
+  },
+  "delegate": {
+    "module": "experiments/runners/run_openai_agents_v24_gate_amendment.py",
+    "sha256": "0704ef2a7b0e9d5eab455a262d60368c6026fc604f04c205026e02044404fa8f",
+    "why_a_delegate": "the frozen confirmation runner's bytes are pinned inside the confirmation module revision ledger, that ledger is write-once and the frozen gate fails closed on module drift, so the amendment is carried by a new file that imports the frozen runner unchanged and mounts it for the paid pass",
+    "the_frozen_runner_is_not_edited": true
+  },
+  "frozen_runner_unchanged": {
+    "module": "experiments/runners/run_openai_agents_v24_length_compliance_k1.py",
+    "recorded_sha256": "338a6415e5934b9789a92ec53d103b9b9280385640b8d8e1f95439e5e1c9d592",
+    "live_sha256": "338a6415e5934b9789a92ec53d103b9b9280385640b8d8e1f95439e5e1c9d592",
+    "why_the_amendment_is_not_in_the_runner": "the runner's bytes are pinned inside the write-once confirmation ledger and the frozen gate fails closed on module drift, so carrying the amendment inside it would void the pin; the gate's own ``_paid_path_pins_this_runner_or_delegates_it`` expects a delegate for this case"
+  },
+  "frozen_gate_re_run": {
+    "checks": 38,
+    "failed_checks": [],
+    "hard_assertions": {
+      "a_finalise_really_runs": true,
+      "b_trigger_gate_fires_every_call": true,
+      "c_mechanism_engages_on_unique_content": true,
+      "d_every_module_pinned": true,
+      "e_literal_invariant_holds_on_real_payloads": true,
+      "f_single_occurrence_paths_note_rule_and_recency": true,
+      "g_length_discipline_sentence_identical_in_every_arms_first_prompt": true,
+      "h_over_length_retry_wording_strengthened_and_two_sided": true
+    },
+    "per_sample_mechanism_samples": 45,
+    "shape": {
+      "samples": 45,
+      "repeats": 5,
+      "cap": 390,
+      "experiment_id_of_this_batch": "openai-repo-diagnostic-v24-length-compliance-k1-02",
+      "experiment_id_the_frozen_artifact_names": "openai-repo-diagnostic-v24-length-compliance-k1-01"
+    }
+  },
+  "inherited_plan_and_arithmetic": {
+    "planned_requests": {
+      "samples": 45,
+      "reads_plus_answer_per_sample": 4,
+      "minimum_planned_requests": 180,
+      "worst_case_logical_requests_with_one_retry_each": 225,
+      "pre_registered_worst_case": 300,
+      "max_api_requests": 390,
+      "max_api_retries_per_model_call": 2,
+      "transport_retries_share_the_cap": true,
+      "worst_case_fits_the_cap": true
+    },
+    "arithmetic": {
+      "shape": "N3",
+      "rounds": 3,
+      "reads_per_round": 1,
+      "read_calls": 3,
+      "plan_order": [
+        0,
+        1,
+        2
+      ],
+      "views": 3,
+      "views_read_once_each": true,
+      "duplicate_content_by_construction": false,
+      "expected_requests_per_sample": 4,
+      "max_turns": 5,
+      "retry_budget_per_sample": 1,
+      "worst_case_requests_per_sample": 6,
+      "samples": 45,
+      "native_samples": 15,
+      "arms": [
+        "none",
+        "native_summary",
+        "pruner_v1"
+      ],
+      "repeats": 5,
+      "worst_case_model_calls": 270,
+      "summary_calls_worst_case": 30,
+      "worst_case_requests": 300,
+      "cap": 390,
+      "margin": 1.3,
+      "at_least_1_3": true,
+      "derivation": "READ_CALLS=3 => MAX_TURNS = 3+2 = 5 => worst case 6 per sample => 45x6 + 15x2 = 300 => 1.3x => 390"
+    }
+  },
+  "criteria_evaluation": {
+    "evaluated_at": "the amended zero-API gate, before any paid request",
+    "results": {
+      "zero_render_failures_zero_truncations_zero_dropped_fields": true,
+      "every_arms_strict_track_at_or_above_the_baseline": true,
+      "every_arms_semantic_correctness_at_or_above_the_baseline": true,
+      "retry_recovery_rate_at_least_90_percent": true
+    },
+    "where": {
+      "zero_render_failures_zero_truncations_zero_dropped_fields": "the frozen gate's trigger-gate, mechanism and literal-invariant assertions, all of which are zero-API; the batch's own rows are judged by the independent audit",
+      "every_arms_strict_track_at_or_above_the_baseline": "the frozen gate's first-prompt assertion, which is what makes the strict track arm-neutral; the per-task track is judged by the independent audit",
+      "every_arms_semantic_correctness_at_or_above_the_baseline": "the frozen gate's retry-wording assertion, which is what keeps the answer reachable in every arm; the endpoint is judged by the independent audit",
+      "retry_recovery_rate_at_least_90_percent": "the gate can only establish that the repair path is installed and two-sided; the rate itself is a property of the batch and is measured by the independent audit"
+    },
+    "measured_by_the_recalibration": "five of five first-attempt rejections repaired to an accepted answer, which is the amendment's own measurement and is disclosed as such rather than re-derived here",
+    "residual_risk_carried_into_this_batch": "at 44 percent first-attempt acceptance, roughly half of the samples are expected to spend the single billed retry; retries are charged to their arm, they add calls to a trajectory, and in earlier batches one asymmetric retry moved a pooled mean by 7 to 21 percentage points"
+  },
+  "amendment_reference_assertion": {
+    "check": "the batch runner reads the amendment's path and sha256 and fails closed when either is missing or does not match",
+    "amendment": {
+      "path": "integrations/openai_agents/V24_RECALIBRATION_GATE_AMENDMENT_20261010.json",
+      "sha256": "143250ba9d8899b8d744d8c9d06b3aad8b68483c2f6eeba49e389936334afd72",
+      "pinned_sha256": "143250ba9d8899b8d744d8c9d06b3aad8b68483c2f6eeba49e389936334afd72",
+      "digest_matches_the_pin": true,
+      "present": true,
+      "amendment_id": "openai-agents-v24-gate-amendment-01",
+      "amends": "integrations/openai_agents/V24_LENGTH_COMPLIANCE_FIX_PLAN_20261010.json",
+      "decided_by": "integrator",
+      "citable": false,
+      "api_requests_spent_when_written": 0
+    },
+    "where_the_runner_reads_it": "this delegate's ``verify_amendment``, which the paid pass calls before the frozen paid path and which the manifest block records",
+    "no_other_gate_was_weakened": "the frozen runner's own gate is re-run here and every one of its assertions and hard assertions is reported above unchanged; the frozen gate artifact is read, never written",
+    "the_original_gate_artifact_is_untouched": {
+      "path": "integrations/openai_agents/V24_LENGTH_COMPLIANCE_K1_ZERO_API_GATE_20261010.json",
+      "sha256": "eb2fc69d1a78952be9887c886cd0576d133802e176de22a1879d63de8d8fe0d0",
+      "written_utc": "2026-10-10T18:30:07+00:00"
+    }
+  },
+  "checks": [
+    {
+      "check": "the_frozen_runners_own_gate_passes_unchanged_for_this_batch",
+      "ok": true,
+      "detail": {
+        "checks": 38,
+        "failed_checks": [],
+        "hard_assertions": {
+          "a_finalise_really_runs": true,
+          "b_trigger_gate_fires_every_call": true,
+          "c_mechanism_engages_on_unique_content": true,
+          "d_every_module_pinned": true,
+          "e_literal_invariant_holds_on_real_payloads": true,
+          "f_single_occurrence_paths_note_rule_and_recency": true,
+          "g_length_discipline_sentence_identical_in_every_arms_first_prompt": true,
+          "h_over_length_retry_wording_strengthened_and_two_sided": true
+        },
+        "paid_run_allowed": true,
+        "no_assertion_was_removed_dropped_or_relaxed": "the frozen gate body ran as it stands, under the same sealed-round installation the frozen runner's own --gate mode uses; this module only reads its result"
+      }
+    },
+    {
+      "check": "the_original_v24_gate_artifact_is_green_and_was_not_written_by_this_run",
+      "ok": true,
+      "detail": {
+        "path": "integrations/openai_agents/V24_LENGTH_COMPLIANCE_K1_ZERO_API_GATE_20261010.json",
+        "sha256": "eb2fc69d1a78952be9887c886cd0576d133802e176de22a1879d63de8d8fe0d0",
+        "written_utc": "2026-10-10T18:30:07+00:00",
+        "paid_run_allowed": true,
+        "checks": 38,
+        "file_unchanged_during_this_run": true
+      }
+    },
+    {
+      "check": "the_amendment_pin_and_the_ruling_shape_are_verified_fail_closed",
+      "ok": true,
+      "detail": {
+        "checks": [
+          {
+            "check": "the_amendment_file_is_present_and_is_the_pinned_bytes",
+            "ok": true,
+            "detail": {
+              "path": "integrations/openai_agents/V24_RECALIBRATION_GATE_AMENDMENT_20261010.json",
+              "sha256": "143250ba9d8899b8d744d8c9d06b3aad8b68483c2f6eeba49e389936334afd72",
+              "pinned_sha256": "143250ba9d8899b8d744d8c9d06b3aad8b68483c2f6eeba49e389936334afd72"
+            }
+          },
+          {
+            "check": "the_amendment_is_the_ruling_this_delegate_was_written_for",
+            "ok": true,
+            "detail": {
+              "amendment_id": "openai-agents-v24-gate-amendment-01",
+              "amends": "integrations/openai_agents/V24_LENGTH_COMPLIANCE_FIX_PLAN_20261010.json",
+              "expected_amendment_id": "openai-agents-v24-gate-amendment-01",
+              "expected_amends": "integrations/openai_agents/V24_LENGTH_COMPLIANCE_FIX_PLAN_20261010.json",
+              "citable": false,
+              "api_requests_spent_when_written": 0
+            }
+          },
+          {
+            "check": "the_amendment_reads_out_the_four_operative_clauses_this_delegate_decides",
+            "ok": true,
+            "detail": {
+              "clauses_in_the_amendment": [
+                "zero render failures, zero truncations, zero dropped fields",
+                "every arm's strict track at or above the baseline",
+                "every arm's semantic correctness at or above the baseline",
+                "retry recovery rate at least 90 percent, measured at five of five in the recalibration"
+              ],
+              "clauses_this_delegate_decides": [
+                "zero render failures, zero truncations, zero dropped fields",
+                "every arm's strict track at or above the baseline",
+                "every arm's semantic correctness at or above the baseline",
+                "retry recovery rate at least 90 percent, measured at five of five in the recalibration"
+              ]
+            }
+          },
+          {
+            "check": "the_amendment_replaces_the_first_attempt_line_rather_than_meeting_it",
+            "ok": true,
+            "detail": {
+              "the_70_percent_line_is_replaced_as_the_gate": "that line was imported from the v17 round, where the failure mode was that the retry could not repair the answer, so the first attempt rate was the binding risk. Under v24 the retry repairs the answer on five of five, so the operative criterion is no longer the first attempt rate but whether the batch can complete without a render failure, which is exactly what the frozen hard stop fires on",
+              "the_residual_risk_stated_plainly": "at 44 percent first attempt acceptance roughly half of the confirmation samples will spend the billed retry. Retries are charged to their arm, they add calls to a trajectory, and in earlier batches a single asymmetric retry moved a pooled mean by 7 to 21 percentage points. The confirmation must therefore report first attempt acceptance, the retry count per arm, and the retry label of every pair, and the co-primary symmetric matched prefix figure is the descriptor of the mechanism that is robust to this"
+            }
+          },
+          {
+            "check": "the_amendment_records_what_may_still_not_be_done",
+            "ok": true,
+            "detail": {
+              "what_may_still_not_be_done": [
+                "weakening any literal, including django-15572's literals, to raise acceptance",
+                "dropping a task after seeing it fail",
+                "silently proceeding without recording this gate revision and the residual risk",
+                "reporting the confirmation as if the configuration met the 70 percent first attempt line, which it does not"
+              ]
+            }
+          },
+          {
+            "check": "every_report_item_the_amendment_requires_has_a_recorded_home_in_this_round",
+            "ok": true,
+            "detail": {
+              "required_in_the_confirmation_report": [
+                "first attempt acceptance overall and per arm, which is expected to be near 44 percent and must be stated",
+                "retry count per arm and per pair, with the retry label of every pair",
+                "the as-paired primary and the symmetric matched prefix co-primary, both in complete provider tokens, plus the byte proxy",
+                "strict track and semantic correctness per arm",
+                "the disclosure that this is the second run of the same sealed task set, the first having stopped at 39 of 45 under v23, and that the set is exhausted after this batch"
+              ],
+              "where_each_is_reported": {
+                "first_attempt_acceptance_overall_and_per_arm": "the independent audit's first_attempt_acceptance block: overall, per arm, with the rejection-class decomposition and the per-sample retry labels",
+                "retry_count_per_arm_and_per_pair_with_the_retry_label_of_every_pair": "the audit's per_arm retry counts and its per-pair retrying_arm and retry labels",
+                "as_paired_primary_and_symmetric_matched_prefix_co_primary_in_complete_provider_tokens_and_bytes": "the audit's primary_criterion and co_reported blocks, in complete provider tokens and in context bytes",
+                "strict_track_and_semantic_correctness_per_arm": "the audit's per-arm strict track and semantic accuracy",
+                "the_disclosure_that_this_is_the_second_run_of_the_same_sealed_task_set": "the freeze, the registration and the manifest's v24_prior_batch_disclosure and v24_task_set_exhaustion blocks"
+              }
+            }
+          },
+          {
+            "check": "the_frozen_runner_on_disk_is_still_the_module_the_confirmation_ledger_pins",
+            "ok": true,
+            "detail": {
+              "module": "experiments/runners/run_openai_agents_v24_length_compliance_k1.py",
+              "recorded_sha256": "338a6415e5934b9789a92ec53d103b9b9280385640b8d8e1f95439e5e1c9d592",
+              "live_sha256": "338a6415e5934b9789a92ec53d103b9b9280385640b8d8e1f95439e5e1c9d592",
+              "why": "the amendment is carried outside the runner on purpose; if the runner's bytes moved, the batch would be run by code the gate did not pin"
+            }
+          }
+        ],
+        "failed": [],
+        "amendment": {
+          "path": "integrations/openai_agents/V24_RECALIBRATION_GATE_AMENDMENT_20261010.json",
+          "sha256": "143250ba9d8899b8d744d8c9d06b3aad8b68483c2f6eeba49e389936334afd72",
+          "pinned_sha256": "143250ba9d8899b8d744d8c9d06b3aad8b68483c2f6eeba49e389936334afd72",
+          "digest_matches_the_pin": true,
+          "present": true,
+          "amendment_id": "openai-agents-v24-gate-amendment-01",
+          "amends": "integrations/openai_agents/V24_LENGTH_COMPLIANCE_FIX_PLAN_20261010.json",
+          "decided_by": "integrator",
+          "citable": false,
+          "api_requests_spent_when_written": 0
+        }
+      }
+    },
+    {
+      "check": "the_live_modules_are_the_modules_the_re_run_gate_just_pinned",
+      "ok": true,
+      "detail": {
+        "modules": 19,
+        "drifted": [],
+        "gate_artifact_module_hashes_match_live": true
+      }
+    },
+    {
+      "check": "the_batch_the_amendment_allows_is_the_frozen_matrix_with_its_cap",
+      "ok": true,
+      "detail": {
+        "planned": {
+          "samples": 45,
+          "reads_plus_answer_per_sample": 4,
+          "minimum_planned_requests": 180,
+          "worst_case_logical_requests_with_one_retry_each": 225,
+          "pre_registered_worst_case": 300,
+          "max_api_requests": 390,
+          "max_api_retries_per_model_call": 2,
+          "transport_retries_share_the_cap": true,
+          "worst_case_fits_the_cap": true
+        },
+        "cap_derivation": "READ_CALLS=3 => MAX_TURNS = 3+2 = 5 => worst case 6 per sample => 45x6 + 15x2 = 300 => 1.3x => 390"
+      }
+    },
+    {
+      "check": "the_paid_path_that_will_run_refuses_resume_and_verifies_this_amendment",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "delegates_to_the_frozen_paid_path": true,
+        "verifies_the_amendment_before_it_sends": true,
+        "installs_the_amendment_block_into_the_manifest": true,
+        "resume_is_refused": true,
+        "resume_rule": "``--resume`` is refused by this delegate before anything else, because a resumed batch could skip samples the frozen matrix requires",
+        "pins_the_run_id": "openai-repo-diagnostic-v24-length-compliance-k1-02",
+        "installs_the_frozen_round_before_the_paid_path": "sealed_v24_registry_installed, select_window(K) and configure(), the same preamble the frozen gate and the frozen paid path run under",
+        "pins_the_frozen_runner_or_delegates_it": "the frozen paid path writes and compares the runner bytes outside the repository before its first request"
+      }
+    },
+    {
+      "check": "the_delegate_that_carries_the_amendment_is_pinned_by_its_own_bytes",
+      "ok": true,
+      "detail": {
+        "module": "experiments/runners/run_openai_agents_v24_gate_amendment.py",
+        "sha256": "0704ef2a7b0e9d5eab455a262d60368c6026fc604f04c205026e02044404fa8f",
+        "why_a_delegate": "the frozen confirmation runner's bytes are pinned inside the confirmation module revision ledger, that ledger is write-once and the frozen gate fails closed on module drift, so the amendment is carried by a new file that imports the frozen runner unchanged and mounts it for the paid pass",
+        "the_frozen_runner_is_not_edited": true
+      }
+    },
+    {
+      "check": "every_clause_of_the_amendment_has_its_gate_stage_check_and_none_is_missing",
+      "ok": true,
+      "detail": {
+        "evaluated_at": "the amended zero-API gate, before any paid request",
+        "results": {
+          "zero_render_failures_zero_truncations_zero_dropped_fields": true,
+          "every_arms_strict_track_at_or_above_the_baseline": true,
+          "every_arms_semantic_correctness_at_or_above_the_baseline": true,
+          "retry_recovery_rate_at_least_90_percent": true
+        },
+        "where": {
+          "zero_render_failures_zero_truncations_zero_dropped_fields": "the frozen gate's trigger-gate, mechanism and literal-invariant assertions, all of which are zero-API; the batch's own rows are judged by the independent audit",
+          "every_arms_strict_track_at_or_above_the_baseline": "the frozen gate's first-prompt assertion, which is what makes the strict track arm-neutral; the per-task track is judged by the independent audit",
+          "every_arms_semantic_correctness_at_or_above_the_baseline": "the frozen gate's retry-wording assertion, which is what keeps the answer reachable in every arm; the endpoint is judged by the independent audit",
+          "retry_recovery_rate_at_least_90_percent": "the gate can only establish that the repair path is installed and two-sided; the rate itself is a property of the batch and is measured by the independent audit"
+        },
+        "measured_by_the_recalibration": "five of five first-attempt rejections repaired to an accepted answer, which is the amendment's own measurement and is disclosed as such rather than re-derived here",
+        "residual_risk_carried_into_this_batch": "at 44 percent first-attempt acceptance, roughly half of the samples are expected to spend the single billed retry; retries are charged to their arm, they add calls to a trajectory, and in earlier batches one asymmetric retry moved a pooled mean by 7 to 21 percentage points"
+      }
+    }
+  ],
+  "ok": true,
+  "paid_run_allowed": true,
+  "paid_run_allowed_rule": "true only when the frozen runner's own gate passes unchanged under this amendment, the amendment is byte its pin, the ruling's clauses are the four this delegate decides, the frozen runner still matches the ledger's pin, and the delegate is pinned",
+  "wording": {
+    "required": "under this host configuration",
+    "forbidden": [
+      "compression alone saved X percent",
+      "the four criteria are met",
+      "the retry tax is gone",
+      "the plugin saves about 12.5 percent of context"
+    ]
+  }
+}

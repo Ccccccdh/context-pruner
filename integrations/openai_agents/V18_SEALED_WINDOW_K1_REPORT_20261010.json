@@ -1,0 +1,864 @@
+{
+  "schema": "openai_agents_v18_sealed_window_k1_report",
+  "date": "20261010",
+  "generated_utc": "2026-10-10T18:00:40+00:00",
+  "experiment_id": "openai-repo-diagnostic-v23-v18-sealed-window-k1-01",
+  "batch_directory": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v23-v18-sealed-window-k1-01",
+  "window": {
+    "k": 1,
+    "config_module": "experiments/runners/openai_agents_v22_window_k1.py",
+    "mechanism": "guaranteed-evidence line-level elision (literal-carrier elision), K=1",
+    "chain": "experiments/runners/openai_agents_v22_chain.py"
+  },
+  "task_set": [
+    "autoreload_template_changed",
+    "sitemap_callable_lastmod",
+    "query_utils_unregister_lookup"
+  ],
+  "matrix": {
+    "tasks": 3,
+    "repeats": 5,
+    "arms": [
+      "none",
+      "native_summary",
+      "pruner_v1"
+    ],
+    "samples": 39,
+    "cap": 390
+  },
+  "primary_criterion": {
+    "name": "as-paired complete provider tokens",
+    "matrix_complete": false,
+    "missing_pairs": [
+      "sitemap_callable_lastmod/4",
+      "query_utils_unregister_lookup/4"
+    ],
+    "partial_matrix_only": true,
+    "partial_matrix_note": "the batch stopped before the frozen matrix was complete, so these numbers describe a partial matrix; they are recorded to make the stop explicable and they may not be cited as this round's result under any reading",
+    "per_task": {
+      "autoreload_template_changed": {
+        "paired_n": 5,
+        "mean": 0.006234,
+        "savings": [
+          0.007002,
+          0.007221,
+          0.004522,
+          0.005874,
+          0.006553
+        ],
+        "positive_pairs": 5,
+        "strict_track": {
+          "none": 0,
+          "native_summary": 0,
+          "pruner_v1": 0
+        },
+        "semantic_accuracy": {
+          "none": 0,
+          "native_summary": 0,
+          "pruner_v1": 0
+        }
+      },
+      "sitemap_callable_lastmod": {
+        "paired_n": 4,
+        "mean": 0.080446,
+        "savings": [
+          0.245162,
+          0.245571,
+          -0.219283,
+          0.050334
+        ],
+        "positive_pairs": 3,
+        "strict_track": {
+          "none": 4,
+          "native_summary": 4,
+          "pruner_v1": 4
+        },
+        "semantic_accuracy": {
+          "none": 4,
+          "native_summary": 4,
+          "pruner_v1": 4
+        }
+      },
+      "query_utils_unregister_lookup": {
+        "paired_n": 4,
+        "mean": 0.002411,
+        "savings": [
+          0.002847,
+          0.004709,
+          0.001428,
+          0.000659
+        ],
+        "positive_pairs": 4,
+        "strict_track": {
+          "none": 4,
+          "native_summary": 4,
+          "pruner_v1": 4
+        },
+        "semantic_accuracy": {
+          "none": 4,
+          "native_summary": 4,
+          "pruner_v1": 4
+        }
+      }
+    },
+    "pooled": {
+      "n": 13,
+      "mean": 0.027892,
+      "sd": 0.115883,
+      "min": -0.219283,
+      "max": 0.245571,
+      "positive": 12,
+      "mean_saving": 0.027892,
+      "majority_positive": true,
+      "bootstrap": {
+        "rounds": 10000,
+        "seed": 20261010,
+        "lower": -0.029046,
+        "upper": 0.085661,
+        "excludes_zero": false,
+        "note": "reported for explanation; the frozen verdict is the per-task strict track, the majority and the mean"
+      }
+    },
+    "strict_all_tasks_at_least_baseline": true,
+    "semantic_accuracy_all_tasks_at_least_baseline": true,
+    "met": false,
+    "pairs": [
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 0,
+        "baseline_tokens": 8854,
+        "plugin_tokens": 8792,
+        "native_tokens": 8857,
+        "as_paired_tokens": 0.007002,
+        "matched_prefix_k": 5,
+        "matched_prefix_tokens": 0.007061,
+        "matched_prefix_bytes": 0.00798,
+        "matched_prefix_is_symmetric": true,
+        "baseline_calls": 5,
+        "plugin_calls": 5,
+        "baseline_retried": true,
+        "plugin_retried": true,
+        "native_retried": true,
+        "retrying_arm": "none, native_summary, pruner_v1",
+        "baseline_strict": false,
+        "plugin_strict": false,
+        "baseline_answer_correct": false,
+        "plugin_answer_correct": false,
+        "baseline_tool_calls": 3,
+        "plugin_tool_calls": 3
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 1,
+        "baseline_tokens": 8863,
+        "plugin_tokens": 8799,
+        "native_tokens": 8856,
+        "as_paired_tokens": 0.007221,
+        "matched_prefix_k": 5,
+        "matched_prefix_tokens": 0.007287,
+        "matched_prefix_bytes": 0.008828,
+        "matched_prefix_is_symmetric": true,
+        "baseline_calls": 5,
+        "plugin_calls": 5,
+        "baseline_retried": true,
+        "plugin_retried": true,
+        "native_retried": true,
+        "retrying_arm": "none, native_summary, pruner_v1",
+        "baseline_strict": false,
+        "plugin_strict": false,
+        "baseline_answer_correct": false,
+        "plugin_answer_correct": false,
+        "baseline_tool_calls": 3,
+        "plugin_tool_calls": 3
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 2,
+        "baseline_tokens": 8845,
+        "plugin_tokens": 8805,
+        "native_tokens": 8851,
+        "as_paired_tokens": 0.004522,
+        "matched_prefix_k": 5,
+        "matched_prefix_tokens": 0.006713,
+        "matched_prefix_bytes": 0.007977,
+        "matched_prefix_is_symmetric": true,
+        "baseline_calls": 5,
+        "plugin_calls": 5,
+        "baseline_retried": true,
+        "plugin_retried": true,
+        "native_retried": true,
+        "retrying_arm": "none, native_summary, pruner_v1",
+        "baseline_strict": false,
+        "plugin_strict": false,
+        "baseline_answer_correct": false,
+        "plugin_answer_correct": false,
+        "baseline_tool_calls": 3,
+        "plugin_tool_calls": 3
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 3,
+        "baseline_tokens": 8852,
+        "plugin_tokens": 8800,
+        "native_tokens": 8856,
+        "as_paired_tokens": 0.005874,
+        "matched_prefix_k": 5,
+        "matched_prefix_tokens": 0.006598,
+        "matched_prefix_bytes": 0.007693,
+        "matched_prefix_is_symmetric": true,
+        "baseline_calls": 5,
+        "plugin_calls": 5,
+        "baseline_retried": true,
+        "plugin_retried": true,
+        "native_retried": true,
+        "retrying_arm": "none, native_summary, pruner_v1",
+        "baseline_strict": false,
+        "plugin_strict": false,
+        "baseline_answer_correct": false,
+        "plugin_answer_correct": false,
+        "baseline_tool_calls": 3,
+        "plugin_tool_calls": 3
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 4,
+        "baseline_tokens": 8851,
+        "plugin_tokens": 8793,
+        "native_tokens": 8860,
+        "as_paired_tokens": 0.006553,
+        "matched_prefix_k": 5,
+        "matched_prefix_tokens": 0.006482,
+        "matched_prefix_bytes": 0.007407,
+        "matched_prefix_is_symmetric": true,
+        "baseline_calls": 5,
+        "plugin_calls": 5,
+        "baseline_retried": true,
+        "plugin_retried": true,
+        "native_retried": true,
+        "retrying_arm": "none, native_summary, pruner_v1",
+        "baseline_strict": false,
+        "plugin_strict": false,
+        "baseline_answer_correct": false,
+        "plugin_answer_correct": false,
+        "baseline_tool_calls": 3,
+        "plugin_tool_calls": 3
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "repeat": 0,
+        "baseline_tokens": 11058,
+        "plugin_tokens": 8347,
+        "native_tokens": 11066,
+        "as_paired_tokens": 0.245162,
+        "matched_prefix_k": 4,
+        "matched_prefix_tokens": 0.032026,
+        "matched_prefix_bytes": 0.0562,
+        "matched_prefix_is_symmetric": true,
+        "baseline_calls": 5,
+        "plugin_calls": 4,
+        "baseline_retried": true,
+        "plugin_retried": false,
+        "native_retried": true,
+        "retrying_arm": "none, native_summary",
+        "baseline_strict": true,
+        "plugin_strict": true,
+        "baseline_answer_correct": true,
+        "plugin_answer_correct": true,
+        "baseline_tool_calls": 3,
+        "plugin_tool_calls": 3
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "repeat": 1,
+        "baseline_tokens": 11064,
+        "plugin_tokens": 8347,
+        "native_tokens": 8587,
+        "as_paired_tokens": 0.245571,
+        "matched_prefix_k": 4,
+        "matched_prefix_tokens": 0.032026,
+        "matched_prefix_bytes": 0.0562,
+        "matched_prefix_is_symmetric": true,
+        "baseline_calls": 5,
+        "plugin_calls": 4,
+        "baseline_retried": true,
+        "plugin_retried": false,
+        "native_retried": false,
+        "retrying_arm": "none",
+        "baseline_strict": true,
+        "plugin_strict": true,
+        "baseline_answer_correct": true,
+        "plugin_answer_correct": true,
+        "baseline_tool_calls": 3,
+        "plugin_tool_calls": 3
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "repeat": 2,
+        "baseline_tokens": 8619,
+        "plugin_tokens": 10509,
+        "native_tokens": 11058,
+        "as_paired_tokens": -0.219283,
+        "matched_prefix_k": 4,
+        "matched_prefix_tokens": 0.032026,
+        "matched_prefix_bytes": 0.0562,
+        "matched_prefix_is_symmetric": true,
+        "baseline_calls": 4,
+        "plugin_calls": 5,
+        "baseline_retried": false,
+        "plugin_retried": true,
+        "native_retried": true,
+        "retrying_arm": "native_summary, pruner_v1",
+        "baseline_strict": true,
+        "plugin_strict": true,
+        "baseline_answer_correct": true,
+        "plugin_answer_correct": true,
+        "baseline_tool_calls": 3,
+        "plugin_tool_calls": 3
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "repeat": 3,
+        "baseline_tokens": 11066,
+        "plugin_tokens": 10509,
+        "native_tokens": 8603,
+        "as_paired_tokens": 0.050334,
+        "matched_prefix_k": 5,
+        "matched_prefix_tokens": 0.050653,
+        "matched_prefix_bytes": 0.079471,
+        "matched_prefix_is_symmetric": true,
+        "baseline_calls": 5,
+        "plugin_calls": 5,
+        "baseline_retried": true,
+        "plugin_retried": true,
+        "native_retried": false,
+        "retrying_arm": "none, pruner_v1",
+        "baseline_strict": true,
+        "plugin_strict": true,
+        "baseline_answer_correct": true,
+        "plugin_answer_correct": true,
+        "baseline_tool_calls": 3,
+        "plugin_tool_calls": 3
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 0,
+        "baseline_tokens": 9131,
+        "plugin_tokens": 9105,
+        "native_tokens": 9111,
+        "as_paired_tokens": 0.002847,
+        "matched_prefix_k": 5,
+        "matched_prefix_tokens": 0.002802,
+        "matched_prefix_bytes": 0.003885,
+        "matched_prefix_is_symmetric": true,
+        "baseline_calls": 5,
+        "plugin_calls": 5,
+        "baseline_retried": true,
+        "plugin_retried": true,
+        "native_retried": true,
+        "retrying_arm": "none, native_summary, pruner_v1",
+        "baseline_strict": true,
+        "plugin_strict": true,
+        "baseline_answer_correct": true,
+        "plugin_answer_correct": true,
+        "baseline_tool_calls": 3,
+        "plugin_tool_calls": 3
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 1,
+        "baseline_tokens": 9131,
+        "plugin_tokens": 9088,
+        "native_tokens": 9103,
+        "as_paired_tokens": 0.004709,
+        "matched_prefix_k": 5,
+        "matched_prefix_tokens": 0.003363,
+        "matched_prefix_bytes": 0.004053,
+        "matched_prefix_is_symmetric": true,
+        "baseline_calls": 5,
+        "plugin_calls": 5,
+        "baseline_retried": true,
+        "plugin_retried": true,
+        "native_retried": true,
+        "retrying_arm": "none, native_summary, pruner_v1",
+        "baseline_strict": true,
+        "plugin_strict": true,
+        "baseline_answer_correct": true,
+        "plugin_answer_correct": true,
+        "baseline_tool_calls": 3,
+        "plugin_tool_calls": 3
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 2,
+        "baseline_tokens": 9103,
+        "plugin_tokens": 9090,
+        "native_tokens": 9131,
+        "as_paired_tokens": 0.001428,
+        "matched_prefix_k": 5,
+        "matched_prefix_tokens": 0.001796,
+        "matched_prefix_bytes": 0.00149,
+        "matched_prefix_is_symmetric": true,
+        "baseline_calls": 5,
+        "plugin_calls": 5,
+        "baseline_retried": true,
+        "plugin_retried": true,
+        "native_retried": true,
+        "retrying_arm": "none, native_summary, pruner_v1",
+        "baseline_strict": true,
+        "plugin_strict": true,
+        "baseline_answer_correct": true,
+        "plugin_answer_correct": true,
+        "baseline_tool_calls": 3,
+        "plugin_tool_calls": 3
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 3,
+        "baseline_tokens": 9103,
+        "plugin_tokens": 9097,
+        "native_tokens": 9132,
+        "as_paired_tokens": 0.000659,
+        "matched_prefix_k": 5,
+        "matched_prefix_tokens": 0.001572,
+        "matched_prefix_bytes": 0.001422,
+        "matched_prefix_is_symmetric": true,
+        "baseline_calls": 5,
+        "plugin_calls": 5,
+        "baseline_retried": true,
+        "plugin_retried": true,
+        "native_retried": true,
+        "retrying_arm": "none, native_summary, pruner_v1",
+        "baseline_strict": true,
+        "plugin_strict": true,
+        "baseline_answer_correct": true,
+        "plugin_answer_correct": true,
+        "baseline_tool_calls": 3,
+        "plugin_tool_calls": 3
+      }
+    ]
+  },
+  "co_reported": {
+    "symmetric_matched_prefix_tokens": {
+      "n": 13,
+      "mean": 0.014647,
+      "sd": 0.016105,
+      "min": 0.001572,
+      "max": 0.050653,
+      "positive": 13
+    },
+    "symmetric_matched_prefix_bytes": {
+      "n": 13,
+      "mean": 0.022985,
+      "sd": 0.027806,
+      "min": 0.001422,
+      "max": 0.079471,
+      "positive": 13
+    },
+    "per_arm_quality": {
+      "none": {
+        "samples": 13,
+        "strict_track": 8,
+        "strict_rate": 0.6154,
+        "semantic_accuracy": 8,
+        "semantic_accuracy_rate": 0.6154,
+        "final_format_correct": 8,
+        "structure_safe": 13,
+        "constraint_preserved": 13,
+        "success": 8,
+        "model_calls_total": 64,
+        "model_calls_distribution": [
+          4,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        "tool_calls_total": 39,
+        "tool_calls_distribution": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "requests_total": 64,
+        "retries": 12,
+        "total_provider_tokens": 122540,
+        "input_tokens": 119983,
+        "output_tokens": 2557,
+        "input_cache_hit_tokens": 103296,
+        "input_cache_miss_tokens": 16687,
+        "cost_usd": 0.002174
+      },
+      "native_summary": {
+        "samples": 13,
+        "strict_track": 8,
+        "strict_rate": 0.6154,
+        "semantic_accuracy": 8,
+        "semantic_accuracy_rate": 0.6154,
+        "final_format_correct": 8,
+        "structure_safe": 13,
+        "constraint_preserved": 13,
+        "success": 8,
+        "model_calls_total": 63,
+        "model_calls_distribution": [
+          4,
+          4,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        "tool_calls_total": 39,
+        "tool_calls_distribution": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "requests_total": 67,
+        "retries": 11,
+        "total_provider_tokens": 124957,
+        "input_tokens": 117557,
+        "output_tokens": 2514,
+        "input_cache_hit_tokens": 95232,
+        "input_cache_miss_tokens": 22325,
+        "cost_usd": 0.002571
+      },
+      "pruner_v1": {
+        "samples": 13,
+        "strict_track": 8,
+        "strict_rate": 0.6154,
+        "semantic_accuracy": 8,
+        "semantic_accuracy_rate": 0.6154,
+        "final_format_correct": 8,
+        "structure_safe": 13,
+        "constraint_preserved": 13,
+        "success": 8,
+        "model_calls_total": 63,
+        "model_calls_distribution": [
+          4,
+          4,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        "tool_calls_total": 39,
+        "tool_calls_distribution": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "requests_total": 63,
+        "retries": 11,
+        "total_provider_tokens": 118081,
+        "input_tokens": 115574,
+        "output_tokens": 2507,
+        "input_cache_hit_tokens": 96000,
+        "input_cache_miss_tokens": 19574,
+        "cost_usd": 0.002364
+      }
+    },
+    "per_pair_retrying_arm": [
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 0,
+        "retrying_arm": "none, native_summary, pruner_v1",
+        "baseline_calls": 5,
+        "plugin_calls": 5
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 1,
+        "retrying_arm": "none, native_summary, pruner_v1",
+        "baseline_calls": 5,
+        "plugin_calls": 5
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 2,
+        "retrying_arm": "none, native_summary, pruner_v1",
+        "baseline_calls": 5,
+        "plugin_calls": 5
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 3,
+        "retrying_arm": "none, native_summary, pruner_v1",
+        "baseline_calls": 5,
+        "plugin_calls": 5
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 4,
+        "retrying_arm": "none, native_summary, pruner_v1",
+        "baseline_calls": 5,
+        "plugin_calls": 5
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "repeat": 0,
+        "retrying_arm": "none, native_summary",
+        "baseline_calls": 5,
+        "plugin_calls": 4
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "repeat": 1,
+        "retrying_arm": "none",
+        "baseline_calls": 5,
+        "plugin_calls": 4
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "repeat": 2,
+        "retrying_arm": "native_summary, pruner_v1",
+        "baseline_calls": 4,
+        "plugin_calls": 5
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "repeat": 3,
+        "retrying_arm": "none, pruner_v1",
+        "baseline_calls": 5,
+        "plugin_calls": 5
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 0,
+        "retrying_arm": "none, native_summary, pruner_v1",
+        "baseline_calls": 5,
+        "plugin_calls": 5
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 1,
+        "retrying_arm": "none, native_summary, pruner_v1",
+        "baseline_calls": 5,
+        "plugin_calls": 5
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 2,
+        "retrying_arm": "none, native_summary, pruner_v1",
+        "baseline_calls": 5,
+        "plugin_calls": 5
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 3,
+        "retrying_arm": "none, native_summary, pruner_v1",
+        "baseline_calls": 5,
+        "plugin_calls": 5
+      }
+    ],
+    "mechanism_per_task": {
+      "autoreload_template_changed": {
+        "v21_outputs_considered": 30,
+        "v21_outputs_elided": 5,
+        "v21_lines_elided": 10,
+        "v21_bytes_saved": 590,
+        "v21_literal_guard_fallbacks": 0,
+        "v21_note_bytes": 100
+      },
+      "sitemap_callable_lastmod": {
+        "v21_outputs_considered": 24,
+        "v21_outputs_elided": 12,
+        "v21_lines_elided": 140,
+        "v21_bytes_saved": 6008,
+        "v21_literal_guard_fallbacks": 0,
+        "v21_note_bytes": 588
+      },
+      "query_utils_unregister_lookup": {
+        "v21_outputs_considered": 24,
+        "v21_outputs_elided": 8,
+        "v21_lines_elided": 8,
+        "v21_bytes_saved": 288,
+        "v21_literal_guard_fallbacks": 0,
+        "v21_note_bytes": 160
+      }
+    },
+    "mechanism_determinism_per_task": {
+      "autoreload_template_changed": {
+        "per_repeat_bytes_saved": [
+          118,
+          118,
+          118,
+          118,
+          118
+        ],
+        "per_repeat_lines_elided": [
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "identical_across_repeats": true
+      },
+      "sitemap_callable_lastmod": {
+        "per_repeat_bytes_saved": [
+          1502,
+          1502,
+          1502,
+          1502
+        ],
+        "per_repeat_lines_elided": [
+          35,
+          35,
+          35,
+          35
+        ],
+        "identical_across_repeats": true
+      },
+      "query_utils_unregister_lookup": {
+        "per_repeat_bytes_saved": [
+          72,
+          72,
+          72,
+          72
+        ],
+        "per_repeat_lines_elided": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "identical_across_repeats": true
+      }
+    },
+    "requests": {
+      "requests": 194,
+      "model_calls": 190,
+      "summary_calls": 4,
+      "repair_retries": 34,
+      "cap": 390,
+      "identity": "194 = 190 + 4"
+    },
+    "cost": {
+      "prices": {
+        "source": "integrations/openai_agents/V16_CACHE_METERING_AND_COST_20261006.json",
+        "input_cache_miss_usd_per_million": 0.15,
+        "input_cache_hit_usd_per_million": 0.003,
+        "output_usd_per_million": 0.6,
+        "off_peak_multiplier": 0.5,
+        "note": "the frozen price table's rates; the batch reports tokens and requests and converts them with these rates, applying the off-peak multiplier when every call of the batch is off peak"
+      },
+      "multiplier_applied": 0.5,
+      "all_calls_off_peak": true,
+      "per_arm_usd": {
+        "none": 0.002174,
+        "native_summary": 0.002571,
+        "pruner_v1": 0.002364
+      },
+      "batch_total_usd": 0.007109
+    },
+    "cache": {
+      "calls_with_cache_fields": 190,
+      "calls": 190,
+      "prompt_cache_hit_tokens_total": 294528,
+      "prompt_cache_miss_tokens_total": 58586,
+      "all_calls_off_peak": true,
+      "calls_without_cache_fields": 0
+    }
+  },
+  "audit_outcome": {
+    "complete": false,
+    "errors": [
+      "the_manifest_cites_the_frozen_confirmation_freeze",
+      "the_manifest_copies_the_frozen_module_hashes",
+      "the_manifest_verifies_every_source_of_record_file",
+      "the_manifest_records_the_finalised_flag_and_the_pre_registered_keys",
+      "both_citation_flags_are_false_and_the_disclosures_are_present",
+      "the_batch_is_the_frozen_matrix",
+      "missing sample sitemap_callable_lastmod/4/none",
+      "missing sample sitemap_callable_lastmod/4/native_summary",
+      "missing sample sitemap_callable_lastmod/4/pruner_v1",
+      "missing sample query_utils_unregister_lookup/4/none",
+      "missing sample query_utils_unregister_lookup/4/native_summary",
+      "missing sample query_utils_unregister_lookup/4/pruner_v1",
+      "the_frozen_matrix_is_incomplete: sitemap_callable_lastmod/4, query_utils_unregister_lookup/4 - a stopped batch is audited as incomplete, never as a result",
+      "the_primary_criterion_recomputes_and_its_quality_guards_hold",
+      "the_manifest_api_call_total_differs_from_the_rows"
+    ],
+    "warnings": [],
+    "usable_as_saving": false
+  },
+  "side_by_side_with_the_v16_sealed_batch": {
+    "v16_sealed_paired_mean_percent": "12.54",
+    "this_batch_pooled_mean_percent": 2.7892,
+    "rule": "reported side by side and never merged and never pooled: the two batches differ in host configuration, in mechanism and in task set, and this batch's number is citable only under this host configuration and only for the mechanism it names",
+    "v22_development_numbers": "the v22 development groups' numbers are not citable anywhere in this report and are not used to support it"
+  },
+  "cannot_show": [
+    "it cannot show a general result across hosts, models or configurations: it is one host configuration, one mechanism at one window, and three tasks",
+    "it cannot separate the window K's contribution from the mechanism's, because this batch runs at one window only; the dose was measured on the development tasks",
+    "it cannot attribute the saving to the mechanism alone where the plugin arm's trajectory differs from the baseline's; that is why the symmetric matched-prefix reading is reported beside the primary one",
+    "it cannot establish anything about the two tasks whose defect view is the first read beyond what the literal invariant shows; and for django-15572 the defect view is the newest tool group, so that view was never at risk",
+    "it cannot make the v16 sealed batch's 12.54 percent comparable: the two are reported side by side and are never merged",
+    "it cannot rule out that a different sample size would move the pooled mean: five repeats per task is what the freeze pre-registered"
+  ],
+  "wording": {
+    "required": "under this host configuration",
+    "forbidden": [
+      "compression alone saved X percent",
+      "the four criteria are met",
+      "the retry tax is gone",
+      "the plugin saves about 12.5 percent of context"
+    ],
+    "checked": "the report text contains the required wording and none of the forbidden phrases",
+    "scan_excludes_the_list_itself": true,
+    "forbidden_phrases_found_in_the_report_text": []
+  },
+  "citable": false
+}

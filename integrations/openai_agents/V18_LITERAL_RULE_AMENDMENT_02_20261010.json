@@ -1,0 +1,40 @@
+{
+  "schema": "openai_agents_v18_literal_rule_amendment_2",
+  "amends": "integrations/openai_agents/V18_LITERAL_DISCRIMINATIVENESS_RULE_20261010.json",
+  "previous_amendment": "integrations/openai_agents/V18_LITERAL_RULE_AMENDMENT_20261010.json",
+  "amendment_id": "openai-agents-v18-literal-rule-amendment-02",
+  "date": "20261010",
+  "api_requests_spent": 0,
+
+  "why": {
+    "trigger": "the v18 re-derivation verification passed all three candidates, but it declares rule_applied as the ORIGINAL rule file and never mentions the amendment, so its three passes were decided against a superseded rule",
+    "what_that_leaves_open": "under the original rule the surviving literals include BLOCK and COMMENT for django-15572 and get_response, inner and request for django-16255; those are exactly the tokens the amendment was written to exclude",
+    "my_own_over_tightening": "the amendment's tightened requirement 1 demanded that EVERY literal appear in the defect-carrying view, which would reject django-15569 for its third literal even though that constant is genuinely part of the same machinery; that formulation was too strict and is corrected here",
+    "no_candidate_may_be_registered_on_a_superseded_rule": "registering now would silently lower the evidence bar of the only task set that can carry a citable number"
+  },
+
+  "corrected_rule": {
+    "literal_requirements": [
+      "R1 every required literal appears verbatim in at least one registered view, with its source view recorded",
+      "R2 at least two of the at most three literals are code anchored: a name the views bind (function, class, method, assignment target or parameter), a constant token such as E015 or 3.8.3 or a type name such as NoneType, or a quoted string constant that is not in the declared common word list",
+      "R3 both tokens of the frozen regex, the cause token and the fix token, are code anchored",
+      "R4 every literal is relevant to the defect: it is either named by the problem statement or bound inside the defect-carrying view, namely the view whose symbol the statement names",
+      "R5 at least two of the literals are absent from the declared framework generic list: request, response, get_response, view, model, field, template, inner, value, error, object, class, method",
+      "R6 no literal is a Python keyword or a builtins name",
+      "R7 the lazy answer negative control fails: a line assembled from the issue identifier, the statement's own tokens, Python generic vocabulary and the framework generic list must not satisfy the frozen regex or the literal requirement"
+    ],
+    "what_changed_against_the_previous_amendment": "R4 replaces the requirement that every literal sit in the defect-carrying view: relevance may come from the statement naming it, and the defect view requirement now applies as a disjunction rather than to every literal; R5 keeps the framework generic exclusion at two of three literals",
+    "calibration": {
+      "v16_sealed_literals": "_check_ordering, E015, __pk; get_context, checked, SplitArrayField; _cull, NoneType, cull_num - all pass R1 to R7 against their own statements and views",
+      "v18_current_sets_under_this_rule": {
+        "django-15572 template_changed, BLOCK, COMMENT": "fails R4 for BLOCK and COMMENT: neither is named by the statement nor bound in the defect-carrying view",
+        "django-16255 get_response, inner, request": "fails R5: all three are on the framework generic list",
+        "django-15569 RegisterLookupMixin, _unregister_lookup, LOOKUP_SEP": "RegisterLookupMixin and _unregister_lookup pass R1 to R7; LOOKUP_SEP fails R4 unless the statement names it, so it must be replaced by a name bound in the defect-carrying view"
+      }
+    },
+    "consequence": "the three candidate literal sets must be re-derived once more under this corrected rule; views, ranges, tool names and view hashes stay exactly as they are; a candidate that cannot produce a compliant set is rejected and is never replaced by a weaker one"
+  },
+
+  "registration_gate": "the source registration must record, per candidate, which rule file and which amendments were applied, and must not be written while any candidate's set fails R1 to R7; the verification artifact must cite the rule file and both amendments by path and hash",
+  "citable": false
+}

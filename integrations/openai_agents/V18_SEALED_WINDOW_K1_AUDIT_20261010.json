@@ -1,0 +1,2316 @@
+{
+  "schema": "openai_agents_v18_sealed_window_k1_independent_audit",
+  "audit_id": "openai-agents-v18-sealed-window-k1-audit-01",
+  "date": "20261010",
+  "generated_utc": "2026-10-10T18:00:40+00:00",
+  "api_requests_spent": 0,
+  "produced_by": "experiments/audits/audit_openai_agents_v18_sealed_window_k1.py",
+  "does_not_modify": [
+    "runs/stage5-openai-agents-api/openai-repo-diagnostic-v23-v18-sealed-window-k1-01",
+    "integrations/openai_agents/V18_SEALED_CONFIRMATION_FREEZE_20261010.json",
+    "integrations/openai_agents/V18_SOURCE_REGISTRATION_20261010.json",
+    "integrations/openai_agents/V18_SEALED_K1_ZERO_API_GATE_20261010.json"
+  ],
+  "inputs": {
+    "integrations/openai_agents/V18_SEALED_CONFIRMATION_FREEZE_20261010.json": "438acbcf54c94a3d2d03b53055c955e581a977dd8fc69d4adeddce2820183fef",
+    "integrations/openai_agents/V18_SOURCE_REGISTRATION_20261010.json": "bea2648878c3b9299f63be45348dadf810b653bf644bd706995c6fef606b5c14",
+    "integrations/openai_agents/V18_SEALED_K1_ZERO_API_GATE_20261010.json": "2f95dfcc0adacec10078d5566282e4a51e0a76362b1e0b96ca0f972b6d7f8eed",
+    "integrations/openai_agents/V18_SEALED_K1_MODULE_REVISIONS_20261010.json": "b7b4b9df0c986478931fa3148b32d69234b43f4fd16bd08872f3348f7ceb081e",
+    "integrations/openai_agents/V18_SEALED_K1_LIVE_PLAN_20261010.json": "0f19939f7b8c541ac06f873832f34410ea0967b0a01c6e1340809ebfb91eb38b",
+    "integrations/openai_agents/V18_SEALED_K1_LIVE_STUB_20261010.json": "96879888cdece80e5f6fa4f4941cc36e6e13c3c998c1fed104abcb7f39ff8425",
+    "integrations/openai_agents/V18_SEALED_K1_FOCUSED_REGRESSION_RUN2_20261010.json": "b14f1b7d6e58f4ddb81c8024036f33ed76ab5fddffafbe9d25d9f5c5f3709496",
+    "runs/stage5-openai-agents-api/openai-repo-diagnostic-v23-v18-sealed-window-k1-01/manifest.json": "2b6aefcde4b54770fa78dd3c0fb4e3e6f587923a95dfca97ab4b98b77d12c288",
+    "runs/stage5-openai-agents-api/openai-repo-diagnostic-v23-v18-sealed-window-k1-01/samples.jsonl": "887b80c8f5f36354c396cdea87378eebfb8ca7b6b0fb756deb501e43fac7f30b"
+  },
+  "frozen_contract": {
+    "checks": [
+      {
+        "check": "the_manifest_cites_the_frozen_confirmation_freeze",
+        "ok": false,
+        "detail": {
+          "manifest_freeze_path": "None",
+          "manifest_freeze_sha256": "None",
+          "recomputed_freeze_sha256": "438acbcf54c94a3d2d03b53055c955e581a977dd8fc69d4adeddce2820183fef"
+        }
+      },
+      {
+        "check": "every_pinned_module_still_matches_the_freeze",
+        "ok": true,
+        "detail": {
+          "drifted": []
+        }
+      },
+      {
+        "check": "the_manifest_copies_the_frozen_module_hashes",
+        "ok": false,
+        "detail": {
+          "modules_in_manifest": 0
+        }
+      },
+      {
+        "check": "every_source_of_record_file_still_matches",
+        "ok": true,
+        "detail": {
+          "drifted": []
+        }
+      },
+      {
+        "check": "the_manifest_verifies_every_source_of_record_file",
+        "ok": false,
+        "detail": {
+          "entries": 0
+        }
+      },
+      {
+        "check": "the_cap_arithmetic_recomputes",
+        "ok": true,
+        "detail": {
+          "read_calls": 3,
+          "max_turns": 5,
+          "worst_case_requests": 300,
+          "cap": 390,
+          "derivation": "READ_CALLS=3 => MAX_TURNS = 3+2 = 5 => worst case 6 per sample => 45x6 + 15x2 = 300 => 1.3x => 390"
+        }
+      },
+      {
+        "check": "the_manifest_records_the_finalised_flag_and_the_pre_registered_keys",
+        "ok": false,
+        "detail": {
+          "missing_required": [
+            "purpose",
+            "citable_as_saving",
+            "citable_as_quality_equivalence",
+            "citable_note",
+            "never_rejudge",
+            "freeze_path",
+            "freeze_sha256",
+            "freeze_matrix",
+            "source_of_record",
+            "source_of_record_verified",
+            "v16_registry",
+            "implementation_hashes",
+            "host_configuration",
+            "criteria",
+            "metering",
+            "request_budget",
+            "acceptance_line",
+            "stop_conditions",
+            "report_requirements",
+            "batch_report",
+            "pilot_report",
+            "length_trajectory",
+            "failure_decomposition",
+            "api_calls",
+            "runner_status",
+            "stopped_early",
+            "stop_reason",
+            "v16_manifest_finalized",
+            "mechanism",
+            "tool_output_disclosure",
+            "forbidden_wording",
+            "re_read_visibility",
+            "module_hashes"
+          ]
+        }
+      },
+      {
+        "check": "both_citation_flags_are_false_and_the_disclosures_are_present",
+        "ok": false,
+        "detail": {
+          "citable_as_saving": null,
+          "required_wording": null
+        }
+      },
+      {
+        "check": "the_zero_api_gate_that_allowed_the_batch_is_on_record_and_green",
+        "ok": true,
+        "detail": {
+          "gate": "integrations/openai_agents/V18_SEALED_K1_ZERO_API_GATE_20261010.json",
+          "gate_sha256": "2f95dfcc0adacec10078d5566282e4a51e0a76362b1e0b96ca0f972b6d7f8eed",
+          "hard_assertions": {
+            "a_finalise_really_runs": true,
+            "b_trigger_gate_fires_every_call": true,
+            "c_mechanism_engages_on_unique_content": true,
+            "d_every_module_pinned": true,
+            "e_literal_invariant_holds_on_real_payloads": true,
+            "f_single_occurrence_paths_note_rule_and_recency": true
+          }
+        }
+      },
+      {
+        "check": "the_revision_ledger_pins_the_same_modules_the_freeze_does",
+        "ok": true,
+        "detail": {
+          "ledger_revision": 1,
+          "ledger_modules": 17
+        }
+      },
+      {
+        "check": "the_focused_regression_is_on_record_with_only_the_allowed_existing_failure",
+        "ok": true,
+        "detail": {
+          "recorded_run": "integrations/openai_agents/V18_SEALED_K1_FOCUSED_REGRESSION_RUN2_20261010.json",
+          "recorded_run_sha256": "b14f1b7d6e58f4ddb81c8024036f33ed76ab5fddffafbe9d25d9f5c5f3709496",
+          "counts": {
+            "failed": 1,
+            "passed": 158
+          },
+          "superseded_run": "integrations/openai_agents/V18_SEALED_K1_FOCUSED_REGRESSION_20261010.json",
+          "superseded_run_unexpected_failures": [
+            "tests/test_openai_agents_v17.py::FreezeAndCapTests::test_cap_keeps_a_1_3x_margin_over_the_frozen_worst_case",
+            "tests/test_openai_agents_v17.py::FreezeAndCapTests::test_frozen_matrix_and_cap_hold",
+            "tests/test_openai_agents_v21.py::RetryDisciplineTests::test_the_gate_reports_them_unchanged"
+          ],
+          "why_a_second_run": "the first recorded run failed three tests in other rounds' files because the new test file left the frozen modules' bindings pointed at this round's task set; the fix was confined to the new test file, the frozen modules were not touched, and the second run is the one recorded as evidence"
+        }
+      },
+      {
+        "check": "the_plan_and_stub_artifacts_are_zero_api",
+        "ok": true,
+        "detail": {
+          "plan": "integrations/openai_agents/V18_SEALED_K1_LIVE_PLAN_20261010.json",
+          "stub": "integrations/openai_agents/V18_SEALED_K1_LIVE_STUB_20261010.json",
+          "frozen_controls": 13,
+          "registered_task_controls": 27
+        }
+      },
+      {
+        "check": "the_registration_that_produced_the_tasks_still_verifies",
+        "ok": true,
+        "detail": {
+          "registration": "integrations/openai_agents/V18_SOURCE_REGISTRATION_20261010.json",
+          "registration_sha256": "bea2648878c3b9299f63be45348dadf810b653bf644bd706995c6fef606b5c14",
+          "task_ids": [
+            "autoreload_template_changed",
+            "sitemap_callable_lastmod",
+            "query_utils_unregister_lookup"
+          ]
+        }
+      },
+      {
+        "check": "the_batch_is_the_frozen_matrix",
+        "ok": false,
+        "detail": {
+          "rows": 39,
+          "matrix": {
+            "tasks": [
+              "autoreload_template_changed",
+              "sitemap_callable_lastmod",
+              "query_utils_unregister_lookup"
+            ],
+            "arms": [
+              "none",
+              "native_summary",
+              "pruner_v1"
+            ],
+            "repeats": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        }
+      },
+      {
+        "check": "the_recorded_four_conditions_are_reproduced_independently",
+        "ok": true,
+        "detail": {
+          "disagreements": [],
+          "samples_checked": 39
+        }
+      },
+      {
+        "check": "no_render_failure_truncation_or_dropped_field",
+        "ok": true,
+        "detail": {
+          "failures": []
+        }
+      },
+      {
+        "check": "the_primary_criterion_recomputes_and_its_quality_guards_hold",
+        "ok": false,
+        "detail": {
+          "pooled_mean": 0.027892,
+          "positive_pairs": 12,
+          "paired_n": 13,
+          "strict_all_tasks": true,
+          "semantic_accuracy_all_tasks": true,
+          "per_task_strict": {
+            "autoreload_template_changed": {
+              "none": 0,
+              "native_summary": 0,
+              "pruner_v1": 0
+            },
+            "sitemap_callable_lastmod": {
+              "none": 4,
+              "native_summary": 4,
+              "pruner_v1": 4
+            },
+            "query_utils_unregister_lookup": {
+              "none": 4,
+              "native_summary": 4,
+              "pruner_v1": 4
+            }
+          },
+          "per_task_answer_correct": {
+            "autoreload_template_changed": {
+              "none": 0,
+              "native_summary": 0,
+              "pruner_v1": 0
+            },
+            "sitemap_callable_lastmod": {
+              "none": 4,
+              "native_summary": 4,
+              "pruner_v1": 4
+            },
+            "query_utils_unregister_lookup": {
+              "none": 4,
+              "native_summary": 4,
+              "pruner_v1": 4
+            }
+          }
+        }
+      },
+      {
+        "check": "the_request_ledger_identifies_itself_and_stays_inside_the_cap",
+        "ok": true,
+        "detail": {
+          "requests": 194,
+          "model_calls": 190,
+          "summary_calls": 4,
+          "repair_retries": 34,
+          "cap": 390,
+          "identity": "194 = 190 + 4"
+        }
+      },
+      {
+        "check": "the_cache_split_is_readable_from_the_rows",
+        "ok": true,
+        "detail": {
+          "calls_with_cache_fields": 190,
+          "calls": 190,
+          "prompt_cache_hit_tokens_total": 294528,
+          "prompt_cache_miss_tokens_total": 58586,
+          "all_calls_off_peak": true,
+          "calls_without_cache_fields": 0
+        }
+      },
+      {
+        "check": "the_mechanism_engaged_on_every_task_on_every_repeat",
+        "ok": true,
+        "detail": {
+          "autoreload_template_changed": {
+            "v21_outputs_considered": 30,
+            "v21_outputs_elided": 5,
+            "v21_lines_elided": 10,
+            "v21_bytes_saved": 590,
+            "v21_literal_guard_fallbacks": 0,
+            "v21_note_bytes": 100
+          },
+          "sitemap_callable_lastmod": {
+            "v21_outputs_considered": 24,
+            "v21_outputs_elided": 12,
+            "v21_lines_elided": 140,
+            "v21_bytes_saved": 6008,
+            "v21_literal_guard_fallbacks": 0,
+            "v21_note_bytes": 588
+          },
+          "query_utils_unregister_lookup": {
+            "v21_outputs_considered": 24,
+            "v21_outputs_elided": 8,
+            "v21_lines_elided": 8,
+            "v21_bytes_saved": 288,
+            "v21_literal_guard_fallbacks": 0,
+            "v21_note_bytes": 160
+          }
+        }
+      }
+    ]
+  },
+  "recomputed": {
+    "four_conditions": [
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 0,
+        "arm": "none",
+        "line": "",
+        "conditions_recomputed": {
+          "facts_complete": false,
+          "frozen_regex": false,
+          "single_line_prefix": false,
+          "within_160": false
+        },
+        "conditions_recorded": {
+          "facts_complete": false,
+          "frozen_regex": false,
+          "single_line_prefix": false,
+          "within_160": false
+        },
+        "strict_recomputed": false,
+        "strict_recorded": false,
+        "answer_correct": false,
+        "final_format_correct": false,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "retry_rejected:over_160_chars",
+        "render_repair_calls": 1,
+        "model_calls": 5,
+        "tool_calls": 3,
+        "api_request_attempts": 5,
+        "total_provider_tokens": 8854
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 0,
+        "arm": "native_summary",
+        "line": "",
+        "conditions_recomputed": {
+          "facts_complete": false,
+          "frozen_regex": false,
+          "single_line_prefix": false,
+          "within_160": false
+        },
+        "conditions_recorded": {
+          "facts_complete": false,
+          "frozen_regex": false,
+          "single_line_prefix": false,
+          "within_160": false
+        },
+        "strict_recomputed": false,
+        "strict_recorded": false,
+        "answer_correct": false,
+        "final_format_correct": false,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "retry_rejected:over_160_chars",
+        "render_repair_calls": 1,
+        "model_calls": 5,
+        "tool_calls": 3,
+        "api_request_attempts": 5,
+        "total_provider_tokens": 8857
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 0,
+        "arm": "pruner_v1",
+        "line": "",
+        "conditions_recomputed": {
+          "facts_complete": false,
+          "frozen_regex": false,
+          "single_line_prefix": false,
+          "within_160": false
+        },
+        "conditions_recorded": {
+          "facts_complete": false,
+          "frozen_regex": false,
+          "single_line_prefix": false,
+          "within_160": false
+        },
+        "strict_recomputed": false,
+        "strict_recorded": false,
+        "answer_correct": false,
+        "final_format_correct": false,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "retry_rejected:over_160_chars",
+        "render_repair_calls": 1,
+        "model_calls": 5,
+        "tool_calls": 3,
+        "api_request_attempts": 5,
+        "total_provider_tokens": 8792
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 1,
+        "arm": "none",
+        "line": "",
+        "conditions_recomputed": {
+          "facts_complete": false,
+          "frozen_regex": false,
+          "single_line_prefix": false,
+          "within_160": false
+        },
+        "conditions_recorded": {
+          "facts_complete": false,
+          "frozen_regex": false,
+          "single_line_prefix": false,
+          "within_160": false
+        },
+        "strict_recomputed": false,
+        "strict_recorded": false,
+        "answer_correct": false,
+        "final_format_correct": false,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "retry_rejected:over_160_chars",
+        "render_repair_calls": 1,
+        "model_calls": 5,
+        "tool_calls": 3,
+        "api_request_attempts": 5,
+        "total_provider_tokens": 8863
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 1,
+        "arm": "native_summary",
+        "line": "",
+        "conditions_recomputed": {
+          "facts_complete": false,
+          "frozen_regex": false,
+          "single_line_prefix": false,
+          "within_160": false
+        },
+        "conditions_recorded": {
+          "facts_complete": false,
+          "frozen_regex": false,
+          "single_line_prefix": false,
+          "within_160": false
+        },
+        "strict_recomputed": false,
+        "strict_recorded": false,
+        "answer_correct": false,
+        "final_format_correct": false,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "retry_rejected:over_160_chars",
+        "render_repair_calls": 1,
+        "model_calls": 5,
+        "tool_calls": 3,
+        "api_request_attempts": 5,
+        "total_provider_tokens": 8856
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 1,
+        "arm": "pruner_v1",
+        "line": "",
+        "conditions_recomputed": {
+          "facts_complete": false,
+          "frozen_regex": false,
+          "single_line_prefix": false,
+          "within_160": false
+        },
+        "conditions_recorded": {
+          "facts_complete": false,
+          "frozen_regex": false,
+          "single_line_prefix": false,
+          "within_160": false
+        },
+        "strict_recomputed": false,
+        "strict_recorded": false,
+        "answer_correct": false,
+        "final_format_correct": false,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "retry_rejected:over_160_chars",
+        "render_repair_calls": 1,
+        "model_calls": 5,
+        "tool_calls": 3,
+        "api_request_attempts": 5,
+        "total_provider_tokens": 8799
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 2,
+        "arm": "none",
+        "line": "",
+        "conditions_recomputed": {
+          "facts_complete": false,
+          "frozen_regex": false,
+          "single_line_prefix": false,
+          "within_160": false
+        },
+        "conditions_recorded": {
+          "facts_complete": false,
+          "frozen_regex": false,
+          "single_line_prefix": false,
+          "within_160": false
+        },
+        "strict_recomputed": false,
+        "strict_recorded": false,
+        "answer_correct": false,
+        "final_format_correct": false,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "retry_rejected:over_160_chars",
+        "render_repair_calls": 1,
+        "model_calls": 5,
+        "tool_calls": 3,
+        "api_request_attempts": 5,
+        "total_provider_tokens": 8845
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 2,
+        "arm": "native_summary",
+        "line": "",
+        "conditions_recomputed": {
+          "facts_complete": false,
+          "frozen_regex": false,
+          "single_line_prefix": false,
+          "within_160": false
+        },
+        "conditions_recorded": {
+          "facts_complete": false,
+          "frozen_regex": false,
+          "single_line_prefix": false,
+          "within_160": false
+        },
+        "strict_recomputed": false,
+        "strict_recorded": false,
+        "answer_correct": false,
+        "final_format_correct": false,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "retry_rejected:over_160_chars",
+        "render_repair_calls": 1,
+        "model_calls": 5,
+        "tool_calls": 3,
+        "api_request_attempts": 5,
+        "total_provider_tokens": 8851
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 2,
+        "arm": "pruner_v1",
+        "line": "",
+        "conditions_recomputed": {
+          "facts_complete": false,
+          "frozen_regex": false,
+          "single_line_prefix": false,
+          "within_160": false
+        },
+        "conditions_recorded": {
+          "facts_complete": false,
+          "frozen_regex": false,
+          "single_line_prefix": false,
+          "within_160": false
+        },
+        "strict_recomputed": false,
+        "strict_recorded": false,
+        "answer_correct": false,
+        "final_format_correct": false,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "retry_rejected:over_160_chars",
+        "render_repair_calls": 1,
+        "model_calls": 5,
+        "tool_calls": 3,
+        "api_request_attempts": 5,
+        "total_provider_tokens": 8805
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 3,
+        "arm": "none",
+        "line": "",
+        "conditions_recomputed": {
+          "facts_complete": false,
+          "frozen_regex": false,
+          "single_line_prefix": false,
+          "within_160": false
+        },
+        "conditions_recorded": {
+          "facts_complete": false,
+          "frozen_regex": false,
+          "single_line_prefix": false,
+          "within_160": false
+        },
+        "strict_recomputed": false,
+        "strict_recorded": false,
+        "answer_correct": false,
+        "final_format_correct": false,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "retry_rejected:over_160_chars",
+        "render_repair_calls": 1,
+        "model_calls": 5,
+        "tool_calls": 3,
+        "api_request_attempts": 5,
+        "total_provider_tokens": 8852
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 3,
+        "arm": "native_summary",
+        "line": "",
+        "conditions_recomputed": {
+          "facts_complete": false,
+          "frozen_regex": false,
+          "single_line_prefix": false,
+          "within_160": false
+        },
+        "conditions_recorded": {
+          "facts_complete": false,
+          "frozen_regex": false,
+          "single_line_prefix": false,
+          "within_160": false
+        },
+        "strict_recomputed": false,
+        "strict_recorded": false,
+        "answer_correct": false,
+        "final_format_correct": false,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "retry_rejected:over_160_chars",
+        "render_repair_calls": 1,
+        "model_calls": 5,
+        "tool_calls": 3,
+        "api_request_attempts": 5,
+        "total_provider_tokens": 8856
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 3,
+        "arm": "pruner_v1",
+        "line": "",
+        "conditions_recomputed": {
+          "facts_complete": false,
+          "frozen_regex": false,
+          "single_line_prefix": false,
+          "within_160": false
+        },
+        "conditions_recorded": {
+          "facts_complete": false,
+          "frozen_regex": false,
+          "single_line_prefix": false,
+          "within_160": false
+        },
+        "strict_recomputed": false,
+        "strict_recorded": false,
+        "answer_correct": false,
+        "final_format_correct": false,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "retry_rejected:over_160_chars",
+        "render_repair_calls": 1,
+        "model_calls": 5,
+        "tool_calls": 3,
+        "api_request_attempts": 5,
+        "total_provider_tokens": 8800
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 4,
+        "arm": "none",
+        "line": "",
+        "conditions_recomputed": {
+          "facts_complete": false,
+          "frozen_regex": false,
+          "single_line_prefix": false,
+          "within_160": false
+        },
+        "conditions_recorded": {
+          "facts_complete": false,
+          "frozen_regex": false,
+          "single_line_prefix": false,
+          "within_160": false
+        },
+        "strict_recomputed": false,
+        "strict_recorded": false,
+        "answer_correct": false,
+        "final_format_correct": false,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "retry_rejected:over_160_chars",
+        "render_repair_calls": 1,
+        "model_calls": 5,
+        "tool_calls": 3,
+        "api_request_attempts": 5,
+        "total_provider_tokens": 8851
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 4,
+        "arm": "native_summary",
+        "line": "",
+        "conditions_recomputed": {
+          "facts_complete": false,
+          "frozen_regex": false,
+          "single_line_prefix": false,
+          "within_160": false
+        },
+        "conditions_recorded": {
+          "facts_complete": false,
+          "frozen_regex": false,
+          "single_line_prefix": false,
+          "within_160": false
+        },
+        "strict_recomputed": false,
+        "strict_recorded": false,
+        "answer_correct": false,
+        "final_format_correct": false,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "retry_rejected:over_160_chars",
+        "render_repair_calls": 1,
+        "model_calls": 5,
+        "tool_calls": 3,
+        "api_request_attempts": 5,
+        "total_provider_tokens": 8860
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 4,
+        "arm": "pruner_v1",
+        "line": "",
+        "conditions_recomputed": {
+          "facts_complete": false,
+          "frozen_regex": false,
+          "single_line_prefix": false,
+          "within_160": false
+        },
+        "conditions_recorded": {
+          "facts_complete": false,
+          "frozen_regex": false,
+          "single_line_prefix": false,
+          "within_160": false
+        },
+        "strict_recomputed": false,
+        "strict_recorded": false,
+        "answer_correct": false,
+        "final_format_correct": false,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "retry_rejected:over_160_chars",
+        "render_repair_calls": 1,
+        "model_calls": 5,
+        "tool_calls": 3,
+        "api_request_attempts": 5,
+        "total_provider_tokens": 8793
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "repeat": 0,
+        "arm": "none",
+        "line": "RESULT issue=django-16255 cause=get_latest_lastmod max over empty items raises ValueError fix=catch ValueError, return None for callable lastmod",
+        "conditions_recomputed": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "conditions_recorded": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "strict_recomputed": true,
+        "strict_recorded": true,
+        "answer_correct": true,
+        "final_format_correct": true,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "accepted_retry",
+        "render_repair_calls": 1,
+        "model_calls": 5,
+        "tool_calls": 3,
+        "api_request_attempts": 5,
+        "total_provider_tokens": 11058
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "repeat": 0,
+        "arm": "native_summary",
+        "line": "RESULT issue=django-16255 cause=get_latest_lastmod max over empty items raises ValueError fix=catch ValueError, return None for callable lastmod",
+        "conditions_recomputed": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "conditions_recorded": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "strict_recomputed": true,
+        "strict_recorded": true,
+        "answer_correct": true,
+        "final_format_correct": true,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "accepted_retry",
+        "render_repair_calls": 1,
+        "model_calls": 5,
+        "tool_calls": 3,
+        "api_request_attempts": 6,
+        "total_provider_tokens": 12345
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "repeat": 0,
+        "arm": "pruner_v1",
+        "line": "RESULT issue=django-16255 cause=get_latest_lastmod calls max over empty items when lastmod is callable fix=catch ValueError and return None for lastmod",
+        "conditions_recomputed": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "conditions_recorded": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "strict_recomputed": true,
+        "strict_recorded": true,
+        "answer_correct": true,
+        "final_format_correct": true,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "accepted_first",
+        "render_repair_calls": 0,
+        "model_calls": 4,
+        "tool_calls": 3,
+        "api_request_attempts": 4,
+        "total_provider_tokens": 8347
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "repeat": 1,
+        "arm": "none",
+        "line": "RESULT issue=django-16255 cause=get_latest_lastmod max over empty items raises ValueError fix=catch ValueError, return None for lastmod",
+        "conditions_recomputed": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "conditions_recorded": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "strict_recomputed": true,
+        "strict_recorded": true,
+        "answer_correct": true,
+        "final_format_correct": true,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "accepted_retry",
+        "render_repair_calls": 1,
+        "model_calls": 5,
+        "tool_calls": 3,
+        "api_request_attempts": 5,
+        "total_provider_tokens": 11064
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "repeat": 1,
+        "arm": "native_summary",
+        "line": "RESULT issue=django-16255 cause=get_latest_lastmod max() over empty items raises ValueError fix=catch ValueError and return None for callable lastmod",
+        "conditions_recomputed": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "conditions_recorded": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "strict_recomputed": true,
+        "strict_recorded": true,
+        "answer_correct": true,
+        "final_format_correct": true,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "accepted_first",
+        "render_repair_calls": 0,
+        "model_calls": 4,
+        "tool_calls": 3,
+        "api_request_attempts": 5,
+        "total_provider_tokens": 9758
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "repeat": 1,
+        "arm": "pruner_v1",
+        "line": "RESULT issue=django-16255 cause=get_latest_lastmod calls max over empty items when lastmod is callable fix=catch ValueError and return None for lastmod",
+        "conditions_recomputed": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "conditions_recorded": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "strict_recomputed": true,
+        "strict_recorded": true,
+        "answer_correct": true,
+        "final_format_correct": true,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "accepted_first",
+        "render_repair_calls": 0,
+        "model_calls": 4,
+        "tool_calls": 3,
+        "api_request_attempts": 4,
+        "total_provider_tokens": 8347
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "repeat": 2,
+        "arm": "none",
+        "line": "RESULT issue=django-16255 cause=get_latest_lastmod calls max over empty items, raising ValueError fix=catch ValueError and return None when lastmod has no items",
+        "conditions_recomputed": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "conditions_recorded": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "strict_recomputed": true,
+        "strict_recorded": true,
+        "answer_correct": true,
+        "final_format_correct": true,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "accepted_first",
+        "render_repair_calls": 0,
+        "model_calls": 4,
+        "tool_calls": 3,
+        "api_request_attempts": 4,
+        "total_provider_tokens": 8619
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "repeat": 2,
+        "arm": "native_summary",
+        "line": "RESULT issue=django-16255 cause=get_latest_lastmod max over empty items raises ValueError fix=catch ValueError, return None for callable lastmod",
+        "conditions_recomputed": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "conditions_recorded": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "strict_recomputed": true,
+        "strict_recorded": true,
+        "answer_correct": true,
+        "final_format_correct": true,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "accepted_retry",
+        "render_repair_calls": 1,
+        "model_calls": 5,
+        "tool_calls": 3,
+        "api_request_attempts": 6,
+        "total_provider_tokens": 12313
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "repeat": 2,
+        "arm": "pruner_v1",
+        "line": "RESULT issue=django-16255 cause=get_latest_lastmod max over empty items fix=catch ValueError, return None for callable lastmod",
+        "conditions_recomputed": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "conditions_recorded": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "strict_recomputed": true,
+        "strict_recorded": true,
+        "answer_correct": true,
+        "final_format_correct": true,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "accepted_retry",
+        "render_repair_calls": 1,
+        "model_calls": 5,
+        "tool_calls": 3,
+        "api_request_attempts": 5,
+        "total_provider_tokens": 10509
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "repeat": 3,
+        "arm": "none",
+        "line": "RESULT issue=django-16255 cause=get_latest_lastmod max over empty items fix=catch ValueError, lastmod None",
+        "conditions_recomputed": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "conditions_recorded": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "strict_recomputed": true,
+        "strict_recorded": true,
+        "answer_correct": true,
+        "final_format_correct": true,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "accepted_retry",
+        "render_repair_calls": 1,
+        "model_calls": 5,
+        "tool_calls": 3,
+        "api_request_attempts": 5,
+        "total_provider_tokens": 11066
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "repeat": 3,
+        "arm": "native_summary",
+        "line": "RESULT issue=django-16255 cause=get_latest_lastmod max() over empty items raises ValueError fix=catch ValueError too so lastmod returns None",
+        "conditions_recomputed": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "conditions_recorded": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "strict_recomputed": true,
+        "strict_recorded": true,
+        "answer_correct": true,
+        "final_format_correct": true,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "accepted_first",
+        "render_repair_calls": 0,
+        "model_calls": 4,
+        "tool_calls": 3,
+        "api_request_attempts": 5,
+        "total_provider_tokens": 9784
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "repeat": 3,
+        "arm": "pruner_v1",
+        "line": "RESULT issue=django-16255 cause=get_latest_lastmod max over empty items fix=catch ValueError, return None for callable lastmod",
+        "conditions_recomputed": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "conditions_recorded": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "strict_recomputed": true,
+        "strict_recorded": true,
+        "answer_correct": true,
+        "final_format_correct": true,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "accepted_retry",
+        "render_repair_calls": 1,
+        "model_calls": 5,
+        "tool_calls": 3,
+        "api_request_attempts": 5,
+        "total_provider_tokens": 10509
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 0,
+        "arm": "none",
+        "line": "RESULT issue=django-15569 cause=_unregister_lookup leaves cached lookup stale. fix=Clear lookup_name cache.",
+        "conditions_recomputed": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "conditions_recorded": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "strict_recomputed": true,
+        "strict_recorded": true,
+        "answer_correct": true,
+        "final_format_correct": true,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "accepted_retry",
+        "render_repair_calls": 1,
+        "model_calls": 5,
+        "tool_calls": 3,
+        "api_request_attempts": 5,
+        "total_provider_tokens": 9131
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 0,
+        "arm": "native_summary",
+        "line": "RESULT issue=django-15569 cause=_unregister_lookup leaves cached lookup. fix=Clear lookup_name cache.",
+        "conditions_recomputed": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "conditions_recorded": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "strict_recomputed": true,
+        "strict_recorded": true,
+        "answer_correct": true,
+        "final_format_correct": true,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "accepted_retry",
+        "render_repair_calls": 1,
+        "model_calls": 5,
+        "tool_calls": 3,
+        "api_request_attempts": 5,
+        "total_provider_tokens": 9111
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 0,
+        "arm": "pruner_v1",
+        "line": "RESULT issue=django-15569 cause=_unregister_lookup leaves cached lookup. fix=Clear cache via lookup_name.",
+        "conditions_recomputed": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "conditions_recorded": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "strict_recomputed": true,
+        "strict_recorded": true,
+        "answer_correct": true,
+        "final_format_correct": true,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "accepted_retry",
+        "render_repair_calls": 1,
+        "model_calls": 5,
+        "tool_calls": 3,
+        "api_request_attempts": 5,
+        "total_provider_tokens": 9105
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 1,
+        "arm": "none",
+        "line": "RESULT issue=django-15569 cause=_unregister_lookup leaves cached lookup stale. fix=Clear lookup_name cache.",
+        "conditions_recomputed": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "conditions_recorded": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "strict_recomputed": true,
+        "strict_recorded": true,
+        "answer_correct": true,
+        "final_format_correct": true,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "accepted_retry",
+        "render_repair_calls": 1,
+        "model_calls": 5,
+        "tool_calls": 3,
+        "api_request_attempts": 5,
+        "total_provider_tokens": 9131
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 1,
+        "arm": "native_summary",
+        "line": "RESULT issue=django-15569 cause=_unregister_lookup leaves cached lookup fix=clear cache via lookup_name",
+        "conditions_recomputed": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "conditions_recorded": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "strict_recomputed": true,
+        "strict_recorded": true,
+        "answer_correct": true,
+        "final_format_correct": true,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "accepted_retry",
+        "render_repair_calls": 1,
+        "model_calls": 5,
+        "tool_calls": 3,
+        "api_request_attempts": 5,
+        "total_provider_tokens": 9103
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 1,
+        "arm": "pruner_v1",
+        "line": "RESULT issue=django-15569 cause=_unregister_lookup leaves cached lookup stale fix=clear lookup_name cache",
+        "conditions_recomputed": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "conditions_recorded": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "strict_recomputed": true,
+        "strict_recorded": true,
+        "answer_correct": true,
+        "final_format_correct": true,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "accepted_retry",
+        "render_repair_calls": 1,
+        "model_calls": 5,
+        "tool_calls": 3,
+        "api_request_attempts": 5,
+        "total_provider_tokens": 9088
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 2,
+        "arm": "none",
+        "line": "RESULT issue=django-15569 cause=_unregister_lookup leaves cached lookup fix=clear cache via lookup_name",
+        "conditions_recomputed": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "conditions_recorded": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "strict_recomputed": true,
+        "strict_recorded": true,
+        "answer_correct": true,
+        "final_format_correct": true,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "accepted_retry",
+        "render_repair_calls": 1,
+        "model_calls": 5,
+        "tool_calls": 3,
+        "api_request_attempts": 5,
+        "total_provider_tokens": 9103
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 2,
+        "arm": "native_summary",
+        "line": "RESULT issue=django-15569 cause=_unregister_lookup leaves cached lookup stale. fix=Clear cache after deleting lookup_name.",
+        "conditions_recomputed": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "conditions_recorded": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "strict_recomputed": true,
+        "strict_recorded": true,
+        "answer_correct": true,
+        "final_format_correct": true,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "accepted_retry",
+        "render_repair_calls": 1,
+        "model_calls": 5,
+        "tool_calls": 3,
+        "api_request_attempts": 5,
+        "total_provider_tokens": 9131
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 2,
+        "arm": "pruner_v1",
+        "line": "RESULT issue=django-15569 cause=_unregister_lookup leaves cached lookup stale. fix=Clear lookup_name cache.",
+        "conditions_recomputed": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "conditions_recorded": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "strict_recomputed": true,
+        "strict_recorded": true,
+        "answer_correct": true,
+        "final_format_correct": true,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "accepted_retry",
+        "render_repair_calls": 1,
+        "model_calls": 5,
+        "tool_calls": 3,
+        "api_request_attempts": 5,
+        "total_provider_tokens": 9090
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 3,
+        "arm": "none",
+        "line": "RESULT issue=django-15569 cause=_unregister_lookup leaves cached lookup fix=clear cache via lookup_name",
+        "conditions_recomputed": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "conditions_recorded": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "strict_recomputed": true,
+        "strict_recorded": true,
+        "answer_correct": true,
+        "final_format_correct": true,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "accepted_retry",
+        "render_repair_calls": 1,
+        "model_calls": 5,
+        "tool_calls": 3,
+        "api_request_attempts": 5,
+        "total_provider_tokens": 9103
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 3,
+        "arm": "native_summary",
+        "line": "RESULT issue=django-15569 cause=_unregister_lookup leaves cached lookup stale. fix=Clear lookup cache after deleting lookup_name.",
+        "conditions_recomputed": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "conditions_recorded": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "strict_recomputed": true,
+        "strict_recorded": true,
+        "answer_correct": true,
+        "final_format_correct": true,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "accepted_retry",
+        "render_repair_calls": 1,
+        "model_calls": 5,
+        "tool_calls": 3,
+        "api_request_attempts": 5,
+        "total_provider_tokens": 9132
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 3,
+        "arm": "pruner_v1",
+        "line": "RESULT issue=django-15569 cause=_unregister_lookup leaves cached lookup stale. fix=Clear lookup cache on lookup_name removal.",
+        "conditions_recomputed": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "conditions_recorded": {
+          "facts_complete": true,
+          "frozen_regex": true,
+          "single_line_prefix": true,
+          "within_160": true
+        },
+        "strict_recomputed": true,
+        "strict_recorded": true,
+        "answer_correct": true,
+        "final_format_correct": true,
+        "structure_safe": true,
+        "constraint_preserved": true,
+        "render_reason": "accepted_retry",
+        "render_repair_calls": 1,
+        "model_calls": 5,
+        "tool_calls": 3,
+        "api_request_attempts": 5,
+        "total_provider_tokens": 9097
+      }
+    ],
+    "primary_criterion": {
+      "name": "as-paired complete provider tokens",
+      "matrix_complete": false,
+      "missing_pairs": [
+        "sitemap_callable_lastmod/4",
+        "query_utils_unregister_lookup/4"
+      ],
+      "partial_matrix_only": true,
+      "partial_matrix_note": "the batch stopped before the frozen matrix was complete, so these numbers describe a partial matrix; they are recorded to make the stop explicable and they may not be cited as this round's result under any reading",
+      "per_task": {
+        "autoreload_template_changed": {
+          "paired_n": 5,
+          "mean": 0.006234,
+          "savings": [
+            0.007002,
+            0.007221,
+            0.004522,
+            0.005874,
+            0.006553
+          ],
+          "positive_pairs": 5,
+          "strict_track": {
+            "none": 0,
+            "native_summary": 0,
+            "pruner_v1": 0
+          },
+          "semantic_accuracy": {
+            "none": 0,
+            "native_summary": 0,
+            "pruner_v1": 0
+          }
+        },
+        "sitemap_callable_lastmod": {
+          "paired_n": 4,
+          "mean": 0.080446,
+          "savings": [
+            0.245162,
+            0.245571,
+            -0.219283,
+            0.050334
+          ],
+          "positive_pairs": 3,
+          "strict_track": {
+            "none": 4,
+            "native_summary": 4,
+            "pruner_v1": 4
+          },
+          "semantic_accuracy": {
+            "none": 4,
+            "native_summary": 4,
+            "pruner_v1": 4
+          }
+        },
+        "query_utils_unregister_lookup": {
+          "paired_n": 4,
+          "mean": 0.002411,
+          "savings": [
+            0.002847,
+            0.004709,
+            0.001428,
+            0.000659
+          ],
+          "positive_pairs": 4,
+          "strict_track": {
+            "none": 4,
+            "native_summary": 4,
+            "pruner_v1": 4
+          },
+          "semantic_accuracy": {
+            "none": 4,
+            "native_summary": 4,
+            "pruner_v1": 4
+          }
+        }
+      },
+      "pooled": {
+        "n": 13,
+        "mean": 0.027892,
+        "sd": 0.115883,
+        "min": -0.219283,
+        "max": 0.245571,
+        "positive": 12,
+        "mean_saving": 0.027892,
+        "majority_positive": true,
+        "bootstrap": {
+          "rounds": 10000,
+          "seed": 20261010,
+          "lower": -0.029046,
+          "upper": 0.085661,
+          "excludes_zero": false,
+          "note": "reported for explanation; the frozen verdict is the per-task strict track, the majority and the mean"
+        }
+      },
+      "strict_all_tasks_at_least_baseline": true,
+      "semantic_accuracy_all_tasks_at_least_baseline": true,
+      "met": false,
+      "pairs": [
+        {
+          "task": "autoreload_template_changed",
+          "repeat": 0,
+          "baseline_tokens": 8854,
+          "plugin_tokens": 8792,
+          "native_tokens": 8857,
+          "as_paired_tokens": 0.007002,
+          "matched_prefix_k": 5,
+          "matched_prefix_tokens": 0.007061,
+          "matched_prefix_bytes": 0.00798,
+          "matched_prefix_is_symmetric": true,
+          "baseline_calls": 5,
+          "plugin_calls": 5,
+          "baseline_retried": true,
+          "plugin_retried": true,
+          "native_retried": true,
+          "retrying_arm": "none, native_summary, pruner_v1",
+          "baseline_strict": false,
+          "plugin_strict": false,
+          "baseline_answer_correct": false,
+          "plugin_answer_correct": false,
+          "baseline_tool_calls": 3,
+          "plugin_tool_calls": 3
+        },
+        {
+          "task": "autoreload_template_changed",
+          "repeat": 1,
+          "baseline_tokens": 8863,
+          "plugin_tokens": 8799,
+          "native_tokens": 8856,
+          "as_paired_tokens": 0.007221,
+          "matched_prefix_k": 5,
+          "matched_prefix_tokens": 0.007287,
+          "matched_prefix_bytes": 0.008828,
+          "matched_prefix_is_symmetric": true,
+          "baseline_calls": 5,
+          "plugin_calls": 5,
+          "baseline_retried": true,
+          "plugin_retried": true,
+          "native_retried": true,
+          "retrying_arm": "none, native_summary, pruner_v1",
+          "baseline_strict": false,
+          "plugin_strict": false,
+          "baseline_answer_correct": false,
+          "plugin_answer_correct": false,
+          "baseline_tool_calls": 3,
+          "plugin_tool_calls": 3
+        },
+        {
+          "task": "autoreload_template_changed",
+          "repeat": 2,
+          "baseline_tokens": 8845,
+          "plugin_tokens": 8805,
+          "native_tokens": 8851,
+          "as_paired_tokens": 0.004522,
+          "matched_prefix_k": 5,
+          "matched_prefix_tokens": 0.006713,
+          "matched_prefix_bytes": 0.007977,
+          "matched_prefix_is_symmetric": true,
+          "baseline_calls": 5,
+          "plugin_calls": 5,
+          "baseline_retried": true,
+          "plugin_retried": true,
+          "native_retried": true,
+          "retrying_arm": "none, native_summary, pruner_v1",
+          "baseline_strict": false,
+          "plugin_strict": false,
+          "baseline_answer_correct": false,
+          "plugin_answer_correct": false,
+          "baseline_tool_calls": 3,
+          "plugin_tool_calls": 3
+        },
+        {
+          "task": "autoreload_template_changed",
+          "repeat": 3,
+          "baseline_tokens": 8852,
+          "plugin_tokens": 8800,
+          "native_tokens": 8856,
+          "as_paired_tokens": 0.005874,
+          "matched_prefix_k": 5,
+          "matched_prefix_tokens": 0.006598,
+          "matched_prefix_bytes": 0.007693,
+          "matched_prefix_is_symmetric": true,
+          "baseline_calls": 5,
+          "plugin_calls": 5,
+          "baseline_retried": true,
+          "plugin_retried": true,
+          "native_retried": true,
+          "retrying_arm": "none, native_summary, pruner_v1",
+          "baseline_strict": false,
+          "plugin_strict": false,
+          "baseline_answer_correct": false,
+          "plugin_answer_correct": false,
+          "baseline_tool_calls": 3,
+          "plugin_tool_calls": 3
+        },
+        {
+          "task": "autoreload_template_changed",
+          "repeat": 4,
+          "baseline_tokens": 8851,
+          "plugin_tokens": 8793,
+          "native_tokens": 8860,
+          "as_paired_tokens": 0.006553,
+          "matched_prefix_k": 5,
+          "matched_prefix_tokens": 0.006482,
+          "matched_prefix_bytes": 0.007407,
+          "matched_prefix_is_symmetric": true,
+          "baseline_calls": 5,
+          "plugin_calls": 5,
+          "baseline_retried": true,
+          "plugin_retried": true,
+          "native_retried": true,
+          "retrying_arm": "none, native_summary, pruner_v1",
+          "baseline_strict": false,
+          "plugin_strict": false,
+          "baseline_answer_correct": false,
+          "plugin_answer_correct": false,
+          "baseline_tool_calls": 3,
+          "plugin_tool_calls": 3
+        },
+        {
+          "task": "sitemap_callable_lastmod",
+          "repeat": 0,
+          "baseline_tokens": 11058,
+          "plugin_tokens": 8347,
+          "native_tokens": 11066,
+          "as_paired_tokens": 0.245162,
+          "matched_prefix_k": 4,
+          "matched_prefix_tokens": 0.032026,
+          "matched_prefix_bytes": 0.0562,
+          "matched_prefix_is_symmetric": true,
+          "baseline_calls": 5,
+          "plugin_calls": 4,
+          "baseline_retried": true,
+          "plugin_retried": false,
+          "native_retried": true,
+          "retrying_arm": "none, native_summary",
+          "baseline_strict": true,
+          "plugin_strict": true,
+          "baseline_answer_correct": true,
+          "plugin_answer_correct": true,
+          "baseline_tool_calls": 3,
+          "plugin_tool_calls": 3
+        },
+        {
+          "task": "sitemap_callable_lastmod",
+          "repeat": 1,
+          "baseline_tokens": 11064,
+          "plugin_tokens": 8347,
+          "native_tokens": 8587,
+          "as_paired_tokens": 0.245571,
+          "matched_prefix_k": 4,
+          "matched_prefix_tokens": 0.032026,
+          "matched_prefix_bytes": 0.0562,
+          "matched_prefix_is_symmetric": true,
+          "baseline_calls": 5,
+          "plugin_calls": 4,
+          "baseline_retried": true,
+          "plugin_retried": false,
+          "native_retried": false,
+          "retrying_arm": "none",
+          "baseline_strict": true,
+          "plugin_strict": true,
+          "baseline_answer_correct": true,
+          "plugin_answer_correct": true,
+          "baseline_tool_calls": 3,
+          "plugin_tool_calls": 3
+        },
+        {
+          "task": "sitemap_callable_lastmod",
+          "repeat": 2,
+          "baseline_tokens": 8619,
+          "plugin_tokens": 10509,
+          "native_tokens": 11058,
+          "as_paired_tokens": -0.219283,
+          "matched_prefix_k": 4,
+          "matched_prefix_tokens": 0.032026,
+          "matched_prefix_bytes": 0.0562,
+          "matched_prefix_is_symmetric": true,
+          "baseline_calls": 4,
+          "plugin_calls": 5,
+          "baseline_retried": false,
+          "plugin_retried": true,
+          "native_retried": true,
+          "retrying_arm": "native_summary, pruner_v1",
+          "baseline_strict": true,
+          "plugin_strict": true,
+          "baseline_answer_correct": true,
+          "plugin_answer_correct": true,
+          "baseline_tool_calls": 3,
+          "plugin_tool_calls": 3
+        },
+        {
+          "task": "sitemap_callable_lastmod",
+          "repeat": 3,
+          "baseline_tokens": 11066,
+          "plugin_tokens": 10509,
+          "native_tokens": 8603,
+          "as_paired_tokens": 0.050334,
+          "matched_prefix_k": 5,
+          "matched_prefix_tokens": 0.050653,
+          "matched_prefix_bytes": 0.079471,
+          "matched_prefix_is_symmetric": true,
+          "baseline_calls": 5,
+          "plugin_calls": 5,
+          "baseline_retried": true,
+          "plugin_retried": true,
+          "native_retried": false,
+          "retrying_arm": "none, pruner_v1",
+          "baseline_strict": true,
+          "plugin_strict": true,
+          "baseline_answer_correct": true,
+          "plugin_answer_correct": true,
+          "baseline_tool_calls": 3,
+          "plugin_tool_calls": 3
+        },
+        {
+          "task": "query_utils_unregister_lookup",
+          "repeat": 0,
+          "baseline_tokens": 9131,
+          "plugin_tokens": 9105,
+          "native_tokens": 9111,
+          "as_paired_tokens": 0.002847,
+          "matched_prefix_k": 5,
+          "matched_prefix_tokens": 0.002802,
+          "matched_prefix_bytes": 0.003885,
+          "matched_prefix_is_symmetric": true,
+          "baseline_calls": 5,
+          "plugin_calls": 5,
+          "baseline_retried": true,
+          "plugin_retried": true,
+          "native_retried": true,
+          "retrying_arm": "none, native_summary, pruner_v1",
+          "baseline_strict": true,
+          "plugin_strict": true,
+          "baseline_answer_correct": true,
+          "plugin_answer_correct": true,
+          "baseline_tool_calls": 3,
+          "plugin_tool_calls": 3
+        },
+        {
+          "task": "query_utils_unregister_lookup",
+          "repeat": 1,
+          "baseline_tokens": 9131,
+          "plugin_tokens": 9088,
+          "native_tokens": 9103,
+          "as_paired_tokens": 0.004709,
+          "matched_prefix_k": 5,
+          "matched_prefix_tokens": 0.003363,
+          "matched_prefix_bytes": 0.004053,
+          "matched_prefix_is_symmetric": true,
+          "baseline_calls": 5,
+          "plugin_calls": 5,
+          "baseline_retried": true,
+          "plugin_retried": true,
+          "native_retried": true,
+          "retrying_arm": "none, native_summary, pruner_v1",
+          "baseline_strict": true,
+          "plugin_strict": true,
+          "baseline_answer_correct": true,
+          "plugin_answer_correct": true,
+          "baseline_tool_calls": 3,
+          "plugin_tool_calls": 3
+        },
+        {
+          "task": "query_utils_unregister_lookup",
+          "repeat": 2,
+          "baseline_tokens": 9103,
+          "plugin_tokens": 9090,
+          "native_tokens": 9131,
+          "as_paired_tokens": 0.001428,
+          "matched_prefix_k": 5,
+          "matched_prefix_tokens": 0.001796,
+          "matched_prefix_bytes": 0.00149,
+          "matched_prefix_is_symmetric": true,
+          "baseline_calls": 5,
+          "plugin_calls": 5,
+          "baseline_retried": true,
+          "plugin_retried": true,
+          "native_retried": true,
+          "retrying_arm": "none, native_summary, pruner_v1",
+          "baseline_strict": true,
+          "plugin_strict": true,
+          "baseline_answer_correct": true,
+          "plugin_answer_correct": true,
+          "baseline_tool_calls": 3,
+          "plugin_tool_calls": 3
+        },
+        {
+          "task": "query_utils_unregister_lookup",
+          "repeat": 3,
+          "baseline_tokens": 9103,
+          "plugin_tokens": 9097,
+          "native_tokens": 9132,
+          "as_paired_tokens": 0.000659,
+          "matched_prefix_k": 5,
+          "matched_prefix_tokens": 0.001572,
+          "matched_prefix_bytes": 0.001422,
+          "matched_prefix_is_symmetric": true,
+          "baseline_calls": 5,
+          "plugin_calls": 5,
+          "baseline_retried": true,
+          "plugin_retried": true,
+          "native_retried": true,
+          "retrying_arm": "none, native_summary, pruner_v1",
+          "baseline_strict": true,
+          "plugin_strict": true,
+          "baseline_answer_correct": true,
+          "plugin_answer_correct": true,
+          "baseline_tool_calls": 3,
+          "plugin_tool_calls": 3
+        }
+      ]
+    },
+    "co_reported": {
+      "symmetric_matched_prefix_tokens": {
+        "n": 13,
+        "mean": 0.014647,
+        "sd": 0.016105,
+        "min": 0.001572,
+        "max": 0.050653,
+        "positive": 13
+      },
+      "symmetric_matched_prefix_bytes": {
+        "n": 13,
+        "mean": 0.022985,
+        "sd": 0.027806,
+        "min": 0.001422,
+        "max": 0.079471,
+        "positive": 13
+      },
+      "per_arm_quality": {
+        "none": {
+          "samples": 13,
+          "strict_track": 8,
+          "strict_rate": 0.6154,
+          "semantic_accuracy": 8,
+          "semantic_accuracy_rate": 0.6154,
+          "final_format_correct": 8,
+          "structure_safe": 13,
+          "constraint_preserved": 13,
+          "success": 8,
+          "model_calls_total": 64,
+          "model_calls_distribution": [
+            4,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5
+          ],
+          "tool_calls_total": 39,
+          "tool_calls_distribution": [
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3
+          ],
+          "requests_total": 64,
+          "retries": 12,
+          "total_provider_tokens": 122540,
+          "input_tokens": 119983,
+          "output_tokens": 2557,
+          "input_cache_hit_tokens": 103296,
+          "input_cache_miss_tokens": 16687,
+          "cost_usd": 0.002174
+        },
+        "native_summary": {
+          "samples": 13,
+          "strict_track": 8,
+          "strict_rate": 0.6154,
+          "semantic_accuracy": 8,
+          "semantic_accuracy_rate": 0.6154,
+          "final_format_correct": 8,
+          "structure_safe": 13,
+          "constraint_preserved": 13,
+          "success": 8,
+          "model_calls_total": 63,
+          "model_calls_distribution": [
+            4,
+            4,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5
+          ],
+          "tool_calls_total": 39,
+          "tool_calls_distribution": [
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3
+          ],
+          "requests_total": 67,
+          "retries": 11,
+          "total_provider_tokens": 124957,
+          "input_tokens": 117557,
+          "output_tokens": 2514,
+          "input_cache_hit_tokens": 95232,
+          "input_cache_miss_tokens": 22325,
+          "cost_usd": 0.002571
+        },
+        "pruner_v1": {
+          "samples": 13,
+          "strict_track": 8,
+          "strict_rate": 0.6154,
+          "semantic_accuracy": 8,
+          "semantic_accuracy_rate": 0.6154,
+          "final_format_correct": 8,
+          "structure_safe": 13,
+          "constraint_preserved": 13,
+          "success": 8,
+          "model_calls_total": 63,
+          "model_calls_distribution": [
+            4,
+            4,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5
+          ],
+          "tool_calls_total": 39,
+          "tool_calls_distribution": [
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3
+          ],
+          "requests_total": 63,
+          "retries": 11,
+          "total_provider_tokens": 118081,
+          "input_tokens": 115574,
+          "output_tokens": 2507,
+          "input_cache_hit_tokens": 96000,
+          "input_cache_miss_tokens": 19574,
+          "cost_usd": 0.002364
+        }
+      },
+      "per_pair_retrying_arm": [
+        {
+          "task": "autoreload_template_changed",
+          "repeat": 0,
+          "retrying_arm": "none, native_summary, pruner_v1",
+          "baseline_calls": 5,
+          "plugin_calls": 5
+        },
+        {
+          "task": "autoreload_template_changed",
+          "repeat": 1,
+          "retrying_arm": "none, native_summary, pruner_v1",
+          "baseline_calls": 5,
+          "plugin_calls": 5
+        },
+        {
+          "task": "autoreload_template_changed",
+          "repeat": 2,
+          "retrying_arm": "none, native_summary, pruner_v1",
+          "baseline_calls": 5,
+          "plugin_calls": 5
+        },
+        {
+          "task": "autoreload_template_changed",
+          "repeat": 3,
+          "retrying_arm": "none, native_summary, pruner_v1",
+          "baseline_calls": 5,
+          "plugin_calls": 5
+        },
+        {
+          "task": "autoreload_template_changed",
+          "repeat": 4,
+          "retrying_arm": "none, native_summary, pruner_v1",
+          "baseline_calls": 5,
+          "plugin_calls": 5
+        },
+        {
+          "task": "sitemap_callable_lastmod",
+          "repeat": 0,
+          "retrying_arm": "none, native_summary",
+          "baseline_calls": 5,
+          "plugin_calls": 4
+        },
+        {
+          "task": "sitemap_callable_lastmod",
+          "repeat": 1,
+          "retrying_arm": "none",
+          "baseline_calls": 5,
+          "plugin_calls": 4
+        },
+        {
+          "task": "sitemap_callable_lastmod",
+          "repeat": 2,
+          "retrying_arm": "native_summary, pruner_v1",
+          "baseline_calls": 4,
+          "plugin_calls": 5
+        },
+        {
+          "task": "sitemap_callable_lastmod",
+          "repeat": 3,
+          "retrying_arm": "none, pruner_v1",
+          "baseline_calls": 5,
+          "plugin_calls": 5
+        },
+        {
+          "task": "query_utils_unregister_lookup",
+          "repeat": 0,
+          "retrying_arm": "none, native_summary, pruner_v1",
+          "baseline_calls": 5,
+          "plugin_calls": 5
+        },
+        {
+          "task": "query_utils_unregister_lookup",
+          "repeat": 1,
+          "retrying_arm": "none, native_summary, pruner_v1",
+          "baseline_calls": 5,
+          "plugin_calls": 5
+        },
+        {
+          "task": "query_utils_unregister_lookup",
+          "repeat": 2,
+          "retrying_arm": "none, native_summary, pruner_v1",
+          "baseline_calls": 5,
+          "plugin_calls": 5
+        },
+        {
+          "task": "query_utils_unregister_lookup",
+          "repeat": 3,
+          "retrying_arm": "none, native_summary, pruner_v1",
+          "baseline_calls": 5,
+          "plugin_calls": 5
+        }
+      ],
+      "mechanism_per_task": {
+        "autoreload_template_changed": {
+          "v21_outputs_considered": 30,
+          "v21_outputs_elided": 5,
+          "v21_lines_elided": 10,
+          "v21_bytes_saved": 590,
+          "v21_literal_guard_fallbacks": 0,
+          "v21_note_bytes": 100
+        },
+        "sitemap_callable_lastmod": {
+          "v21_outputs_considered": 24,
+          "v21_outputs_elided": 12,
+          "v21_lines_elided": 140,
+          "v21_bytes_saved": 6008,
+          "v21_literal_guard_fallbacks": 0,
+          "v21_note_bytes": 588
+        },
+        "query_utils_unregister_lookup": {
+          "v21_outputs_considered": 24,
+          "v21_outputs_elided": 8,
+          "v21_lines_elided": 8,
+          "v21_bytes_saved": 288,
+          "v21_literal_guard_fallbacks": 0,
+          "v21_note_bytes": 160
+        }
+      },
+      "mechanism_determinism_per_task": {
+        "autoreload_template_changed": {
+          "per_repeat_bytes_saved": [
+            118,
+            118,
+            118,
+            118,
+            118
+          ],
+          "per_repeat_lines_elided": [
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "identical_across_repeats": true
+        },
+        "sitemap_callable_lastmod": {
+          "per_repeat_bytes_saved": [
+            1502,
+            1502,
+            1502,
+            1502
+          ],
+          "per_repeat_lines_elided": [
+            35,
+            35,
+            35,
+            35
+          ],
+          "identical_across_repeats": true
+        },
+        "query_utils_unregister_lookup": {
+          "per_repeat_bytes_saved": [
+            72,
+            72,
+            72,
+            72
+          ],
+          "per_repeat_lines_elided": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "identical_across_repeats": true
+        }
+      },
+      "requests": {
+        "requests": 194,
+        "model_calls": 190,
+        "summary_calls": 4,
+        "repair_retries": 34,
+        "cap": 390,
+        "identity": "194 = 190 + 4"
+      },
+      "cost": {
+        "prices": {
+          "source": "integrations/openai_agents/V16_CACHE_METERING_AND_COST_20261006.json",
+          "input_cache_miss_usd_per_million": 0.15,
+          "input_cache_hit_usd_per_million": 0.003,
+          "output_usd_per_million": 0.6,
+          "off_peak_multiplier": 0.5,
+          "note": "the frozen price table's rates; the batch reports tokens and requests and converts them with these rates, applying the off-peak multiplier when every call of the batch is off peak"
+        },
+        "multiplier_applied": 0.5,
+        "all_calls_off_peak": true,
+        "per_arm_usd": {
+          "none": 0.002174,
+          "native_summary": 0.002571,
+          "pruner_v1": 0.002364
+        },
+        "batch_total_usd": 0.007109
+      },
+      "cache": {
+        "calls_with_cache_fields": 190,
+        "calls": 190,
+        "prompt_cache_hit_tokens_total": 294528,
+        "prompt_cache_miss_tokens_total": 58586,
+        "all_calls_off_peak": true,
+        "calls_without_cache_fields": 0
+      }
+    }
+  },
+  "complete": false,
+  "errors": [
+    "the_manifest_cites_the_frozen_confirmation_freeze",
+    "the_manifest_copies_the_frozen_module_hashes",
+    "the_manifest_verifies_every_source_of_record_file",
+    "the_manifest_records_the_finalised_flag_and_the_pre_registered_keys",
+    "both_citation_flags_are_false_and_the_disclosures_are_present",
+    "the_batch_is_the_frozen_matrix",
+    "missing sample sitemap_callable_lastmod/4/none",
+    "missing sample sitemap_callable_lastmod/4/native_summary",
+    "missing sample sitemap_callable_lastmod/4/pruner_v1",
+    "missing sample query_utils_unregister_lookup/4/none",
+    "missing sample query_utils_unregister_lookup/4/native_summary",
+    "missing sample query_utils_unregister_lookup/4/pruner_v1",
+    "the_frozen_matrix_is_incomplete: sitemap_callable_lastmod/4, query_utils_unregister_lookup/4 - a stopped batch is audited as incomplete, never as a result",
+    "the_primary_criterion_recomputes_and_its_quality_guards_hold",
+    "the_manifest_api_call_total_differs_from_the_rows"
+  ],
+  "warnings": [],
+  "usable_as_saving": false,
+  "not_citable_statement": "this batch may not be cited as an effective saving until the errors above are resolved",
+  "recomputed_acceptance_matches_runner": true,
+  "manifest_acceptance_met": false,
+  "citable": false
+}

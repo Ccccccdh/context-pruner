@@ -1,0 +1,413 @@
+{
+  "schema": "openai_agents_v18_view_derivation_record",
+  "date": "20261010",
+  "api_requests_spent": 0,
+  "produced_by": "experiments/audits/v18_view_derivation.py",
+  "pass_evidence_rule": "a pass rests on the complete output of one run of this script; the artifact records that run, and no verdict is written here that the run did not print",
+  "rule_files": {
+    "literal_rule": {
+      "path": "integrations/openai_agents/V18_LITERAL_DISCRIMINATIVENESS_RULE_20261010.json",
+      "sha256": "f2fa7e48ea5d36bdd4464d8394e9cd6cf89eb8e4d30fde6b3b7974980125b7d5"
+    },
+    "amendment_1": {
+      "path": "integrations/openai_agents/V18_LITERAL_RULE_AMENDMENT_20261010.json",
+      "sha256": "97cbcba3bb74b3f7872819b597fde6deaa2a847a86ac6e90628b7831c808f9f8",
+      "status": "superseded in part by amendment 02"
+    },
+    "amendment_2": {
+      "path": "integrations/openai_agents/V18_LITERAL_RULE_AMENDMENT_02_20261010.json",
+      "sha256": "fbac7d892700b532db34cc3ae70aa9f09208bd93042231357395c6dfcdac8420",
+      "status": "in force"
+    },
+    "view_shape_amendment_3": {
+      "path": "integrations/openai_agents/V18_VIEW_SHAPE_AMENDMENT_03_20261010.json",
+      "sha256": "d7360183c6d6881044ffadd3f8b1f988cdb92d859bf9f70c0d660e7de046defd",
+      "status": "in force: three views, one per round, pairwise disjoint"
+    },
+    "defect_entity_declaration": {
+      "path": "integrations/openai_agents/V18_DEFECT_ENTITY_DECLARATION_20261010.json",
+      "sha256": "3eba7aec19e39c7720100d79b2d7ed2e6cfc006a2f75776b9a95a65eaecf105c",
+      "decided_by": "integrator",
+      "role": "an input: it fixes which definition is the defect-carrying view; ranges, the length cap, disjointness and every hash stay script derived"
+    }
+  },
+  "derivation_rule": {
+    "route_A": "a path the statement names that exists at the base commit and mentions an identifier from the statement, with a declared main file tried first",
+    "route_A_prime": "the statement's path is absent but its basename matches exactly one tracked python file that mentions an identifier from the statement",
+    "route_B": "no usable path: the statement's identifiers matched over the tracked python files in fixed order, bounded",
+    "view_count": "3 views, one per read round",
+    "large_definition_clause": "a view must contain the defect segment and must not exceed MAX_VIEW_LINES = 60; a longer definition is represented by its head block and an enclosed definition is skipped rather than registered beside its enclosing one",
+    "disjointness": "the views of a task must be pairwise disjoint; the script asserts this and raises on violation, because overlapping views would let the exact duplicate rule claim part of the saving on a shape whose purpose is to contain no duplicates",
+    "defect_entity": "declared by the integrator and proved by this script: verbatim in the statement, bound in the main file"
+  },
+  "constants": {
+    "VIEWS_PER_CANDIDATE": 3,
+    "MAX_VIEW_LINES": 60,
+    "PATH_B_FILE_LIMIT": 40
+  },
+  "candidates": {
+    "django__django-15572": {
+      "instance_id": "django__django-15572",
+      "base_commit": "0b31e024873681e187b574fe1c4afe5e48aeeecf",
+      "statement_identifiers": [
+        "code.djangoproject",
+        "template_changed",
+        "TEMPLATES_DIRS",
+        "autoreload.py",
+        "djangoproject",
+        "autoreload",
+        "os.getenv",
+        "getenv",
+        "os",
+        "py"
+      ],
+      "paths_named_in_statement": [
+        "django/template/autoreload.py"
+      ],
+      "paths_that_exist_at_the_base_commit": [
+        "django/template/autoreload.py"
+      ],
+      "declared_main_file_named_by_the_statement": true,
+      "derivation_path": "A: the statement names a path",
+      "why_this_path": "the main file the integrator declared, which the statement also names and which passes route A's own condition",
+      "not_the_first_named_path": "the first named path is also the chosen one",
+      "main_file": "django/template/autoreload.py",
+      "declared_defect_entity": "template_changed",
+      "declared_main_file": "django/template/autoreload.py",
+      "main_file_matches_the_declaration": true,
+      "declaration_proof": {
+        "declared_entity": "template_changed",
+        "verbatim_in_statement": true,
+        "statement_occurrence_count": 2,
+        "statement_excerpt": "break autoreload.\nThis happens because django/template/autoreload.py::template_changed was previously comparing the empty string to a directory, and would n",
+        "statement_offsets": [
+          544,
+          741
+        ],
+        "bound_in_main_file": true,
+        "bound_range": {
+          "first_line": 47,
+          "last_line": 54,
+          "kind": "FunctionDef",
+          "depth": 0
+        }
+      },
+      "defect_segment": {
+        "symbol": "template_changed",
+        "kind": "FunctionDef",
+        "first_line": 47,
+        "last_line": 54,
+        "source": "the integrator's declaration; this script quoted it as the defect-carrying view"
+      },
+      "views": [
+        {
+          "round": 1,
+          "file": "django/template/autoreload.py",
+          "symbol": "reset_loaders",
+          "kind": "FunctionDef",
+          "strategy": "definition",
+          "first_line": 33,
+          "last_line": 38,
+          "line_count": 6,
+          "tool_name": "read_reset_loaders",
+          "blob_git_id": "84c8554165f871a994b6a3617b776df2cb5e2e32",
+          "file_content_sha256": "8b618b323b0689e2d9263491d91b474ae1c0e54cc8d84c66eaef644eeb976540",
+          "view_content_sha256": "a9bfdb5b231bbe01df166583b8b837a5c0cdfa961ece43f3349fc62f4c503a8c",
+          "view_content_sha256_convention": "sha256 of the leaf text: the range's lines joined by a newline, no line numbers, no trailing newline"
+        },
+        {
+          "round": 2,
+          "file": "django/template/autoreload.py",
+          "symbol": "watch_for_template_changes",
+          "kind": "FunctionDef",
+          "strategy": "definition",
+          "first_line": 41,
+          "last_line": 44,
+          "line_count": 4,
+          "tool_name": "read_watch_for_template_changes",
+          "blob_git_id": "84c8554165f871a994b6a3617b776df2cb5e2e32",
+          "file_content_sha256": "8b618b323b0689e2d9263491d91b474ae1c0e54cc8d84c66eaef644eeb976540",
+          "view_content_sha256": "ef79343c85597cf3934feb6edc58eeec858a80c6c643083e37a778ec3e36ee24",
+          "view_content_sha256_convention": "sha256 of the leaf text: the range's lines joined by a newline, no line numbers, no trailing newline"
+        },
+        {
+          "round": 3,
+          "file": "django/template/autoreload.py",
+          "symbol": "template_changed",
+          "kind": "FunctionDef",
+          "strategy": "definition",
+          "first_line": 47,
+          "last_line": 54,
+          "line_count": 8,
+          "tool_name": "read_template_changed",
+          "blob_git_id": "84c8554165f871a994b6a3617b776df2cb5e2e32",
+          "file_content_sha256": "8b618b323b0689e2d9263491d91b474ae1c0e54cc8d84c66eaef644eeb976540",
+          "view_content_sha256": "4a1ff17f854e8a8a56651afdfc043062c6d715f8f700a9475d8740a566fb1217",
+          "view_content_sha256_convention": "sha256 of the leaf text: the range's lines joined by a newline, no line numbers, no trailing newline"
+        }
+      ],
+      "view_count": 3,
+      "pairwise_disjoint": true,
+      "distinct_tool_names": true,
+      "defect_segment_included": true,
+      "views_within_cap": true,
+      "usable": true
+    },
+    "django__django-16255": {
+      "instance_id": "django__django-16255",
+      "base_commit": "444b6da7cc229a58a2c476a52e45233001dc7073",
+      "statement_identifiers": [
+        "site.get_latest_lastmod",
+        "get_latest_lastmod",
+        "wrapped_callback",
+        "callback_kwargs",
+        "_get_response",
+        "_wrapped_view",
+        "callback_args",
+        "decorators.py",
+        "exception.py",
+        "get_response",
+        "self.lastmod",
+        "site_lastmod",
+        "__init__.py",
+        "sitemap.xml",
+        "ValueError",
+        "decorators",
+        "self.items",
+        "TypeError",
+        "exception",
+        "view_func",
+        "__init__",
+        "views.py",
+        "base.py",
+        "lastmod",
+        "sitemap",
+        "items",
+        "views",
+        "base",
+        "self",
+        "site",
+        "xml",
+        "py"
+      ],
+      "paths_named_in_statement": [
+        "/usr/local/lib/python3.10/site-packages/django/core/handlers/exception.py",
+        "/usr/local/lib/python3.10/site-packages/django/core/handlers/base.py",
+        "/usr/local/lib/python3.10/site-packages/django/utils/decorators.py",
+        "/usr/local/lib/python3.10/site-packages/django/contrib/sitemaps/views.py",
+        "/usr/local/lib/python3.10/site-packages/django/contrib/sitemaps/views.py",
+        "/usr/local/lib/python3.10/site-packages/django/contrib/sitemaps/__init__.py"
+      ],
+      "paths_that_exist_at_the_base_commit": [
+        "django/core/handlers/exception.py",
+        "django/core/handlers/base.py",
+        "django/utils/decorators.py",
+        "django/contrib/sitemaps/views.py",
+        "django/contrib/sitemaps/views.py",
+        "django/contrib/sitemaps/__init__.py"
+      ],
+      "declared_main_file_named_by_the_statement": true,
+      "derivation_path": "A: the statement names a path",
+      "why_this_path": "the main file the integrator declared, which the statement also names and which passes route A's own condition",
+      "not_the_first_named_path": "the first named path mentions no identifier from the statement, so it is a traceback frame rather than the module the defect is in",
+      "main_file": "django/contrib/sitemaps/__init__.py",
+      "declared_defect_entity": "get_latest_lastmod",
+      "declared_main_file": "django/contrib/sitemaps/__init__.py",
+      "main_file_matches_the_declaration": true,
+      "declaration_proof": {
+        "declared_entity": "get_latest_lastmod",
+        "verbatim_in_statement": true,
+        "statement_occurrence_count": 3,
+        "statement_excerpt": "go/contrib/sitemaps/views.py\", line 76, in index\n\tsite_lastmod = site.get_latest_lastmod()\n File \"/usr/local/lib/python3.10/site-packages/django/contrib/sitem",
+        "statement_offsets": [
+          943,
+          1062,
+          1278
+        ],
+        "bound_in_main_file": true,
+        "bound_range": {
+          "first_line": 165,
+          "last_line": 174,
+          "kind": "FunctionDef",
+          "depth": 1
+        }
+      },
+      "defect_segment": {
+        "symbol": "get_latest_lastmod",
+        "kind": "FunctionDef",
+        "first_line": 165,
+        "last_line": 174,
+        "source": "the integrator's declaration; this script quoted it as the defect-carrying view"
+      },
+      "views": [
+        {
+          "round": 1,
+          "file": "django/contrib/sitemaps/__init__.py",
+          "symbol": "get_latest_lastmod",
+          "kind": "FunctionDef",
+          "strategy": "definition",
+          "first_line": 165,
+          "last_line": 174,
+          "line_count": 10,
+          "tool_name": "read_get_latest_lastmod",
+          "blob_git_id": "27756d9d969414e1bfd0ae59e6054c7254575529",
+          "file_content_sha256": "94304753763abe3cb2ecc4dc86ea4478820798ac5e561595b0f56bba5f693e54",
+          "view_content_sha256": "2ba7122bd7f61f426f4644fba51e869553309eb204371bbc0fa0d58c1e5d1e35",
+          "view_content_sha256_convention": "sha256 of the leaf text: the range's lines joined by a newline, no line numbers, no trailing newline"
+        },
+        {
+          "round": 2,
+          "file": "django/contrib/sitemaps/__init__.py",
+          "symbol": "_urls",
+          "kind": "FunctionDef",
+          "strategy": "definition",
+          "first_line": 176,
+          "last_line": 228,
+          "line_count": 53,
+          "tool_name": "read_urls",
+          "blob_git_id": "27756d9d969414e1bfd0ae59e6054c7254575529",
+          "file_content_sha256": "94304753763abe3cb2ecc4dc86ea4478820798ac5e561595b0f56bba5f693e54",
+          "view_content_sha256": "4bb136a52af4c8288876ec81a8bf7e72abc4bd717cade09ea70b60dde91d78ec",
+          "view_content_sha256_convention": "sha256 of the leaf text: the range's lines joined by a newline, no line numbers, no trailing newline"
+        },
+        {
+          "round": 3,
+          "file": "django/contrib/sitemaps/__init__.py",
+          "symbol": "GenericSitemap",
+          "kind": "ClassDef",
+          "strategy": "definition",
+          "first_line": 231,
+          "last_line": 258,
+          "line_count": 28,
+          "tool_name": "read_genericsitemap",
+          "blob_git_id": "27756d9d969414e1bfd0ae59e6054c7254575529",
+          "file_content_sha256": "94304753763abe3cb2ecc4dc86ea4478820798ac5e561595b0f56bba5f693e54",
+          "view_content_sha256": "62481f2d2bf54af41967ca9df420cd05d849efac6a04e128267568916a156aac",
+          "view_content_sha256_convention": "sha256 of the leaf text: the range's lines joined by a newline, no line numbers, no trailing newline"
+        }
+      ],
+      "view_count": 3,
+      "pairwise_disjoint": true,
+      "distinct_tool_names": true,
+      "defect_segment_included": true,
+      "views_within_cap": true,
+      "usable": true
+    },
+    "django__django-15569": {
+      "instance_id": "django__django-15569",
+      "base_commit": "884b4c27f506b3c29d58509fc83a35c30ea10d94",
+      "statement_identifiers": [
+        "test_func_unique_constraint_lookups",
+        "RegisterLookupMixin",
+        "_unregister_lookup",
+        "register_lookup",
+        "query_utils.py",
+        "schema.tests",
+        "SchemaTests",
+        "query_utils",
+        "schema",
+        "tests",
+        "py"
+      ],
+      "paths_named_in_statement": [
+        "https://github.com/django/django/blame/main/django/db/models/query_utils.py",
+        "https://github.com/django/django/blame/main/django/db/models/query_utils.py"
+      ],
+      "paths_that_exist_at_the_base_commit": [],
+      "declared_main_file_named_by_the_statement": false,
+      "basename_hits": {
+        "query_utils.py": 1
+      },
+      "derivation_path": "A': the statement's path is absent; its basename is unique",
+      "basename_unique_hit": "query_utils.py",
+      "main_file": "django/db/models/query_utils.py",
+      "declared_defect_entity": "_unregister_lookup",
+      "declared_main_file": "django/db/models/query_utils.py",
+      "main_file_matches_the_declaration": true,
+      "declaration_proof": {
+        "declared_entity": "_unregister_lookup",
+        "verbatim_in_statement": true,
+        "statement_occurrence_count": 2,
+        "statement_excerpt": "RegisterLookupMixin._unregister_lookup() should clear the lookup cache.\nDescription\n\t \n\t\t(last modified by H",
+        "statement_offsets": [
+          20,
+          163
+        ],
+        "bound_in_main_file": true,
+        "bound_range": {
+          "first_line": 211,
+          "last_line": 219,
+          "kind": "FunctionDef",
+          "depth": 1
+        }
+      },
+      "defect_segment": {
+        "symbol": "_unregister_lookup",
+        "kind": "FunctionDef",
+        "first_line": 211,
+        "last_line": 219,
+        "source": "the integrator's declaration; this script quoted it as the defect-carrying view"
+      },
+      "views": [
+        {
+          "round": 1,
+          "file": "django/db/models/query_utils.py",
+          "symbol": "_unregister_lookup",
+          "kind": "FunctionDef",
+          "strategy": "definition",
+          "first_line": 211,
+          "last_line": 219,
+          "line_count": 9,
+          "tool_name": "read_unregister_lookup",
+          "blob_git_id": "0caa165e151b72df0345b39809e185a984873f6a",
+          "file_content_sha256": "79f44df9f8754429320b6d349bfee8b06d341335f2c4c343df006e41402d84c7",
+          "view_content_sha256": "bfb7cb3256effec573fdfcb17ae0676a67dd1897a9c6b6a2bf5548f27ed33bdb",
+          "view_content_sha256_convention": "sha256 of the leaf text: the range's lines joined by a newline, no line numbers, no trailing newline"
+        },
+        {
+          "round": 2,
+          "file": "django/db/models/query_utils.py",
+          "symbol": "select_related_descend",
+          "kind": "FunctionDef",
+          "strategy": "definition",
+          "first_line": 222,
+          "last_line": 256,
+          "line_count": 35,
+          "tool_name": "read_select_related_descend",
+          "blob_git_id": "0caa165e151b72df0345b39809e185a984873f6a",
+          "file_content_sha256": "79f44df9f8754429320b6d349bfee8b06d341335f2c4c343df006e41402d84c7",
+          "view_content_sha256": "371e335ccfb9b09372d98f7c88868db3082d2360caa09407429a4018f45c659b",
+          "view_content_sha256_convention": "sha256 of the leaf text: the range's lines joined by a newline, no line numbers, no trailing newline"
+        },
+        {
+          "round": 3,
+          "file": "django/db/models/query_utils.py",
+          "symbol": "refs_expression",
+          "kind": "FunctionDef",
+          "strategy": "definition",
+          "first_line": 259,
+          "last_line": 269,
+          "line_count": 11,
+          "tool_name": "read_refs_expression",
+          "blob_git_id": "0caa165e151b72df0345b39809e185a984873f6a",
+          "file_content_sha256": "79f44df9f8754429320b6d349bfee8b06d341335f2c4c343df006e41402d84c7",
+          "view_content_sha256": "219c00f9001c0d4bdffaa74de457569732fcad793ee8a42bbd83bcf2deb139fe",
+          "view_content_sha256_convention": "sha256 of the leaf text: the range's lines joined by a newline, no line numbers, no trailing newline"
+        }
+      ],
+      "view_count": 3,
+      "pairwise_disjoint": true,
+      "distinct_tool_names": true,
+      "defect_segment_included": true,
+      "views_within_cap": true,
+      "usable": true
+    }
+  },
+  "usable_candidates": [
+    "django__django-15572",
+    "django__django-16255",
+    "django__django-15569"
+  ],
+  "usable_count": 3,
+  "registration_may_proceed": true
+}

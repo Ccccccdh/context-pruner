@@ -1,0 +1,207 @@
+{
+  "schema": "openai_agents_v24_recalibration_report",
+  "date": "20261010",
+  "generated_utc": "2026-10-10T18:35:46+00:00",
+  "experiment_id": "openai-repo-diagnostic-v24-length-compliance-recalibration-01",
+  "run_directory": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v24-length-compliance-recalibration-01",
+  "decision_line": "on top of the v24 acceptance line: first-attempt acceptance at or above 70 percent overall, every arm's strict track at or above the baseline, the semantic endpoint at or above the baseline, zero render failures, zero truncations, zero dropped fields, and the mechanism's byte saving unchanged in kind from the K=1 development measurement",
+  "configuration": {
+    "repeats": 1,
+    "samples": 9,
+    "native_samples": 3,
+    "cap": 80,
+    "experiment_id": "openai-repo-diagnostic-v24-length-compliance-recalibration-01",
+    "freeze": "C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\integrations\\openai_agents\\V24_RECALIBRATION_FREEZE_20261010.json",
+    "gate": "C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\integrations\\openai_agents\\V24_RECALIBRATION_ZERO_API_GATE_20261010.json"
+  },
+  "arithmetic": {
+    "shape": "N3",
+    "read_calls": 3,
+    "max_turns": 5,
+    "retry_budget_per_sample": 1,
+    "worst_case_requests_per_sample": 6,
+    "samples": 9,
+    "arms": [
+      "none",
+      "native_summary",
+      "pruner_v1"
+    ],
+    "repeats": 1,
+    "worst_case_model_calls": 54,
+    "summary_calls_worst_case": 6,
+    "worst_case_requests": 60,
+    "cap": 80,
+    "margin": 1.333,
+    "at_least_1_3": true,
+    "derivation": "READ_CALLS=3 => MAX_TURNS=5 => worst 6 per sample => 9x6 + 3x2 = 60 => 1.3x => 78, capped at 80"
+  },
+  "first_attempt_acceptance": {
+    "accepted": 4,
+    "of_samples": 9,
+    "rate": 0.4444,
+    "threshold": 0.7,
+    "rejection_classes": {
+      "over_160_chars": 5
+    },
+    "rejected_samples": [
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 0,
+        "arm": "none",
+        "first_reject_class": "over_160_chars",
+        "render_reason": "accepted_retry"
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 0,
+        "arm": "pruner_v1",
+        "first_reject_class": "over_160_chars",
+        "render_reason": "accepted_retry"
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 0,
+        "arm": "native_summary",
+        "first_reject_class": "over_160_chars",
+        "render_reason": "accepted_retry"
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 0,
+        "arm": "native_summary",
+        "first_reject_class": "over_160_chars",
+        "render_reason": "accepted_retry"
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 0,
+        "arm": "none",
+        "first_reject_class": "over_160_chars",
+        "render_reason": "accepted_retry"
+      }
+    ]
+  },
+  "per_arm": {
+    "none": {
+      "samples": 3,
+      "strict_track_rate": 1.0,
+      "semantic_accuracy": 1.0,
+      "first_attempt_accepted": 1,
+      "first_attempt_acceptance_rate": 0.3333,
+      "retried_samples": 2,
+      "retry_wording_used": [
+        "not_used_first_attempt_accepted",
+        "v24_length_compliance"
+      ],
+      "model_calls": 14,
+      "tool_calls": 9,
+      "api_request_attempts": 14,
+      "total_provider_tokens": 29913
+    },
+    "native_summary": {
+      "samples": 3,
+      "strict_track_rate": 1.0,
+      "semantic_accuracy": 1.0,
+      "first_attempt_accepted": 1,
+      "first_attempt_acceptance_rate": 0.3333,
+      "retried_samples": 2,
+      "retry_wording_used": [
+        "not_used_first_attempt_accepted",
+        "v24_length_compliance"
+      ],
+      "model_calls": 14,
+      "tool_calls": 9,
+      "api_request_attempts": 15,
+      "total_provider_tokens": 31217
+    },
+    "pruner_v1": {
+      "samples": 3,
+      "strict_track_rate": 1.0,
+      "semantic_accuracy": 1.0,
+      "first_attempt_accepted": 2,
+      "first_attempt_acceptance_rate": 0.6667,
+      "retried_samples": 1,
+      "retry_wording_used": [
+        "not_used_first_attempt_accepted",
+        "v24_length_compliance"
+      ],
+      "model_calls": 13,
+      "tool_calls": 9,
+      "api_request_attempts": 13,
+      "total_provider_tokens": 27278
+    }
+  },
+  "paired": [
+    {
+      "task": "autoreload_template_changed",
+      "repeat": 0,
+      "baseline_total_tokens": 10071,
+      "plugin_total_tokens": 9993,
+      "saving": 0.007745,
+      "baseline_retried": 1,
+      "plugin_retried": 1,
+      "v21_bytes_saved": 118
+    },
+    {
+      "task": "sitemap_callable_lastmod",
+      "repeat": 0,
+      "baseline_total_tokens": 9511,
+      "plugin_total_tokens": 9239,
+      "saving": 0.028598,
+      "baseline_retried": 0,
+      "plugin_retried": 0,
+      "v21_bytes_saved": 1502
+    },
+    {
+      "task": "query_utils_unregister_lookup",
+      "repeat": 0,
+      "baseline_total_tokens": 10331,
+      "plugin_total_tokens": 8046,
+      "saving": 0.221179,
+      "baseline_retried": 1,
+      "plugin_retried": 0,
+      "v21_bytes_saved": 72
+    }
+  ],
+  "pooled_paired_saving": {
+    "pairs": 3,
+    "mean": 0.085841,
+    "positive_pairs": 3,
+    "min": 0.007745,
+    "max": 0.221179
+  },
+  "mechanism_bytes_saved_per_task": {
+    "autoreload_template_changed": 1,
+    "sitemap_callable_lastmod": 1,
+    "query_utils_unregister_lookup": 1
+  },
+  "failures": {
+    "render_failures": [],
+    "truncations": [],
+    "dropped_fields": []
+  },
+  "development_k1_reference": {
+    "batch": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v22-window-k1b-pilot-02",
+    "note": "the v22 K=1 development group is the K=1 development measurement this recalibration is compared with in kind - not in value - because the v22 development numbers are not citable and are not pooled with anything here"
+  },
+  "verdict": {
+    "checks": {
+      "nine_samples_ran": true,
+      "every_arm_present": true,
+      "first_attempt_acceptance_at_least_70_percent": false,
+      "every_arms_strict_track_at_least_the_baseline": true,
+      "semantic_endpoint_at_least_the_baseline": true,
+      "zero_render_failures": true,
+      "zero_truncations": true,
+      "zero_dropped_fields": true,
+      "mechanism_saves_bytes_on_every_task": true,
+      "cap_not_reached": true
+    },
+    "ok": false,
+    "decision": "STOP: the v24 configuration may not proceed to the sealed confirmation batch"
+  },
+  "citable": false,
+  "not_evidence_yet": "this batch measures the configuration on the development tasks that built it; it is development evidence and none of its numbers is citable",
+  "under_this_host_configuration": "under this host configuration",
+  "mechanism_is": "guarantee-preserving line-level omission at K=1"
+}

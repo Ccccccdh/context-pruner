@@ -1,0 +1,83 @@
+{
+  "schema": "openai_agents_v18_sealed_k1_focused_regression",
+  "date": "20261010",
+  "generated_utc": "2026-10-10T17:55:10+00:00",
+  "api_requests_spent": 0,
+  "produced_by": "experiments/audits/v18_sealed_k1_regression_record.py",
+  "command": [
+    "C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\.venv-openhands\\Scripts\\python.exe",
+    "-m",
+    "pytest",
+    "tests/test_openai_agents_v18_sealed_window_k1.py",
+    "tests/test_openai_agents_v22_window_dose.py",
+    "tests/test_openai_agents_v21.py",
+    "tests/test_openai_agents_v20.py",
+    "tests/test_openai_agents_v17.py",
+    "tests/test_openai_agents_v16_live_runner_zero_api.py",
+    "tests/test_openai_agents_structured_final_v16.py",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp",
+    "C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\.tooling\\tmp\\pytest-v23-basetemp",
+    "-q",
+    "--tb=line",
+    "-rf"
+  ],
+  "environment": {
+    "interpreter": "C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\.venv-openhands\\Scripts\\python.exe",
+    "why_not_the_repository_venv": "the repository virtual environment carries the OpenAI Agents SDK but not pytest; this interpreter carries pytest but not the SDK, so the SDK's site-packages are on PYTHONPATH",
+    "pythonpath": [
+      "C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\.venv\\Lib\\site-packages",
+      "C:\\Users\\LENOVO\\Desktop\\AI Agent\\code"
+    ],
+    "temp": "C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\.tooling\\tmp",
+    "basetemp": "C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\.tooling\\tmp\\pytest-v23-basetemp",
+    "cache_provider_disabled": true,
+    "full_suite_not_run_because": "an earlier round recorded that the full suite produces no output for about fifty minutes; a focused set is what this gate can honestly run"
+  },
+  "tests_selected": [
+    "tests/test_openai_agents_v18_sealed_window_k1.py",
+    "tests/test_openai_agents_v22_window_dose.py",
+    "tests/test_openai_agents_v21.py",
+    "tests/test_openai_agents_v20.py",
+    "tests/test_openai_agents_v17.py",
+    "tests/test_openai_agents_v16_live_runner_zero_api.py",
+    "tests/test_openai_agents_structured_final_v16.py"
+  ],
+  "test_file_sha256": {
+    "tests/test_openai_agents_v18_sealed_window_k1.py": "0a3a437c4b59ccfa2dca9774c5a59ee69fcfa774fd57349ddc0ebffcfb392ff4",
+    "tests/test_openai_agents_v22_window_dose.py": "37708a91c20197cfb7dc3382c314f7720537461a765692b6806074c23052258a",
+    "tests/test_openai_agents_v21.py": "482b6b99f3182e40cd742be1ea40eaa9c5c2cef3ec3b103a45ec96cb1738fb77",
+    "tests/test_openai_agents_v20.py": "c7d2ef5de3a2aca2ad91a6a0acb64e8503f6c8daeda356e12dad7280e1a75f92",
+    "tests/test_openai_agents_v17.py": "21bcbbb448188e00be184a63d50b86f583807d41c05f4e66ed2fe5bdb78aeca9",
+    "tests/test_openai_agents_v16_live_runner_zero_api.py": "2365990fe4b96a77bb8db623e5dd719af73f1606cf6d665b09e891f6bec6a756",
+    "tests/test_openai_agents_structured_final_v16.py": "222fd5fc4f049b0c2146f15914a8bc79c68645628a849a35f4ef0fbf8b0b6303"
+  },
+  "exit_code": 1,
+  "summary_counts": {
+    "failed": 4,
+    "passed": 155
+  },
+  "failed_node_ids": [
+    "tests/test_openai_agents_v16_live_runner_zero_api.py::RegistryTests::test_problem_statement_hash_reconciliation_is_recorded",
+    "tests/test_openai_agents_v17.py::FreezeAndCapTests::test_cap_keeps_a_1_3x_margin_over_the_frozen_worst_case",
+    "tests/test_openai_agents_v17.py::FreezeAndCapTests::test_frozen_matrix_and_cap_hold",
+    "tests/test_openai_agents_v21.py::RetryDisciplineTests::test_the_gate_reports_them_unchanged"
+  ],
+  "allowed_existing_failures": [
+    "tests/test_openai_agents_v16_live_runner_zero_api.py::RegistryTests::test_problem_statement_hash_reconciliation_is_recorded"
+  ],
+  "allowed_failures_observed": [
+    "tests/test_openai_agents_v16_live_runner_zero_api.py::RegistryTests::test_problem_statement_hash_reconciliation_is_recorded"
+  ],
+  "unexpected_failures": [
+    "tests/test_openai_agents_v17.py::FreezeAndCapTests::test_cap_keeps_a_1_3x_margin_over_the_frozen_worst_case",
+    "tests/test_openai_agents_v17.py::FreezeAndCapTests::test_frozen_matrix_and_cap_hold",
+    "tests/test_openai_agents_v21.py::RetryDisciplineTests::test_the_gate_reports_them_unchanged"
+  ],
+  "stderr": "",
+  "stdout": "........................................................................ [ 45%]\r\n...F..................................FF....F........................... [ 90%]\r\n...............                                                          [100%]\r\n================================== FAILURES ===================================\r\nE   KeyError: 'django_sqlite_version_floor'\r\nC:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\experiments\\runners\\openai_agents_v18_registry.py:223: KeyError: 'django_sqlite_version_floor'\r\nE   AssertionError: 400 not less than or equal to 110\r\nD:\\miniconda\\Lib\\unittest\\case.py:732: AssertionError: 400 not less than or equal to 110\r\nE   AssertionError: 9 != 45\r\nD:\\miniconda\\Lib\\unittest\\case.py:900: AssertionError: 9 != 45\r\nE   KeyError: 'problem_statement_hash_reconciliation'\r\nC:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\tests\\test_openai_agents_v16_live_runner_zero_api.py:73: KeyError: 'problem_statement_hash_reconciliation'\r\n=========================== short test summary info ===========================\r\nFAILED tests/test_openai_agents_v21.py::RetryDisciplineTests::test_the_gate_reports_them_unchanged\r\nFAILED tests/test_openai_agents_v17.py::FreezeAndCapTests::test_cap_keeps_a_1_3x_margin_over_the_frozen_worst_case\r\nFAILED tests/test_openai_agents_v17.py::FreezeAndCapTests::test_frozen_matrix_and_cap_hold\r\nFAILED tests/test_openai_agents_v16_live_runner_zero_api.py::RegistryTests::test_problem_statement_hash_reconciliation_is_recorded\r\n4 failed, 155 passed in 15.69s\r\n",
+  "stdout_sha256": "f4114293c4ab62c674f83b9de778d2092881d0a4530f251126f75d55a97dab66",
+  "ok": false,
+  "rule": "the focused set passes except, at most, the one existing failure named above; any other failure fails this round"
+}

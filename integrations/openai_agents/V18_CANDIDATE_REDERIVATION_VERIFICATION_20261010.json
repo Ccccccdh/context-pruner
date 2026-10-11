@@ -1,0 +1,585 @@
+{
+  "schema": "openai_agents_v18_candidate_rederivation_verification",
+  "date": "20261010",
+  "api_requests_spent": 0,
+  "produced_by": "experiments/audits/v18_literal_binding_check.py",
+  "revision_note": "the previous version of this record was produced by a one-off probe whose binding extractor returned an empty set for a view range that begins inside a block, because textwrap.dedent ignores the first line when it computes the common prefix and the slice therefore never parsed. That made django-15569 look as though its defect view bound nothing. The extractor here normalises the slice first, raises instead of returning an empty set, and is in the repository so the check can be re-run; every verdict below is this script's own output. The integrator accepted django-15569 on the probe evidence and required exactly this: a re-runnable script and a self-consistent record",
+  "rule_applied": {
+    "rule_file": "integrations/openai_agents/V18_LITERAL_DISCRIMINATIVENESS_RULE_20261010.json",
+    "rule_file_sha256": "f2fa7e48ea5d36bdd4464d8394e9cd6cf89eb8e4d30fde6b3b7974980125b7d5",
+    "rule_id": "openai-agents-v18-code-anchored-literals-01",
+    "amendments_applied": [
+      {
+        "path": "integrations/openai_agents/V18_LITERAL_RULE_AMENDMENT_20261010.json",
+        "sha256": "97cbcba3bb74b3f7872819b597fde6deaa2a847a86ac6e90628b7831c808f9f8",
+        "status": "superseded in part by amendment 02"
+      },
+      {
+        "path": "integrations/openai_agents/V18_LITERAL_RULE_AMENDMENT_02_20261010.json",
+        "sha256": "fbac7d892700b532db34cc3ae70aa9f09208bd93042231357395c6dfcdac8420",
+        "status": "in force: R4 admits a literal the statement names or the defect view binds; R5 requires two of the three literals outside the framework generic list"
+      }
+    ],
+    "requirements_in_force": [
+      "R1 verbatim in a registered view",
+      "R2 two of three code anchored",
+      "R3 both regex tokens code anchored",
+      "R4 named by the statement or bound in the defect view",
+      "R5 two of three outside the framework generic list",
+      "R6 not a keyword or builtin",
+      "R7 lazy answer negative control fails"
+    ]
+  },
+  "candidates": {
+    "django__django-15572": {
+      "task_id": "django__django-15572",
+      "base_commit": "0b31e024873681e187b574fe1c4afe5e48aeeecf",
+      "statement_names_a_view_symbol": true,
+      "defect_view": {
+        "round": 3,
+        "symbol": "template_changed",
+        "file": "django/template/autoreload.py",
+        "first_line": 47,
+        "last_line": 54
+      },
+      "contract": {
+        "issue_value": "django-15572",
+        "required_facts": [
+          "template_changed",
+          "template_dir",
+          "file_path"
+        ],
+        "cause_token": "template_changed",
+        "fix_token": "template_dir",
+        "frozen_regex": "RESULT issue=django-15572 cause=.*template_changed.* fix=.*template_dir.*",
+        "max_answer_chars": 160
+      },
+      "checks": {
+        "R1_verbatim": {
+          "holds": true
+        },
+        "R2_two_code_anchored": {
+          "holds": true,
+          "anchored": [
+            "template_changed",
+            "template_dir",
+            "file_path"
+          ]
+        },
+        "R3_regex_tokens_anchored": {
+          "holds": true,
+          "cause": true,
+          "fix": true
+        },
+        "R4_relevance": {
+          "holds": true,
+          "per_literal": [
+            {
+              "literal": "template_changed",
+              "named_by_statement": true,
+              "bound_in_defect_view": true,
+              "holds": true
+            },
+            {
+              "literal": "template_dir",
+              "named_by_statement": false,
+              "bound_in_defect_view": true,
+              "holds": true
+            },
+            {
+              "literal": "file_path",
+              "named_by_statement": false,
+              "bound_in_defect_view": true,
+              "holds": true
+            }
+          ]
+        },
+        "R5_two_outside_framework_generic": {
+          "holds": true,
+          "outside": [
+            "template_changed",
+            "template_dir",
+            "file_path"
+          ],
+          "list": [
+            "request",
+            "response",
+            "get_response",
+            "view",
+            "model",
+            "field",
+            "template",
+            "inner",
+            "value",
+            "error",
+            "object",
+            "class",
+            "method"
+          ]
+        },
+        "R6_not_keyword_or_builtin": {
+          "holds": true,
+          "offending": []
+        },
+        "R7_lazy_answer_control": {
+          "holds": true,
+          "satisfies_frozen_regex": false,
+          "satisfies_literal_requirement": false,
+          "lazy_line_head": "RESULT issue=django-15572 cause=django-15572 Django autoreload breaks on empty string in TEMPLATES DIRS Description Django versions changes the way te"
+        },
+        "minimal_feasible_line": {
+          "line": "RESULT issue=django-15572 cause=template_changed fix=template_dir file_path",
+          "chars": 75,
+          "four_conditions": {
+            "facts_complete": true,
+            "frozen_regex": true,
+            "single_line_prefix": true,
+            "within_160": true
+          }
+        },
+        "views_unchanged": {
+          "distinct_ranges": true,
+          "distinct_tool_names": true,
+          "view_hashes_recorded": true
+        }
+      },
+      "failures": [],
+      "defect_view_bound_names": [
+        "file_path",
+        "kwargs",
+        "sender",
+        "template_changed",
+        "template_dir"
+      ],
+      "literals": [
+        {
+          "literal": "template_changed",
+          "verbatim_hits": 1,
+          "first_hit": {
+            "round": 3,
+            "file": "django/template/autoreload.py",
+            "line_number": 48,
+            "text": "def template_changed(sender, file_path, **kwargs):"
+          },
+          "views_where_it_appears": [
+            3
+          ],
+          "bound_in_view_rounds": [
+            3
+          ],
+          "bound_in_defect_view": true,
+          "named_by_statement": true
+        },
+        {
+          "literal": "template_dir",
+          "verbatim_hits": 3,
+          "first_hit": {
+            "round": 2,
+            "file": "django/template/autoreload.py",
+            "line_number": 43,
+            "text": "for directory in get_template_directories():"
+          },
+          "views_where_it_appears": [
+            2,
+            3
+          ],
+          "bound_in_view_rounds": [
+            3
+          ],
+          "bound_in_defect_view": true,
+          "named_by_statement": false
+        },
+        {
+          "literal": "file_path",
+          "verbatim_hits": 3,
+          "first_hit": {
+            "round": 3,
+            "file": "django/template/autoreload.py",
+            "line_number": 48,
+            "text": "def template_changed(sender, file_path, **kwargs):"
+          },
+          "views_where_it_appears": [
+            3
+          ],
+          "bound_in_view_rounds": [
+            3
+          ],
+          "bound_in_defect_view": true,
+          "named_by_statement": false
+        }
+      ],
+      "verdict": "ACCEPTED"
+    },
+    "django__django-16255": {
+      "task_id": "django__django-16255",
+      "base_commit": "444b6da7cc229a58a2c476a52e45233001dc7073",
+      "statement_names_a_view_symbol": true,
+      "defect_view": {
+        "round": 1,
+        "symbol": "get_latest_lastmod",
+        "file": "django/contrib/sitemaps/__init__.py",
+        "first_line": 165,
+        "last_line": 174
+      },
+      "contract": {
+        "issue_value": "django-16255",
+        "required_facts": [
+          "get_latest_lastmod",
+          "lastmod",
+          "items"
+        ],
+        "cause_token": "get_latest_lastmod",
+        "fix_token": "lastmod",
+        "frozen_regex": "RESULT issue=django-16255 cause=.*get_latest_lastmod.* fix=.*lastmod.*",
+        "max_answer_chars": 160
+      },
+      "checks": {
+        "R1_verbatim": {
+          "holds": true
+        },
+        "R2_two_code_anchored": {
+          "holds": true,
+          "anchored": [
+            "get_latest_lastmod",
+            "lastmod",
+            "items"
+          ]
+        },
+        "R3_regex_tokens_anchored": {
+          "holds": true,
+          "cause": true,
+          "fix": true
+        },
+        "R4_relevance": {
+          "holds": true,
+          "per_literal": [
+            {
+              "literal": "get_latest_lastmod",
+              "named_by_statement": true,
+              "bound_in_defect_view": true,
+              "holds": true
+            },
+            {
+              "literal": "lastmod",
+              "named_by_statement": true,
+              "bound_in_defect_view": false,
+              "holds": true
+            },
+            {
+              "literal": "items",
+              "named_by_statement": true,
+              "bound_in_defect_view": false,
+              "holds": true
+            }
+          ]
+        },
+        "R5_two_outside_framework_generic": {
+          "holds": true,
+          "outside": [
+            "get_latest_lastmod",
+            "lastmod",
+            "items"
+          ],
+          "list": [
+            "request",
+            "response",
+            "get_response",
+            "view",
+            "model",
+            "field",
+            "template",
+            "inner",
+            "value",
+            "error",
+            "object",
+            "class",
+            "method"
+          ]
+        },
+        "R6_not_keyword_or_builtin": {
+          "holds": true,
+          "offending": []
+        },
+        "R7_lazy_answer_control": {
+          "holds": true,
+          "satisfies_frozen_regex": false,
+          "satisfies_literal_requirement": false,
+          "lazy_line_head": "RESULT issue=django-16255 cause=django-16255 Sitemaps without items raise ValueError on callable lastmod Description When sitemap contains not items b"
+        },
+        "minimal_feasible_line": {
+          "line": "RESULT issue=django-16255 cause=get_latest_lastmod fix=lastmod items",
+          "chars": 68,
+          "four_conditions": {
+            "facts_complete": true,
+            "frozen_regex": true,
+            "single_line_prefix": true,
+            "within_160": true
+          }
+        },
+        "views_unchanged": {
+          "distinct_ranges": true,
+          "distinct_tool_names": true,
+          "view_hashes_recorded": true
+        }
+      },
+      "failures": [],
+      "defect_view_bound_names": [
+        "get_latest_lastmod",
+        "item",
+        "self"
+      ],
+      "literals": [
+        {
+          "literal": "get_latest_lastmod",
+          "verbatim_hits": 2,
+          "first_hit": {
+            "round": 1,
+            "file": "django/contrib/sitemaps/__init__.py",
+            "line_number": 165,
+            "text": "def get_latest_lastmod(self):"
+          },
+          "views_where_it_appears": [
+            1,
+            3
+          ],
+          "bound_in_view_rounds": [
+            1,
+            3
+          ],
+          "bound_in_defect_view": true,
+          "named_by_statement": true
+        },
+        {
+          "literal": "lastmod",
+          "verbatim_hits": 18,
+          "first_hit": {
+            "round": 1,
+            "file": "django/contrib/sitemaps/__init__.py",
+            "line_number": 165,
+            "text": "def get_latest_lastmod(self):"
+          },
+          "views_where_it_appears": [
+            1,
+            2,
+            3
+          ],
+          "bound_in_view_rounds": [
+            2,
+            3
+          ],
+          "bound_in_defect_view": false,
+          "named_by_statement": true
+        },
+        {
+          "literal": "items",
+          "verbatim_hits": 7,
+          "first_hit": {
+            "round": 1,
+            "file": "django/contrib/sitemaps/__init__.py",
+            "line_number": 170,
+            "text": "return max([self.lastmod(item) for item in self.items()])"
+          },
+          "views_where_it_appears": [
+            1,
+            2,
+            3
+          ],
+          "bound_in_view_rounds": [
+            3
+          ],
+          "bound_in_defect_view": false,
+          "named_by_statement": true
+        }
+      ],
+      "verdict": "ACCEPTED"
+    },
+    "django__django-15569": {
+      "task_id": "django__django-15569",
+      "base_commit": "884b4c27f506b3c29d58509fc83a35c30ea10d94",
+      "statement_names_a_view_symbol": true,
+      "defect_view": {
+        "round": 1,
+        "symbol": "_unregister_lookup",
+        "file": "django/db/models/query_utils.py",
+        "first_line": 211,
+        "last_line": 219
+      },
+      "contract": {
+        "issue_value": "django-15569",
+        "required_facts": [
+          "_unregister_lookup",
+          "lookup_name",
+          "lookup"
+        ],
+        "cause_token": "_unregister_lookup",
+        "fix_token": "lookup_name",
+        "frozen_regex": "RESULT issue=django-15569 cause=.*_unregister_lookup.* fix=.*lookup_name.*",
+        "max_answer_chars": 160
+      },
+      "checks": {
+        "R1_verbatim": {
+          "holds": true
+        },
+        "R2_two_code_anchored": {
+          "holds": true,
+          "anchored": [
+            "_unregister_lookup",
+            "lookup_name",
+            "lookup"
+          ]
+        },
+        "R3_regex_tokens_anchored": {
+          "holds": true,
+          "cause": true,
+          "fix": true
+        },
+        "R4_relevance": {
+          "holds": true,
+          "per_literal": [
+            {
+              "literal": "_unregister_lookup",
+              "named_by_statement": true,
+              "bound_in_defect_view": true,
+              "holds": true
+            },
+            {
+              "literal": "lookup_name",
+              "named_by_statement": false,
+              "bound_in_defect_view": true,
+              "holds": true
+            },
+            {
+              "literal": "lookup",
+              "named_by_statement": true,
+              "bound_in_defect_view": true,
+              "holds": true
+            }
+          ]
+        },
+        "R5_two_outside_framework_generic": {
+          "holds": true,
+          "outside": [
+            "_unregister_lookup",
+            "lookup_name",
+            "lookup"
+          ],
+          "list": [
+            "request",
+            "response",
+            "get_response",
+            "view",
+            "model",
+            "field",
+            "template",
+            "inner",
+            "value",
+            "error",
+            "object",
+            "class",
+            "method"
+          ]
+        },
+        "R6_not_keyword_or_builtin": {
+          "holds": true,
+          "offending": []
+        },
+        "R7_lazy_answer_control": {
+          "holds": true,
+          "satisfies_frozen_regex": false,
+          "satisfies_literal_requirement": false,
+          "lazy_line_head": "RESULT issue=django-15569 cause=django-15569 RegisterLookupMixin _unregister_lookup should clear the lookup cache Description last modified by Himansh"
+        },
+        "minimal_feasible_line": {
+          "line": "RESULT issue=django-15569 cause=_unregister_lookup fix=lookup_name lookup",
+          "chars": 73,
+          "four_conditions": {
+            "facts_complete": true,
+            "frozen_regex": true,
+            "single_line_prefix": true,
+            "within_160": true
+          }
+        },
+        "views_unchanged": {
+          "distinct_ranges": true,
+          "distinct_tool_names": true,
+          "view_hashes_recorded": true
+        }
+      },
+      "failures": [],
+      "defect_view_bound_names": [
+        "_unregister_lookup",
+        "cls",
+        "lookup",
+        "lookup_name"
+      ],
+      "literals": [
+        {
+          "literal": "_unregister_lookup",
+          "verbatim_hits": 1,
+          "first_hit": {
+            "round": 1,
+            "file": "django/db/models/query_utils.py",
+            "line_number": 212,
+            "text": "def _unregister_lookup(cls, lookup, lookup_name=None):"
+          },
+          "views_where_it_appears": [
+            1
+          ],
+          "bound_in_view_rounds": [
+            1
+          ],
+          "bound_in_defect_view": true,
+          "named_by_statement": true
+        },
+        {
+          "literal": "lookup_name",
+          "verbatim_hits": 4,
+          "first_hit": {
+            "round": 1,
+            "file": "django/db/models/query_utils.py",
+            "line_number": 212,
+            "text": "def _unregister_lookup(cls, lookup, lookup_name=None):"
+          },
+          "views_where_it_appears": [
+            1
+          ],
+          "bound_in_view_rounds": [
+            1
+          ],
+          "bound_in_defect_view": true,
+          "named_by_statement": false
+        },
+        {
+          "literal": "lookup",
+          "verbatim_hits": 12,
+          "first_hit": {
+            "round": 1,
+            "file": "django/db/models/query_utils.py",
+            "line_number": 212,
+            "text": "def _unregister_lookup(cls, lookup, lookup_name=None):"
+          },
+          "views_where_it_appears": [
+            1,
+            3
+          ],
+          "bound_in_view_rounds": [
+            1
+          ],
+          "bound_in_defect_view": true,
+          "named_by_statement": true
+        }
+      ],
+      "verdict": "ACCEPTED"
+    }
+  },
+  "accepted": [
+    "django__django-15572",
+    "django__django-16255",
+    "django__django-15569"
+  ],
+  "accepted_count": 3,
+  "rejected": [],
+  "registration_may_proceed": true,
+  "consequence": "the accepted count is this script's output, not a manual conclusion; with fewer than three accepted, registration stops and the remaining candidates are taken from the frozen available_order rather than substituting a weaker set for a rejected one",
+  "citable": false
+}

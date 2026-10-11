@@ -1,0 +1,46 @@
+{
+  "schema": "openai_agents_v18_view_shape_amendment_3",
+  "amends": "integrations/openai_agents/V18_TASK_SHAPE_PLAN_AMENDMENT_20261010.json",
+  "amendment_id": "openai-agents-v18-view-shape-amendment-03",
+  "date": "20261010",
+  "api_requests_spent": 0,
+  "decided_by": "integrator",
+
+  "two_changes": {
+    "one": "the sealed confirmation uses three read rounds with one distinct view each, not four, so that its shape is exactly the shape at which K was calibrated",
+    "two": "the views of a task must be pairwise disjoint line ranges"
+  },
+
+  "why_three_rounds": {
+    "consistency_of_shape": "the K dose response was measured on the three development tasks in the N3 shape, one distinct view per round and three rounds. Pre-registering the confirmation at four rounds would calibrate on one shape and confirm on another, which is exactly the kind of silent mismatch this project keeps catching",
+    "what_it_costs": "one fewer view per task, which makes the read payload slightly smaller; the measured saving of this mechanism scales with the fraction of non literal content, so a smaller payload changes the number but not the mechanism"
+  },
+
+  "why_disjointness": {
+    "the_defect_found": "the derived ranges for django-16255 came out as 165-174, 176-228, 181-228 and 231-258, so the second and third views overlap by 43 lines and repeat the same source text",
+    "why_that_breaks_the_measurement": "the plugin arm first runs the exact duplicate rule, and overlapping views present the same lines, with the same line numbers, twice; the duplicate rule would collapse one of them, so part of the measured saving would come from duplicate removal rather than from the new elision mechanism, and the control shape whose whole purpose is to contain no duplicates would no longer be that shape",
+    "the_rule": "the views of a task must be pairwise disjoint; when a definition encloses another, the enclosing definition is represented by its head block and the enclosed one is skipped rather than both being registered; the script must assert disjointness mechanically and fail loudly on violation"
+  },
+
+  "what_stays": {
+    "view_length_cap": "MAX_VIEW_LINES = 60, declared and applied to every candidate",
+    "defect_view": "the defect entity is declared by the integrator in V18_DEFECT_ENTITY_DECLARATION_20261010.json; the script must still prove verbatim appearance in the statement and binding inside the registered range",
+    "hashes": "blob git id, file content sha256 and view content sha256 per view, leaf text, no line numbers, no trailing newline",
+    "no_hand_picking": "the declared entity fixes which definition is the defect view; ranges, cap, disjointness and hashes stay script derived",
+    "literal_rule": "R1 to R7 unchanged, including the lazy answer negative control",
+    "pass_evidence": "the complete output of one run of the scripts"
+  },
+
+  "cap_consequence": {
+    "read_calls": 3,
+    "max_turns": "READ_CALLS + 2 = 5",
+    "worst_case_per_sample": "MAX_TURNS + one retry = 6",
+    "fifty_five_samples_note": "the matrix is 3 tasks x 5 repeats x 3 arms = 45 samples, with two summaries on each of the 15 native arm samples",
+    "worst_case_total": "45 x 6 + 15 x 2 = 300",
+    "cap": 390,
+    "margin": 1.30
+  },
+
+  "consequence": "the three candidates are re-derived under this amendment before any registration; a candidate that cannot yield three pairwise disjoint views of at most 60 lines containing its defect entity is rejected and reported, and no criterion is relaxed",
+  "citable": false
+}

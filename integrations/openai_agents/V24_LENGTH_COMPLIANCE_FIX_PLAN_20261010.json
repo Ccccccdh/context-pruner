@@ -1,0 +1,75 @@
+{
+  "schema": "openai_agents_v24_length_compliance_fix_plan",
+  "plan_id": "openai-agents-v24-length-compliance-01",
+  "date": "20261010",
+  "decided_by": "integrator",
+  "api_requests_spent_when_written": 0,
+
+  "trigger": {
+    "batch": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v23-v18-sealed-window-k1-01",
+    "stopped_at": "39 of 45 samples",
+    "reason": "task django-15572 failed rendering on all fifteen of its samples across all three arms, first with over_160_chars and then, after the single billed retry, still over the bound, so the answers closed empty",
+    "raw_answer_lengths": "320 to 357 characters, nine distinct values",
+    "arm_symmetry": "none, native_summary and pruner_v1 failed identically, so the failure carries no arm bias",
+    "contract_reachability": "the minimum feasible rendered line for that task is 75 characters, so a compliant answer exists and this is a model compliance failure rather than an infeasible contract",
+    "other_tasks": "django-16255 and django-15569 rendered successfully on every sample and arm that was reached",
+    "audit": "the independent audit refused the batch, complete=false, usable_as_saving=false, fifteen errors, so nothing from it is citable"
+  },
+
+  "ruling": {
+    "the_hard_stop_stands": "the batch is void and stays on disk as the record of the stop; no number from it is cited anywhere, and it is never merged with the v16 sealed batch",
+    "the_failure_class_is_a_configuration_gap_not_a_task_defect": "the answer contract is reachable, but the first prompt states the bound without making it a discipline the model can reliably meet, and the two-sided diagnostic that states it is only delivered on the retry, which itself then failed; this is the same class of gap that the v17 round fixed for literal placement, where first attempt acceptance went from 28.9 to 77.8 percent",
+    "what_may_not_be_done": [
+      "weakening the literals of django-15572 to make it pass: the evidence bar is not adjustable because a task turned out to be hard",
+      "dropping django-15572 after seeing it fail: removing a task because it failed biases the batch upward and destroys the pre-registered matrix",
+      "re-running the same tasks under the same configuration hoping for a different draw: fifteen of fifteen failures across arms is systematic, not sampling noise",
+      "running a pre-flight on the sealed tasks to test a fix: sealed tasks are used once, and a pre-flight would spend that use before the confirmation"
+    ]
+  },
+
+  "the_fix": {
+    "level": "host configuration, arm neutral",
+    "change": "add one sentence to the first prompt, identical for every arm, that states the bound as a hard rejection criterion and gives a concrete working target, for example that the rendered line must not exceed 160 characters and that the host rejects the whole answer when it does, so the cause and fix fields should be written to stay comfortably below the bound, aiming at about 120 characters",
+    "what_it_does_not_change": [
+      "the 160 character bound itself stays a strict track condition",
+      "the literal rule R1 to R7, the required literals of all three tasks, the frozen regexes, the renderer, the retry budget and the two-sided diagnostic",
+      "the mechanism, the window K=1, the gate threshold, and the shape of three rounds with one disjoint view each"
+    ],
+    "why_a_prompt_fix_rather_than_a_contract_fix": "the contract fix would lower one task's evidence bar, while the prompt fix raises compliance for every task and every arm, and it is the same kind of repair that already worked once in this line"
+  },
+
+  "recalibration_before_the_confirmation": {
+    "why": "a prompt change alters compliance, so the configuration must be re-measured on the development tasks before it is used to confirm anything, even though it should not change the mechanism's yield",
+    "what": "nine samples, three development tasks, one repeat, three arms, at the K=1 window, with the new first prompt",
+    "decision_line": "first attempt acceptance at least 70 percent overall, every arm's strict track at or above the baseline, the semantic endpoint at or above the baseline, zero render failures, zero truncations; and the mechanism's byte saving per task unchanged in kind from the K=1 development measurement",
+    "if_it_fails": "stop and report; do not proceed to the sealed confirmation"
+  },
+
+  "then": {
+    "new_registration_and_freeze": "a new source registration and a new confirmation freeze under a new id, carrying the prompt change, the same three sealed tasks and views, K=1, the same cap derivation and the same per module hash pinning with revision aware fail closed",
+    "confirmation": "one run, three tasks, five repeats, three arms, 45 samples, new id, no resume",
+    "audit": "independent, as before, and the batch is citable only if the audit passes",
+    "hard_stops": "unchanged: any task whose plugin strict track or semantic correctness falls below the baseline, any render failure, truncation or dropped field, the cap, or a failing gate"
+  },
+
+  "budget": {
+    "recalibration": "about 0.006 dollars",
+    "confirmation": "about 0.05 dollars",
+    "already_spent_on_the_stopped_batch": "about 0.0071 dollars, 194 requests, off peak",
+    "both_authorised": true
+  },
+
+  "execution_footnote": {
+    "added_after_the_plan_was_written": true,
+    "plan_itself_unchanged": "the sections above are as the integrator wrote them; nothing in them was edited",
+    "recalibration_outcome": "FAILED the decision line, so the confirmation batch was NOT run",
+    "recalibration_batch": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v24-length-compliance-recalibration-01",
+    "recalibration_report": "integrations/openai_agents/V24_RECALIBRATION_REPORT_20261010.json",
+    "measured": "first-attempt acceptance 4 of 9 = 44.4 percent against the 70 percent line; every arm's strict track and the semantic endpoint at or above the baseline; zero render failures, truncations and dropped fields; the mechanism's byte saving positive on every task",
+    "the_fix_did_work_on_its_own_failure_class": "all five first-attempt rejections were over_160_chars, all five carried the v24_length_compliance retry wording, and all five retries rewrote the line from 181-199 characters to 116-128, so every sample was accepted; under the v23 configuration django-15572 failed on all fifteen of its samples",
+    "why_it_stopped": "the ruling says that a failed recalibration stops the round before the sealed confirmation batch, and that the next move is the integrator's to make",
+    "no_paid_request_was_sent_for_the_confirmation_batch": true
+  },
+
+  "citable": false
+}

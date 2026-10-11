@@ -252,14 +252,22 @@ runs/stage5-openai-agents-api/*
 # v19 形状剂量-反应（两批都没能 finalise：形状覆写漏 `source_of_record`，样本照常计费，按纪律原样保留）。
 !runs/stage5-openai-agents-api/openai-repo-diagnostic-v19-shape-n3-pilot-01/
 !runs/stage5-openai-agents-api/openai-repo-diagnostic-v19-shape-n6-pilot-01/
-# 【临时块】在飞的 v21「保留字面载体的行级省略」尝试：模块与预注册尚未定稿，本次提交不要它。
-# v21 落地后，把下面这段整块删掉再入库（届时它的批次目录也要按同一格式加白名单）。
-experiments/runners/openai_agents_v21_carrier_elision.py
-experiments/runners/openai_agents_v21_chain.py
-experiments/runners/run_openai_agents_v21_acquisition.py
-tests/test_openai_agents_v21.py
-integrations/openai_agents/V21_LITERAL_CARRIER_ELISION_PLAN_20261010.json
-runs/stage5-openai-agents-api/openai-repo-diagnostic-v21-*
+# v21 行级「保留字面载体」省略机制：开发批两批（01 未 finalise、01b 正式），dev-only，不可引用。
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v21-literal-carrier-elision-pilot-01/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v21-literal-carrier-elision-pilot-01b/
+# v22 窗口剂量：K=3/K=1/K=0 各一批（1 重复）＋ K=1/K=0 各一批（3 重复），dev-only，不可引用。
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v22-window-k3-pilot-01/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v22-window-k3b-pilot-01/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v22-window-k1-pilot-01/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v22-window-k1b-pilot-01/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v22-window-k1b-pilot-02/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v22-window-k0-pilot-01/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v22-window-k0b-pilot-03/
+# v23 首次封存确认批：39/45 触发硬停、manifest 未 finalise、审计判不可用 —— 作为停机证据原样保留。
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v23-v18-sealed-window-k1-01/
+# v24 长度合规：重标定批（dev、不可引用）＋ 封存确认批（第二个可引用数字，审计通过）。
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v24-length-compliance-recalibration-01/
+!runs/stage5-openai-agents-api/openai-repo-diagnostic-v24-length-compliance-k1-01/
 !runs/stage5-crewai/
 runs/stage5-crewai/*
 !runs/stage5-crewai/crewai-natural-3arm-v133/

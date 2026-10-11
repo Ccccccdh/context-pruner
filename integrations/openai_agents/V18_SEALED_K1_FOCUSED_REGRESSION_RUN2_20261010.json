@@ -1,0 +1,76 @@
+{
+  "schema": "openai_agents_v18_sealed_k1_focused_regression",
+  "date": "20261010",
+  "generated_utc": "2026-10-10T17:56:53+00:00",
+  "api_requests_spent": 0,
+  "produced_by": "experiments/audits/v18_sealed_k1_regression_record.py",
+  "command": [
+    "C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\.venv-openhands\\Scripts\\python.exe",
+    "-m",
+    "pytest",
+    "tests/test_openai_agents_v18_sealed_window_k1.py",
+    "tests/test_openai_agents_v22_window_dose.py",
+    "tests/test_openai_agents_v21.py",
+    "tests/test_openai_agents_v20.py",
+    "tests/test_openai_agents_v17.py",
+    "tests/test_openai_agents_v16_live_runner_zero_api.py",
+    "tests/test_openai_agents_structured_final_v16.py",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp",
+    "C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\.tooling\\tmp\\pytest-v23-basetemp",
+    "-q",
+    "--tb=line",
+    "-rf"
+  ],
+  "environment": {
+    "interpreter": "C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\.venv-openhands\\Scripts\\python.exe",
+    "why_not_the_repository_venv": "the repository virtual environment carries the OpenAI Agents SDK but not pytest; this interpreter carries pytest but not the SDK, so the SDK's site-packages are on PYTHONPATH",
+    "pythonpath": [
+      "C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\.venv\\Lib\\site-packages",
+      "C:\\Users\\LENOVO\\Desktop\\AI Agent\\code"
+    ],
+    "temp": "C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\.tooling\\tmp",
+    "basetemp": "C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\.tooling\\tmp\\pytest-v23-basetemp",
+    "cache_provider_disabled": true,
+    "full_suite_not_run_because": "an earlier round recorded that the full suite produces no output for about fifty minutes; a focused set is what this gate can honestly run"
+  },
+  "tests_selected": [
+    "tests/test_openai_agents_v18_sealed_window_k1.py",
+    "tests/test_openai_agents_v22_window_dose.py",
+    "tests/test_openai_agents_v21.py",
+    "tests/test_openai_agents_v20.py",
+    "tests/test_openai_agents_v17.py",
+    "tests/test_openai_agents_v16_live_runner_zero_api.py",
+    "tests/test_openai_agents_structured_final_v16.py"
+  ],
+  "test_file_sha256": {
+    "tests/test_openai_agents_v18_sealed_window_k1.py": "b5d2ba984d1aa61615546ddec22933fe7f6321c142128df54ee429aaa349157c",
+    "tests/test_openai_agents_v22_window_dose.py": "37708a91c20197cfb7dc3382c314f7720537461a765692b6806074c23052258a",
+    "tests/test_openai_agents_v21.py": "482b6b99f3182e40cd742be1ea40eaa9c5c2cef3ec3b103a45ec96cb1738fb77",
+    "tests/test_openai_agents_v20.py": "c7d2ef5de3a2aca2ad91a6a0acb64e8503f6c8daeda356e12dad7280e1a75f92",
+    "tests/test_openai_agents_v17.py": "21bcbbb448188e00be184a63d50b86f583807d41c05f4e66ed2fe5bdb78aeca9",
+    "tests/test_openai_agents_v16_live_runner_zero_api.py": "2365990fe4b96a77bb8db623e5dd719af73f1606cf6d665b09e891f6bec6a756",
+    "tests/test_openai_agents_structured_final_v16.py": "222fd5fc4f049b0c2146f15914a8bc79c68645628a849a35f4ef0fbf8b0b6303"
+  },
+  "exit_code": 1,
+  "summary_counts": {
+    "failed": 1,
+    "passed": 158
+  },
+  "failed_node_ids": [
+    "tests/test_openai_agents_v16_live_runner_zero_api.py::RegistryTests::test_problem_statement_hash_reconciliation_is_recorded"
+  ],
+  "allowed_existing_failures": [
+    "tests/test_openai_agents_v16_live_runner_zero_api.py::RegistryTests::test_problem_statement_hash_reconciliation_is_recorded"
+  ],
+  "allowed_failures_observed": [
+    "tests/test_openai_agents_v16_live_runner_zero_api.py::RegistryTests::test_problem_statement_hash_reconciliation_is_recorded"
+  ],
+  "unexpected_failures": [],
+  "stderr": "",
+  "stdout": "........................................................................ [ 45%]\r\n............................................F........................... [ 90%]\r\n...............                                                          [100%]\r\n================================== FAILURES ===================================\r\nE   KeyError: 'problem_statement_hash_reconciliation'\r\nC:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\tests\\test_openai_agents_v16_live_runner_zero_api.py:73: KeyError: 'problem_statement_hash_reconciliation'\r\n=========================== short test summary info ===========================\r\nFAILED tests/test_openai_agents_v16_live_runner_zero_api.py::RegistryTests::test_problem_statement_hash_reconciliation_is_recorded\r\n1 failed, 158 passed in 15.28s\r\n",
+  "stdout_sha256": "09f32b1602ccb6264ce232c9d2b3c99b648678e7db21f706cdd8866eef88e280",
+  "ok": true,
+  "rule": "the focused set passes except, at most, the one existing failure named above; any other failure fails this round"
+}

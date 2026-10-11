@@ -1,0 +1,1391 @@
+{
+  "shape": "N3",
+  "arithmetic": {
+    "shape": "N3",
+    "rounds": 3,
+    "reads_per_round": 1,
+    "read_calls": 3,
+    "plan_order": [
+      0,
+      1,
+      2
+    ],
+    "views": 3,
+    "views_read_once_each": true,
+    "duplicate_content_by_construction": false,
+    "expected_requests_per_sample": 4,
+    "max_turns": 5,
+    "worst_case_requests_per_sample": 6,
+    "samples": 9,
+    "arms": [
+      "none",
+      "native_summary",
+      "pruner_v1"
+    ],
+    "repeats": 1,
+    "worst_case_requests": 60,
+    "cap": 100,
+    "margin": 1.667,
+    "at_least_1_3": true,
+    "stage_two_samples": 27,
+    "stage_two_authorised": false
+  },
+  "checks": [
+    {
+      "check": "plan_is_zero_api",
+      "ok": true,
+      "detail": {
+        "api_calls": 0
+      }
+    },
+    {
+      "check": "stub_controls_all_pass_and_at_least_twelve",
+      "ok": true,
+      "detail": {
+        "controls": 13,
+        "ok": true
+      }
+    },
+    {
+      "check": "stub_is_zero_api",
+      "ok": true,
+      "detail": {
+        "api_calls": 0
+      }
+    },
+    {
+      "check": "a_local_pilot_produces_a_finalised_manifest_with_every_pre_registered_key",
+      "ok": true,
+      "detail": {
+        "pilot_status": 0,
+        "samples": 9,
+        "manifest_missing_keys": [],
+        "v16_manifest_finalized": true,
+        "api_calls": 37,
+        "required_keys_checked": 36
+      }
+    },
+    {
+      "check": "trigger_gate_fires_on_every_model_input_after_the_first",
+      "ok": true,
+      "detail": {
+        "check": "trigger_gate_fires_on_every_model_input_after_the_first",
+        "ok": true,
+        "rule": "for every pruner_v1 sample: trigger_gate_calls == model_calls, trigger_gate_triggered_calls == model_calls - 1, trigger_gate_passthrough_calls == 1 (the first input only) and trigger_gate_first_call_passthrough_calls == 1; any other passthrough fails",
+        "samples_checked": 3,
+        "detail": [
+          {
+            "task": "django_field_hash_immutability",
+            "repeat": 0,
+            "model_calls": 4,
+            "trigger_gate_calls": 4,
+            "expected_triggered_calls": 3,
+            "trigger_gate_triggered_calls": 3,
+            "trigger_gate_passthrough_calls": 1,
+            "trigger_gate_first_call_passthrough_calls": 1,
+            "trigger_gate_soft_limit_tokens": 1,
+            "trigger_gate_last_estimated_tokens": 6105,
+            "gate_calls_equal_model_calls": true,
+            "triggered_equals_after_first": true,
+            "exactly_one_passthrough_the_first_call": true,
+            "ok": true
+          },
+          {
+            "task": "django_orderedset_reversed",
+            "repeat": 0,
+            "model_calls": 4,
+            "trigger_gate_calls": 4,
+            "expected_triggered_calls": 3,
+            "trigger_gate_triggered_calls": 3,
+            "trigger_gate_passthrough_calls": 1,
+            "trigger_gate_first_call_passthrough_calls": 1,
+            "trigger_gate_soft_limit_tokens": 1,
+            "trigger_gate_last_estimated_tokens": 5055,
+            "gate_calls_equal_model_calls": true,
+            "triggered_equals_after_first": true,
+            "exactly_one_passthrough_the_first_call": true,
+            "ok": true
+          },
+          {
+            "task": "django_sqlite_version_floor",
+            "repeat": 0,
+            "model_calls": 4,
+            "trigger_gate_calls": 4,
+            "expected_triggered_calls": 3,
+            "trigger_gate_triggered_calls": 3,
+            "trigger_gate_passthrough_calls": 1,
+            "trigger_gate_first_call_passthrough_calls": 1,
+            "trigger_gate_soft_limit_tokens": 1,
+            "trigger_gate_last_estimated_tokens": 4544,
+            "gate_calls_equal_model_calls": true,
+            "triggered_equals_after_first": true,
+            "exactly_one_passthrough_the_first_call": true,
+            "ok": true
+          }
+        ]
+      }
+    },
+    {
+      "check": "mechanism_engages_on_unique_content_per_task",
+      "ok": true,
+      "detail": {
+        "check": "mechanism_engages_on_unique_content_per_task",
+        "ok": true,
+        "rule": "for every task on this no-duplicate shape: v21_outputs_elided > 0 and v21_bytes_saved > 0; a zero means the wiring did not take effect and no paid run may start",
+        "per_task": {
+          "django_field_hash_immutability": {
+            "samples": 1,
+            "v21_outputs_considered": 6,
+            "v21_outputs_elided": 3,
+            "v21_lines_elided": 114,
+            "v21_bytes_saved": 5002,
+            "v21_literal_guard_fallbacks": 0,
+            "v21_note_bytes": 443,
+            "exact_duplicate_replacements": 0
+          },
+          "django_orderedset_reversed": {
+            "samples": 1,
+            "v21_outputs_considered": 6,
+            "v21_outputs_elided": 2,
+            "v21_lines_elided": 64,
+            "v21_bytes_saved": 1496,
+            "v21_literal_guard_fallbacks": 0,
+            "v21_note_bytes": 130,
+            "exact_duplicate_replacements": 0
+          },
+          "django_sqlite_version_floor": {
+            "samples": 1,
+            "v21_outputs_considered": 6,
+            "v21_outputs_elided": 2,
+            "v21_lines_elided": 28,
+            "v21_bytes_saved": 956,
+            "v21_literal_guard_fallbacks": 0,
+            "v21_note_bytes": 168,
+            "exact_duplicate_replacements": 0
+          }
+        },
+        "tasks_failing": [],
+        "total_outputs_elided": 7,
+        "total_lines_elided": 206,
+        "total_bytes_saved": 7454,
+        "total_note_bytes": 741,
+        "total_literal_guard_fallbacks": 0
+      }
+    },
+    {
+      "check": "literal_preservation_invariant_holds_on_the_real_payloads",
+      "ok": true,
+      "detail": {
+        "check": "literal_preservation_invariant_holds_on_the_real_payloads",
+        "ok": true,
+        "rule": "for every task and every model input: every registered literal's occurrence count after elision is >= its count before, and no note line written by the mechanism carries any registered literal",
+        "window_lines": 3,
+        "tasks_failing": [],
+        "detail": [
+          {
+            "task": "django_sqlite_version_floor",
+            "window_lines": 3,
+            "payloads": [
+              {
+                "call_index": 0,
+                "status": "no_elision",
+                "base_bytes": 2633,
+                "after_bytes": 2633,
+                "net_bytes_saved": 0,
+                "note_bytes": 0,
+                "outputs_considered": 1,
+                "outputs_elided": 0,
+                "lines_elided": 0,
+                "elided_fraction": 0.0,
+                "literal_counts_before": {
+                  "check_sqlite_version": 2,
+                  "django-13821": 1,
+                  "3.8.3": 1,
+                  "3.9.0": 4
+                },
+                "literal_counts_after": {
+                  "check_sqlite_version": 2,
+                  "django-13821": 1,
+                  "3.8.3": 1,
+                  "3.9.0": 4
+                },
+                "literals_lost": [],
+                "note_lines": 0,
+                "note_lines_carrying_a_literal": [],
+                "note_form_wellformed": true,
+                "ok": true
+              },
+              {
+                "call_index": 1,
+                "status": "engaged",
+                "base_bytes": 4141,
+                "after_bytes": 3913,
+                "net_bytes_saved": 228,
+                "note_bytes": 42,
+                "outputs_considered": 2,
+                "outputs_elided": 1,
+                "lines_elided": 5,
+                "elided_fraction": 0.0551,
+                "literal_counts_before": {
+                  "check_sqlite_version": 2,
+                  "django-13821": 1,
+                  "3.8.3": 1,
+                  "3.9.0": 4
+                },
+                "literal_counts_after": {
+                  "check_sqlite_version": 2,
+                  "django-13821": 1,
+                  "3.8.3": 1,
+                  "3.9.0": 4
+                },
+                "literals_lost": [],
+                "note_lines": 0,
+                "note_lines_carrying_a_literal": [],
+                "note_form_wellformed": true,
+                "ok": true
+              },
+              {
+                "call_index": 2,
+                "status": "engaged",
+                "base_bytes": 6238,
+                "after_bytes": 6010,
+                "net_bytes_saved": 228,
+                "note_bytes": 42,
+                "outputs_considered": 3,
+                "outputs_elided": 1,
+                "lines_elided": 5,
+                "elided_fraction": 0.0366,
+                "literal_counts_before": {
+                  "check_sqlite_version": 2,
+                  "django-13821": 1,
+                  "3.8.3": 1,
+                  "3.9.0": 4
+                },
+                "literal_counts_after": {
+                  "check_sqlite_version": 2,
+                  "django-13821": 1,
+                  "3.8.3": 1,
+                  "3.9.0": 4
+                },
+                "literals_lost": [],
+                "note_lines": 0,
+                "note_lines_carrying_a_literal": [],
+                "note_form_wellformed": true,
+                "ok": true
+              }
+            ],
+            "ok": true
+          },
+          {
+            "task": "django_orderedset_reversed",
+            "window_lines": 3,
+            "payloads": [
+              {
+                "call_index": 0,
+                "status": "no_elision",
+                "base_bytes": 2523,
+                "after_bytes": 2523,
+                "net_bytes_saved": 0,
+                "note_bytes": 0,
+                "outputs_considered": 1,
+                "outputs_elided": 0,
+                "lines_elided": 0,
+                "elided_fraction": 0.0,
+                "literal_counts_before": {
+                  "__reversed__": 1,
+                  "django-14089": 1,
+                  "OrderedSet": 11,
+                  "__iter__": 1
+                },
+                "literal_counts_after": {
+                  "__reversed__": 1,
+                  "django-14089": 1,
+                  "OrderedSet": 11,
+                  "__iter__": 1
+                },
+                "literals_lost": [],
+                "note_lines": 0,
+                "note_lines_carrying_a_literal": [],
+                "note_form_wellformed": true,
+                "ok": true
+              },
+              {
+                "call_index": 1,
+                "status": "engaged",
+                "base_bytes": 4066,
+                "after_bytes": 3583,
+                "net_bytes_saved": 483,
+                "note_bytes": 44,
+                "outputs_considered": 2,
+                "outputs_elided": 1,
+                "lines_elided": 22,
+                "elided_fraction": 0.1188,
+                "literal_counts_before": {
+                  "__reversed__": 1,
+                  "django-14089": 1,
+                  "OrderedSet": 13,
+                  "__iter__": 1
+                },
+                "literal_counts_after": {
+                  "__reversed__": 1,
+                  "django-14089": 1,
+                  "OrderedSet": 13,
+                  "__iter__": 1
+                },
+                "literals_lost": [],
+                "note_lines": 0,
+                "note_lines_carrying_a_literal": [],
+                "note_form_wellformed": true,
+                "ok": true
+              },
+              {
+                "call_index": 2,
+                "status": "engaged",
+                "base_bytes": 6955,
+                "after_bytes": 6472,
+                "net_bytes_saved": 483,
+                "note_bytes": 44,
+                "outputs_considered": 3,
+                "outputs_elided": 1,
+                "lines_elided": 22,
+                "elided_fraction": 0.0694,
+                "literal_counts_before": {
+                  "__reversed__": 1,
+                  "django-14089": 1,
+                  "OrderedSet": 15,
+                  "__iter__": 2
+                },
+                "literal_counts_after": {
+                  "__reversed__": 1,
+                  "django-14089": 1,
+                  "OrderedSet": 15,
+                  "__iter__": 2
+                },
+                "literals_lost": [],
+                "note_lines": 0,
+                "note_lines_carrying_a_literal": [],
+                "note_form_wellformed": true,
+                "ok": true
+              }
+            ],
+            "ok": true
+          },
+          {
+            "task": "django_field_hash_immutability",
+            "window_lines": 3,
+            "payloads": [
+              {
+                "call_index": 0,
+                "status": "no_elision",
+                "base_bytes": 4886,
+                "after_bytes": 4886,
+                "net_bytes_saved": 0,
+                "note_bytes": 0,
+                "outputs_considered": 1,
+                "outputs_elided": 0,
+                "lines_elided": 0,
+                "elided_fraction": 0.0,
+                "literal_counts_before": {
+                  "creation_counter": 9,
+                  "django-15315": 1,
+                  "__hash__": 4,
+                  "__eq__": 1
+                },
+                "literal_counts_after": {
+                  "creation_counter": 9,
+                  "django-15315": 1,
+                  "__hash__": 4,
+                  "__eq__": 1
+                },
+                "literals_lost": [],
+                "note_lines": 0,
+                "note_lines_carrying_a_literal": [],
+                "note_form_wellformed": true,
+                "ok": true
+              },
+              {
+                "call_index": 1,
+                "status": "engaged",
+                "base_bytes": 6491,
+                "after_bytes": 5712,
+                "net_bytes_saved": 779,
+                "note_bytes": 43,
+                "outputs_considered": 2,
+                "outputs_elided": 1,
+                "lines_elided": 17,
+                "elided_fraction": 0.12,
+                "literal_counts_before": {
+                  "creation_counter": 13,
+                  "django-15315": 1,
+                  "__hash__": 4,
+                  "__eq__": 1
+                },
+                "literal_counts_after": {
+                  "creation_counter": 13,
+                  "django-15315": 1,
+                  "__hash__": 4,
+                  "__eq__": 1
+                },
+                "literals_lost": [],
+                "note_lines": 0,
+                "note_lines_carrying_a_literal": [],
+                "note_form_wellformed": true,
+                "ok": true
+              },
+              {
+                "call_index": 2,
+                "status": "engaged",
+                "base_bytes": 8495,
+                "after_bytes": 6911,
+                "net_bytes_saved": 1584,
+                "note_bytes": 85,
+                "outputs_considered": 3,
+                "outputs_elided": 2,
+                "lines_elided": 33,
+                "elided_fraction": 0.1865,
+                "literal_counts_before": {
+                  "creation_counter": 13,
+                  "django-15315": 1,
+                  "__hash__": 4,
+                  "__eq__": 1
+                },
+                "literal_counts_after": {
+                  "creation_counter": 13,
+                  "django-15315": 1,
+                  "__hash__": 4,
+                  "__eq__": 1
+                },
+                "literals_lost": [],
+                "note_lines": 0,
+                "note_lines_carrying_a_literal": [],
+                "note_form_wellformed": true,
+                "ok": true
+              }
+            ],
+            "ok": true
+          }
+        ]
+      }
+    },
+    {
+      "check": "every_module_in_the_path_is_pinned_with_revision_aware_fail_closed",
+      "ok": true,
+      "detail": {
+        "check": "every_module_in_the_path_is_pinned_with_revision_aware_fail_closed",
+        "ok": true,
+        "rule": "every module in the path must have a SHA256 recorded in the revision ledger; a module whose digest is absent from the ledger, or differs from its recorded digest, fails the gate until the change is registered in a new revision",
+        "modules": {
+          "experiments/runners/openai_agents_v17_registry.py": "aa67abea06d9a47b5c5bb8fdef352ea975c7884620534bad10de44d828070392",
+          "experiments/runners/run_openai_agents_v17_acquisition.py": "be0b97b4100711e726c85003933a6cf0357c3c2b5388442d28a4af69ae5fb45d",
+          "experiments/runners/openai_agents_v17_live_contract.py": "b5be9165c8845579491e5541380f5f0766f97df77dfb933a12b26a1a1e3e1ca3",
+          "experiments/runners/openai_agents_structured_final_v16.py": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+          "experiments/runners/openai_agents_v20_retention.py": "65650b10e8a6fb72e580245c8c0c9485b85874e4193dea5b421e8657abb0db2c",
+          "experiments/runners/openai_agents_v20_chain.py": "41d4ba547da42e659c7381927ccacf86543b97c74fc499885d8aa7059fff9259",
+          "experiments/runners/openai_agents_v21_carrier_elision.py": "5b321226dac682f249c08316bd9133e3c55cdfdfa5e3601fbc14cbcbc7ff5848",
+          "experiments/runners/openai_agents_v22_window.py": "3496e9f3806d9a453f9fd1647ede279c99cd0aabb52e3ad055a310653ea6d999",
+          "experiments/runners/openai_agents_v22_window_k3.py": "3323d10d0093ee2b5cfe1cf2716ceba7fb74c9d0fe79cbd0afd6a6a73e4e15d7",
+          "experiments/runners/openai_agents_v22_window_k1.py": "cc87b195abb98d8ef4c0d27e6928c265ef054a79f8e695d3126a8c950917a962",
+          "experiments/runners/openai_agents_v22_window_k0.py": "1d23861750056473d85e7dfb9ffd41f466d9c70ccc2d361fa9fcf75a425973c0",
+          "experiments/runners/openai_agents_v22_chain.py": "3cc39594737039c6abee7aa6da78a242565186cefe93253f2ef8edb3631e12f0",
+          "experiments/runners/run_openai_agents_v22_window_dose.py": "4204cbb3eeb70f2b6ebfbff8a3fdf524a8a59eb7a5d2c44d5707dac32bd147f6"
+        },
+        "plan_named_modules": {
+          "experiments/runners/openai_agents_v17_registry.py": "aa67abea06d9a47b5c5bb8fdef352ea975c7884620534bad10de44d828070392",
+          "experiments/runners/run_openai_agents_v17_acquisition.py": "be0b97b4100711e726c85003933a6cf0357c3c2b5388442d28a4af69ae5fb45d",
+          "experiments/runners/openai_agents_v17_live_contract.py": "b5be9165c8845579491e5541380f5f0766f97df77dfb933a12b26a1a1e3e1ca3",
+          "experiments/runners/openai_agents_structured_final_v16.py": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a"
+        },
+        "revision_ledger_entries": [
+          "experiments/runners/openai_agents_structured_final_v16.py",
+          "experiments/runners/openai_agents_v17_live_contract.py",
+          "experiments/runners/openai_agents_v17_registry.py",
+          "experiments/runners/openai_agents_v20_chain.py",
+          "experiments/runners/openai_agents_v20_retention.py",
+          "experiments/runners/openai_agents_v21_carrier_elision.py",
+          "experiments/runners/openai_agents_v22_chain.py",
+          "experiments/runners/openai_agents_v22_window.py",
+          "experiments/runners/openai_agents_v22_window_k0.py",
+          "experiments/runners/openai_agents_v22_window_k1.py",
+          "experiments/runners/openai_agents_v22_window_k3.py",
+          "experiments/runners/run_openai_agents_v17_acquisition.py",
+          "experiments/runners/run_openai_agents_v22_window_dose.py"
+        ],
+        "unregistered_modules": [],
+        "drifted_modules": [],
+        "module_count": 13
+      }
+    },
+    {
+      "check": "protocol_matches_the_shape",
+      "ok": true,
+      "detail": {
+        "rounds": 3,
+        "read_calls": 3
+      }
+    },
+    {
+      "check": "one_read_per_turn_rule_matches_the_batching",
+      "ok": true,
+      "detail": {
+        "reads_per_round": 1
+      }
+    },
+    {
+      "check": "dedupe_and_no_merge_rules_present",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "check": "old_shape_wording_absent",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "check": "case_shape_matches_the_plan",
+      "ok": true,
+      "detail": {
+        "expected_model_calls": 4,
+        "tool_calls": 3
+      }
+    },
+    {
+      "check": "retry_diagnostic_still_byte_identical_to_v16",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "check": "four_conditions_still_identical_to_v16",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "check": "declared_literal_missing_from_the_line_still_rejected",
+      "ok": true,
+      "detail": {
+        "reason": "declared_fact_missing_from_rendered_answer"
+      }
+    },
+    {
+      "check": "over_160_still_rejected",
+      "ok": true,
+      "detail": {
+        "reason": "over_160_chars"
+      }
+    },
+    {
+      "check": "cap_arithmetic_written_into_the_gate_and_at_least_1_3x",
+      "ok": true,
+      "detail": {
+        "shape": "N3",
+        "rounds": 3,
+        "reads_per_round": 1,
+        "read_calls": 3,
+        "plan_order": [
+          0,
+          1,
+          2
+        ],
+        "views": 3,
+        "views_read_once_each": true,
+        "duplicate_content_by_construction": false,
+        "expected_requests_per_sample": 4,
+        "max_turns": 5,
+        "worst_case_requests_per_sample": 6,
+        "samples": 9,
+        "arms": [
+          "none",
+          "native_summary",
+          "pruner_v1"
+        ],
+        "repeats": 1,
+        "worst_case_requests": 60,
+        "cap": 100,
+        "margin": 1.667,
+        "at_least_1_3": true,
+        "stage_two_samples": 27,
+        "stage_two_authorised": false
+      }
+    },
+    {
+      "check": "composite_filter_declares_the_shadowed_v5_entry_point",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "check": "trigger_gate_threshold_is_the_pre_registered_zero",
+      "ok": true,
+      "detail": {
+        "soft_limit_tokens_setting": 0
+      }
+    },
+    {
+      "check": "protection_window_is_the_k_pre_registered_for_this_configuration",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "k_in_force": 0,
+        "config_window": 0,
+        "declared_window_value": 0,
+        "effective_window_declaration": "self.v21_window_lines bound by the configuration class",
+        "filter_class": "LiteralCarrierElisionFilterK0",
+        "filter_class_window": 0,
+        "instance_window_example": null,
+        "config_module": "experiments/runners/openai_agents_v22_window_k0.py",
+        "frozen_mechanism_default": 3,
+        "why_three_places": "the configuration record, the filter class and the attribute the inherited stage reads must all carry the same K; the frozen module's own constant must still be 3"
+      }
+    },
+    {
+      "check": "the_mechanism_module_is_untouched_and_its_default_window_is_still_three",
+      "ok": true,
+      "detail": {
+        "frozen_v21_default_window": 3,
+        "config_window": 0,
+        "config_module": "experiments/runners/openai_agents_v22_window_k0.py",
+        "k_in_force": 0
+      }
+    },
+    {
+      "check": "k0_produces_no_empty_or_malformed_output_and_notes_never_carry_a_literal",
+      "ok": true,
+      "detail": {
+        "all_lines_carry_a_literal": {
+          "kept_verbatim": true,
+          "reason": "every_line_is_protected",
+          "lines": 6
+        },
+        "ordinary_view_at_k0": {
+          "elided": true,
+          "lines_elided": 14,
+          "note_lines": 4,
+          "malformed_notes": [],
+          "notes_carrying_a_literal": [],
+          "carrier_lines_kept": 3,
+          "carrier_lines_in_the_view": 3,
+          "first_note": "[elided 7 lines 0-6]",
+          "kept_text_non_empty": true
+        },
+        "ok": true
+      }
+    },
+    {
+      "check": "elision_counters_are_persisted_in_the_sample_rows",
+      "ok": true,
+      "detail": {
+        "persisted": [
+          "v21_outputs_considered",
+          "v21_outputs_elided",
+          "v21_lines_elided",
+          "v21_bytes_saved",
+          "v21_literal_guard_fallbacks",
+          "v21_note_bytes"
+        ]
+      }
+    },
+    {
+      "check": "the_tool_documentation_is_unchanged_and_the_disclosure_is_written",
+      "ok": true,
+      "detail": {
+        "disclosure": "the plugin arm's read output may be elided: lines that carry no registered literal are removed and every maximal omitted run is replaced by exactly one explicit interval note of the form [elided n lines first-last], so the omission is declared and the omitted range is recoverable by re-issuing the read. Every registered literal keeps at least as many verbatim occurrences as it had before the elision; the reader tool's own description is identical in all three arms, because the frozen registry builds it once per task and v21 does not rewrite it for any arm, so 'returns those numbered lines verbatim' holds for every line that is kept. No silent omission occurs: nothing is removed without an interval note.",
+        "registry_tool_doc_verbatim_clause": "Returns those numbered lines verbatim"
+      }
+    },
+    {
+      "check": "no_silent_omission_is_possible",
+      "ok": true,
+      "detail": {
+        "note_form": "[elided {count} lines {first}-{last}]",
+        "example": "[elided 4 lines 8-11]"
+      }
+    },
+    {
+      "check": "the_paid_path_installs_the_same_contexts_as_the_rehearsal",
+      "ok": true,
+      "detail": {
+        "paid_wiring": "with v22_chain_installed(): with v22_finalise_installed(): run_pilot(...)",
+        "why": "the rehearsal and the paid path must install the same context managers; a green gate over a parallel rehearsal is what shipped an incomplete manifest once"
+      }
+    },
+    {
+      "check": "the_paid_path_preserves_the_runner_bytes_and_matches_the_pin",
+      "ok": true,
+      "detail": {
+        "module": "experiments/runners/run_openai_agents_v22_window_dose.py",
+        "digest": "4204cbb3eeb70f2b6ebfbff8a3fdf524a8a59eb7a5d2c44d5707dac32bd147f6",
+        "pinned_digest": "4204cbb3eeb70f2b6ebfbff8a3fdf524a8a59eb7a5d2c44d5707dac32bd147f6",
+        "matches_ledger": true,
+        "preserved_to": "C:\\Users\\LENOVO\\v21-artifact-preservation\\run_openai_agents_v22_window_dose_k0.py",
+        "preserved": true,
+        "k": 0,
+        "gate_reads_it_before_any_request": true,
+        "why": "a batch must be attachable to the code revision that produced it; the first v21 paid attempt was not, and this is the remedy"
+      }
+    },
+    {
+      "check": "the_gate_assertions_can_fail",
+      "ok": true,
+      "detail": {
+        "assertion_c_rejects_a_zero_saving_sample": true,
+        "assertion_b_rejects_a_passthrough_sample": true,
+        "assertion_d_rejects_an_unregistered_module_set": true,
+        "assertion_e_rejects_an_output_that_loses_a_literal": true
+      }
+    }
+  ],
+  "ok": true,
+  "hard_assertions": {
+    "a_finalise_really_runs": true,
+    "b_trigger_gate_fires_every_call": true,
+    "c_mechanism_engages_on_unique_content": true,
+    "d_every_module_pinned": true,
+    "e_literal_invariant_holds_on_real_payloads": true
+  },
+  "per_sample_mechanism": [
+    {
+      "task": "django_field_hash_immutability",
+      "repeat": 0,
+      "method": "native_summary",
+      "model_calls": 4,
+      "api_request_attempts": 5,
+      "v20_retention_engaged_calls": 0,
+      "v20_retention_fallback_calls": 0,
+      "v20_units_elided": 0,
+      "v20_bytes_saved": 0,
+      "exact_duplicate_replacements": 0,
+      "selective_retention_saved_bytes_total": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 1,
+      "trigger_gate_passthrough_calls": 3,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 5435,
+      "trigger_gate_last_estimated_tokens": 6105,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "django_field_hash_immutability",
+      "repeat": 0,
+      "method": "none",
+      "model_calls": 4,
+      "api_request_attempts": 4,
+      "v20_retention_engaged_calls": 0,
+      "v20_retention_fallback_calls": 0,
+      "v20_units_elided": 0,
+      "v20_bytes_saved": 0,
+      "exact_duplicate_replacements": 0,
+      "selective_retention_saved_bytes_total": 0,
+      "trigger_gate_calls": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 0,
+      "trigger_gate_last_estimated_tokens": 0,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "django_field_hash_immutability",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "model_calls": 4,
+      "api_request_attempts": 4,
+      "v20_retention_engaged_calls": 0,
+      "v20_retention_fallback_calls": 3,
+      "v20_units_elided": 0,
+      "v20_bytes_saved": 0,
+      "exact_duplicate_replacements": 0,
+      "selective_retention_saved_bytes_total": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 3,
+      "trigger_gate_passthrough_calls": 1,
+      "trigger_gate_first_call_passthrough_calls": 1,
+      "trigger_gate_soft_limit_tokens": 1,
+      "trigger_gate_last_estimated_tokens": 6105,
+      "persisted_v21_fields": [
+        "v21_outputs_considered",
+        "v21_outputs_elided",
+        "v21_lines_elided",
+        "v21_bytes_saved",
+        "v21_literal_guard_fallbacks",
+        "v21_note_bytes"
+      ],
+      "v21_outputs_considered": 6,
+      "v21_outputs_elided": 3,
+      "v21_lines_elided": 114,
+      "v21_bytes_saved": 5002,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 443
+    },
+    {
+      "task": "django_orderedset_reversed",
+      "repeat": 0,
+      "method": "native_summary",
+      "model_calls": 4,
+      "api_request_attempts": 4,
+      "v20_retention_engaged_calls": 0,
+      "v20_retention_fallback_calls": 0,
+      "v20_units_elided": 0,
+      "v20_bytes_saved": 0,
+      "exact_duplicate_replacements": 0,
+      "selective_retention_saved_bytes_total": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 4,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 5435,
+      "trigger_gate_last_estimated_tokens": 5055,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "django_orderedset_reversed",
+      "repeat": 0,
+      "method": "none",
+      "model_calls": 4,
+      "api_request_attempts": 4,
+      "v20_retention_engaged_calls": 0,
+      "v20_retention_fallback_calls": 0,
+      "v20_units_elided": 0,
+      "v20_bytes_saved": 0,
+      "exact_duplicate_replacements": 0,
+      "selective_retention_saved_bytes_total": 0,
+      "trigger_gate_calls": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 0,
+      "trigger_gate_last_estimated_tokens": 0,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "django_orderedset_reversed",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "model_calls": 4,
+      "api_request_attempts": 4,
+      "v20_retention_engaged_calls": 0,
+      "v20_retention_fallback_calls": 3,
+      "v20_units_elided": 0,
+      "v20_bytes_saved": 0,
+      "exact_duplicate_replacements": 0,
+      "selective_retention_saved_bytes_total": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 3,
+      "trigger_gate_passthrough_calls": 1,
+      "trigger_gate_first_call_passthrough_calls": 1,
+      "trigger_gate_soft_limit_tokens": 1,
+      "trigger_gate_last_estimated_tokens": 5055,
+      "persisted_v21_fields": [
+        "v21_outputs_considered",
+        "v21_outputs_elided",
+        "v21_lines_elided",
+        "v21_bytes_saved",
+        "v21_literal_guard_fallbacks",
+        "v21_note_bytes"
+      ],
+      "v21_outputs_considered": 6,
+      "v21_outputs_elided": 2,
+      "v21_lines_elided": 64,
+      "v21_bytes_saved": 1496,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 130
+    },
+    {
+      "task": "django_sqlite_version_floor",
+      "repeat": 0,
+      "method": "native_summary",
+      "model_calls": 4,
+      "api_request_attempts": 4,
+      "v20_retention_engaged_calls": 0,
+      "v20_retention_fallback_calls": 0,
+      "v20_units_elided": 0,
+      "v20_bytes_saved": 0,
+      "exact_duplicate_replacements": 0,
+      "selective_retention_saved_bytes_total": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 4,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 5435,
+      "trigger_gate_last_estimated_tokens": 4544,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "django_sqlite_version_floor",
+      "repeat": 0,
+      "method": "none",
+      "model_calls": 4,
+      "api_request_attempts": 4,
+      "v20_retention_engaged_calls": 0,
+      "v20_retention_fallback_calls": 0,
+      "v20_units_elided": 0,
+      "v20_bytes_saved": 0,
+      "exact_duplicate_replacements": 0,
+      "selective_retention_saved_bytes_total": 0,
+      "trigger_gate_calls": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 0,
+      "trigger_gate_last_estimated_tokens": 0,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "django_sqlite_version_floor",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "model_calls": 4,
+      "api_request_attempts": 4,
+      "v20_retention_engaged_calls": 0,
+      "v20_retention_fallback_calls": 3,
+      "v20_units_elided": 0,
+      "v20_bytes_saved": 0,
+      "exact_duplicate_replacements": 0,
+      "selective_retention_saved_bytes_total": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 3,
+      "trigger_gate_passthrough_calls": 1,
+      "trigger_gate_first_call_passthrough_calls": 1,
+      "trigger_gate_soft_limit_tokens": 1,
+      "trigger_gate_last_estimated_tokens": 4544,
+      "persisted_v21_fields": [
+        "v21_outputs_considered",
+        "v21_outputs_elided",
+        "v21_lines_elided",
+        "v21_bytes_saved",
+        "v21_literal_guard_fallbacks",
+        "v21_note_bytes"
+      ],
+      "v21_outputs_considered": 6,
+      "v21_outputs_elided": 2,
+      "v21_lines_elided": 28,
+      "v21_bytes_saved": 956,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 168
+    }
+  ],
+  "v21_counters_per_task": {
+    "django_field_hash_immutability": {
+      "samples": 1,
+      "v21_outputs_considered": 6,
+      "v21_outputs_elided": 3,
+      "v21_lines_elided": 114,
+      "v21_bytes_saved": 5002,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 443,
+      "exact_duplicate_replacements": 0
+    },
+    "django_orderedset_reversed": {
+      "samples": 1,
+      "v21_outputs_considered": 6,
+      "v21_outputs_elided": 2,
+      "v21_lines_elided": 64,
+      "v21_bytes_saved": 1496,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 130,
+      "exact_duplicate_replacements": 0
+    },
+    "django_sqlite_version_floor": {
+      "samples": 1,
+      "v21_outputs_considered": 6,
+      "v21_outputs_elided": 2,
+      "v21_lines_elided": 28,
+      "v21_bytes_saved": 956,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 168,
+      "exact_duplicate_replacements": 0
+    }
+  },
+  "literal_invariant_per_task": [
+    {
+      "task": "django_sqlite_version_floor",
+      "window_lines": 3,
+      "payloads": [
+        {
+          "call_index": 0,
+          "status": "no_elision",
+          "base_bytes": 2633,
+          "after_bytes": 2633,
+          "net_bytes_saved": 0,
+          "note_bytes": 0,
+          "outputs_considered": 1,
+          "outputs_elided": 0,
+          "lines_elided": 0,
+          "elided_fraction": 0.0,
+          "literal_counts_before": {
+            "check_sqlite_version": 2,
+            "django-13821": 1,
+            "3.8.3": 1,
+            "3.9.0": 4
+          },
+          "literal_counts_after": {
+            "check_sqlite_version": 2,
+            "django-13821": 1,
+            "3.8.3": 1,
+            "3.9.0": 4
+          },
+          "literals_lost": [],
+          "note_lines": 0,
+          "note_lines_carrying_a_literal": [],
+          "note_form_wellformed": true,
+          "ok": true
+        },
+        {
+          "call_index": 1,
+          "status": "engaged",
+          "base_bytes": 4141,
+          "after_bytes": 3913,
+          "net_bytes_saved": 228,
+          "note_bytes": 42,
+          "outputs_considered": 2,
+          "outputs_elided": 1,
+          "lines_elided": 5,
+          "elided_fraction": 0.0551,
+          "literal_counts_before": {
+            "check_sqlite_version": 2,
+            "django-13821": 1,
+            "3.8.3": 1,
+            "3.9.0": 4
+          },
+          "literal_counts_after": {
+            "check_sqlite_version": 2,
+            "django-13821": 1,
+            "3.8.3": 1,
+            "3.9.0": 4
+          },
+          "literals_lost": [],
+          "note_lines": 0,
+          "note_lines_carrying_a_literal": [],
+          "note_form_wellformed": true,
+          "ok": true
+        },
+        {
+          "call_index": 2,
+          "status": "engaged",
+          "base_bytes": 6238,
+          "after_bytes": 6010,
+          "net_bytes_saved": 228,
+          "note_bytes": 42,
+          "outputs_considered": 3,
+          "outputs_elided": 1,
+          "lines_elided": 5,
+          "elided_fraction": 0.0366,
+          "literal_counts_before": {
+            "check_sqlite_version": 2,
+            "django-13821": 1,
+            "3.8.3": 1,
+            "3.9.0": 4
+          },
+          "literal_counts_after": {
+            "check_sqlite_version": 2,
+            "django-13821": 1,
+            "3.8.3": 1,
+            "3.9.0": 4
+          },
+          "literals_lost": [],
+          "note_lines": 0,
+          "note_lines_carrying_a_literal": [],
+          "note_form_wellformed": true,
+          "ok": true
+        }
+      ],
+      "ok": true
+    },
+    {
+      "task": "django_orderedset_reversed",
+      "window_lines": 3,
+      "payloads": [
+        {
+          "call_index": 0,
+          "status": "no_elision",
+          "base_bytes": 2523,
+          "after_bytes": 2523,
+          "net_bytes_saved": 0,
+          "note_bytes": 0,
+          "outputs_considered": 1,
+          "outputs_elided": 0,
+          "lines_elided": 0,
+          "elided_fraction": 0.0,
+          "literal_counts_before": {
+            "__reversed__": 1,
+            "django-14089": 1,
+            "OrderedSet": 11,
+            "__iter__": 1
+          },
+          "literal_counts_after": {
+            "__reversed__": 1,
+            "django-14089": 1,
+            "OrderedSet": 11,
+            "__iter__": 1
+          },
+          "literals_lost": [],
+          "note_lines": 0,
+          "note_lines_carrying_a_literal": [],
+          "note_form_wellformed": true,
+          "ok": true
+        },
+        {
+          "call_index": 1,
+          "status": "engaged",
+          "base_bytes": 4066,
+          "after_bytes": 3583,
+          "net_bytes_saved": 483,
+          "note_bytes": 44,
+          "outputs_considered": 2,
+          "outputs_elided": 1,
+          "lines_elided": 22,
+          "elided_fraction": 0.1188,
+          "literal_counts_before": {
+            "__reversed__": 1,
+            "django-14089": 1,
+            "OrderedSet": 13,
+            "__iter__": 1
+          },
+          "literal_counts_after": {
+            "__reversed__": 1,
+            "django-14089": 1,
+            "OrderedSet": 13,
+            "__iter__": 1
+          },
+          "literals_lost": [],
+          "note_lines": 0,
+          "note_lines_carrying_a_literal": [],
+          "note_form_wellformed": true,
+          "ok": true
+        },
+        {
+          "call_index": 2,
+          "status": "engaged",
+          "base_bytes": 6955,
+          "after_bytes": 6472,
+          "net_bytes_saved": 483,
+          "note_bytes": 44,
+          "outputs_considered": 3,
+          "outputs_elided": 1,
+          "lines_elided": 22,
+          "elided_fraction": 0.0694,
+          "literal_counts_before": {
+            "__reversed__": 1,
+            "django-14089": 1,
+            "OrderedSet": 15,
+            "__iter__": 2
+          },
+          "literal_counts_after": {
+            "__reversed__": 1,
+            "django-14089": 1,
+            "OrderedSet": 15,
+            "__iter__": 2
+          },
+          "literals_lost": [],
+          "note_lines": 0,
+          "note_lines_carrying_a_literal": [],
+          "note_form_wellformed": true,
+          "ok": true
+        }
+      ],
+      "ok": true
+    },
+    {
+      "task": "django_field_hash_immutability",
+      "window_lines": 3,
+      "payloads": [
+        {
+          "call_index": 0,
+          "status": "no_elision",
+          "base_bytes": 4886,
+          "after_bytes": 4886,
+          "net_bytes_saved": 0,
+          "note_bytes": 0,
+          "outputs_considered": 1,
+          "outputs_elided": 0,
+          "lines_elided": 0,
+          "elided_fraction": 0.0,
+          "literal_counts_before": {
+            "creation_counter": 9,
+            "django-15315": 1,
+            "__hash__": 4,
+            "__eq__": 1
+          },
+          "literal_counts_after": {
+            "creation_counter": 9,
+            "django-15315": 1,
+            "__hash__": 4,
+            "__eq__": 1
+          },
+          "literals_lost": [],
+          "note_lines": 0,
+          "note_lines_carrying_a_literal": [],
+          "note_form_wellformed": true,
+          "ok": true
+        },
+        {
+          "call_index": 1,
+          "status": "engaged",
+          "base_bytes": 6491,
+          "after_bytes": 5712,
+          "net_bytes_saved": 779,
+          "note_bytes": 43,
+          "outputs_considered": 2,
+          "outputs_elided": 1,
+          "lines_elided": 17,
+          "elided_fraction": 0.12,
+          "literal_counts_before": {
+            "creation_counter": 13,
+            "django-15315": 1,
+            "__hash__": 4,
+            "__eq__": 1
+          },
+          "literal_counts_after": {
+            "creation_counter": 13,
+            "django-15315": 1,
+            "__hash__": 4,
+            "__eq__": 1
+          },
+          "literals_lost": [],
+          "note_lines": 0,
+          "note_lines_carrying_a_literal": [],
+          "note_form_wellformed": true,
+          "ok": true
+        },
+        {
+          "call_index": 2,
+          "status": "engaged",
+          "base_bytes": 8495,
+          "after_bytes": 6911,
+          "net_bytes_saved": 1584,
+          "note_bytes": 85,
+          "outputs_considered": 3,
+          "outputs_elided": 2,
+          "lines_elided": 33,
+          "elided_fraction": 0.1865,
+          "literal_counts_before": {
+            "creation_counter": 13,
+            "django-15315": 1,
+            "__hash__": 4,
+            "__eq__": 1
+          },
+          "literal_counts_after": {
+            "creation_counter": 13,
+            "django-15315": 1,
+            "__hash__": 4,
+            "__eq__": 1
+          },
+          "literals_lost": [],
+          "note_lines": 0,
+          "note_lines_carrying_a_literal": [],
+          "note_form_wellformed": true,
+          "ok": true
+        }
+      ],
+      "ok": true
+    }
+  ],
+  "paid_run_allowed": true,
+  "paid_run_allowed_rule": "true only when every check passes; assertion (c) is the one that speaks to whether the wiring took effect at all, and a zero elision counter writes false here",
+  "module_hashes": {
+    "experiments/runners/openai_agents_v17_registry.py": "aa67abea06d9a47b5c5bb8fdef352ea975c7884620534bad10de44d828070392",
+    "experiments/runners/run_openai_agents_v17_acquisition.py": "be0b97b4100711e726c85003933a6cf0357c3c2b5388442d28a4af69ae5fb45d",
+    "experiments/runners/openai_agents_v17_live_contract.py": "b5be9165c8845579491e5541380f5f0766f97df77dfb933a12b26a1a1e3e1ca3",
+    "experiments/runners/openai_agents_structured_final_v16.py": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+    "experiments/runners/openai_agents_v20_retention.py": "65650b10e8a6fb72e580245c8c0c9485b85874e4193dea5b421e8657abb0db2c",
+    "experiments/runners/openai_agents_v20_chain.py": "41d4ba547da42e659c7381927ccacf86543b97c74fc499885d8aa7059fff9259",
+    "experiments/runners/openai_agents_v21_carrier_elision.py": "5b321226dac682f249c08316bd9133e3c55cdfdfa5e3601fbc14cbcbc7ff5848",
+    "experiments/runners/openai_agents_v22_window.py": "3496e9f3806d9a453f9fd1647ede279c99cd0aabb52e3ad055a310653ea6d999",
+    "experiments/runners/openai_agents_v22_window_k3.py": "3323d10d0093ee2b5cfe1cf2716ceba7fb74c9d0fe79cbd0afd6a6a73e4e15d7",
+    "experiments/runners/openai_agents_v22_window_k1.py": "cc87b195abb98d8ef4c0d27e6928c265ef054a79f8e695d3126a8c950917a962",
+    "experiments/runners/openai_agents_v22_window_k0.py": "1d23861750056473d85e7dfb9ffd41f466d9c70ccc2d361fa9fcf75a425973c0",
+    "experiments/runners/openai_agents_v22_chain.py": "3cc39594737039c6abee7aa6da78a242565186cefe93253f2ef8edb3631e12f0",
+    "experiments/runners/run_openai_agents_v22_window_dose.py": "4204cbb3eeb70f2b6ebfbff8a3fdf524a8a59eb7a5d2c44d5707dac32bd147f6"
+  },
+  "mechanism": {
+    "arm": "pruner_v1",
+    "name": "literal_carrier_preserving_line_elision_v22_k0",
+    "schema": "openai_agents_v22_window_k0",
+    "composition_schema": "duplicate_then_retention_then_line_elision_k0",
+    "window_lines": 0,
+    "window_configuration": {
+      "k": 0,
+      "class_name": "LiteralCarrierElisionFilterK0",
+      "mechanism_instance": "literal_carrier_preserving_line_elision_v22_k0",
+      "mechanism_schema": "openai_agents_v22_window_k0",
+      "composition_schema": "duplicate_then_retention_then_line_elision_k0",
+      "evidence_schema": "openai_literal_carrier_elision_k0",
+      "config_module": "experiments/runners/openai_agents_v22_window_k0.py",
+      "base_module": "experiments/runners/openai_agents_v21_carrier_elision.py",
+      "base_window_lines": 3,
+      "declared_window_value": 0,
+      "effective_window_declaration": "self.v21_window_lines bound by the configuration class",
+      "note_form": "[elided {count} lines {first}-{last}]"
+    },
+    "window_is_the_only_variable": "the three v22 groups differ only in the window K; renderer, contract, four strict track conditions, 160 character bound, registry, read shape, arms, repeats, request cap and trigger gate threshold are identical, and no K may be changed after any saving number has been seen",
+    "rule": "the frozen v12 exact duplicate rule runs first; the v5 lineage evidence-safe selective retention then runs on the deduplicated list, with its registered-literal guard, its recovery-pointer requirement and its whole-payload fallback unchanged; the literal-carrier line elision then runs on that result, keeping verbatim every line that contains a registered literal or constraint phrase together with a fixed window of 0 lines before and after it, eliding every other line and replacing each maximal contiguous omitted run with exactly one note line of the form [elided n lines first-last]; the most recent tool group is kept verbatim. Any registered-literal occurrence loss, any non-reduction after the note overhead, or any exception sends the payload this stage received verbatim and is counted in v21_literal_guard_fallbacks",
+    "frozen_rule_module": "experiments/runners/openai_agents_exact_duplicate_replay_v12.py",
+    "retention_module": "experiments/runners/openai_agents_evidence_safe_retention_v5.py",
+    "v20_composite_module": "experiments/runners/openai_agents_v20_retention.py",
+    "mechanism_module": "experiments/runners/openai_agents_v21_carrier_elision.py",
+    "composite_module": "experiments/runners/openai_agents_v21_carrier_elision.py",
+    "config_module": "experiments/runners/openai_agents_v22_window_k0.py",
+    "chain_module": "experiments/runners/openai_agents_v22_chain.py",
+    "chain_blueprint": "experiments/runners/openai_agents_multitask_chain_v14.py",
+    "window_frozen": "the window was declared per K in the v22 pre-registration before any paid request; it may not be changed after any saving number is seen, and an unregistered window (for example K=2) may not be run at all",
+    "invariant": "for every registered literal and constraint phrase the number of verbatim occurrences after elision is greater than or equal to the number before it, per occurrence and not per distinct string, computed with the same v5 lineage _carrier_loss that already vetoed the older mechanism",
+    "fail_closed": "an output is kept verbatim whenever the mechanism cannot prove the invariant for the payload it would send; nothing is removed on the strength of an argument the mechanism cannot check, and the note lines it writes can never satisfy the invariant themselves",
+    "trigger_gate": {
+      "soft_limit_tokens": 0,
+      "policy": "the plugin arm's BudgetTriggeredFilter is installed with soft_limit_tokens=0, which the frozen class floors to 1 (trigger_gate_soft_limit_tokens therefore reports 1), so its condition last_estimated_tokens <= soft_limit_tokens is false for every non-empty payload and the gate fires on every model input after the first; the gate stays in place, keeps measuring each payload and keeps publishing its counters. The setting is inherited from v20 unchanged, so this round measures the window and does not re-measure the gate. Trigger policy stays symmetric_budget so the wrapper is not removed from the plugin arm.",
+      "arm_scope": "plugin arm only; the none and native_summary arms are untouched",
+      "comparability": "the three v22 groups are comparable to each other as a dose, and each is internally paired; none of them is comparable as a whole configuration to v16, v19, v20 or v21, and none of them may be pooled with another"
+    },
+    "counter_names": {
+      "considered": "v21_outputs_considered",
+      "elided_outputs": "v21_outputs_elided",
+      "elided_lines": "v21_lines_elided",
+      "bytes": "v21_bytes_saved",
+      "fallback": "v21_literal_guard_fallbacks",
+      "note_overhead": "v21_note_bytes"
+    },
+    "tool_output_disclosure": "the plugin arm's read output may be elided: lines that carry no registered literal are removed and every maximal omitted run is replaced by exactly one explicit interval note of the form [elided n lines first-last], so the omission is declared and the omitted range is recoverable by re-issuing the read. Every registered literal keeps at least as many verbatim occurrences as it had before the elision; the reader tool's own description is identical in all three arms, because the frozen registry builds it once per task and v21 does not rewrite it for any arm, so 'returns those numbered lines verbatim' holds for every line that is kept. No silent omission occurs: nothing is removed without an interval note.",
+    "tool_descriptions_unchanged": "the reader tool descriptions are byte-identical in all three arms; this mechanism does not rewrite them for the plugin arm, because doing so would make the prompt asymmetric and contaminate the paired comparison",
+    "forbidden_wording": [
+      "compression alone saved X percent",
+      "the four criteria are met",
+      "the retry tax is gone",
+      "the plugin saves about 12.5 percent of context"
+    ]
+  },
+  "plan_implements": "integrations/openai_agents/V22_WINDOW_DOSE_PLAN_20261010.json",
+  "v20_result": "integrations/openai_agents/V20_RESULT_AND_CHARACTERISATION_20261010.json"
+}

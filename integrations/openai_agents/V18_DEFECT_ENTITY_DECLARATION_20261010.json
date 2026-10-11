@@ -1,0 +1,51 @@
+{
+  "schema": "openai_agents_v18_defect_entity_declaration",
+  "declaration_id": "openai-agents-v18-defect-entity-declaration-01",
+  "date": "20261010",
+  "decided_by": "integrator",
+  "written_before_the_derivation_runs": true,
+  "api_requests_spent_when_written": 0,
+
+  "why_a_declaration_and_not_a_rule": {
+    "the_finding": "the runner agent tried three positional rules for choosing the defect entity out of the problem statement and each failed on one of two candidates: rfind with a longest-name tiebreak picked lastmod and register_lookup; max of rfind and length picked items and RegisterLookupMixin; earliest standalone mention picked items and RegisterLookupMixin",
+    "the_structural_reason": "the statement contains two different kinds of names. In django-15569 the title names both the class and the method, and the method comes second, so the defect entity is the later and longer name in the title. In django-16255 the title's names, items and lastmod, are generic words, and the real entity, get_latest_lastmod, appears only in the body's description of the fix, so the defect entity is the name that appears last. The two candidates therefore pull in opposite directions and no single earliest, latest, longest or deepest rule can satisfy both",
+    "why_not_a_fourth_rule": "fitting a fourth positional rule to these three examples would be tuning a rule against the data it is meant to judge, and it would decide the evidence bar by accident on the next task. Declaring the entity is a reading judgement and the integrator owns it, which is also how the v16 sealed round worked: the integrator declared the view rule before any probe and revised it once, honestly, with the old text and hash retained",
+    "what_makes_it_checkable": "the declared name must appear verbatim in the problem statement and must be a name bound inside the candidate's main file; both are checked mechanically by the scripts. Everything downstream of the declaration, the four ranges, the line cap, distinctness, the hashes, the literals and the four conditions, stays script derived"
+  },
+
+  "declarations": [
+    {
+      "task": "django-15572",
+      "task_id": "autoreload_template_changed",
+      "main_file": "django/template/autoreload.py",
+      "defect_entity": "template_changed",
+      "rationale": "the defect is the reload signal that fires for template changes, so the signal itself is the entity whose behaviour is wrong",
+      "must_be_proved_by_script": ["verbatim appearance in the problem statement", "bound inside the main file within the registered range"]
+    },
+    {
+      "task": "django-16255",
+      "task_id": "sitemap_callable_lastmod",
+      "main_file": "django/contrib/sitemaps/__init__.py",
+      "defect_entity": "get_latest_lastmod",
+      "rationale": "the reported failure is the ValueError raised by taking a maximum over an empty sequence when a sitemap has no items and lastmod is callable; get_latest_lastmod is the method that performs that maximum, so it is the entity, while items and lastmod are only the generic words that describe the situation",
+      "must_be_proved_by_script": ["verbatim appearance in the problem statement", "bound inside the main file within the registered range"]
+    },
+    {
+      "task": "django-15569",
+      "task_id": "query_utils_unregister_lookup",
+      "main_file": "django/db/models/query_utils.py",
+      "defect_entity": "_unregister_lookup",
+      "rationale": "the title states that unregistering a lookup should clear the lookup cache, so the method that fails to do so is the entity; RegisterLookupMixin is the class that contains it and is not itself the defect",
+      "must_be_proved_by_script": ["verbatim appearance in the problem statement", "bound inside the main file within the registered range"]
+    }
+  ],
+
+  "what_this_declaration_does_not_do": {
+    "it_does_not_choose_ranges": "the declared symbol fixes only which definition is the defect carrying view; the four distinct ranges, the declared view length cap, the distinctness check and every blob, file and view hash remain derived by the script",
+    "it_does_not_weaken_any_criterion": "the literal rule R1 to R7, the minimal feasible line bound, the lazy answer negative control, the mechanical gates and the statement hash reconciliation all still apply unchanged",
+    "it_does_not_replace_script_output": "the pass evidence remains the complete output of one run of the scripts, as required; this declaration is an input to those scripts, recorded before they run"
+  },
+
+  "citable": false,
+  "note": "if the script cannot prove the two checks for any declared entity, that candidate is rejected and reported, and no criterion is relaxed"
+}

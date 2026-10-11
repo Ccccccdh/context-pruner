@@ -55,15 +55,6 @@ Published counters
 Every pre-existing counter is kept: ``metrics_dict`` calls ``super().metrics_dict()`` and only
 adds to it, so ``exact_duplicate_replacements``, ``selective_retention_saved_bytes_total`` and
 the ``trigger_gate_*`` family keep their names and their meanings.
-
-Composition seam for later versions (v21)
-----------------------------------------
-The two stages live in :meth:`NonDuplicateRetentionFilter._compose_base`, which returns the
-decision without advancing this version's counters; :meth:`filter_items` is the only method that
-records them.  A later version therefore composes on top of this one by calling ``_compose_base``
-and continuing from ``base``, and its rows never double-count a v20 counter.  This extraction is
-behaviour preserving: ``filter_items`` returns and counts exactly what it returned and counted
-before it.
 """
 
 from __future__ import annotations
@@ -231,58 +222,14 @@ class NonDuplicateRetentionFilter(MultitaskDuplicateFilter):
 
     def filter_items(self, items: Sequence[Any]) -> list[Any] | None:
         """Dedupe with the frozen v12 rule, then run the v5 selective retention on the rest."""
-        outcome = self._compose_base(items)
-        base = outcome["base"]
-        if outcome["status"] != "engaged":
-            self.v20_retention_fallback_calls += 1
-        else:
-            self.v20_retention_engaged_calls += 1
-            self.v20_units_elided += int(outcome["units"])
-            self.v20_bytes_saved += int(outcome["saved"])
-        self._record_call(
-            base,
-            duplicates=int(outcome["duplicates"]),
-            status=str(outcome["status"]),
-            detail=str(outcome["detail"]),
-            units=int(outcome["units"]),
-            saved=int(outcome["saved"]),
-        )
-        return outcome["result"]
-
-    def _compose_base(self, items: Sequence[Any]) -> dict[str, Any]:
-        """The dedupe-then-retain composition, without touching this version's counters.
-
-        Extracted so that a later version can compose *on top of* this one (v21 adds a line
-        elision stage after both of these) without the v20 counters being incremented twice or
-        being advanced by a call path that is not v20's.  :meth:`filter_items` above is the only
-        caller that records; the returned mapping is otherwise the whole decision:
-
-        ``base``
-            the deduplicated (and, when the retention stage engaged, retained) item list - the
-            payload this version would send.
-        ``result``
-            what :meth:`filter_items` returns: ``base`` for every fallback, the retained list
-            when the retention stage engaged.
-        ``status``
-            ``"engaged"`` or the reason no retention happened (``"fallback"``, ``"exception"``,
-            ``"no_dedupe"``).
-        ``duplicates``, ``units``, ``saved``
-            the numbers :meth:`_record_call` reports.
-        ``dedupe_rejected``
-            true when the v12 stage rejected the payload, so ``base`` is the *observed* list and
-            the caller must return ``None`` ("send the observed input unchanged") rather than the
-            list, to keep v12's own fallback semantics intact.
-        """
         observed = list(items)
         deduped = super().filter_items(items)
         if deduped is None:
             base = observed
             duplicates = 0
-            dedupe_rejected = True
         else:
             base = list(deduped)
             duplicates = int(getattr(self, "exact_duplicate_replacements", 0))
-            dedupe_rejected = False
         base_bytes = _bytes(base)
         before = {
             "compacted_calls": int(self.compacted_calls),
@@ -293,27 +240,27 @@ class NonDuplicateRetentionFilter(MultitaskDuplicateFilter):
         try:
             out = v5.SelectiveRetentionFilter.filter_items(self, base)
         except Exception as error:  # fail closed: keep the deduplicated content verbatim
-            return {
-                "base": base,
-                "result": base,
-                "status": "exception",
-                "detail": f"{type(error).__name__}: {error}",
-                "duplicates": duplicates,
-                "units": 0,
-                "saved": 0,
-                "dedupe_rejected": dedupe_rejected,
-            }
+            self.v20_retention_fallback_calls += 1
+            self._record_call(
+                base,
+                duplicates=duplicates,
+                status="exception",
+                detail=f"{type(error).__name__}: {error}",
+                units=0,
+                saved=0,
+            )
+            return base
         if out is None:
-            return {
-                "base": base,
-                "result": base,
-                "status": "fallback",
-                "detail": str(getattr(self, "last_fallback_reason", "")),
-                "duplicates": duplicates,
-                "units": 0,
-                "saved": 0,
-                "dedupe_rejected": dedupe_rejected,
-            }
+            self.v20_retention_fallback_calls += 1
+            self._record_call(
+                base,
+                duplicates=duplicates,
+                status="fallback",
+                detail=str(getattr(self, "last_fallback_reason", "")),
+                units=0,
+                saved=0,
+            )
+            return base
         filtered = list(out)
         units = (
             int(self.compacted_calls)
@@ -324,16 +271,18 @@ class NonDuplicateRetentionFilter(MultitaskDuplicateFilter):
             - before["compacted_tool_outputs"]
         )
         saved = base_bytes - _bytes(filtered)
-        return {
-            "base": base,
-            "result": filtered,
-            "status": "engaged",
-            "detail": "",
-            "duplicates": duplicates,
-            "units": int(units),
-            "saved": int(saved),
-            "dedupe_rejected": dedupe_rejected,
-        }
+        self.v20_retention_engaged_calls += 1
+        self.v20_units_elided += int(units)
+        self.v20_bytes_saved += int(saved)
+        self._record_call(
+            base,
+            duplicates=duplicates,
+            status="engaged",
+            detail="",
+            units=int(units),
+            saved=int(saved),
+        )
+        return filtered
 
     # -- internals ---------------------------------------------------------
 

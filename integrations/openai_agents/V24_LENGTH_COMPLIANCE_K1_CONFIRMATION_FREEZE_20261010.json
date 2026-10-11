@@ -1,0 +1,618 @@
+{
+  "schema": "openai_agents_v24_confirmation_freeze",
+  "id": "V24-LENGTH-COMPLIANCE-K1-01",
+  "status": "FROZEN",
+  "purpose": "sealed_confirmation_of_the_literal_carrier_elision_at_k1_under_the_v24_length_compliant_prompt",
+  "written_utc_date": "20261010",
+  "generated_utc": "2026-10-10T18:28:54+00:00",
+  "written_before_any_paid_request": true,
+  "api_requests_spent_when_written": 0,
+  "experiment_id": "openai-repo-diagnostic-v24-length-compliance-k1-01",
+  "produced_by": "experiments/runners/run_openai_agents_v24_length_compliance_k1.py",
+  "mechanism": {
+    "name": "literal_carrier_preserving_line_elision_v22_k1",
+    "schema": "openai_agents_v22_window_k1",
+    "composition_schema": "duplicate_then_retention_then_line_elision_k1",
+    "k": 1,
+    "window_lines": 1,
+    "window_is_the_only_variable": "K is the only parameter of this mechanism; it was pre-registered per K in integrations/openai_agents/V22_WINDOW_DOSE_PLAN_20261010.json and may not be changed after any saving number is seen",
+    "config_module": "experiments/runners/openai_agents_v22_window_k1.py",
+    "chain_module": "experiments/runners/openai_agents_v22_chain.py",
+    "mechanism_module": "experiments/runners/openai_agents_v21_carrier_elision.py",
+    "frozen_default_window": 3,
+    "rule": "the frozen v12 exact duplicate rule runs first; the v5 lineage evidence-safe selective retention runs on the deduplicated list; the literal-carrier line elision then keeps verbatim every line that carries a registered literal or constraint phrase together with one line before and after it (K=1), elides every other line and replaces each maximal omitted run with one interval note, and keeps the most recent tool group verbatim; any literal loss, any non-reduction or any exception sends the payload this stage received, verbatim"
+  },
+  "task_set": [
+    "autoreload_template_changed",
+    "sitemap_callable_lastmod",
+    "query_utils_unregister_lookup"
+  ],
+  "task_set_note": "the three v18 sealed candidates registered in integrations/openai_agents/V18_SOURCE_REGISTRATION_20261010.json; they were run once before, under the v23 configuration, where django-15572 failed rendering on all fifteen of its samples and the batch stopped at 39 of 45; this batch is the second and final run of the same task set, under the v24 configuration, and after it the task set is exhausted",
+  "task_set_is_exhausted_after_this_batch": true,
+  "prior_batch": {
+    "batch": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v23-v18-sealed-window-k1-01",
+    "configuration": "V18-SEALED-WINDOW-K1-01",
+    "stopped_at": "39 of 45 samples",
+    "failure": "task django-15572 (autoreload_template_changed) failed rendering on all fifteen of its samples across all three arms: the first answer exceeded the 160-character bound and the single billed retry still exceeded it, so the answers closed empty",
+    "audit": "fail-closed: complete=false, usable_as_saving=false, fifteen errors",
+    "citable": false,
+    "no_number_from_it_is_used_here": true
+  },
+  "this_is_the_second_run_of_the_same_task_set": true,
+  "diagnosis": {
+    "path": "integrations/openai_agents/V24_LENGTH_COMPLIANCE_DIAGNOSIS_20261010.json",
+    "sha256": "50d49d14e1d59db6190913c84540dee38ad409c1c36262872aa320b621cc7bfe",
+    "conclusion": "the failure was a first-answer length-compliance failure, not a contract that forces a long answer: the shortest compliant rendered line for that task is 75 characters against the 160-character bound"
+  },
+  "task_set_provenance": {
+    "registration": "integrations/openai_agents/V18_SOURCE_REGISTRATION_20261010.json",
+    "v24_registration": {
+      "path": "integrations/openai_agents/V24_SOURCE_REGISTRATION_20261010.json",
+      "sha256": "34bcc4e361c9bc8463cceb0ac5b09da2a0d4ada9c68685f83471f4785ccb31e8",
+      "role": "the same three tasks re-registered for this batch: the task data is the v18 registration's, byte for byte, and this artifact carries this batch's configuration digests, its prompt change and its task-set exhaustion"
+    },
+    "registration_sha256": "bea2648878c3b9299f63be45348dadf810b653bf644bd706995c6fef606b5c14",
+    "view_shape": {
+      "views_per_task": 3,
+      "rounds": 3,
+      "reads_per_round": 1,
+      "read_calls": 3,
+      "max_view_lines": 60,
+      "pairwise_disjoint": true,
+      "note": "the registry is pointed at this artifact in its sealed mode, so the registered task table of this batch is exactly the three tasks above: the stage-1 development task the registry appends in development mode is not part of this matrix"
+    },
+    "literal_rule_verdicts": "openai-agents-v18-code-anchored-literals-01",
+    "lazy_negative_control_complete": true,
+    "lazy_negative_control_holds_per_candidate": {
+      "django__django-15572": true,
+      "django__django-16255": true,
+      "django__django-15569": true
+    }
+  },
+  "defect_view_round_disclosure": {
+    "autoreload_template_changed": {
+      "instance_id": "django__django-15572",
+      "defect_view_round": 3,
+      "defect_symbol": "template_changed",
+      "defect_file": "django/template/autoreload.py",
+      "defect_range": [
+        47,
+        54
+      ],
+      "is_the_newest_tool_group": true,
+      "consequence": "the defect view is the last read, so the mechanism keeps that tool group verbatim on every later model input; its literals are never at risk and no saving may be attributed to it",
+      "reported_as": "an explanatory fact of the task shape, disclosed before the batch and not claimed as a merit of the mechanism"
+    },
+    "sitemap_callable_lastmod": {
+      "instance_id": "django__django-16255",
+      "defect_view_round": 1,
+      "defect_symbol": "get_latest_lastmod",
+      "defect_file": "django/contrib/sitemaps/__init__.py",
+      "defect_range": [
+        165,
+        174
+      ],
+      "is_the_newest_tool_group": false,
+      "consequence": "the defect view is the first read, so it is elidable content on later model inputs under the literal invariant",
+      "reported_as": "an explanatory fact of the task shape, disclosed before the batch and not claimed as a merit of the mechanism"
+    },
+    "query_utils_unregister_lookup": {
+      "instance_id": "django__django-15569",
+      "defect_view_round": 1,
+      "defect_symbol": "_unregister_lookup",
+      "defect_file": "django/db/models/query_utils.py",
+      "defect_range": [
+        211,
+        219
+      ],
+      "is_the_newest_tool_group": false,
+      "consequence": "the defect view is the first read, so it is elidable content on later model inputs under the literal invariant",
+      "reported_as": "an explanatory fact of the task shape, disclosed before the batch and not claimed as a merit of the mechanism"
+    }
+  },
+  "matrix": {
+    "tasks": [
+      "autoreload_template_changed",
+      "sitemap_callable_lastmod",
+      "query_utils_unregister_lookup"
+    ],
+    "arms": [
+      "none",
+      "native_summary",
+      "pruner_v1"
+    ],
+    "repeats": 5,
+    "samples": 45,
+    "max_api_requests": 390,
+    "repeats_rationale": "at three repeats one sample is about 11 to 13 percent of a task's strict track and therefore decides it on its own; five repeats bring the granularity to about 7 percent, which is the repeat count the v16 sealed confirmation batch used"
+  },
+  "read_shape": {
+    "shape": "N3",
+    "rounds": 3,
+    "reads_per_round": 1,
+    "read_calls": 3,
+    "expected_model_calls": 4,
+    "max_turns": 5,
+    "max_view_lines": 60,
+    "views_pairwise_disjoint": true
+  },
+  "host_configuration": {
+    "structured_final_answer": "JSON issue/cause/fix/facts asked for in the prompt, identical for every arm, rendered by the frozen renderer, which is the final-answer path and the only validator; a rejected proposal is closed to an empty answer",
+    "renderer": {
+      "module": "experiments/runners/openai_agents_structured_final_v16.py",
+      "sha256": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+      "truncates": false,
+      "drops_fields": false
+    },
+    "retry": {
+      "budget_per_sample": 1,
+      "billed": true,
+      "carries_host_diagnostic": true,
+      "diagnostic_is_two_sided": true
+    },
+    "summary_cap_per_sample": 2,
+    "summary_requests_are_charged_to_the_arm": true,
+    "trigger_gate": {
+      "soft_limit_tokens": 0,
+      "policy": "the plugin arm's BudgetTriggeredFilter is installed with soft_limit_tokens=0, which the frozen class floors to 1 (trigger_gate_soft_limit_tokens therefore reports 1), so its condition last_estimated_tokens <= soft_limit_tokens is false for every non-empty payload and the gate fires on every model input after the first; the gate stays in place, keeps measuring each payload and keeps publishing its counters. The setting is inherited from v20 unchanged, so this round measures the window and does not re-measure the gate. Trigger policy stays symmetric_budget so the wrapper is not removed from the plugin arm.",
+      "arm_scope": "plugin arm only"
+    },
+    "modules": {
+      "experiments/runners/openai_agents_v24_registry.py": "49ac3037b23ec56df7e569342be347e976bfc1a48a062d848fb7bfc5504f156d",
+      "experiments/runners/openai_agents_v24_live_contract.py": "2cd3faafccc5766d6e0857ba87c25211ac83f7c65fa8556db829ec0a9d87c668",
+      "experiments/runners/openai_agents_v18_registry.py": "04bc0ef41e78d15deafdaa568ab2094988d8b2068a13a2231e163164ebd4355f",
+      "experiments/runners/openai_agents_v17_live_contract.py": "b5be9165c8845579491e5541380f5f0766f97df77dfb933a12b26a1a1e3e1ca3",
+      "experiments/runners/run_openai_agents_v17_acquisition.py": "be0b97b4100711e726c85003933a6cf0357c3c2b5388442d28a4af69ae5fb45d",
+      "experiments/runners/openai_agents_structured_final_v16.py": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+      "experiments/runners/openai_agents_v18_sealed_registration.py": "174462d17f84f814bd3edb1747359a88225cc8d295d5f405c452563cc306128d",
+      "experiments/runners/run_openai_agents_api_experiment.py": "1cafd67b5b4d649381c737ff2e97d15d7cbba95709311d3516ccdb266c7e8708",
+      "experiments/runners/openai_agents_multitask_chain_v14.py": "bb2f5ad589e4ac0129a4cf01d2316e7f1cf7987e5dfd02e2f41aa72c7ebc1446",
+      "experiments/runners/openai_agents_v19_shape_dose.py": "6957a247bbc5df70e2922be336d6d95e7cd1bbef818538eaaa4578250bdafc52",
+      "experiments/runners/openai_agents_exact_duplicate_replay_v12.py": "2b511306fa433909c3ec72100be93adb9628a22937a7c502bfad8b9faac1f937",
+      "experiments/runners/openai_agents_evidence_safe_retention_v5.py": "8b67133f8780fa03e562dbf1052e8a95b19a90ff042cf293c1b1cb17e2426e56",
+      "experiments/runners/openai_agents_v20_chain.py": "41d4ba547da42e659c7381927ccacf86543b97c74fc499885d8aa7059fff9259",
+      "experiments/runners/openai_agents_v20_retention.py": "65650b10e8a6fb72e580245c8c0c9485b85874e4193dea5b421e8657abb0db2c",
+      "experiments/runners/openai_agents_v21_carrier_elision.py": "5c6fce44cfd79832fd14dd21ab97627638afe9b186a01d6ea8e9507a3efb12e2",
+      "experiments/runners/openai_agents_v22_window.py": "3496e9f3806d9a453f9fd1647ede279c99cd0aabb52e3ad055a310653ea6d999",
+      "experiments/runners/openai_agents_v22_window_k1.py": "cc87b195abb98d8ef4c0d27e6928c265ef054a79f8e695d3126a8c950917a962",
+      "experiments/runners/openai_agents_v22_chain.py": "3cc39594737039c6abee7aa6da78a242565186cefe93253f2ef8edb3631e12f0",
+      "experiments/runners/run_openai_agents_v24_length_compliance_k1.py": "338a6415e5934b9789a92ec53d103b9b9280385640b8d8e1f95439e5e1c9d592"
+    },
+    "module_set_note": "the module set is the v23 round's set with the two forked configuration modules this round adds - the v24 registry, which carries the length-discipline sentence, and the v24 live contract, which carries the strengthened over-length retry - and with this runner; both parents stay in the set and stay pinned, so the pin is a superset and no module was removed",
+    "v24_length_compliance_configuration": {
+      "schema": "openai_agents_v24_length_compliance_configuration",
+      "registry_fork": {
+        "schema": "openai_agents_v24_registry_fork",
+        "module": "experiments/runners/openai_agents_v24_registry.py",
+        "module_sha256": "49ac3037b23ec56df7e569342be347e976bfc1a48a062d848fb7bfc5504f156d",
+        "parent_module": "experiments/runners/openai_agents_v18_registry.py",
+        "parent_sha256": "04bc0ef41e78d15deafdaa568ab2094988d8b2068a13a2231e163164ebd4355f",
+        "parent_is_not_edited": true,
+        "registry_schema": "openai_agents_v24_registry",
+        "parent_registry_schema": "openai_agents_v18_registry",
+        "only_change": "the contract prompt of every task gains the length-discipline text below; the tasks, views, ranges, blob ids, view hashes, literals, frozen regexes, registered requests, protocol steps, cause and fix tokens, the 160-character bound and the renderer are unchanged",
+        "length_discipline_texts": [
+          " Length discipline: this is a hard rejection criterion, not a preference. The host accepts the answer only when the whole rendered line \"RESULT issue=<issue> cause=<cause> fix=<fix>\" is at most 160 characters, and when it is longer the host rejects the ENTIRE answer, so the answer is lost and the sample scores zero. Work to a target well below the bound: write cause and fix so that the two fields together come to about 120 characters or less, leaving room under the 160-character limit. Do not buy that room by dropping anything: every required string and both required technical names must still appear verbatim inside cause or fix, and an abbreviation, a shorter spelling or a summary of one of them does not count as the required string.",
+          " Budget for this task: the issue value \"{issue}\" plus the fixed prefix \"RESULT issue=\" and the fixed markers \" cause=\" and \" fix=\" already take {fixed} characters of the 160, so everything you write in the cause and fix fields together must stay within {headroom} characters to be accepted."
+        ],
+        "length_discipline_sentence_sha256": "10d3f77a6f23dbd8d7d67b5757338f15fa52961be30093150fd67b3ffe05334a",
+        "budget_sentence_template_sha256": "1a4396d9839c5f12d099f4d654f47851525402bcc0da707f3778662106c7d6e4",
+        "working_target_cause_plus_fix_chars": 120,
+        "bound": 160
+      },
+      "live_contract_fork": {
+        "schema": "openai_agents_v24_live_contract_fork",
+        "module": "experiments/runners/openai_agents_v24_live_contract.py",
+        "module_sha256": "2cd3faafccc5766d6e0857ba87c25211ac83f7c65fa8556db829ec0a9d87c668",
+        "parent_module": "experiments/runners/openai_agents_v17_live_contract.py",
+        "parent_sha256": "b5be9165c8845579491e5541380f5f0766f97df77dfb933a12b26a1a1e3e1ca3",
+        "parent_is_not_edited": true,
+        "rebound_names": [
+          "RETRY_INSTRUCTION",
+          "DIAGNOSTIC_TEXT",
+          "diagnostic_for",
+          "V24StructuredFinalModel",
+          "structured_wiring"
+        ],
+        "deliberately_different": {
+          "retry_instruction": true,
+          "over_160_diagnostic_text": true,
+          "diagnostic_for_class_table": "the class text is read from this module's table",
+          "get_response": true,
+          "structured_wiring": true,
+          "model_class": true
+        },
+        "deliberately_identical": {
+          "structured_instruction": true,
+          "prompt_replacements": true,
+          "renderer_module": true,
+          "retry_budget_per_sample": true,
+          "max_chars": true,
+          "structured_schema": true,
+          "diagnostic_marker": true,
+          "other_rejection_classes": true,
+          "conditions_are_the_v17_function": true,
+          "render_report_is_the_v17_function": true,
+          "self_test_shape": true
+        },
+        "get_response_is_the_parent_method_token_for_token": false,
+        "get_response_token_difference": {
+          "parent_tokens": 917,
+          "own_tokens": 917,
+          "only_difference": "one identifier: the retry message's template is built from the module constant ``instruction`` instead of ``RETRY_INSTRUCTION``; ``instruction`` is this module's retry instruction for a rejection whose class is strengthened and the parent's untouched instruction for every other class",
+          "verified_one_identifier_apart": true
+        },
+        "get_response_lines_that_are_not_in_the_parent": [
+          "        before = _v17._attempts(self.inner)",
+          "            \"first_candidate_line\": _v17.candidate_line(raw, expected_issue=self.expected_issue),",
+          "            \"first_declared_facts\": _v17.declared_facts(raw),",
+          "                if fact",
+          "                not in _v17.candidate_line(raw, expected_issue=self.expected_issue)",
+          "            \"retry_wording\": \"not_used_first_attempt_accepted\",",
+          "            \"retry_instruction_sha256\": \"\",",
+          "            \"force_retry_wording\": False,",
+          "            entry[_v17._render_into_response_flag()] = _v17._render_into_response(",
+          "                first, first_verdict.output",
+          "        forced = first_verdict.reason in STRENGTHENED_REASONS",
+          "        instruction = RETRY_INSTRUCTION if forced else _v17.RETRY_INSTRUCTION",
+          "        entry[\"retry_wording\"] = \"v24_length_compliance\" if forced else \"v17_unchanged\"",
+          "        entry[\"force_retry_wording\"] = bool(forced)",
+          "        entry[\"retry_instruction\"] = instruction",
+          "        entry[\"retry_instruction_sha256\"] = hashlib.sha256(",
+          "            instruction.encode(\"utf-8\")",
+          "        ).hexdigest()",
+          "            {\"role\": \"user\", \"content\": f\"{instruction}\\n{diagnostic}\"},",
+          "        entry[\"repair_input_sha256\"] = _v17._sha(",
+          "            [",
+          "                item if isinstance(item, (str, int, float, bool, type(None))) else str(item)",
+          "                for item in repair_input",
+          "            ]",
+          "        before_retry = _v17._attempts(self.inner)",
+          "            entry[_v17._render_into_response_flag()] = _v17._render_into_response(first, \"\")",
+          "            entry[_v17._render_into_response_flag()] = _v17._render_into_response(",
+          "                second, revised_verdict.output",
+          "        entry[_v17._render_into_response_flag()] = _v17._render_into_response(first, \"\")"
+        ],
+        "get_response_declared_additions": 12,
+        "diagnostic_for_additions": [
+          "    Copied from ``openai_agent_v17_live_contract.diagnostic_for`` with one substitution, marked",
+          "    in-line: the class-specific text is looked up in *this* module's ``DIAGNOSTIC_TEXT``, so the",
+          "    over-length class carries the compact target.  Everything else - the two-sided tail with the",
+          "    bound, the required strings, the cause and fix tokens and the shortening rules - is the v17",
+          "    code, so both sides of the trade-off are still delivered for every class.",
+          "    missing = _v17.missing_declared_facts(raw, expected_issue=expected_issue)"
+        ],
+        "wiring_additions_are_the_postcondition": true
+      },
+      "arm_neutrality": {
+        "first_prompt": {
+          "where": "the registry's contract prompt, which the frozen runner passes to every arm as the case's final_contract",
+          "evidence": {
+            "arms": [
+              "none",
+              "native_summary",
+              "pruner_v1"
+            ],
+            "contract_prompt_sha256_by_arm_and_task": {
+              "none": {
+                "autoreload_template_changed": "afdd77a7f46840cece21b59be5a10326c1cc415551e982563d43819415f41a1c",
+                "sitemap_callable_lastmod": "f2a36f52ed90b629689592e6b19974e4a620322d3359eee7feb5f6f8516aa48f",
+                "query_utils_unregister_lookup": "5497e785091a4fcaa65a835f521dbf19688272f8ee9f63ae405a46b6b4101885"
+              },
+              "native_summary": {
+                "autoreload_template_changed": "afdd77a7f46840cece21b59be5a10326c1cc415551e982563d43819415f41a1c",
+                "sitemap_callable_lastmod": "f2a36f52ed90b629689592e6b19974e4a620322d3359eee7feb5f6f8516aa48f",
+                "query_utils_unregister_lookup": "5497e785091a4fcaa65a835f521dbf19688272f8ee9f63ae405a46b6b4101885"
+              },
+              "pruner_v1": {
+                "autoreload_template_changed": "afdd77a7f46840cece21b59be5a10326c1cc415551e982563d43819415f41a1c",
+                "sitemap_callable_lastmod": "f2a36f52ed90b629689592e6b19974e4a620322d3359eee7feb5f6f8516aa48f",
+                "query_utils_unregister_lookup": "5497e785091a4fcaa65a835f521dbf19688272f8ee9f63ae405a46b6b4101885"
+              }
+            },
+            "the_contract_prompt_is_one_digest_per_task_across_all_three_arms": true,
+            "arm_is_not_an_input_of_the_prompt": true,
+            "why_it_cannot_vary_by_arm": "no function in this module takes the arm as an argument, and no arm rewrites the agent instructions after the frozen runner has assembled them",
+            "task_ids": [
+              "autoreload_template_changed",
+              "sitemap_callable_lastmod",
+              "query_utils_unregister_lookup"
+            ]
+          },
+          "sentence": " Length discipline: this is a hard rejection criterion, not a preference. The host accepts the answer only when the whole rendered line \"RESULT issue=<issue> cause=<cause> fix=<fix>\" is at most 160 characters, and when it is longer the host rejects the ENTIRE answer, so the answer is lost and the sample scores zero. Work to a target well below the bound: write cause and fix so that the two fields together come to about 120 characters or less, leaving room under the 160-character limit. Do not buy that room by dropping anything: every required string and both required technical names must still appear verbatim inside cause or fix, and an abbreviation, a shorter spelling or a summary of one of them does not count as the required string.",
+          "sentence_sha256": "10d3f77a6f23dbd8d7d67b5757338f15fa52961be30093150fd67b3ffe05334a",
+          "budget_sentence_template": " Budget for this task: the issue value \"{issue}\" plus the fixed prefix \"RESULT issue=\" and the fixed markers \" cause=\" and \" fix=\" already take {fixed} characters of the 160, so everything you write in the cause and fix fields together must stay within {headroom} characters to be accepted.",
+          "why_it_cannot_vary_by_arm": "the arm is a property of the model input filter; it is not an argument of the function that builds the contract prompt, and no code path in this batch rewrites the agent instructions after they are assembled"
+        },
+        "retry": {
+          "where": "the v24 live contract's RETRY_INSTRUCTION and its over_160_chars diagnostic",
+          "evidence": {
+            "schema": "openai_agents_v24_live_contract_fork",
+            "parent_module": "experiments/runners/openai_agents_v17_live_contract.py",
+            "retry_budget_per_sample": 1,
+            "max_answer_chars": 160,
+            "renderer_module": "experiments/runners/openai_agents_structured_final_v16.py",
+            "strengthened_reasons": [
+              "over_160_chars"
+            ],
+            "retry_instruction": "Rewrite only your preceding JSON answer. Keep the same issue, the same cause, the same fix and the same fact strings. Reply with the same JSON object shape (issue, cause, fix, facts) and nothing else: no explanation, no commentary, no markdown, no text before or after the object. Do not call tools. If the host rejected the answer, its exact reason follows and your rewrite must fix it. Work to a compact target: write cause and fix so that the two fields together come to about 120 characters or less.",
+            "retry_instruction_chars": 503,
+            "retry_instruction_sha256": "436f2848a1574e318c637ff55f4fce25d50a0f2517aa877604a31891e36098d4",
+            "v17_retry_instruction": "Rewrite only your preceding JSON answer. Keep the same issue, the same cause, the same fix and the same fact strings. Reply with the same JSON object shape (issue, cause, fix, facts) and nothing else. Do not call tools. If the host rejected the answer, its exact reason follows and your rewrite must fix it.",
+            "v17_retry_instruction_sha256": "d47b2922c4e2b94819ebaf79888391208566cd7221569034abcd0e486f4537d9",
+            "working_target_cause_plus_fix_chars": 120,
+            "over_160_diagnostic": "the host rejected your previous JSON: over_160_chars. the rendered line 'RESULT issue=... cause=... fix=...' exceeded 160 characters. Shorten \"cause\" and \"fix\" while keeping every fact string and every required technical name. Reply with the JSON object only and nothing else, with no explanation around it. The length of the cause and fix fields together is what pushes the rendered line past the 160-character limit, so as a target write the two fields to come to about 120 characters or less in total; that leaves the rendered line comfortably inside the bound. The limit is enforced by the host on the whole rendered line, so an answer over it is rejected entirely. The rendered line must stay within 160 characters. These strings must still appear verbatim in it: '__hash__', '__eq__', 'creation_counter'. The cause field must still contain '__hash__'. The fix field must still contain 'creation_counter'. Keep the answer as short as the required strings allow: drop explanations, restatements and repeated names, and never state the same fact twice. Remove wording, not requirements: a shorter line that loses a required string is rejected as well.",
+            "over_160_diagnostic_chars": 1154,
+            "over_160_diagnostic_sha256": "84bf98e3723eb975bd620366ec86dd10693488ff8ed8c19899532cc227928c70",
+            "v17_over_160_diagnostic_sha256": "7e2c5e4ee6c1f2c3aaa17bd138c6b2c736acb246d5605494b4d769b3cc857caa",
+            "the_v17_over_160_text_is_kept_whole": true,
+            "every_class_but_over_160_is_byte_identical_to_v17": true,
+            "the_retry_instruction_states_the_json_only_rule": true,
+            "the_retry_instruction_states_a_compact_target": true,
+            "two_sided_requirements": {
+              "statements": [
+                "The rendered line must stay within 160 characters.",
+                "These strings must still appear verbatim in it:",
+                "The cause field must still contain",
+                "The fix field must still contain"
+              ],
+              "the_over_160_retry_states_all_of_them": true,
+              "detail": {
+                "facts_named": [
+                  "__hash__",
+                  "__eq__",
+                  "creation_counter"
+                ],
+                "bound_named": true,
+                "cause_token_named": true,
+                "fix_token_named": true,
+                "explanation_ban_named": true,
+                "drop_explanations_rule_kept": true,
+                "never_state_the_same_fact_twice_kept": true,
+                "remove_wording_not_requirements_kept": true
+              }
+            },
+            "what_did_not_change": [
+              "the renderer and its 160-character bound",
+              "the four conditions",
+              "the retry budget of one metered request per sample",
+              "the two-sided diagnostic for every class",
+              "the ledger fields, the metering, the cache accounting and the prompt adaptation",
+              "the stub controls"
+            ]
+          },
+          "why_it_cannot_vary_by_arm": "both are module constants of the live contract; every sample of every arm runs through the same StructuredFinalModel subclass, which reads them from the module, and no arm supplies a different one"
+        }
+      },
+      "what_is_unchanged": [
+        "the 160-character bound stays an acceptance condition of the strict track",
+        "the literal rule R1 to R7",
+        "the required literals of all three tasks",
+        "the frozen regexes",
+        "the renderer module, imported unchanged",
+        "the read shape: 3 rounds, one disjoint view per round, K=1",
+        "the trigger gate and its threshold",
+        "the retry budget of one metered request per sample",
+        "the two-sided diagnostic"
+      ],
+      "what_changed": [
+        "the registry's contract prompt gains one length-discipline text, appended after the existing sentences",
+        "the live contract's over_160_chars retry wording gains the JSON-only rule, the compact target and the repetition of the bound, and keeps every sentence it had"
+      ],
+      "carried_from_a_void_batch": {
+        "prior_batch": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v23-v18-sealed-window-k1-01",
+        "prior_configuration": "V18-SEALED-WINDOW-K1-01",
+        "prior_outcome": "stopped at 39 of 45 samples",
+        "prior_failure": "the three sealed tasks are the same three tasks, and under the v23 configuration task django-15572 (autoreload_template_changed) failed rendering on all fifteen of its samples across all three arms; the batch reached 39 of its 45 samples before the hard stop",
+        "this_batch_is_the_second_run_of_the_same_task_set": true,
+        "under_this_configuration": "v24 length-compliant prompt",
+        "task_set_exhaustion": "after this batch the three-task set is exhausted: it is never run again and never replaced by another id",
+        "prior_batch_is_not_citable": true,
+        "no_number_from_the_prior_batch_is_used_here": true,
+        "prior_audit": "the independent audit of the stopped batch returned complete=false, usable_as_saving=false and fifteen errors, so no number from it is cited anywhere",
+        "diagnosis_path": "integrations/openai_agents/V24_LENGTH_COMPLIANCE_DIAGNOSIS_20261010.json",
+        "diagnosis_conclusion": "the failure was a first-answer length-compliance failure rather than a contract that forces a long answer",
+        "the_prompt_change_is_the_repair": "the configuration change raises first-answer compliance for every task and every arm, so no task's evidence bar was lowered and no task was dropped after being seen to fail"
+      }
+    },
+    "revision_aware_fail_closed": "every module in the path must have a SHA256 recorded here and in this configuration's revision ledger; a module whose digest is absent or differs fails the gate, and the paid path refuses to start until the change is registered in a new revision"
+  },
+  "budget_arithmetic": {
+    "shape": "N3",
+    "rounds": 3,
+    "reads_per_round": 1,
+    "read_calls": 3,
+    "plan_order": [
+      0,
+      1,
+      2
+    ],
+    "views": 3,
+    "views_read_once_each": true,
+    "duplicate_content_by_construction": false,
+    "expected_requests_per_sample": 4,
+    "max_turns": 5,
+    "retry_budget_per_sample": 1,
+    "worst_case_requests_per_sample": 6,
+    "samples": 45,
+    "native_samples": 15,
+    "arms": [
+      "none",
+      "native_summary",
+      "pruner_v1"
+    ],
+    "repeats": 5,
+    "worst_case_model_calls": 270,
+    "summary_calls_worst_case": 30,
+    "worst_case_requests": 300,
+    "cap": 390,
+    "margin": 1.3,
+    "at_least_1_3": true,
+    "derivation": "READ_CALLS=3 => MAX_TURNS = 3+2 = 5 => worst case 6 per sample => 45x6 + 15x2 = 300 => 1.3x => 390"
+  },
+  "acceptance_line": {
+    "line": "per task, the plugin arm's strict track is at least the baseline's (the four conditions judged on the rendered line) AND the paired complete provider-token saving is positive for a majority of pairs AND the batch mean is positive. The verdict is decided on every pair of the frozen matrix; the symmetric matched-prefix reading, the byte reading, the strict-track and semantic-accuracy endpoints per arm and the per-arm call distribution are reported beside it and never substitute for it. Failures, cap hits, retries and summary requests are all charged to their arm.",
+    "decided_on": "every pair of the frozen matrix",
+    "strict_track": "the four conditions judged on the rendered line: required facts present, frozen regex full match, single line with the contract prefix, at most 160 characters",
+    "paired_statistic": "paired complete provider-token totals per (task, repeat) pair, with retries and summary tokens charged to the arm they belong to",
+    "bounds_are_not_relaxed": "at most 160 characters remains an acceptance condition"
+  },
+  "primary_criterion": {
+    "name": "as-paired complete provider tokens",
+    "definition": "for every (task, repeat) pair: (baseline total tokens - plugin total tokens) / baseline total tokens, where a sample's total is its complete provider input tokens plus its complete provider output tokens, with retries and summary requests charged to the arm they belong to",
+    "verdict": "per task: the plugin arm's strict track is at least the baseline's; across the batch: a majority of pairs positive and the mean positive",
+    "frozen_in": "integrations/openai_agents/V16_CONFIRMATION_FREEZE_20261006.json (same form)",
+    "never_merged_with": "the v16 sealed confirmation batch's 12.54 percent is reported beside this batch's number and the two are never merged and never pooled, because the host configuration and the mechanism differ"
+  },
+  "co_reported": [
+    {
+      "name": "symmetric matched prefix, provider tokens",
+      "definition": "for each pair, take the first k model calls of EACH arm, where k = min(baseline calls, plugin calls), and compare the summed complete provider input tokens of those two prefixes; the truncation must be symmetric, so an arm's own retry cannot hide inside its own sum"
+    },
+    {
+      "name": "matched prefix, context bytes",
+      "definition": "the same symmetric prefix over the per-boundary context bytes the recorder wrote for each model input"
+    },
+    {
+      "name": "strict track and semantic accuracy per arm",
+      "definition": "rate per arm, per task and pooled"
+    },
+    {
+      "name": "per-arm tool_calls and model_calls",
+      "definition": "counts and distribution per arm"
+    },
+    {
+      "name": "which arm retried, per pair",
+      "definition": "render_repair_calls per arm per pair"
+    },
+    {
+      "name": "mechanism counters and guard fallbacks",
+      "definition": "v21_* per task and per sample"
+    },
+    {
+      "name": "determinism of the mechanism's byte saving per repeat",
+      "definition": "the v21 counters of the three repeats of each task side by side"
+    },
+    {
+      "name": "requests, cap and cache",
+      "definition": "api_request_attempts against the cap, and the provider cache split"
+    }
+  ],
+  "manifest_contract": {
+    "required_keys": [
+      "kind",
+      "purpose",
+      "citable_as_saving",
+      "citable_as_quality_equivalence",
+      "citable_note",
+      "data_class",
+      "disclosure",
+      "never_rejudge",
+      "freeze_path",
+      "freeze_sha256",
+      "freeze_matrix",
+      "source_of_record",
+      "source_of_record_verified",
+      "v16_registry",
+      "implementation_hashes",
+      "host_configuration",
+      "criteria",
+      "metering",
+      "request_budget",
+      "acceptance_line",
+      "stop_conditions",
+      "report_requirements",
+      "batch_report",
+      "pilot_report",
+      "length_trajectory",
+      "failure_decomposition",
+      "api_calls",
+      "runner_status",
+      "stopped_early",
+      "stop_reason",
+      "v16_manifest_finalized",
+      "mechanism",
+      "tool_output_disclosure",
+      "forbidden_wording",
+      "re_read_visibility",
+      "module_hashes"
+    ],
+    "copied_from": "experiments/runners/run_openai_agents_v22_window_dose.py::MANIFEST_REQUIRED_KEYS",
+    "extra_keys_this_round_adds": [
+      "required_wording",
+      "v24_source_registration",
+      "v24_confirmation_freeze",
+      "v24_defect_view_round_disclosure",
+      "v24_primary_criterion",
+      "v24_co_reported",
+      "v24_length_compliance_configuration",
+      "v24_prior_batch_disclosure",
+      "v24_task_set_exhaustion"
+    ],
+    "writer": "the frozen v17 finalise_pilot_manifest, wrapped by this runner",
+    "written_in_one_pass": true,
+    "writer_refuses_overwrite": true
+  },
+  "citable_as_saving": false,
+  "citable_as_quality_equivalence": false,
+  "not_evidence_yet": "both citation flags stay false until the independent audit passes; the three tasks of this batch took no part in building the host configuration, but the configuration itself - and the window K - was calibrated on other tasks, so this batch confirms the configuration and the mechanism on an untouched task set rather than establishing a general result",
+  "tool_output_disclosure": "the plugin arm's read output may be elided: lines that carry no registered literal are removed and every maximal omitted run is replaced by exactly one explicit interval note of the form [elided n lines first-last], so the omission is declared and the omitted range is recoverable by re-issuing the read. Every registered literal keeps at least as many verbatim occurrences as it had before the elision; the reader tool's own description is identical in all three arms, because the frozen registry builds it once per task and v21 does not rewrite it for any arm, so 'returns those numbered lines verbatim' holds for every line that is kept. No silent omission occurs: nothing is removed without an interval note.",
+  "re_read_visibility": {
+    "rule": "per arm: tool_calls and model_calls are reported for every sample, so a re-read induced by an elision appears as extra tool calls and is billed",
+    "expected_per_sample": {
+      "tool_calls": 3,
+      "model_calls": 4
+    }
+  },
+  "forbidden_wording": [
+    "compression alone saved X percent",
+    "the four criteria are met",
+    "the retry tax is gone",
+    "the plugin saves about 12.5 percent of context"
+  ],
+  "required_wording": "under this host configuration",
+  "report_requirements": [
+    "the primary criterion: per-task and pooled paired saving in complete provider tokens, with dispersion and the count of positive pairs",
+    "the symmetric matched-prefix reading in provider tokens and in context bytes",
+    "the strict track and the semantic accuracy per arm, per task and pooled",
+    "per-arm tool_calls and model_calls, and which arm retried in each pair",
+    "the mechanism counters per task and per repeat, including the guard fallbacks",
+    "the determinism of the mechanism's byte saving across the repeats of each task",
+    "actual requests against the cap, dollar cost and the cache split, with the off-peak flag",
+    "the acceptance verdict recomputed independently by the audit",
+    "the first-attempt acceptance rate and its rejection-class decomposition per arm, which is what this round repairs",
+    "which retry wording each retried sample received, from v24_retry_wording and v24_force_retry_wording in the sample row",
+    "wording: under this host configuration; the v16 sealed batch's number is reported beside this one and never merged with it"
+  ],
+  "stop_conditions": [
+    "batch mean at or below zero -> stop and report",
+    "any task whose plugin strict track or semantic accuracy is below its baseline -> stop and report, do not add samples and do not change the reading",
+    "any render failure, truncation or dropped field -> stop and report",
+    "request cap reached -> stop, keep the partial directory, continue under a new id; --resume may never be used to bypass the budget",
+    "any request failure -> stop and report",
+    "audit errors non-empty -> the batch may not be cited as an effective saving"
+  ],
+  "never_rejudge": "v12 to v15, the v16 sealed confirmation batch and its audit, the v17 and v19 to v21 rounds, every v22 group and the stopped v23 batch are untouched and unrejudged; no number from the stopped v23 batch is used anywhere in this batch",
+  "source_of_record": {
+    "integrations/openai_agents/V18_SOURCE_REGISTRATION_20261010.json": "bea2648878c3b9299f63be45348dadf810b653bf644bd706995c6fef606b5c14",
+    "integrations/openai_agents/V18_VIEW_DERIVATION_RECORD_20261010.json": "ec2bffb9b3a5c36b996bc75b2dd4c7b8d52474895078ab8160457a5e828ab0a5",
+    "integrations/openai_agents/V18_CANDIDATE_REDERIVATION_VERIFICATION_20261010.json": "d2d2a0d85dccf336fb2d7ef9f852c0e5b564402891040b4aec80278640b2a0e4",
+    "integrations/openai_agents/V18_LAZY_NEGATIVE_CONTROL_SUPPLEMENT_20261010.json": "976dea7419e7158eeab4973bea300f39acb155cfdd551dd19e4cae5793897f75",
+    "integrations/openai_agents/V18_DEFECT_ENTITY_DECLARATION_20261010.json": "3eba7aec19e39c7720100d79b2d7ed2e6cfc006a2f75776b9a95a65eaecf105c",
+    "integrations/openai_agents/V18_LITERAL_DISCRIMINATIVENESS_RULE_20261010.json": "f2fa7e48ea5d36bdd4464d8394e9cd6cf89eb8e4d30fde6b3b7974980125b7d5",
+    "integrations/openai_agents/V18_LITERAL_RULE_AMENDMENT_20261010.json": "97cbcba3bb74b3f7872819b597fde6deaa2a847a86ac6e90628b7831c808f9f8",
+    "integrations/openai_agents/V18_LITERAL_RULE_AMENDMENT_02_20261010.json": "fbac7d892700b532db34cc3ae70aa9f09208bd93042231357395c6dfcdac8420",
+    "integrations/openai_agents/V18_VIEW_SHAPE_AMENDMENT_03_20261010.json": "d7360183c6d6881044ffadd3f8b1f988cdb92d859bf9f70c0d660e7de046defd",
+    "integrations/openai_agents/V22_WINDOW_DOSE_PLAN_20261010.json": "64685b21a9915d0ae2a4b68a975ba3e50d28144faeacaf674033866f3b720900"
+  },
+  "source_of_record_note": "the frozen finaliser re-verifies every entry of this map before it writes the batch manifest, and the paid path re-verifies it before the first request; this runner and the two forked configuration modules are pinned in host_configuration.modules as well, so the batch's own code cannot drift unnoticed",
+  "discipline": {
+    "manifest_written_in_one_pass": true,
+    "writer_refuses_overwrite": true,
+    "no_resume_to_bypass_budget": true,
+    "no_git": true,
+    "old_batches_untouched": true,
+    "claimed_task_set_spent_once_used": true,
+    "gate_must_pass_before_any_request": true
+  }
+}

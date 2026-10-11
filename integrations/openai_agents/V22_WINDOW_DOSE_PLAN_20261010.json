@@ -1,0 +1,105 @@
+{
+  "schema": "openai_agents_v22_window_dose_plan",
+  "plan_id": "openai-agents-v22-window-dose-02",
+  "date": "20261010",
+  "status": "PRE_REGISTERED_BEFORE_ANY_PAID_REQUEST_OF_THIS_ROUND",
+  "api_requests_spent_when_written": 9,
+  "amends": {
+    "file": "integrations/openai_agents/V22_WINDOW_DOSE_PLAN_20261010.json",
+    "amendment_id": "openai-agents-v22-window-dose-02",
+    "the_integrators_ruling": "for the K dose, the pre-registered primary comparison is the MATCHED-PREFIX comparison (the segment in which both arms made the same number of calls), and as-paired is reported alongside it. Reason: n=1 per task and a one-sided repair retry can move the as-paired number, and what is being measured is the mechanism's output rather than retry luck",
+    "what_this_amendment_is_not": "it is not a retroactive upgrade of the groups already run. The three groups that reported before this amendment (k3/k1/k0-pilot-01) were pre-registered under the older plan, whose primary was as-paired and whose matched-prefix figure was a report item. Those groups keep their labels and are never re-labelled; the matched-prefix figure was computed for them as the report item it was registered as. This amendment governs the groups named below and nothing else",
+    "api_requests_spent_when_the_older_plan_was_written": 0
+  },
+
+  "question": "is the saving produced by the literal-carrier line elision governed by the protection window K, and does the evidence standard hold at every K, measured on a comparison that a one-sided retry cannot move?",
+
+  "the_dose": {
+    "K_values": [3, 1, 0],
+    "definition": "K is the number of lines kept before and after every line that carries a registered literal or constraint phrase. K=0 keeps the carrier lines themselves and nothing else. The most recent tool group is kept verbatim at every K, and the literal preservation invariant, the note form and the fail-closed rules are unchanged at every K",
+    "one_variable_only": "the only difference between the three configurations is K. Renderer, contract, four strict track conditions, 160 character bound, literal registry, read shape (N=3), tasks, arms, repeats, request cap, trigger gate threshold and every other mechanism rule are identical",
+    "how_K_is_fixed_in_code": "each K is a new module that subclasses the frozen v21 mechanism and binds its own window as an instance attribute; each is pinned by SHA256 in this round's revision ledger. The frozen v21 mechanism module is not edited for a window",
+    "forbidden": [
+      "changing K in any configuration after seeing any saving number from any K",
+      "interpolating an unregistered K (for example K=2) to chase a threshold",
+      "running a fourth K value without a new pre-registration",
+      "pooling the three groups with each other, with the v21 stage 1 batches, or with the v16 sealed batch",
+      "re-labelling an already reported group under this amendment"
+    ]
+  },
+
+  "the_primary_comparison": {
+    "primary": "matched prefix: for each task, the baseline's payload bytes summed over the FIRST k model calls, where k is the number of calls the plugin arm made, against the plugin arm's payload bytes summed over its k calls. Both arms therefore have the same number of calls and the same trajectory length, so a one-sided retry cannot enter the number",
+    "reported_alongside": "as-paired: the whole-sample complete-provider-token comparison the older plan used as primary; it is reported for every group and never omitted, because the difference between the two is itself informative",
+    "per_task_annotation": "every task line must state whether the two arms' call counts are equal, and if not, what the difference is and what caused it. A group whose arms differ must say so next to its own number",
+    "why_this_is_the_primary": "with one repeat per task, a single repair retry on one arm changes the as-paired number by about 7 percentage points on this shape (measured: 3.72 percent for the v21 group where the baseline retried, 10.84 percent for the group where it did not). The matched prefix removes that, and the mechanism's effect is what the dose is measuring"
+  },
+
+  "configuration": {
+    "shape": "N3: three development tasks, one distinct view per round, three rounds, each view read exactly once",
+    "groups": 2,
+    "samples_per_group": "3 tasks x 1 repeat x 3 arms = 9",
+    "arms": ["none", "native_summary", "pruner_v1"],
+    "experiment_ids": {
+      "K=3": "openai-repo-diagnostic-v22-window-k3b-pilot-01",
+      "K=1": "openai-repo-diagnostic-v22-window-k1b-pilot-01"
+    },
+    "max_api_requests_per_group": 100,
+    "worst_case_requests_per_group": {
+      "per_sample": "max turns (5) plus the one billed repair retry = 6",
+      "samples": 9,
+      "worst_case": "9 * 6 + 3 summary calls = 57",
+      "cap_over_worst_case": 1.754,
+      "at_least_1_3": true
+    },
+    "expected_requests_per_group": "about 38 to 39",
+    "expected_cost_per_group_usd": 0.005,
+    "metering": "the runner is given no cost rates by the integrator's standing ruling, so estimated_cost stays 0.0 and the cost is converted from tokens by the integrator"
+  },
+
+  "decision_line_per_group": {
+    "capability_confirmed": "matched-prefix saving at least 5 percent with three of three pairs positive AND every arm's strict track at or above the baseline AND semantic answer correctness at or above the baseline on every task AND zero render failures and zero truncations in the plugin arm",
+    "quality_traded_for_tokens": "any task where the plugin arm's strict track or semantic correctness falls below the baseline, or any render failure or truncation in the plugin arm; stop and report",
+    "capability_absent": "saving indistinguishable from zero, or the engagement counters zero",
+    "inconclusive": "positive but below 5 percent, or mixed signs; report",
+    "baseline_failure_note": "a baseline arm that fails on its own is recorded as a fact about that group and raises that group's as-paired figure; it is not a cost the mechanism paid, and the plugin arm is always judged against the baseline, never the other way round"
+  },
+
+  "stop_conditions_hard": {
+    "rule": "if any group shows, on any task, the plugin arm's semantic answer correctness below the baseline, or the plugin arm's strict track below the baseline, or any render failure or truncation, then stop immediately: report, do not run the remaining groups, and do not change any K",
+    "why": "the quality endpoints are co-primary with the saving, and a dose measured by continuing past a quality drop would be a tuned number rather than a measurement",
+    "also": "the request cap is per group; a group that would exceed 100 requests stops rather than raising the cap"
+  },
+
+  "pre_flight_requirements_zero_api": [
+    "the gate really runs for every K, per K, not once: assertion (a) finalise with every pre-registered key present, (b) the trigger gate firing on every model input after the first, (b') the paid path and the rehearsal installing the same context managers, (c) the mechanism engaging on unique content, (d) per module SHA256 pinning with revision aware fail closed, (e) the literal preservation invariant recomputed per call on the real payloads",
+    "the window is written down and asserted per K: the gate reads the effective window from the configuration record, the filter class and the instance attribute, and all three must equal the K being gated",
+    "a dedicated K=0 test: when a literal-carrying line has no retainable content on either side, the mechanism must not produce an empty or malformed output, and a note line must still never be able to carry a literal",
+    "the paid path preserves the runner bytes before it runs and refuses to start if they do not match the pinned digest, because one batch in this project could not be tied to the file that produced it",
+    "the tool documentation is not rewritten for any arm, and every group's manifest and freeze carry tool_output_disclosure and re_read_visibility"
+  ],
+
+  "reporting_rules": {
+    "required_wording": "under this host configuration",
+    "evidence_level": "development evidence on tasks that took part in building the configuration: it can show a dose response, it is never a confirmation, its percentages are never merged with the v16 sealed batch, and the K groups are reported side by side and never pooled",
+    "must_report_per_group": [
+      "the matched-prefix saving (primary) and the as-paired saving, per task and pooled, with the call counts of both arms and an explicit note wherever they differ",
+      "the strict track and the semantic answer correctness per arm, side by side with the baseline",
+      "per arm tool calls and model calls, so a re-read induced by elision is visible",
+      "the fraction of each payload elided and the note overhead in bytes, because the net saving is what counts",
+      "the guard fallbacks and the engagement counters",
+      "requests against the cap, cache fields written, and peak or off peak",
+      "an explicit statement of what that group cannot show"
+    ],
+    "forbidden_wording": ["compression alone saved X percent", "the four criteria are met", "the retry tax is gone", "the plugin saves about 12.5 percent of context"]
+  },
+
+  "never_rejudge": [
+    "attempt 01", "attempt 02", "attempt 03", "pilot-01", "pilot-02",
+    "v12 to v15", "the v16 sealed confirmation batch", "the v17 development pilots",
+    "the v18 selection branch", "the v19 dose batches", "the v20 gate round",
+    "the v21 stage 1 attempt -01 and its rerun -01b",
+    "the v22 window dose groups k3-k1-k0-pilot-01"
+  ],
+  "citable": false
+}

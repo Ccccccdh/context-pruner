@@ -1,0 +1,96 @@
+{
+  "schema": "openai_agents_v22_stage2_repetition_plan",
+  "plan_id": "openai-agents-v22-stage2-k1-repetition-01",
+  "date": "20261010",
+  "status": "PRE_REGISTERED_BEFORE_ANY_PAID_REQUEST_OF_THIS_GROUP",
+  "api_requests_spent_when_written": 0,
+  "amends_nothing": "this is a new group on a configuration that has already been registered. No window, threshold, contract or shape is changed, and no earlier batch is re-judged",
+
+  "question": "at the window where the dose stopped being demonstrable at one repeat, does the matched-prefix saving hold across repeats, and what is its dispersion and its majority sign?",
+
+  "why_this_group": {
+    "the_gap_it_fills": "the dose ladder was measured at one repeat per task, so it can show a direction but not a dispersion or a majority. K=1 is the window to repeat because its group is the cleanest of the three: all three arms pass the strict track on every task and all three answer correctly, whereas the K=0 group's baseline arm failed on one task on its own",
+    "what_it_is_not": "it is not a re-run of the K=1 dose group and its numbers are never pooled with it. It is a different group with a different experiment id and three times the samples",
+    "what_it_may_establish": "whether the matched-prefix saving at K=1 is stable across repeats rather than a single-draw result"
+  },
+
+  "the_measurement_units_this_round_pins": {
+    "primary": "matched-prefix saving measured in COMPLETE PROVIDER TOKENS: for each task and repeat, the baseline arm's input tokens summed over its first k calls, where k is the number of calls the plugin arm made, against the plugin arm's input tokens over its k calls",
+    "reported_alongside": [
+      "as-paired saving in complete provider tokens, on the whole sample, which a one-sided repair retry can move by about 7 percentage points at one repeat",
+      "matched-prefix saving in payload bytes, which is a proxy and not the currency, and is labelled as such wherever it appears"
+    ],
+    "unit_labelling_is_mandatory": "every table in the report states its unit. The earlier dose table put a byte-basis figure where a primary reading belonged, which moved a threshold crossing; that mistake must not be repeated",
+    "the_threshold_reading_under_the_token_primary": "on the dose ladder at one repeat the token-basis matched prefix was 3.76 percent at K=3, 5.73 percent at K=1 and 7.07 percent at K=0: K=1 and K=0 clear the 5 percent line and K=3 does not. That is the reading this group tests at K=1 with repeats",
+    "a_field_that_is_void_for_this_round": "the persisted v21_window_lines counter is void for any group whose window is below 3, because it was written from the frozen module constant. This group's window is 1, so v21_window_lines must not be cited anywhere; the window is evidenced instead by the pinned configuration module, the gate's three-way assertion and the elision counters"
+  },
+
+  "configuration": {
+    "window": "K=1, the same pinned configuration module as the b round",
+    "shape": "N3: three development tasks, one distinct view per round, three rounds, each view read exactly once",
+    "matrix": "3 development tasks x 3 repeats x 3 arms = 27 samples",
+    "arms": ["none", "native_summary", "pruner_v1"],
+    "experiment_id": "openai-repo-diagnostic-v22-window-k1b-pilot-02",
+    "max_api_requests": 250,
+    "worst_case_arithmetic": {
+      "frozen_formula": "samples x (expected model calls + retry budget per sample) + native samples x max summary calls = 27 x (4 + 1) + 9 x 2 = 153",
+      "the_runners_own_looser_bound": "samples x (max turns + retry budget) + 3 x max summary calls = 27 x (5 + 1) + 3 x 2 = 168",
+      "cap": 250,
+      "headroom_on_the_frozen_formula": 1.63,
+      "headroom_on_the_runners_bound": 1.49,
+      "floor": "both are above this project's 1.3x floor, and the frozen formula is the one the pilot itself checks"
+    },
+    "expected_requests": "about 81",
+    "expected_cost_usd": 0.015,
+    "no_resume": "--resume and --retry-failed are refused by the frozen runner, and the group is written once",
+    "metering": "the runner is given no cost rates by the standing ruling, so estimated_cost stays 0.0 and the cost is converted from tokens"
+  },
+
+  "decision_line": {
+    "capability_confirmed_at_this_window": "pooled matched-prefix saving at least 5 percent in complete provider tokens with a majority of per-task pairs positive AND the plugin arm's strict track at or above the baseline on every task AND semantic answer correctness at or above the baseline on every task AND zero render failures, zero truncations and zero dropped fields in the plugin arm",
+    "what_is_also_reported_without_being_the_line": "the dispersion of the per-pair savings (standard deviation and range), the count of positive pairs, and the as-paired number",
+    "quality_traded_for_tokens": "any task where the plugin arm's strict track or semantic correctness falls below the baseline, or any render failure or truncation in the plugin arm; stop and report",
+    "inconclusive": "positive but below 5 percent, or mixed signs across the repeats",
+    "capability_absent": "saving indistinguishable from zero, or the engagement counters zero"
+  },
+
+  "stop_conditions_hard": {
+    "rule": "if any task shows the plugin arm's semantic answer correctness below the baseline, or the plugin arm's strict track below the baseline, or any render failure or truncation, then stop immediately and report without continuing and without changing the window",
+    "asymmetry_disclosure": "if a baseline or native summary arm fails on its own, that is recorded in the group, the group's as-paired figure is marked as not being a mechanism reading, and the matched-prefix figure is the one that speaks",
+    "cap_rule": "the cap is this group's own; a group that would exceed 250 requests stops rather than raising the cap"
+  },
+
+  "pre_flight_zero_api": [
+    "the group reuses the K=1 configuration module and the b round's gate artifact, which is valid for it because the gate does not depend on the repeat count or the cap; no gate artifact is rewritten",
+    "the group's own arithmetic is asserted at start-up: 27 samples, worst case 168 on the runner's bound, cap 250, margin above 1.3",
+    "the runner preserves its own bytes before the paid path and refuses to start if the digest does not match the pinned revision ledger",
+    "the manifest and the freeze carry tool_output_disclosure and re_read_visibility, as every group in this round must"
+  ],
+
+  "reporting_rules": {
+    "required_wording": "under this host configuration",
+    "evidence_level": "development evidence on tasks that took part in building the configuration: it is never a confirmation, it is never merged with the v16 sealed batch, and it is never pooled with the dose groups",
+    "must_report": [
+      "matched-prefix saving in complete provider tokens per task and pooled, with dispersion and the count of positive pairs, and the arms' call counts annotated per task",
+      "as-paired saving in complete provider tokens alongside it, marked wherever a retry made the arms unequal",
+      "matched-prefix saving in payload bytes, labelled as a proxy",
+      "the strict track and the semantic answer correctness per arm",
+      "tool calls and model calls per arm, so a re-read is visible",
+      "the mechanism counters and the guard fallbacks, with the window evidenced by the pinned module and the gate assertion rather than by the void counter",
+      "requests against the cap, cache fields written, peak or off peak",
+      "an explicit statement of what this group cannot show"
+    ],
+    "forbidden_wording": ["compression alone saved X percent", "the four criteria are met", "the retry tax is gone", "the plugin saves about 12.5 percent of context"]
+  },
+
+  "next_step_only_on_approval": "if this group holds, the integrator has said a K=0 group at three repeats may follow as a separate authorisation. It is not authorised here and must not be started",
+
+  "never_rejudge": [
+    "attempt 01", "attempt 02", "attempt 03", "pilot-01", "pilot-02",
+    "v12 to v15", "the v16 sealed confirmation batch", "the v17 development pilots",
+    "the v18 selection branch", "the v19 dose batches", "the v20 gate round",
+    "the v21 stage 1 attempt -01 and its rerun -01b",
+    "the v22 window dose groups k3-k1-k0-pilot-01 and the b round k3b/k1b-pilot-01"
+  ],
+  "citable": false
+}

@@ -1,0 +1,284 @@
+{
+  "schema": "openai_agents_v24_recalibration_zero_api_gate",
+  "date": "20261010",
+  "generated_utc": "2026-10-10T18:35:35+00:00",
+  "mode": "gate",
+  "api_calls": 0,
+  "experiment_id": "openai-repo-diagnostic-v24-length-compliance-recalibration-01",
+  "configuration": {
+    "repeats": 1,
+    "samples": 9,
+    "native_samples": 3,
+    "cap": 80,
+    "experiment_id": "openai-repo-diagnostic-v24-length-compliance-recalibration-01",
+    "freeze": "C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\integrations\\openai_agents\\V24_RECALIBRATION_FREEZE_20261010.json",
+    "gate": "C:\\Users\\LENOVO\\Desktop\\AI Agent\\code\\integrations\\openai_agents\\V24_RECALIBRATION_ZERO_API_GATE_20261010.json"
+  },
+  "arithmetic": {
+    "shape": "N3",
+    "read_calls": 3,
+    "max_turns": 5,
+    "retry_budget_per_sample": 1,
+    "worst_case_requests_per_sample": 6,
+    "samples": 9,
+    "arms": [
+      "none",
+      "native_summary",
+      "pruner_v1"
+    ],
+    "repeats": 1,
+    "worst_case_model_calls": 54,
+    "summary_calls_worst_case": 6,
+    "worst_case_requests": 60,
+    "cap": 80,
+    "margin": 1.333,
+    "at_least_1_3": true,
+    "derivation": "READ_CALLS=3 => MAX_TURNS=5 => worst 6 per sample => 9x6 + 3x2 = 60 => 1.3x => 78, capped at 80"
+  },
+  "v24_configuration_gate": {
+    "ok": true,
+    "failed_checks": [],
+    "checks": [
+      {
+        "check": "plan_is_zero_api_for_this_task_set_and_its_cap",
+        "ok": true
+      },
+      {
+        "check": "the_frozen_host_contract_still_lands_on_its_frozen_verdicts",
+        "ok": true
+      },
+      {
+        "check": "the_registered_tasks_pass_the_control_set_through_the_real_wiring",
+        "ok": true
+      },
+      {
+        "check": "the_stub_is_zero_api",
+        "ok": true
+      },
+      {
+        "check": "a_local_pilot_produces_a_finalised_manifest_with_every_pre_registered_key",
+        "ok": true
+      },
+      {
+        "check": "the_v24_wording_is_installed_and_the_prior_batch_is_disclosed_in_the_manifest",
+        "ok": true
+      },
+      {
+        "check": "trigger_gate_fires_on_every_model_input_after_the_first",
+        "ok": true
+      },
+      {
+        "check": "mechanism_engages_on_unique_content_per_task",
+        "ok": true
+      },
+      {
+        "check": "literal_preservation_invariant_holds_on_the_real_payloads",
+        "ok": true
+      },
+      {
+        "check": "every_module_in_the_path_is_pinned_with_revision_aware_fail_closed",
+        "ok": true
+      },
+      {
+        "check": "the_single_occurrence_paths_the_note_rule_and_the_recency_rule_hold",
+        "ok": true
+      },
+      {
+        "check": "protocol_matches_the_shape",
+        "ok": true
+      },
+      {
+        "check": "one_read_per_turn_rule_matches_the_batching",
+        "ok": true
+      },
+      {
+        "check": "no_duplicate_and_no_merge_rules_present",
+        "ok": true
+      },
+      {
+        "check": "old_shape_wording_absent",
+        "ok": true
+      },
+      {
+        "check": "case_shape_matches_the_plan",
+        "ok": true
+      },
+      {
+        "check": "the_over_length_retry_wording_is_strengthened_and_keeps_the_v17_trade_off",
+        "ok": true
+      },
+      {
+        "check": "every_other_retry_class_is_still_byte_identical_to_v16",
+        "ok": true
+      },
+      {
+        "check": "four_conditions_still_identical_to_v16",
+        "ok": true
+      },
+      {
+        "check": "declared_literal_missing_from_the_line_still_rejected",
+        "ok": true
+      },
+      {
+        "check": "over_160_still_rejected",
+        "ok": true
+      },
+      {
+        "check": "cap_arithmetic_written_into_the_gate_and_at_least_1_3x",
+        "ok": true
+      },
+      {
+        "check": "trigger_gate_threshold_is_the_pre_registered_zero",
+        "ok": true
+      },
+      {
+        "check": "protection_window_is_the_k_pre_registered_for_this_configuration",
+        "ok": true
+      },
+      {
+        "check": "the_mechanism_module_is_untouched_and_its_default_window_is_still_three",
+        "ok": true
+      },
+      {
+        "check": "the_k_assertion_and_its_negative_control",
+        "ok": true
+      },
+      {
+        "check": "elision_counters_are_persisted_in_the_sample_rows",
+        "ok": true
+      },
+      {
+        "check": "the_tool_documentation_is_unchanged_and_the_disclosure_is_written",
+        "ok": true
+      },
+      {
+        "check": "no_silent_omission_is_possible",
+        "ok": true
+      },
+      {
+        "check": "the_paid_path_installs_the_same_contexts_as_the_rehearsal",
+        "ok": true
+      },
+      {
+        "check": "the_paid_path_preserves_the_runner_bytes_and_matches_the_pin",
+        "ok": true
+      },
+      {
+        "check": "the_pre_registered_wording_is_written_and_the_forbidden_wording_is_recorded",
+        "ok": true
+      },
+      {
+        "check": "both_citation_flags_start_false",
+        "ok": true
+      },
+      {
+        "check": "the_frozen_batch_is_not_merged_with_the_v16_sealed_batch",
+        "ok": true
+      },
+      {
+        "check": "the_length_discipline_sentence_is_identical_in_every_arms_first_prompt",
+        "ok": true
+      },
+      {
+        "check": "the_over_length_retry_wording_is_strengthened_and_keeps_the_v17_trade_off",
+        "ok": true
+      },
+      {
+        "check": "the_two_new_assertions_can_fail",
+        "ok": true
+      },
+      {
+        "check": "the_gate_assertions_can_fail",
+        "ok": true
+      }
+    ],
+    "hard_assertions": {
+      "a_finalise_really_runs": true,
+      "b_trigger_gate_fires_every_call": true,
+      "c_mechanism_engages_on_unique_content": true,
+      "d_every_module_pinned": true,
+      "e_literal_invariant_holds_on_real_payloads": true,
+      "f_single_occurrence_paths_note_rule_and_recency": true,
+      "g_length_discipline_sentence_identical_in_every_arms_first_prompt": true,
+      "h_over_length_retry_wording_strengthened_and_two_sided": true
+    }
+  },
+  "driver": {
+    "module": "experiments/runners/run_openai_agents_v24_recalibration.py",
+    "sha256": "bb7642384671bff7ee79d367fafc5ed0359d841787ce995c6a306ece3b69214c",
+    "recorded_in_this_batchs_ledger": true,
+    "note": "the driver is not part of the confirmation configuration's module set, so the confirmation ledger does not pin it and is not edited here; this batch's own ledger is the confirmation set plus the driver, and the freeze carries the driver's digest as well, so a driver edited after the freeze fails the freeze check"
+  },
+  "checks": [
+    {
+      "check": "the_v24_configuration_gate_passes_unchanged_for_this_shape",
+      "ok": true,
+      "detail": {
+        "failed_checks": [],
+        "hard_assertions": {
+          "a_finalise_really_runs": true,
+          "b_trigger_gate_fires_every_call": true,
+          "c_mechanism_engages_on_unique_content": true,
+          "d_every_module_pinned": true,
+          "e_literal_invariant_holds_on_real_payloads": true,
+          "f_single_occurrence_paths_note_rule_and_recency": true,
+          "g_length_discipline_sentence_identical_in_every_arms_first_prompt": true,
+          "h_over_length_retry_wording_strengthened_and_two_sided": true
+        },
+        "samples": 9,
+        "shape_recorded_by_the_gate": {
+          "samples": 9,
+          "repeats": 1,
+          "cap": 80,
+          "experiment_id": "openai-repo-diagnostic-v24-length-compliance-recalibration-01"
+        }
+      }
+    },
+    {
+      "check": "the_cap_arithmetic_for_nine_samples_is_at_least_1_3x",
+      "ok": true,
+      "detail": {
+        "shape": "N3",
+        "read_calls": 3,
+        "max_turns": 5,
+        "retry_budget_per_sample": 1,
+        "worst_case_requests_per_sample": 6,
+        "samples": 9,
+        "arms": [
+          "none",
+          "native_summary",
+          "pruner_v1"
+        ],
+        "repeats": 1,
+        "worst_case_model_calls": 54,
+        "summary_calls_worst_case": 6,
+        "worst_case_requests": 60,
+        "cap": 80,
+        "margin": 1.333,
+        "at_least_1_3": true,
+        "derivation": "READ_CALLS=3 => MAX_TURNS=5 => worst 6 per sample => 9x6 + 3x2 = 60 => 1.3x => 78, capped at 80"
+      }
+    },
+    {
+      "check": "the_recalibration_driver_is_pinned",
+      "ok": true,
+      "detail": {
+        "module": "experiments/runners/run_openai_agents_v24_recalibration.py",
+        "sha256": "bb7642384671bff7ee79d367fafc5ed0359d841787ce995c6a306ece3b69214c",
+        "recorded_in_this_batchs_ledger": true,
+        "note": "the driver is not part of the confirmation configuration's module set, so the confirmation ledger does not pin it and is not edited here; this batch's own ledger is the confirmation set plus the driver, and the freeze carries the driver's digest as well, so a driver edited after the freeze fails the freeze check"
+      }
+    },
+    {
+      "check": "the_recalibration_cannot_be_cited",
+      "ok": true,
+      "detail": {
+        "citable": false,
+        "why": "the three tasks of this batch are the host's development tasks; the batch measures the configuration on the set that built it",
+        "required_wording": "under this host configuration"
+      }
+    }
+  ],
+  "ok": true,
+  "paid_run_allowed": true
+}

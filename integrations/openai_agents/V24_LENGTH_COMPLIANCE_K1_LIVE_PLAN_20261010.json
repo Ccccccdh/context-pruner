@@ -1,0 +1,349 @@
+{
+  "schema": "openai_agents_v24_length_compliance_k1_plan",
+  "date": "20261010",
+  "generated_utc": "2026-10-10T18:29:03+00:00",
+  "mode": "plan",
+  "api_calls": 0,
+  "experiment_id": "openai-repo-diagnostic-v24-length-compliance-k1-01",
+  "window_lines": 1,
+  "config_module": "experiments/runners/openai_agents_v22_window_k1.py",
+  "zero_api_enforced_by": [
+    "base.AsyncOpenAI replaced by a client whose completions call raises",
+    "base.OpenAIChatCompletionsModel replaced by a model whose responses raise",
+    "the frozen runner returns from --plan before any client is built"
+  ],
+  "runner_status": 0,
+  "task_ids": [
+    "autoreload_template_changed",
+    "sitemap_callable_lastmod",
+    "query_utils_unregister_lookup"
+  ],
+  "case_shape": {
+    "expected_model_calls": 4,
+    "expected_tool_names": 3,
+    "max_turns": 5
+  },
+  "preflight": {
+    "registration_problems": {
+      "autoreload_template_changed": [],
+      "sitemap_callable_lastmod": [],
+      "query_utils_unregister_lookup": []
+    },
+    "freeze": {
+      "path": "integrations/openai_agents/V24_LENGTH_COMPLIANCE_K1_CONFIRMATION_FREEZE_20261010.json",
+      "sha256": "968c82f1c48028f5e274aff6b45da66daabf9bd990b53a09c915ff669be54bd5",
+      "status": "FROZEN",
+      "matrix": {
+        "tasks": [
+          "autoreload_template_changed",
+          "sitemap_callable_lastmod",
+          "query_utils_unregister_lookup"
+        ],
+        "arms": [
+          "none",
+          "native_summary",
+          "pruner_v1"
+        ],
+        "repeats": 5,
+        "samples": 45,
+        "max_api_requests": 390,
+        "repeats_rationale": "at three repeats one sample is about 11 to 13 percent of a task's strict track and therefore decides it on its own; five repeats bring the granularity to about 7 percent, which is the repeat count the v16 sealed confirmation batch used"
+      },
+      "cap": 390
+    },
+    "modules_pinned": {
+      "experiments/runners/openai_agents_v24_registry.py": "49ac3037b23ec56df7e569342be347e976bfc1a48a062d848fb7bfc5504f156d",
+      "experiments/runners/openai_agents_v24_live_contract.py": "2cd3faafccc5766d6e0857ba87c25211ac83f7c65fa8556db829ec0a9d87c668",
+      "experiments/runners/openai_agents_v18_registry.py": "04bc0ef41e78d15deafdaa568ab2094988d8b2068a13a2231e163164ebd4355f",
+      "experiments/runners/openai_agents_v17_live_contract.py": "b5be9165c8845579491e5541380f5f0766f97df77dfb933a12b26a1a1e3e1ca3",
+      "experiments/runners/run_openai_agents_v17_acquisition.py": "be0b97b4100711e726c85003933a6cf0357c3c2b5388442d28a4af69ae5fb45d",
+      "experiments/runners/openai_agents_structured_final_v16.py": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+      "experiments/runners/openai_agents_v18_sealed_registration.py": "174462d17f84f814bd3edb1747359a88225cc8d295d5f405c452563cc306128d",
+      "experiments/runners/run_openai_agents_api_experiment.py": "1cafd67b5b4d649381c737ff2e97d15d7cbba95709311d3516ccdb266c7e8708",
+      "experiments/runners/openai_agents_multitask_chain_v14.py": "bb2f5ad589e4ac0129a4cf01d2316e7f1cf7987e5dfd02e2f41aa72c7ebc1446",
+      "experiments/runners/openai_agents_v19_shape_dose.py": "6957a247bbc5df70e2922be336d6d95e7cd1bbef818538eaaa4578250bdafc52",
+      "experiments/runners/openai_agents_exact_duplicate_replay_v12.py": "2b511306fa433909c3ec72100be93adb9628a22937a7c502bfad8b9faac1f937",
+      "experiments/runners/openai_agents_evidence_safe_retention_v5.py": "8b67133f8780fa03e562dbf1052e8a95b19a90ff042cf293c1b1cb17e2426e56",
+      "experiments/runners/openai_agents_v20_chain.py": "41d4ba547da42e659c7381927ccacf86543b97c74fc499885d8aa7059fff9259",
+      "experiments/runners/openai_agents_v20_retention.py": "65650b10e8a6fb72e580245c8c0c9485b85874e4193dea5b421e8657abb0db2c",
+      "experiments/runners/openai_agents_v21_carrier_elision.py": "5c6fce44cfd79832fd14dd21ab97627638afe9b186a01d6ea8e9507a3efb12e2",
+      "experiments/runners/openai_agents_v22_window.py": "3496e9f3806d9a453f9fd1647ede279c99cd0aabb52e3ad055a310653ea6d999",
+      "experiments/runners/openai_agents_v22_window_k1.py": "cc87b195abb98d8ef4c0d27e6928c265ef054a79f8e695d3126a8c950917a962",
+      "experiments/runners/openai_agents_v22_chain.py": "3cc39594737039c6abee7aa6da78a242565186cefe93253f2ef8edb3631e12f0",
+      "experiments/runners/run_openai_agents_v24_length_compliance_k1.py": "338a6415e5934b9789a92ec53d103b9b9280385640b8d8e1f95439e5e1c9d592"
+    },
+    "modules_live": {
+      "experiments/runners/openai_agents_v24_registry.py": "49ac3037b23ec56df7e569342be347e976bfc1a48a062d848fb7bfc5504f156d",
+      "experiments/runners/openai_agents_v24_live_contract.py": "2cd3faafccc5766d6e0857ba87c25211ac83f7c65fa8556db829ec0a9d87c668",
+      "experiments/runners/openai_agents_v18_registry.py": "04bc0ef41e78d15deafdaa568ab2094988d8b2068a13a2231e163164ebd4355f",
+      "experiments/runners/openai_agents_v17_live_contract.py": "b5be9165c8845579491e5541380f5f0766f97df77dfb933a12b26a1a1e3e1ca3",
+      "experiments/runners/run_openai_agents_v17_acquisition.py": "be0b97b4100711e726c85003933a6cf0357c3c2b5388442d28a4af69ae5fb45d",
+      "experiments/runners/openai_agents_structured_final_v16.py": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+      "experiments/runners/openai_agents_v18_sealed_registration.py": "174462d17f84f814bd3edb1747359a88225cc8d295d5f405c452563cc306128d",
+      "experiments/runners/run_openai_agents_api_experiment.py": "1cafd67b5b4d649381c737ff2e97d15d7cbba95709311d3516ccdb266c7e8708",
+      "experiments/runners/openai_agents_multitask_chain_v14.py": "bb2f5ad589e4ac0129a4cf01d2316e7f1cf7987e5dfd02e2f41aa72c7ebc1446",
+      "experiments/runners/openai_agents_v19_shape_dose.py": "6957a247bbc5df70e2922be336d6d95e7cd1bbef818538eaaa4578250bdafc52",
+      "experiments/runners/openai_agents_exact_duplicate_replay_v12.py": "2b511306fa433909c3ec72100be93adb9628a22937a7c502bfad8b9faac1f937",
+      "experiments/runners/openai_agents_evidence_safe_retention_v5.py": "8b67133f8780fa03e562dbf1052e8a95b19a90ff042cf293c1b1cb17e2426e56",
+      "experiments/runners/openai_agents_v20_chain.py": "41d4ba547da42e659c7381927ccacf86543b97c74fc499885d8aa7059fff9259",
+      "experiments/runners/openai_agents_v20_retention.py": "65650b10e8a6fb72e580245c8c0c9485b85874e4193dea5b421e8657abb0db2c",
+      "experiments/runners/openai_agents_v21_carrier_elision.py": "5c6fce44cfd79832fd14dd21ab97627638afe9b186a01d6ea8e9507a3efb12e2",
+      "experiments/runners/openai_agents_v22_window.py": "3496e9f3806d9a453f9fd1647ede279c99cd0aabb52e3ad055a310653ea6d999",
+      "experiments/runners/openai_agents_v22_window_k1.py": "cc87b195abb98d8ef4c0d27e6928c265ef054a79f8e695d3126a8c950917a962",
+      "experiments/runners/openai_agents_v22_chain.py": "3cc39594737039c6abee7aa6da78a242565186cefe93253f2ef8edb3631e12f0",
+      "experiments/runners/run_openai_agents_v24_length_compliance_k1.py": "338a6415e5934b9789a92ec53d103b9b9280385640b8d8e1f95439e5e1c9d592"
+    },
+    "source_of_record": {
+      "integrations/openai_agents/V18_SOURCE_REGISTRATION_20261010.json": "bea2648878c3b9299f63be45348dadf810b653bf644bd706995c6fef606b5c14",
+      "integrations/openai_agents/V18_VIEW_DERIVATION_RECORD_20261010.json": "ec2bffb9b3a5c36b996bc75b2dd4c7b8d52474895078ab8160457a5e828ab0a5",
+      "integrations/openai_agents/V18_CANDIDATE_REDERIVATION_VERIFICATION_20261010.json": "d2d2a0d85dccf336fb2d7ef9f852c0e5b564402891040b4aec80278640b2a0e4",
+      "integrations/openai_agents/V18_LAZY_NEGATIVE_CONTROL_SUPPLEMENT_20261010.json": "976dea7419e7158eeab4973bea300f39acb155cfdd551dd19e4cae5793897f75",
+      "integrations/openai_agents/V18_DEFECT_ENTITY_DECLARATION_20261010.json": "3eba7aec19e39c7720100d79b2d7ed2e6cfc006a2f75776b9a95a65eaecf105c",
+      "integrations/openai_agents/V18_LITERAL_DISCRIMINATIVENESS_RULE_20261010.json": "f2fa7e48ea5d36bdd4464d8394e9cd6cf89eb8e4d30fde6b3b7974980125b7d5",
+      "integrations/openai_agents/V18_LITERAL_RULE_AMENDMENT_20261010.json": "97cbcba3bb74b3f7872819b597fde6deaa2a847a86ac6e90628b7831c808f9f8",
+      "integrations/openai_agents/V18_LITERAL_RULE_AMENDMENT_02_20261010.json": "fbac7d892700b532db34cc3ae70aa9f09208bd93042231357395c6dfcdac8420",
+      "integrations/openai_agents/V18_VIEW_SHAPE_AMENDMENT_03_20261010.json": "d7360183c6d6881044ffadd3f8b1f988cdb92d859bf9f70c0d660e7de046defd",
+      "integrations/openai_agents/V22_WINDOW_DOSE_PLAN_20261010.json": "64685b21a9915d0ae2a4b68a975ba3e50d28144faeacaf674033866f3b720900"
+    },
+    "renderer_self_test": {
+      "checks": [
+        {
+          "check": "max_chars_is_160",
+          "ok": true,
+          "detail": 160
+        },
+        {
+          "check": "over_long_input_rejected_empty_output",
+          "ok": true,
+          "detail": {
+            "reason": "over_160_chars",
+            "chars": 238
+          }
+        },
+        {
+          "check": "raw_duplicate_key",
+          "ok": true,
+          "detail": {
+            "reason": "invalid_json_or_duplicate_key",
+            "expected": "invalid_json_or_duplicate_key"
+          }
+        },
+        {
+          "check": "raw_extra_field",
+          "ok": true,
+          "detail": {
+            "reason": "missing_or_extra_field",
+            "expected": "missing_or_extra_field"
+          }
+        },
+        {
+          "check": "raw_unsafe_field",
+          "ok": true,
+          "detail": {
+            "reason": "invalid_cause_or_fix",
+            "expected": "invalid_cause_or_fix"
+          }
+        },
+        {
+          "check": "raw_embedded_delimiter",
+          "ok": true,
+          "detail": {
+            "reason": "embedded_field_delimiter",
+            "expected": "embedded_field_delimiter"
+          }
+        },
+        {
+          "check": "raw_declared_fact_missing",
+          "ok": true,
+          "detail": {
+            "reason": "declared_fact_missing_from_rendered_answer",
+            "expected": "declared_fact_missing_from_rendered_answer"
+          }
+        },
+        {
+          "check": "raw_issue_mismatch",
+          "ok": true,
+          "detail": {
+            "reason": "issue_mismatch",
+            "expected": "issue_mismatch"
+          }
+        },
+        {
+          "check": "raw_valid",
+          "ok": true,
+          "detail": {
+            "reason": "accepted",
+            "expected": "accepted"
+          }
+        },
+        {
+          "check": "final_answer_path_is_render",
+          "ok": true,
+          "detail": "RESULT issue=django-15572 cause=c fix=c"
+        },
+        {
+          "check": "over_long_instance_renders_empty",
+          "ok": true,
+          "detail": "''"
+        }
+      ],
+      "ok": true,
+      "max_answer_chars": 160,
+      "renderer_module": "experiments/runners/openai_agents_structured_final_v16.py",
+      "api_calls": 0
+    },
+    "arithmetic": {
+      "shape": "N3",
+      "rounds": 3,
+      "reads_per_round": 1,
+      "read_calls": 3,
+      "plan_order": [
+        0,
+        1,
+        2
+      ],
+      "views": 3,
+      "views_read_once_each": true,
+      "duplicate_content_by_construction": false,
+      "expected_requests_per_sample": 4,
+      "max_turns": 5,
+      "retry_budget_per_sample": 1,
+      "worst_case_requests_per_sample": 6,
+      "samples": 45,
+      "native_samples": 15,
+      "arms": [
+        "none",
+        "native_summary",
+        "pruner_v1"
+      ],
+      "repeats": 5,
+      "worst_case_model_calls": 270,
+      "summary_calls_worst_case": 30,
+      "worst_case_requests": 300,
+      "cap": 390,
+      "margin": 1.3,
+      "at_least_1_3": true,
+      "derivation": "READ_CALLS=3 => MAX_TURNS = 3+2 = 5 => worst case 6 per sample => 45x6 + 15x2 = 300 => 1.3x => 390"
+    }
+  },
+  "planned_requests": {
+    "samples": 45,
+    "reads_plus_answer_per_sample": 4,
+    "minimum_planned_requests": 180,
+    "worst_case_logical_requests_with_one_retry_each": 225,
+    "pre_registered_worst_case": 300,
+    "max_api_requests": 390,
+    "max_api_retries_per_model_call": 2,
+    "transport_retries_share_the_cap": true,
+    "worst_case_fits_the_cap": true
+  },
+  "arithmetic": {
+    "shape": "N3",
+    "rounds": 3,
+    "reads_per_round": 1,
+    "read_calls": 3,
+    "plan_order": [
+      0,
+      1,
+      2
+    ],
+    "views": 3,
+    "views_read_once_each": true,
+    "duplicate_content_by_construction": false,
+    "expected_requests_per_sample": 4,
+    "max_turns": 5,
+    "retry_budget_per_sample": 1,
+    "worst_case_requests_per_sample": 6,
+    "samples": 45,
+    "native_samples": 15,
+    "arms": [
+      "none",
+      "native_summary",
+      "pruner_v1"
+    ],
+    "repeats": 5,
+    "worst_case_model_calls": 270,
+    "summary_calls_worst_case": 30,
+    "worst_case_requests": 300,
+    "cap": 390,
+    "margin": 1.3,
+    "at_least_1_3": true,
+    "derivation": "READ_CALLS=3 => MAX_TURNS = 3+2 = 5 => worst case 6 per sample => 45x6 + 15x2 = 300 => 1.3x => 390"
+  },
+  "mechanism": {
+    "arm": "pruner_v1",
+    "name": "literal_carrier_preserving_line_elision_v22_k1",
+    "schema": "openai_agents_v22_window_k1",
+    "composition_schema": "duplicate_then_retention_then_line_elision_k1",
+    "window_lines": 1,
+    "window_configuration": {
+      "k": 1,
+      "class_name": "LiteralCarrierElisionFilterK1",
+      "mechanism_instance": "literal_carrier_preserving_line_elision_v22_k1",
+      "mechanism_schema": "openai_agents_v22_window_k1",
+      "composition_schema": "duplicate_then_retention_then_line_elision_k1",
+      "evidence_schema": "openai_literal_carrier_elision_k1",
+      "config_module": "experiments/runners/openai_agents_v22_window_k1.py",
+      "base_module": "experiments/runners/openai_agents_v21_carrier_elision.py",
+      "base_window_lines": 3,
+      "declared_window_value": 1,
+      "effective_window_declaration": "self.v21_window_lines bound by the configuration class",
+      "note_form": "[elided {count} lines {first}-{last}]"
+    },
+    "window_is_the_only_variable": "the three v22 groups differ only in the window K; renderer, contract, four strict track conditions, 160 character bound, registry, read shape, arms, repeats, request cap and trigger gate threshold are identical, and no K may be changed after any saving number has been seen",
+    "rule": "the frozen v12 exact duplicate rule runs first; the v5 lineage evidence-safe selective retention then runs on the deduplicated list, with its registered-literal guard, its recovery-pointer requirement and its whole-payload fallback unchanged; the literal-carrier line elision then runs on that result, keeping verbatim every line that contains a registered literal or constraint phrase together with a fixed window of 1 lines before and after it, eliding every other line and replacing each maximal contiguous omitted run with exactly one note line of the form [elided n lines first-last]; the most recent tool group is kept verbatim. Any registered-literal occurrence loss, any non-reduction after the note overhead, or any exception sends the payload this stage received verbatim and is counted in v21_literal_guard_fallbacks",
+    "frozen_rule_module": "experiments/runners/openai_agents_exact_duplicate_replay_v12.py",
+    "retention_module": "experiments/runners/openai_agents_evidence_safe_retention_v5.py",
+    "v20_composite_module": "experiments/runners/openai_agents_v20_retention.py",
+    "mechanism_module": "experiments/runners/openai_agents_v21_carrier_elision.py",
+    "composite_module": "experiments/runners/openai_agents_v21_carrier_elision.py",
+    "config_module": "experiments/runners/openai_agents_v22_window_k1.py",
+    "chain_module": "experiments/runners/openai_agents_v22_chain.py",
+    "chain_blueprint": "experiments/runners/openai_agents_multitask_chain_v14.py",
+    "window_frozen": "the window was declared per K in the v22 pre-registration before any paid request; it may not be changed after any saving number is seen, and an unregistered window (for example K=2) may not be run at all",
+    "invariant": "for every registered literal and constraint phrase the number of verbatim occurrences after elision is greater than or equal to the number before it, per occurrence and not per distinct string, computed with the same v5 lineage _carrier_loss that already vetoed the older mechanism",
+    "fail_closed": "an output is kept verbatim whenever the mechanism cannot prove the invariant for the payload it would send; nothing is removed on the strength of an argument the mechanism cannot check, and the note lines it writes can never satisfy the invariant themselves",
+    "trigger_gate": {
+      "soft_limit_tokens": 0,
+      "policy": "the plugin arm's BudgetTriggeredFilter is installed with soft_limit_tokens=0, which the frozen class floors to 1 (trigger_gate_soft_limit_tokens therefore reports 1), so its condition last_estimated_tokens <= soft_limit_tokens is false for every non-empty payload and the gate fires on every model input after the first; the gate stays in place, keeps measuring each payload and keeps publishing its counters. The setting is inherited from v20 unchanged, so this round measures the window and does not re-measure the gate. Trigger policy stays symmetric_budget so the wrapper is not removed from the plugin arm.",
+      "arm_scope": "plugin arm only; the none and native_summary arms are untouched",
+      "comparability": "the three v22 groups are comparable to each other as a dose, and each is internally paired; none of them is comparable as a whole configuration to v16, v19, v20 or v21, and none of them may be pooled with another"
+    },
+    "counter_names": {
+      "considered": "v21_outputs_considered",
+      "elided_outputs": "v21_outputs_elided",
+      "elided_lines": "v21_lines_elided",
+      "bytes": "v21_bytes_saved",
+      "fallback": "v21_literal_guard_fallbacks",
+      "note_overhead": "v21_note_bytes"
+    },
+    "tool_output_disclosure": "the plugin arm's read output may be elided: lines that carry no registered literal are removed and every maximal omitted run is replaced by exactly one explicit interval note of the form [elided n lines first-last], so the omission is declared and the omitted range is recoverable by re-issuing the read. Every registered literal keeps at least as many verbatim occurrences as it had before the elision; the reader tool's own description is identical in all three arms, because the frozen registry builds it once per task and v21 does not rewrite it for any arm, so 'returns those numbered lines verbatim' holds for every line that is kept. No silent omission occurs: nothing is removed without an interval note.",
+    "tool_descriptions_unchanged": "the reader tool descriptions are byte-identical in all three arms; this mechanism does not rewrite them for the plugin arm, because doing so would make the prompt asymmetric and contaminate the paired comparison",
+    "forbidden_wording": [
+      "compression alone saved X percent",
+      "the four criteria are met",
+      "the retry tax is gone",
+      "the plugin saves about 12.5 percent of context"
+    ]
+  },
+  "frozen_plan_print_lines": [
+    "Only synthetic task history, codenames, tool arguments, and synthetic tool results are sent to the configured API endpoint. No workspace files are read.",
+    "endpoint=https://api.deepseek.com",
+    "model=deepseek-v4-flash",
+    "scenarios=autoreload_template_changed,sitemap_callable_lastmod,query_utils_unregister_lookup",
+    "methods=none,pruner_v1,native_summary",
+    "paired_runs=15",
+    "runner_executions=45",
+    "minimum_planned_model_requests=180",
+    "summary_request_headroom=30",
+    "minimum_planned_requests=210",
+    "hard_request_cap=390",
+    "budget_provider_tokens=soft:2000,hard:6000,target:1500",
+    "budget_estimated_tokens=soft:5435,hard:16304,target:4076",
+    "calibration_ratio=0.368",
+    "trigger_policy=symmetric_budget",
+    "arm_order_rotation=rotate_by_(repeat_index + scenario_index)_mod_3",
+    "No API request was sent in --plan mode."
+  ],
+  "paid_batch_started": false
+}

@@ -1,0 +1,91 @@
+{
+  "schema": "openai_agents_v22_matched_prefix_primary_and_the_retry_swing",
+  "record_id": "openai-agents-v22-matched-prefix-primary-and-retry-swing-01",
+  "date": "20261010",
+  "api_requests_spent": 0,
+  "status": "MEASURED_FINDING_PLUS_A_PRE_REGISTRATION_TIMING_DEFECT",
+
+  "the_measured_finding": {
+    "statement": "on this N3 shape, with one repeat per task, a single repair retry on one arm moves the pooled as-paired saving by about 7 percentage points",
+    "the_two_measurements": {
+      "v21_stage_1_first_attempt": {
+        "batch": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v21-literal-carrier-elision-pilot-01",
+        "pooled_as_paired": 0.037183,
+        "baseline_repaired": "no",
+        "matched_prefix": "about the same, because no arm retried"
+      },
+      "v21_stage_1_rerun": {
+        "batch": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v21-literal-carrier-elision-pilot-01b",
+        "pooled_as_paired": 0.108421,
+        "baseline_repaired": "yes, once, on django_field_hash_immutability; the plugin arm accepted first",
+        "matched_prefix": 0.0376
+      }
+    },
+    "the_swing": "0.108421 - 0.037183 = 0.071238, about 7.1 percentage points, produced by one repair call on the baseline arm on one task",
+    "why_it_matters": "the two batches are the same configuration on the same shape. The difference between their pooled numbers is not a capability difference, it is which arm happened to need a repair. Any judgement line stated on the as-paired number at one repeat per task is therefore a judgement line on retry luck as much as on the mechanism",
+    "arithmetic_of_the_swing": {
+      "field_hash_baseline_as_paired_total_tokens": 11466,
+      "field_hash_plugin_total_tokens": 8292,
+      "field_hash_as_paired_saving": 0.276818,
+      "field_hash_baseline_tokens_over_its_first_four_calls": 8712,
+      "field_hash_plugin_tokens_over_its_four_calls": 8160,
+      "field_hash_matched_prefix_saving": 0.063384,
+      "the_difference_on_that_task": 0.213434,
+      "pooled_effect": "about one third of 21.3 points, i.e. the observed 7.1 points"
+    },
+    "consequence_recorded_in_the_plans": "the v21 plan's as-paired primary and its matched-prefix report item are unchanged for the batches already reported; the v22 dose plan is amended so that the matched prefix is the pre-registered primary for the groups it governs, with as-paired reported alongside and the arms' call counts annotated per task"
+  },
+
+  "the_timing_defect_in_this_amendment": {
+    "what_happened": "the three K dose groups (k3/k1/k0-pilot-01) were run and their numbers were reported before the integrator's ruling that the matched prefix is the primary comparison arrived. The dose plan in force when those groups ran named as-paired as the primary and the matched prefix as a report item",
+    "why_it_matters": "naming a primary after seeing the numbers is exactly what the round's discipline forbids. The matched-prefix figures for those three groups were computed as a report item, which is what they were registered as, and the plan's own wording said a report item may never substitute for the main criterion",
+    "what_is_not_being_done": [
+      "the three reported groups are not re-labelled under the amendment",
+      "their matched-prefix figures are not promoted to primary after the fact",
+      "no number from them is deleted or rewritten"
+    ],
+    "what_is_done_instead": "the amendment is written as a new plan with its own id and its own experiment ids, it records that it was written after 9 paid requests had already been spent on the earlier groups, and the groups it governs are new. The earlier groups stay in the record as dose-01 exploratory evidence with their original labels",
+    "to_be_decided_by_the_integrator": "whether the fresh K=3 and K=1 groups under the amendment are run, so that the dose is reported under one pre-registration rather than two"
+  },
+
+  "what_was_run_under_the_amendment": {
+    "groups": {
+      "K=3": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v22-window-k3b-pilot-01",
+      "K=1": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v22-window-k1b-pilot-01"
+    },
+    "why_no_second_K0_group": "the amendment authorises two groups; K=0 was already run and reported under dose-01, and re-opening it would put a second group for the same K into the record without a new registration. The runner refuses a paid run at K=0 by construction (require_paid_authorisation), and the dose table therefore takes its K=0 point from the dose-01 group, labelled as such",
+    "the_amended_rounds_primary_numbers": {
+      "K=3": {"matched_prefix_token_basis": 0.037555, "as_paired": 0.108785, "strict_track_plugin": "3/3", "semantic_plugin": "3/3", "guard_fallbacks": 0},
+      "K=1": {"matched_prefix_token_basis": 0.057252, "as_paired": 0.125579, "strict_track_plugin": "3/3", "semantic_plugin": "3/3", "guard_fallbacks": 0},
+      "K=0": {"source": "dose-01 group, not re-run", "matched_prefix_token_basis": 0.070718, "matched_prefix_byte_basis_as_reported": 0.097473, "as_paired": 0.136369, "strict_track_plugin": "3/3", "semantic_plugin": "3/3", "guard_fallbacks": 0}
+    },
+    "the_dose": {
+      "K_3": 0.037555,
+      "K_1": 0.057252,
+      "K_0": 0.070718,
+      "step_K3_to_K1": 0.019697,
+      "step_K1_to_K0": 0.013466,
+      "monotone_rising_as_K_falls": true,
+      "basis": "complete provider tokens, baseline truncated to the plugin arm's call count"
+    },
+    "a_cross_batch_check_worth_recording": "the K=3 group of the amended round reproduced the v21 stage 1 rerun's matched-prefix figure exactly (0.0376 pooled, and the same three per-task values 0.0634 / 0.0374 / 0.0119). Two independently paid groups, one from the v21 round and one from the v22 amended round, land on the same number to four decimals, and the K=1 group reproduced the dose-01 K=1 group's elision counters exactly (5891 bytes, 156 lines, 482 note bytes, zero fallbacks). That is measurement reproducibility rather than a new capability claim",
+    "the_counter_defect_this_round_fixed": "the persisted v21_window_lines counter read the frozen module constant instead of the instance attribute, so the dose-01 K=1 and K=0 rows recorded 3. The amended round's rows record the real window (K=1 rows carry 1), and v21_default_window_lines now preserves the constant separately"
+  },
+
+  "the_repair_observation_and_what_the_repetition_did_to_it": {
+    "the_observation_as_recorded": "across the three dose groups the plugin arm made zero repair calls in 27 samples while the baseline and native summary arms made one each, which the integrator asked to be recorded as an observation and not as a claim",
+    "what_the_stage_2_repetition_shows": "the observation does not survive repetition. At K=1 with three repeats the plugin arm made 2 repair calls, the baseline arm 2 and the native summary arm 1, over 9 samples per arm. The plugin arm also produced this round's only negative pair, on django_field_hash_immutability repeat 0, where it needed a repair while the baseline did not",
+    "the_negative_pair_arithmetic": {
+      "task": "django_field_hash_immutability",
+      "repeat": 0,
+      "baseline": "4 calls, accepted first, 8712 input tokens",
+      "plugin": "5 calls, accepted on retry, 9901 input tokens",
+      "why_matched_prefix_does_not_neutralise_it": "the plugin's retry is itself one of its calls, so truncating the baseline to the plugin's call count keeps the retry inside the plugin's own sum. Matched prefix removes a retry the BASELINE paid for; it cannot remove one the plugin pays for",
+      "result": "-0.1365 matched prefix in complete provider tokens, -0.1398 as-paired",
+      "reading": "this is the retry tax landing on the plugin arm, the same phenomenon the v16 batch recorded in the other direction. At three repeats it costs the pooled matched-prefix mean: without it the pooled figure would be about 5.6 percent rather than 3.5 percent"
+    },
+    "consequence_for_the_report": "the observation is withdrawn as a general statement and recorded as an artefact of one repeat per task; the round's own rule that a report item may never substitute for the main criterion applies to it"
+  },
+
+  "citable": false
+}

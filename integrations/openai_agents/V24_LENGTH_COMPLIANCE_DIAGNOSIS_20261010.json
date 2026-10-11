@@ -1,0 +1,1674 @@
+{
+  "schema": "openai_agents_v24_length_compliance_diagnosis",
+  "diagnosis_id": "v24-length-compliance-diagnosis-01",
+  "date": "20261010",
+  "generated_utc": "2026-10-10T18:16:45+00:00",
+  "produced_by": ".tooling/tmp/_v24_diagnosis.py",
+  "plan": "integrations/openai_agents/V24_LENGTH_COMPLIANCE_FIX_PLAN_20261010.json",
+  "plan_sha256": "ab991ebc02af706a07583c10051e7db5ad2af5590dcd62b951583868c240c75c",
+  "question": "why did django-15572 (task_id autoreload_template_changed) fail rendering on all fifteen of its samples across all three arms in the v23 sealed-window batch?",
+  "method": [
+    "the three sealed tasks' registered contracts are read from the registration artifact through the v18 registry and compared field by field",
+    "the shortest compliant rendered line is recomputed per task from the frozen regex and the required literals by the registry's own minimal_feasible_line",
+    "the problem statement, the registered request and the protocol steps are read from the public table and the registration, and their lengths and hashes are recorded",
+    "the stopped batch's samples.jsonl and render-evidence/ are read for what they still carry of the model's own answers"
+  ],
+  "sources": {
+    "registration": {
+      "path": "integrations/openai_agents/V18_SOURCE_REGISTRATION_20261010.json",
+      "sha256": "bea2648878c3b9299f63be45348dadf810b653bf644bd706995c6fef606b5c14"
+    },
+    "freeze": {
+      "path": "integrations/openai_agents/V18_SEALED_CONFIRMATION_FREEZE_20261010.json",
+      "sha256": "438acbcf54c94a3d2d03b53055c955e581a977dd8fc69d4adeddce2820183fef"
+    },
+    "stopped_batch_manifest": {
+      "path": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v23-v18-sealed-window-k1-01/manifest.json",
+      "sha256": "2b6aefcde4b54770fa78dd3c0fb4e3e6f587923a95dfca97ab4b98b77d12c288"
+    },
+    "stopped_batch_samples": {
+      "path": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v23-v18-sealed-window-k1-01/samples.jsonl",
+      "sha256": "887b80c8f5f36354c396cdea87378eebfb8ca7b6b0fb756deb501e43fac7f30b"
+    },
+    "audit": {
+      "path": "integrations/openai_agents/V18_SEALED_WINDOW_K1_AUDIT_20261010.json",
+      "sha256": "eff0309df27781577ab8485ea6df7c3920097c58f369034ebad86384f229278e"
+    },
+    "report": {
+      "path": "integrations/openai_agents/V18_SEALED_WINDOW_K1_REPORT_20261010.json",
+      "sha256": "8a547ec6c53a21cf5e823c6372e8d1698edabf90e81ef2a69488ca3196eb86cf"
+    }
+  },
+  "contracts": {
+    "per_task": {
+      "autoreload_template_changed": {
+        "instance_id": "django__django-15572",
+        "declared_short_id": "django-15572",
+        "difficulty": "<15 min fix",
+        "base_commit": "0b31e024873681e187b574fe1c4afe5e48aeeecf",
+        "registration_path": "integrations/openai_agents/V18_SOURCE_REGISTRATION_20261010.json",
+        "registration_sha256": "bea2648878c3b9299f63be45348dadf810b653bf644bd706995c6fef606b5c14",
+        "view_shape": {
+          "views": 3,
+          "rounds": 3,
+          "reads_per_round": 1,
+          "read_calls": 3,
+          "expected_model_calls": 4,
+          "views_pairwise_disjoint": true,
+          "views_detail": [
+            {
+              "index": 1,
+              "file": "django/template/autoreload.py",
+              "first_line": 33,
+              "last_line": 38,
+              "role": "context: the loader reset helper the watcher calls",
+              "registered_view_bytes": 289,
+              "rendered_view_chars": 289
+            },
+            {
+              "index": 2,
+              "file": "django/template/autoreload.py",
+              "first_line": 41,
+              "last_line": 44,
+              "role": "context: the watcher that listens for template changes",
+              "registered_view_bytes": 290,
+              "rendered_view_chars": 290
+            },
+            {
+              "index": 3,
+              "file": "django/template/autoreload.py",
+              "first_line": 47,
+              "last_line": 54,
+              "role": "cause: the signal handler whose directory comparison is wrong",
+              "registered_view_bytes": 406,
+              "rendered_view_chars": 406
+            }
+          ]
+        },
+        "cause_token": "template_changed",
+        "cause_token_chars": 16,
+        "cause_token_source": "contract.cause_token",
+        "fix_token": "template_dir",
+        "fix_token_chars": 12,
+        "fix_token_source": "contract.fix_token",
+        "required_facts": [
+          "template_changed",
+          "template_dir",
+          "file_path"
+        ],
+        "required_fact_count": 3,
+        "required_fact_chars": [
+          16,
+          12,
+          9
+        ],
+        "required_fact_is_substring_of_a_token": {
+          "template_changed": {
+            "in_cause_token": true,
+            "in_fix_token": false
+          },
+          "template_dir": {
+            "in_cause_token": false,
+            "in_fix_token": true
+          },
+          "file_path": {
+            "in_cause_token": false,
+            "in_fix_token": false
+          }
+        },
+        "frozen_regex": "RESULT issue=django-15572 cause=.*template_changed.* fix=.*template_dir.*",
+        "frozen_regex_chars": 73,
+        "frozen_regex_sides": {
+          "cause_side": "RESULT issue=django-15572 cause=.*template_changed.*",
+          "fix_side": "fix=.*template_dir.*"
+        },
+        "max_answer_chars": 160,
+        "minimal_feasible_line": "RESULT issue=django-15572 cause=template_changed file_path fix=template_dir",
+        "minimal_feasible_chars": 75,
+        "minimal_feasible_margin_to_bound": 85,
+        "minimal_feasible_problems": [],
+        "problem_statement_chars": 1388,
+        "problem_statement_lines": 19,
+        "problem_statement_sha256": "f9d1889009c44a56a4487dbf777c536841b4b30a2472ee1d1e30b75007f12aa3",
+        "problem_statement_sha256_recomputed": "f9d1889009c44a56a4487dbf777c536841b4b30a2472ee1d1e30b75007f12aa3",
+        "request": "Diagnose why this baseline's autoreload watcher can raise on an empty string when the template directories are empty or absent. Read the loader reset helper, the watcher that listens for template changes and the signal handler that decides whether a template file changed, in that order; name the handler whose directory comparison is wrong and the parameter the fix must compare against the template directories.",
+        "request_chars": 413,
+        "request_sha256": "5b3641041285c93e1018a47748a8cbf7ecf78ade8e0da81366e221a32acb03ad",
+        "protocol_steps": [
+          "Read one read-only tool in each of 3 rounds, in this order, and never read the same registered view twice: round 1: read_reset_loaders (django/template/autoreload.py 33-38); round 2: read_watch_for_template_changes (django/template/autoreload.py 41-44); round 3: read_template_changed (django/template/autoreload.py 47-54). That is 3 read calls over 3 distinct registered views.",
+          "Issue the single call of a round on its own turn, wait for its result, and only then start the next round. Do not issue two reads in the same turn and do not read a view twice.",
+          "After the last round, having issued all 3 reads, answer with the JSON object the request describes and call no more tools: the host renders your JSON into the single RESULT line."
+        ],
+        "protocol_steps_chars": [
+          378,
+          176,
+          178
+        ],
+        "statement_chars_total": 2537,
+        "registered_literal_occurrences_in_the_views": {
+          "template_changed": 1,
+          "template_dir": 3,
+          "file_path": 3
+        },
+        "defect_view_round": 3,
+        "defect_symbol": "template_changed",
+        "defect_view_is_the_newest_tool_group": true,
+        "contract_feasibility": {
+          "bound": 160,
+          "shortest_compliant_line_chars": 75,
+          "spare_characters_above_the_shortest_compliant_line": 85,
+          "spare_as_a_fraction_of_the_bound": 0.5312,
+          "a_compliant_answer_exists": true
+        }
+      },
+      "sitemap_callable_lastmod": {
+        "instance_id": "django__django-16255",
+        "declared_short_id": "django-16255",
+        "difficulty": "<15 min fix",
+        "base_commit": "444b6da7cc229a58a2c476a52e45233001dc7073",
+        "registration_path": "integrations/openai_agents/V18_SOURCE_REGISTRATION_20261010.json",
+        "registration_sha256": "bea2648878c3b9299f63be45348dadf810b653bf644bd706995c6fef606b5c14",
+        "view_shape": {
+          "views": 3,
+          "rounds": 3,
+          "reads_per_round": 1,
+          "read_calls": 3,
+          "expected_model_calls": 4,
+          "views_pairwise_disjoint": true,
+          "views_detail": [
+            {
+              "index": 1,
+              "file": "django/contrib/sitemaps/__init__.py",
+              "first_line": 165,
+              "last_line": 174,
+              "role": "cause: the method whose maximum over an empty sequence raises",
+              "registered_view_bytes": 439,
+              "rendered_view_chars": 439
+            },
+            {
+              "index": 2,
+              "file": "django/contrib/sitemaps/__init__.py",
+              "first_line": 176,
+              "last_line": 228,
+              "role": "context: the method that builds the url list",
+              "registered_view_bytes": 2353,
+              "rendered_view_chars": 2353
+            },
+            {
+              "index": 3,
+              "file": "django/contrib/sitemaps/__init__.py",
+              "first_line": 231,
+              "last_line": 258,
+              "role": "context: the sitemap class that supplies the items",
+              "registered_view_bytes": 1161,
+              "rendered_view_chars": 1161
+            }
+          ]
+        },
+        "cause_token": "get_latest_lastmod",
+        "cause_token_chars": 18,
+        "cause_token_source": "contract.cause_token",
+        "fix_token": "lastmod",
+        "fix_token_chars": 7,
+        "fix_token_source": "contract.fix_token",
+        "required_facts": [
+          "get_latest_lastmod",
+          "lastmod",
+          "items"
+        ],
+        "required_fact_count": 3,
+        "required_fact_chars": [
+          18,
+          7,
+          5
+        ],
+        "required_fact_is_substring_of_a_token": {
+          "get_latest_lastmod": {
+            "in_cause_token": true,
+            "in_fix_token": false
+          },
+          "lastmod": {
+            "in_cause_token": true,
+            "in_fix_token": true
+          },
+          "items": {
+            "in_cause_token": false,
+            "in_fix_token": false
+          }
+        },
+        "frozen_regex": "RESULT issue=django-16255 cause=.*get_latest_lastmod.* fix=.*lastmod.*",
+        "frozen_regex_chars": 70,
+        "frozen_regex_sides": {
+          "cause_side": "RESULT issue=django-16255 cause=.*get_latest_lastmod.*",
+          "fix_side": "fix=.*lastmod.*"
+        },
+        "max_answer_chars": 160,
+        "minimal_feasible_line": "RESULT issue=django-16255 cause=get_latest_lastmod items fix=lastmod",
+        "minimal_feasible_chars": 68,
+        "minimal_feasible_margin_to_bound": 92,
+        "minimal_feasible_problems": [],
+        "problem_statement_chars": 1566,
+        "problem_statement_lines": 31,
+        "problem_statement_sha256": "2359a3443b4020179e535a3df289178a975a90472b1fb6c3c23adf85aee5c371",
+        "problem_statement_sha256_recomputed": "2359a3443b4020179e535a3df289178a975a90472b1fb6c3c23adf85aee5c371",
+        "request": "Diagnose why this baseline's sitemap index can raise ValueError when a sitemap has no items and its lastmod is callable. Read the method that takes the latest lastmod over the sitemap's items, the method that builds the url list and the generic sitemap class that supplies the items, in that order; name the method whose maximum over an empty sequence raises and the keyword argument the fix must accept.",
+        "request_chars": 404,
+        "request_sha256": "2649775e05ae80234414a22a9ee26527e3fa5a22e40b15ef2f3ee401f2175c52",
+        "protocol_steps": [
+          "Read one read-only tool in each of 3 rounds, in this order, and never read the same registered view twice: round 1: read_get_latest_lastmod (django/contrib/sitemaps/__init__.py 165-174); round 2: read_urls (django/contrib/sitemaps/__init__.py 176-228); round 3: read_genericsitemap (django/contrib/sitemaps/__init__.py 231-258). That is 3 read calls over 3 distinct registered views.",
+          "Issue the single call of a round on its own turn, wait for its result, and only then start the next round. Do not issue two reads in the same turn and do not read a view twice.",
+          "After the last round, having issued all 3 reads, answer with the JSON object the request describes and call no more tools: the host renders your JSON into the single RESULT line."
+        ],
+        "protocol_steps_chars": [
+          383,
+          176,
+          178
+        ],
+        "statement_chars_total": 2711,
+        "registered_literal_occurrences_in_the_views": {
+          "get_latest_lastmod": 2,
+          "lastmod": 18,
+          "items": 7
+        },
+        "defect_view_round": 1,
+        "defect_symbol": "get_latest_lastmod",
+        "defect_view_is_the_newest_tool_group": false,
+        "contract_feasibility": {
+          "bound": 160,
+          "shortest_compliant_line_chars": 68,
+          "spare_characters_above_the_shortest_compliant_line": 92,
+          "spare_as_a_fraction_of_the_bound": 0.575,
+          "a_compliant_answer_exists": true
+        }
+      },
+      "query_utils_unregister_lookup": {
+        "instance_id": "django__django-15569",
+        "declared_short_id": "django-15569",
+        "difficulty": "<15 min fix",
+        "base_commit": "884b4c27f506b3c29d58509fc83a35c30ea10d94",
+        "registration_path": "integrations/openai_agents/V18_SOURCE_REGISTRATION_20261010.json",
+        "registration_sha256": "bea2648878c3b9299f63be45348dadf810b653bf644bd706995c6fef606b5c14",
+        "view_shape": {
+          "views": 3,
+          "rounds": 3,
+          "reads_per_round": 1,
+          "read_calls": 3,
+          "expected_model_calls": 4,
+          "views_pairwise_disjoint": true,
+          "views_detail": [
+            {
+              "index": 1,
+              "file": "django/db/models/query_utils.py",
+              "first_line": 211,
+              "last_line": 219,
+              "role": "cause: the method that leaves the cached lookups in place",
+              "registered_view_bytes": 422,
+              "rendered_view_chars": 422
+            },
+            {
+              "index": 2,
+              "file": "django/db/models/query_utils.py",
+              "first_line": 222,
+              "last_line": 256,
+              "role": "context: the descent helper beside it",
+              "registered_view_bytes": 1728,
+              "rendered_view_chars": 1728
+            },
+            {
+              "index": 3,
+              "file": "django/db/models/query_utils.py",
+              "first_line": 259,
+              "last_line": 269,
+              "role": "context: the references expression resolver",
+              "registered_view_bytes": 649,
+              "rendered_view_chars": 649
+            }
+          ]
+        },
+        "cause_token": "_unregister_lookup",
+        "cause_token_chars": 18,
+        "cause_token_source": "contract.cause_token",
+        "fix_token": "lookup_name",
+        "fix_token_chars": 11,
+        "fix_token_source": "contract.fix_token",
+        "required_facts": [
+          "_unregister_lookup",
+          "lookup_name",
+          "lookup"
+        ],
+        "required_fact_count": 3,
+        "required_fact_chars": [
+          18,
+          11,
+          6
+        ],
+        "required_fact_is_substring_of_a_token": {
+          "_unregister_lookup": {
+            "in_cause_token": true,
+            "in_fix_token": false
+          },
+          "lookup_name": {
+            "in_cause_token": false,
+            "in_fix_token": true
+          },
+          "lookup": {
+            "in_cause_token": true,
+            "in_fix_token": true
+          }
+        },
+        "frozen_regex": "RESULT issue=django-15569 cause=.*_unregister_lookup.* fix=.*lookup_name.*",
+        "frozen_regex_chars": 74,
+        "frozen_regex_sides": {
+          "cause_side": "RESULT issue=django-15569 cause=.*_unregister_lookup.*",
+          "fix_side": "fix=.*lookup_name.*"
+        },
+        "max_answer_chars": 160,
+        "minimal_feasible_line": "RESULT issue=django-15569 cause=_unregister_lookup fix=lookup_name lookup",
+        "minimal_feasible_chars": 73,
+        "minimal_feasible_margin_to_bound": 87,
+        "minimal_feasible_problems": [],
+        "problem_statement_chars": 640,
+        "problem_statement_lines": 7,
+        "problem_statement_sha256": "107938cd24f7bef580939d1998ce566f02fe292c37bcd14013c5f28ec5fb4f51",
+        "problem_statement_sha256_recomputed": "107938cd24f7bef580939d1998ce566f02fe292c37bcd14013c5f28ec5fb4f51",
+        "request": "Diagnose why this baseline keeps serving a stale registered lookup after a lookup is unregistered. Read the method that unregisters one lookup from the registry, the function that descends a select_related chain and the function that resolves a references expression, in that order; name the method that leaves the cached lookups in place and the parameter that carries the name of the lookup it must clear.",
+        "request_chars": 407,
+        "request_sha256": "df4a165453cfec63c608f9a8d31946db1cab3999ae58871c145273f98cfd558b",
+        "protocol_steps": [
+          "Read one read-only tool in each of 3 rounds, in this order, and never read the same registered view twice: round 1: read_unregister_lookup (django/db/models/query_utils.py 211-219); round 2: read_select_related_descend (django/db/models/query_utils.py 222-256); round 3: read_refs_expression (django/db/models/query_utils.py 259-269). That is 3 read calls over 3 distinct registered views.",
+          "Issue the single call of a round on its own turn, wait for its result, and only then start the next round. Do not issue two reads in the same turn and do not read a view twice.",
+          "After the last round, having issued all 3 reads, answer with the JSON object the request describes and call no more tools: the host renders your JSON into the single RESULT line."
+        ],
+        "protocol_steps_chars": [
+          389,
+          176,
+          178
+        ],
+        "statement_chars_total": 1794,
+        "registered_literal_occurrences_in_the_views": {
+          "_unregister_lookup": 1,
+          "lookup_name": 4,
+          "lookup": 12
+        },
+        "defect_view_round": 1,
+        "defect_symbol": "_unregister_lookup",
+        "defect_view_is_the_newest_tool_group": false,
+        "contract_feasibility": {
+          "bound": 160,
+          "shortest_compliant_line_chars": 73,
+          "spare_characters_above_the_shortest_compliant_line": 87,
+          "spare_as_a_fraction_of_the_bound": 0.5437,
+          "a_compliant_answer_exists": true
+        }
+      }
+    },
+    "prompt_audit": {
+      "arms": [
+        "none",
+        "native_summary",
+        "pruner_v1"
+      ],
+      "fixed_instruction_template": "Follow the latest user request exactly. Use the supplied tools in the requested order. Never invent tool results. The final response must be exactly one line, begin with RESULT, contain at most 160 characters, and follow this contract: {final_contract}. Replace angle-bracket fields with tool values. Do not discuss old notes, trust, safety, reasoning, or possible next steps.",
+      "fixed_instruction_sha256_by_arm": {
+        "none": "cfe41d45512154930a4e985ca11622f97a6e3c5a0950a6cf58c45fc4af5b9fd1",
+        "native_summary": "cfe41d45512154930a4e985ca11622f97a6e3c5a0950a6cf58c45fc4af5b9fd1",
+        "pruner_v1": "cfe41d45512154930a4e985ca11622f97a6e3c5a0950a6cf58c45fc4af5b9fd1"
+      },
+      "the_fixed_instruction_is_byte_identical_for_every_arm": true,
+      "contract_prompt_is_not_a_function_of_the_arm": true,
+      "contract_prompt_sha256_per_task": {
+        "autoreload_template_changed": "70389ae9d1974d16711f074e264a12002dcd4c08122de21dfd388df6e50c2068",
+        "sitemap_callable_lastmod": "6ce8d529628b4899dccc2b64d6ad3a7dc102f025ede434ff6fb4c21a63bed80d",
+        "query_utils_unregister_lookup": "661244401317a49a5fa23589424316308ba8f99b9eeaf9963f947437224c50a5"
+      },
+      "where_the_bound_appears_in_the_v23_first_prompt": {
+        "in_the_fixed_sentence": "The final response must be exactly one line, begin with RESULT, contain at most 160 characters, and follow this contract: ",
+        "in_the_contract_prompt": [
+          "Every one of those strings must also appear verbatim inside \"cause\" or \"fix\", because the host builds the rendered line from those two fields only, and all of them must be present at the same time as the 160 character bound.",
+          "The host renders issue, cause and fix into one line of the shape \"RESULT issue=<issue> cause=<cause> fix=<fix>\"; keep cause and fix short so that the rendered line stays within 160 characters."
+        ],
+        "total_mentions_of_160_in_the_first_prompt": 3,
+        "mentions_of_160_in_the_problem_statement": 0,
+        "mentions_of_160_in_the_registered_request": 0,
+        "the_fixed_sentence_is_replaced_before_the_prompt_is_sent": true,
+        "replacement_the_v17_live_contract_applies": "Your final message must be exactly one JSON object and nothing else, following this contract: ",
+        "consequence": "the words 'at most 160 characters' that the fixed sentence carries are removed by the frozen v17 prompt adaptation for every arm, so the bound reaches the model only through the contract prompt's closing sentence: 'keep cause and fix short so that the rendered line stays within 160 characters'"
+      },
+      "instruction_reaching_the_model_is_the_same_for_every_arm": "the frozen runner builds the agent instructions once per sample from the case's contract prompt and the frozen fixed sentence; no arm, and no filter, rewrites them; the arms differ only in the model input items, which is the mechanism's own variable"
+    }
+  },
+  "stopped_batch": {
+    "batch": "openai-repo-diagnostic-v23-v18-sealed-window-k1-01",
+    "samples_reached": 39,
+    "samples_planned": 45,
+    "stopped_at": "39 of 45 samples",
+    "per_task": {
+      "autoreload_template_changed": {
+        "samples_reached": 15,
+        "arms_reached": {
+          "none": 5,
+          "pruner_v1": 5,
+          "native_summary": 5
+        },
+        "first_attempt_accepted": 0,
+        "first_reject_classes": {
+          "over_160_chars": 15
+        },
+        "render_reasons": {
+          "retry_rejected:over_160_chars": 15
+        },
+        "first_candidate_chars": [
+          320,
+          320,
+          320,
+          320,
+          320,
+          325,
+          328,
+          333,
+          339,
+          341,
+          341,
+          341,
+          349,
+          352,
+          357
+        ],
+        "repair_candidate_chars": [
+          166,
+          166,
+          166,
+          166,
+          166,
+          166,
+          166,
+          169,
+          169,
+          171,
+          176,
+          176,
+          177,
+          192,
+          194
+        ],
+        "first_candidate_lines": [
+          {
+            "task": "autoreload_template_changed",
+            "repeat": 0,
+            "arm": "none",
+            "line": "RESULT issue=django-15572 cause=template_changed compares template_dir in file_path.parents; empty DIRS normalize to root, so template_changed always matches fix=compare template_dir against file_path.parents only for non-empty template_dir entries",
+            "chars": 248
+          },
+          {
+            "task": "autoreload_template_changed",
+            "repeat": 0,
+            "arm": "pruner_v1",
+            "line": "RESULT issue=django-15572 cause=template_changed compares template_dir against file_path.parents; empty DIRS normalize to project root, so template_changed always matches fix=compare template_dir against file_path.parents only for non-empty template_dir entries",
+            "chars": 261
+          },
+          {
+            "task": "autoreload_template_changed",
+            "repeat": 0,
+            "arm": "native_summary",
+            "line": "RESULT issue=django-15572 cause=template_changed compares template_dir in file_path.parents; empty template_changed dirs normalize to root, so template_dir always matches fix=fix template_changed to compare template_dir against file_path.parents only for non-empty template_dir entries",
+            "chars": 285
+          },
+          {
+            "task": "autoreload_template_changed",
+            "repeat": 1,
+            "arm": "pruner_v1",
+            "line": "RESULT issue=django-15572 cause=template_changed compares template_dir in file_path.parents; empty DIRS normalize to project root, so template_changed always True fix=fix template_changed to compare template_dir against file_path.parents only for non-empty template_dir",
+            "chars": 269
+          },
+          {
+            "task": "autoreload_template_changed",
+            "repeat": 1,
+            "arm": "native_summary",
+            "line": "RESULT issue=django-15572 cause=template_changed compares template_dir in file_path.parents; empty dirs normalize to root, so template_changed always matches fix=compare template_dir against file_path.parents only for non-empty template_dir entries",
+            "chars": 248
+          },
+          {
+            "task": "autoreload_template_changed",
+            "repeat": 1,
+            "arm": "none",
+            "line": "RESULT issue=django-15572 cause=template_changed compares template_dir in file_path.parents; empty dirs normalize to project root, so template_changed always matches fix=fix template_changed to compare template_dir against file_path.parents only for non-empty template_dir entries",
+            "chars": 280
+          },
+          {
+            "task": "autoreload_template_changed",
+            "repeat": 2,
+            "arm": "native_summary",
+            "line": "RESULT issue=django-15572 cause=template_changed compares template_dir in file_path.parents; empty dirs normalize to root, so template_changed always matches fix=compare template_dir against file_path.parents only for non-empty template_dir entries",
+            "chars": 248
+          },
+          {
+            "task": "autoreload_template_changed",
+            "repeat": 2,
+            "arm": "none",
+            "line": "RESULT issue=django-15572 cause=template_changed compares template_dir in file_path.parents; empty dirs normalize to project root, so template_changed always matches fix=compare template_dir against file_path.parents only for non-empty template_dir entries",
+            "chars": 256
+          },
+          {
+            "task": "autoreload_template_changed",
+            "repeat": 2,
+            "arm": "pruner_v1",
+            "line": "RESULT issue=django-15572 cause=template_changed compares template_dir in file_path.parents; empty DIRS normalize to project root, so template_changed always True fix=fix template_changed to compare template_dir against file_path.parents only for non-empty template_dir",
+            "chars": 269
+          },
+          {
+            "task": "autoreload_template_changed",
+            "repeat": 3,
+            "arm": "none",
+            "line": "RESULT issue=django-15572 cause=template_changed compares template_dir in file_path.parents; empty dirs normalize to root, so template_changed always matches fix=compare template_dir against file_path.parents only for non-empty template_dir entries",
+            "chars": 248
+          },
+          {
+            "task": "autoreload_template_changed",
+            "repeat": 3,
+            "arm": "pruner_v1",
+            "line": "RESULT issue=django-15572 cause=template_changed compares template_dir in file_path.parents; empty DIRS normalize to project root, so template_changed always True fix=fix template_changed to compare template_dir against file_path.parents only for non-empty template_dir",
+            "chars": 269
+          },
+          {
+            "task": "autoreload_template_changed",
+            "repeat": 3,
+            "arm": "native_summary",
+            "line": "RESULT issue=django-15572 cause=template_changed compares template_dir in file_path.parents; empty DIRS normalize to project root, so template_changed always True fix=compare template_dir against file_path.parents only for non-empty template_dir entries",
+            "chars": 253
+          },
+          {
+            "task": "autoreload_template_changed",
+            "repeat": 4,
+            "arm": "pruner_v1",
+            "line": "RESULT issue=django-15572 cause=template_changed compares template_dir in file_path.parents; empty DIRS normalize to project root, so template_changed always True fix=fix template_changed to compare template_dir against file_path.parents only for non-empty template_dir entries",
+            "chars": 277
+          },
+          {
+            "task": "autoreload_template_changed",
+            "repeat": 4,
+            "arm": "native_summary",
+            "line": "RESULT issue=django-15572 cause=template_changed compares template_dir in file_path.parents; empty dirs normalize to root, so template_changed always matches fix=compare file_path against template_dir from get_template_directories, skipping empty template_dir entries",
+            "chars": 267
+          },
+          {
+            "task": "autoreload_template_changed",
+            "repeat": 4,
+            "arm": "none",
+            "line": "RESULT issue=django-15572 cause=template_changed compares template_dir in file_path.parents; empty dirs normalize to root, so template_changed always matches fix=compare template_dir against file_path.parents only for non-empty template_dir entries",
+            "chars": 248
+          }
+        ],
+        "candidate_line_chars": [
+          248,
+          261,
+          285,
+          269,
+          248,
+          280,
+          248,
+          256,
+          269,
+          248,
+          269,
+          253,
+          277,
+          267,
+          248
+        ],
+        "repair_calls": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "declared_facts_by_sample": [
+          [
+            "template_changed",
+            "template_dir",
+            "file_path"
+          ],
+          [
+            "template_changed",
+            "template_dir",
+            "file_path"
+          ],
+          [
+            "template_changed",
+            "template_dir",
+            "file_path"
+          ],
+          [
+            "template_changed",
+            "template_dir",
+            "file_path"
+          ],
+          [
+            "template_changed",
+            "template_dir",
+            "file_path"
+          ],
+          [
+            "template_changed",
+            "template_dir",
+            "file_path"
+          ],
+          [
+            "template_changed",
+            "template_dir",
+            "file_path"
+          ],
+          [
+            "template_changed",
+            "template_dir",
+            "file_path"
+          ],
+          [
+            "template_changed",
+            "template_dir",
+            "file_path"
+          ],
+          [
+            "template_changed",
+            "template_dir",
+            "file_path"
+          ],
+          [
+            "template_changed",
+            "template_dir",
+            "file_path"
+          ],
+          [
+            "template_changed",
+            "template_dir",
+            "file_path"
+          ],
+          [
+            "template_changed",
+            "template_dir",
+            "file_path"
+          ],
+          [
+            "template_changed",
+            "template_dir",
+            "file_path"
+          ],
+          [
+            "template_changed",
+            "template_dir",
+            "file_path"
+          ]
+        ],
+        "missing_required_literals_by_sample": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "first_candidate_chars_distinct": [
+          320,
+          325,
+          328,
+          333,
+          339,
+          341,
+          349,
+          352,
+          357
+        ],
+        "first_candidate_chars_min": 320,
+        "first_candidate_chars_max": 357,
+        "candidate_line_chars_min": 248,
+        "candidate_line_chars_max": 285,
+        "candidate_line_overshoot_min": 88,
+        "candidate_line_overshoot_max": 125,
+        "repair_candidate_chars_min": 166,
+        "repair_candidate_chars_max": 194,
+        "repair_candidate_overshoot_min": 6,
+        "repair_candidate_overshoot_max": 34,
+        "repair_candidate_chars_distinct": [
+          166,
+          169,
+          171,
+          176,
+          177,
+          192,
+          194
+        ],
+        "every_sample_retried_once": true,
+        "json_proposal_chars_min": 320,
+        "json_proposal_chars_max": 357,
+        "json_overhead_over_the_rendered_line_min": 72
+      },
+      "sitemap_callable_lastmod": {
+        "samples_reached": 12,
+        "arms_reached": {
+          "pruner_v1": 4,
+          "native_summary": 4,
+          "none": 4
+        },
+        "first_attempt_accepted": 5,
+        "first_reject_classes": {
+          "over_160_chars": 7
+        },
+        "render_reasons": {
+          "accepted_first": 5,
+          "accepted_retry": 7
+        },
+        "first_candidate_chars": [
+          171,
+          182,
+          182,
+          191,
+          200,
+          200,
+          200,
+          205,
+          205,
+          207,
+          207,
+          216
+        ],
+        "repair_candidate_chars": [
+          106,
+          126,
+          126,
+          135,
+          144,
+          144,
+          144
+        ],
+        "first_candidate_lines": [
+          {
+            "task": "sitemap_callable_lastmod",
+            "repeat": 0,
+            "arm": "pruner_v1",
+            "line": "RESULT issue=django-16255 cause=get_latest_lastmod calls max over empty items when lastmod is callable fix=catch ValueError and return None for lastmod",
+            "chars": 151
+          },
+          {
+            "task": "sitemap_callable_lastmod",
+            "repeat": 0,
+            "arm": "native_summary",
+            "line": "RESULT issue=django-16255 cause=get_latest_lastmod calls max over empty items when lastmod is callable, raising ValueError fix=catch ValueError too and return None when items is empty, keeping lastmod handling",
+            "chars": 209
+          },
+          {
+            "task": "sitemap_callable_lastmod",
+            "repeat": 0,
+            "arm": "none",
+            "line": "RESULT issue=django-16255 cause=get_latest_lastmod calls max over items() which is empty, raising ValueError fix=catch ValueError and return None when lastmod is callable and items empty",
+            "chars": 186
+          },
+          {
+            "task": "sitemap_callable_lastmod",
+            "repeat": 1,
+            "arm": "native_summary",
+            "line": "RESULT issue=django-16255 cause=get_latest_lastmod max() over empty items raises ValueError fix=catch ValueError and return None for callable lastmod",
+            "chars": 149
+          },
+          {
+            "task": "sitemap_callable_lastmod",
+            "repeat": 1,
+            "arm": "none",
+            "line": "RESULT issue=django-16255 cause=get_latest_lastmod calls max over empty items when lastmod is callable, raising ValueError fix=catch ValueError too and return None when items is empty, keeping lastmod handling",
+            "chars": 209
+          },
+          {
+            "task": "sitemap_callable_lastmod",
+            "repeat": 1,
+            "arm": "pruner_v1",
+            "line": "RESULT issue=django-16255 cause=get_latest_lastmod calls max over empty items when lastmod is callable fix=catch ValueError and return None for lastmod",
+            "chars": 151
+          },
+          {
+            "task": "sitemap_callable_lastmod",
+            "repeat": 2,
+            "arm": "none",
+            "line": "RESULT issue=django-16255 cause=get_latest_lastmod calls max over empty items, raising ValueError fix=catch ValueError and return None when lastmod has no items",
+            "chars": 160
+          },
+          {
+            "task": "sitemap_callable_lastmod",
+            "repeat": 2,
+            "arm": "pruner_v1",
+            "line": "RESULT issue=django-16255 cause=get_latest_lastmod calls max over items() which is empty, raising ValueError fix=catch ValueError and return None when lastmod is callable and items is empty",
+            "chars": 189
+          },
+          {
+            "task": "sitemap_callable_lastmod",
+            "repeat": 2,
+            "arm": "native_summary",
+            "line": "RESULT issue=django-16255 cause=get_latest_lastmod calls max over items() which is empty, raising ValueError fix=catch ValueError and return None when lastmod is callable and items empty",
+            "chars": 186
+          },
+          {
+            "task": "sitemap_callable_lastmod",
+            "repeat": 3,
+            "arm": "pruner_v1",
+            "line": "RESULT issue=django-16255 cause=get_latest_lastmod calls max over items() which is empty, raising ValueError fix=catch ValueError and return None when lastmod is callable and items is empty",
+            "chars": 189
+          },
+          {
+            "task": "sitemap_callable_lastmod",
+            "repeat": 3,
+            "arm": "native_summary",
+            "line": "RESULT issue=django-16255 cause=get_latest_lastmod max() over empty items raises ValueError fix=catch ValueError too so lastmod returns None",
+            "chars": 140
+          },
+          {
+            "task": "sitemap_callable_lastmod",
+            "repeat": 3,
+            "arm": "none",
+            "line": "RESULT issue=django-16255 cause=get_latest_lastmod calls max over empty items() and only catches TypeError fix=catch ValueError too so empty items yield lastmod None",
+            "chars": 165
+          }
+        ],
+        "candidate_line_chars": [
+          151,
+          209,
+          186,
+          149,
+          209,
+          151,
+          160,
+          189,
+          186,
+          189,
+          140,
+          165
+        ],
+        "repair_calls": [
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          0,
+          1,
+          1,
+          1,
+          0,
+          1
+        ],
+        "declared_facts_by_sample": [
+          [
+            "get_latest_lastmod",
+            "lastmod",
+            "items"
+          ],
+          [
+            "get_latest_lastmod",
+            "lastmod",
+            "items"
+          ],
+          [
+            "get_latest_lastmod",
+            "lastmod",
+            "items"
+          ],
+          [
+            "get_latest_lastmod",
+            "lastmod",
+            "items"
+          ],
+          [
+            "get_latest_lastmod",
+            "lastmod",
+            "items"
+          ],
+          [
+            "get_latest_lastmod",
+            "lastmod",
+            "items"
+          ],
+          [
+            "get_latest_lastmod",
+            "lastmod",
+            "items"
+          ],
+          [
+            "get_latest_lastmod",
+            "lastmod",
+            "items"
+          ],
+          [
+            "get_latest_lastmod",
+            "lastmod",
+            "items"
+          ],
+          [
+            "get_latest_lastmod",
+            "lastmod",
+            "items"
+          ],
+          [
+            "get_latest_lastmod",
+            "lastmod",
+            "items"
+          ],
+          [
+            "get_latest_lastmod",
+            "lastmod",
+            "items"
+          ]
+        ],
+        "missing_required_literals_by_sample": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "first_candidate_chars_distinct": [
+          171,
+          182,
+          191,
+          200,
+          205,
+          207,
+          216
+        ],
+        "first_candidate_chars_min": 171,
+        "first_candidate_chars_max": 216,
+        "candidate_line_chars_min": 140,
+        "candidate_line_chars_max": 209,
+        "candidate_line_overshoot_min": -20,
+        "candidate_line_overshoot_max": 49,
+        "repair_candidate_chars_min": 106,
+        "repair_candidate_chars_max": 144,
+        "repair_candidate_overshoot_min": -54,
+        "repair_candidate_overshoot_max": -16,
+        "repair_candidate_chars_distinct": [
+          106,
+          126,
+          135,
+          144
+        ],
+        "every_sample_retried_once": false,
+        "json_proposal_chars_min": 171,
+        "json_proposal_chars_max": 216,
+        "json_overhead_over_the_rendered_line_min": -18
+      },
+      "query_utils_unregister_lookup": {
+        "samples_reached": 12,
+        "arms_reached": {
+          "native_summary": 4,
+          "none": 4,
+          "pruner_v1": 4
+        },
+        "first_attempt_accepted": 0,
+        "first_reject_classes": {
+          "over_160_chars": 12
+        },
+        "render_reasons": {
+          "accepted_retry": 12
+        },
+        "first_candidate_chars": [
+          162,
+          166,
+          168,
+          173,
+          173,
+          173,
+          175,
+          177,
+          177,
+          186,
+          192,
+          199
+        ],
+        "repair_candidate_chars": [
+          101,
+          103,
+          103,
+          103,
+          105,
+          105,
+          107,
+          107,
+          107,
+          122,
+          125,
+          129
+        ],
+        "first_candidate_lines": [
+          {
+            "task": "query_utils_unregister_lookup",
+            "repeat": 0,
+            "arm": "native_summary",
+            "line": "RESULT issue=django-15569 cause=_unregister_lookup deletes from class_lookups but never clears the cached lookup registry, so stale lookup entries persist. fix=Make _unregister_lookup clear the lookup cache after removing lookup_name from class_lookups.",
+            "chars": 253
+          },
+          {
+            "task": "query_utils_unregister_lookup",
+            "repeat": 0,
+            "arm": "none",
+            "line": "RESULT issue=django-15569 cause=_unregister_lookup deletes from class_lookups but never clears the cached lookup registry, so a stale lookup_name survives. fix=Clear the cached lookups in _unregister_lookup after deleting lookup_name from class_lookups.",
+            "chars": 253
+          },
+          {
+            "task": "query_utils_unregister_lookup",
+            "repeat": 0,
+            "arm": "pruner_v1",
+            "line": "RESULT issue=django-15569 cause=_unregister_lookup deletes from class_lookups but never clears the cached lookup registry, so a stale lookup is served. fix=Clear the lookup cache in _unregister_lookup using lookup_name, mirroring register_lookup.",
+            "chars": 246
+          },
+          {
+            "task": "query_utils_unregister_lookup",
+            "repeat": 1,
+            "arm": "none",
+            "line": "RESULT issue=django-15569 cause=_unregister_lookup deletes from class_lookups but never clears the cached lookup registry, so a stale lookup_name stays served. fix=Clear the lookup cache in _unregister_lookup after deleting lookup_name from class_lookups.",
+            "chars": 255
+          },
+          {
+            "task": "query_utils_unregister_lookup",
+            "repeat": 1,
+            "arm": "pruner_v1",
+            "line": "RESULT issue=django-15569 cause=_unregister_lookup deletes from class_lookups but never clears the cached lookup registry, so stale lookups persist. fix=Clear the lookup cache in _unregister_lookup after deleting lookup_name, mirroring register_lookup.",
+            "chars": 252
+          },
+          {
+            "task": "query_utils_unregister_lookup",
+            "repeat": 1,
+            "arm": "native_summary",
+            "line": "RESULT issue=django-15569 cause=_unregister_lookup deletes from class_lookups but never clears the cached lookup registry fix=clear the lookup cache in _unregister_lookup using lookup_name",
+            "chars": 188
+          },
+          {
+            "task": "query_utils_unregister_lookup",
+            "repeat": 2,
+            "arm": "pruner_v1",
+            "line": "RESULT issue=django-15569 cause=_unregister_lookup deletes from class_lookups but never clears the cached lookup registry, so stale lookup entries persist. fix=Make _unregister_lookup clear the lookup cache after removing lookup_name, mirroring register_lookup.",
+            "chars": 261
+          },
+          {
+            "task": "query_utils_unregister_lookup",
+            "repeat": 2,
+            "arm": "native_summary",
+            "line": "RESULT issue=django-15569 cause=_unregister_lookup deletes from class_lookups but never clears the cached lookup registry, so a stale lookup_name survives. fix=Clear the lookup cache in _unregister_lookup after deleting lookup_name from class_lookups.",
+            "chars": 251
+          },
+          {
+            "task": "query_utils_unregister_lookup",
+            "repeat": 2,
+            "arm": "none",
+            "line": "RESULT issue=django-15569 cause=_unregister_lookup deletes from class_lookups but never clears the cached lookup registry fix=clear the lookup cache in _unregister_lookup using lookup_name",
+            "chars": 188
+          },
+          {
+            "task": "query_utils_unregister_lookup",
+            "repeat": 3,
+            "arm": "native_summary",
+            "line": "RESULT issue=django-15569 cause=_unregister_lookup deletes from class_lookups but never clears the cached lookup registry, so a stale lookup is served. fix=Clear the lookup cache in _unregister_lookup after deleting lookup_name from class_lookups.",
+            "chars": 247
+          },
+          {
+            "task": "query_utils_unregister_lookup",
+            "repeat": 3,
+            "arm": "none",
+            "line": "RESULT issue=django-15569 cause=_unregister_lookup deletes from class_lookups but never clears the cached lookup registry fix=clear the lookup cache in _unregister_lookup using lookup_name",
+            "chars": 188
+          },
+          {
+            "task": "query_utils_unregister_lookup",
+            "repeat": 3,
+            "arm": "pruner_v1",
+            "line": "RESULT issue=django-15569 cause=_unregister_lookup deletes from class_lookups but never clears the cached lookup registry, so a stale lookup is still served. fix=Make _unregister_lookup clear the lookup cache after removing lookup_name, mirroring register_lookup.",
+            "chars": 263
+          }
+        ],
+        "candidate_line_chars": [
+          253,
+          253,
+          246,
+          255,
+          252,
+          188,
+          261,
+          251,
+          188,
+          247,
+          188,
+          263
+        ],
+        "repair_calls": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "declared_facts_by_sample": [
+          [
+            "_unregister_lookup",
+            "lookup_name",
+            "lookup"
+          ],
+          [
+            "_unregister_lookup",
+            "lookup_name",
+            "lookup"
+          ],
+          [
+            "_unregister_lookup",
+            "lookup_name",
+            "lookup"
+          ],
+          [
+            "_unregister_lookup",
+            "lookup_name",
+            "lookup"
+          ],
+          [
+            "_unregister_lookup",
+            "lookup_name",
+            "lookup"
+          ],
+          [
+            "_unregister_lookup",
+            "lookup_name",
+            "lookup"
+          ],
+          [
+            "_unregister_lookup",
+            "lookup_name",
+            "lookup"
+          ],
+          [
+            "_unregister_lookup",
+            "lookup_name",
+            "lookup"
+          ],
+          [
+            "_unregister_lookup",
+            "lookup_name",
+            "lookup"
+          ],
+          [
+            "_unregister_lookup",
+            "lookup_name",
+            "lookup"
+          ],
+          [
+            "_unregister_lookup",
+            "lookup_name",
+            "lookup"
+          ],
+          [
+            "_unregister_lookup",
+            "lookup_name",
+            "lookup"
+          ]
+        ],
+        "missing_required_literals_by_sample": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ],
+        "first_candidate_chars_distinct": [
+          162,
+          166,
+          168,
+          173,
+          175,
+          177,
+          186,
+          192,
+          199
+        ],
+        "first_candidate_chars_min": 162,
+        "first_candidate_chars_max": 199,
+        "candidate_line_chars_min": 188,
+        "candidate_line_chars_max": 263,
+        "candidate_line_overshoot_min": 28,
+        "candidate_line_overshoot_max": 103,
+        "repair_candidate_chars_min": 101,
+        "repair_candidate_chars_max": 129,
+        "repair_candidate_overshoot_min": -59,
+        "repair_candidate_overshoot_max": -31,
+        "repair_candidate_chars_distinct": [
+          101,
+          103,
+          105,
+          107,
+          122,
+          125,
+          129
+        ],
+        "every_sample_retried_once": true,
+        "json_proposal_chars_min": 162,
+        "json_proposal_chars_max": 199,
+        "json_overhead_over_the_rendered_line_min": -93
+      }
+    },
+    "render_evidence_rows": [
+      {
+        "task": "autoreload_template_changed",
+        "accepted": false,
+        "reason": "retry_rejected:over_160_chars",
+        "first_raw_chars": 357,
+        "repair_raw_chars": 229,
+        "output_chars": 0
+      },
+      {
+        "task": "autoreload_template_changed",
+        "accepted": false,
+        "reason": "retry_rejected:over_160_chars",
+        "first_raw_chars": 320,
+        "repair_raw_chars": 248,
+        "output_chars": 0
+      },
+      {
+        "task": "autoreload_template_changed",
+        "accepted": false,
+        "reason": "retry_rejected:over_160_chars",
+        "first_raw_chars": 333,
+        "repair_raw_chars": 241,
+        "output_chars": 0
+      },
+      {
+        "task": "autoreload_template_changed",
+        "accepted": false,
+        "reason": "retry_rejected:over_160_chars",
+        "first_raw_chars": 320,
+        "repair_raw_chars": 264,
+        "output_chars": 0
+      },
+      {
+        "task": "autoreload_template_changed",
+        "accepted": false,
+        "reason": "retry_rejected:over_160_chars",
+        "first_raw_chars": 352,
+        "repair_raw_chars": 238,
+        "output_chars": 0
+      },
+      {
+        "task": "autoreload_template_changed",
+        "accepted": false,
+        "reason": "retry_rejected:over_160_chars",
+        "first_raw_chars": 341,
+        "repair_raw_chars": 238,
+        "output_chars": 0
+      },
+      {
+        "task": "autoreload_template_changed",
+        "accepted": false,
+        "reason": "retry_rejected:over_160_chars",
+        "first_raw_chars": 320,
+        "repair_raw_chars": 238,
+        "output_chars": 0
+      },
+      {
+        "task": "autoreload_template_changed",
+        "accepted": false,
+        "reason": "retry_rejected:over_160_chars",
+        "first_raw_chars": 328,
+        "repair_raw_chars": 229,
+        "output_chars": 0
+      },
+      {
+        "task": "autoreload_template_changed",
+        "accepted": false,
+        "reason": "retry_rejected:over_160_chars",
+        "first_raw_chars": 341,
+        "repair_raw_chars": 266,
+        "output_chars": 0
+      },
+      {
+        "task": "autoreload_template_changed",
+        "accepted": false,
+        "reason": "retry_rejected:over_160_chars",
+        "first_raw_chars": 325,
+        "repair_raw_chars": 248,
+        "output_chars": 0
+      },
+      {
+        "task": "autoreload_template_changed",
+        "accepted": false,
+        "reason": "retry_rejected:over_160_chars",
+        "first_raw_chars": 320,
+        "repair_raw_chars": 241,
+        "output_chars": 0
+      },
+      {
+        "task": "autoreload_template_changed",
+        "accepted": false,
+        "reason": "retry_rejected:over_160_chars",
+        "first_raw_chars": 341,
+        "repair_raw_chars": 243,
+        "output_chars": 0
+      },
+      {
+        "task": "autoreload_template_changed",
+        "accepted": false,
+        "reason": "retry_rejected:over_160_chars",
+        "first_raw_chars": 339,
+        "repair_raw_chars": 249,
+        "output_chars": 0
+      },
+      {
+        "task": "autoreload_template_changed",
+        "accepted": false,
+        "reason": "retry_rejected:over_160_chars",
+        "first_raw_chars": 320,
+        "repair_raw_chars": 238,
+        "output_chars": 0
+      },
+      {
+        "task": "autoreload_template_changed",
+        "accepted": false,
+        "reason": "retry_rejected:over_160_chars",
+        "first_raw_chars": 349,
+        "repair_raw_chars": 229,
+        "output_chars": 0
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "accepted": true,
+        "reason": "accepted_retry",
+        "first_raw_chars": 314,
+        "repair_raw_chars": 162,
+        "output_chars": 101
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "accepted": true,
+        "reason": "accepted_retry",
+        "first_raw_chars": 323,
+        "repair_raw_chars": 177,
+        "output_chars": 107
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "accepted": true,
+        "reason": "accepted_retry",
+        "first_raw_chars": 316,
+        "repair_raw_chars": 175,
+        "output_chars": 105
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "accepted": true,
+        "reason": "accepted_retry",
+        "first_raw_chars": 258,
+        "repair_raw_chars": 173,
+        "output_chars": 103
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "accepted": true,
+        "reason": "accepted_retry",
+        "first_raw_chars": 325,
+        "repair_raw_chars": 177,
+        "output_chars": 107
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "accepted": true,
+        "reason": "accepted_retry",
+        "first_raw_chars": 313,
+        "repair_raw_chars": 166,
+        "output_chars": 105
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "accepted": true,
+        "reason": "accepted_retry",
+        "first_raw_chars": 321,
+        "repair_raw_chars": 192,
+        "output_chars": 122
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "accepted": true,
+        "reason": "accepted_retry",
+        "first_raw_chars": 258,
+        "repair_raw_chars": 173,
+        "output_chars": 103
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "accepted": true,
+        "reason": "accepted_retry",
+        "first_raw_chars": 322,
+        "repair_raw_chars": 168,
+        "output_chars": 107
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "accepted": true,
+        "reason": "accepted_retry",
+        "first_raw_chars": 317,
+        "repair_raw_chars": 199,
+        "output_chars": 129
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "accepted": true,
+        "reason": "accepted_retry",
+        "first_raw_chars": 258,
+        "repair_raw_chars": 173,
+        "output_chars": 103
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "accepted": true,
+        "reason": "accepted_retry",
+        "first_raw_chars": 324,
+        "repair_raw_chars": 186,
+        "output_chars": 125
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "accepted": true,
+        "reason": "accepted_retry",
+        "first_raw_chars": 265,
+        "repair_raw_chars": 200,
+        "output_chars": 144
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "accepted": true,
+        "reason": "accepted_retry",
+        "first_raw_chars": 242,
+        "repair_raw_chars": 200,
+        "output_chars": 144
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "accepted": true,
+        "reason": "accepted_first",
+        "first_raw_chars": 207,
+        "repair_raw_chars": null,
+        "output_chars": 151
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "accepted": true,
+        "reason": "accepted_first",
+        "first_raw_chars": 205,
+        "repair_raw_chars": null,
+        "output_chars": 149
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "accepted": true,
+        "reason": "accepted_retry",
+        "first_raw_chars": 265,
+        "repair_raw_chars": 191,
+        "output_chars": 135
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "accepted": true,
+        "reason": "accepted_first",
+        "first_raw_chars": 207,
+        "repair_raw_chars": null,
+        "output_chars": 151
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "accepted": true,
+        "reason": "accepted_retry",
+        "first_raw_chars": 242,
+        "repair_raw_chars": 200,
+        "output_chars": 144
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "accepted": true,
+        "reason": "accepted_first",
+        "first_raw_chars": 216,
+        "repair_raw_chars": null,
+        "output_chars": 160
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "accepted": true,
+        "reason": "accepted_retry",
+        "first_raw_chars": 245,
+        "repair_raw_chars": 182,
+        "output_chars": 126
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "accepted": true,
+        "reason": "accepted_first",
+        "first_raw_chars": 205,
+        "repair_raw_chars": null,
+        "output_chars": 140
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "accepted": true,
+        "reason": "accepted_retry",
+        "first_raw_chars": 230,
+        "repair_raw_chars": 171,
+        "output_chars": 106
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "accepted": true,
+        "reason": "accepted_retry",
+        "first_raw_chars": 245,
+        "repair_raw_chars": 182,
+        "output_chars": 126
+      }
+    ],
+    "what_of_the_model_answer_survives": {
+      "the_rendered_candidate_line_the_host_would_have_built": "present, verbatim, per sample",
+      "the_declared_fact_list_of_the_first_proposal": "present, per sample",
+      "the_required_literals_missing_from_the_first_candidate": "present, per sample",
+      "the_first_proposal_character_count": "present, per sample",
+      "the_retry_proposal_character_count": "present, per sample",
+      "the_first_proposal_sha256": "present, per sample",
+      "the_retry_proposal_sha256": "present, per sample",
+      "the_raw_model_answer_text": "not retained by this host configuration",
+      "the_retry_input_the_model_received": "recorded as a sha256 and an item count only",
+      "so": "the comparable part of the answer is its length, its declared literals, the rendered candidate line built from its own cause and fix, and its hash; the raw text is unavailable and is not reconstructed here"
+    },
+    "raw_answer_text_available": false,
+    "samples_whose_scoring_field_carries_the_model_proposal": [],
+    "raw_answer_text_available_explanation": "False means no artifact of the stopped batch carries the model's own answer text: the host configuration keeps the proposal's length, its sha256, its declared literals and the rendered candidate line, the scoring field holds the host-rendered RESULT line for an accepted sample and the empty answer for a rejected one, and no sample's scoring field holds the JSON proposal"
+  },
+  "conclusion": {
+    "question": "is django-15572's fifteen-of-fifteen failure a first-answer compliance failure, or does the registered contract force an answer longer than the bound?",
+    "answer": "a first-answer compliance failure",
+    "failure_class": "first-answer length-compliance failure: the model wrote an explanatory answer far past the bound, and the single billed retry shortened it substantially but never enough, so the answer closed empty",
+    "why_not_a_contract_defect": [
+      "the shortest line that satisfies the frozen regex, all three required literals and the single-line prefix is 75 characters, leaving 85 characters of room under the bound; a compliant answer demonstrably exists and was demonstrated before the batch ran",
+      "django-15572's shortest compliant line is the longest of the three by only 2 characters over the longest of the other two, and the other two tasks share the same bound; django-16255 in particular accepted 5 of 12 first attempts at the same bound",
+      "the failure is not a length budget the task cannot meet: the model's own first proposals rendered to 248-285 characters on the line the bound is applied to, that is 88-125 characters past the bound, and the text they carried is explanatory prose rather than required literals: the first proposal declared the required fact list in full and left no required literal out of the candidate line on any of the fifteen samples"
+    ],
+    "why_it_is_a_compliance_failure": [
+      "every one of the fifteen reached samples of django-15572 was rejected on the first attempt with the single class over_160_chars: {'over_160_chars': 15}",
+      "the one billed retry was spent on every one of those fifteen samples and still produced a rendered line of 166-194 characters, every one of them past the bound, so the answers closed empty for the whole task",
+      "the retry did most of the shortening and still fell short: the rendered line fell from 248-285 characters to 166-194, a reduction of roughly a third that still left every sample 6 to 34 characters over the bound, which is the signature of a shortest-plausible rewrite rather than of a rewrite aimed at a target below the bound",
+      "the same configuration, the same arms, the same first prompt and the same retry diagnostic accepted 24 of the 24 reached samples of the other two tasks, with first-attempt acceptance {'sitemap_callable_lastmod': {'samples_reached': 12, 'first_attempt_accepted': 5, 'first_attempt_acceptance_rate': 0.4167, 'render_reasons': {'accepted_first': 5, 'accepted_retry': 7}}, 'query_utils_unregister_lookup': {'samples_reached': 12, 'first_attempt_accepted': 0, 'first_attempt_acceptance_rate': 0.0, 'render_reasons': {'accepted_retry': 12}}}, so neither the prompt nor the diagnostic is generally unusable",
+      "the bound reaches the model once in the first prompt, inside the contract prompt's closing sentence, and the fixed sentence that carries 'at most 160 characters' is replaced by the frozen v17 prompt adaptation before the prompt is sent, so nothing in the prompt states that exceeding the bound is a hard rejection rather than a preference, and nothing gives a working target below it"
+    ],
+    "symmetry": {
+      "arms_affected": [
+        "native_summary",
+        "none",
+        "pruner_v1"
+      ],
+      "samples_per_arm": {
+        "none": 5,
+        "pruner_v1": 5,
+        "native_summary": 5
+      },
+      "arm_bias": "none: all three arms failed identically, so the failure carries no arm bias and no arm can be blamed or credited for it",
+      "all_three_arms_rejected_on_the_same_class": true,
+      "every_retry_still_over_the_bound": true
+    },
+    "what_is_not_claimed": [
+      "the raw text of any of the fifteen first answers is not available, so no claim is made about the wording of those answers beyond the candidate line the host would have rendered from them, which is retained verbatim",
+      "no claim is made that the v24 prompt change removes this failure class in general; that is what the recalibration measures",
+      "no number from the stopped batch is citable"
+    ]
+  },
+  "limits": {
+    "api_requests_spent": 0,
+    "citable": false,
+    "why_not_citable": "this is a zero-API diagnosis of a void batch; it explains a failure and prepares a fix, and it measures nothing about the mechanism",
+    "fields_left_undetermined": [
+      {
+        "field": "the raw model answer text of the stopped batch's fifteen failures",
+        "status": "undetermined",
+        "why": "this host configuration records the proposal's length, its sha256, its declared literals and the rendered candidate line, not the raw text"
+      },
+      {
+        "field": "the exact prompt tokens the model received for django-15572",
+        "status": "undetermined",
+        "why": "the evidence files carry input sizes and payload hashes, not tokenised prompt text; the prompt's own text is reconstructed from the modules that assemble it and is reported with its sha256"
+      }
+    ]
+  }
+}

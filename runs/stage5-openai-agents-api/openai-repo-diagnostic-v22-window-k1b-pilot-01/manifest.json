@@ -1,0 +1,1157 @@
+{
+  "experiment_id": "openai-repo-diagnostic-v22-window-k1b-pilot-01",
+  "kind": "openai_agents_v16_three_arm_pilot",
+  "data_class": "public_source_diagnostic",
+  "disclosure": "Public SWE-bench issue statements and three read-only ranges of public Django baseline source at the pinned base commits are sent through real SDK tools. No reference patch, evaluation test patch, local secret or expected answer is sent.",
+  "sdk": "openai-agents",
+  "model": "deepseek-v4-flash",
+  "base_url": "https://api.deepseek.com",
+  "methods": [
+    "none",
+    "pruner_v1",
+    "native_summary"
+  ],
+  "scenarios": [
+    "django_sqlite_version_floor",
+    "django_orderedset_reversed",
+    "django_field_hash_immutability"
+  ],
+  "repeats": 1,
+  "minimum_planned_requests": 42,
+  "maximum_api_requests": 100,
+  "max_api_retries": 2,
+  "max_turns": 5,
+  "max_output_tokens": 1024,
+  "max_summary_tokens": 1024,
+  "max_summary_calls": 2,
+  "trigger_policy": "symmetric_budget",
+  "native_summary_contract": {
+    "trigger": "estimated input tokens > soft budget",
+    "retention": "last units up to target token budget, kept verbatim",
+    "pinned": "leading user statement always kept verbatim",
+    "boundary": "Responses groups are never split across a call/output pair",
+    "acceptance": "summary accepted only when it shrinks the payload",
+    "failure_policy": "provider error leaves the input untouched",
+    "accounting": "summary requests consume the same global request budget",
+    "regrowth_rule": "an already-summarised payload is not summarised again until it grows 25%"
+  },
+  "final_output_contract": {
+    "prefix": "RESULT ",
+    "single_line": true,
+    "max_chars": 160
+  },
+  "budget": {
+    "soft": 5435,
+    "hard": 16304,
+    "target": 4076,
+    "fixed_reserved_tokens": 512
+  },
+  "budget_calibration": {
+    "host": "openai_agents",
+    "calibration_ratio_provider_per_estimated": 0.368,
+    "provider_tokens": {
+      "soft": 2000,
+      "hard": 6000,
+      "target": 1500
+    },
+    "estimated_tokens": {
+      "soft": 5435,
+      "hard": 16304,
+      "target": 4076
+    },
+    "note": "Budgets are declared in provider tokens and converted with a measured ratio."
+  },
+  "cost_rates_per_million": {
+    "input": 0.0,
+    "output": 0.0
+  },
+  "purpose": "three_arm_pilot",
+  "citable_as_saving": false,
+  "citable_as_quality_equivalence": false,
+  "citable_note": "the flags stay false until an independent audit passes; this pilot is development evidence for this host configuration, because the three development tasks took part in building it",
+  "freeze_path": "<the v17 development freeze's key set, with an in-memory v21 override>",
+  "freeze_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "freeze_matrix": {
+    "tasks": [
+      "django_sqlite_version_floor",
+      "django_orderedset_reversed",
+      "django_field_hash_immutability"
+    ],
+    "arms": [
+      "none",
+      "native_summary",
+      "pruner_v1"
+    ],
+    "repeats": 1,
+    "samples": 9,
+    "max_api_requests": 100
+  },
+  "source_of_record": {},
+  "source_of_record_verified": {},
+  "host_configuration": {
+    "structured_final_answer": "JSON issue/cause/fix/facts asked for in the prompt, identical for every arm, rendered by the frozen renderer, which is the final-answer path and the only validator",
+    "renderer": {
+      "module": "experiments/runners/openai_agents_structured_final_v16.py",
+      "sha256": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+      "truncates": false,
+      "drops_fields": false
+    },
+    "retry_budget": 1,
+    "retry_is_billed": true,
+    "retry_carries_host_diagnostic": true,
+    "diagnostic_module": "experiments.runners.openai_agents_v17_live_contract",
+    "modules": {
+      "experiments/runners/openai_agents_v17_registry.py": "aa67abea06d9a47b5c5bb8fdef352ea975c7884620534bad10de44d828070392",
+      "experiments/runners/run_openai_agents_v17_acquisition.py": "be0b97b4100711e726c85003933a6cf0357c3c2b5388442d28a4af69ae5fb45d",
+      "experiments/runners/openai_agents_v17_live_contract.py": "b5be9165c8845579491e5541380f5f0766f97df77dfb933a12b26a1a1e3e1ca3",
+      "experiments/runners/openai_agents_structured_final_v16.py": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+      "experiments/runners/openai_agents_v20_retention.py": "65650b10e8a6fb72e580245c8c0c9485b85874e4193dea5b421e8657abb0db2c",
+      "experiments/runners/openai_agents_v20_chain.py": "41d4ba547da42e659c7381927ccacf86543b97c74fc499885d8aa7059fff9259",
+      "experiments/runners/openai_agents_v21_carrier_elision.py": "5c6fce44cfd79832fd14dd21ab97627638afe9b186a01d6ea8e9507a3efb12e2",
+      "experiments/runners/openai_agents_v22_window.py": "3496e9f3806d9a453f9fd1647ede279c99cd0aabb52e3ad055a310653ea6d999",
+      "experiments/runners/openai_agents_v22_window_k3.py": "3323d10d0093ee2b5cfe1cf2716ceba7fb74c9d0fe79cbd0afd6a6a73e4e15d7",
+      "experiments/runners/openai_agents_v22_window_k1.py": "cc87b195abb98d8ef4c0d27e6928c265ef054a79f8e695d3126a8c950917a962",
+      "experiments/runners/openai_agents_v22_window_k0.py": "1d23861750056473d85e7dfb9ffd41f466d9c70ccc2d361fa9fcf75a425973c0",
+      "experiments/runners/openai_agents_v22_chain.py": "3cc39594737039c6abee7aa6da78a242565186cefe93253f2ef8edb3631e12f0",
+      "experiments/runners/run_openai_agents_v22_window_dose.py": "62b615bed6d4cb1e94472621a95e72ad00b455bc72ae7d06a1dc6d37ffbcea66"
+    },
+    "summary_cap_per_sample": 2,
+    "frozen_prompt_adaptation": {
+      "applied": [
+        "The final response must be exactly one line, begin with RESULT, contain at most 160 characters, and follow this contract: ",
+        "Replace angle-bracket fields with tool values."
+      ],
+      "complete_in_every_sample": true
+    }
+  },
+  "criteria": {
+    "strict_track": [
+      "required facts present",
+      "frozen regex full match",
+      "single line with the contract prefix",
+      "at most 160 characters"
+    ],
+    "max_answer_chars": 160,
+    "bounds_are_not_relaxed": "at most 160 characters remains an acceptance condition",
+    "per_sample_report": [
+      "source_chars",
+      "rendered_chars",
+      "render_accepted",
+      "facts_complete",
+      "frozen_regex",
+      "single_line_prefix",
+      "within_160"
+    ]
+  },
+  "acceptance_line": {
+    "line": "first_attempt_accepted at least 70 percent of samples overall AND every arm's strict track at least the baseline's AND zero render failures AND zero truncations AND retries at most 4 of 9 samples",
+    "source": "the v17 freeze's decision_line, carried through the v21 override"
+  },
+  "pilot_report": {
+    "per_task": {
+      "django_sqlite_version_floor": {
+        "paired_n": 1,
+        "paired_savings": [
+          0.0272
+        ],
+        "mean_saving": 0.0272,
+        "positive_pairs": 1,
+        "min_saving": 0.0272,
+        "max_saving": 0.0272,
+        "strict_track": {
+          "none": 1,
+          "pruner_v1": 1,
+          "native_summary": 1
+        },
+        "strict_track_plugin_at_least_baseline": true,
+        "complete_total_tokens": {
+          "none": 7708,
+          "pruner_v1": 7498,
+          "native_summary": 7724
+        }
+      },
+      "django_orderedset_reversed": {
+        "paired_n": 1,
+        "paired_savings": [
+          0.0482
+        ],
+        "mean_saving": 0.0482,
+        "positive_pairs": 1,
+        "min_saving": 0.0482,
+        "max_saving": 0.0482,
+        "strict_track": {
+          "none": 1,
+          "pruner_v1": 1,
+          "native_summary": 1
+        },
+        "strict_track_plugin_at_least_baseline": true,
+        "complete_total_tokens": {
+          "none": 7452,
+          "pruner_v1": 7093,
+          "native_summary": 7458
+        }
+      },
+      "django_field_hash_immutability": {
+        "paired_n": 1,
+        "paired_savings": [
+          0.3013
+        ],
+        "mean_saving": 0.3013,
+        "positive_pairs": 1,
+        "min_saving": 0.3013,
+        "max_saving": 0.3013,
+        "strict_track": {
+          "none": 1,
+          "pruner_v1": 1,
+          "native_summary": 1
+        },
+        "strict_track_plugin_at_least_baseline": true,
+        "complete_total_tokens": {
+          "none": 11473,
+          "pruner_v1": 8016,
+          "native_summary": 12399
+        }
+      }
+    },
+    "pooled": {
+      "paired_n": 3,
+      "mean_saving": 0.1256,
+      "median_saving": 0.0482,
+      "stdev_saving": 0.1526,
+      "min_saving": 0.027244421380384017,
+      "max_saving": 0.30131613353089864,
+      "positive_pairs": 3,
+      "majority_positive": true,
+      "mean_positive": true
+    },
+    "trajectory_matched_subset": {
+      "n": 2,
+      "mean_saving": 0.0377,
+      "stdev_saving": 0.0148,
+      "min_saving": 0.0272,
+      "max_saving": 0.0482,
+      "positive_pairs": 2,
+      "note": "reported for explanation only: these are the pairs whose two arms took the same number of model calls, so they isolate the compression effect; the frozen verdict is decided on every pair of the matrix, never on this subset"
+    },
+    "trajectory_unmatched_subset": {
+      "n": 1,
+      "mean_saving": 0.3013,
+      "stdev_saving": 0.0,
+      "min_saving": 0.3013,
+      "max_saving": 0.3013,
+      "positive_pairs": 1,
+      "note": "pairs whose arms differ in model calls; their spread is trajectory, not compression"
+    },
+    "acceptance_line": "per task, the plugin arm's strict track is at least the baseline's (the four conditions judged on the rendered line) AND the paired complete provider-token saving is positive for a majority of pairs AND the batch mean is positive; failures, cap hits, retries and summary requests are all charged to their arm",
+    "track_a_all_tasks": true,
+    "met": true
+  },
+  "length_trajectory": {
+    "samples": [
+      {
+        "task": "django_sqlite_version_floor",
+        "repeat": 0,
+        "method": "none",
+        "first_render_reason": "accepted",
+        "first_raw_chars": 150,
+        "first_candidate_chars": 85,
+        "retried": false,
+        "repair_raw_chars": null,
+        "repair_candidate_chars": null,
+        "repair_candidate_delta_chars": null,
+        "repair_render_reason": null,
+        "retry_shortened_the_candidate": false,
+        "retry_grew_the_candidate": false,
+        "diagnostic_carried": false,
+        "diagnostic_named_the_bound": false,
+        "accepted_final": true,
+        "render_reason": "accepted_first"
+      },
+      {
+        "task": "django_sqlite_version_floor",
+        "repeat": 0,
+        "method": "pruner_v1",
+        "first_render_reason": "accepted",
+        "first_raw_chars": 150,
+        "first_candidate_chars": 85,
+        "retried": false,
+        "repair_raw_chars": null,
+        "repair_candidate_chars": null,
+        "repair_candidate_delta_chars": null,
+        "repair_render_reason": null,
+        "retry_shortened_the_candidate": false,
+        "retry_grew_the_candidate": false,
+        "diagnostic_carried": false,
+        "diagnostic_named_the_bound": false,
+        "accepted_final": true,
+        "render_reason": "accepted_first"
+      },
+      {
+        "task": "django_sqlite_version_floor",
+        "repeat": 0,
+        "method": "native_summary",
+        "first_render_reason": "accepted",
+        "first_raw_chars": 192,
+        "first_candidate_chars": 127,
+        "retried": false,
+        "repair_raw_chars": null,
+        "repair_candidate_chars": null,
+        "repair_candidate_delta_chars": null,
+        "repair_render_reason": null,
+        "retry_shortened_the_candidate": false,
+        "retry_grew_the_candidate": false,
+        "diagnostic_carried": false,
+        "diagnostic_named_the_bound": false,
+        "accepted_final": true,
+        "render_reason": "accepted_first"
+      },
+      {
+        "task": "django_orderedset_reversed",
+        "repeat": 0,
+        "method": "pruner_v1",
+        "first_render_reason": "accepted",
+        "first_raw_chars": 191,
+        "first_candidate_chars": 135,
+        "retried": false,
+        "repair_raw_chars": null,
+        "repair_candidate_chars": null,
+        "repair_candidate_delta_chars": null,
+        "repair_render_reason": null,
+        "retry_shortened_the_candidate": false,
+        "retry_grew_the_candidate": false,
+        "diagnostic_carried": false,
+        "diagnostic_named_the_bound": false,
+        "accepted_final": true,
+        "render_reason": "accepted_first"
+      },
+      {
+        "task": "django_orderedset_reversed",
+        "repeat": 0,
+        "method": "native_summary",
+        "first_render_reason": "accepted",
+        "first_raw_chars": 183,
+        "first_candidate_chars": 118,
+        "retried": false,
+        "repair_raw_chars": null,
+        "repair_candidate_chars": null,
+        "repair_candidate_delta_chars": null,
+        "repair_render_reason": null,
+        "retry_shortened_the_candidate": false,
+        "retry_grew_the_candidate": false,
+        "diagnostic_carried": false,
+        "diagnostic_named_the_bound": false,
+        "accepted_final": true,
+        "render_reason": "accepted_first"
+      },
+      {
+        "task": "django_orderedset_reversed",
+        "repeat": 0,
+        "method": "none",
+        "first_render_reason": "accepted",
+        "first_raw_chars": 174,
+        "first_candidate_chars": 118,
+        "retried": false,
+        "repair_raw_chars": null,
+        "repair_candidate_chars": null,
+        "repair_candidate_delta_chars": null,
+        "repair_render_reason": null,
+        "retry_shortened_the_candidate": false,
+        "retry_grew_the_candidate": false,
+        "diagnostic_carried": false,
+        "diagnostic_named_the_bound": false,
+        "accepted_final": true,
+        "render_reason": "accepted_first"
+      },
+      {
+        "task": "django_field_hash_immutability",
+        "repeat": 0,
+        "method": "native_summary",
+        "first_render_reason": "over_160_chars",
+        "first_raw_chars": 249,
+        "first_candidate_chars": 184,
+        "retried": true,
+        "repair_raw_chars": 193,
+        "repair_candidate_chars": 128,
+        "repair_candidate_delta_chars": -56,
+        "repair_render_reason": "accepted",
+        "retry_shortened_the_candidate": true,
+        "retry_grew_the_candidate": false,
+        "diagnostic_carried": true,
+        "diagnostic_named_the_bound": true,
+        "accepted_final": true,
+        "render_reason": "accepted_retry"
+      },
+      {
+        "task": "django_field_hash_immutability",
+        "repeat": 0,
+        "method": "none",
+        "first_render_reason": "over_160_chars",
+        "first_raw_chars": 249,
+        "first_candidate_chars": 184,
+        "retried": true,
+        "repair_raw_chars": 197,
+        "repair_candidate_chars": 132,
+        "repair_candidate_delta_chars": -52,
+        "repair_render_reason": "accepted",
+        "retry_shortened_the_candidate": true,
+        "retry_grew_the_candidate": false,
+        "diagnostic_carried": true,
+        "diagnostic_named_the_bound": true,
+        "accepted_final": true,
+        "render_reason": "accepted_retry"
+      },
+      {
+        "task": "django_field_hash_immutability",
+        "repeat": 0,
+        "method": "pruner_v1",
+        "first_render_reason": "accepted",
+        "first_raw_chars": 206,
+        "first_candidate_chars": 150,
+        "retried": false,
+        "repair_raw_chars": null,
+        "repair_candidate_chars": null,
+        "repair_candidate_delta_chars": null,
+        "repair_render_reason": null,
+        "retry_shortened_the_candidate": false,
+        "retry_grew_the_candidate": false,
+        "diagnostic_carried": false,
+        "diagnostic_named_the_bound": false,
+        "accepted_final": true,
+        "render_reason": "accepted_first"
+      }
+    ],
+    "retried_samples": 2,
+    "retries_that_shortened": 2,
+    "retries_that_grew": 0,
+    "retries_carrying_the_diagnostic": 2,
+    "retries_naming_the_bound": 2
+  },
+  "failure_decomposition": {
+    "none": {
+      "samples": 3,
+      "strict_pass": 3,
+      "render_accepted": 3,
+      "failures": {},
+      "retries": 1,
+      "diagnostic_carried_samples": 1,
+      "retry_rate": 0.3333,
+      "summary_calls": 0,
+      "requests": 13,
+      "complete_total_tokens": 26633
+    },
+    "native_summary": {
+      "samples": 3,
+      "strict_pass": 3,
+      "render_accepted": 3,
+      "failures": {},
+      "retries": 1,
+      "diagnostic_carried_samples": 1,
+      "retry_rate": 0.3333,
+      "summary_calls": 1,
+      "requests": 14,
+      "complete_total_tokens": 27581
+    },
+    "pruner_v1": {
+      "samples": 3,
+      "strict_pass": 3,
+      "render_accepted": 3,
+      "failures": {},
+      "retries": 0,
+      "diagnostic_carried_samples": 0,
+      "retry_rate": 0.0,
+      "summary_calls": 0,
+      "requests": 12,
+      "complete_total_tokens": 22607
+    }
+  },
+  "attempt": 2,
+  "previous_attempt": {
+    "batch": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v16-three-arm-pilot-01",
+    "outcome": "pilot 01 failed the frozen quality gate: one task's plugin strict track was below its baseline, and every over-length rejection there began as a declared-fact rejection whose diagnostic never named the 160-character bound",
+    "detail": "integrations/openai_agents/V16_PILOT_RETRO_20261006.json"
+  },
+  "batch_report": {
+    "per_sample": [
+      {
+        "task": "django_field_hash_immutability",
+        "repeat": 0,
+        "method": "native_summary",
+        "source_chars": 193,
+        "rendered_chars": 128,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true,
+        "render_reason": "accepted_retry",
+        "had_candidate": true,
+        "candidate_chars": 128,
+        "repair_calls": 1,
+        "requests": 6,
+        "success": true,
+        "error_type": ""
+      },
+      {
+        "task": "django_field_hash_immutability",
+        "repeat": 0,
+        "method": "none",
+        "source_chars": 197,
+        "rendered_chars": 132,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true,
+        "render_reason": "accepted_retry",
+        "had_candidate": true,
+        "candidate_chars": 132,
+        "repair_calls": 1,
+        "requests": 5,
+        "success": true,
+        "error_type": ""
+      },
+      {
+        "task": "django_field_hash_immutability",
+        "repeat": 0,
+        "method": "pruner_v1",
+        "source_chars": 206,
+        "rendered_chars": 150,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true,
+        "render_reason": "accepted_first",
+        "had_candidate": true,
+        "candidate_chars": 150,
+        "repair_calls": 0,
+        "requests": 4,
+        "success": true,
+        "error_type": ""
+      },
+      {
+        "task": "django_orderedset_reversed",
+        "repeat": 0,
+        "method": "pruner_v1",
+        "source_chars": 191,
+        "rendered_chars": 135,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true,
+        "render_reason": "accepted_first",
+        "had_candidate": true,
+        "candidate_chars": 135,
+        "repair_calls": 0,
+        "requests": 4,
+        "success": true,
+        "error_type": ""
+      },
+      {
+        "task": "django_orderedset_reversed",
+        "repeat": 0,
+        "method": "native_summary",
+        "source_chars": 183,
+        "rendered_chars": 118,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true,
+        "render_reason": "accepted_first",
+        "had_candidate": true,
+        "candidate_chars": 118,
+        "repair_calls": 0,
+        "requests": 4,
+        "success": true,
+        "error_type": ""
+      },
+      {
+        "task": "django_orderedset_reversed",
+        "repeat": 0,
+        "method": "none",
+        "source_chars": 174,
+        "rendered_chars": 118,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true,
+        "render_reason": "accepted_first",
+        "had_candidate": true,
+        "candidate_chars": 118,
+        "repair_calls": 0,
+        "requests": 4,
+        "success": true,
+        "error_type": ""
+      },
+      {
+        "task": "django_sqlite_version_floor",
+        "repeat": 0,
+        "method": "none",
+        "source_chars": 150,
+        "rendered_chars": 85,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true,
+        "render_reason": "accepted_first",
+        "had_candidate": true,
+        "candidate_chars": 85,
+        "repair_calls": 0,
+        "requests": 4,
+        "success": true,
+        "error_type": ""
+      },
+      {
+        "task": "django_sqlite_version_floor",
+        "repeat": 0,
+        "method": "pruner_v1",
+        "source_chars": 150,
+        "rendered_chars": 85,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true,
+        "render_reason": "accepted_first",
+        "had_candidate": true,
+        "candidate_chars": 85,
+        "repair_calls": 0,
+        "requests": 4,
+        "success": true,
+        "error_type": ""
+      },
+      {
+        "task": "django_sqlite_version_floor",
+        "repeat": 0,
+        "method": "native_summary",
+        "source_chars": 192,
+        "rendered_chars": 127,
+        "render_accepted": true,
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true,
+        "render_reason": "accepted_first",
+        "had_candidate": true,
+        "candidate_chars": 127,
+        "repair_calls": 0,
+        "requests": 4,
+        "success": true,
+        "error_type": ""
+      }
+    ],
+    "samples": 9,
+    "render_accepted_count": 9,
+    "render_rejected_count": 0,
+    "render_failure_share": 0.0,
+    "samples_with_a_candidate": 9,
+    "samples_without_a_candidate": 0,
+    "samples_without_a_candidate_reasons": {},
+    "post_render_over_160_count": 0,
+    "post_render_over_160_share_over_candidates": 0.0,
+    "post_render_over_160_share_over_all_samples": 0.0,
+    "post_render_over_160_note": "measured over samples that produced an answer candidate; a sample that never reached the answer turn is counted under samples_without_a_candidate and is not a length measurement",
+    "retry_count": 2,
+    "observed_retry_rate_over_candidates": 0.2222,
+    "truncations": 0,
+    "fields_dropped": 0,
+    "attainability_rule": "every sample of the batch must render inside facts + frozen regex + 160 characters; a sample that cannot render counts as a failure and its share is reported",
+    "attainable_on_this_batch": true
+  },
+  "request_budget": {
+    "samples": 9,
+    "measured_model_calls_per_sample_low": 2.67,
+    "measured_model_calls_per_sample_high": 3.0,
+    "expected_requests": 27,
+    "worst_case_requests": 51,
+    "best_case_requests": 21,
+    "summary_calls_expected": 3,
+    "summary_calls_worst_case": 6,
+    "cap": 100,
+    "cap_has_headroom": true,
+    "headroom_factor": 1.96,
+    "baseline_formula_minimum": 42,
+    "frozen_cap_is_the_batches_own": true,
+    "api_calls": 39,
+    "summary_calls": 1,
+    "max_summary_calls_per_sample": 2,
+    "samples_over_the_summary_cap": []
+  },
+  "api_calls": 39,
+  "metering": {
+    "cache_fields_per_call": [
+      "prompt_cache_hit_tokens",
+      "prompt_cache_miss_tokens",
+      "call_timestamp_utc",
+      "off_peak",
+      "cache_fields_present",
+      "cache_usage_unknown"
+    ],
+    "cache_fields_fail_closed": "missing fields are recorded as unknown, never as zero",
+    "cache_source": "raw_provider_usage",
+    "prompt_cache": {
+      "calls": 38,
+      "calls_with_cache_fields": 38,
+      "calls_without_cache_fields": 0,
+      "prompt_cache_hit_tokens_total": 66677,
+      "prompt_cache_miss_tokens_total": 7861,
+      "all_calls_off_peak": true,
+      "note": "a batch whose provider omits the cache fields records them as unknown; the totals stay null rather than being reported as zero"
+    },
+    "manifest_written_in_one_pass": true,
+    "writer_refuses_overwrite": true
+  },
+  "prompt_adaptation_complete": true,
+  "stopped_early": false,
+  "stop_reason": "",
+  "stop_conditions": [
+    "request cap reached -> stop, keep the partial directory, and never use resume to bypass the budget",
+    "any arm's strict track below the baseline's -> stop and report, do not add samples",
+    "any sample failing the strict track -> stop and report",
+    "probe failure -> stop before the pilot and report",
+    "missing cache fields -> record unknown, never zero, and keep the totals null where they are unknown"
+  ],
+  "report_requirements": [
+    "first-attempt acceptance rate overall and per arm, against the v16 reference of 28.9 percent",
+    "retry count per arm and retry tokens per arm, against the v16 numbers 38161 / 33374 / 38153",
+    "the strict track per task and per arm, with the four conditions reported separately",
+    "the reject-class decomposition from the new instrumentation, with the missing literals named, so the root cause stays checkable",
+    "requests used against the cap, cache fields present or unknown, dollar cost with the cache split and the off-peak status",
+    "complete provider token totals per arm, with summary tokens charged",
+    "an explicit statement of what this pilot cannot show"
+  ],
+  "runner_status": 0,
+  "v16_manifest_finalized": true,
+  "mechanism": {
+    "arm": "pruner_v1",
+    "name": "literal_carrier_preserving_line_elision_v22_k1",
+    "schema": "openai_agents_v22_window_k1",
+    "composition_schema": "duplicate_then_retention_then_line_elision_k1",
+    "window_lines": 1,
+    "window_configuration": {
+      "k": 1,
+      "class_name": "LiteralCarrierElisionFilterK1",
+      "mechanism_instance": "literal_carrier_preserving_line_elision_v22_k1",
+      "mechanism_schema": "openai_agents_v22_window_k1",
+      "composition_schema": "duplicate_then_retention_then_line_elision_k1",
+      "evidence_schema": "openai_literal_carrier_elision_k1",
+      "config_module": "experiments/runners/openai_agents_v22_window_k1.py",
+      "base_module": "experiments/runners/openai_agents_v21_carrier_elision.py",
+      "base_window_lines": 3,
+      "declared_window_value": 1,
+      "effective_window_declaration": "self.v21_window_lines bound by the configuration class",
+      "note_form": "[elided {count} lines {first}-{last}]"
+    },
+    "window_is_the_only_variable": "the three v22 groups differ only in the window K; renderer, contract, four strict track conditions, 160 character bound, registry, read shape, arms, repeats, request cap and trigger gate threshold are identical, and no K may be changed after any saving number has been seen",
+    "rule": "the frozen v12 exact duplicate rule runs first; the v5 lineage evidence-safe selective retention then runs on the deduplicated list, with its registered-literal guard, its recovery-pointer requirement and its whole-payload fallback unchanged; the literal-carrier line elision then runs on that result, keeping verbatim every line that contains a registered literal or constraint phrase together with a fixed window of 1 lines before and after it, eliding every other line and replacing each maximal contiguous omitted run with exactly one note line of the form [elided n lines first-last]; the most recent tool group is kept verbatim. Any registered-literal occurrence loss, any non-reduction after the note overhead, or any exception sends the payload this stage received verbatim and is counted in v21_literal_guard_fallbacks",
+    "frozen_rule_module": "experiments/runners/openai_agents_exact_duplicate_replay_v12.py",
+    "retention_module": "experiments/runners/openai_agents_evidence_safe_retention_v5.py",
+    "v20_composite_module": "experiments/runners/openai_agents_v20_retention.py",
+    "mechanism_module": "experiments/runners/openai_agents_v21_carrier_elision.py",
+    "composite_module": "experiments/runners/openai_agents_v21_carrier_elision.py",
+    "config_module": "experiments/runners/openai_agents_v22_window_k1.py",
+    "chain_module": "experiments/runners/openai_agents_v22_chain.py",
+    "chain_blueprint": "experiments/runners/openai_agents_multitask_chain_v14.py",
+    "window_frozen": "the window was declared per K in the v22 pre-registration before any paid request; it may not be changed after any saving number is seen, and an unregistered window (for example K=2) may not be run at all",
+    "invariant": "for every registered literal and constraint phrase the number of verbatim occurrences after elision is greater than or equal to the number before it, per occurrence and not per distinct string, computed with the same v5 lineage _carrier_loss that already vetoed the older mechanism",
+    "fail_closed": "an output is kept verbatim whenever the mechanism cannot prove the invariant for the payload it would send; nothing is removed on the strength of an argument the mechanism cannot check, and the note lines it writes can never satisfy the invariant themselves",
+    "trigger_gate": {
+      "soft_limit_tokens": 0,
+      "policy": "the plugin arm's BudgetTriggeredFilter is installed with soft_limit_tokens=0, which the frozen class floors to 1 (trigger_gate_soft_limit_tokens therefore reports 1), so its condition last_estimated_tokens <= soft_limit_tokens is false for every non-empty payload and the gate fires on every model input after the first; the gate stays in place, keeps measuring each payload and keeps publishing its counters. The setting is inherited from v20 unchanged, so this round measures the window and does not re-measure the gate. Trigger policy stays symmetric_budget so the wrapper is not removed from the plugin arm.",
+      "arm_scope": "plugin arm only; the none and native_summary arms are untouched",
+      "comparability": "the three v22 groups are comparable to each other as a dose, and each is internally paired; none of them is comparable as a whole configuration to v16, v19, v20 or v21, and none of them may be pooled with another"
+    },
+    "counter_names": {
+      "considered": "v21_outputs_considered",
+      "elided_outputs": "v21_outputs_elided",
+      "elided_lines": "v21_lines_elided",
+      "bytes": "v21_bytes_saved",
+      "fallback": "v21_literal_guard_fallbacks",
+      "note_overhead": "v21_note_bytes"
+    },
+    "tool_output_disclosure": "the plugin arm's read output may be elided: lines that carry no registered literal are removed and every maximal omitted run is replaced by exactly one explicit interval note of the form [elided n lines first-last], so the omission is declared and the omitted range is recoverable by re-issuing the read. Every registered literal keeps at least as many verbatim occurrences as it had before the elision; the reader tool's own description is identical in all three arms, because the frozen registry builds it once per task and v21 does not rewrite it for any arm, so 'returns those numbered lines verbatim' holds for every line that is kept. No silent omission occurs: nothing is removed without an interval note.",
+    "tool_descriptions_unchanged": "the reader tool descriptions are byte-identical in all three arms; this mechanism does not rewrite them for the plugin arm, because doing so would make the prompt asymmetric and contaminate the paired comparison",
+    "forbidden_wording": [
+      "compression alone saved X percent",
+      "the four criteria are met",
+      "the retry tax is gone",
+      "the plugin saves about 12.5 percent of context"
+    ]
+  },
+  "v16_registry": {
+    "schema": "openai_agents_v16_registry",
+    "task_ids": [
+      "django_sqlite_version_floor",
+      "django_orderedset_reversed",
+      "django_field_hash_immutability"
+    ],
+    "task_count": 3,
+    "artifact_hashes": {
+      "integrations/openai_agents/V16_SOURCE_REGISTRATION_20261006.json": "0723258eb3b297752625af85e5f2264bf843da70fa7205735225ca45fdaa22eb",
+      "integrations/openai_agents/V16_STAGE1_20261006.json": "989785291638d4f6699f781e5d10c3bedb7b636d91f833355235fb265c4037d8",
+      "experiments/runners/openai_agents_v16_stage1.py": "f13857bd1a4db69215f9ba4f763805addad59e2aafdfa3d9810f3d6d957e305f"
+    },
+    "derived_fields": [
+      "protocol_steps",
+      "tool_docs"
+    ],
+    "tool_name_sources": {
+      "django_sqlite_version_floor": "registered_artifact",
+      "django_orderedset_reversed": "registered_artifact",
+      "django_field_hash_immutability": "runner_supplied_in_registered_view_order"
+    },
+    "stage1_tool_names_note": "the stage-1 artifact registered the three 15315 views and their roles but no tool names; the three names are supplied here (runner_supplied_in_registered_view_order) and the view contents they return stay byte-verified against the artifact's view hashes",
+    "protocol_steps_note": "derived from the registered read shape: three views read twice (six read calls) then one answer call, which is the registered expected_model_calls of 7",
+    "max_answer_chars": 160,
+    "read_calls": 3,
+    "expected_model_calls": 4,
+    "per_task": {
+      "django_sqlite_version_floor": {
+        "instance_id": "django__django-13821",
+        "repo": "django/django",
+        "base_commit": "e64c1d8055a3e476122633da141f16b50f0c4a2d",
+        "views": [
+          {
+            "file": "django/db/backends/sqlite3/base.py",
+            "first_line": 60,
+            "last_line": 75,
+            "role": "registered view 1 of 3",
+            "blob_git_id": "ab4ea704920cd36540e305b939698abbe85d9328",
+            "view_content_sha256": "50c421b02fd753c883d42174d4ead10ea898fad3d535f3db45ae640c36e18f65"
+          },
+          {
+            "file": "django/db/backends/sqlite3/features.py",
+            "first_line": 30,
+            "last_line": 50,
+            "role": "registered view 2 of 3",
+            "blob_git_id": "3348256c747c299ba77160b238beaa8ecfadd805",
+            "view_content_sha256": "7dd2809b746ffc40039ff04658e0b521578f26e562734ba9c8a94231959cfb0f"
+          },
+          {
+            "file": "django/db/backends/sqlite3/features.py",
+            "first_line": 60,
+            "last_line": 95,
+            "role": "registered view 3 of 3",
+            "blob_git_id": "3348256c747c299ba77160b238beaa8ecfadd805",
+            "view_content_sha256": "a2e91e99b1f1e612e5481e2f8cd0280184faa3b1db49514cff25fffccf19b41c"
+          }
+        ],
+        "tool_names": [
+          "read_sqlite_version_check",
+          "read_sqlite_features_a",
+          "read_sqlite_features_b"
+        ],
+        "tool_name_source": "registered_artifact",
+        "request": "Diagnose why this baseline still accepts an SQLite version below 3.9.0. Read the version check, the version-gated feature flags and the json field support code in order; name the function that sets the floor and the version the fix must require.",
+        "protocol_steps": [
+          "Read 1 registered view(s) per round for 3 rounds, in this order, and never read a registered view more often than the plan requires: round 1: read_sqlite_version_check (django/db/backends/sqlite3/base.py 60-75); round 2: read_sqlite_features_a (django/db/backends/sqlite3/features.py 30-50); round 3: read_sqlite_features_b (django/db/backends/sqlite3/features.py 60-95). That is 3 read calls.",
+          "Issue each round's single read in its own turn and wait for its result before the next round: do not merge two rounds into one turn, and do not issue more than one read in a turn.",
+          "After the last read, having issued all 3 reads, answer with the JSON object the request describes and call no more tools: the host renders your JSON into the single RESULT line."
+        ],
+        "contract": {
+          "shape": "RESULT issue=<issue> cause=<cause> fix=<fix>",
+          "json_fields": [
+            "issue",
+            "cause",
+            "fix",
+            "facts"
+          ],
+          "issue_value": "django-13821",
+          "required_facts": [
+            "check_sqlite_version",
+            "3.8.3",
+            "3.9.0"
+          ],
+          "cause_token": "check_sqlite_version",
+          "fix_token": "3.9.0",
+          "frozen_regex": "RESULT issue=django-13821 cause=.*check_sqlite_version.* fix=.*3.9.0.*",
+          "max_answer_chars": 160,
+          "renderer": "experiments/runners/openai_agents_structured_final_v16.py",
+          "render_rule": "the host renders the JSON fields verbatim, rejects any proposal whose declared facts do not appear in the rendered answer, and never truncates"
+        },
+        "contract_prompt": "one JSON object with exactly the keys \"issue\", \"cause\", \"fix\" and \"facts\": \"issue\" is the fixed value \"django-13821\"; \"cause\" names the root cause and must contain 'check_sqlite_version'; \"fix\" names the change the fix must make and must contain '3.9.0'; \"facts\" is a list of the exact strings \"check_sqlite_version\", \"3.8.3\", \"3.9.0\" copied from the tool output. Every one of those strings must also appear verbatim inside \"cause\" or \"fix\", because the host builds the rendered line from those two fields only, and all of them must be present at the same time as the 160 character bound. The host renders issue, cause and fix into one line of the shape \"RESULT issue=<issue> cause=<cause> fix=<fix>\"; keep cause and fix short so that the rendered line stays within 160 characters. Send nothing outside the JSON object.",
+        "answer_pattern": "RESULT issue=django-13821 cause=.*check_sqlite_version.* fix=.*3.9.0.*",
+        "required_terms": [
+          "check_sqlite_version",
+          "3.8.3",
+          "3.9.0"
+        ],
+        "literals": {
+          "required_facts": [
+            "check_sqlite_version",
+            "3.8.3",
+            "3.9.0"
+          ],
+          "issue_value": [
+            "django-13821"
+          ]
+        },
+        "fingerprint": "f91fcb0e14963f1052f04fe0363ea424c73ac8de068607d49cddaa34753d48d2",
+        "statement_sha256": "4b77c1f1a2786a72ff9eda0ab1ffff3844684bd8753db00b759398a2c8722f39",
+        "problem_statement_sha256_registered": "265686648c416aaf4879d6757538e5d9ee13c00496288e6fbd5fbdb9901cf3ec",
+        "problem_statement_hash_reconciliation": null,
+        "derived_fields": [
+          "protocol_steps",
+          "tool_docs"
+        ],
+        "problems": []
+      },
+      "django_orderedset_reversed": {
+        "instance_id": "django__django-14089",
+        "repo": "django/django",
+        "base_commit": "d01709aae21de9cd2565b9c52f32732ea28a2d98",
+        "views": [
+          {
+            "file": "django/utils/datastructures.py",
+            "first_line": 5,
+            "last_line": 37,
+            "role": "registered view 1 of 3",
+            "blob_git_id": "871b016715b2e83b0cb78ae1b04d91057a740104",
+            "view_content_sha256": "380eef292700f23792aa2bfe91f3a1d9a5b2bdf7e37e0084a5fe6611842005da"
+          },
+          {
+            "file": "django/utils/datastructures.py",
+            "first_line": 42,
+            "last_line": 75,
+            "role": "registered view 2 of 3",
+            "blob_git_id": "871b016715b2e83b0cb78ae1b04d91057a740104",
+            "view_content_sha256": "a33a973ba86c301d300605cca20d86f537c38be98fe9c4b4845c7c3733269354"
+          },
+          {
+            "file": "django/utils/datastructures.py",
+            "first_line": 265,
+            "last_line": 335,
+            "role": "registered view 3 of 3",
+            "blob_git_id": "871b016715b2e83b0cb78ae1b04d91057a740104",
+            "view_content_sha256": "0de32bf349431e0b8542fcae9c1471f3e84f75a0140e806f2ab44cadc5d074b9"
+          }
+        ],
+        "tool_names": [
+          "read_orderedset_class",
+          "read_datastructures_mvd",
+          "read_datastructures_mapping"
+        ],
+        "tool_name_source": "registered_artifact",
+        "request": "Diagnose why this baseline OrderedSet cannot be passed to Python's reversed(). Read the OrderedSet class, the multi-value container conventions and the mapping iteration code in order; name the class that is missing the method and the method the fix must add.",
+        "protocol_steps": [
+          "Read 1 registered view(s) per round for 3 rounds, in this order, and never read a registered view more often than the plan requires: round 1: read_orderedset_class (django/utils/datastructures.py 5-37); round 2: read_datastructures_mvd (django/utils/datastructures.py 42-75); round 3: read_datastructures_mapping (django/utils/datastructures.py 265-335). That is 3 read calls.",
+          "Issue each round's single read in its own turn and wait for its result before the next round: do not merge two rounds into one turn, and do not issue more than one read in a turn.",
+          "After the last read, having issued all 3 reads, answer with the JSON object the request describes and call no more tools: the host renders your JSON into the single RESULT line."
+        ],
+        "contract": {
+          "shape": "RESULT issue=<issue> cause=<cause> fix=<fix>",
+          "json_fields": [
+            "issue",
+            "cause",
+            "fix",
+            "facts"
+          ],
+          "issue_value": "django-14089",
+          "required_facts": [
+            "OrderedSet",
+            "__iter__",
+            "__reversed__"
+          ],
+          "cause_token": "OrderedSet",
+          "fix_token": "__reversed__",
+          "frozen_regex": "RESULT issue=django-14089 cause=.*OrderedSet.* fix=.*__reversed__.*",
+          "max_answer_chars": 160,
+          "renderer": "experiments/runners/openai_agents_structured_final_v16.py",
+          "render_rule": "the host renders the JSON fields verbatim, rejects any proposal whose declared facts do not appear in the rendered answer, and never truncates"
+        },
+        "contract_prompt": "one JSON object with exactly the keys \"issue\", \"cause\", \"fix\" and \"facts\": \"issue\" is the fixed value \"django-14089\"; \"cause\" names the root cause and must contain 'OrderedSet'; \"fix\" names the change the fix must make and must contain '__reversed__'; \"facts\" is a list of the exact strings \"OrderedSet\", \"__iter__\", \"__reversed__\" copied from the tool output. Every one of those strings must also appear verbatim inside \"cause\" or \"fix\", because the host builds the rendered line from those two fields only, and all of them must be present at the same time as the 160 character bound. The host renders issue, cause and fix into one line of the shape \"RESULT issue=<issue> cause=<cause> fix=<fix>\"; keep cause and fix short so that the rendered line stays within 160 characters. Send nothing outside the JSON object.",
+        "answer_pattern": "RESULT issue=django-14089 cause=.*OrderedSet.* fix=.*__reversed__.*",
+        "required_terms": [
+          "OrderedSet",
+          "__iter__",
+          "__reversed__"
+        ],
+        "literals": {
+          "required_facts": [
+            "OrderedSet",
+            "__iter__",
+            "__reversed__"
+          ],
+          "issue_value": [
+            "django-14089"
+          ]
+        },
+        "fingerprint": "6a09e7b2e61c2466db4852057e28a83a9819bb36a868e46614692a9caf90b69c",
+        "statement_sha256": "a340275e532c880d708e76d79d605c762c92e33f1d8c073df31fbe0761af8c46",
+        "problem_statement_sha256_registered": "cbfb85cb9ea9b08049b15ffaff23b96640926088e725b8b70f7ef2a31b767118",
+        "problem_statement_hash_reconciliation": null,
+        "derived_fields": [
+          "protocol_steps",
+          "tool_docs"
+        ],
+        "problems": []
+      },
+      "django_field_hash_immutability": {
+        "instance_id": "django__django-15315",
+        "repo": "django/django",
+        "base_commit": "652c68ffeebd510a6f59e1b56b3e007d07683ad8",
+        "views": [
+          {
+            "file": "django/db/models/fields/__init__.py",
+            "first_line": 504,
+            "last_line": 556,
+            "role": "cause: the value-semantics comparison and hash pair",
+            "blob_git_id": "88c9ca9f2849aa0e0f541564f3f780f90c162591",
+            "view_content_sha256": "4d78a2a3bcf2669715281f88f0a28eee84d4f13ea26289a98c2d48039b54c3e8"
+          },
+          {
+            "file": "django/db/models/fields/__init__.py",
+            "first_line": 85,
+            "last_line": 109,
+            "role": "context: the creation counters the fix must use",
+            "blob_git_id": "88c9ca9f2849aa0e0f541564f3f780f90c162591",
+            "view_content_sha256": "52b2a23416ce1e3201f6b5cda10574dba6044e817a7fe7bd0f1edf0a44ca2f0b"
+          },
+          {
+            "file": "django/db/models/fields/__init__.py",
+            "first_line": 763,
+            "last_line": 795,
+            "role": "context: where the field is bound to a model class",
+            "blob_git_id": "88c9ca9f2849aa0e0f541564f3f780f90c162591",
+            "view_content_sha256": "92a442a7dcb7904565c0f73f9dc1ac9127374d56f88b40de9fd5a5ae82dd2f60"
+          }
+        ],
+        "tool_names": [
+          "read_field_semantics",
+          "read_field_counters",
+          "read_field_binding"
+        ],
+        "tool_name_source": "runner_supplied_in_registered_view_order",
+        "request": "Diagnose why a Field instance cannot be used as a stable dictionary key once it has been assigned to a model class. Read the field comparison and hashing methods, the field class header with the creation counters, and the contribution method in order; name the method pair whose value semantics depend on the model and the counter the fix must base the hash on.",
+        "protocol_steps": [
+          "Read 1 registered view(s) per round for 3 rounds, in this order, and never read a registered view more often than the plan requires: round 1: read_field_semantics (django/db/models/fields/__init__.py 504-556); round 2: read_field_counters (django/db/models/fields/__init__.py 85-109); round 3: read_field_binding (django/db/models/fields/__init__.py 763-795). That is 3 read calls.",
+          "Issue each round's single read in its own turn and wait for its result before the next round: do not merge two rounds into one turn, and do not issue more than one read in a turn.",
+          "After the last read, having issued all 3 reads, answer with the JSON object the request describes and call no more tools: the host renders your JSON into the single RESULT line."
+        ],
+        "contract": {
+          "json_fields": [
+            "issue",
+            "cause",
+            "fix",
+            "facts"
+          ],
+          "issue_value": "django-15315",
+          "required_facts": [
+            "__hash__",
+            "__eq__",
+            "creation_counter"
+          ],
+          "forbidden_facts": [
+            "no bug",
+            "not a bug"
+          ],
+          "frozen_regex": "RESULT issue=django-15315 cause=.*__hash__.* fix=.*creation_counter.*",
+          "max_answer_chars": 160,
+          "renderer": "experiments/runners/openai_agents_structured_final_v16.py"
+        },
+        "contract_prompt": "one JSON object with exactly the keys \"issue\", \"cause\", \"fix\" and \"facts\": \"issue\" is the fixed value \"django-15315\"; \"cause\" names the root cause and must contain '__hash__'; \"fix\" names the change the fix must make and must contain 'creation_counter'; \"facts\" is a list of the exact strings \"__hash__\", \"__eq__\", \"creation_counter\" copied from the tool output. Every one of those strings must also appear verbatim inside \"cause\" or \"fix\", because the host builds the rendered line from those two fields only, and all of them must be present at the same time as the 160 character bound. The host renders issue, cause and fix into one line of the shape \"RESULT issue=<issue> cause=<cause> fix=<fix>\"; keep cause and fix short so that the rendered line stays within 160 characters. Send nothing outside the JSON object.",
+        "answer_pattern": "RESULT issue=django-15315 cause=.*__hash__.* fix=.*creation_counter.*",
+        "required_terms": [
+          "__hash__",
+          "__eq__",
+          "creation_counter"
+        ],
+        "literals": {
+          "required_facts": [
+            "__hash__",
+            "__eq__",
+            "creation_counter"
+          ],
+          "issue_value": [
+            "django-15315"
+          ]
+        },
+        "fingerprint": "d80dbf0cf05e3868c60442d89f90e7efcfd00223a69c6db9afbcc0214cdb9c32",
+        "statement_sha256": "82cfad0ef720c34c1e04e6149d3c65ab757856bb05a0679ce43334998812e658",
+        "problem_statement_sha256_registered": "eaa0886a8c61ddaacd3b4c5f1d60783315d8c0068090a2b6ed1804690ade9182",
+        "problem_statement_hash_reconciliation": {
+          "registered_artifact_value": "eaa0886a8c61ddaacd3b4c5f1d60783315d8c0068090a2b6ed1804690ade9182",
+          "public_table_statement_sha256": "a26b3534bece469f866614b19fadd37e13c9a06ce293bfe21e32313b9cfa90fd",
+          "reconciliation": "the artifact value is sha256 of the hex text of this hash",
+          "candidate_pool_value": "a26b3534bece469f866614b19fadd37e13c9a06ce293bfe21e32313b9cfa90fd",
+          "statement_bytes": 793
+        },
+        "derived_fields": [
+          "protocol_steps",
+          "tool_docs",
+          "tool_names",
+          "cause_token",
+          "fix_token"
+        ],
+        "problems": []
+      }
+    }
+  },
+  "implementation_hashes": {
+    "experiments/runners/openai_agents_v17_registry.py": "aa67abea06d9a47b5c5bb8fdef352ea975c7884620534bad10de44d828070392",
+    "experiments/runners/run_openai_agents_v17_acquisition.py": "be0b97b4100711e726c85003933a6cf0357c3c2b5388442d28a4af69ae5fb45d",
+    "experiments/runners/openai_agents_v17_live_contract.py": "b5be9165c8845579491e5541380f5f0766f97df77dfb933a12b26a1a1e3e1ca3",
+    "experiments/runners/openai_agents_structured_final_v16.py": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+    "experiments/runners/openai_agents_v20_retention.py": "65650b10e8a6fb72e580245c8c0c9485b85874e4193dea5b421e8657abb0db2c",
+    "experiments/runners/openai_agents_v20_chain.py": "41d4ba547da42e659c7381927ccacf86543b97c74fc499885d8aa7059fff9259",
+    "experiments/runners/openai_agents_v21_carrier_elision.py": "5c6fce44cfd79832fd14dd21ab97627638afe9b186a01d6ea8e9507a3efb12e2",
+    "experiments/runners/openai_agents_v22_window.py": "3496e9f3806d9a453f9fd1647ede279c99cd0aabb52e3ad055a310653ea6d999",
+    "experiments/runners/openai_agents_v22_window_k3.py": "3323d10d0093ee2b5cfe1cf2716ceba7fb74c9d0fe79cbd0afd6a6a73e4e15d7",
+    "experiments/runners/openai_agents_v22_window_k1.py": "cc87b195abb98d8ef4c0d27e6928c265ef054a79f8e695d3126a8c950917a962",
+    "experiments/runners/openai_agents_v22_window_k0.py": "1d23861750056473d85e7dfb9ffd41f466d9c70ccc2d361fa9fcf75a425973c0",
+    "experiments/runners/openai_agents_v22_chain.py": "3cc39594737039c6abee7aa6da78a242565186cefe93253f2ef8edb3631e12f0",
+    "experiments/runners/run_openai_agents_v22_window_dose.py": "62b615bed6d4cb1e94472621a95e72ad00b455bc72ae7d06a1dc6d37ffbcea66"
+  },
+  "module_hashes": {
+    "experiments/runners/openai_agents_v17_registry.py": "aa67abea06d9a47b5c5bb8fdef352ea975c7884620534bad10de44d828070392",
+    "experiments/runners/run_openai_agents_v17_acquisition.py": "be0b97b4100711e726c85003933a6cf0357c3c2b5388442d28a4af69ae5fb45d",
+    "experiments/runners/openai_agents_v17_live_contract.py": "b5be9165c8845579491e5541380f5f0766f97df77dfb933a12b26a1a1e3e1ca3",
+    "experiments/runners/openai_agents_structured_final_v16.py": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+    "experiments/runners/openai_agents_v20_retention.py": "65650b10e8a6fb72e580245c8c0c9485b85874e4193dea5b421e8657abb0db2c",
+    "experiments/runners/openai_agents_v20_chain.py": "41d4ba547da42e659c7381927ccacf86543b97c74fc499885d8aa7059fff9259",
+    "experiments/runners/openai_agents_v21_carrier_elision.py": "5c6fce44cfd79832fd14dd21ab97627638afe9b186a01d6ea8e9507a3efb12e2",
+    "experiments/runners/openai_agents_v22_window.py": "3496e9f3806d9a453f9fd1647ede279c99cd0aabb52e3ad055a310653ea6d999",
+    "experiments/runners/openai_agents_v22_window_k3.py": "3323d10d0093ee2b5cfe1cf2716ceba7fb74c9d0fe79cbd0afd6a6a73e4e15d7",
+    "experiments/runners/openai_agents_v22_window_k1.py": "cc87b195abb98d8ef4c0d27e6928c265ef054a79f8e695d3126a8c950917a962",
+    "experiments/runners/openai_agents_v22_window_k0.py": "1d23861750056473d85e7dfb9ffd41f466d9c70ccc2d361fa9fcf75a425973c0",
+    "experiments/runners/openai_agents_v22_chain.py": "3cc39594737039c6abee7aa6da78a242565186cefe93253f2ef8edb3631e12f0",
+    "experiments/runners/run_openai_agents_v22_window_dose.py": "62b615bed6d4cb1e94472621a95e72ad00b455bc72ae7d06a1dc6d37ffbcea66"
+  },
+  "never_rejudge": "attempt 01, attempt 02, attempt 03, pilot-01, pilot-02, v12 to v15, the v16 sealed confirmation batch, the v17 development pilots, the v18 selection branch, the v19 dose batches and the v20 gate round are untouched and unrejudged; v21 does not merge its numbers with any of them",
+  "v22_gate_threshold": {
+    "setting": 0,
+    "policy": "the plugin arm's BudgetTriggeredFilter is installed with soft_limit_tokens=0, which the frozen class floors to 1 (trigger_gate_soft_limit_tokens therefore reports 1), so its condition last_estimated_tokens <= soft_limit_tokens is false for every non-empty payload and the gate fires on every model input after the first; the gate stays in place, keeps measuring each payload and keeps publishing its counters. The setting is inherited from v20 unchanged, so this round measures the window and does not re-measure the gate. Trigger policy stays symmetric_budget so the wrapper is not removed from the plugin arm."
+  },
+  "v22_window_mechanism": {
+    "window_lines": 3,
+    "plan": "integrations/openai_agents/V22_WINDOW_DOSE_PLAN_20261010.json",
+    "counters": [
+      "v21_outputs_considered",
+      "v21_outputs_elided",
+      "v21_lines_elided",
+      "v21_bytes_saved",
+      "v21_literal_guard_fallbacks",
+      "v21_note_bytes"
+    ]
+  },
+  "tool_output_disclosure": "the plugin arm's read output may be elided: lines that carry no registered literal are removed and every maximal omitted run is replaced by exactly one explicit interval note of the form [elided n lines first-last], so the omission is declared and the omitted range is recoverable by re-issuing the read. Every registered literal keeps at least as many verbatim occurrences as it had before the elision; the reader tool's own description is identical in all three arms, because the frozen registry builds it once per task and v21 does not rewrite it for any arm, so 'returns those numbered lines verbatim' holds for every line that is kept. No silent omission occurs: nothing is removed without an interval note.",
+  "tool_output_disclosure_note": "the reader tool description is identical in all three arms and is not rewritten for the plugin arm; 'returns those numbered lines verbatim' holds for the lines the mechanism keeps, and every omission is declared by an explicit interval note rather than being silent",
+  "forbidden_wording": [
+    "compression alone saved X percent",
+    "the four criteria are met",
+    "the retry tax is gone",
+    "the plugin saves about 12.5 percent of context"
+  ],
+  "re_read_visibility": {
+    "rule": "per arm: tool_calls and model_calls are reported for every sample, so a re-read induced by an elision appears as extra tool calls and is billed",
+    "v16_clean_baseline": "the v16 three-arm batches read exactly six views per sample",
+    "expected_per_sample": {
+      "tool_calls": 3,
+      "model_calls": 4
+    }
+  }
+}

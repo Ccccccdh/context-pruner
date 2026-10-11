@@ -1,0 +1,2281 @@
+{
+  "schema": "openai_agents_v24_length_compliance_k1_report",
+  "date": "20261010",
+  "generated_utc": "2026-10-10T23:43:02+00:00",
+  "experiment_id": "openai-repo-diagnostic-v24-length-compliance-k1-01",
+  "batch_directory": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v24-length-compliance-k1-01",
+  "batch_identity_resolution": {
+    "id_the_batch_ran_under": "openai-repo-diagnostic-v24-length-compliance-k1-01",
+    "id_the_delegate_asked_for": "openai-repo-diagnostic-v24-length-compliance-k1-02",
+    "id_the_confirmation_freeze_pre_registers": "openai-repo-diagnostic-v24-length-compliance-k1-01",
+    "why_the_frozen_id_won": "the frozen runner's own ``forced_args`` replaces ``--experiment-id`` with the id the confirmation freeze names, so no other id can reach the paid path; the run directory is therefore the frozen one and this audit reads it as it is rather than renaming an artifact that is already written down",
+    "one_paid_run_under_this_id": true,
+    "no_resume": true,
+    "manifest_written_in_one_pass": true
+  },
+  "under_this_host_configuration": "under this host configuration",
+  "mechanism": {
+    "name": "guarantee-preserving line-level omission at K=1",
+    "k": 1,
+    "config_module": "experiments/runners/openai_agents_v22_window_k1.py",
+    "chain": "experiments/runners/openai_agents_v22_chain.py",
+    "rule": "the frozen v12 exact duplicate rule, then the v5 lineage evidence-safe retention, then the literal-carrier line elision: every line carrying a registered literal is kept verbatim with one line before and after it, every other line is elided, each maximal omitted run becomes one interval note, and the most recent tool group is kept verbatim"
+  },
+  "task_set": [
+    "autoreload_template_changed",
+    "sitemap_callable_lastmod",
+    "query_utils_unregister_lookup"
+  ],
+  "matrix": {
+    "tasks": 3,
+    "repeats": 5,
+    "arms": [
+      "none",
+      "native_summary",
+      "pruner_v1"
+    ],
+    "samples": 45,
+    "cap": 390,
+    "complete": true
+  },
+  "gate_amendment": {
+    "amendment": {
+      "path": "integrations/openai_agents/V24_RECALIBRATION_GATE_AMENDMENT_20261010.json",
+      "sha256": "143250ba9d8899b8d744d8c9d06b3aad8b68483c2f6eeba49e389936334afd72",
+      "amendment_id": "openai-agents-v24-gate-amendment-01",
+      "amends": "integrations/openai_agents/V24_LENGTH_COMPLIANCE_FIX_PLAN_20261010.json",
+      "citable": false,
+      "api_requests_spent_when_written": 0
+    },
+    "the_replaced_line": "the recalibration's 70 percent first-attempt acceptance line is replaced as the gate by the amendment's four operative clauses; this batch does NOT report itself as having met the 70 percent line",
+    "amended_gate": {
+      "path": "integrations/openai_agents/V24_LENGTH_COMPLIANCE_K1_AMENDED_GATE_20261010.json",
+      "sha256": "e472864f1c9dc9d2b7ba4df6071fa350c916f1ee2331afc1d517aa976eeb869d",
+      "paid_run_allowed": true,
+      "checks": 8
+    },
+    "original_gate": {
+      "path": "integrations/openai_agents/V24_LENGTH_COMPLIANCE_K1_ZERO_API_GATE_20261010.json",
+      "sha256": "eb2fc69d1a78952be9887c886cd0576d133802e176de22a1879d63de8d8fe0d0",
+      "untouched": true
+    },
+    "delegate": {
+      "module": "experiments/runners/run_openai_agents_v24_gate_amendment.py",
+      "sha256": "0704ef2a7b0e9d5eab455a262d60368c6026fc604f04c205026e02044404fa8f",
+      "frozen_runner_carries_the_paid_path": "experiments/runners/run_openai_agents_v24_length_compliance_k1.py"
+    },
+    "residual_risk_carried_into_this_batch": "at 44 percent first-attempt acceptance about half of the samples were expected to spend the single billed retry; retries are charged to their arm, they add calls to a trajectory, and in earlier batches one asymmetric retry moved a pooled mean by 7 to 21 percentage points"
+  },
+  "operative_clauses": {
+    "zero_render_failures_zero_truncations_zero_dropped_fields": {
+      "gate_clause": "zero render failures, zero truncations, zero dropped fields",
+      "measured": {
+        "render_failures": [],
+        "truncations": [],
+        "dropped_fields": []
+      },
+      "met": true
+    },
+    "every_arms_strict_track_at_or_above_the_baseline": {
+      "gate_clause": "every arm's strict track at or above the baseline",
+      "measured": {
+        "per_task": {
+          "autoreload_template_changed": {
+            "none": 5,
+            "native_summary": 5,
+            "pruner_v1": 5
+          },
+          "sitemap_callable_lastmod": {
+            "none": 5,
+            "native_summary": 5,
+            "pruner_v1": 5
+          },
+          "query_utils_unregister_lookup": {
+            "none": 5,
+            "native_summary": 5,
+            "pruner_v1": 5
+          }
+        },
+        "every_task_every_arm_at_least_baseline": true
+      },
+      "met": true
+    },
+    "every_arms_semantic_correctness_at_or_above_the_baseline": {
+      "gate_clause": "every arm's semantic correctness at or above the baseline",
+      "measured": {
+        "per_task": {
+          "autoreload_template_changed": {
+            "none": 5,
+            "native_summary": 5,
+            "pruner_v1": 5
+          },
+          "sitemap_callable_lastmod": {
+            "none": 5,
+            "native_summary": 5,
+            "pruner_v1": 5
+          },
+          "query_utils_unregister_lookup": {
+            "none": 5,
+            "native_summary": 5,
+            "pruner_v1": 5
+          }
+        },
+        "every_task_every_arm_at_least_baseline": true
+      },
+      "met": true
+    },
+    "retry_recovery_rate_at_least_90_percent": {
+      "gate_clause": "retry recovery rate at least 90 percent, measured at five of five",
+      "measured": {
+        "first_attempt_rejections": 26,
+        "repaired_by_the_single_retry": 26,
+        "rate": 1.0,
+        "line": 0.9
+      },
+      "met": true
+    }
+  },
+  "first_attempt_acceptance": {
+    "accepted": 19,
+    "of_samples": 45,
+    "rate": 0.4222,
+    "replaced_line": "the recalibration's 70 percent first-attempt acceptance line is NOT met and is not claimed: the amendment replaced it as the gate",
+    "rejection_classes": {
+      "over_160_chars": 26
+    },
+    "per_arm": {
+      "none": {
+        "accepted": 5,
+        "of_samples": 15,
+        "rate": 0.3333,
+        "rejection_classes": {
+          "over_160_chars": 10
+        }
+      },
+      "native_summary": {
+        "accepted": 5,
+        "of_samples": 15,
+        "rate": 0.3333,
+        "rejection_classes": {
+          "over_160_chars": 10
+        }
+      },
+      "pruner_v1": {
+        "accepted": 9,
+        "of_samples": 15,
+        "rate": 0.6,
+        "rejection_classes": {
+          "over_160_chars": 6
+        }
+      }
+    },
+    "rejected_samples": [
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 0,
+        "arm": "none",
+        "first_reject_class": "over_160_chars",
+        "first_candidate_chars": 167,
+        "repair_candidate_chars": 108,
+        "render_reason": "accepted_retry",
+        "v24_retry_wording": "v24_length_compliance"
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 0,
+        "arm": "pruner_v1",
+        "first_reject_class": "over_160_chars",
+        "first_candidate_chars": 199,
+        "repair_candidate_chars": 128,
+        "render_reason": "accepted_retry",
+        "v24_retry_wording": "v24_length_compliance"
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 0,
+        "arm": "native_summary",
+        "first_reject_class": "over_160_chars",
+        "first_candidate_chars": 167,
+        "repair_candidate_chars": 114,
+        "render_reason": "accepted_retry",
+        "v24_retry_wording": "v24_length_compliance"
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 0,
+        "arm": "native_summary",
+        "first_reject_class": "over_160_chars",
+        "first_candidate_chars": 162,
+        "repair_candidate_chars": 110,
+        "render_reason": "accepted_retry",
+        "v24_retry_wording": "v24_length_compliance"
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 0,
+        "arm": "none",
+        "first_reject_class": "over_160_chars",
+        "first_candidate_chars": 173,
+        "repair_candidate_chars": 109,
+        "render_reason": "accepted_retry",
+        "v24_retry_wording": "v24_length_compliance"
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 0,
+        "arm": "pruner_v1",
+        "first_reject_class": "over_160_chars",
+        "first_candidate_chars": 164,
+        "repair_candidate_chars": 115,
+        "render_reason": "accepted_retry",
+        "v24_retry_wording": "v24_length_compliance"
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 1,
+        "arm": "pruner_v1",
+        "first_reject_class": "over_160_chars",
+        "first_candidate_chars": 191,
+        "repair_candidate_chars": 108,
+        "render_reason": "accepted_retry",
+        "v24_retry_wording": "v24_length_compliance"
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 1,
+        "arm": "native_summary",
+        "first_reject_class": "over_160_chars",
+        "first_candidate_chars": 167,
+        "repair_candidate_chars": 114,
+        "render_reason": "accepted_retry",
+        "v24_retry_wording": "v24_length_compliance"
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 1,
+        "arm": "none",
+        "first_reject_class": "over_160_chars",
+        "first_candidate_chars": 199,
+        "repair_candidate_chars": 123,
+        "render_reason": "accepted_retry",
+        "v24_retry_wording": "v24_length_compliance"
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 1,
+        "arm": "none",
+        "first_reject_class": "over_160_chars",
+        "first_candidate_chars": 162,
+        "repair_candidate_chars": 106,
+        "render_reason": "accepted_retry",
+        "v24_retry_wording": "v24_length_compliance"
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 1,
+        "arm": "native_summary",
+        "first_reject_class": "over_160_chars",
+        "first_candidate_chars": 181,
+        "repair_candidate_chars": 116,
+        "render_reason": "accepted_retry",
+        "v24_retry_wording": "v24_length_compliance"
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 2,
+        "arm": "native_summary",
+        "first_reject_class": "over_160_chars",
+        "first_candidate_chars": 167,
+        "repair_candidate_chars": 108,
+        "render_reason": "accepted_retry",
+        "v24_retry_wording": "v24_length_compliance"
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 2,
+        "arm": "none",
+        "first_reject_class": "over_160_chars",
+        "first_candidate_chars": 199,
+        "repair_candidate_chars": 123,
+        "render_reason": "accepted_retry",
+        "v24_retry_wording": "v24_length_compliance"
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 2,
+        "arm": "pruner_v1",
+        "first_reject_class": "over_160_chars",
+        "first_candidate_chars": 199,
+        "repair_candidate_chars": 128,
+        "render_reason": "accepted_retry",
+        "v24_retry_wording": "v24_length_compliance"
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 2,
+        "arm": "native_summary",
+        "first_reject_class": "over_160_chars",
+        "first_candidate_chars": 162,
+        "repair_candidate_chars": 106,
+        "render_reason": "accepted_retry",
+        "v24_retry_wording": "v24_length_compliance"
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 2,
+        "arm": "none",
+        "first_reject_class": "over_160_chars",
+        "first_candidate_chars": 180,
+        "repair_candidate_chars": 126,
+        "render_reason": "accepted_retry",
+        "v24_retry_wording": "v24_length_compliance"
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 3,
+        "arm": "none",
+        "first_reject_class": "over_160_chars",
+        "first_candidate_chars": 167,
+        "repair_candidate_chars": 108,
+        "render_reason": "accepted_retry",
+        "v24_retry_wording": "v24_length_compliance"
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 3,
+        "arm": "pruner_v1",
+        "first_reject_class": "over_160_chars",
+        "first_candidate_chars": 199,
+        "repair_candidate_chars": 128,
+        "render_reason": "accepted_retry",
+        "v24_retry_wording": "v24_length_compliance"
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 3,
+        "arm": "native_summary",
+        "first_reject_class": "over_160_chars",
+        "first_candidate_chars": 167,
+        "repair_candidate_chars": 114,
+        "render_reason": "accepted_retry",
+        "v24_retry_wording": "v24_length_compliance"
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 3,
+        "arm": "native_summary",
+        "first_reject_class": "over_160_chars",
+        "first_candidate_chars": 180,
+        "repair_candidate_chars": 126,
+        "render_reason": "accepted_retry",
+        "v24_retry_wording": "v24_length_compliance"
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 3,
+        "arm": "none",
+        "first_reject_class": "over_160_chars",
+        "first_candidate_chars": 181,
+        "repair_candidate_chars": 109,
+        "render_reason": "accepted_retry",
+        "v24_retry_wording": "v24_length_compliance"
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 4,
+        "arm": "pruner_v1",
+        "first_reject_class": "over_160_chars",
+        "first_candidate_chars": 199,
+        "repair_candidate_chars": 128,
+        "render_reason": "accepted_retry",
+        "v24_retry_wording": "v24_length_compliance"
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 4,
+        "arm": "native_summary",
+        "first_reject_class": "over_160_chars",
+        "first_candidate_chars": 194,
+        "repair_candidate_chars": 108,
+        "render_reason": "accepted_retry",
+        "v24_retry_wording": "v24_length_compliance"
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 4,
+        "arm": "none",
+        "first_reject_class": "over_160_chars",
+        "first_candidate_chars": 167,
+        "repair_candidate_chars": 114,
+        "render_reason": "accepted_retry",
+        "v24_retry_wording": "v24_length_compliance"
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 4,
+        "arm": "none",
+        "first_reject_class": "over_160_chars",
+        "first_candidate_chars": 180,
+        "repair_candidate_chars": 126,
+        "render_reason": "accepted_retry",
+        "v24_retry_wording": "v24_length_compliance"
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 4,
+        "arm": "native_summary",
+        "first_reject_class": "over_160_chars",
+        "first_candidate_chars": 174,
+        "repair_candidate_chars": 112,
+        "render_reason": "accepted_retry",
+        "v24_retry_wording": "v24_length_compliance"
+      }
+    ]
+  },
+  "retries": {
+    "per_arm": {
+      "none": {
+        "retried_samples": 10,
+        "of_samples": 15,
+        "retry_wording_used": [
+          "not_used_first_attempt_accepted",
+          "v24_length_compliance"
+        ]
+      },
+      "native_summary": {
+        "retried_samples": 10,
+        "of_samples": 15,
+        "retry_wording_used": [
+          "not_used_first_attempt_accepted",
+          "v24_length_compliance"
+        ]
+      },
+      "pruner_v1": {
+        "retried_samples": 6,
+        "of_samples": 15,
+        "retry_wording_used": [
+          "not_used_first_attempt_accepted",
+          "v24_length_compliance"
+        ]
+      }
+    },
+    "total": 26,
+    "of_samples": 45,
+    "rate": 0.5778,
+    "retries_were_charged_to_their_arm": true
+  },
+  "pairs": [
+    {
+      "task": "autoreload_template_changed",
+      "repeat": 0,
+      "baseline_tokens": 10057,
+      "plugin_tokens": 9993,
+      "native_tokens": 10050,
+      "as_paired_tokens": 0.006364,
+      "matched_prefix_k": 5,
+      "matched_prefix_baseline_tokens": 9875,
+      "matched_prefix_plugin_tokens": 9814,
+      "matched_prefix_tokens": 0.006177,
+      "matched_prefix_bytes": 0.006323,
+      "matched_prefix_is_symmetric": true,
+      "matched_prefix_symmetry_rule": "k = min(baseline calls, plugin calls); the same k first calls of each arm are compared, so neither arm's own retry can hide inside its own sum",
+      "baseline_calls": 5,
+      "plugin_calls": 5,
+      "baseline_retried": true,
+      "plugin_retried": true,
+      "native_retried": true,
+      "retrying_arm": "none, native_summary, pruner_v1",
+      "retry_labels": {
+        "none": {
+          "v24_retry_wording": "v24_length_compliance",
+          "v24_force_retry_wording": true,
+          "render_repair_calls": 1,
+          "first_attempt_accepted": false,
+          "first_reject_class": "over_160_chars",
+          "render_reason": "accepted_retry"
+        },
+        "native_summary": {
+          "v24_retry_wording": "v24_length_compliance",
+          "v24_force_retry_wording": true,
+          "render_repair_calls": 1,
+          "first_attempt_accepted": false,
+          "first_reject_class": "over_160_chars",
+          "render_reason": "accepted_retry"
+        },
+        "pruner_v1": {
+          "v24_retry_wording": "v24_length_compliance",
+          "v24_force_retry_wording": true,
+          "render_repair_calls": 1,
+          "first_attempt_accepted": false,
+          "first_reject_class": "over_160_chars",
+          "render_reason": "accepted_retry"
+        }
+      },
+      "baseline_strict": true,
+      "plugin_strict": true,
+      "baseline_semantic": true,
+      "plugin_semantic": true,
+      "baseline_tool_calls": 3,
+      "plugin_tool_calls": 3
+    },
+    {
+      "task": "autoreload_template_changed",
+      "repeat": 1,
+      "baseline_tokens": 10079,
+      "plugin_tokens": 9979,
+      "native_tokens": 10050,
+      "as_paired_tokens": 0.009922,
+      "matched_prefix_k": 5,
+      "matched_prefix_baseline_tokens": 9884,
+      "matched_prefix_plugin_tokens": 9809,
+      "matched_prefix_tokens": 0.007588,
+      "matched_prefix_bytes": 0.007503,
+      "matched_prefix_is_symmetric": true,
+      "matched_prefix_symmetry_rule": "k = min(baseline calls, plugin calls); the same k first calls of each arm are compared, so neither arm's own retry can hide inside its own sum",
+      "baseline_calls": 5,
+      "plugin_calls": 5,
+      "baseline_retried": true,
+      "plugin_retried": true,
+      "native_retried": true,
+      "retrying_arm": "none, native_summary, pruner_v1",
+      "retry_labels": {
+        "none": {
+          "v24_retry_wording": "v24_length_compliance",
+          "v24_force_retry_wording": true,
+          "render_repair_calls": 1,
+          "first_attempt_accepted": false,
+          "first_reject_class": "over_160_chars",
+          "render_reason": "accepted_retry"
+        },
+        "native_summary": {
+          "v24_retry_wording": "v24_length_compliance",
+          "v24_force_retry_wording": true,
+          "render_repair_calls": 1,
+          "first_attempt_accepted": false,
+          "first_reject_class": "over_160_chars",
+          "render_reason": "accepted_retry"
+        },
+        "pruner_v1": {
+          "v24_retry_wording": "v24_length_compliance",
+          "v24_force_retry_wording": true,
+          "render_repair_calls": 1,
+          "first_attempt_accepted": false,
+          "first_reject_class": "over_160_chars",
+          "render_reason": "accepted_retry"
+        }
+      },
+      "baseline_strict": true,
+      "plugin_strict": true,
+      "baseline_semantic": true,
+      "plugin_semantic": true,
+      "baseline_tool_calls": 3,
+      "plugin_tool_calls": 3
+    },
+    {
+      "task": "autoreload_template_changed",
+      "repeat": 2,
+      "baseline_tokens": 10071,
+      "plugin_tokens": 9993,
+      "native_tokens": 10057,
+      "as_paired_tokens": 0.007745,
+      "matched_prefix_k": 5,
+      "matched_prefix_baseline_tokens": 9884,
+      "matched_prefix_plugin_tokens": 9814,
+      "matched_prefix_tokens": 0.007082,
+      "matched_prefix_bytes": 0.007266,
+      "matched_prefix_is_symmetric": true,
+      "matched_prefix_symmetry_rule": "k = min(baseline calls, plugin calls); the same k first calls of each arm are compared, so neither arm's own retry can hide inside its own sum",
+      "baseline_calls": 5,
+      "plugin_calls": 5,
+      "baseline_retried": true,
+      "plugin_retried": true,
+      "native_retried": true,
+      "retrying_arm": "none, native_summary, pruner_v1",
+      "retry_labels": {
+        "none": {
+          "v24_retry_wording": "v24_length_compliance",
+          "v24_force_retry_wording": true,
+          "render_repair_calls": 1,
+          "first_attempt_accepted": false,
+          "first_reject_class": "over_160_chars",
+          "render_reason": "accepted_retry"
+        },
+        "native_summary": {
+          "v24_retry_wording": "v24_length_compliance",
+          "v24_force_retry_wording": true,
+          "render_repair_calls": 1,
+          "first_attempt_accepted": false,
+          "first_reject_class": "over_160_chars",
+          "render_reason": "accepted_retry"
+        },
+        "pruner_v1": {
+          "v24_retry_wording": "v24_length_compliance",
+          "v24_force_retry_wording": true,
+          "render_repair_calls": 1,
+          "first_attempt_accepted": false,
+          "first_reject_class": "over_160_chars",
+          "render_reason": "accepted_retry"
+        }
+      },
+      "baseline_strict": true,
+      "plugin_strict": true,
+      "baseline_semantic": true,
+      "plugin_semantic": true,
+      "baseline_tool_calls": 3,
+      "plugin_tool_calls": 3
+    },
+    {
+      "task": "autoreload_template_changed",
+      "repeat": 3,
+      "baseline_tokens": 10049,
+      "plugin_tokens": 9993,
+      "native_tokens": 10050,
+      "as_paired_tokens": 0.005573,
+      "matched_prefix_k": 5,
+      "matched_prefix_baseline_tokens": 9875,
+      "matched_prefix_plugin_tokens": 9814,
+      "matched_prefix_tokens": 0.006177,
+      "matched_prefix_bytes": 0.006323,
+      "matched_prefix_is_symmetric": true,
+      "matched_prefix_symmetry_rule": "k = min(baseline calls, plugin calls); the same k first calls of each arm are compared, so neither arm's own retry can hide inside its own sum",
+      "baseline_calls": 5,
+      "plugin_calls": 5,
+      "baseline_retried": true,
+      "plugin_retried": true,
+      "native_retried": true,
+      "retrying_arm": "none, native_summary, pruner_v1",
+      "retry_labels": {
+        "none": {
+          "v24_retry_wording": "v24_length_compliance",
+          "v24_force_retry_wording": true,
+          "render_repair_calls": 1,
+          "first_attempt_accepted": false,
+          "first_reject_class": "over_160_chars",
+          "render_reason": "accepted_retry"
+        },
+        "native_summary": {
+          "v24_retry_wording": "v24_length_compliance",
+          "v24_force_retry_wording": true,
+          "render_repair_calls": 1,
+          "first_attempt_accepted": false,
+          "first_reject_class": "over_160_chars",
+          "render_reason": "accepted_retry"
+        },
+        "pruner_v1": {
+          "v24_retry_wording": "v24_length_compliance",
+          "v24_force_retry_wording": true,
+          "render_repair_calls": 1,
+          "first_attempt_accepted": false,
+          "first_reject_class": "over_160_chars",
+          "render_reason": "accepted_retry"
+        }
+      },
+      "baseline_strict": true,
+      "plugin_strict": true,
+      "baseline_semantic": true,
+      "plugin_semantic": true,
+      "baseline_tool_calls": 3,
+      "plugin_tool_calls": 3
+    },
+    {
+      "task": "autoreload_template_changed",
+      "repeat": 4,
+      "baseline_tokens": 10050,
+      "plugin_tokens": 9993,
+      "native_tokens": 10067,
+      "as_paired_tokens": 0.005672,
+      "matched_prefix_k": 5,
+      "matched_prefix_baseline_tokens": 9875,
+      "matched_prefix_plugin_tokens": 9814,
+      "matched_prefix_tokens": 0.006177,
+      "matched_prefix_bytes": 0.006323,
+      "matched_prefix_is_symmetric": true,
+      "matched_prefix_symmetry_rule": "k = min(baseline calls, plugin calls); the same k first calls of each arm are compared, so neither arm's own retry can hide inside its own sum",
+      "baseline_calls": 5,
+      "plugin_calls": 5,
+      "baseline_retried": true,
+      "plugin_retried": true,
+      "native_retried": true,
+      "retrying_arm": "none, native_summary, pruner_v1",
+      "retry_labels": {
+        "none": {
+          "v24_retry_wording": "v24_length_compliance",
+          "v24_force_retry_wording": true,
+          "render_repair_calls": 1,
+          "first_attempt_accepted": false,
+          "first_reject_class": "over_160_chars",
+          "render_reason": "accepted_retry"
+        },
+        "native_summary": {
+          "v24_retry_wording": "v24_length_compliance",
+          "v24_force_retry_wording": true,
+          "render_repair_calls": 1,
+          "first_attempt_accepted": false,
+          "first_reject_class": "over_160_chars",
+          "render_reason": "accepted_retry"
+        },
+        "pruner_v1": {
+          "v24_retry_wording": "v24_length_compliance",
+          "v24_force_retry_wording": true,
+          "render_repair_calls": 1,
+          "first_attempt_accepted": false,
+          "first_reject_class": "over_160_chars",
+          "render_reason": "accepted_retry"
+        }
+      },
+      "baseline_strict": true,
+      "plugin_strict": true,
+      "baseline_semantic": true,
+      "plugin_semantic": true,
+      "baseline_tool_calls": 3,
+      "plugin_tool_calls": 3
+    },
+    {
+      "task": "sitemap_callable_lastmod",
+      "repeat": 0,
+      "baseline_tokens": 9511,
+      "plugin_tokens": 9238,
+      "native_tokens": 10775,
+      "as_paired_tokens": 0.028704,
+      "matched_prefix_k": 4,
+      "matched_prefix_baseline_tokens": 9389,
+      "matched_prefix_plugin_tokens": 9117,
+      "matched_prefix_tokens": 0.02897,
+      "matched_prefix_bytes": 0.048649,
+      "matched_prefix_is_symmetric": true,
+      "matched_prefix_symmetry_rule": "k = min(baseline calls, plugin calls); the same k first calls of each arm are compared, so neither arm's own retry can hide inside its own sum",
+      "baseline_calls": 4,
+      "plugin_calls": 4,
+      "baseline_retried": false,
+      "plugin_retried": false,
+      "native_retried": false,
+      "retrying_arm": "none",
+      "retry_labels": {
+        "none": {
+          "v24_retry_wording": "not_used_first_attempt_accepted",
+          "v24_force_retry_wording": false,
+          "render_repair_calls": 0,
+          "first_attempt_accepted": true,
+          "first_reject_class": "",
+          "render_reason": "accepted_first"
+        },
+        "native_summary": {
+          "v24_retry_wording": "not_used_first_attempt_accepted",
+          "v24_force_retry_wording": false,
+          "render_repair_calls": 0,
+          "first_attempt_accepted": true,
+          "first_reject_class": "",
+          "render_reason": "accepted_first"
+        },
+        "pruner_v1": {
+          "v24_retry_wording": "not_used_first_attempt_accepted",
+          "v24_force_retry_wording": false,
+          "render_repair_calls": 0,
+          "first_attempt_accepted": true,
+          "first_reject_class": "",
+          "render_reason": "accepted_first"
+        }
+      },
+      "baseline_strict": true,
+      "plugin_strict": true,
+      "baseline_semantic": true,
+      "plugin_semantic": true,
+      "baseline_tool_calls": 3,
+      "plugin_tool_calls": 3
+    },
+    {
+      "task": "sitemap_callable_lastmod",
+      "repeat": 1,
+      "baseline_tokens": 9513,
+      "plugin_tokens": 9241,
+      "native_tokens": 10801,
+      "as_paired_tokens": 0.028592,
+      "matched_prefix_k": 4,
+      "matched_prefix_baseline_tokens": 9389,
+      "matched_prefix_plugin_tokens": 9117,
+      "matched_prefix_tokens": 0.02897,
+      "matched_prefix_bytes": 0.048649,
+      "matched_prefix_is_symmetric": true,
+      "matched_prefix_symmetry_rule": "k = min(baseline calls, plugin calls); the same k first calls of each arm are compared, so neither arm's own retry can hide inside its own sum",
+      "baseline_calls": 4,
+      "plugin_calls": 4,
+      "baseline_retried": false,
+      "plugin_retried": false,
+      "native_retried": false,
+      "retrying_arm": "none",
+      "retry_labels": {
+        "none": {
+          "v24_retry_wording": "not_used_first_attempt_accepted",
+          "v24_force_retry_wording": false,
+          "render_repair_calls": 0,
+          "first_attempt_accepted": true,
+          "first_reject_class": "",
+          "render_reason": "accepted_first"
+        },
+        "native_summary": {
+          "v24_retry_wording": "not_used_first_attempt_accepted",
+          "v24_force_retry_wording": false,
+          "render_repair_calls": 0,
+          "first_attempt_accepted": true,
+          "first_reject_class": "",
+          "render_reason": "accepted_first"
+        },
+        "pruner_v1": {
+          "v24_retry_wording": "not_used_first_attempt_accepted",
+          "v24_force_retry_wording": false,
+          "render_repair_calls": 0,
+          "first_attempt_accepted": true,
+          "first_reject_class": "",
+          "render_reason": "accepted_first"
+        }
+      },
+      "baseline_strict": true,
+      "plugin_strict": true,
+      "baseline_semantic": true,
+      "plugin_semantic": true,
+      "baseline_tool_calls": 3,
+      "plugin_tool_calls": 3
+    },
+    {
+      "task": "sitemap_callable_lastmod",
+      "repeat": 2,
+      "baseline_tokens": 9513,
+      "plugin_tokens": 9238,
+      "native_tokens": 10803,
+      "as_paired_tokens": 0.028908,
+      "matched_prefix_k": 4,
+      "matched_prefix_baseline_tokens": 9389,
+      "matched_prefix_plugin_tokens": 9117,
+      "matched_prefix_tokens": 0.02897,
+      "matched_prefix_bytes": 0.048649,
+      "matched_prefix_is_symmetric": true,
+      "matched_prefix_symmetry_rule": "k = min(baseline calls, plugin calls); the same k first calls of each arm are compared, so neither arm's own retry can hide inside its own sum",
+      "baseline_calls": 4,
+      "plugin_calls": 4,
+      "baseline_retried": false,
+      "plugin_retried": false,
+      "native_retried": false,
+      "retrying_arm": "none",
+      "retry_labels": {
+        "none": {
+          "v24_retry_wording": "not_used_first_attempt_accepted",
+          "v24_force_retry_wording": false,
+          "render_repair_calls": 0,
+          "first_attempt_accepted": true,
+          "first_reject_class": "",
+          "render_reason": "accepted_first"
+        },
+        "native_summary": {
+          "v24_retry_wording": "not_used_first_attempt_accepted",
+          "v24_force_retry_wording": false,
+          "render_repair_calls": 0,
+          "first_attempt_accepted": true,
+          "first_reject_class": "",
+          "render_reason": "accepted_first"
+        },
+        "pruner_v1": {
+          "v24_retry_wording": "not_used_first_attempt_accepted",
+          "v24_force_retry_wording": false,
+          "render_repair_calls": 0,
+          "first_attempt_accepted": true,
+          "first_reject_class": "",
+          "render_reason": "accepted_first"
+        }
+      },
+      "baseline_strict": true,
+      "plugin_strict": true,
+      "baseline_semantic": true,
+      "plugin_semantic": true,
+      "baseline_tool_calls": 3,
+      "plugin_tool_calls": 3
+    },
+    {
+      "task": "sitemap_callable_lastmod",
+      "repeat": 3,
+      "baseline_tokens": 9511,
+      "plugin_tokens": 9241,
+      "native_tokens": 10699,
+      "as_paired_tokens": 0.028388,
+      "matched_prefix_k": 4,
+      "matched_prefix_baseline_tokens": 9389,
+      "matched_prefix_plugin_tokens": 9117,
+      "matched_prefix_tokens": 0.02897,
+      "matched_prefix_bytes": 0.048649,
+      "matched_prefix_is_symmetric": true,
+      "matched_prefix_symmetry_rule": "k = min(baseline calls, plugin calls); the same k first calls of each arm are compared, so neither arm's own retry can hide inside its own sum",
+      "baseline_calls": 4,
+      "plugin_calls": 4,
+      "baseline_retried": false,
+      "plugin_retried": false,
+      "native_retried": false,
+      "retrying_arm": "none",
+      "retry_labels": {
+        "none": {
+          "v24_retry_wording": "not_used_first_attempt_accepted",
+          "v24_force_retry_wording": false,
+          "render_repair_calls": 0,
+          "first_attempt_accepted": true,
+          "first_reject_class": "",
+          "render_reason": "accepted_first"
+        },
+        "native_summary": {
+          "v24_retry_wording": "not_used_first_attempt_accepted",
+          "v24_force_retry_wording": false,
+          "render_repair_calls": 0,
+          "first_attempt_accepted": true,
+          "first_reject_class": "",
+          "render_reason": "accepted_first"
+        },
+        "pruner_v1": {
+          "v24_retry_wording": "not_used_first_attempt_accepted",
+          "v24_force_retry_wording": false,
+          "render_repair_calls": 0,
+          "first_attempt_accepted": true,
+          "first_reject_class": "",
+          "render_reason": "accepted_first"
+        }
+      },
+      "baseline_strict": true,
+      "plugin_strict": true,
+      "baseline_semantic": true,
+      "plugin_semantic": true,
+      "baseline_tool_calls": 3,
+      "plugin_tool_calls": 3
+    },
+    {
+      "task": "sitemap_callable_lastmod",
+      "repeat": 4,
+      "baseline_tokens": 9513,
+      "plugin_tokens": 9241,
+      "native_tokens": 10773,
+      "as_paired_tokens": 0.028592,
+      "matched_prefix_k": 4,
+      "matched_prefix_baseline_tokens": 9389,
+      "matched_prefix_plugin_tokens": 9117,
+      "matched_prefix_tokens": 0.02897,
+      "matched_prefix_bytes": 0.048649,
+      "matched_prefix_is_symmetric": true,
+      "matched_prefix_symmetry_rule": "k = min(baseline calls, plugin calls); the same k first calls of each arm are compared, so neither arm's own retry can hide inside its own sum",
+      "baseline_calls": 4,
+      "plugin_calls": 4,
+      "baseline_retried": false,
+      "plugin_retried": false,
+      "native_retried": false,
+      "retrying_arm": "none",
+      "retry_labels": {
+        "none": {
+          "v24_retry_wording": "not_used_first_attempt_accepted",
+          "v24_force_retry_wording": false,
+          "render_repair_calls": 0,
+          "first_attempt_accepted": true,
+          "first_reject_class": "",
+          "render_reason": "accepted_first"
+        },
+        "native_summary": {
+          "v24_retry_wording": "not_used_first_attempt_accepted",
+          "v24_force_retry_wording": false,
+          "render_repair_calls": 0,
+          "first_attempt_accepted": true,
+          "first_reject_class": "",
+          "render_reason": "accepted_first"
+        },
+        "pruner_v1": {
+          "v24_retry_wording": "not_used_first_attempt_accepted",
+          "v24_force_retry_wording": false,
+          "render_repair_calls": 0,
+          "first_attempt_accepted": true,
+          "first_reject_class": "",
+          "render_reason": "accepted_first"
+        }
+      },
+      "baseline_strict": true,
+      "plugin_strict": true,
+      "baseline_semantic": true,
+      "plugin_semantic": true,
+      "baseline_tool_calls": 3,
+      "plugin_tool_calls": 3
+    },
+    {
+      "task": "query_utils_unregister_lookup",
+      "repeat": 0,
+      "baseline_tokens": 10347,
+      "plugin_tokens": 10301,
+      "native_tokens": 10345,
+      "as_paired_tokens": 0.004446,
+      "matched_prefix_k": 5,
+      "matched_prefix_baseline_tokens": 10155,
+      "matched_prefix_plugin_tokens": 10123,
+      "matched_prefix_tokens": 0.003151,
+      "matched_prefix_bytes": 0.003565,
+      "matched_prefix_is_symmetric": true,
+      "matched_prefix_symmetry_rule": "k = min(baseline calls, plugin calls); the same k first calls of each arm are compared, so neither arm's own retry can hide inside its own sum",
+      "baseline_calls": 5,
+      "plugin_calls": 5,
+      "baseline_retried": true,
+      "plugin_retried": true,
+      "native_retried": true,
+      "retrying_arm": "none, native_summary, pruner_v1",
+      "retry_labels": {
+        "none": {
+          "v24_retry_wording": "v24_length_compliance",
+          "v24_force_retry_wording": true,
+          "render_repair_calls": 1,
+          "first_attempt_accepted": false,
+          "first_reject_class": "over_160_chars",
+          "render_reason": "accepted_retry"
+        },
+        "native_summary": {
+          "v24_retry_wording": "v24_length_compliance",
+          "v24_force_retry_wording": true,
+          "render_repair_calls": 1,
+          "first_attempt_accepted": false,
+          "first_reject_class": "over_160_chars",
+          "render_reason": "accepted_retry"
+        },
+        "pruner_v1": {
+          "v24_retry_wording": "v24_length_compliance",
+          "v24_force_retry_wording": true,
+          "render_repair_calls": 1,
+          "first_attempt_accepted": false,
+          "first_reject_class": "over_160_chars",
+          "render_reason": "accepted_retry"
+        }
+      },
+      "baseline_strict": true,
+      "plugin_strict": true,
+      "baseline_semantic": true,
+      "plugin_semantic": true,
+      "baseline_tool_calls": 3,
+      "plugin_tool_calls": 3
+    },
+    {
+      "task": "query_utils_unregister_lookup",
+      "repeat": 1,
+      "baseline_tokens": 10337,
+      "plugin_tokens": 8053,
+      "native_tokens": 10331,
+      "as_paired_tokens": 0.220954,
+      "matched_prefix_k": 4,
+      "matched_prefix_baseline_tokens": 7931,
+      "matched_prefix_plugin_tokens": 7915,
+      "matched_prefix_tokens": 0.002017,
+      "matched_prefix_bytes": 0.00287,
+      "matched_prefix_is_symmetric": true,
+      "matched_prefix_symmetry_rule": "k = min(baseline calls, plugin calls); the same k first calls of each arm are compared, so neither arm's own retry can hide inside its own sum",
+      "baseline_calls": 5,
+      "plugin_calls": 4,
+      "baseline_retried": true,
+      "plugin_retried": false,
+      "native_retried": true,
+      "retrying_arm": "none, native_summary",
+      "retry_labels": {
+        "none": {
+          "v24_retry_wording": "v24_length_compliance",
+          "v24_force_retry_wording": true,
+          "render_repair_calls": 1,
+          "first_attempt_accepted": false,
+          "first_reject_class": "over_160_chars",
+          "render_reason": "accepted_retry"
+        },
+        "native_summary": {
+          "v24_retry_wording": "v24_length_compliance",
+          "v24_force_retry_wording": true,
+          "render_repair_calls": 1,
+          "first_attempt_accepted": false,
+          "first_reject_class": "over_160_chars",
+          "render_reason": "accepted_retry"
+        },
+        "pruner_v1": {
+          "v24_retry_wording": "not_used_first_attempt_accepted",
+          "v24_force_retry_wording": false,
+          "render_repair_calls": 0,
+          "first_attempt_accepted": true,
+          "first_reject_class": "",
+          "render_reason": "accepted_first"
+        }
+      },
+      "baseline_strict": true,
+      "plugin_strict": true,
+      "baseline_semantic": true,
+      "plugin_semantic": true,
+      "baseline_tool_calls": 3,
+      "plugin_tool_calls": 3
+    },
+    {
+      "task": "query_utils_unregister_lookup",
+      "repeat": 2,
+      "baseline_tokens": 10332,
+      "plugin_tokens": 8053,
+      "native_tokens": 10337,
+      "as_paired_tokens": 0.220577,
+      "matched_prefix_k": 4,
+      "matched_prefix_baseline_tokens": 7931,
+      "matched_prefix_plugin_tokens": 7915,
+      "matched_prefix_tokens": 0.002017,
+      "matched_prefix_bytes": 0.00287,
+      "matched_prefix_is_symmetric": true,
+      "matched_prefix_symmetry_rule": "k = min(baseline calls, plugin calls); the same k first calls of each arm are compared, so neither arm's own retry can hide inside its own sum",
+      "baseline_calls": 5,
+      "plugin_calls": 4,
+      "baseline_retried": true,
+      "plugin_retried": false,
+      "native_retried": true,
+      "retrying_arm": "none, native_summary",
+      "retry_labels": {
+        "none": {
+          "v24_retry_wording": "v24_length_compliance",
+          "v24_force_retry_wording": true,
+          "render_repair_calls": 1,
+          "first_attempt_accepted": false,
+          "first_reject_class": "over_160_chars",
+          "render_reason": "accepted_retry"
+        },
+        "native_summary": {
+          "v24_retry_wording": "v24_length_compliance",
+          "v24_force_retry_wording": true,
+          "render_repair_calls": 1,
+          "first_attempt_accepted": false,
+          "first_reject_class": "over_160_chars",
+          "render_reason": "accepted_retry"
+        },
+        "pruner_v1": {
+          "v24_retry_wording": "not_used_first_attempt_accepted",
+          "v24_force_retry_wording": false,
+          "render_repair_calls": 0,
+          "first_attempt_accepted": true,
+          "first_reject_class": "",
+          "render_reason": "accepted_first"
+        }
+      },
+      "baseline_strict": true,
+      "plugin_strict": true,
+      "baseline_semantic": true,
+      "plugin_semantic": true,
+      "baseline_tool_calls": 3,
+      "plugin_tool_calls": 3
+    },
+    {
+      "task": "query_utils_unregister_lookup",
+      "repeat": 3,
+      "baseline_tokens": 10330,
+      "plugin_tokens": 8053,
+      "native_tokens": 10332,
+      "as_paired_tokens": 0.220426,
+      "matched_prefix_k": 4,
+      "matched_prefix_baseline_tokens": 7931,
+      "matched_prefix_plugin_tokens": 7915,
+      "matched_prefix_tokens": 0.002017,
+      "matched_prefix_bytes": 0.00287,
+      "matched_prefix_is_symmetric": true,
+      "matched_prefix_symmetry_rule": "k = min(baseline calls, plugin calls); the same k first calls of each arm are compared, so neither arm's own retry can hide inside its own sum",
+      "baseline_calls": 5,
+      "plugin_calls": 4,
+      "baseline_retried": true,
+      "plugin_retried": false,
+      "native_retried": true,
+      "retrying_arm": "none, native_summary",
+      "retry_labels": {
+        "none": {
+          "v24_retry_wording": "v24_length_compliance",
+          "v24_force_retry_wording": true,
+          "render_repair_calls": 1,
+          "first_attempt_accepted": false,
+          "first_reject_class": "over_160_chars",
+          "render_reason": "accepted_retry"
+        },
+        "native_summary": {
+          "v24_retry_wording": "v24_length_compliance",
+          "v24_force_retry_wording": true,
+          "render_repair_calls": 1,
+          "first_attempt_accepted": false,
+          "first_reject_class": "over_160_chars",
+          "render_reason": "accepted_retry"
+        },
+        "pruner_v1": {
+          "v24_retry_wording": "not_used_first_attempt_accepted",
+          "v24_force_retry_wording": false,
+          "render_repair_calls": 0,
+          "first_attempt_accepted": true,
+          "first_reject_class": "",
+          "render_reason": "accepted_first"
+        }
+      },
+      "baseline_strict": true,
+      "plugin_strict": true,
+      "baseline_semantic": true,
+      "plugin_semantic": true,
+      "baseline_tool_calls": 3,
+      "plugin_tool_calls": 3
+    },
+    {
+      "task": "query_utils_unregister_lookup",
+      "repeat": 4,
+      "baseline_tokens": 10332,
+      "plugin_tokens": 8051,
+      "native_tokens": 10349,
+      "as_paired_tokens": 0.22077,
+      "matched_prefix_k": 4,
+      "matched_prefix_baseline_tokens": 7931,
+      "matched_prefix_plugin_tokens": 7915,
+      "matched_prefix_tokens": 0.002017,
+      "matched_prefix_bytes": 0.00287,
+      "matched_prefix_is_symmetric": true,
+      "matched_prefix_symmetry_rule": "k = min(baseline calls, plugin calls); the same k first calls of each arm are compared, so neither arm's own retry can hide inside its own sum",
+      "baseline_calls": 5,
+      "plugin_calls": 4,
+      "baseline_retried": true,
+      "plugin_retried": false,
+      "native_retried": true,
+      "retrying_arm": "none, native_summary",
+      "retry_labels": {
+        "none": {
+          "v24_retry_wording": "v24_length_compliance",
+          "v24_force_retry_wording": true,
+          "render_repair_calls": 1,
+          "first_attempt_accepted": false,
+          "first_reject_class": "over_160_chars",
+          "render_reason": "accepted_retry"
+        },
+        "native_summary": {
+          "v24_retry_wording": "v24_length_compliance",
+          "v24_force_retry_wording": true,
+          "render_repair_calls": 1,
+          "first_attempt_accepted": false,
+          "first_reject_class": "over_160_chars",
+          "render_reason": "accepted_retry"
+        },
+        "pruner_v1": {
+          "v24_retry_wording": "not_used_first_attempt_accepted",
+          "v24_force_retry_wording": false,
+          "render_repair_calls": 0,
+          "first_attempt_accepted": true,
+          "first_reject_class": "",
+          "render_reason": "accepted_first"
+        }
+      },
+      "baseline_strict": true,
+      "plugin_strict": true,
+      "baseline_semantic": true,
+      "plugin_semantic": true,
+      "baseline_tool_calls": 3,
+      "plugin_tool_calls": 3
+    }
+  ],
+  "primary_criterion": {
+    "name": "as-paired complete provider tokens",
+    "definition": "for every (task, repeat) pair: (baseline total provider tokens - plugin total provider tokens) / baseline total provider tokens, where a sample's total is its complete provider input tokens plus its complete provider output tokens, with retries and summary requests charged to the arm they belong to",
+    "matrix_complete": true,
+    "per_task": {
+      "autoreload_template_changed": {
+        "paired_n": 5,
+        "mean": 0.007055,
+        "savings": [
+          0.006364,
+          0.009922,
+          0.007745,
+          0.005573,
+          0.005672
+        ],
+        "positive_pairs": 5,
+        "strict_track": {
+          "none": 5,
+          "native_summary": 5,
+          "pruner_v1": 5
+        },
+        "semantic_correct": {
+          "none": 5,
+          "native_summary": 5,
+          "pruner_v1": 5
+        }
+      },
+      "sitemap_callable_lastmod": {
+        "paired_n": 5,
+        "mean": 0.028637,
+        "savings": [
+          0.028704,
+          0.028592,
+          0.028908,
+          0.028388,
+          0.028592
+        ],
+        "positive_pairs": 5,
+        "strict_track": {
+          "none": 5,
+          "native_summary": 5,
+          "pruner_v1": 5
+        },
+        "semantic_correct": {
+          "none": 5,
+          "native_summary": 5,
+          "pruner_v1": 5
+        }
+      },
+      "query_utils_unregister_lookup": {
+        "paired_n": 5,
+        "mean": 0.177435,
+        "savings": [
+          0.004446,
+          0.220954,
+          0.220577,
+          0.220426,
+          0.22077
+        ],
+        "positive_pairs": 5,
+        "strict_track": {
+          "none": 5,
+          "native_summary": 5,
+          "pruner_v1": 5
+        },
+        "semantic_correct": {
+          "none": 5,
+          "native_summary": 5,
+          "pruner_v1": 5
+        }
+      }
+    },
+    "pooled": {
+      "n": 15,
+      "mean": 0.071042,
+      "sd": 0.093915,
+      "min": 0.004446,
+      "max": 0.220954,
+      "positive": 15,
+      "mean_saving": 0.071042,
+      "majority_positive": true,
+      "bootstrap": {
+        "rounds": 10000,
+        "seed": 20261010,
+        "lower": 0.028571,
+        "upper": 0.115509,
+        "excludes_zero": true,
+        "note": "reported for explanation; the frozen verdict is the per-task strict track, the majority of positive pairs and the batch mean"
+      }
+    },
+    "strict_all_tasks_at_least_baseline": true,
+    "semantic_all_tasks_at_least_baseline": true,
+    "met": true
+  },
+  "co_reported": {
+    "symmetric_matched_prefix_tokens": {
+      "n": 15,
+      "mean": 0.012618,
+      "sd": 0.01212,
+      "min": 0.002017,
+      "max": 0.02897,
+      "positive": 15
+    },
+    "symmetric_matched_prefix_bytes": {
+      "n": 15,
+      "mean": 0.019469,
+      "sd": 0.021419,
+      "min": 0.00287,
+      "max": 0.048649,
+      "positive": 15
+    },
+    "symmetric_matched_prefix_rule": "per pair, k = min(baseline model calls, plugin model calls) and the same first k calls of each arm are compared; the truncation is symmetric by construction and each pair records the two call counts it was taken over",
+    "per_arm_quality": {
+      "none": {
+        "samples": 15,
+        "strict_track": 15,
+        "strict_rate": 1.0,
+        "semantic_accuracy": 15,
+        "semantic_accuracy_rate": 1.0,
+        "first_attempt_accepted": 5,
+        "retried_samples": 10,
+        "success": 15,
+        "model_calls_total": 70,
+        "model_calls_distribution": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        "tool_calls_total": 45,
+        "tool_calls_distribution": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "requests_total": 70,
+        "total_provider_tokens": 149545,
+        "input_tokens": 147097,
+        "output_tokens": 2448,
+        "input_cache_hit_tokens": 131968,
+        "input_cache_miss_tokens": 15129,
+        "cost_usd": 0.002067
+      },
+      "native_summary": {
+        "samples": 15,
+        "strict_track": 15,
+        "strict_rate": 1.0,
+        "semantic_accuracy": 15,
+        "semantic_accuracy_rate": 1.0,
+        "first_attempt_accepted": 5,
+        "retried_samples": 10,
+        "success": 15,
+        "model_calls_total": 70,
+        "model_calls_distribution": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        "tool_calls_total": 45,
+        "tool_calls_distribution": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "requests_total": 75,
+        "total_provider_tokens": 155819,
+        "input_tokens": 147082,
+        "output_tokens": 2439,
+        "input_cache_hit_tokens": 130688,
+        "input_cache_miss_tokens": 16394,
+        "cost_usd": 0.002157
+      },
+      "pruner_v1": {
+        "samples": 15,
+        "strict_track": 15,
+        "strict_rate": 1.0,
+        "semantic_accuracy": 15,
+        "semantic_accuracy_rate": 1.0,
+        "first_attempt_accepted": 9,
+        "retried_samples": 6,
+        "success": 15,
+        "model_calls_total": 66,
+        "model_calls_distribution": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          5,
+          5,
+          5,
+          5,
+          5,
+          5
+        ],
+        "tool_calls_total": 45,
+        "tool_calls_distribution": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "requests_total": 66,
+        "total_provider_tokens": 138661,
+        "input_tokens": 136433,
+        "output_tokens": 2228,
+        "input_cache_hit_tokens": 122097,
+        "input_cache_miss_tokens": 14336,
+        "cost_usd": 0.001927
+      }
+    },
+    "per_pair_retrying_arm": [
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 0,
+        "retrying_arm": "none, native_summary, pruner_v1",
+        "baseline_calls": 5,
+        "plugin_calls": 5,
+        "retry_labels": {
+          "none": {
+            "v24_retry_wording": "v24_length_compliance",
+            "v24_force_retry_wording": true,
+            "render_repair_calls": 1,
+            "first_attempt_accepted": false,
+            "first_reject_class": "over_160_chars",
+            "render_reason": "accepted_retry"
+          },
+          "native_summary": {
+            "v24_retry_wording": "v24_length_compliance",
+            "v24_force_retry_wording": true,
+            "render_repair_calls": 1,
+            "first_attempt_accepted": false,
+            "first_reject_class": "over_160_chars",
+            "render_reason": "accepted_retry"
+          },
+          "pruner_v1": {
+            "v24_retry_wording": "v24_length_compliance",
+            "v24_force_retry_wording": true,
+            "render_repair_calls": 1,
+            "first_attempt_accepted": false,
+            "first_reject_class": "over_160_chars",
+            "render_reason": "accepted_retry"
+          }
+        }
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 1,
+        "retrying_arm": "none, native_summary, pruner_v1",
+        "baseline_calls": 5,
+        "plugin_calls": 5,
+        "retry_labels": {
+          "none": {
+            "v24_retry_wording": "v24_length_compliance",
+            "v24_force_retry_wording": true,
+            "render_repair_calls": 1,
+            "first_attempt_accepted": false,
+            "first_reject_class": "over_160_chars",
+            "render_reason": "accepted_retry"
+          },
+          "native_summary": {
+            "v24_retry_wording": "v24_length_compliance",
+            "v24_force_retry_wording": true,
+            "render_repair_calls": 1,
+            "first_attempt_accepted": false,
+            "first_reject_class": "over_160_chars",
+            "render_reason": "accepted_retry"
+          },
+          "pruner_v1": {
+            "v24_retry_wording": "v24_length_compliance",
+            "v24_force_retry_wording": true,
+            "render_repair_calls": 1,
+            "first_attempt_accepted": false,
+            "first_reject_class": "over_160_chars",
+            "render_reason": "accepted_retry"
+          }
+        }
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 2,
+        "retrying_arm": "none, native_summary, pruner_v1",
+        "baseline_calls": 5,
+        "plugin_calls": 5,
+        "retry_labels": {
+          "none": {
+            "v24_retry_wording": "v24_length_compliance",
+            "v24_force_retry_wording": true,
+            "render_repair_calls": 1,
+            "first_attempt_accepted": false,
+            "first_reject_class": "over_160_chars",
+            "render_reason": "accepted_retry"
+          },
+          "native_summary": {
+            "v24_retry_wording": "v24_length_compliance",
+            "v24_force_retry_wording": true,
+            "render_repair_calls": 1,
+            "first_attempt_accepted": false,
+            "first_reject_class": "over_160_chars",
+            "render_reason": "accepted_retry"
+          },
+          "pruner_v1": {
+            "v24_retry_wording": "v24_length_compliance",
+            "v24_force_retry_wording": true,
+            "render_repair_calls": 1,
+            "first_attempt_accepted": false,
+            "first_reject_class": "over_160_chars",
+            "render_reason": "accepted_retry"
+          }
+        }
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 3,
+        "retrying_arm": "none, native_summary, pruner_v1",
+        "baseline_calls": 5,
+        "plugin_calls": 5,
+        "retry_labels": {
+          "none": {
+            "v24_retry_wording": "v24_length_compliance",
+            "v24_force_retry_wording": true,
+            "render_repair_calls": 1,
+            "first_attempt_accepted": false,
+            "first_reject_class": "over_160_chars",
+            "render_reason": "accepted_retry"
+          },
+          "native_summary": {
+            "v24_retry_wording": "v24_length_compliance",
+            "v24_force_retry_wording": true,
+            "render_repair_calls": 1,
+            "first_attempt_accepted": false,
+            "first_reject_class": "over_160_chars",
+            "render_reason": "accepted_retry"
+          },
+          "pruner_v1": {
+            "v24_retry_wording": "v24_length_compliance",
+            "v24_force_retry_wording": true,
+            "render_repair_calls": 1,
+            "first_attempt_accepted": false,
+            "first_reject_class": "over_160_chars",
+            "render_reason": "accepted_retry"
+          }
+        }
+      },
+      {
+        "task": "autoreload_template_changed",
+        "repeat": 4,
+        "retrying_arm": "none, native_summary, pruner_v1",
+        "baseline_calls": 5,
+        "plugin_calls": 5,
+        "retry_labels": {
+          "none": {
+            "v24_retry_wording": "v24_length_compliance",
+            "v24_force_retry_wording": true,
+            "render_repair_calls": 1,
+            "first_attempt_accepted": false,
+            "first_reject_class": "over_160_chars",
+            "render_reason": "accepted_retry"
+          },
+          "native_summary": {
+            "v24_retry_wording": "v24_length_compliance",
+            "v24_force_retry_wording": true,
+            "render_repair_calls": 1,
+            "first_attempt_accepted": false,
+            "first_reject_class": "over_160_chars",
+            "render_reason": "accepted_retry"
+          },
+          "pruner_v1": {
+            "v24_retry_wording": "v24_length_compliance",
+            "v24_force_retry_wording": true,
+            "render_repair_calls": 1,
+            "first_attempt_accepted": false,
+            "first_reject_class": "over_160_chars",
+            "render_reason": "accepted_retry"
+          }
+        }
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "repeat": 0,
+        "retrying_arm": "none",
+        "baseline_calls": 4,
+        "plugin_calls": 4,
+        "retry_labels": {
+          "none": {
+            "v24_retry_wording": "not_used_first_attempt_accepted",
+            "v24_force_retry_wording": false,
+            "render_repair_calls": 0,
+            "first_attempt_accepted": true,
+            "first_reject_class": "",
+            "render_reason": "accepted_first"
+          },
+          "native_summary": {
+            "v24_retry_wording": "not_used_first_attempt_accepted",
+            "v24_force_retry_wording": false,
+            "render_repair_calls": 0,
+            "first_attempt_accepted": true,
+            "first_reject_class": "",
+            "render_reason": "accepted_first"
+          },
+          "pruner_v1": {
+            "v24_retry_wording": "not_used_first_attempt_accepted",
+            "v24_force_retry_wording": false,
+            "render_repair_calls": 0,
+            "first_attempt_accepted": true,
+            "first_reject_class": "",
+            "render_reason": "accepted_first"
+          }
+        }
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "repeat": 1,
+        "retrying_arm": "none",
+        "baseline_calls": 4,
+        "plugin_calls": 4,
+        "retry_labels": {
+          "none": {
+            "v24_retry_wording": "not_used_first_attempt_accepted",
+            "v24_force_retry_wording": false,
+            "render_repair_calls": 0,
+            "first_attempt_accepted": true,
+            "first_reject_class": "",
+            "render_reason": "accepted_first"
+          },
+          "native_summary": {
+            "v24_retry_wording": "not_used_first_attempt_accepted",
+            "v24_force_retry_wording": false,
+            "render_repair_calls": 0,
+            "first_attempt_accepted": true,
+            "first_reject_class": "",
+            "render_reason": "accepted_first"
+          },
+          "pruner_v1": {
+            "v24_retry_wording": "not_used_first_attempt_accepted",
+            "v24_force_retry_wording": false,
+            "render_repair_calls": 0,
+            "first_attempt_accepted": true,
+            "first_reject_class": "",
+            "render_reason": "accepted_first"
+          }
+        }
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "repeat": 2,
+        "retrying_arm": "none",
+        "baseline_calls": 4,
+        "plugin_calls": 4,
+        "retry_labels": {
+          "none": {
+            "v24_retry_wording": "not_used_first_attempt_accepted",
+            "v24_force_retry_wording": false,
+            "render_repair_calls": 0,
+            "first_attempt_accepted": true,
+            "first_reject_class": "",
+            "render_reason": "accepted_first"
+          },
+          "native_summary": {
+            "v24_retry_wording": "not_used_first_attempt_accepted",
+            "v24_force_retry_wording": false,
+            "render_repair_calls": 0,
+            "first_attempt_accepted": true,
+            "first_reject_class": "",
+            "render_reason": "accepted_first"
+          },
+          "pruner_v1": {
+            "v24_retry_wording": "not_used_first_attempt_accepted",
+            "v24_force_retry_wording": false,
+            "render_repair_calls": 0,
+            "first_attempt_accepted": true,
+            "first_reject_class": "",
+            "render_reason": "accepted_first"
+          }
+        }
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "repeat": 3,
+        "retrying_arm": "none",
+        "baseline_calls": 4,
+        "plugin_calls": 4,
+        "retry_labels": {
+          "none": {
+            "v24_retry_wording": "not_used_first_attempt_accepted",
+            "v24_force_retry_wording": false,
+            "render_repair_calls": 0,
+            "first_attempt_accepted": true,
+            "first_reject_class": "",
+            "render_reason": "accepted_first"
+          },
+          "native_summary": {
+            "v24_retry_wording": "not_used_first_attempt_accepted",
+            "v24_force_retry_wording": false,
+            "render_repair_calls": 0,
+            "first_attempt_accepted": true,
+            "first_reject_class": "",
+            "render_reason": "accepted_first"
+          },
+          "pruner_v1": {
+            "v24_retry_wording": "not_used_first_attempt_accepted",
+            "v24_force_retry_wording": false,
+            "render_repair_calls": 0,
+            "first_attempt_accepted": true,
+            "first_reject_class": "",
+            "render_reason": "accepted_first"
+          }
+        }
+      },
+      {
+        "task": "sitemap_callable_lastmod",
+        "repeat": 4,
+        "retrying_arm": "none",
+        "baseline_calls": 4,
+        "plugin_calls": 4,
+        "retry_labels": {
+          "none": {
+            "v24_retry_wording": "not_used_first_attempt_accepted",
+            "v24_force_retry_wording": false,
+            "render_repair_calls": 0,
+            "first_attempt_accepted": true,
+            "first_reject_class": "",
+            "render_reason": "accepted_first"
+          },
+          "native_summary": {
+            "v24_retry_wording": "not_used_first_attempt_accepted",
+            "v24_force_retry_wording": false,
+            "render_repair_calls": 0,
+            "first_attempt_accepted": true,
+            "first_reject_class": "",
+            "render_reason": "accepted_first"
+          },
+          "pruner_v1": {
+            "v24_retry_wording": "not_used_first_attempt_accepted",
+            "v24_force_retry_wording": false,
+            "render_repair_calls": 0,
+            "first_attempt_accepted": true,
+            "first_reject_class": "",
+            "render_reason": "accepted_first"
+          }
+        }
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 0,
+        "retrying_arm": "none, native_summary, pruner_v1",
+        "baseline_calls": 5,
+        "plugin_calls": 5,
+        "retry_labels": {
+          "none": {
+            "v24_retry_wording": "v24_length_compliance",
+            "v24_force_retry_wording": true,
+            "render_repair_calls": 1,
+            "first_attempt_accepted": false,
+            "first_reject_class": "over_160_chars",
+            "render_reason": "accepted_retry"
+          },
+          "native_summary": {
+            "v24_retry_wording": "v24_length_compliance",
+            "v24_force_retry_wording": true,
+            "render_repair_calls": 1,
+            "first_attempt_accepted": false,
+            "first_reject_class": "over_160_chars",
+            "render_reason": "accepted_retry"
+          },
+          "pruner_v1": {
+            "v24_retry_wording": "v24_length_compliance",
+            "v24_force_retry_wording": true,
+            "render_repair_calls": 1,
+            "first_attempt_accepted": false,
+            "first_reject_class": "over_160_chars",
+            "render_reason": "accepted_retry"
+          }
+        }
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 1,
+        "retrying_arm": "none, native_summary",
+        "baseline_calls": 5,
+        "plugin_calls": 4,
+        "retry_labels": {
+          "none": {
+            "v24_retry_wording": "v24_length_compliance",
+            "v24_force_retry_wording": true,
+            "render_repair_calls": 1,
+            "first_attempt_accepted": false,
+            "first_reject_class": "over_160_chars",
+            "render_reason": "accepted_retry"
+          },
+          "native_summary": {
+            "v24_retry_wording": "v24_length_compliance",
+            "v24_force_retry_wording": true,
+            "render_repair_calls": 1,
+            "first_attempt_accepted": false,
+            "first_reject_class": "over_160_chars",
+            "render_reason": "accepted_retry"
+          },
+          "pruner_v1": {
+            "v24_retry_wording": "not_used_first_attempt_accepted",
+            "v24_force_retry_wording": false,
+            "render_repair_calls": 0,
+            "first_attempt_accepted": true,
+            "first_reject_class": "",
+            "render_reason": "accepted_first"
+          }
+        }
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 2,
+        "retrying_arm": "none, native_summary",
+        "baseline_calls": 5,
+        "plugin_calls": 4,
+        "retry_labels": {
+          "none": {
+            "v24_retry_wording": "v24_length_compliance",
+            "v24_force_retry_wording": true,
+            "render_repair_calls": 1,
+            "first_attempt_accepted": false,
+            "first_reject_class": "over_160_chars",
+            "render_reason": "accepted_retry"
+          },
+          "native_summary": {
+            "v24_retry_wording": "v24_length_compliance",
+            "v24_force_retry_wording": true,
+            "render_repair_calls": 1,
+            "first_attempt_accepted": false,
+            "first_reject_class": "over_160_chars",
+            "render_reason": "accepted_retry"
+          },
+          "pruner_v1": {
+            "v24_retry_wording": "not_used_first_attempt_accepted",
+            "v24_force_retry_wording": false,
+            "render_repair_calls": 0,
+            "first_attempt_accepted": true,
+            "first_reject_class": "",
+            "render_reason": "accepted_first"
+          }
+        }
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 3,
+        "retrying_arm": "none, native_summary",
+        "baseline_calls": 5,
+        "plugin_calls": 4,
+        "retry_labels": {
+          "none": {
+            "v24_retry_wording": "v24_length_compliance",
+            "v24_force_retry_wording": true,
+            "render_repair_calls": 1,
+            "first_attempt_accepted": false,
+            "first_reject_class": "over_160_chars",
+            "render_reason": "accepted_retry"
+          },
+          "native_summary": {
+            "v24_retry_wording": "v24_length_compliance",
+            "v24_force_retry_wording": true,
+            "render_repair_calls": 1,
+            "first_attempt_accepted": false,
+            "first_reject_class": "over_160_chars",
+            "render_reason": "accepted_retry"
+          },
+          "pruner_v1": {
+            "v24_retry_wording": "not_used_first_attempt_accepted",
+            "v24_force_retry_wording": false,
+            "render_repair_calls": 0,
+            "first_attempt_accepted": true,
+            "first_reject_class": "",
+            "render_reason": "accepted_first"
+          }
+        }
+      },
+      {
+        "task": "query_utils_unregister_lookup",
+        "repeat": 4,
+        "retrying_arm": "none, native_summary",
+        "baseline_calls": 5,
+        "plugin_calls": 4,
+        "retry_labels": {
+          "none": {
+            "v24_retry_wording": "v24_length_compliance",
+            "v24_force_retry_wording": true,
+            "render_repair_calls": 1,
+            "first_attempt_accepted": false,
+            "first_reject_class": "over_160_chars",
+            "render_reason": "accepted_retry"
+          },
+          "native_summary": {
+            "v24_retry_wording": "v24_length_compliance",
+            "v24_force_retry_wording": true,
+            "render_repair_calls": 1,
+            "first_attempt_accepted": false,
+            "first_reject_class": "over_160_chars",
+            "render_reason": "accepted_retry"
+          },
+          "pruner_v1": {
+            "v24_retry_wording": "not_used_first_attempt_accepted",
+            "v24_force_retry_wording": false,
+            "render_repair_calls": 0,
+            "first_attempt_accepted": true,
+            "first_reject_class": "",
+            "render_reason": "accepted_first"
+          }
+        }
+      }
+    ],
+    "mechanism_per_task": {
+      "autoreload_template_changed": {
+        "v21_outputs_considered": 30,
+        "v21_outputs_elided": 5,
+        "v21_lines_elided": 10,
+        "v21_bytes_saved": 590,
+        "v21_literal_guard_fallbacks": 0,
+        "v21_note_bytes": 100
+      },
+      "sitemap_callable_lastmod": {
+        "v21_outputs_considered": 30,
+        "v21_outputs_elided": 15,
+        "v21_lines_elided": 175,
+        "v21_bytes_saved": 7510,
+        "v21_literal_guard_fallbacks": 0,
+        "v21_note_bytes": 735
+      },
+      "query_utils_unregister_lookup": {
+        "v21_outputs_considered": 30,
+        "v21_outputs_elided": 10,
+        "v21_lines_elided": 10,
+        "v21_bytes_saved": 360,
+        "v21_literal_guard_fallbacks": 0,
+        "v21_note_bytes": 200
+      }
+    },
+    "mechanism_determinism_per_task": {
+      "autoreload_template_changed": {
+        "per_repeat_bytes_saved": [
+          118,
+          118,
+          118,
+          118,
+          118
+        ],
+        "per_repeat_outputs_elided": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "per_repeat_lines_elided": [
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "per_repeat_note_bytes": [
+          20,
+          20,
+          20,
+          20,
+          20
+        ],
+        "bytes_saved_identical_across_repeats": true
+      },
+      "sitemap_callable_lastmod": {
+        "per_repeat_bytes_saved": [
+          1502,
+          1502,
+          1502,
+          1502,
+          1502
+        ],
+        "per_repeat_outputs_elided": [
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "per_repeat_lines_elided": [
+          35,
+          35,
+          35,
+          35,
+          35
+        ],
+        "per_repeat_note_bytes": [
+          147,
+          147,
+          147,
+          147,
+          147
+        ],
+        "bytes_saved_identical_across_repeats": true
+      },
+      "query_utils_unregister_lookup": {
+        "per_repeat_bytes_saved": [
+          72,
+          72,
+          72,
+          72,
+          72
+        ],
+        "per_repeat_outputs_elided": [
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "per_repeat_lines_elided": [
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "per_repeat_note_bytes": [
+          40,
+          40,
+          40,
+          40,
+          40
+        ],
+        "bytes_saved_identical_across_repeats": true
+      }
+    },
+    "guard_fallbacks_total": 0,
+    "defect_view_round_disclosure": {
+      "autoreload_template_changed": {
+        "instance_id": "django__django-15572",
+        "defect_view_round": 3,
+        "defect_symbol": "template_changed",
+        "defect_file": "django/template/autoreload.py",
+        "defect_range": [
+          47,
+          54
+        ],
+        "is_the_newest_tool_group": true,
+        "consequence": "the defect view is the last read, so the mechanism keeps that tool group verbatim on every later model input; its literals are never at risk and no saving may be attributed to it",
+        "reported_as": "an explanatory fact of the task shape, disclosed before the batch and not claimed as a merit of the mechanism"
+      },
+      "sitemap_callable_lastmod": {
+        "instance_id": "django__django-16255",
+        "defect_view_round": 1,
+        "defect_symbol": "get_latest_lastmod",
+        "defect_file": "django/contrib/sitemaps/__init__.py",
+        "defect_range": [
+          165,
+          174
+        ],
+        "is_the_newest_tool_group": false,
+        "consequence": "the defect view is the first read, so it is elidable content on later model inputs under the literal invariant",
+        "reported_as": "an explanatory fact of the task shape, disclosed before the batch and not claimed as a merit of the mechanism"
+      },
+      "query_utils_unregister_lookup": {
+        "instance_id": "django__django-15569",
+        "defect_view_round": 1,
+        "defect_symbol": "_unregister_lookup",
+        "defect_file": "django/db/models/query_utils.py",
+        "defect_range": [
+          211,
+          219
+        ],
+        "is_the_newest_tool_group": false,
+        "consequence": "the defect view is the first read, so it is elidable content on later model inputs under the literal invariant",
+        "reported_as": "an explanatory fact of the task shape, disclosed before the batch and not claimed as a merit of the mechanism"
+      }
+    },
+    "requests": {
+      "requests": 211,
+      "model_calls": 206,
+      "summary_calls": 5,
+      "repair_retries": 26,
+      "cap": 390,
+      "identity": "211 = 206 + 5",
+      "cap_not_reached": true
+    },
+    "cost": {
+      "prices": {
+        "source": "integrations/openai_agents/V16_CACHE_METERING_AND_COST_20261006.json",
+        "input_cache_miss_usd_per_million": 0.15,
+        "input_cache_hit_usd_per_million": 0.003,
+        "output_usd_per_million": 0.6,
+        "off_peak_multiplier": 0.5,
+        "read_from_the_table": true
+      },
+      "multiplier_applied": 0.5,
+      "all_calls_off_peak": true,
+      "per_arm_usd": {
+        "none": 0.002067,
+        "native_summary": 0.002157,
+        "pruner_v1": 0.001927
+      },
+      "batch_total_usd": 0.006151
+    },
+    "cache": {
+      "calls": 206,
+      "calls_with_cache_fields": 206,
+      "calls_without_cache_fields": 0,
+      "prompt_cache_hit_tokens_total": 384753,
+      "prompt_cache_miss_tokens_total": 45859,
+      "all_calls_off_peak": true
+    }
+  },
+  "side_by_side_with_the_v16_sealed_batch": {
+    "v16_sealed_paired_mean_percent": "12.54",
+    "v16_number_read_from": "integrations/openai_agents/V16_SEALED_CONFIRMATION_CITATION_RECORD_20261006.json",
+    "this_batch_pooled_mean_percent": 7.1042,
+    "rule": "reported side by side and never merged and never pooled: the two batches differ in host configuration, in mechanism and in task set, and this batch's number is citable only under this host configuration and only for the mechanism it names",
+    "v22_v23_v24_recalibration_numbers": "the v22, v23 and v24 recalibration numbers are not citable anywhere in this report and are not used to support it; the recalibration appears only as the amendment's own measurement of the retry, alongside this batch's own retry count"
+  },
+  "calibration_context": {
+    "batch": "integrations/openai_agents/V24_RECALIBRATION_REPORT_20261010.json",
+    "sha256": "31fca62f20665b9f3fe3c7aece55bf8f31c6f5d5abcfded76caab93d9719c982",
+    "first_attempt_acceptance": 0.4444,
+    "per_arm_first_attempt_acceptance": {
+      "none": 0.3333,
+      "native_summary": 0.3333,
+      "pruner_v1": 0.6667
+    },
+    "citable": false,
+    "rule": "the recalibration's numbers are context for this batch and are never citable and never pooled with it; the amendment's own measurement of five of five retry recoveries comes from that batch and is disclosed as such"
+  },
+  "audit_outcome": {
+    "complete": true,
+    "errors": [],
+    "warnings": [],
+    "usable_as_saving": true
+  },
+  "cannot_show": [
+    "it cannot show a general result across hosts, models or configurations: it is one host configuration, one mechanism at one window, and three tasks",
+    "it cannot separate the window K's contribution from the mechanism's, because this batch runs at one window only; the dose was measured on the development tasks",
+    "it cannot attribute the saving to the mechanism alone where the plugin arm's trajectory differs from the baseline's; that is why the symmetric matched-prefix reading is reported beside the primary one",
+    "it cannot establish anything about the two tasks whose defect view is the first read beyond what the literal invariant shows, and for the task whose defect view is the newest tool group that view was never at risk of elision at all",
+    "it cannot make the v16 sealed batch's 12.54 percent comparable: the two are reported side by side and are never merged",
+    "it cannot rule out that a different sample size would move the pooled mean: five repeats per task is what the freeze pre-registered",
+    "it cannot claim the 70 percent first-attempt line the recalibration set and missed: that line was replaced as the gate by the amendment, and this batch reports its own first-attempt rate as measured",
+    "it cannot show that the mechanism is safe on content whose only carrier is a line that is not a registered literal: the elision is guarantee-preserving per the literal invariant, not per free text"
+  ],
+  "wording": {
+    "required": "under this host configuration",
+    "forbidden": [
+      "compression alone saved X percent",
+      "the four criteria are met",
+      "the retry tax is gone",
+      "the plugin saves about 12.5 percent of context"
+    ],
+    "checked": "the report text contains the required wording and none of the forbidden phrases",
+    "scan_excludes_the_list_itself": true,
+    "forbidden_phrases_found_in_the_report_text": []
+  },
+  "citable": false
+}

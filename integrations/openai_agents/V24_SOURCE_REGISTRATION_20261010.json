@@ -1,0 +1,611 @@
+{
+  "schema": "openai_agents_v24_source_registration",
+  "registration_id": "V24-LENGTH-COMPLIANCE-01",
+  "date": "20261010",
+  "generated_utc": "2026-10-10T18:13:27+00:00",
+  "status": "REGISTERED",
+  "status_note": "the registration stands, but the round stopped before the confirmation batch: the recalibration failed its decision line, so the confirmation batch was NOT run and no paid request was sent for it",
+  "written_before_any_paid_request": true,
+  "api_requests_spent_when_written": 0,
+  "produced_by": "experiments/runners/run_openai_agents_v24_length_compliance_k1.py",
+  "plan": {
+    "path": "integrations/openai_agents/V24_LENGTH_COMPLIANCE_FIX_PLAN_20261010.json",
+    "sha256": "e52d57836917f3b679545cab3b059e64a078f6b069b769e9f6fbf54b52354291",
+    "decided_by": "integrator"
+  },
+  "diagnosis": {
+    "path": "integrations/openai_agents/V24_LENGTH_COMPLIANCE_DIAGNOSIS_20261010.json",
+    "sha256": "50d49d14e1d59db6190913c84540dee38ad409c1c36262872aa320b621cc7bfe",
+    "conclusion": "a first-answer length-compliance failure",
+    "raw_answer_text_available": false
+  },
+  "task_data_provenance": {
+    "path": "integrations/openai_agents/V18_SOURCE_REGISTRATION_20261010.json",
+    "sha256": "bea2648878c3b9299f63be45348dadf810b653bf644bd706995c6fef606b5c14",
+    "rule": "the task data of this registration is that artifact's, byte for byte; this artifact re-registers the same three tasks for this batch's configuration and does not re-derive, re-cut or re-verify a view",
+    "task_ids": [
+      "autoreload_template_changed",
+      "sitemap_callable_lastmod",
+      "query_utils_unregister_lookup"
+    ],
+    "view_shape": {
+      "views_per_task": 3,
+      "rounds": 3,
+      "reads_per_round": 1,
+      "read_calls": 3,
+      "max_view_lines": 60,
+      "pairwise_disjoint": true,
+      "note": "the registry is pointed at this artifact in its sealed mode, so the registered task table of this batch is exactly the three tasks above: the stage-1 development task the registry appends in development mode is not part of this matrix"
+    }
+  },
+  "registered_task_ids": [
+    "autoreload_template_changed",
+    "sitemap_callable_lastmod",
+    "query_utils_unregister_lookup"
+  ],
+  "registered_task_count": 3,
+  "per_task": {
+    "autoreload_template_changed": {
+      "instance_id": "django__django-15572",
+      "base_commit": "0b31e024873681e187b574fe1c4afe5e48aeeecf",
+      "contract": {
+        "issue_value": "django-15572",
+        "required_facts": [
+          "template_changed",
+          "template_dir",
+          "file_path"
+        ],
+        "cause_token": "template_changed",
+        "fix_token": "template_dir",
+        "frozen_regex": "RESULT issue=django-15572 cause=.*template_changed.* fix=.*template_dir.*",
+        "max_answer_chars": 160
+      },
+      "cause_token": "template_changed",
+      "fix_token": "template_dir",
+      "required_facts": [
+        "template_changed",
+        "template_dir",
+        "file_path"
+      ],
+      "frozen_regex": "RESULT issue=django-15572 cause=.*template_changed.* fix=.*template_dir.*",
+      "minimal_feasible_line": {
+        "task_id": "autoreload_template_changed",
+        "line": "RESULT issue=django-15572 cause=template_changed file_path fix=template_dir",
+        "chars": 75,
+        "margin_to_bound": 85,
+        "problems": []
+      },
+      "request": "Diagnose why this baseline's autoreload watcher can raise on an empty string when the template directories are empty or absent. Read the loader reset helper, the watcher that listens for template changes and the signal handler that decides whether a template file changed, in that order; name the handler whose directory comparison is wrong and the parameter the fix must compare against the template directories.",
+      "problem_statement_sha256": "f9d1889009c44a56a4487dbf777c536841b4b30a2472ee1d1e30b75007f12aa3",
+      "protocol_steps": [
+        "Read one read-only tool in each of 3 rounds, in this order, and never read the same registered view twice: round 1: read_reset_loaders (django/template/autoreload.py 33-38); round 2: read_watch_for_template_changes (django/template/autoreload.py 41-44); round 3: read_template_changed (django/template/autoreload.py 47-54). That is 3 read calls over 3 distinct registered views.",
+        "Issue the single call of a round on its own turn, wait for its result, and only then start the next round. Do not issue two reads in the same turn and do not read a view twice.",
+        "After the last round, having issued all 3 reads, answer with the JSON object the request describes and call no more tools: the host renders your JSON into the single RESULT line."
+      ],
+      "views": [
+        {
+          "file": "django/template/autoreload.py",
+          "first_line": 33,
+          "last_line": 38,
+          "role": "context: the loader reset helper the watcher calls",
+          "view_content_sha256": "8a8c3306fd4826ee7bcb79bd2d81576a9398d7c4e4d97dc5e4ecc53070ff3b30"
+        },
+        {
+          "file": "django/template/autoreload.py",
+          "first_line": 41,
+          "last_line": 44,
+          "role": "context: the watcher that listens for template changes",
+          "view_content_sha256": "a7048f8eff2900ff0716c485c81e05c93bfb7740f8df6f1762214dd501c2604b"
+        },
+        {
+          "file": "django/template/autoreload.py",
+          "first_line": 47,
+          "last_line": 54,
+          "role": "cause: the signal handler whose directory comparison is wrong",
+          "view_content_sha256": "6004eaa977d560c3d5d34bebe0c0f03195d7780d9f6a4e6d5ddf8292b2cd119d"
+        }
+      ],
+      "length_discipline": {
+        "appended_to": "contract_prompt",
+        "text": " Length discipline: this is a hard rejection criterion, not a preference. The host accepts the answer only when the whole rendered line \"RESULT issue=<issue> cause=<cause> fix=<fix>\" is at most 160 characters, and when it is longer the host rejects the ENTIRE answer, so the answer is lost and the sample scores zero. Work to a target well below the bound: write cause and fix so that the two fields together come to about 120 characters or less, leaving room under the 160-character limit. Do not buy that room by dropping anything: every required string and both required technical names must still appear verbatim inside cause or fix, and an abbreviation, a shorter spelling or a summary of one of them does not count as the required string. Budget for this task: the issue value \"django-15572\" plus the fixed prefix \"RESULT issue=\" and the fixed markers \" cause=\" and \" fix=\" already take 37 characters of the 160, so everything you write in the cause and fix fields together must stay within 123 characters to be accepted.",
+        "sha256": "b77a349bb5fca5e86420a807e7d26028fa5ce89b6070591b35992febead53daa",
+        "chars": 1027,
+        "identical_for_every_arm": "the text is a function of the registered contract only: the arm is not an input of the function that builds it, and no arm rewrites the agent instructions, so all three arms receive these characters",
+        "arm_neutral": "the text is built from the registered contract only; no arm, no round and no filter can reach it, so every arm receives the same characters",
+        "arithmetic": {
+          "bound": 160,
+          "rendered_line_template": "RESULT issue={issue} cause={cause} fix={fix}",
+          "fixed_characters_of_the_rendered_line": 37,
+          "characters_left_for_cause_and_fix": 123,
+          "working_target_cause_plus_fix_chars": 120,
+          "working_target_leaves_spare_characters": 3
+        },
+        "what_it_states_that_the_previous_prompt_did_not": [
+          "that exceeding the bound makes the host reject the whole answer, so the answer is lost, rather than merely being undesirable",
+          "a concrete working target below the bound, in characters, for the two fields the rendered line is built from",
+          "the exact number of characters this task's own issue value and the fixed markers consume of the bound"
+        ],
+        "what_it_does_not_change": [
+          "the 160-character bound",
+          "the required literals, the cause and fix tokens and the frozen regex",
+          "the renderer, the retry budget and the two-sided diagnostic",
+          "the mechanism, the window K=1, the gate threshold and the read shape"
+        ]
+      },
+      "problems": [],
+      "contract_prompt_sha256": "afdd77a7f46840cece21b59be5a10326c1cc415551e982563d43819415f41a1c",
+      "fingerprint": "de1825cf67fae4c91f235553095deff98b742112639b42b97eb60591aa4e578a"
+    },
+    "sitemap_callable_lastmod": {
+      "instance_id": "django__django-16255",
+      "base_commit": "444b6da7cc229a58a2c476a52e45233001dc7073",
+      "contract": {
+        "issue_value": "django-16255",
+        "required_facts": [
+          "get_latest_lastmod",
+          "lastmod",
+          "items"
+        ],
+        "cause_token": "get_latest_lastmod",
+        "fix_token": "lastmod",
+        "frozen_regex": "RESULT issue=django-16255 cause=.*get_latest_lastmod.* fix=.*lastmod.*",
+        "max_answer_chars": 160
+      },
+      "cause_token": "get_latest_lastmod",
+      "fix_token": "lastmod",
+      "required_facts": [
+        "get_latest_lastmod",
+        "lastmod",
+        "items"
+      ],
+      "frozen_regex": "RESULT issue=django-16255 cause=.*get_latest_lastmod.* fix=.*lastmod.*",
+      "minimal_feasible_line": {
+        "task_id": "sitemap_callable_lastmod",
+        "line": "RESULT issue=django-16255 cause=get_latest_lastmod items fix=lastmod",
+        "chars": 68,
+        "margin_to_bound": 92,
+        "problems": []
+      },
+      "request": "Diagnose why this baseline's sitemap index can raise ValueError when a sitemap has no items and its lastmod is callable. Read the method that takes the latest lastmod over the sitemap's items, the method that builds the url list and the generic sitemap class that supplies the items, in that order; name the method whose maximum over an empty sequence raises and the keyword argument the fix must accept.",
+      "problem_statement_sha256": "2359a3443b4020179e535a3df289178a975a90472b1fb6c3c23adf85aee5c371",
+      "protocol_steps": [
+        "Read one read-only tool in each of 3 rounds, in this order, and never read the same registered view twice: round 1: read_get_latest_lastmod (django/contrib/sitemaps/__init__.py 165-174); round 2: read_urls (django/contrib/sitemaps/__init__.py 176-228); round 3: read_genericsitemap (django/contrib/sitemaps/__init__.py 231-258). That is 3 read calls over 3 distinct registered views.",
+        "Issue the single call of a round on its own turn, wait for its result, and only then start the next round. Do not issue two reads in the same turn and do not read a view twice.",
+        "After the last round, having issued all 3 reads, answer with the JSON object the request describes and call no more tools: the host renders your JSON into the single RESULT line."
+      ],
+      "views": [
+        {
+          "file": "django/contrib/sitemaps/__init__.py",
+          "first_line": 165,
+          "last_line": 174,
+          "role": "cause: the method whose maximum over an empty sequence raises",
+          "view_content_sha256": "2790d27bf5222fa7cae75776f626f9854541fc554ceb1a1992617496c5ecfec7"
+        },
+        {
+          "file": "django/contrib/sitemaps/__init__.py",
+          "first_line": 176,
+          "last_line": 228,
+          "role": "context: the method that builds the url list",
+          "view_content_sha256": "a77511f06fa27be36f2f9ce4afaee0a815a7c89c3b5d50ad98a2bc781117ffb3"
+        },
+        {
+          "file": "django/contrib/sitemaps/__init__.py",
+          "first_line": 231,
+          "last_line": 258,
+          "role": "context: the sitemap class that supplies the items",
+          "view_content_sha256": "987a710ba6535297611af14f538fccdc9db7c64b2376fd5a02fd2a67ba7440a0"
+        }
+      ],
+      "length_discipline": {
+        "appended_to": "contract_prompt",
+        "text": " Length discipline: this is a hard rejection criterion, not a preference. The host accepts the answer only when the whole rendered line \"RESULT issue=<issue> cause=<cause> fix=<fix>\" is at most 160 characters, and when it is longer the host rejects the ENTIRE answer, so the answer is lost and the sample scores zero. Work to a target well below the bound: write cause and fix so that the two fields together come to about 120 characters or less, leaving room under the 160-character limit. Do not buy that room by dropping anything: every required string and both required technical names must still appear verbatim inside cause or fix, and an abbreviation, a shorter spelling or a summary of one of them does not count as the required string. Budget for this task: the issue value \"django-16255\" plus the fixed prefix \"RESULT issue=\" and the fixed markers \" cause=\" and \" fix=\" already take 37 characters of the 160, so everything you write in the cause and fix fields together must stay within 123 characters to be accepted.",
+        "sha256": "21ae34ac2df66535c5357b10fe677025a90fce5ea71a078aac001c3cdc8a350f",
+        "chars": 1027,
+        "identical_for_every_arm": "the text is a function of the registered contract only: the arm is not an input of the function that builds it, and no arm rewrites the agent instructions, so all three arms receive these characters",
+        "arm_neutral": "the text is built from the registered contract only; no arm, no round and no filter can reach it, so every arm receives the same characters",
+        "arithmetic": {
+          "bound": 160,
+          "rendered_line_template": "RESULT issue={issue} cause={cause} fix={fix}",
+          "fixed_characters_of_the_rendered_line": 37,
+          "characters_left_for_cause_and_fix": 123,
+          "working_target_cause_plus_fix_chars": 120,
+          "working_target_leaves_spare_characters": 3
+        },
+        "what_it_states_that_the_previous_prompt_did_not": [
+          "that exceeding the bound makes the host reject the whole answer, so the answer is lost, rather than merely being undesirable",
+          "a concrete working target below the bound, in characters, for the two fields the rendered line is built from",
+          "the exact number of characters this task's own issue value and the fixed markers consume of the bound"
+        ],
+        "what_it_does_not_change": [
+          "the 160-character bound",
+          "the required literals, the cause and fix tokens and the frozen regex",
+          "the renderer, the retry budget and the two-sided diagnostic",
+          "the mechanism, the window K=1, the gate threshold and the read shape"
+        ]
+      },
+      "problems": [],
+      "contract_prompt_sha256": "f2a36f52ed90b629689592e6b19974e4a620322d3359eee7feb5f6f8516aa48f",
+      "fingerprint": "9137fa7f6409ac93921b94b156e06e8f10dc05e84ee78b7570aa5fdc3f1cf1e7"
+    },
+    "query_utils_unregister_lookup": {
+      "instance_id": "django__django-15569",
+      "base_commit": "884b4c27f506b3c29d58509fc83a35c30ea10d94",
+      "contract": {
+        "issue_value": "django-15569",
+        "required_facts": [
+          "_unregister_lookup",
+          "lookup_name",
+          "lookup"
+        ],
+        "cause_token": "_unregister_lookup",
+        "fix_token": "lookup_name",
+        "frozen_regex": "RESULT issue=django-15569 cause=.*_unregister_lookup.* fix=.*lookup_name.*",
+        "max_answer_chars": 160
+      },
+      "cause_token": "_unregister_lookup",
+      "fix_token": "lookup_name",
+      "required_facts": [
+        "_unregister_lookup",
+        "lookup_name",
+        "lookup"
+      ],
+      "frozen_regex": "RESULT issue=django-15569 cause=.*_unregister_lookup.* fix=.*lookup_name.*",
+      "minimal_feasible_line": {
+        "task_id": "query_utils_unregister_lookup",
+        "line": "RESULT issue=django-15569 cause=_unregister_lookup fix=lookup_name lookup",
+        "chars": 73,
+        "margin_to_bound": 87,
+        "problems": []
+      },
+      "request": "Diagnose why this baseline keeps serving a stale registered lookup after a lookup is unregistered. Read the method that unregisters one lookup from the registry, the function that descends a select_related chain and the function that resolves a references expression, in that order; name the method that leaves the cached lookups in place and the parameter that carries the name of the lookup it must clear.",
+      "problem_statement_sha256": "107938cd24f7bef580939d1998ce566f02fe292c37bcd14013c5f28ec5fb4f51",
+      "protocol_steps": [
+        "Read one read-only tool in each of 3 rounds, in this order, and never read the same registered view twice: round 1: read_unregister_lookup (django/db/models/query_utils.py 211-219); round 2: read_select_related_descend (django/db/models/query_utils.py 222-256); round 3: read_refs_expression (django/db/models/query_utils.py 259-269). That is 3 read calls over 3 distinct registered views.",
+        "Issue the single call of a round on its own turn, wait for its result, and only then start the next round. Do not issue two reads in the same turn and do not read a view twice.",
+        "After the last round, having issued all 3 reads, answer with the JSON object the request describes and call no more tools: the host renders your JSON into the single RESULT line."
+      ],
+      "views": [
+        {
+          "file": "django/db/models/query_utils.py",
+          "first_line": 211,
+          "last_line": 219,
+          "role": "cause: the method that leaves the cached lookups in place",
+          "view_content_sha256": "36d2a99571b1304093db5042d36f0b2ff508561906c2126af7d0d6cf779acc38"
+        },
+        {
+          "file": "django/db/models/query_utils.py",
+          "first_line": 222,
+          "last_line": 256,
+          "role": "context: the descent helper beside it",
+          "view_content_sha256": "528e959efbb513761e2f0fc58b250c12dbf0cc9de3965dae0629f2f5817783c9"
+        },
+        {
+          "file": "django/db/models/query_utils.py",
+          "first_line": 259,
+          "last_line": 269,
+          "role": "context: the references expression resolver",
+          "view_content_sha256": "7448849189e391ad586d0a3ecfbbd76d4e1fd390bc37ef07ce14da1f4a13b247"
+        }
+      ],
+      "length_discipline": {
+        "appended_to": "contract_prompt",
+        "text": " Length discipline: this is a hard rejection criterion, not a preference. The host accepts the answer only when the whole rendered line \"RESULT issue=<issue> cause=<cause> fix=<fix>\" is at most 160 characters, and when it is longer the host rejects the ENTIRE answer, so the answer is lost and the sample scores zero. Work to a target well below the bound: write cause and fix so that the two fields together come to about 120 characters or less, leaving room under the 160-character limit. Do not buy that room by dropping anything: every required string and both required technical names must still appear verbatim inside cause or fix, and an abbreviation, a shorter spelling or a summary of one of them does not count as the required string. Budget for this task: the issue value \"django-15569\" plus the fixed prefix \"RESULT issue=\" and the fixed markers \" cause=\" and \" fix=\" already take 37 characters of the 160, so everything you write in the cause and fix fields together must stay within 123 characters to be accepted.",
+        "sha256": "838f6388dc3fe3f5e427e9b1031735adb4314a89199221b948d3ba56c832140b",
+        "chars": 1027,
+        "identical_for_every_arm": "the text is a function of the registered contract only: the arm is not an input of the function that builds it, and no arm rewrites the agent instructions, so all three arms receive these characters",
+        "arm_neutral": "the text is built from the registered contract only; no arm, no round and no filter can reach it, so every arm receives the same characters",
+        "arithmetic": {
+          "bound": 160,
+          "rendered_line_template": "RESULT issue={issue} cause={cause} fix={fix}",
+          "fixed_characters_of_the_rendered_line": 37,
+          "characters_left_for_cause_and_fix": 123,
+          "working_target_cause_plus_fix_chars": 120,
+          "working_target_leaves_spare_characters": 3
+        },
+        "what_it_states_that_the_previous_prompt_did_not": [
+          "that exceeding the bound makes the host reject the whole answer, so the answer is lost, rather than merely being undesirable",
+          "a concrete working target below the bound, in characters, for the two fields the rendered line is built from",
+          "the exact number of characters this task's own issue value and the fixed markers consume of the bound"
+        ],
+        "what_it_does_not_change": [
+          "the 160-character bound",
+          "the required literals, the cause and fix tokens and the frozen regex",
+          "the renderer, the retry budget and the two-sided diagnostic",
+          "the mechanism, the window K=1, the gate threshold and the read shape"
+        ]
+      },
+      "problems": [],
+      "contract_prompt_sha256": "5497e785091a4fcaa65a835f521dbf19688272f8ee9f63ae405a46b6b4101885",
+      "fingerprint": "ea6875c097bcb52b2f1ad64ae6e40da94419e53f9de63f33595e0d238dcde89c"
+    }
+  },
+  "configuration": {
+    "schema": "openai_agents_v24_length_compliance_configuration",
+    "registry_fork": {
+      "schema": "openai_agents_v24_registry_fork",
+      "module": "experiments/runners/openai_agents_v24_registry.py",
+      "module_sha256": "ea4d4a18b088c3145ebe526b327efd00a7bede6926530d628a592ec73a5bd6fc",
+      "parent_module": "experiments/runners/openai_agents_v18_registry.py",
+      "parent_sha256": "04bc0ef41e78d15deafdaa568ab2094988d8b2068a13a2231e163164ebd4355f",
+      "parent_is_not_edited": true,
+      "registry_schema": "openai_agents_v24_registry",
+      "parent_registry_schema": "openai_agents_v18_registry",
+      "only_change": "the contract prompt of every task gains the length-discipline text below; the tasks, views, ranges, blob ids, view hashes, literals, frozen regexes, registered requests, protocol steps, cause and fix tokens, the 160-character bound and the renderer are unchanged",
+      "length_discipline_texts": [
+        " Length discipline: this is a hard rejection criterion, not a preference. The host accepts the answer only when the whole rendered line \"RESULT issue=<issue> cause=<cause> fix=<fix>\" is at most 160 characters, and when it is longer the host rejects the ENTIRE answer, so the answer is lost and the sample scores zero. Work to a target well below the bound: write cause and fix so that the two fields together come to about 120 characters or less, leaving room under the 160-character limit. Do not buy that room by dropping anything: every required string and both required technical names must still appear verbatim inside cause or fix, and an abbreviation, a shorter spelling or a summary of one of them does not count as the required string.",
+        " Budget for this task: the issue value \"{issue}\" plus the fixed prefix \"RESULT issue=\" and the fixed markers \" cause=\" and \" fix=\" already take {fixed} characters of the 160, so everything you write in the cause and fix fields together must stay within {headroom} characters to be accepted."
+      ],
+      "length_discipline_sentence_sha256": "10d3f77a6f23dbd8d7d67b5757338f15fa52961be30093150fd67b3ffe05334a",
+      "budget_sentence_template_sha256": "1a4396d9839c5f12d099f4d654f47851525402bcc0da707f3778662106c7d6e4",
+      "working_target_cause_plus_fix_chars": 120,
+      "bound": 160
+    },
+    "live_contract_fork": {
+      "schema": "openai_agents_v24_live_contract_fork",
+      "module": "experiments/runners/openai_agents_v24_live_contract.py",
+      "module_sha256": "2cd3faafccc5766d6e0857ba87c25211ac83f7c65fa8556db829ec0a9d87c668",
+      "parent_module": "experiments/runners/openai_agents_v17_live_contract.py",
+      "parent_sha256": "b5be9165c8845579491e5541380f5f0766f97df77dfb933a12b26a1a1e3e1ca3",
+      "parent_is_not_edited": true,
+      "rebound_names": [
+        "RETRY_INSTRUCTION",
+        "DIAGNOSTIC_TEXT",
+        "diagnostic_for",
+        "V24StructuredFinalModel",
+        "structured_wiring"
+      ],
+      "deliberately_different": {
+        "retry_instruction": true,
+        "over_160_diagnostic_text": true,
+        "diagnostic_for_class_table": "the class text is read from this module's table",
+        "get_response": true,
+        "structured_wiring": true,
+        "model_class": true
+      },
+      "deliberately_identical": {
+        "structured_instruction": true,
+        "prompt_replacements": true,
+        "renderer_module": true,
+        "retry_budget_per_sample": true,
+        "max_chars": true,
+        "structured_schema": true,
+        "diagnostic_marker": true,
+        "other_rejection_classes": true,
+        "conditions_are_the_v17_function": true,
+        "render_report_is_the_v17_function": true,
+        "self_test_shape": true
+      },
+      "get_response_is_the_parent_method_token_for_token": false,
+      "get_response_token_difference": {
+        "parent_tokens": 917,
+        "own_tokens": 917,
+        "only_difference": "one identifier: the retry message's template is built from the module constant ``instruction`` instead of ``RETRY_INSTRUCTION``; ``instruction`` is this module's retry instruction for a rejection whose class is strengthened and the parent's untouched instruction for every other class",
+        "verified_one_identifier_apart": true
+      },
+      "get_response_lines_that_are_not_in_the_parent": [
+        "        before = _v17._attempts(self.inner)",
+        "            \"first_candidate_line\": _v17.candidate_line(raw, expected_issue=self.expected_issue),",
+        "            \"first_declared_facts\": _v17.declared_facts(raw),",
+        "                if fact",
+        "                not in _v17.candidate_line(raw, expected_issue=self.expected_issue)",
+        "            \"retry_wording\": \"not_used_first_attempt_accepted\",",
+        "            \"retry_instruction_sha256\": \"\",",
+        "            \"force_retry_wording\": False,",
+        "            entry[_v17._render_into_response_flag()] = _v17._render_into_response(",
+        "                first, first_verdict.output",
+        "        forced = first_verdict.reason in STRENGTHENED_REASONS",
+        "        instruction = RETRY_INSTRUCTION if forced else _v17.RETRY_INSTRUCTION",
+        "        entry[\"retry_wording\"] = \"v24_length_compliance\" if forced else \"v17_unchanged\"",
+        "        entry[\"force_retry_wording\"] = bool(forced)",
+        "        entry[\"retry_instruction\"] = instruction",
+        "        entry[\"retry_instruction_sha256\"] = hashlib.sha256(",
+        "            instruction.encode(\"utf-8\")",
+        "        ).hexdigest()",
+        "            {\"role\": \"user\", \"content\": f\"{instruction}\\n{diagnostic}\"},",
+        "        entry[\"repair_input_sha256\"] = _v17._sha(",
+        "            [",
+        "                item if isinstance(item, (str, int, float, bool, type(None))) else str(item)",
+        "                for item in repair_input",
+        "            ]",
+        "        before_retry = _v17._attempts(self.inner)",
+        "            entry[_v17._render_into_response_flag()] = _v17._render_into_response(first, \"\")",
+        "            entry[_v17._render_into_response_flag()] = _v17._render_into_response(",
+        "                second, revised_verdict.output",
+        "        entry[_v17._render_into_response_flag()] = _v17._render_into_response(first, \"\")"
+      ],
+      "get_response_declared_additions": 12,
+      "diagnostic_for_additions": [
+        "    Copied from ``openai_agent_v17_live_contract.diagnostic_for`` with one substitution, marked",
+        "    in-line: the class-specific text is looked up in *this* module's ``DIAGNOSTIC_TEXT``, so the",
+        "    over-length class carries the compact target.  Everything else - the two-sided tail with the",
+        "    bound, the required strings, the cause and fix tokens and the shortening rules - is the v17",
+        "    code, so both sides of the trade-off are still delivered for every class.",
+        "    missing = _v17.missing_declared_facts(raw, expected_issue=expected_issue)"
+      ],
+      "wiring_additions_are_the_postcondition": true
+    },
+    "arm_neutrality": {
+      "first_prompt": {
+        "where": "the registry's contract prompt, which the frozen runner passes to every arm as the case's final_contract",
+        "evidence": {
+          "arms": [
+            "none",
+            "native_summary",
+            "pruner_v1"
+          ],
+          "contract_prompt_sha256_by_arm_and_task": {
+            "none": {
+              "autoreload_template_changed": "afdd77a7f46840cece21b59be5a10326c1cc415551e982563d43819415f41a1c",
+              "sitemap_callable_lastmod": "f2a36f52ed90b629689592e6b19974e4a620322d3359eee7feb5f6f8516aa48f",
+              "query_utils_unregister_lookup": "5497e785091a4fcaa65a835f521dbf19688272f8ee9f63ae405a46b6b4101885"
+            },
+            "native_summary": {
+              "autoreload_template_changed": "afdd77a7f46840cece21b59be5a10326c1cc415551e982563d43819415f41a1c",
+              "sitemap_callable_lastmod": "f2a36f52ed90b629689592e6b19974e4a620322d3359eee7feb5f6f8516aa48f",
+              "query_utils_unregister_lookup": "5497e785091a4fcaa65a835f521dbf19688272f8ee9f63ae405a46b6b4101885"
+            },
+            "pruner_v1": {
+              "autoreload_template_changed": "afdd77a7f46840cece21b59be5a10326c1cc415551e982563d43819415f41a1c",
+              "sitemap_callable_lastmod": "f2a36f52ed90b629689592e6b19974e4a620322d3359eee7feb5f6f8516aa48f",
+              "query_utils_unregister_lookup": "5497e785091a4fcaa65a835f521dbf19688272f8ee9f63ae405a46b6b4101885"
+            }
+          },
+          "the_contract_prompt_is_one_digest_per_task_across_all_three_arms": true,
+          "arm_is_not_an_input_of_the_prompt": true,
+          "fixed_instruction_sentence_still_present_in_the_frozen_runner": false
+        },
+        "sentence": " Length discipline: this is a hard rejection criterion, not a preference. The host accepts the answer only when the whole rendered line \"RESULT issue=<issue> cause=<cause> fix=<fix>\" is at most 160 characters, and when it is longer the host rejects the ENTIRE answer, so the answer is lost and the sample scores zero. Work to a target well below the bound: write cause and fix so that the two fields together come to about 120 characters or less, leaving room under the 160-character limit. Do not buy that room by dropping anything: every required string and both required technical names must still appear verbatim inside cause or fix, and an abbreviation, a shorter spelling or a summary of one of them does not count as the required string.",
+        "sentence_sha256": "10d3f77a6f23dbd8d7d67b5757338f15fa52961be30093150fd67b3ffe05334a",
+        "budget_sentence_template": " Budget for this task: the issue value \"{issue}\" plus the fixed prefix \"RESULT issue=\" and the fixed markers \" cause=\" and \" fix=\" already take {fixed} characters of the 160, so everything you write in the cause and fix fields together must stay within {headroom} characters to be accepted.",
+        "why_it_cannot_vary_by_arm": "the arm is a property of the model input filter; it is not an argument of the function that builds the contract prompt, and no code path in this batch rewrites the agent instructions after they are assembled"
+      },
+      "retry": {
+        "where": "the v24 live contract's RETRY_INSTRUCTION and its over_160_chars diagnostic",
+        "evidence": {
+          "schema": "openai_agents_v24_live_contract_fork",
+          "parent_module": "experiments/runners/openai_agents_v17_live_contract.py",
+          "retry_budget_per_sample": 1,
+          "max_answer_chars": 160,
+          "renderer_module": "experiments/runners/openai_agents_structured_final_v16.py",
+          "strengthened_reasons": [
+            "over_160_chars"
+          ],
+          "retry_instruction": "Rewrite only your preceding JSON answer. Keep the same issue, the same cause, the same fix and the same fact strings. Reply with the same JSON object shape (issue, cause, fix, facts) and nothing else: no explanation, no commentary, no markdown, no text before or after the object. Do not call tools. If the host rejected the answer, its exact reason follows and your rewrite must fix it. Work to a compact target: write cause and fix so that the two fields together come to about 120 characters or less.",
+          "retry_instruction_chars": 503,
+          "retry_instruction_sha256": "436f2848a1574e318c637ff55f4fce25d50a0f2517aa877604a31891e36098d4",
+          "v17_retry_instruction": "Rewrite only your preceding JSON answer. Keep the same issue, the same cause, the same fix and the same fact strings. Reply with the same JSON object shape (issue, cause, fix, facts) and nothing else. Do not call tools. If the host rejected the answer, its exact reason follows and your rewrite must fix it.",
+          "v17_retry_instruction_sha256": "d47b2922c4e2b94819ebaf79888391208566cd7221569034abcd0e486f4537d9",
+          "working_target_cause_plus_fix_chars": 120,
+          "over_160_diagnostic": "the host rejected your previous JSON: over_160_chars. the rendered line 'RESULT issue=... cause=... fix=...' exceeded 160 characters. Shorten \"cause\" and \"fix\" while keeping every fact string and every required technical name. Reply with the JSON object only and nothing else, with no explanation around it. The length of the cause and fix fields together is what pushes the rendered line past the 160-character limit, so as a target write the two fields to come to about 120 characters or less in total; that leaves the rendered line comfortably inside the bound. The limit is enforced by the host on the whole rendered line, so an answer over it is rejected entirely. The rendered line must stay within 160 characters. These strings must still appear verbatim in it: '__hash__', '__eq__', 'creation_counter'. The cause field must still contain '__hash__'. The fix field must still contain 'creation_counter'. Keep the answer as short as the required strings allow: drop explanations, restatements and repeated names, and never state the same fact twice. Remove wording, not requirements: a shorter line that loses a required string is rejected as well.",
+          "over_160_diagnostic_chars": 1154,
+          "over_160_diagnostic_sha256": "84bf98e3723eb975bd620366ec86dd10693488ff8ed8c19899532cc227928c70",
+          "v17_over_160_diagnostic_sha256": "7e2c5e4ee6c1f2c3aaa17bd138c6b2c736acb246d5605494b4d769b3cc857caa",
+          "the_v17_over_160_text_is_kept_whole": true,
+          "every_class_but_over_160_is_byte_identical_to_v17": true,
+          "the_retry_instruction_states_the_json_only_rule": true,
+          "the_retry_instruction_states_a_compact_target": true,
+          "two_sided_requirements": {
+            "statements": [
+              "The rendered line must stay within 160 characters.",
+              "These strings must still appear verbatim in it:",
+              "The cause field must still contain",
+              "The fix field must still contain"
+            ],
+            "the_over_160_retry_states_all_of_them": true,
+            "detail": {
+              "facts_named": [
+                "__hash__",
+                "__eq__",
+                "creation_counter"
+              ],
+              "bound_named": true,
+              "cause_token_named": true,
+              "fix_token_named": true,
+              "explanation_ban_named": true,
+              "drop_explanations_rule_kept": true,
+              "never_state_the_same_fact_twice_kept": true,
+              "remove_wording_not_requirements_kept": true
+            }
+          },
+          "what_did_not_change": [
+            "the renderer and its 160-character bound",
+            "the four conditions",
+            "the retry budget of one metered request per sample",
+            "the two-sided diagnostic for every class",
+            "the ledger fields, the metering, the cache accounting and the prompt adaptation",
+            "the stub controls"
+          ]
+        },
+        "why_it_cannot_vary_by_arm": "both are module constants of the live contract; every sample of every arm runs through the same StructuredFinalModel subclass, which reads them from the module, and no arm supplies a different one"
+      }
+    },
+    "what_is_unchanged": [
+      "the 160-character bound stays an acceptance condition of the strict track",
+      "the literal rule R1 to R7",
+      "the required literals of all three tasks",
+      "the frozen regexes",
+      "the renderer module, imported unchanged",
+      "the read shape: 3 rounds, one disjoint view per round, K=1",
+      "the trigger gate and its threshold",
+      "the retry budget of one metered request per sample",
+      "the two-sided diagnostic"
+    ],
+    "what_changed": [
+      "the registry's contract prompt gains one length-discipline text, appended after the existing sentences",
+      "the live contract's over_160_chars retry wording gains the JSON-only rule, the compact target and the repetition of the bound, and keeps every sentence it had"
+    ],
+    "carried_from_a_void_batch": {
+      "prior_batch": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v23-v18-sealed-window-k1-01",
+      "prior_configuration": "V18-SEALED-WINDOW-K1-01",
+      "prior_outcome": "stopped at 39 of 45 samples",
+      "prior_failure": "the three sealed tasks are the same three tasks, and under the v23 configuration task django-15572 (autoreload_template_changed) failed rendering on all fifteen of its samples across all three arms; the batch reached 39 of its 45 samples before the hard stop",
+      "this_batch_is_the_second_run_of_the_same_task_set": true,
+      "under_this_configuration": "v24 length-compliant prompt",
+      "task_set_exhaustion": "after this batch the three-task set is exhausted: it is never run again and never replaced by another id",
+      "prior_batch_is_not_citable": true,
+      "no_number_from_the_prior_batch_is_used_here": true,
+      "prior_audit": "the independent audit of the stopped batch returned complete=false, usable_as_saving=false and fifteen errors, so no number from it is cited anywhere",
+      "diagnosis_path": "integrations/openai_agents/V24_LENGTH_COMPLIANCE_DIAGNOSIS_20261010.json",
+      "diagnosis_conclusion": "the failure was a first-answer length-compliance failure rather than a contract that forces a long answer",
+      "the_prompt_change_is_the_repair": "the configuration change raises first-answer compliance for every task and every arm, so no task's evidence bar was lowered and no task was dropped after being seen to fail"
+    }
+  },
+  "matrix": {
+    "tasks": [
+      "autoreload_template_changed",
+      "sitemap_callable_lastmod",
+      "query_utils_unregister_lookup"
+    ],
+    "arms": [
+      "none",
+      "native_summary",
+      "pruner_v1"
+    ],
+    "repeats": 5,
+    "samples": 45,
+    "k": 1,
+    "read_shape": "N3",
+    "max_api_requests": 390
+  },
+  "prior_batch_disclosure": {
+    "prior_batch": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v23-v18-sealed-window-k1-01",
+    "prior_configuration": "V18-SEALED-WINDOW-K1-01",
+    "prior_outcome": "stopped at 39 of 45 samples",
+    "prior_failure": "the three sealed tasks are the same three tasks, and under the v23 configuration task django-15572 (autoreload_template_changed) failed rendering on all fifteen of its samples across all three arms; the batch reached 39 of its 45 samples before the hard stop",
+    "this_batch_is_the_second_run_of_the_same_task_set": true,
+    "under_this_configuration": "v24 length-compliant prompt",
+    "task_set_exhaustion": "after this batch the three-task set is exhausted: it is never run again and never replaced by another id",
+    "prior_batch_is_not_citable": true,
+    "no_number_from_the_prior_batch_is_used_here": true,
+    "prior_audit": "the independent audit of the stopped batch returned complete=false, usable_as_saving=false and fifteen errors, so no number from it is cited anywhere",
+    "diagnosis_path": "integrations/openai_agents/V24_LENGTH_COMPLIANCE_DIAGNOSIS_20261010.json",
+    "diagnosis_conclusion": "the failure was a first-answer length-compliance failure rather than a contract that forces a long answer",
+    "the_prompt_change_is_the_repair": "the configuration change raises first-answer compliance for every task and every arm, so no task's evidence bar was lowered and no task was dropped after being seen to fail"
+  },
+  "task_set_is_exhausted_after_this_batch": true,
+  "citable_as_saving": false,
+  "citable_as_quality_equivalence": false,
+  "not_evidence_yet": "this registration carries no result; the batch's numbers exist only if the gate passes, the batch runs and the independent audit accepts it",
+  "corrections": [
+    {
+      "corrected_utc": "2026-10-10T18:33:58+00:00",
+      "paid_requests_spent_before_the_correction": 0,
+      "why": "the two referenced artifacts were revised before any paid request of this batch: the diagnosis was regenerated to record that the stopped batch does not retain the model's raw answer text, and the plan gained an execution footnote recording that the recalibration failed its decision line; the digests are corrected here rather than left stale",
+      "corrections": [
+        {
+          "field": "plan",
+          "path": "integrations/openai_agents/V24_LENGTH_COMPLIANCE_FIX_PLAN_20261010.json",
+          "recorded_sha256": "ab991ebc02af706a07583c10051e7db5ad2af5590dcd62b951583868c240c75c",
+          "current_sha256": "e52d57836917f3b679545cab3b059e64a078f6b069b769e9f6fbf54b52354291"
+        },
+        {
+          "field": "diagnosis",
+          "path": "integrations/openai_agents/V24_LENGTH_COMPLIANCE_DIAGNOSIS_20261010.json",
+          "recorded_sha256": "fd6501caf2a6ed7c155b14ce05b2be5d7337f69163739dff571eda3023b1b396",
+          "current_sha256": "50d49d14e1d59db6190913c84540dee38ad409c1c36262872aa320b621cc7bfe"
+        }
+      ],
+      "what_did_not_change": "the registered tasks, their views, contracts, literals, frozen regexes, the matrix, the configuration and the prior-batch disclosure"
+    }
+  ]
+}

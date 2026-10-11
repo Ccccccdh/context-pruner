@@ -1,0 +1,175 @@
+{
+  "schema": "openai_agents_v18_sealed_k1_hard_stop_record",
+  "record_id": "openai-agents-v18-sealed-k1-hard-stop-01",
+  "date": "20261010",
+  "generated_utc": "2026-10-10T18:00:20+00:00",
+  "experiment_id": "openai-repo-diagnostic-v23-v18-sealed-window-k1-01",
+  "produced_by": "experiments/audits/v18_sealed_k1_hard_stop_record.py",
+  "api_requests_spent": 0,
+  "outcome": "STOPPED_BY_A_HARD_STOP_CONDITION",
+  "what_happened": "the paid batch was stopped by the operator as soon as the persisted rows showed that one registered task's answers could not be rendered in any arm, which is the freeze's own stop condition 'any render failure, truncation or dropped field -> stop and report'; the partial directory is kept and no manifest was finalised",
+  "the_stop_condition_it_hit": {
+    "source": "integrations/openai_agents/V18_SEALED_CONFIRMATION_FREEZE_20261010.json",
+    "text": "any render failure, truncation or dropped field -> stop and report",
+    "how_it_was_read": "a sample whose final answer was closed to empty because the host rejected it is a render failure and not a measured endpoint; the citable reference batch of this project (v16 sealed confirmation) recorded 0 of 45 rejected, so this project's own practice is that a rejected answer stops the batch rather than entering a mean. The narrower reading - render failure means only truncation, a dropped field or a harness exception - would not trigger, and both readings are stated here so the stop can be judged rather than assumed"
+  },
+  "evidence": {
+    "samples_persisted": 39,
+    "samples_planned": 45,
+    "matrix_incomplete": true,
+    "present_per_task": {
+      "autoreload_template_changed": 15,
+      "sitemap_callable_lastmod": 12,
+      "query_utils_unregister_lookup": 12
+    },
+    "render_accepted_per_task_and_arm": {
+      "autoreload_template_changed": {
+        "none": "0/5",
+        "native_summary": "0/5",
+        "pruner_v1": "0/5"
+      },
+      "sitemap_callable_lastmod": {
+        "none": "4/4",
+        "native_summary": "4/4",
+        "pruner_v1": "4/4"
+      },
+      "query_utils_unregister_lookup": {
+        "none": "4/4",
+        "native_summary": "4/4",
+        "pruner_v1": "4/4"
+      }
+    },
+    "tasks_with_a_plugin_render_failure": [
+      "autoreload_template_changed"
+    ],
+    "rejection_reasons": {
+      "autoreload_template_changed|none|retry_rejected:over_160_chars": 5,
+      "autoreload_template_changed|pruner_v1|retry_rejected:over_160_chars": 5,
+      "autoreload_template_changed|native_summary|retry_rejected:over_160_chars": 5
+    },
+    "strict_track_per_arm": {
+      "none": {
+        "pass": 8,
+        "n": 13
+      },
+      "native_summary": {
+        "pass": 8,
+        "n": 13
+      },
+      "pruner_v1": {
+        "pass": 8,
+        "n": 13
+      }
+    },
+    "semantic_accuracy_per_arm": {
+      "none": {
+        "pass": 8,
+        "n": 13
+      },
+      "native_summary": {
+        "pass": 8,
+        "n": 13
+      },
+      "pruner_v1": {
+        "pass": 8,
+        "n": 13
+      }
+    },
+    "truncations": 0,
+    "drops": 0,
+    "provider_errors": 0,
+    "requests_spent": 194,
+    "cap": 390,
+    "cache": {
+      "calls": 190,
+      "calls_with_cache_fields": 190,
+      "prompt_cache_hit_tokens_total": 294528,
+      "prompt_cache_miss_tokens_total": 58586,
+      "all_calls_off_peak": true
+    },
+    "mechanism_on_the_samples_that_ran": {
+      "v21_outputs_considered": 78,
+      "v21_outputs_elided": 25,
+      "v21_lines_elided": 158,
+      "v21_bytes_saved": 6886,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 848
+    }
+  },
+  "the_partial_matrix_is_not_a_result": {
+    "complete_pairs": 8,
+    "complete_pairs_note": "pairs whose two arms both rendered an answer; the stopped task contributes none",
+    "partial_as_paired_savings": [
+      0.245162,
+      0.245571,
+      -0.219283,
+      0.050334,
+      0.002847,
+      0.004709,
+      0.001428,
+      0.000659
+    ],
+    "partial_as_paired_mean": 0.041428,
+    "why_it_may_not_be_cited": "the frozen matrix is 45 samples and only 39 exist; the pre-registered reading is decided on every pair of the matrix, and a partially completed matrix is a stopped batch, so these numbers are recorded only to make the stop explicable"
+  },
+  "diagnosis": {
+    "task_that_could_not_render": "autoreload_template_changed (django__django-15572, base commit 0b31e024873681e187b574fe1c4afe5e48aeeecf)",
+    "host_rejection_reason": "retry_rejected:over_160_chars",
+    "what_the_host_saw": "the first answer exceeded 160 characters, the diagnostic was carried into the one billed retry, and the retried answer also exceeded 160 characters, so the answer was closed to empty; the same pattern occurs in all three arms, at every repeat the batch reached",
+    "raw_answer_lengths_seen": [
+      320,
+      325,
+      328,
+      333,
+      339,
+      341,
+      349,
+      352,
+      357
+    ],
+    "the_contract_is_feasible": "the minimal feasible rendered line for this task is 75 characters (RESULT issue=django-15572 cause=template_changed fix=template_dir file_path), so the bound is attainable; this is a model-compliance failure under this host configuration, not an infeasible contract",
+    "it_is_symmetric": "the failure hits all three arms identically, so it does not bias the paired comparison; it destroys the task's quality signal, which is why the batch stops instead of reporting a comparison over units that produced no answer",
+    "the_other_two_tasks": "sitemap_callable_lastmod and query_utils_unregister_lookup rendered every sample the batch reached, in every arm"
+  },
+  "what_this_record_does_not_claim": [
+    "it does not report a saving for this round: no number from the partial matrix is citable",
+    "it does not rejudge any earlier batch, and it does not touch v12 to v15, the v16 sealed confirmation batch, or any v17 to v22 group",
+    "it does not relax any criterion: the freeze, the registration, the module pins, the gate and the audit are as they were before the batch started",
+    "it does not authorise a replacement batch; that needs a new decision from the integrator"
+  ],
+  "what_is_kept": {
+    "partial_batch_directory": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v23-v18-sealed-window-k1-01",
+    "manifest_finalised": false,
+    "manifest_note": "the manifest on disk is the one the run wrote before its first request; the finaliser never ran, so no key was added after the stop and the batch cannot be mistaken for a complete one",
+    "samples_jsonl_sha256": "887b80c8f5f36354c396cdea87378eebfb8ca7b6b0fb756deb501e43fac7f30b",
+    "manifest_sha256": "2b6aefcde4b54770fa78dd3c0fb4e3e6f587923a95dfca97ab4b98b77d12c288"
+  },
+  "zero_api_inputs_that_stand": {
+    "integrations/openai_agents/V18_SEALED_CONFIRMATION_FREEZE_20261010.json": {
+      "sha256": "438acbcf54c94a3d2d03b53055c955e581a977dd8fc69d4adeddce2820183fef",
+      "exists": true
+    },
+    "integrations/openai_agents/V18_SOURCE_REGISTRATION_20261010.json": {
+      "sha256": "bea2648878c3b9299f63be45348dadf810b653bf644bd706995c6fef606b5c14",
+      "exists": true
+    },
+    "integrations/openai_agents/V18_SEALED_K1_ZERO_API_GATE_20261010.json": {
+      "sha256": "2f95dfcc0adacec10078d5566282e4a51e0a76362b1e0b96ca0f972b6d7f8eed",
+      "exists": true
+    },
+    "integrations/openai_agents/V18_SEALED_K1_LIVE_PLAN_20261010.json": {
+      "sha256": "0f19939f7b8c541ac06f873832f34410ea0967b0a01c6e1340809ebfb91eb38b",
+      "exists": true
+    },
+    "integrations/openai_agents/V18_SEALED_K1_LIVE_STUB_20261010.json": {
+      "sha256": "96879888cdece80e5f6fa4f4941cc36e6e13c3c998c1fed104abcb7f39ff8425",
+      "exists": true
+    },
+    "integrations/openai_agents/V18_SEALED_K1_FOCUSED_REGRESSION_RUN2_20261010.json": {
+      "sha256": "b14f1b7d6e58f4ddb81c8024036f33ed76ab5fddffafbe9d25d9f5c5f3709496",
+      "exists": true
+    }
+  },
+  "gate_was_green_before_the_first_request": true,
+  "citable": false
+}

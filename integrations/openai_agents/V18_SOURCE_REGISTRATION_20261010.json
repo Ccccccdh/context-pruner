@@ -1,0 +1,1084 @@
+{
+  "schema": "openai_agents_v18_sealed_source_registration",
+  "registration_id": "openai-agents-v18-sealed-source-registration-01",
+  "date": "20261010",
+  "generated_utc": "2026-10-10T17:46:58+00:00",
+  "status": "the three sealed confirmation candidates of the v18 branch are registered here, from the artifacts named below; this is the first registration of this task set and it registers nothing else",
+  "produced_by": "experiments/runners/openai_agents_v18_sealed_registration.py",
+  "api_requests_spent": 0,
+  "written_before_any_request": true,
+  "source_artifacts": {
+    "problem_statements": {
+      "path": ".tooling/swebench-verified/test.parquet",
+      "role": "the public table the statements, base commits and difficulties are read from"
+    },
+    "pinned_clone": {
+      "path": ".tooling/upstream/django-15563",
+      "role": "the read-only clone every blob, file hash and rendered view is re-read from"
+    },
+    "view_derivation_record": {
+      "path": "integrations/openai_agents/V18_VIEW_DERIVATION_RECORD_20261010.json",
+      "sha256": "ec2bffb9b3a5c36b996bc75b2dd4c7b8d52474895078ab8160457a5e828ab0a5"
+    },
+    "candidate_rederivation_verification": {
+      "path": "integrations/openai_agents/V18_CANDIDATE_REDERIVATION_VERIFICATION_20261010.json",
+      "sha256": "d2d2a0d85dccf336fb2d7ef9f852c0e5b564402891040b4aec80278640b2a0e4"
+    },
+    "lazy_negative_control_supplement": {
+      "path": "integrations/openai_agents/V18_LAZY_NEGATIVE_CONTROL_SUPPLEMENT_20261010.json",
+      "sha256": "976dea7419e7158eeab4973bea300f39acb155cfdd551dd19e4cae5793897f75",
+      "complete": true,
+      "lazy_control_holds_per_candidate": {
+        "django__django-15572": true,
+        "django__django-16255": true,
+        "django__django-15569": true
+      }
+    },
+    "defect_entity_declaration": {
+      "path": "integrations/openai_agents/V18_DEFECT_ENTITY_DECLARATION_20261010.json",
+      "sha256": "3eba7aec19e39c7720100d79b2d7ed2e6cfc006a2f75776b9a95a65eaecf105c",
+      "decided_by": "integrator"
+    },
+    "candidate_rederivation_proposal": {
+      "path": "integrations/openai_agents/V18_CANDIDATE_REDERIVATION_PROPOSAL_20261010.json",
+      "sha256": "8a955f2e88ce988a4537bb6976e15379a060ed7b20bcb924f0fec0d044fabe4c"
+    },
+    "superseded_selection_proposal_rev2": {
+      "path": "integrations/openai_agents/V18_SELECTION_PROPOSAL_REV2_20261010.json",
+      "sha256": "abafe2eec666b1f122853a415b906a16ecd48fba38c8873e650d31ddd6d0fd1c",
+      "role": "the statement-hash diagnosis this registration reconciles against"
+    },
+    "candidate_pool": {
+      "path": "integrations/openai_agents/V16_CANDIDATE_POOL_20261006.json",
+      "sha256": "def85ab86093ae5bfc08f568a2172a29448effb09742d27825d6b979e40ba357"
+    },
+    "view_derivation_script": {
+      "path": "experiments/audits/v18_view_derivation.py",
+      "sha256": "a4df72eb5a0b1cbd01c5dcc2e97304d574f36fdb0a1d327a06732debe6dfae68"
+    },
+    "literal_binding_script": {
+      "path": "experiments/audits/v18_literal_binding_check.py",
+      "sha256": "34844121c91779ea5a6d5d222c73b6693e73453972b67d68c05d639ece1c4281"
+    }
+  },
+  "rules_in_force": {
+    "route_rule": {
+      "route_A": "a path the statement names that exists at the base commit and mentions an identifier from the statement, with a declared main file tried first",
+      "route_A_prime": "the statement's path is absent but its basename matches exactly one tracked python file that mentions an identifier from the statement",
+      "route_B": "no usable path: the statement's identifiers matched over the tracked python files in fixed order, bounded",
+      "routing_note": "route B was not used by any candidate of this set; the two routes that decided it are A for django-15572 and django-16255 and A' for django-15569, whose statement names only a blame url rather than a repository path"
+    },
+    "large_definition_clause": {
+      "max_view_lines": 60,
+      "text": "a view must contain the defect segment and must not exceed MAX_VIEW_LINES = 60; a longer definition is represented by its head block and an enclosed definition is skipped rather than registered beside its enclosing one",
+      "declared_in": {
+        "path": "integrations/openai_agents/V18_VIEW_DERIVATION_RECORD_20261010.json",
+        "field": "derivation_rule.large_definition_clause",
+        "view_shape_amendment_03": {
+          "path": "integrations/openai_agents/V18_VIEW_SHAPE_AMENDMENT_03_20261010.json",
+          "sha256": "d7360183c6d6881044ffadd3f8b1f988cdb92d859bf9f70c0d660e7de046defd"
+        }
+      }
+    },
+    "disjointness": {
+      "text": "the three views of a task are pairwise disjoint line ranges; the deriving script asserts this and raises on violation",
+      "view_shape_amendment_03": {
+        "path": "integrations/openai_agents/V18_VIEW_SHAPE_AMENDMENT_03_20261010.json",
+        "sha256": "d7360183c6d6881044ffadd3f8b1f988cdb92d859bf9f70c0d660e7de046defd",
+        "status": "in force: three views, one per round, pairwise disjoint"
+      }
+    },
+    "defect_entity": {
+      "text": "declared by the integrator and proved by the deriving script: verbatim in the statement and bound inside the main file",
+      "declaration": {
+        "path": "integrations/openai_agents/V18_DEFECT_ENTITY_DECLARATION_20261010.json",
+        "sha256": "3eba7aec19e39c7720100d79b2d7ed2e6cfc006a2f75776b9a95a65eaecf105c",
+        "decided_by": "integrator",
+        "role": "an input: it fixes which definition is the defect-carrying view; ranges, the length cap, disjointness and every hash stay script derived"
+      }
+    },
+    "literal_rule": {
+      "rule_file": {
+        "path": "integrations/openai_agents/V18_LITERAL_DISCRIMINATIVENESS_RULE_20261010.json",
+        "sha256": "f2fa7e48ea5d36bdd4464d8394e9cd6cf89eb8e4d30fde6b3b7974980125b7d5"
+      },
+      "rule_id": "openai-agents-v18-code-anchored-literals-01",
+      "amendments_applied": [
+        {
+          "path": "integrations/openai_agents/V18_LITERAL_RULE_AMENDMENT_20261010.json",
+          "sha256": "97cbcba3bb74b3f7872819b597fde6deaa2a847a86ac6e90628b7831c808f9f8",
+          "status": "superseded in part by amendment 02"
+        },
+        {
+          "path": "integrations/openai_agents/V18_LITERAL_RULE_AMENDMENT_02_20261010.json",
+          "sha256": "fbac7d892700b532db34cc3ae70aa9f09208bd93042231357395c6dfcdac8420",
+          "status": "in force"
+        }
+      ],
+      "requirements_in_force": [
+        "R1 verbatim in a registered view",
+        "R2 two of three code anchored",
+        "R3 both regex tokens code anchored",
+        "R4 named by the statement or bound in the defect view",
+        "R5 two of three outside the framework generic list",
+        "R6 not a keyword or builtin",
+        "R7 lazy answer negative control fails"
+      ],
+      "registration_gate": "the source registration must record, per candidate, which rule file and which amendments were applied, and must not be written while any candidate's set fails R1 to R7"
+    }
+  },
+  "excluded_from_this_registration": {
+    "exception_py_error_derivation": {
+      "what": "an earlier derivation of django-16255 named django/core/handlers/exception.py as its main file and derived four views from the first traceback frame's module",
+      "why_excluded": "the statement's traceback frame is not the module the defect is in; the integrator's declaration names django/contrib/sitemaps/__init__.py, and view-shape amendment 03 re-derived three disjoint views from there",
+      "where_it_stays_on_record": "integrations/openai_agents/V18_CANDIDATE_REDERIVATION_PROPOSAL_20261010.json and integrations/openai_agents/V18_SELECTION_PROPOSAL_20261010.json",
+      "status": "a process record; it is registered nowhere and is not a task of this set"
+    },
+    "superseded_fourth_view_rule": "the earlier four-view shape of the selection branch is not registered here; the registered shape is three views, one per round, per amendment 03"
+  },
+  "registered_task_count": 3,
+  "registered_task_ids": [
+    "autoreload_template_changed",
+    "sitemap_callable_lastmod",
+    "query_utils_unregister_lookup"
+  ],
+  "task_ids": [
+    "autoreload_template_changed",
+    "sitemap_callable_lastmod",
+    "query_utils_unregister_lookup"
+  ],
+  "tasks": {
+    "autoreload_template_changed": {
+      "task_id": "autoreload_template_changed",
+      "instance_id": "django__django-15572",
+      "declared_short_id": "django-15572",
+      "repo": "django/django",
+      "base_commit": "0b31e024873681e187b574fe1c4afe5e48aeeecf",
+      "difficulty": "<15 min fix",
+      "problem_statement_bytes": 1392,
+      "problem_statement_sha256": "f9d1889009c44a56a4487dbf777c536841b4b30a2472ee1d1e30b75007f12aa3",
+      "problem_statement_sha256_matches_preselection": true,
+      "statement_hash_reconciliation": {
+        "recomputed_from_the_public_table": "f9d1889009c44a56a4487dbf777c536841b4b30a2472ee1d1e30b75007f12aa3",
+        "candidate_pool_value": "f9d1889009c44a56a4487dbf777c536841b4b30a2472ee1d1e30b75007f12aa3",
+        "matches_the_candidate_pool": true,
+        "stale_booleans_not_carried_forward": "V18_SELECTION_PROPOSAL_20261010.json and V18_SELECTION_PROPOSAL_REV2_20261010.json both record statement_hash_matches_preselection = false; that comparison was made before the diagnosis and the diagnosis, in the same artifact, already shows the pool value equal to the true sha256, so the boolean is recomputed here",
+        "matching_hypothesis": "sha256 of the raw statement string, with no normalisation",
+        "reconciliation_of_record": "integrations/openai_agents/V18_CANDIDATE_REDERIVATION_PROPOSAL_20261010.json",
+        "registration_rule": "the registration may not silently carry false: either the digest matches the pool on a fresh comparison, or the mismatch is recorded as an open provenance gap"
+      },
+      "derivation_path": "A: the statement names a path",
+      "derivation_why_this_path": "the main file the integrator declared, which the statement also names and which passes route A's own condition",
+      "derivation_not_the_first_named_path": "the first named path is also the chosen one",
+      "declared_main_file": "django/template/autoreload.py",
+      "main_file_matches_the_declaration": true,
+      "declared_defect_entity": "template_changed",
+      "declared_by": "integrator",
+      "declaration_proof": {
+        "declared_entity": "template_changed",
+        "verbatim_in_statement": true,
+        "statement_occurrence_count": 2,
+        "statement_excerpt": "break autoreload.\nThis happens because django/template/autoreload.py::template_changed was previously comparing the empty string to a directory, and would n",
+        "statement_offsets": [
+          544,
+          741
+        ],
+        "bound_in_main_file": true,
+        "bound_range": {
+          "first_line": 47,
+          "last_line": 54,
+          "kind": "FunctionDef",
+          "depth": 0
+        }
+      },
+      "defect_view": {
+        "round": 3,
+        "symbol": "template_changed",
+        "file": "django/template/autoreload.py",
+        "first_line": 47,
+        "last_line": 54,
+        "is_the_newest_tool_group": true,
+        "recency_consequence": "the defect view is the last read, so the mechanism keeps that tool group verbatim on every later model input; its literals are never at risk and no saving may be attributed to it"
+      },
+      "views": [
+        {
+          "slot": "A",
+          "round": 1,
+          "role": "context: the loader reset helper the watcher calls",
+          "file": "django/template/autoreload.py",
+          "symbol": "reset_loaders",
+          "kind": "FunctionDef",
+          "strategy": "definition",
+          "first_line": 33,
+          "last_line": 38,
+          "line_count": 6,
+          "within_the_60_line_cap": true,
+          "tool_name": "read_reset_loaders",
+          "commit_path": "0b31e024873681e187b574fe1c4afe5e48aeeecf:django/template/autoreload.py",
+          "blob_git_id": "84c8554165f871a994b6a3617b776df2cb5e2e32",
+          "file_content_sha256": "8b618b323b0689e2d9263491d91b474ae1c0e54cc8d84c66eaef644eeb976540",
+          "view_content_sha256": "8a8c3306fd4826ee7bcb79bd2d81576a9398d7c4e4d97dc5e4ecc53070ff3b30",
+          "leaf_view_content_sha256": "a9bfdb5b231bbe01df166583b8b837a5c0cdfa961ece43f3349fc62f4c503a8c",
+          "view_bytes": 289,
+          "view_content_sha256_convention": "sha256 of the rendered view text: '<repo>/<file> (baseline)' and then each line of the range as '<number>: <text>'; this is the string the registry re-renders and verifies against",
+          "leaf_view_content_sha256_convention": "sha256 of the leaf text: the range's lines joined by a newline, no line numbers, no trailing newline; this is the derivation record's own convention and it is carried beside the rendered digest rather than instead of it"
+        },
+        {
+          "slot": "B",
+          "round": 2,
+          "role": "context: the watcher that listens for template changes",
+          "file": "django/template/autoreload.py",
+          "symbol": "watch_for_template_changes",
+          "kind": "FunctionDef",
+          "strategy": "definition",
+          "first_line": 41,
+          "last_line": 44,
+          "line_count": 4,
+          "within_the_60_line_cap": true,
+          "tool_name": "read_watch_for_template_changes",
+          "commit_path": "0b31e024873681e187b574fe1c4afe5e48aeeecf:django/template/autoreload.py",
+          "blob_git_id": "84c8554165f871a994b6a3617b776df2cb5e2e32",
+          "file_content_sha256": "8b618b323b0689e2d9263491d91b474ae1c0e54cc8d84c66eaef644eeb976540",
+          "view_content_sha256": "a7048f8eff2900ff0716c485c81e05c93bfb7740f8df6f1762214dd501c2604b",
+          "leaf_view_content_sha256": "ef79343c85597cf3934feb6edc58eeec858a80c6c643083e37a778ec3e36ee24",
+          "view_bytes": 290,
+          "view_content_sha256_convention": "sha256 of the rendered view text: '<repo>/<file> (baseline)' and then each line of the range as '<number>: <text>'; this is the string the registry re-renders and verifies against",
+          "leaf_view_content_sha256_convention": "sha256 of the leaf text: the range's lines joined by a newline, no line numbers, no trailing newline; this is the derivation record's own convention and it is carried beside the rendered digest rather than instead of it"
+        },
+        {
+          "slot": "C",
+          "round": 3,
+          "role": "cause: the signal handler whose directory comparison is wrong",
+          "file": "django/template/autoreload.py",
+          "symbol": "template_changed",
+          "kind": "FunctionDef",
+          "strategy": "definition",
+          "first_line": 47,
+          "last_line": 54,
+          "line_count": 8,
+          "within_the_60_line_cap": true,
+          "tool_name": "read_template_changed",
+          "commit_path": "0b31e024873681e187b574fe1c4afe5e48aeeecf:django/template/autoreload.py",
+          "blob_git_id": "84c8554165f871a994b6a3617b776df2cb5e2e32",
+          "file_content_sha256": "8b618b323b0689e2d9263491d91b474ae1c0e54cc8d84c66eaef644eeb976540",
+          "view_content_sha256": "6004eaa977d560c3d5d34bebe0c0f03195d7780d9f6a4e6d5ddf8292b2cd119d",
+          "leaf_view_content_sha256": "4a1ff17f854e8a8a56651afdfc043062c6d715f8f700a9475d8740a566fb1217",
+          "view_bytes": 406,
+          "view_content_sha256_convention": "sha256 of the rendered view text: '<repo>/<file> (baseline)' and then each line of the range as '<number>: <text>'; this is the string the registry re-renders and verifies against",
+          "leaf_view_content_sha256_convention": "sha256 of the leaf text: the range's lines joined by a newline, no line numbers, no trailing newline; this is the derivation record's own convention and it is carried beside the rendered digest rather than instead of it"
+        }
+      ],
+      "view_texts_sha256": [
+        "8a8c3306fd4826ee7bcb79bd2d81576a9398d7c4e4d97dc5e4ecc53070ff3b30",
+        "a7048f8eff2900ff0716c485c81e05c93bfb7740f8df6f1762214dd501c2604b",
+        "6004eaa977d560c3d5d34bebe0c0f03195d7780d9f6a4e6d5ddf8292b2cd119d"
+      ],
+      "views_pairwise_disjoint": true,
+      "view_count": 3,
+      "max_view_lines": 60,
+      "tool_names": [
+        "read_reset_loaders",
+        "read_watch_for_template_changes",
+        "read_template_changed"
+      ],
+      "request": "Diagnose why this baseline's autoreload watcher can raise on an empty string when the template directories are empty or absent. Read the loader reset helper, the watcher that listens for template changes and the signal handler that decides whether a template file changed, in that order; name the handler whose directory comparison is wrong and the parameter the fix must compare against the template directories.",
+      "contract": {
+        "issue_value": "django-15572",
+        "required_facts": [
+          "template_changed",
+          "template_dir",
+          "file_path"
+        ],
+        "cause_token": "template_changed",
+        "fix_token": "template_dir",
+        "frozen_regex": "RESULT issue=django-15572 cause=.*template_changed.* fix=.*template_dir.*",
+        "max_answer_chars": 160
+      },
+      "literal_rule_verdicts": {
+        "R1_verbatim": {
+          "holds": true
+        },
+        "R2_two_code_anchored": {
+          "holds": true,
+          "anchored": [
+            "template_changed",
+            "template_dir",
+            "file_path"
+          ]
+        },
+        "R3_regex_tokens_anchored": {
+          "holds": true,
+          "cause": true,
+          "fix": true
+        },
+        "R4_relevance": {
+          "holds": true,
+          "per_literal": [
+            {
+              "literal": "template_changed",
+              "named_by_statement": true,
+              "bound_in_defect_view": true,
+              "holds": true
+            },
+            {
+              "literal": "template_dir",
+              "named_by_statement": false,
+              "bound_in_defect_view": true,
+              "holds": true
+            },
+            {
+              "literal": "file_path",
+              "named_by_statement": false,
+              "bound_in_defect_view": true,
+              "holds": true
+            }
+          ]
+        },
+        "R5_two_outside_framework_generic": {
+          "holds": true,
+          "outside": [
+            "template_changed",
+            "template_dir",
+            "file_path"
+          ],
+          "list": [
+            "request",
+            "response",
+            "get_response",
+            "view",
+            "model",
+            "field",
+            "template",
+            "inner",
+            "value",
+            "error",
+            "object",
+            "class",
+            "method"
+          ]
+        },
+        "R6_not_keyword_or_builtin": {
+          "holds": true,
+          "offending": []
+        },
+        "R7_lazy_answer_control": {
+          "holds": true,
+          "satisfies_frozen_regex": false,
+          "satisfies_literal_requirement": false,
+          "lazy_line_head": "RESULT issue=django-15572 cause=django-15572 Django autoreload breaks on empty string in TEMPLATES DIRS Description Django versions changes the way te"
+        },
+        "minimal_feasible_line": {
+          "line": "RESULT issue=django-15572 cause=template_changed fix=template_dir file_path",
+          "chars": 75,
+          "four_conditions": {
+            "facts_complete": true,
+            "frozen_regex": true,
+            "single_line_prefix": true,
+            "within_160": true
+          }
+        },
+        "views_unchanged": {
+          "distinct_ranges": true,
+          "distinct_tool_names": true,
+          "view_hashes_recorded": true
+        },
+        "verdict": "ACCEPTED",
+        "printed_by_the_supplement": "integrations/openai_agents/V18_LAZY_NEGATIVE_CONTROL_SUPPLEMENT_20261010.json"
+      },
+      "literals": [
+        {
+          "literal": "template_changed",
+          "verbatim_hits": 1,
+          "first_hit": {
+            "round": 3,
+            "file": "django/template/autoreload.py",
+            "line_number": 48,
+            "text": "def template_changed(sender, file_path, **kwargs):"
+          },
+          "views_where_it_appears": [
+            3
+          ],
+          "bound_in_view_rounds": [
+            3
+          ],
+          "bound_in_defect_view": true,
+          "named_by_statement": true
+        },
+        {
+          "literal": "template_dir",
+          "verbatim_hits": 3,
+          "first_hit": {
+            "round": 2,
+            "file": "django/template/autoreload.py",
+            "line_number": 43,
+            "text": "for directory in get_template_directories():"
+          },
+          "views_where_it_appears": [
+            2,
+            3
+          ],
+          "bound_in_view_rounds": [
+            3
+          ],
+          "bound_in_defect_view": true,
+          "named_by_statement": false
+        },
+        {
+          "literal": "file_path",
+          "verbatim_hits": 3,
+          "first_hit": {
+            "round": 3,
+            "file": "django/template/autoreload.py",
+            "line_number": 48,
+            "text": "def template_changed(sender, file_path, **kwargs):"
+          },
+          "views_where_it_appears": [
+            3
+          ],
+          "bound_in_view_rounds": [
+            3
+          ],
+          "bound_in_defect_view": true,
+          "named_by_statement": false
+        }
+      ],
+      "defect_view_bound_names": [
+        "file_path",
+        "kwargs",
+        "sender",
+        "template_changed",
+        "template_dir"
+      ],
+      "problems": [],
+      "usable": true
+    },
+    "sitemap_callable_lastmod": {
+      "task_id": "sitemap_callable_lastmod",
+      "instance_id": "django__django-16255",
+      "declared_short_id": "django-16255",
+      "repo": "django/django",
+      "base_commit": "444b6da7cc229a58a2c476a52e45233001dc7073",
+      "difficulty": "<15 min fix",
+      "problem_statement_bytes": 1566,
+      "problem_statement_sha256": "2359a3443b4020179e535a3df289178a975a90472b1fb6c3c23adf85aee5c371",
+      "problem_statement_sha256_matches_preselection": true,
+      "statement_hash_reconciliation": {
+        "recomputed_from_the_public_table": "2359a3443b4020179e535a3df289178a975a90472b1fb6c3c23adf85aee5c371",
+        "candidate_pool_value": "2359a3443b4020179e535a3df289178a975a90472b1fb6c3c23adf85aee5c371",
+        "matches_the_candidate_pool": true,
+        "stale_booleans_not_carried_forward": "V18_SELECTION_PROPOSAL_20261010.json and V18_SELECTION_PROPOSAL_REV2_20261010.json both record statement_hash_matches_preselection = false; that comparison was made before the diagnosis and the diagnosis, in the same artifact, already shows the pool value equal to the true sha256, so the boolean is recomputed here",
+        "matching_hypothesis": "sha256 of the raw statement string, with no normalisation",
+        "reconciliation_of_record": "integrations/openai_agents/V18_CANDIDATE_REDERIVATION_PROPOSAL_20261010.json",
+        "registration_rule": "the registration may not silently carry false: either the digest matches the pool on a fresh comparison, or the mismatch is recorded as an open provenance gap"
+      },
+      "derivation_path": "A: the statement names a path",
+      "derivation_why_this_path": "the main file the integrator declared, which the statement also names and which passes route A's own condition",
+      "derivation_not_the_first_named_path": "the first named path mentions no identifier from the statement, so it is a traceback frame rather than the module the defect is in",
+      "declared_main_file": "django/contrib/sitemaps/__init__.py",
+      "main_file_matches_the_declaration": true,
+      "declared_defect_entity": "get_latest_lastmod",
+      "declared_by": "integrator",
+      "declaration_proof": {
+        "declared_entity": "get_latest_lastmod",
+        "verbatim_in_statement": true,
+        "statement_occurrence_count": 3,
+        "statement_excerpt": "go/contrib/sitemaps/views.py\", line 76, in index\n\tsite_lastmod = site.get_latest_lastmod()\n File \"/usr/local/lib/python3.10/site-packages/django/contrib/sitem",
+        "statement_offsets": [
+          943,
+          1062,
+          1278
+        ],
+        "bound_in_main_file": true,
+        "bound_range": {
+          "first_line": 165,
+          "last_line": 174,
+          "kind": "FunctionDef",
+          "depth": 1
+        }
+      },
+      "defect_view": {
+        "round": 1,
+        "symbol": "get_latest_lastmod",
+        "file": "django/contrib/sitemaps/__init__.py",
+        "first_line": 165,
+        "last_line": 174,
+        "is_the_newest_tool_group": false,
+        "recency_consequence": "the defect view is the first read, so it is elidable content on later model inputs under the literal invariant"
+      },
+      "views": [
+        {
+          "slot": "A",
+          "round": 1,
+          "role": "cause: the method whose maximum over an empty sequence raises",
+          "file": "django/contrib/sitemaps/__init__.py",
+          "symbol": "get_latest_lastmod",
+          "kind": "FunctionDef",
+          "strategy": "definition",
+          "first_line": 165,
+          "last_line": 174,
+          "line_count": 10,
+          "within_the_60_line_cap": true,
+          "tool_name": "read_get_latest_lastmod",
+          "commit_path": "444b6da7cc229a58a2c476a52e45233001dc7073:django/contrib/sitemaps/__init__.py",
+          "blob_git_id": "27756d9d969414e1bfd0ae59e6054c7254575529",
+          "file_content_sha256": "94304753763abe3cb2ecc4dc86ea4478820798ac5e561595b0f56bba5f693e54",
+          "view_content_sha256": "2790d27bf5222fa7cae75776f626f9854541fc554ceb1a1992617496c5ecfec7",
+          "leaf_view_content_sha256": "2ba7122bd7f61f426f4644fba51e869553309eb204371bbc0fa0d58c1e5d1e35",
+          "view_bytes": 439,
+          "view_content_sha256_convention": "sha256 of the rendered view text: '<repo>/<file> (baseline)' and then each line of the range as '<number>: <text>'; this is the string the registry re-renders and verifies against",
+          "leaf_view_content_sha256_convention": "sha256 of the leaf text: the range's lines joined by a newline, no line numbers, no trailing newline; this is the derivation record's own convention and it is carried beside the rendered digest rather than instead of it"
+        },
+        {
+          "slot": "B",
+          "round": 2,
+          "role": "context: the method that builds the url list",
+          "file": "django/contrib/sitemaps/__init__.py",
+          "symbol": "_urls",
+          "kind": "FunctionDef",
+          "strategy": "definition",
+          "first_line": 176,
+          "last_line": 228,
+          "line_count": 53,
+          "within_the_60_line_cap": true,
+          "tool_name": "read_urls",
+          "commit_path": "444b6da7cc229a58a2c476a52e45233001dc7073:django/contrib/sitemaps/__init__.py",
+          "blob_git_id": "27756d9d969414e1bfd0ae59e6054c7254575529",
+          "file_content_sha256": "94304753763abe3cb2ecc4dc86ea4478820798ac5e561595b0f56bba5f693e54",
+          "view_content_sha256": "a77511f06fa27be36f2f9ce4afaee0a815a7c89c3b5d50ad98a2bc781117ffb3",
+          "leaf_view_content_sha256": "4bb136a52af4c8288876ec81a8bf7e72abc4bd717cade09ea70b60dde91d78ec",
+          "view_bytes": 2353,
+          "view_content_sha256_convention": "sha256 of the rendered view text: '<repo>/<file> (baseline)' and then each line of the range as '<number>: <text>'; this is the string the registry re-renders and verifies against",
+          "leaf_view_content_sha256_convention": "sha256 of the leaf text: the range's lines joined by a newline, no line numbers, no trailing newline; this is the derivation record's own convention and it is carried beside the rendered digest rather than instead of it"
+        },
+        {
+          "slot": "C",
+          "round": 3,
+          "role": "context: the sitemap class that supplies the items",
+          "file": "django/contrib/sitemaps/__init__.py",
+          "symbol": "GenericSitemap",
+          "kind": "ClassDef",
+          "strategy": "definition",
+          "first_line": 231,
+          "last_line": 258,
+          "line_count": 28,
+          "within_the_60_line_cap": true,
+          "tool_name": "read_genericsitemap",
+          "commit_path": "444b6da7cc229a58a2c476a52e45233001dc7073:django/contrib/sitemaps/__init__.py",
+          "blob_git_id": "27756d9d969414e1bfd0ae59e6054c7254575529",
+          "file_content_sha256": "94304753763abe3cb2ecc4dc86ea4478820798ac5e561595b0f56bba5f693e54",
+          "view_content_sha256": "987a710ba6535297611af14f538fccdc9db7c64b2376fd5a02fd2a67ba7440a0",
+          "leaf_view_content_sha256": "62481f2d2bf54af41967ca9df420cd05d849efac6a04e128267568916a156aac",
+          "view_bytes": 1161,
+          "view_content_sha256_convention": "sha256 of the rendered view text: '<repo>/<file> (baseline)' and then each line of the range as '<number>: <text>'; this is the string the registry re-renders and verifies against",
+          "leaf_view_content_sha256_convention": "sha256 of the leaf text: the range's lines joined by a newline, no line numbers, no trailing newline; this is the derivation record's own convention and it is carried beside the rendered digest rather than instead of it"
+        }
+      ],
+      "view_texts_sha256": [
+        "2790d27bf5222fa7cae75776f626f9854541fc554ceb1a1992617496c5ecfec7",
+        "a77511f06fa27be36f2f9ce4afaee0a815a7c89c3b5d50ad98a2bc781117ffb3",
+        "987a710ba6535297611af14f538fccdc9db7c64b2376fd5a02fd2a67ba7440a0"
+      ],
+      "views_pairwise_disjoint": true,
+      "view_count": 3,
+      "max_view_lines": 60,
+      "tool_names": [
+        "read_get_latest_lastmod",
+        "read_urls",
+        "read_genericsitemap"
+      ],
+      "request": "Diagnose why this baseline's sitemap index can raise ValueError when a sitemap has no items and its lastmod is callable. Read the method that takes the latest lastmod over the sitemap's items, the method that builds the url list and the generic sitemap class that supplies the items, in that order; name the method whose maximum over an empty sequence raises and the keyword argument the fix must accept.",
+      "contract": {
+        "issue_value": "django-16255",
+        "required_facts": [
+          "get_latest_lastmod",
+          "lastmod",
+          "items"
+        ],
+        "cause_token": "get_latest_lastmod",
+        "fix_token": "lastmod",
+        "frozen_regex": "RESULT issue=django-16255 cause=.*get_latest_lastmod.* fix=.*lastmod.*",
+        "max_answer_chars": 160
+      },
+      "literal_rule_verdicts": {
+        "R1_verbatim": {
+          "holds": true
+        },
+        "R2_two_code_anchored": {
+          "holds": true,
+          "anchored": [
+            "get_latest_lastmod",
+            "lastmod",
+            "items"
+          ]
+        },
+        "R3_regex_tokens_anchored": {
+          "holds": true,
+          "cause": true,
+          "fix": true
+        },
+        "R4_relevance": {
+          "holds": true,
+          "per_literal": [
+            {
+              "literal": "get_latest_lastmod",
+              "named_by_statement": true,
+              "bound_in_defect_view": true,
+              "holds": true
+            },
+            {
+              "literal": "lastmod",
+              "named_by_statement": true,
+              "bound_in_defect_view": false,
+              "holds": true
+            },
+            {
+              "literal": "items",
+              "named_by_statement": true,
+              "bound_in_defect_view": false,
+              "holds": true
+            }
+          ]
+        },
+        "R5_two_outside_framework_generic": {
+          "holds": true,
+          "outside": [
+            "get_latest_lastmod",
+            "lastmod",
+            "items"
+          ],
+          "list": [
+            "request",
+            "response",
+            "get_response",
+            "view",
+            "model",
+            "field",
+            "template",
+            "inner",
+            "value",
+            "error",
+            "object",
+            "class",
+            "method"
+          ]
+        },
+        "R6_not_keyword_or_builtin": {
+          "holds": true,
+          "offending": []
+        },
+        "R7_lazy_answer_control": {
+          "holds": true,
+          "satisfies_frozen_regex": false,
+          "satisfies_literal_requirement": false,
+          "lazy_line_head": "RESULT issue=django-16255 cause=django-16255 Sitemaps without items raise ValueError on callable lastmod Description When sitemap contains not items b"
+        },
+        "minimal_feasible_line": {
+          "line": "RESULT issue=django-16255 cause=get_latest_lastmod fix=lastmod items",
+          "chars": 68,
+          "four_conditions": {
+            "facts_complete": true,
+            "frozen_regex": true,
+            "single_line_prefix": true,
+            "within_160": true
+          }
+        },
+        "views_unchanged": {
+          "distinct_ranges": true,
+          "distinct_tool_names": true,
+          "view_hashes_recorded": true
+        },
+        "verdict": "ACCEPTED",
+        "printed_by_the_supplement": "integrations/openai_agents/V18_LAZY_NEGATIVE_CONTROL_SUPPLEMENT_20261010.json"
+      },
+      "literals": [
+        {
+          "literal": "get_latest_lastmod",
+          "verbatim_hits": 2,
+          "first_hit": {
+            "round": 1,
+            "file": "django/contrib/sitemaps/__init__.py",
+            "line_number": 165,
+            "text": "def get_latest_lastmod(self):"
+          },
+          "views_where_it_appears": [
+            1,
+            3
+          ],
+          "bound_in_view_rounds": [
+            1,
+            3
+          ],
+          "bound_in_defect_view": true,
+          "named_by_statement": true
+        },
+        {
+          "literal": "lastmod",
+          "verbatim_hits": 18,
+          "first_hit": {
+            "round": 1,
+            "file": "django/contrib/sitemaps/__init__.py",
+            "line_number": 165,
+            "text": "def get_latest_lastmod(self):"
+          },
+          "views_where_it_appears": [
+            1,
+            2,
+            3
+          ],
+          "bound_in_view_rounds": [
+            2,
+            3
+          ],
+          "bound_in_defect_view": false,
+          "named_by_statement": true
+        },
+        {
+          "literal": "items",
+          "verbatim_hits": 7,
+          "first_hit": {
+            "round": 1,
+            "file": "django/contrib/sitemaps/__init__.py",
+            "line_number": 170,
+            "text": "return max([self.lastmod(item) for item in self.items()])"
+          },
+          "views_where_it_appears": [
+            1,
+            2,
+            3
+          ],
+          "bound_in_view_rounds": [
+            3
+          ],
+          "bound_in_defect_view": false,
+          "named_by_statement": true
+        }
+      ],
+      "defect_view_bound_names": [
+        "get_latest_lastmod",
+        "item",
+        "self"
+      ],
+      "problems": [],
+      "usable": true
+    },
+    "query_utils_unregister_lookup": {
+      "task_id": "query_utils_unregister_lookup",
+      "instance_id": "django__django-15569",
+      "declared_short_id": "django-15569",
+      "repo": "django/django",
+      "base_commit": "884b4c27f506b3c29d58509fc83a35c30ea10d94",
+      "difficulty": "<15 min fix",
+      "problem_statement_bytes": 646,
+      "problem_statement_sha256": "107938cd24f7bef580939d1998ce566f02fe292c37bcd14013c5f28ec5fb4f51",
+      "problem_statement_sha256_matches_preselection": true,
+      "statement_hash_reconciliation": {
+        "recomputed_from_the_public_table": "107938cd24f7bef580939d1998ce566f02fe292c37bcd14013c5f28ec5fb4f51",
+        "candidate_pool_value": "107938cd24f7bef580939d1998ce566f02fe292c37bcd14013c5f28ec5fb4f51",
+        "matches_the_candidate_pool": true,
+        "stale_booleans_not_carried_forward": "V18_SELECTION_PROPOSAL_20261010.json and V18_SELECTION_PROPOSAL_REV2_20261010.json both record statement_hash_matches_preselection = false; that comparison was made before the diagnosis and the diagnosis, in the same artifact, already shows the pool value equal to the true sha256, so the boolean is recomputed here",
+        "matching_hypothesis": "sha256 of the raw statement string, with no normalisation",
+        "reconciliation_of_record": "integrations/openai_agents/V18_CANDIDATE_REDERIVATION_PROPOSAL_20261010.json",
+        "registration_rule": "the registration may not silently carry false: either the digest matches the pool on a fresh comparison, or the mismatch is recorded as an open provenance gap"
+      },
+      "derivation_path": "A': the statement's path is absent; its basename is unique",
+      "derivation_why_this_path": "the statement names no repository path, so route A' decided it: the basename 'query_utils.py' matches exactly one tracked python file that mentions an identifier from the statement",
+      "derivation_not_the_first_named_path": "",
+      "declared_main_file": "django/db/models/query_utils.py",
+      "main_file_matches_the_declaration": true,
+      "declared_defect_entity": "_unregister_lookup",
+      "declared_by": "integrator",
+      "declaration_proof": {
+        "declared_entity": "_unregister_lookup",
+        "verbatim_in_statement": true,
+        "statement_occurrence_count": 2,
+        "statement_excerpt": "RegisterLookupMixin._unregister_lookup() should clear the lookup cache.\nDescription\n\t \n\t\t(last modified by H",
+        "statement_offsets": [
+          20,
+          163
+        ],
+        "bound_in_main_file": true,
+        "bound_range": {
+          "first_line": 211,
+          "last_line": 219,
+          "kind": "FunctionDef",
+          "depth": 1
+        }
+      },
+      "defect_view": {
+        "round": 1,
+        "symbol": "_unregister_lookup",
+        "file": "django/db/models/query_utils.py",
+        "first_line": 211,
+        "last_line": 219,
+        "is_the_newest_tool_group": false,
+        "recency_consequence": "the defect view is the first read, so it is elidable content on later model inputs under the literal invariant"
+      },
+      "views": [
+        {
+          "slot": "A",
+          "round": 1,
+          "role": "cause: the method that leaves the cached lookups in place",
+          "file": "django/db/models/query_utils.py",
+          "symbol": "_unregister_lookup",
+          "kind": "FunctionDef",
+          "strategy": "definition",
+          "first_line": 211,
+          "last_line": 219,
+          "line_count": 9,
+          "within_the_60_line_cap": true,
+          "tool_name": "read_unregister_lookup",
+          "commit_path": "884b4c27f506b3c29d58509fc83a35c30ea10d94:django/db/models/query_utils.py",
+          "blob_git_id": "0caa165e151b72df0345b39809e185a984873f6a",
+          "file_content_sha256": "79f44df9f8754429320b6d349bfee8b06d341335f2c4c343df006e41402d84c7",
+          "view_content_sha256": "36d2a99571b1304093db5042d36f0b2ff508561906c2126af7d0d6cf779acc38",
+          "leaf_view_content_sha256": "bfb7cb3256effec573fdfcb17ae0676a67dd1897a9c6b6a2bf5548f27ed33bdb",
+          "view_bytes": 422,
+          "view_content_sha256_convention": "sha256 of the rendered view text: '<repo>/<file> (baseline)' and then each line of the range as '<number>: <text>'; this is the string the registry re-renders and verifies against",
+          "leaf_view_content_sha256_convention": "sha256 of the leaf text: the range's lines joined by a newline, no line numbers, no trailing newline; this is the derivation record's own convention and it is carried beside the rendered digest rather than instead of it"
+        },
+        {
+          "slot": "B",
+          "round": 2,
+          "role": "context: the descent helper beside it",
+          "file": "django/db/models/query_utils.py",
+          "symbol": "select_related_descend",
+          "kind": "FunctionDef",
+          "strategy": "definition",
+          "first_line": 222,
+          "last_line": 256,
+          "line_count": 35,
+          "within_the_60_line_cap": true,
+          "tool_name": "read_select_related_descend",
+          "commit_path": "884b4c27f506b3c29d58509fc83a35c30ea10d94:django/db/models/query_utils.py",
+          "blob_git_id": "0caa165e151b72df0345b39809e185a984873f6a",
+          "file_content_sha256": "79f44df9f8754429320b6d349bfee8b06d341335f2c4c343df006e41402d84c7",
+          "view_content_sha256": "528e959efbb513761e2f0fc58b250c12dbf0cc9de3965dae0629f2f5817783c9",
+          "leaf_view_content_sha256": "371e335ccfb9b09372d98f7c88868db3082d2360caa09407429a4018f45c659b",
+          "view_bytes": 1728,
+          "view_content_sha256_convention": "sha256 of the rendered view text: '<repo>/<file> (baseline)' and then each line of the range as '<number>: <text>'; this is the string the registry re-renders and verifies against",
+          "leaf_view_content_sha256_convention": "sha256 of the leaf text: the range's lines joined by a newline, no line numbers, no trailing newline; this is the derivation record's own convention and it is carried beside the rendered digest rather than instead of it"
+        },
+        {
+          "slot": "C",
+          "round": 3,
+          "role": "context: the references expression resolver",
+          "file": "django/db/models/query_utils.py",
+          "symbol": "refs_expression",
+          "kind": "FunctionDef",
+          "strategy": "definition",
+          "first_line": 259,
+          "last_line": 269,
+          "line_count": 11,
+          "within_the_60_line_cap": true,
+          "tool_name": "read_refs_expression",
+          "commit_path": "884b4c27f506b3c29d58509fc83a35c30ea10d94:django/db/models/query_utils.py",
+          "blob_git_id": "0caa165e151b72df0345b39809e185a984873f6a",
+          "file_content_sha256": "79f44df9f8754429320b6d349bfee8b06d341335f2c4c343df006e41402d84c7",
+          "view_content_sha256": "7448849189e391ad586d0a3ecfbbd76d4e1fd390bc37ef07ce14da1f4a13b247",
+          "leaf_view_content_sha256": "219c00f9001c0d4bdffaa74de457569732fcad793ee8a42bbd83bcf2deb139fe",
+          "view_bytes": 649,
+          "view_content_sha256_convention": "sha256 of the rendered view text: '<repo>/<file> (baseline)' and then each line of the range as '<number>: <text>'; this is the string the registry re-renders and verifies against",
+          "leaf_view_content_sha256_convention": "sha256 of the leaf text: the range's lines joined by a newline, no line numbers, no trailing newline; this is the derivation record's own convention and it is carried beside the rendered digest rather than instead of it"
+        }
+      ],
+      "view_texts_sha256": [
+        "36d2a99571b1304093db5042d36f0b2ff508561906c2126af7d0d6cf779acc38",
+        "528e959efbb513761e2f0fc58b250c12dbf0cc9de3965dae0629f2f5817783c9",
+        "7448849189e391ad586d0a3ecfbbd76d4e1fd390bc37ef07ce14da1f4a13b247"
+      ],
+      "views_pairwise_disjoint": true,
+      "view_count": 3,
+      "max_view_lines": 60,
+      "tool_names": [
+        "read_unregister_lookup",
+        "read_select_related_descend",
+        "read_refs_expression"
+      ],
+      "request": "Diagnose why this baseline keeps serving a stale registered lookup after a lookup is unregistered. Read the method that unregisters one lookup from the registry, the function that descends a select_related chain and the function that resolves a references expression, in that order; name the method that leaves the cached lookups in place and the parameter that carries the name of the lookup it must clear.",
+      "contract": {
+        "issue_value": "django-15569",
+        "required_facts": [
+          "_unregister_lookup",
+          "lookup_name",
+          "lookup"
+        ],
+        "cause_token": "_unregister_lookup",
+        "fix_token": "lookup_name",
+        "frozen_regex": "RESULT issue=django-15569 cause=.*_unregister_lookup.* fix=.*lookup_name.*",
+        "max_answer_chars": 160
+      },
+      "literal_rule_verdicts": {
+        "R1_verbatim": {
+          "holds": true
+        },
+        "R2_two_code_anchored": {
+          "holds": true,
+          "anchored": [
+            "_unregister_lookup",
+            "lookup_name",
+            "lookup"
+          ]
+        },
+        "R3_regex_tokens_anchored": {
+          "holds": true,
+          "cause": true,
+          "fix": true
+        },
+        "R4_relevance": {
+          "holds": true,
+          "per_literal": [
+            {
+              "literal": "_unregister_lookup",
+              "named_by_statement": true,
+              "bound_in_defect_view": true,
+              "holds": true
+            },
+            {
+              "literal": "lookup_name",
+              "named_by_statement": false,
+              "bound_in_defect_view": true,
+              "holds": true
+            },
+            {
+              "literal": "lookup",
+              "named_by_statement": true,
+              "bound_in_defect_view": true,
+              "holds": true
+            }
+          ]
+        },
+        "R5_two_outside_framework_generic": {
+          "holds": true,
+          "outside": [
+            "_unregister_lookup",
+            "lookup_name",
+            "lookup"
+          ],
+          "list": [
+            "request",
+            "response",
+            "get_response",
+            "view",
+            "model",
+            "field",
+            "template",
+            "inner",
+            "value",
+            "error",
+            "object",
+            "class",
+            "method"
+          ]
+        },
+        "R6_not_keyword_or_builtin": {
+          "holds": true,
+          "offending": []
+        },
+        "R7_lazy_answer_control": {
+          "holds": true,
+          "satisfies_frozen_regex": false,
+          "satisfies_literal_requirement": false,
+          "lazy_line_head": "RESULT issue=django-15569 cause=django-15569 RegisterLookupMixin _unregister_lookup should clear the lookup cache Description last modified by Himansh"
+        },
+        "minimal_feasible_line": {
+          "line": "RESULT issue=django-15569 cause=_unregister_lookup fix=lookup_name lookup",
+          "chars": 73,
+          "four_conditions": {
+            "facts_complete": true,
+            "frozen_regex": true,
+            "single_line_prefix": true,
+            "within_160": true
+          }
+        },
+        "views_unchanged": {
+          "distinct_ranges": true,
+          "distinct_tool_names": true,
+          "view_hashes_recorded": true
+        },
+        "verdict": "ACCEPTED",
+        "printed_by_the_supplement": "integrations/openai_agents/V18_LAZY_NEGATIVE_CONTROL_SUPPLEMENT_20261010.json"
+      },
+      "literals": [
+        {
+          "literal": "_unregister_lookup",
+          "verbatim_hits": 1,
+          "first_hit": {
+            "round": 1,
+            "file": "django/db/models/query_utils.py",
+            "line_number": 212,
+            "text": "def _unregister_lookup(cls, lookup, lookup_name=None):"
+          },
+          "views_where_it_appears": [
+            1
+          ],
+          "bound_in_view_rounds": [
+            1
+          ],
+          "bound_in_defect_view": true,
+          "named_by_statement": true
+        },
+        {
+          "literal": "lookup_name",
+          "verbatim_hits": 4,
+          "first_hit": {
+            "round": 1,
+            "file": "django/db/models/query_utils.py",
+            "line_number": 212,
+            "text": "def _unregister_lookup(cls, lookup, lookup_name=None):"
+          },
+          "views_where_it_appears": [
+            1
+          ],
+          "bound_in_view_rounds": [
+            1
+          ],
+          "bound_in_defect_view": true,
+          "named_by_statement": false
+        },
+        {
+          "literal": "lookup",
+          "verbatim_hits": 12,
+          "first_hit": {
+            "round": 1,
+            "file": "django/db/models/query_utils.py",
+            "line_number": 212,
+            "text": "def _unregister_lookup(cls, lookup, lookup_name=None):"
+          },
+          "views_where_it_appears": [
+            1,
+            3
+          ],
+          "bound_in_view_rounds": [
+            1
+          ],
+          "bound_in_defect_view": true,
+          "named_by_statement": true
+        }
+      ],
+      "defect_view_bound_names": [
+        "_unregister_lookup",
+        "cls",
+        "lookup",
+        "lookup_name"
+      ],
+      "problems": [],
+      "usable": true
+    }
+  },
+  "view_shape": {
+    "views_per_task": 3,
+    "rounds": 3,
+    "reads_per_round": 1,
+    "read_calls": 3,
+    "max_view_lines": 60,
+    "pairwise_disjoint": true,
+    "note": "the registry is pointed at this artifact in its sealed mode, so the registered task table of this batch is exactly the three tasks above: the stage-1 development task the registry appends in development mode is not part of this matrix"
+  },
+  "citable": false,
+  "registration_may_proceed": true,
+  "paid_requests": 0,
+  "not_done": [
+    "no request is spent by this artifact",
+    "the confirmation batch itself is not started here"
+  ]
+}

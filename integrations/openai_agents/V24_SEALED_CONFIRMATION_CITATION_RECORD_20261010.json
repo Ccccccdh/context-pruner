@@ -1,0 +1,79 @@
+{
+  "schema": "openai_agents_v24_sealed_confirmation_citation_record",
+  "record_id": "openai-agents-v24-sealed-citation-01",
+  "date": "20261010",
+  "status": "RECORDED",
+  "api_requests_spent": 0,
+  "batch": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v24-length-compliance-k1-01",
+  "audit": {
+    "artifact": "integrations/openai_agents/V24_LENGTH_COMPLIANCE_K1_AUDIT_20261010.json",
+    "complete": true,
+    "errors": [],
+    "usable_as_saving": true,
+    "recomputed_acceptance_matches_runner": true
+  },
+
+  "configuration": {
+    "name": "v24 length compliance plus the v21/v22 literal carrier preserving line elision at window K=1",
+    "mechanism": "for tool outputs that are not the newest tool group, keep verbatim every line carrying a registered literal or constraint phrase together with one line either side, elide the remaining lines and mark each omitted run with an explicit interval note; the newest tool group is kept verbatim; a literal preservation invariant must hold or the output is kept verbatim and a fallback is counted",
+    "strict_track": "the four frozen conditions on the rendered line, at most 160 characters, unchanged",
+    "retry": "one billed retry per sample, carrying the strengthened two sided diagnostic",
+    "first_attempt_acceptance": "19 of 45, that is 42.2 percent, all rejections over_160_chars, retry recovery 26 of 26"
+  },
+
+  "the_two_numbers_and_their_decomposition": {
+    "primary_as_paired_complete_provider_tokens": {
+      "value": 0.071042,
+      "positive_pairs": "15/15",
+      "stdev": 0.0907,
+      "min": 0.004446,
+      "max": 0.220954,
+      "per_task": {"autoreload_template_changed": 0.007055, "sitemap_callable_lastmod": 0.028637, "query_utils_unregister_lookup": 0.177435}
+    },
+    "co_primary_symmetric_matched_prefix_tokens": {
+      "value": 0.012618,
+      "positive_pairs": "15/15",
+      "stdev": 0.0117,
+      "min": 0.0020,
+      "max": 0.0290,
+      "definition": "each arm's first k calls with k equal to the smaller of the two call counts, symmetric by construction"
+    },
+    "byte_proxy_symmetric_matched_prefix": {"value": 0.019469, "positive_pairs": "15/15"},
+    "the_decomposition_the_reader_needs": {
+      "pairs_where_the_retry_burden_was_symmetric": "ten pairs: all five autoreload pairs had both arms retry and all five sitemap pairs had neither retry; on those pairs the primary and the co-primary agree closely, at 0.6 and 2.9 percent, and that agreement is the mechanism's own yield",
+      "pairs_where_the_retry_burden_was_asymmetric": "four pairs of query_utils_unregister_lookup, repeats one to four, where the baseline spent a billed retry and the plugin arm did not, so the baseline paid five calls against the plugin's four; those pairs read 22.1 percent on the primary and 0.20 percent on the co-primary",
+      "reading": "about 5.8 of the 7.1 percentage points of the primary come from the plugin arm needing four fewer billed retries than the baseline, not from the mechanism; the mechanism's own yield on this task set is the co-primary, 1.26 percent in tokens",
+      "why_both_are_reported": "the primary charges every request to its own arm and is therefore the honest description of what each arm actually spent; the co-primary isolates the mechanism from retry placement; this batch happens to be the mirror image of the v16 sealed batch, where a unilateral plugin retry cost the plugin about 19 percent on two pairs"
+    }
+  },
+
+  "mechanism_facts": {
+    "deterministic": "the byte saving is identical in every repeat of a task: 118 bytes per sample for autoreload, 72 for query_utils, 1502 for sitemap",
+    "totals": {"autoreload_template_changed": {"outputs_elided": 1, "lines_elided": 2, "bytes": 118}, "query_utils_unregister_lookup": {"outputs_elided": 2, "lines_elided": 2, "bytes": 72}, "sitemap_callable_lastmod": {"outputs_elided": 3, "lines_elided": 35, "bytes": 1502}},
+    "literal_guard_fallbacks": 0,
+    "re_reads": "tool calls are 3 per sample in every arm, 45 in total per arm, so the elision induced no re-read",
+    "defect_view_positions": "the defect view of autoreload_template_changed is the newest tool group and is therefore never elided, so that task's result must not be credited to the mechanism; for the other two tasks the defect view is the first round and is elided, protected by the literal invariant",
+    "why_the_yield_is_smaller_than_on_the_development_tasks": "the sealed tasks have three views of at most sixty lines each, one of which is the newest group and therefore untouched, so the elidable non literal content is far smaller than in the development measurements"
+  },
+
+  "cost_and_scope": {
+    "requests": "211 of a 390 cap, all off peak",
+    "dollars": 0.006151,
+    "cache": "206 calls all reporting cache fields, 384753 hit tokens against 45859 miss tokens",
+    "this_is_the_second_run_of_this_task_set": "the first run, under v23, stopped at 39 of 45 when django-15572 failed rendering on all fifteen of its samples; that batch is void and is never cited; the set is exhausted after this batch",
+    "first_attempt_compliance_did_not_reach_the_seventy_percent_line": "the gate was amended before this run to replace that proxy with the operative criteria, zero render failures with the retry recovery measured at 26 of 26; the amendment and the residual risk are recorded in V24_RECALIBRATION_GATE_AMENDMENT_20261010.json",
+    "experiment_id": "the frozen runner forces the freeze's pre-registered id, so the batch landed in the directory ending k1-01 rather than k1-02; the audit records the substitution and re-binds the check that the gate authorised the batch that actually ran, through the runtime hash chain"
+  },
+
+  "citable_sentence_zh": "在该主机配置下（v24 长度合规配置 ＋ K=1 的保证据行级省略），对 3 个封存任务 × 5 重复 × 3 臂的 45 个样本，按全体配对的完整供应商 token 计，插件臂相对基线的配对均值为 +7.10%（15/15 配对为正，σ 9.07pp）；其中约 5.8 个百分点来自插件臂比基线少花 4 次计费重试（4 个配对为基线单向重试），**机制自身的产出是 +1.26%（对称匹配前缀口径，15/15 为正，σ 1.17pp）**。三臂严格轨与语义正确率均为 15/15，零渲染失败，插件的省略未诱发任何重读（三臂 tool_calls 恒为 3/样本），机制字节节省逐重复完全相同，守卫回退 0；独立审计 complete、errors 空、usable_as_saving 为真。本批为该任务集在 v23 硬停后的**第二次运行**，用后即尽。",
+  "citable_sentence_en": "Under this host configuration (the v24 length compliance configuration with the K=1 literal carrier preserving line elision), on 45 samples over three sealed tasks at five repeats, the plugin arm's paired mean saving over the baseline in complete provider tokens is 7.10 percent with 15 of 15 pairs positive and a spread of 9.07 points. About 5.8 of those points come from the plugin arm needing four fewer billed retries than the baseline, and the mechanism's own yield is 1.26 percent in the symmetric matched prefix metric, positive on 15 of 15 pairs with a spread of 1.17 points. The strict track and semantic correctness are 15 of 15 in every arm, there are no render failures, the elision induced no re-reads, the byte saving is identical across repeats, and the literal guard never fell back. The independent audit is complete with no errors and usable as a saving. This is the second run of this task set, the first having stopped at 39 of 45 under v23, and the set is exhausted after this batch.",
+
+  "what_may_not_be_written": [
+    "that the mechanism saves 7.1 percent: the primary includes the baseline's unilateral retries",
+    "that this is a general context compression result: it is one host configuration, one window, three tasks",
+    "merging this figure in any way with the v16 sealed batch's 12.54 percent, which has a different mechanism, a different task set and a different shape",
+    "that the configuration met the seventy percent first attempt line, which it did not"
+  ],
+  "never_rejudge": ["v12 to v15", "the v16 sealed confirmation batch", "the v17 development pilots", "the v18 selection branch", "the v19 dose batches", "the v20 gate round", "the v21 and v22 development batches", "the v23 stopped batch", "the v24 recalibration"],
+  "citable": true
+}

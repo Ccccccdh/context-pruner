@@ -1,0 +1,267 @@
+{
+  "schema": "openai_agents_v24_recalibration_freeze",
+  "id": "V24-RECALIBRATION-01",
+  "status": "FROZEN",
+  "purpose": "recalibration_of_the_v24_length_compliant_prompt_on_the_development_tasks",
+  "written_utc_date": "20261010",
+  "generated_utc": "2026-10-10T18:35:20+00:00",
+  "written_before_any_paid_request": true,
+  "api_requests_spent_when_written": 0,
+  "experiment_id": "openai-repo-diagnostic-v24-length-compliance-recalibration-01",
+  "produced_by": "experiments/runners/run_openai_agents_v24_recalibration.py",
+  "task_set": [
+    "autoreload_template_changed",
+    "sitemap_callable_lastmod",
+    "query_utils_unregister_lookup"
+  ],
+  "task_set_note": "the host's development tasks, read from the v24 registry in development mode; they took part in building this host configuration, so this batch is development evidence for the configuration and is never citable",
+  "matrix": {
+    "tasks": [
+      "autoreload_template_changed",
+      "sitemap_callable_lastmod",
+      "query_utils_unregister_lookup"
+    ],
+    "arms": [
+      "none",
+      "native_summary",
+      "pruner_v1"
+    ],
+    "repeats": 1,
+    "samples": 9,
+    "max_api_requests": 80,
+    "repeats_rationale": "one repeat is the shape the ruling fixes for the recalibration: nine samples are enough to read the first-attempt acceptance rate the prompt change is meant to raise, and the movement this batch can detect is coarse by construction, which is why nothing here is citable and why the confirmation batch keeps the five repeats of the v16 sealed confirmation"
+  },
+  "read_shape": {
+    "shape": "N3",
+    "rounds": 3,
+    "reads_per_round": 1,
+    "read_calls": 3,
+    "expected_model_calls": 4,
+    "max_turns": 5,
+    "views_pairwise_disjoint": true
+  },
+  "host_configuration": {
+    "structured_final_answer": "JSON issue/cause/fix/facts asked for in the prompt, identical for every arm, rendered by the frozen renderer; a rejected proposal closes to an empty answer",
+    "renderer": {
+      "module": "experiments/runners/openai_agents_structured_final_v16.py",
+      "sha256": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+      "truncates": false,
+      "drops_fields": false
+    },
+    "retry": {
+      "budget_per_sample": 1,
+      "billed": true,
+      "carries_host_diagnostic": true,
+      "diagnostic_is_two_sided": true
+    },
+    "prompt_change": {
+      "schema": "openai_agents_v24_registry_fork",
+      "module": "experiments/runners/openai_agents_v24_registry.py",
+      "module_sha256": "49ac3037b23ec56df7e569342be347e976bfc1a48a062d848fb7bfc5504f156d",
+      "parent_module": "experiments/runners/openai_agents_v18_registry.py",
+      "parent_sha256": "04bc0ef41e78d15deafdaa568ab2094988d8b2068a13a2231e163164ebd4355f",
+      "parent_is_not_edited": true,
+      "registry_schema": "openai_agents_v24_registry",
+      "parent_registry_schema": "openai_agents_v18_registry",
+      "only_change": "the contract prompt of every task gains the length-discipline text below; the tasks, views, ranges, blob ids, view hashes, literals, frozen regexes, registered requests, protocol steps, cause and fix tokens, the 160-character bound and the renderer are unchanged",
+      "length_discipline_texts": [
+        " Length discipline: this is a hard rejection criterion, not a preference. The host accepts the answer only when the whole rendered line \"RESULT issue=<issue> cause=<cause> fix=<fix>\" is at most 160 characters, and when it is longer the host rejects the ENTIRE answer, so the answer is lost and the sample scores zero. Work to a target well below the bound: write cause and fix so that the two fields together come to about 120 characters or less, leaving room under the 160-character limit. Do not buy that room by dropping anything: every required string and both required technical names must still appear verbatim inside cause or fix, and an abbreviation, a shorter spelling or a summary of one of them does not count as the required string.",
+        " Budget for this task: the issue value \"{issue}\" plus the fixed prefix \"RESULT issue=\" and the fixed markers \" cause=\" and \" fix=\" already take {fixed} characters of the 160, so everything you write in the cause and fix fields together must stay within {headroom} characters to be accepted."
+      ],
+      "length_discipline_sentence_sha256": "10d3f77a6f23dbd8d7d67b5757338f15fa52961be30093150fd67b3ffe05334a",
+      "budget_sentence_template_sha256": "1a4396d9839c5f12d099f4d654f47851525402bcc0da707f3778662106c7d6e4",
+      "working_target_cause_plus_fix_chars": 120,
+      "bound": 160
+    },
+    "retry_change": {
+      "schema": "openai_agents_v24_live_contract_fork",
+      "module": "experiments/runners/openai_agents_v24_live_contract.py",
+      "module_sha256": "2cd3faafccc5766d6e0857ba87c25211ac83f7c65fa8556db829ec0a9d87c668",
+      "parent_module": "experiments/runners/openai_agents_v17_live_contract.py",
+      "parent_sha256": "b5be9165c8845579491e5541380f5f0766f97df77dfb933a12b26a1a1e3e1ca3",
+      "parent_is_not_edited": true,
+      "rebound_names": [
+        "RETRY_INSTRUCTION",
+        "DIAGNOSTIC_TEXT",
+        "diagnostic_for",
+        "V24StructuredFinalModel",
+        "structured_wiring"
+      ],
+      "deliberately_different": {
+        "retry_instruction": true,
+        "over_160_diagnostic_text": true,
+        "diagnostic_for_class_table": "the class text is read from this module's table",
+        "get_response": true,
+        "structured_wiring": true,
+        "model_class": true
+      },
+      "deliberately_identical": {
+        "structured_instruction": true,
+        "prompt_replacements": true,
+        "renderer_module": true,
+        "retry_budget_per_sample": true,
+        "max_chars": true,
+        "structured_schema": true,
+        "diagnostic_marker": true,
+        "other_rejection_classes": true,
+        "conditions_are_the_v17_function": true,
+        "render_report_is_the_v17_function": true,
+        "self_test_shape": true
+      },
+      "get_response_is_the_parent_method_token_for_token": false,
+      "get_response_token_difference": {
+        "parent_tokens": 917,
+        "own_tokens": 917,
+        "only_difference": "one identifier: the retry message's template is built from the module constant ``instruction`` instead of ``RETRY_INSTRUCTION``; ``instruction`` is this module's retry instruction for a rejection whose class is strengthened and the parent's untouched instruction for every other class",
+        "verified_one_identifier_apart": true
+      },
+      "get_response_lines_that_are_not_in_the_parent": [
+        "        before = _v17._attempts(self.inner)",
+        "            \"first_candidate_line\": _v17.candidate_line(raw, expected_issue=self.expected_issue),",
+        "            \"first_declared_facts\": _v17.declared_facts(raw),",
+        "                if fact",
+        "                not in _v17.candidate_line(raw, expected_issue=self.expected_issue)",
+        "            \"retry_wording\": \"not_used_first_attempt_accepted\",",
+        "            \"retry_instruction_sha256\": \"\",",
+        "            \"force_retry_wording\": False,",
+        "            entry[_v17._render_into_response_flag()] = _v17._render_into_response(",
+        "                first, first_verdict.output",
+        "        forced = first_verdict.reason in STRENGTHENED_REASONS",
+        "        instruction = RETRY_INSTRUCTION if forced else _v17.RETRY_INSTRUCTION",
+        "        entry[\"retry_wording\"] = \"v24_length_compliance\" if forced else \"v17_unchanged\"",
+        "        entry[\"force_retry_wording\"] = bool(forced)",
+        "        entry[\"retry_instruction\"] = instruction",
+        "        entry[\"retry_instruction_sha256\"] = hashlib.sha256(",
+        "            instruction.encode(\"utf-8\")",
+        "        ).hexdigest()",
+        "            {\"role\": \"user\", \"content\": f\"{instruction}\\n{diagnostic}\"},",
+        "        entry[\"repair_input_sha256\"] = _v17._sha(",
+        "            [",
+        "                item if isinstance(item, (str, int, float, bool, type(None))) else str(item)",
+        "                for item in repair_input",
+        "            ]",
+        "        before_retry = _v17._attempts(self.inner)",
+        "            entry[_v17._render_into_response_flag()] = _v17._render_into_response(first, \"\")",
+        "            entry[_v17._render_into_response_flag()] = _v17._render_into_response(",
+        "                second, revised_verdict.output",
+        "        entry[_v17._render_into_response_flag()] = _v17._render_into_response(first, \"\")"
+      ],
+      "get_response_declared_additions": 12,
+      "diagnostic_for_additions": [
+        "    Copied from ``openai_agent_v17_live_contract.diagnostic_for`` with one substitution, marked",
+        "    in-line: the class-specific text is looked up in *this* module's ``DIAGNOSTIC_TEXT``, so the",
+        "    over-length class carries the compact target.  Everything else - the two-sided tail with the",
+        "    bound, the required strings, the cause and fix tokens and the shortening rules - is the v17",
+        "    code, so both sides of the trade-off are still delivered for every class.",
+        "    missing = _v17.missing_declared_facts(raw, expected_issue=expected_issue)"
+      ],
+      "wiring_additions_are_the_postcondition": true
+    },
+    "modules": {
+      "experiments/runners/openai_agents_v24_registry.py": "49ac3037b23ec56df7e569342be347e976bfc1a48a062d848fb7bfc5504f156d",
+      "experiments/runners/openai_agents_v24_live_contract.py": "2cd3faafccc5766d6e0857ba87c25211ac83f7c65fa8556db829ec0a9d87c668",
+      "experiments/runners/openai_agents_v18_registry.py": "04bc0ef41e78d15deafdaa568ab2094988d8b2068a13a2231e163164ebd4355f",
+      "experiments/runners/openai_agents_v17_live_contract.py": "b5be9165c8845579491e5541380f5f0766f97df77dfb933a12b26a1a1e3e1ca3",
+      "experiments/runners/run_openai_agents_v17_acquisition.py": "be0b97b4100711e726c85003933a6cf0357c3c2b5388442d28a4af69ae5fb45d",
+      "experiments/runners/openai_agents_structured_final_v16.py": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+      "experiments/runners/openai_agents_v18_sealed_registration.py": "174462d17f84f814bd3edb1747359a88225cc8d295d5f405c452563cc306128d",
+      "experiments/runners/run_openai_agents_api_experiment.py": "1cafd67b5b4d649381c737ff2e97d15d7cbba95709311d3516ccdb266c7e8708",
+      "experiments/runners/openai_agents_multitask_chain_v14.py": "bb2f5ad589e4ac0129a4cf01d2316e7f1cf7987e5dfd02e2f41aa72c7ebc1446",
+      "experiments/runners/openai_agents_v19_shape_dose.py": "6957a247bbc5df70e2922be336d6d95e7cd1bbef818538eaaa4578250bdafc52",
+      "experiments/runners/openai_agents_exact_duplicate_replay_v12.py": "2b511306fa433909c3ec72100be93adb9628a22937a7c502bfad8b9faac1f937",
+      "experiments/runners/openai_agents_evidence_safe_retention_v5.py": "8b67133f8780fa03e562dbf1052e8a95b19a90ff042cf293c1b1cb17e2426e56",
+      "experiments/runners/openai_agents_v20_chain.py": "41d4ba547da42e659c7381927ccacf86543b97c74fc499885d8aa7059fff9259",
+      "experiments/runners/openai_agents_v20_retention.py": "65650b10e8a6fb72e580245c8c0c9485b85874e4193dea5b421e8657abb0db2c",
+      "experiments/runners/openai_agents_v21_carrier_elision.py": "5c6fce44cfd79832fd14dd21ab97627638afe9b186a01d6ea8e9507a3efb12e2",
+      "experiments/runners/openai_agents_v22_window.py": "3496e9f3806d9a453f9fd1647ede279c99cd0aabb52e3ad055a310653ea6d999",
+      "experiments/runners/openai_agents_v22_window_k1.py": "cc87b195abb98d8ef4c0d27e6928c265ef054a79f8e695d3126a8c950917a962",
+      "experiments/runners/openai_agents_v22_chain.py": "3cc39594737039c6abee7aa6da78a242565186cefe93253f2ef8edb3631e12f0",
+      "experiments/runners/run_openai_agents_v24_length_compliance_k1.py": "338a6415e5934b9789a92ec53d103b9b9280385640b8d8e1f95439e5e1c9d592",
+      "experiments/runners/run_openai_agents_v24_recalibration.py": "bb7642384671bff7ee79d367fafc5ed0359d841787ce995c6a306ece3b69214c"
+    },
+    "module_set_note": "the same module set the confirmation batch pins, plus this recalibration driver, because this batch runs the same configuration and its own driver decides the shape",
+    "revision_aware_fail_closed": "every module in the path must have a SHA256 recorded here and in the confirmation configuration's revision ledger; a drift fails the gate"
+  },
+  "budget_arithmetic": {
+    "shape": "N3",
+    "read_calls": 3,
+    "max_turns": 5,
+    "retry_budget_per_sample": 1,
+    "worst_case_requests_per_sample": 6,
+    "samples": 9,
+    "arms": [
+      "none",
+      "native_summary",
+      "pruner_v1"
+    ],
+    "repeats": 1,
+    "worst_case_model_calls": 54,
+    "summary_calls_worst_case": 6,
+    "worst_case_requests": 60,
+    "cap": 80,
+    "margin": 1.333,
+    "at_least_1_3": true,
+    "derivation": "READ_CALLS=3 => MAX_TURNS=5 => worst 6 per sample => 9x6 + 3x2 = 60 => 1.3x => 78, capped at 80"
+  },
+  "acceptance_line": {
+    "line": "per task, the plugin arm's strict track is at least the baseline's (the four conditions judged on the rendered line) AND the paired complete provider-token saving is positive for a majority of pairs AND the batch mean is positive. The verdict is decided on every pair of the frozen matrix; the symmetric matched-prefix reading, the byte reading, the strict-track and semantic-accuracy endpoints per arm and the per-arm call distribution are reported beside it and never substitute for it. Failures, cap hits, retries and summary requests are all charged to their arm.",
+    "decided_on": "every pair of this batch's matrix",
+    "strict_track": "the four conditions judged on the rendered line: required facts present, frozen regex full match, single line with the contract prefix, at most 160 characters",
+    "paired_statistic": "paired complete provider-token totals per (task, repeat) pair, with retries and summary tokens charged to the arm they belong to",
+    "bounds_are_not_relaxed": "at most 160 characters remains an acceptance condition",
+    "note": "this is the v24 configuration's own acceptance line, imported rather than restated, so this batch cannot lower a bar the confirmation batch will use"
+  },
+  "recalibration_decision_line": {
+    "line": "on top of the v24 acceptance line: first-attempt acceptance at or above 70 percent overall, every arm's strict track at or above the baseline, the semantic endpoint at or above the baseline, zero render failures, zero truncations, zero dropped fields, and the mechanism's byte saving unchanged in kind from the K=1 development measurement",
+    "applied_on_top_of": "the v24 acceptance line above",
+    "why": "a prompt change alters compliance, so the configuration is re-measured on the development tasks before it confirms anything; this line is the ruling's own and it gates the confirmation batch rather than replacing its acceptance line"
+  },
+  "report_requirements": [
+    "the first-attempt acceptance rate and its rejection-class decomposition per arm",
+    "the strict track and semantic endpoint per arm, per task and pooled",
+    "the paired complete provider-token saving beside the byte reading",
+    "the mechanism counters and their determinism across the repeats",
+    "which retry wording each retried sample received",
+    "requests against the cap, the cache split and the off-peak flag",
+    "the decision line's verdict",
+    "wording: under this host configuration; this batch is development evidence and is never merged with the confirmation batch or with the v16 sealed batch"
+  ],
+  "driver": {
+    "module": "experiments/runners/run_openai_agents_v24_recalibration.py",
+    "sha256": "bb7642384671bff7ee79d367fafc5ed0359d841787ce995c6a306ece3b69214c"
+  },
+  "development_k1_reference": {
+    "batch": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v22-window-k1b-pilot-02",
+    "note": "the v22 K=1 development group is the K=1 development measurement this recalibration is compared with in kind - not in value - because the v22 development numbers are not citable and are not pooled with anything here"
+  },
+  "source_of_record": {
+    "integrations/openai_agents/V18_SOURCE_REGISTRATION_20261010.json": "bea2648878c3b9299f63be45348dadf810b653bf644bd706995c6fef606b5c14",
+    "integrations/openai_agents/V18_VIEW_DERIVATION_RECORD_20261010.json": "ec2bffb9b3a5c36b996bc75b2dd4c7b8d52474895078ab8160457a5e828ab0a5",
+    "integrations/openai_agents/V18_CANDIDATE_REDERIVATION_VERIFICATION_20261010.json": "d2d2a0d85dccf336fb2d7ef9f852c0e5b564402891040b4aec80278640b2a0e4",
+    "integrations/openai_agents/V18_LAZY_NEGATIVE_CONTROL_SUPPLEMENT_20261010.json": "976dea7419e7158eeab4973bea300f39acb155cfdd551dd19e4cae5793897f75",
+    "integrations/openai_agents/V18_DEFECT_ENTITY_DECLARATION_20261010.json": "3eba7aec19e39c7720100d79b2d7ed2e6cfc006a2f75776b9a95a65eaecf105c",
+    "integrations/openai_agents/V18_LITERAL_DISCRIMINATIVENESS_RULE_20261010.json": "f2fa7e48ea5d36bdd4464d8394e9cd6cf89eb8e4d30fde6b3b7974980125b7d5",
+    "integrations/openai_agents/V18_LITERAL_RULE_AMENDMENT_20261010.json": "97cbcba3bb74b3f7872819b597fde6deaa2a847a86ac6e90628b7831c808f9f8",
+    "integrations/openai_agents/V18_LITERAL_RULE_AMENDMENT_02_20261010.json": "fbac7d892700b532db34cc3ae70aa9f09208bd93042231357395c6dfcdac8420",
+    "integrations/openai_agents/V18_VIEW_SHAPE_AMENDMENT_03_20261010.json": "d7360183c6d6881044ffadd3f8b1f988cdb92d859bf9f70c0d660e7de046defd",
+    "integrations/openai_agents/V22_WINDOW_DOSE_PLAN_20261010.json": "64685b21a9915d0ae2a4b68a975ba3e50d28144faeacaf674033866f3b720900"
+  },
+  "source_of_record_note": "the same frozen records the confirmation batch pins, re-verified by the frozen finaliser before it writes this batch's manifest and by the paid path before its first request",
+  "citable_as_saving": false,
+  "citable_as_quality_equivalence": false,
+  "not_evidence_yet": "this batch is development evidence for the v24 configuration; it confirms nothing about the sealed tasks and none of its numbers is citable",
+  "stop_conditions": [
+    "first-attempt acceptance below 70 percent -> stop and report",
+    "any arm's strict track below the baseline -> stop and report",
+    "the semantic endpoint below the baseline -> stop and report",
+    "any render failure, truncation or dropped field -> stop and report",
+    "any request failure or cap hit -> stop, keep the partial directory, report"
+  ],
+  "required_wording": "under this host configuration",
+  "forbidden_wording": [
+    "compression alone saved X percent",
+    "the four criteria are met",
+    "the retry tax is gone",
+    "the plugin saves about 12.5 percent of context"
+  ]
+}

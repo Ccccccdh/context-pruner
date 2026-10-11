@@ -1,0 +1,472 @@
+{
+  "schema": "openai_agents_v18_zero_api_completion",
+  "record_id": "openai-agents-v18-zero-api-completion-01",
+  "date": "20261010",
+  "generated_utc": "2026-10-10T17:46:26+00:00",
+  "api_requests_spent": 0,
+  "produced_by": "experiments/audits/v18_zero_api_completion.py",
+  "pass_evidence_rule": "a pass rests on the complete output of one run of this script; the artifact carries the run's own captured output for both frozen checks and prints R7 per candidate",
+  "why": "the frozen verification record carries R7, the lazy answer negative control, for each candidate, but the frozen script's main() does not print it; the project's evidence rule requires the check to appear in the output of a run, so this supplement prints it, using the frozen module's own check_candidate rather than a re-implementation, and shows the frozen record to be reproducible from its inputs",
+  "required_computations": {
+    "source": "integrations/openai_agents/V18_CANDIDATE_REDERIVATION_PROPOSAL_20261010.json",
+    "lazy_negative_control_per_candidate": "carried here, printed per candidate",
+    "lexer_verification_of_literals_and_regex_tokens": "tabulated here from the frozen checker and recorded in the verification artifact",
+    "minimal_feasible_line_with_the_four_conditions": "asserted here on the freshly computed lines",
+    "token_counts_tool_names_ranges_and_file_hashes_unchanged": "asserted here",
+    "statement_hash_recomputed_at_registration": "recomputed here and written into V18_SOURCE_REGISTRATION_20261010.json"
+  },
+  "inputs": {
+    "view_derivation_record": {
+      "path": "integrations/openai_agents/V18_VIEW_DERIVATION_RECORD_20261010.json",
+      "sha256": "ec2bffb9b3a5c36b996bc75b2dd4c7b8d52474895078ab8160457a5e828ab0a5"
+    },
+    "candidate_rederivation_verification": {
+      "path": "integrations/openai_agents/V18_CANDIDATE_REDERIVATION_VERIFICATION_20261010.json",
+      "sha256": "d2d2a0d85dccf336fb2d7ef9f852c0e5b564402891040b4aec80278640b2a0e4"
+    },
+    "literal_rule": {
+      "path": "integrations/openai_agents/V18_LITERAL_DISCRIMINATIVENESS_RULE_20261010.json",
+      "sha256": "f2fa7e48ea5d36bdd4464d8394e9cd6cf89eb8e4d30fde6b3b7974980125b7d5"
+    },
+    "literal_rule_amendment": {
+      "path": "integrations/openai_agents/V18_LITERAL_RULE_AMENDMENT_20261010.json",
+      "sha256": "97cbcba3bb74b3f7872819b597fde6deaa2a847a86ac6e90628b7831c808f9f8"
+    },
+    "literal_rule_amendment_02": {
+      "path": "integrations/openai_agents/V18_LITERAL_RULE_AMENDMENT_02_20261010.json",
+      "sha256": "fbac7d892700b532db34cc3ae70aa9f09208bd93042231357395c6dfcdac8420"
+    },
+    "view_shape_amendment_03": {
+      "path": "integrations/openai_agents/V18_VIEW_SHAPE_AMENDMENT_03_20261010.json",
+      "sha256": "d7360183c6d6881044ffadd3f8b1f988cdb92d859bf9f70c0d660e7de046defd"
+    },
+    "defect_entity_declaration": {
+      "path": "integrations/openai_agents/V18_DEFECT_ENTITY_DECLARATION_20261010.json",
+      "sha256": "3eba7aec19e39c7720100d79b2d7ed2e6cfc006a2f75776b9a95a65eaecf105c",
+      "decided_by": "integrator"
+    },
+    "rederivation_proposal": {
+      "path": "integrations/openai_agents/V18_CANDIDATE_REDERIVATION_PROPOSAL_20261010.json",
+      "sha256": "8a955f2e88ce988a4537bb6976e15379a060ed7b20bcb924f0fec0d044fabe4c"
+    },
+    "view_derivation_script": {
+      "path": "experiments/audits/v18_view_derivation.py",
+      "sha256": "a4df72eb5a0b1cbd01c5dcc2e97304d574f36fdb0a1d327a06732debe6dfae68"
+    },
+    "literal_binding_script": {
+      "path": "experiments/audits/v18_literal_binding_check.py",
+      "sha256": "34844121c91779ea5a6d5d222c73b6693e73453972b67d68c05d639ece1c4281"
+    }
+  },
+  "lazy_negative_control": {
+    "django__django-15572": {
+      "task_id": "django__django-15572",
+      "issue_value": "django-15572",
+      "frozen_regex": "RESULT issue=django-15572 cause=.*template_changed.* fix=.*template_dir.*",
+      "required_facts": [
+        "template_changed",
+        "template_dir",
+        "file_path"
+      ],
+      "holds": true,
+      "satisfies_frozen_regex": false,
+      "satisfies_literal_requirement": false,
+      "lazy_line_chars": 150,
+      "lazy_line_head": "RESULT issue=django-15572 cause=django-15572 Django autoreload breaks on empty string in TEMPLATES DIRS Description Django versions changes the way te",
+      "vocabulary": "the issue identifier, the problem statement's own word tokens in order (first 40) and the frozen lazy vocabulary of Python and framework generic words",
+      "vocabulary_size": 43,
+      "rule": "R7 fails the control: the line assembled from that vocabulary alone must satisfy neither the frozen regex nor the literal requirement",
+      "record_value": {
+        "holds": true,
+        "satisfies_frozen_regex": false,
+        "satisfies_literal_requirement": false
+      }
+    },
+    "django__django-16255": {
+      "task_id": "django__django-16255",
+      "issue_value": "django-16255",
+      "frozen_regex": "RESULT issue=django-16255 cause=.*get_latest_lastmod.* fix=.*lastmod.*",
+      "required_facts": [
+        "get_latest_lastmod",
+        "lastmod",
+        "items"
+      ],
+      "holds": true,
+      "satisfies_frozen_regex": false,
+      "satisfies_literal_requirement": false,
+      "lazy_line_chars": 150,
+      "lazy_line_head": "RESULT issue=django-16255 cause=django-16255 Sitemaps without items raise ValueError on callable lastmod Description When sitemap contains not items b",
+      "vocabulary": "the issue identifier, the problem statement's own word tokens in order (first 40) and the frozen lazy vocabulary of Python and framework generic words",
+      "vocabulary_size": 43,
+      "rule": "R7 fails the control: the line assembled from that vocabulary alone must satisfy neither the frozen regex nor the literal requirement",
+      "record_value": {
+        "holds": true,
+        "satisfies_frozen_regex": false,
+        "satisfies_literal_requirement": false
+      }
+    },
+    "django__django-15569": {
+      "task_id": "django__django-15569",
+      "issue_value": "django-15569",
+      "frozen_regex": "RESULT issue=django-15569 cause=.*_unregister_lookup.* fix=.*lookup_name.*",
+      "required_facts": [
+        "_unregister_lookup",
+        "lookup_name",
+        "lookup"
+      ],
+      "holds": true,
+      "satisfies_frozen_regex": false,
+      "satisfies_literal_requirement": false,
+      "lazy_line_chars": 150,
+      "lazy_line_head": "RESULT issue=django-15569 cause=django-15569 RegisterLookupMixin _unregister_lookup should clear the lookup cache Description last modified by Himansh",
+      "vocabulary": "the issue identifier, the problem statement's own word tokens in order (first 40) and the frozen lazy vocabulary of Python and framework generic words",
+      "vocabulary_size": 43,
+      "rule": "R7 fails the control: the line assembled from that vocabulary alone must satisfy neither the frozen regex nor the literal requirement",
+      "record_value": {
+        "holds": true,
+        "satisfies_frozen_regex": false,
+        "satisfies_literal_requirement": false
+      }
+    }
+  },
+  "literals": {
+    "django__django-15572": [
+      {
+        "literal": "template_changed",
+        "verbatim_hits": 1,
+        "views_where_it_appears": [
+          3
+        ],
+        "bound_in_view_rounds": [
+          3
+        ],
+        "bound_in_defect_view": true,
+        "named_by_statement": true,
+        "first_hit_round": 3,
+        "first_hit_file": "django/template/autoreload.py",
+        "first_hit_line": 48,
+        "first_hit_text": "def template_changed(sender, file_path, **kwargs):"
+      },
+      {
+        "literal": "template_dir",
+        "verbatim_hits": 3,
+        "views_where_it_appears": [
+          2,
+          3
+        ],
+        "bound_in_view_rounds": [
+          3
+        ],
+        "bound_in_defect_view": true,
+        "named_by_statement": false,
+        "first_hit_round": 2,
+        "first_hit_file": "django/template/autoreload.py",
+        "first_hit_line": 43,
+        "first_hit_text": "for directory in get_template_directories():"
+      },
+      {
+        "literal": "file_path",
+        "verbatim_hits": 3,
+        "views_where_it_appears": [
+          3
+        ],
+        "bound_in_view_rounds": [
+          3
+        ],
+        "bound_in_defect_view": true,
+        "named_by_statement": false,
+        "first_hit_round": 3,
+        "first_hit_file": "django/template/autoreload.py",
+        "first_hit_line": 48,
+        "first_hit_text": "def template_changed(sender, file_path, **kwargs):"
+      }
+    ],
+    "django__django-16255": [
+      {
+        "literal": "get_latest_lastmod",
+        "verbatim_hits": 2,
+        "views_where_it_appears": [
+          1,
+          3
+        ],
+        "bound_in_view_rounds": [
+          1,
+          3
+        ],
+        "bound_in_defect_view": true,
+        "named_by_statement": true,
+        "first_hit_round": 1,
+        "first_hit_file": "django/contrib/sitemaps/__init__.py",
+        "first_hit_line": 165,
+        "first_hit_text": "def get_latest_lastmod(self):"
+      },
+      {
+        "literal": "lastmod",
+        "verbatim_hits": 18,
+        "views_where_it_appears": [
+          1,
+          2,
+          3
+        ],
+        "bound_in_view_rounds": [
+          2,
+          3
+        ],
+        "bound_in_defect_view": false,
+        "named_by_statement": true,
+        "first_hit_round": 1,
+        "first_hit_file": "django/contrib/sitemaps/__init__.py",
+        "first_hit_line": 165,
+        "first_hit_text": "def get_latest_lastmod(self):"
+      },
+      {
+        "literal": "items",
+        "verbatim_hits": 7,
+        "views_where_it_appears": [
+          1,
+          2,
+          3
+        ],
+        "bound_in_view_rounds": [
+          3
+        ],
+        "bound_in_defect_view": false,
+        "named_by_statement": true,
+        "first_hit_round": 1,
+        "first_hit_file": "django/contrib/sitemaps/__init__.py",
+        "first_hit_line": 170,
+        "first_hit_text": "return max([self.lastmod(item) for item in self.items()])"
+      }
+    ],
+    "django__django-15569": [
+      {
+        "literal": "_unregister_lookup",
+        "verbatim_hits": 1,
+        "views_where_it_appears": [
+          1
+        ],
+        "bound_in_view_rounds": [
+          1
+        ],
+        "bound_in_defect_view": true,
+        "named_by_statement": true,
+        "first_hit_round": 1,
+        "first_hit_file": "django/db/models/query_utils.py",
+        "first_hit_line": 212,
+        "first_hit_text": "def _unregister_lookup(cls, lookup, lookup_name=None):"
+      },
+      {
+        "literal": "lookup_name",
+        "verbatim_hits": 4,
+        "views_where_it_appears": [
+          1
+        ],
+        "bound_in_view_rounds": [
+          1
+        ],
+        "bound_in_defect_view": true,
+        "named_by_statement": false,
+        "first_hit_round": 1,
+        "first_hit_file": "django/db/models/query_utils.py",
+        "first_hit_line": 212,
+        "first_hit_text": "def _unregister_lookup(cls, lookup, lookup_name=None):"
+      },
+      {
+        "literal": "lookup",
+        "verbatim_hits": 12,
+        "views_where_it_appears": [
+          1,
+          3
+        ],
+        "bound_in_view_rounds": [
+          1
+        ],
+        "bound_in_defect_view": true,
+        "named_by_statement": true,
+        "first_hit_round": 1,
+        "first_hit_file": "django/db/models/query_utils.py",
+        "first_hit_line": 212,
+        "first_hit_text": "def _unregister_lookup(cls, lookup, lookup_name=None):"
+      }
+    ]
+  },
+  "minimal_feasible_lines": {
+    "django__django-15572": {
+      "line": "RESULT issue=django-15572 cause=template_changed fix=template_dir file_path",
+      "chars": 75,
+      "four_conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "all_four_hold": true
+    },
+    "django__django-16255": {
+      "line": "RESULT issue=django-16255 cause=get_latest_lastmod fix=lastmod items",
+      "chars": 68,
+      "four_conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "all_four_hold": true
+    },
+    "django__django-15569": {
+      "line": "RESULT issue=django-15569 cause=_unregister_lookup fix=lookup_name lookup",
+      "chars": 73,
+      "four_conditions": {
+        "facts_complete": true,
+        "frozen_regex": true,
+        "single_line_prefix": true,
+        "within_160": true
+      },
+      "all_four_hold": true
+    }
+  },
+  "views_unchanged": {
+    "django__django-15572": {
+      "distinct_ranges": true,
+      "distinct_tool_names": true,
+      "view_hashes_recorded": true
+    },
+    "django__django-16255": {
+      "distinct_ranges": true,
+      "distinct_tool_names": true,
+      "view_hashes_recorded": true
+    },
+    "django__django-15569": {
+      "distinct_ranges": true,
+      "distinct_tool_names": true,
+      "view_hashes_recorded": true
+    }
+  },
+  "frozen_record_reproduced_by_this_run": {
+    "django__django-15572": true,
+    "django__django-16255": true,
+    "django__django-15569": true
+  },
+  "statement_reconciliation": {
+    "django__django-15572": {
+      "public_table_statement_sha256": "f9d1889009c44a56a4487dbf777c536841b4b30a2472ee1d1e30b75007f12aa3",
+      "public_table_statement_bytes": 1392,
+      "base_commit": "0b31e024873681e187b574fe1c4afe5e48aeeecf",
+      "difficulty": "<15 min fix",
+      "rev2_diagnosis_pool_value": "f9d1889009c44a56a4487dbf777c536841b4b30a2472ee1d1e30b75007f12aa3",
+      "rev2_diagnosis_true_sha256": "f9d1889009c44a56a4487dbf777c536841b4b30a2472ee1d1e30b75007f12aa3",
+      "rev2_matching_hypothesis": "sha256_of_statement",
+      "candidate_pool_value": "f9d1889009c44a56a4487dbf777c536841b4b30a2472ee1d1e30b75007f12aa3",
+      "matches_the_diagnosis": true,
+      "matches_the_candidate_pool": true
+    },
+    "django__django-16255": {
+      "public_table_statement_sha256": "2359a3443b4020179e535a3df289178a975a90472b1fb6c3c23adf85aee5c371",
+      "public_table_statement_bytes": 1566,
+      "base_commit": "444b6da7cc229a58a2c476a52e45233001dc7073",
+      "difficulty": "<15 min fix",
+      "rev2_diagnosis_pool_value": "2359a3443b4020179e535a3df289178a975a90472b1fb6c3c23adf85aee5c371",
+      "rev2_diagnosis_true_sha256": "2359a3443b4020179e535a3df289178a975a90472b1fb6c3c23adf85aee5c371",
+      "rev2_matching_hypothesis": "sha256_of_statement",
+      "candidate_pool_value": "2359a3443b4020179e535a3df289178a975a90472b1fb6c3c23adf85aee5c371",
+      "matches_the_diagnosis": true,
+      "matches_the_candidate_pool": true
+    },
+    "django__django-15569": {
+      "public_table_statement_sha256": "107938cd24f7bef580939d1998ce566f02fe292c37bcd14013c5f28ec5fb4f51",
+      "public_table_statement_bytes": 646,
+      "base_commit": "884b4c27f506b3c29d58509fc83a35c30ea10d94",
+      "difficulty": "<15 min fix",
+      "rev2_diagnosis_pool_value": "107938cd24f7bef580939d1998ce566f02fe292c37bcd14013c5f28ec5fb4f51",
+      "rev2_diagnosis_true_sha256": "107938cd24f7bef580939d1998ce566f02fe292c37bcd14013c5f28ec5fb4f51",
+      "rev2_matching_hypothesis": "sha256_of_statement",
+      "candidate_pool_value": "107938cd24f7bef580939d1998ce566f02fe292c37bcd14013c5f28ec5fb4f51",
+      "matches_the_diagnosis": true,
+      "matches_the_candidate_pool": true
+    }
+  },
+  "defect_view_round_disclosure": {
+    "django__django-15572": {
+      "defect_view_round": 3,
+      "registered_rounds": 3,
+      "defect_symbol": "template_changed",
+      "defect_file": "django/template/autoreload.py",
+      "defect_range": [
+        47,
+        54
+      ],
+      "is_the_newest_tool_group": true,
+      "consequence": "the defect-carrying view is the third and last read, so it is the most recent tool group on every model input that follows it and the mechanism keeps it verbatim; its registered literals are therefore never at risk from the elision, and that says nothing about how much the mechanism saves",
+      "reported_as": "an explanatory fact of the task shape, disclosed and not claimed as a merit",
+      "required_fact_count": 3
+    },
+    "django__django-16255": {
+      "defect_view_round": 1,
+      "registered_rounds": 3,
+      "defect_symbol": "get_latest_lastmod",
+      "defect_file": "django/contrib/sitemaps/__init__.py",
+      "defect_range": [
+        165,
+        174
+      ],
+      "is_the_newest_tool_group": false,
+      "consequence": "the defect-carrying view is the first read, so on later model inputs it is elidable content: every line that carries a registered literal, with a one-line window on each side, is kept and the rest of it may be elided, and the literal invariant is what has to hold",
+      "reported_as": "an explanatory fact of the task shape, disclosed and not claimed as a merit",
+      "required_fact_count": 3
+    },
+    "django__django-15569": {
+      "defect_view_round": 1,
+      "registered_rounds": 3,
+      "defect_symbol": "_unregister_lookup",
+      "defect_file": "django/db/models/query_utils.py",
+      "defect_range": [
+        211,
+        219
+      ],
+      "is_the_newest_tool_group": false,
+      "consequence": "the defect-carrying view is the first read, so on later model inputs it is elidable content: every line that carries a registered literal, with a one-line window on each side, is kept and the rest of it may be elided, and the literal invariant is what has to hold",
+      "reported_as": "an explanatory fact of the task shape, disclosed and not claimed as a merit",
+      "required_fact_count": 3
+    }
+  },
+  "same_run_replay": [
+    {
+      "script": "experiments/audits/v18_view_derivation.py",
+      "script_sha256": "a4df72eb5a0b1cbd01c5dcc2e97304d574f36fdb0a1d327a06732debe6dfae68",
+      "argv": [
+        "experiments/audits/v18_view_derivation.py",
+        "--probe"
+      ],
+      "writes_nothing": true,
+      "exit_code": 0,
+      "stdout_sha256": "250a351295d02e9ba22392f8d20395e1366e210eba7bb6973f7239ae7657dd00",
+      "stdout_line_count": 32,
+      "stdout": "================================================================================================\r\ndjango__django-15572 | usable: True | A: the statement names a path\r\n  main file: django/template/autoreload.py | declared entity: template_changed\r\n  proof verbatim-in-statement: True | occurrences: 2\r\n  proof excerpt: 'break autoreload.\\nThis happens because django/template/autoreload.py::template_changed was previously comparing the empty string to a directory, and would n'\r\n  proof bound-in-main-file: True | {\"first_line\": 47, \"last_line\": 54, \"kind\": \"FunctionDef\", \"depth\": 0}\r\n   r1 django/template/autoreload.py:33-38 (  6 lines) reset_loaders                          definition                       view_sha=a9bfdb5b231bbe01\r\n   r2 django/template/autoreload.py:41-44 (  4 lines) watch_for_template_changes             definition                       view_sha=ef79343c85597cf3\r\n   r3 django/template/autoreload.py:47-54 (  8 lines) template_changed                       definition                       view_sha=4a1ff17f854e8a8a\r\n  disjoint: True | views: 3 | within cap: True | defect included: True\r\n================================================================================================\r\ndjango__django-16255 | usable: True | A: the statement names a path\r\n  main file: django/contrib/sitemaps/__init__.py | declared entity: get_latest_lastmod\r\n  proof verbatim-in-statement: True | occurrences: 3\r\n  proof excerpt: 'go/contrib/sitemaps/views.py\", line 76, in index\\n\\tsite_lastmod = site.get_latest_lastmod()\\n File \"/usr/local/lib/python3.10/site-packages/django/contrib/sitem'\r\n  proof bound-in-main-file: True | {\"first_line\": 165, \"last_line\": 174, \"kind\": \"FunctionDef\", \"depth\": 1}\r\n   r1 django/contrib/sitemaps/__init__.py:165-174 ( 10 lines) get_latest_lastmod                     definition                       view_sha=2ba7122bd7f61f42\r\n   r2 django/contrib/sitemaps/__init__.py:176-228 ( 53 lines) _urls                                  definition                       view_sha=4bb136a52af4c828\r\n   r3 django/contrib/sitemaps/__init__.py:231-258 ( 28 lines) GenericSitemap                         definition                       view_sha=62481f2d2bf54af4\r\n  disjoint: True | views: 3 | within cap: True | defect included: True\r\n================================================================================================\r\ndjango__django-15569 | usable: True | A': the statement's path is absent; its basename is unique\r\n  main file: django/db/models/query_utils.py | declared entity: _unregister_lookup\r\n  proof verbatim-in-statement: True | occurrences: 2\r\n  proof excerpt: 'RegisterLookupMixin._unregister_lookup() should clear the lookup cache.\\nDescription\\n\\t \\n\\t\\t(last modified by H'\r\n  proof bound-in-main-file: True | {\"first_line\": 211, \"last_line\": 219, \"kind\": \"FunctionDef\", \"depth\": 1}\r\n   r1 django/db/models/query_utils.py:211-219 (  9 lines) _unregister_lookup                     definition                       view_sha=bfb7cb3256effec5\r\n   r2 django/db/models/query_utils.py:222-256 ( 35 lines) select_related_descend                 definition                       view_sha=371e335ccfb9b093\r\n   r3 django/db/models/query_utils.py:259-269 ( 11 lines) refs_expression                        definition                       view_sha=219c00f9001c0d4b\r\n  disjoint: True | views: 3 | within cap: True | defect included: True\r\n\r\nusable 3/3: ['django__django-15572', 'django__django-16255', 'django__django-15569'] | registration_may_proceed=True\r\n",
+      "stderr": ""
+    },
+    {
+      "script": "experiments/audits/v18_literal_binding_check.py",
+      "script_sha256": "34844121c91779ea5a6d5d222c73b6693e73453972b67d68c05d639ece1c4281",
+      "argv": [
+        "experiments/audits/v18_literal_binding_check.py",
+        "--probe"
+      ],
+      "writes_nothing": true,
+      "exit_code": 0,
+      "stdout_sha256": "8c475de927389f583917a7068c555f45e1925315b75d37c01c9f045127321c31",
+      "stdout_line_count": 25,
+      "stdout": "============================================================================================\r\ndjango__django-15572 ACCEPTED []\r\n  defect view: {\"round\": 3, \"symbol\": \"template_changed\", \"file\": \"django/template/autoreload.py\", \"first_line\": 47, \"last_line\": 54}\r\n   template_changed         hits=  1 first=django/template/autoreload.py:48                     bound_in_views=[3] named=True in_defect_view=True\r\n   template_dir             hits=  3 first=django/template/autoreload.py:43                     bound_in_views=[3] named=False in_defect_view=True\r\n   file_path                hits=  3 first=django/template/autoreload.py:48                     bound_in_views=[3] named=False in_defect_view=True\r\n  minimal line (75 chars): RESULT issue=django-15572 cause=template_changed fix=template_dir file_path\r\n  four conditions: {'facts_complete': True, 'frozen_regex': True, 'single_line_prefix': True, 'within_160': True}\r\n============================================================================================\r\ndjango__django-16255 ACCEPTED []\r\n  defect view: {\"round\": 1, \"symbol\": \"get_latest_lastmod\", \"file\": \"django/contrib/sitemaps/__init__.py\", \"first_line\": 165, \"last_line\": 174}\r\n   get_latest_lastmod       hits=  2 first=django/contrib/sitemaps/__init__.py:165              bound_in_views=[1, 3] named=True in_defect_view=True\r\n   lastmod                  hits= 18 first=django/contrib/sitemaps/__init__.py:165              bound_in_views=[2, 3] named=True in_defect_view=False\r\n   items                    hits=  7 first=django/contrib/sitemaps/__init__.py:170              bound_in_views=[3] named=True in_defect_view=False\r\n  minimal line (68 chars): RESULT issue=django-16255 cause=get_latest_lastmod fix=lastmod items\r\n  four conditions: {'facts_complete': True, 'frozen_regex': True, 'single_line_prefix': True, 'within_160': True}\r\n============================================================================================\r\ndjango__django-15569 ACCEPTED []\r\n  defect view: {\"round\": 1, \"symbol\": \"_unregister_lookup\", \"file\": \"django/db/models/query_utils.py\", \"first_line\": 211, \"last_line\": 219}\r\n   _unregister_lookup       hits=  1 first=django/db/models/query_utils.py:212                  bound_in_views=[1] named=True in_defect_view=True\r\n   lookup_name              hits=  4 first=django/db/models/query_utils.py:212                  bound_in_views=[1] named=False in_defect_view=True\r\n   lookup                   hits= 12 first=django/db/models/query_utils.py:212                  bound_in_views=[1] named=True in_defect_view=True\r\n  minimal line (73 chars): RESULT issue=django-15569 cause=_unregister_lookup fix=lookup_name lookup\r\n  four conditions: {'facts_complete': True, 'frozen_regex': True, 'single_line_prefix': True, 'within_160': True}\r\naccepted 3/3: ['django__django-15572', 'django__django-16255', 'django__django-15569'] | registration_may_proceed=True\r\n",
+      "stderr": ""
+    }
+  ],
+  "accepted": [
+    "django__django-15572",
+    "django__django-16255",
+    "django__django-15569"
+  ],
+  "accepted_count": 3,
+  "errors": [],
+  "complete": true,
+  "registration_may_proceed": true,
+  "citable": false
+}

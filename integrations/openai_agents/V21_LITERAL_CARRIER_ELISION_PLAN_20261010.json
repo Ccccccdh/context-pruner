@@ -1,0 +1,77 @@
+{
+  "schema": "openai_agents_v21_literal_carrier_preserving_elision_plan",
+  "plan_id": "openai-agents-v21-literal-carrier-elision-01",
+  "date": "20261010",
+  "status": "PRE_REGISTERED_BEFORE_ANY_PAID_REQUEST",
+  "api_requests_spent_when_written": 0,
+
+  "question": "can a mechanism compress content that is not redundant at all, while keeping both the strict track and the semantic answer quality at or above the baseline?",
+  "why_this_is_the_remaining_question": "the v20 round established that the existing mechanism is an evidence preserving redundancy remover: it removes only redundant content and its literal guard refuses to remove any output that uniquely carries a registered required literal. On a shape where each view is read once it therefore measures 0.00 percent. Compressing unique content requires a mechanism that removes non evidence material while keeping every literal, which is a design question, not a measurement of the old rule",
+
+  "design": {
+    "shape": "N3 from the v19 dose: three development tasks, one distinct view per round, three rounds, each view read exactly once, so there are no duplicates at all; on this shape the current configuration measures 0.00 percent, which makes any positive number attributable to the new mechanism and to nothing else",
+    "tasks": "the three v16 development tasks, unchanged views, ranges, hashes, contracts and literals",
+    "arms": ["none", "native_summary", "pruner_v1"],
+    "samples": "3 tasks x 1 repeat x 3 arms = 9, with a second stage of 27 samples only on explicit approval",
+    "everything_else_fixed": "renderer, contract, four strict track conditions, 160 character bound, one billed retry, arm charged summaries, read-only tools"
+  },
+
+  "mechanism_under_test": {
+    "name": "literal carrier preserving line elision",
+    "where": "the plugin arm only, on top of the existing duplicate rule, after it",
+    "rule": [
+      "for each tool output that is not part of the most recent tool group, keep verbatim every line that contains a registered literal or registered constraint phrase, case insensitive exact substring, together with a fixed window of three lines before and three lines after each such line, clipped to the output",
+      "elide every other line and replace each maximal contiguous omitted run with exactly one note line of the form [elided n lines first-last] and nothing else",
+      "the newest tool group is kept verbatim, the same recency policy the existing lineage uses"
+    ],
+    "the_window_is_frozen_now": "three lines before and after; it is declared here and may not be changed after any saving number is seen",
+    "fail_closed": "if the literal preservation invariant fails for any output, that output is kept verbatim and a fallback is counted; the mechanism never removes content it cannot prove is literal safe",
+    "counters_to_publish": ["v21_outputs_considered", "v21_outputs_elided", "v21_lines_elided", "v21_bytes_saved", "v21_literal_guard_fallbacks", "v21_note_bytes"]
+  },
+
+  "the_invariant_that_makes_this_legitimate": "for every registered literal and constraint phrase, the number of verbatim occurrences in the payload after elision must be greater than or equal to the number before it, per occurrence and not per distinct string; the counts are computed the same way v5._carrier_loss computes them, so the new mechanism is held to the bar that already vetoed the old one",
+
+  "the_honesty_guard_this_experiment_needs": {
+    "risk": "the strict track is literal based, so a mechanism that kept only literal carrying lines could pass the strict track while destroying the reasoning material the model needs; that would be a saving bought with quality",
+    "therefore": "the semantic answer correctness the pipeline already reports is a co primary endpoint here, not a secondary one",
+    "rule": "if semantic correctness falls below the baseline on any task, the result is recorded as quality traded for tokens, the mechanism is not tuned, and the attempt is reported as a failure"
+  },
+
+  "decision_line": {
+    "capability_confirmed": "paired saving on the no duplicate shape at least 5 percent with three of three pairs positive AND every arm's strict track at or above the baseline AND semantic answer correctness at or above the baseline on every task AND zero render failures and zero truncations in the plugin arm",
+    "quality_traded_for_tokens": "any task where the strict track or the semantic correctness falls below the baseline, or any render failure or truncation; stop and report, do not tune the window",
+    "capability_absent": "saving indistinguishable from zero, or the engagement counters zero, meaning the mechanism does not engage or removes nothing; stop and report",
+    "inconclusive": "positive but below 5 percent, or mixed signs; report and ask"
+  },
+
+  "pre_flight_requirements_zero_api": [
+    "the four v20 assertions must hold again: finalisation really exercised inside the gate with every pre registered key present, the trigger gate firing on every model input after the first, per module sha256 pinning with revision aware fail closed, and the mechanism engagement counters non zero on the no duplicate shape",
+    "a dedicated invariant test: given an output where a registered literal occurs exactly once, the mechanism must either keep the line carrying it or revert that output entirely; a synthetic case proves both paths",
+    "a dedicated test that the note line never becomes a carrier of a literal and that omitted interval notes are well formed",
+    "a dedicated test that the newest tool group is never modified"
+  ],
+
+  "budget": {
+    "stage_one": "9 samples, expected about 0.006 dollars off peak, to be authorised by the integrator after the gates are green",
+    "stage_two": "27 samples, expected about 0.018 dollars, only on explicit approval",
+    "cap_rule": "expected model calls per sample equals rounds plus one, worst equals maximum turns plus one retry, cap keeps at least 1.3 times the worst case"
+  },
+
+  "reporting_rules": {
+    "required_wording": "under this host configuration",
+    "evidence_level": "development evidence on tasks that took part in building the configuration: it can demonstrate or refute a capability, it is never a confirmation, and its percentages are never merged with the v16 sealed batch",
+    "must_report": [
+      "paired saving per task and pooled, with the engagement and fallback counters",
+      "the strict track and the semantic correctness per arm, side by side with the baseline",
+      "the fraction of each payload elided, and the note overhead in bytes, because the net saving is what counts",
+      "an explicit statement of what this experiment cannot show"
+    ],
+    "forbidden_wording": ["compression alone saved X percent", "the four criteria are met", "the retry tax is gone", "the plugin saves about 12.5 percent of context"]
+  },
+
+  "if_it_works": "a positive result would establish, on development evidence, that compressing non redundant content under this evidence bar is possible; a citable number would then need fresh sealed tasks and a new registration, and the paused v18 candidate branch already has four derived and hashed views per candidate and needs only its literals re derived under the discriminative rule",
+  "if_it_fails": "a negative result is equally publishable and closes the question: it would say that in this configuration the evidence bar and the compression are in direct tension, and that the lossless redundancy remover is the honest ceiling",
+
+  "never_rejudge": ["attempt 01", "attempt 02", "attempt 03", "pilot-01", "pilot-02", "v12 to v15", "the v16 sealed confirmation batch", "the v17 development pilots", "the v18 selection branch", "the v19 dose batches", "the v20 gate round"],
+  "citable": false
+}

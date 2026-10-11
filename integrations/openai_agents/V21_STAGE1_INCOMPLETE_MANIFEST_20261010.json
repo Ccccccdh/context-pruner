@@ -1,0 +1,71 @@
+{
+  "schema": "openai_agents_v21_stage1_incomplete_manifest",
+  "record_id": "openai-agents-v21-stage1-incomplete-manifest-01",
+  "date": "20261010",
+  "api_requests_spent": 0,
+  "status": "DEFECT_FOUND_IN_THE_PAID_PATH_AFTER_THE_BATCH_HAD_BEEN_PAID_FOR_AND_FIXED_BEFORE_THE_RERUN",
+
+  "the_batch_that_has_the_defect": {
+    "directory": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v21-literal-carrier-elision-pilot-01",
+    "manifest_sha256": "7e2d8629e75ce5008e0bccf40d81408b4d933d145c209343b80c15a785dba580",
+    "samples_sha256": "63715ee71548a8ac99c8cf92b109158319e2120fd305fb8a4d476d2522214d8b",
+    "api_calls": 38,
+    "disposition": "kept byte for byte and never rewritten, exactly as the v19 batches that failed to finalise were kept; it is the evidence of this defect and it is not merged with the rerun"
+  },
+
+  "what_was_missing": {
+    "manifest_keys_written": 51,
+    "manifest_keys_in_the_compliant_rerun": 62,
+    "pre_registered_keys_absent": [
+      "mechanism",
+      "v16_registry",
+      "implementation_hashes",
+      "module_hashes",
+      "never_rejudge",
+      "tool_output_disclosure",
+      "forbidden_wording",
+      "re_read_visibility"
+    ],
+    "why_it_matters": "the batch's numbers were sound, but its manifest carried none of the v21 disclosures. In particular the integrator's required tool-output disclosure and the re-read visibility record were absent, and `kind` still read the frozen `openai_agents_v16_three_arm_pilot` with `v16_manifest_finalized` true, so the artifact claimed a v17-lineage finalisation while silently omitting every v21 key",
+    "what_was_not_affected": "the samples, the strict track, the semantic answers, the mechanism counters and the gate counters are all present in samples.jsonl and were recomputed independently from it; no number in the batch is wrong"
+  },
+
+  "root_cause": {
+    "file": "experiments/runners/run_openai_agents_v21_acquisition.py",
+    "line": 1459,
+    "what_the_code_did": "run_paid installed only `with v21_chain_installed():` around `runner17.run_pilot(...)`, and omitted `with v21_finalise_installed():`",
+    "why_that_emptied_the_manifest": "the v21 keys are added by the `v21_finalise_installed` wrapper around `runner17.finalise_pilot_manifest`. Without it the frozen v17 finaliser wrote its own key set, which is exactly the 51 keys observed",
+    "why_the_gate_did_not_catch_it": "the gate's assertion (a) exercises `run_local_pilot`, a rehearsal function that installs both context managers. The gate therefore proved that the *rehearsal* finalises correctly, not that the paid path does. A green gate over a parallel copy of the paid path is the defect",
+    "second_detector_that_also_did_not_fire": "assertion (a) compares the produced manifest against MANIFEST_REQUIRED_KEYS in the rehearsal only, so the paid path was never checked for those keys",
+    "this_is_the_third_instance_of_the_same_family": "the v17 pilot, both v19 dose batches and now the first v21 paid attempt each shipped a finalisation that was never exercised on the path that actually paid for the samples. The pattern is that anything which runs only after the samples are paid for must be run, before any payment, through the same entry point the payment uses"
+  },
+
+  "the_fix": {
+    "change": "run_paid now installs both context managers in the same nesting the rehearsal uses: `with v21_chain_installed(): with v21_finalise_installed(): runner17.run_pilot(args, freeze_override=...)`",
+    "new_gate_check": "`the_paid_path_installs_the_same_contexts_as_the_rehearsal` asserts, by inspecting the source of `run_paid` itself, that both context managers are installed and in that order, so the asymmetry cannot come back without failing the gate before any request is sent",
+    "verification_before_payment": "the fixed `run_paid` body was executed end to end with the provider client and model replaced by no-network stand-ins, and the manifest it produced carried 62 keys with zero of the 36 pre-registered keys missing",
+    "runner_digest_after_the_fix": "75a9030233fac54cd50aab57943dbc15a42bc26b6e318ee1c55b2f33fc1ecdfb"
+  },
+
+  "the_batch_data_was_recomputed_independently": {
+    "method": "every reported number for that batch was recomputed from samples.jsonl by a separate script rather than read from the runner's own summary: paired saving per task and pooled, the four strict track conditions per arm, semantic answer correctness per arm, tool calls and model calls per arm, the v21 counters, the trigger gate counters, and the request, cache and token totals",
+    "result": "the recomputation agreed with the runner in every field, which is why the batch is retained as usable development evidence even though its manifest is incomplete",
+    "recorded_numbers": {
+      "pooled_paired_saving": 0.037183,
+      "positive_pairs": "3/3",
+      "strict_track": "3/3 all four conditions in every arm",
+      "semantic_correctness": "3/3 in every arm",
+      "tool_calls_per_arm": {"none": 9, "native_summary": 9, "pruner_v1": 9},
+      "v21_totals": {"v21_outputs_considered": 18, "v21_outputs_elided": 7, "v21_lines_elided": 104, "v21_bytes_saved": 3785, "v21_note_bytes": 300, "v21_literal_guard_fallbacks": 0}
+    }
+  },
+
+  "the_record_that_is_missing_and_the_admission": {
+    "what_is_missing": "the exact bytes of the runner revision that produced the defective batch were not copied before the run, so the batch can be tied to its defect by the analysis above but not by a pre-run digest of the file that produced it",
+    "why_that_matters": "the round's own discipline is that a batch must be attachable to the code revision that produced it. The first v21 paid attempt cannot be, and no reconstruction would be honest evidence because the file has since been edited",
+    "what_will_be_done_instead": "from this point on the runner bytes are copied to a preservation directory outside the repository immediately before every paid run, and the digest is recorded in the batch note; the v22 window dose runner and every later paid path inherits that step",
+    "standing_order": "do not reconstruct or overwrite the file to manufacture this evidence; record the gap and prevent the next one"
+  },
+
+  "citable": false
+}

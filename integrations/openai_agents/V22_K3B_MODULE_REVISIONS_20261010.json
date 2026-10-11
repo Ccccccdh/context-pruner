@@ -1,0 +1,62 @@
+{
+  "schema": "openai_agents_v22_window_dose_module_revision_ledger",
+  "date": "20261010",
+  "generated_utc": "2026-10-10T16:54:21+00:00",
+  "plan_implements": "integrations/openai_agents/V22_WINDOW_DOSE_PLAN_20261010.json",
+  "v21_plan": "integrations/openai_agents/V21_LITERAL_CARRIER_ELISION_PLAN_20261010.json",
+  "v20_plan": "integrations/openai_agents/V20_NONDUPLICATE_MECHANISM_PLAN_20261010.json",
+  "window_lines": 3,
+  "config_module": "experiments/runners/openai_agents_v22_window_k3.py",
+  "api_requests_spent": 0,
+  "purpose": "pin every module in this K configuration's path by SHA256 so the gate can fail closed on an unregistered change; the window a batch ran at is a pinned module, and the frozen v21 mechanism module keeps its own digest while each K adds its own",
+  "rules": [
+    "a module whose digest is absent from this ledger fails the gate",
+    "a module whose digest differs from the digest recorded here fails the gate",
+    "a change is admitted only by registering a new revision of this ledger",
+    "a different K is a different configuration module and a different ledger, never an edit to a window in place"
+  ],
+  "modules": {
+    "experiments/runners/openai_agents_v17_registry.py": "aa67abea06d9a47b5c5bb8fdef352ea975c7884620534bad10de44d828070392",
+    "experiments/runners/run_openai_agents_v17_acquisition.py": "be0b97b4100711e726c85003933a6cf0357c3c2b5388442d28a4af69ae5fb45d",
+    "experiments/runners/openai_agents_v17_live_contract.py": "b5be9165c8845579491e5541380f5f0766f97df77dfb933a12b26a1a1e3e1ca3",
+    "experiments/runners/openai_agents_structured_final_v16.py": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+    "experiments/runners/openai_agents_v20_retention.py": "65650b10e8a6fb72e580245c8c0c9485b85874e4193dea5b421e8657abb0db2c",
+    "experiments/runners/openai_agents_v20_chain.py": "41d4ba547da42e659c7381927ccacf86543b97c74fc499885d8aa7059fff9259",
+    "experiments/runners/openai_agents_v21_carrier_elision.py": "5c6fce44cfd79832fd14dd21ab97627638afe9b186a01d6ea8e9507a3efb12e2",
+    "experiments/runners/openai_agents_v22_window.py": "3496e9f3806d9a453f9fd1647ede279c99cd0aabb52e3ad055a310653ea6d999",
+    "experiments/runners/openai_agents_v22_window_k3.py": "3323d10d0093ee2b5cfe1cf2716ceba7fb74c9d0fe79cbd0afd6a6a73e4e15d7",
+    "experiments/runners/openai_agents_v22_window_k1.py": "cc87b195abb98d8ef4c0d27e6928c265ef054a79f8e695d3126a8c950917a962",
+    "experiments/runners/openai_agents_v22_window_k0.py": "1d23861750056473d85e7dfb9ffd41f466d9c70ccc2d361fa9fcf75a425973c0",
+    "experiments/runners/openai_agents_v22_chain.py": "3cc39594737039c6abee7aa6da78a242565186cefe93253f2ef8edb3631e12f0",
+    "experiments/runners/run_openai_agents_v22_window_dose.py": "eaf61f98918500f6909dcd7667a5ddee839b235bfa5bc91c04f3fd832b42fe60"
+  },
+  "plan_named_modules": [
+    "experiments/runners/openai_agents_v17_registry.py",
+    "experiments/runners/run_openai_agents_v17_acquisition.py",
+    "experiments/runners/openai_agents_v17_live_contract.py",
+    "experiments/runners/openai_agents_structured_final_v16.py"
+  ],
+  "revision": 2,
+  "previous_revisions": [
+    {
+      "revision": 1,
+      "modules": {
+        "experiments/runners/openai_agents_v17_registry.py": "aa67abea06d9a47b5c5bb8fdef352ea975c7884620534bad10de44d828070392",
+        "experiments/runners/run_openai_agents_v17_acquisition.py": "be0b97b4100711e726c85003933a6cf0357c3c2b5388442d28a4af69ae5fb45d",
+        "experiments/runners/openai_agents_v17_live_contract.py": "b5be9165c8845579491e5541380f5f0766f97df77dfb933a12b26a1a1e3e1ca3",
+        "experiments/runners/openai_agents_structured_final_v16.py": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+        "experiments/runners/openai_agents_v20_retention.py": "65650b10e8a6fb72e580245c8c0c9485b85874e4193dea5b421e8657abb0db2c",
+        "experiments/runners/openai_agents_v20_chain.py": "41d4ba547da42e659c7381927ccacf86543b97c74fc499885d8aa7059fff9259",
+        "experiments/runners/openai_agents_v21_carrier_elision.py": "5c6fce44cfd79832fd14dd21ab97627638afe9b186a01d6ea8e9507a3efb12e2",
+        "experiments/runners/openai_agents_v22_window.py": "3496e9f3806d9a453f9fd1647ede279c99cd0aabb52e3ad055a310653ea6d999",
+        "experiments/runners/openai_agents_v22_window_k3.py": "3323d10d0093ee2b5cfe1cf2716ceba7fb74c9d0fe79cbd0afd6a6a73e4e15d7",
+        "experiments/runners/openai_agents_v22_window_k1.py": "cc87b195abb98d8ef4c0d27e6928c265ef054a79f8e695d3126a8c950917a962",
+        "experiments/runners/openai_agents_v22_window_k0.py": "1d23861750056473d85e7dfb9ffd41f466d9c70ccc2d361fa9fcf75a425973c0",
+        "experiments/runners/openai_agents_v22_chain.py": "3cc39594737039c6abee7aa6da78a242565186cefe93253f2ef8edb3631e12f0",
+        "experiments/runners/run_openai_agents_v22_window_dose.py": "62b615bed6d4cb1e94472621a95e72ad00b455bc72ae7d06a1dc6d37ffbcea66"
+      }
+    }
+  ],
+  "gate_class": "experiments.runners.openai_agents_v20_chain.FirstCallPassthroughGate",
+  "filter_class": "experiments.runners.openai_agents_v21_carrier_elision.LiteralCarrierElisionFilter"
+}

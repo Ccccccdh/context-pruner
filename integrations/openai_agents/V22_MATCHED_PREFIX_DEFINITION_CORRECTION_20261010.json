@@ -1,0 +1,105 @@
+{
+  "schema": "openai_agents_v22_matched_prefix_definition_correction",
+  "record_id": "openai-agents-v22-matched-prefix-definition-correction-01",
+  "date": "20261010",
+  "api_requests_spent": 0,
+  "status": "DEFINITION_CORRECTED_BY_THE_INTEGRATOR_AND_APPLIED_TO_EVERY_GROUP",
+  "does_not_rewrite": "no earlier artifact is edited by this record; the stage-2 report that used the asymmetric variant stays in the record as it was written, and this file is the correction that supersedes its reading",
+
+  "what_was_wrong": {
+    "the_defect": "the first stage-2 report computed matched prefix as the baseline arm truncated to the plugin arm's call count, against the plugin arm's WHOLE run. When the plugin arm was the arm that retried, its own retry stayed inside its own prefix sum while the baseline had no comparable call, so the formula penalised one arm for something the other arm never had",
+    "the_instance_that_exposed_it": "django_field_hash_immutability repeat 0 of openai-repo-diagnostic-v22-window-k1b-pilot-02: the baseline made 4 calls and accepted first (8712 input tokens); the plugin made 5 calls and accepted on retry (9901). The asymmetric reading gave -13.65 percent, which was reported as the round's only negative pair",
+    "who_found_it": "the integrator, by recomputing every pair from the batch; the implementation agent then confirmed it by recomputation",
+    "the_second_face_of_the_same_defect": "the same variant also mis-stated the pairs where the two arms differed. On repeat 0 the plugin made 5 calls and the baseline 4, so whole-run and first-min(calls) disagreed: the asymmetric reading gave -13.65 percent while the symmetric value is +9.46 percent. On repeat 1 the plugin made 4 calls and the baseline 5, so both readings agree at +9.46 percent. On repeat 2 both arms made 5 calls and the symmetric value is +12.10 percent. The per-task mean reported below, +10.3387 percent, is the mean of +9.46, +9.46 and +12.10 and is correct as published; an earlier sentence in this record said 'repeat 2 should be +9.46', which was a typo for repeat 0, and the integrator corrected it. No number in this record changes",
+    "standard_deviation_note": "this record reports the sample standard deviation (n-1), 3.4583 points; the integrator computed the population standard deviation, 3.2578 points. Both describe the same nine pairs and neither changes the verdict"
+  },
+
+  "the_pinned_definition": {
+    "matched_prefix": "for each pair, take the first k calls of EACH arm, where k = min(baseline calls, plugin calls), and compare their complete provider input tokens. Symmetric by construction, and it isolates the mechanism's output by comparing the same call positions on both arms",
+    "as_paired": "carries any retry cost in full, on whichever arm paid it, because it compares the whole sample in complete provider tokens. That is the project's standing pre-registered main criterion and it is reported for every group",
+    "no_double_punishment": "a one-sided retry is named per pair and charged once, in as-paired. It may not also be charged inside the matched prefix of the arm that paid it",
+    "unit": "both figures are in complete provider tokens. The payload-byte figure is reported alongside and is labelled a proxy, never a primary",
+    "cross_batch_invariance": "this is the definition the dose-01 groups were already computed with, because on every dose-01 pair the two arms made the same number of calls, so min(calls) and truncation-to-the-plugin agreed. Those three groups therefore need no change, and the recomputation below confirms it"
+  },
+
+  "the_corrected_reading_of_stage_2": {
+    "batch": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v22-window-k1b-pilot-02",
+    "matched_prefix_tokens": {"mean": 0.060187, "sd": 0.034583, "min": 0.0277, "max": 0.121, "positive": "9/9"},
+    "as_paired_tokens": {"mean": 0.056554, "sd": 0.114614, "positive": "8/9"},
+    "matched_prefix_bytes": {"mean": 0.0804},
+    "per_task_matched_prefix_tokens": {
+      "django_field_hash_immutability": {"mean": 0.103387, "sd": 0.015251, "positive": "3/3"},
+      "django_orderedset_reversed": {"mean": 0.049427, "sd": 0.0, "positive": "3/3"},
+      "django_sqlite_version_floor": {"mean": 0.027748, "sd": 0.0, "positive": "3/3"}
+    },
+    "strict_track_per_arm": {"none": "9/9", "native_summary": "9/9", "pruner_v1": "9/9"},
+    "semantic_per_arm": {"none": "9/9", "native_summary": "9/9", "pruner_v1": "9/9"},
+    "plugin_render_failures": 0,
+    "plugin_truncations": 0,
+    "verdict": "capability_confirmed",
+    "verdict_rule": "matched-prefix saving at or above 5 percent in complete provider tokens AND a majority of pairs positive AND the plugin arm's strict track at or above the baseline AND semantic correctness at or above the baseline on every task AND zero render failures, truncations or dropped fields in the plugin arm. All five hold: 6.02 percent, 9 of 9, 9/9, 9/9, zero",
+    "what_it_supersedes": "the first stage-2 report's inconclusive verdict, which rested on the asymmetric variant's 3.45 percent pooled mean, 7.17 point dispersion and single negative pair"
+  },
+
+  "the_deterministic_fact_that_must_be_reported_separately": {
+    "statement": "the mechanism's own byte saving is identical on every repeat of the same task, so the mechanism is deterministic and all of the dispersion is in where the arms' retries fell",
+    "stage_2_k1_three_repeats": {
+      "django_field_hash_immutability": {"v21_bytes_saved": [3687, 3687, 3687], "v21_lines_elided": [82, 82, 82], "v21_note_bytes": [308, 308, 308]},
+      "django_orderedset_reversed": {"v21_bytes_saved": [1312, 1312, 1312], "v21_lines_elided": [56, 56, 56], "v21_note_bytes": [90, 90, 90]},
+      "django_sqlite_version_floor": {"v21_bytes_saved": [892, 892, 892], "v21_lines_elided": [18, 18, 18], "v21_note_bytes": [84, 84, 84]},
+      "totals": {"v21_bytes_saved": 17673, "v21_lines_elided": 468, "v21_note_bytes": 1446, "v21_outputs_elided": 21, "v21_literal_guard_fallbacks": 0}
+    },
+    "stage_3_k0_three_repeats": {
+      "django_field_hash_immutability": {"v21_bytes_saved": [5002, 5002, 5002]},
+      "django_orderedset_reversed": {"v21_bytes_saved": [1496, 1496, 1496]},
+      "django_sqlite_version_floor": {"v21_bytes_saved": [956, 956, 956]},
+      "totals": {"v21_outputs_elided": 21, "v21_lines_elided": 206, "v21_bytes_saved": 7454, "v21_note_bytes": 741, "v21_literal_guard_fallbacks": 0}
+    },
+    "reading": "the elision stage is a pure function of the payload, and the payload is a pure function of the read shape, so it produces the same saving every time. The variance in every paired figure comes from the host's retry behaviour, which is a property of the host configuration and not of the mechanism"
+  },
+
+  "the_retired_observation": {
+    "what_was_recorded": "across the three dose groups the plugin arm made zero repair calls in 27 samples while the baseline and native summary arms made one each; it was recorded as an observation and not as a claim",
+    "what_the_repetitions_show": "at three repeats the plugin arm's repair count is not zero: stage 2 K=1 gave 2 on the plugin, 2 on the baseline and 1 on the native summary over 9 samples per arm; stage 3 K=0 gave 3 on the plugin, 2 on the baseline and 0 on the native summary",
+    "disposition": "the observation is withdrawn as a general statement. It was an artefact of one repeat per task, and the integrator's acceptance of that withdrawal stands",
+    "the_separate_point_that_does_stand": "a retry is charged once, in as-paired, and the matched prefix is not the place to charge it again on either arm. Withdrawing the observation and correcting the definition are two separate matters and were kept separate"
+  },
+
+  "the_stage_3_group": {
+    "batch": "runs/stage5-openai-agents-api/openai-repo-diagnostic-v22-window-k0b-pilot-03",
+    "window": "K=0, three repeats, 27 samples, cap 250, worst case 153 on the frozen formula (margin 1.63)",
+    "matched_prefix_tokens": {"mean": 0.0782, "sd": 0.055, "positive": "9/9"},
+    "as_paired_tokens": {"mean": 0.0442, "sd": 0.121, "positive": "8/9"},
+    "matched_prefix_bytes": {"mean": 0.1032},
+    "per_task_matched_prefix_tokens": {
+      "django_field_hash_immutability": {"mean": 0.1489, "sd": 0.0193, "positive": "3/3"},
+      "django_orderedset_reversed": {"mean": 0.0554, "sd": 0.0, "positive": "3/3"},
+      "django_sqlite_version_floor": {"mean": 0.0301, "sd": 0.0, "positive": "3/3"}
+    },
+    "retry_attribution_per_pair": {
+      "django_field_hash_immutability_r0": {"baseline_repaired": 1, "plugin_repaired": 1},
+      "django_field_hash_immutability_r1": {"baseline_repaired": 0, "plugin_repaired": 0},
+      "django_field_hash_immutability_r2": {"baseline_repaired": 1, "plugin_repaired": 1},
+      "django_orderedset_reversed_r2": {"baseline_repaired": 0, "plugin_repaired": 1, "consequence": "this pair's as-paired figure is -24.52 percent, the group's only negative, and its matched-prefix figure is +5.54 percent; the retry is named once and charged once, in as-paired"},
+      "others": "no repair calls"
+    },
+    "how_a_baseline_self_failure_is_treated": "if a baseline arm fails on its own in this group, that pair carries mechanism-output evidence only and not paired-quality evidence, and it is named in the report; no such failure occurred here, the baseline arm passed 9/9",
+    "verdict": "capability_confirmed"
+  },
+
+  "the_dose_under_the_pinned_definition": {
+    "one_repeat_per_task": {
+      "K_3": {"matched_prefix_tokens": 0.0376, "as_paired_tokens": 0.1098, "matched_prefix_bytes": 0.0502},
+      "K_1": {"matched_prefix_tokens": 0.0573, "as_paired_tokens": 0.1255, "matched_prefix_bytes": 0.0781},
+      "K_0": {"matched_prefix_tokens": 0.0707, "as_paired_tokens": 0.1364, "matched_prefix_bytes": 0.0975}
+    },
+    "three_repeats_per_task": {
+      "K_1": {"matched_prefix_tokens": 0.0602, "sd": 0.0346, "positive": "9/9", "as_paired_tokens": 0.0566},
+      "K_0": {"matched_prefix_tokens": 0.0782, "sd": 0.055, "positive": "9/9", "as_paired_tokens": 0.0442}
+    },
+    "dose_holds": "with repeats the ordering is preserved and both repetition groups clear the 5 percent line on the matched prefix; the one repeat ladder put K=3 below it at 3.76 percent and K=1 at 5.73 percent, so the threshold reading is the same shape at both sample sizes",
+    "cross_batch_invariance_check": "dose-01 K=3 0.0376 and b-round K=3 0.0376; dose-01 K=1 0.0573 and b-round K=1 0.0573. Two independently paid groups at the same window land on the same number, which is what a definition that is invariant across batches should do"
+  },
+
+  "citable": false
+}

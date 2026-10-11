@@ -1,0 +1,2706 @@
+{
+  "schema": "openai_agents_v18_sealed_k1_zero_api_gate",
+  "date": "20261010",
+  "generated_utc": "2026-10-10T17:55:08+00:00",
+  "mode": "gate",
+  "api_calls": 0,
+  "experiment_id": "openai-repo-diagnostic-v23-v18-sealed-window-k1-01",
+  "window_lines": 1,
+  "config_module": "experiments/runners/openai_agents_v22_window_k1.py",
+  "shape": "N3",
+  "arithmetic": {
+    "shape": "N3",
+    "rounds": 3,
+    "reads_per_round": 1,
+    "read_calls": 3,
+    "plan_order": [
+      0,
+      1,
+      2
+    ],
+    "views": 3,
+    "views_read_once_each": true,
+    "duplicate_content_by_construction": false,
+    "expected_requests_per_sample": 4,
+    "max_turns": 5,
+    "retry_budget_per_sample": 1,
+    "worst_case_requests_per_sample": 6,
+    "samples": 45,
+    "native_samples": 15,
+    "arms": [
+      "none",
+      "native_summary",
+      "pruner_v1"
+    ],
+    "repeats": 5,
+    "worst_case_model_calls": 270,
+    "summary_calls_worst_case": 30,
+    "worst_case_requests": 300,
+    "cap": 390,
+    "margin": 1.3,
+    "at_least_1_3": true,
+    "derivation": "READ_CALLS=3 => MAX_TURNS = 3+2 = 5 => worst case 6 per sample => 45x6 + 15x2 = 300 => 1.3x => 390"
+  },
+  "checks": [
+    {
+      "check": "plan_is_zero_api_for_this_task_set_and_its_cap",
+      "ok": true,
+      "detail": {
+        "api_calls": 0,
+        "samples": 45,
+        "cap": 390,
+        "worst_case": 300
+      }
+    },
+    {
+      "check": "the_frozen_host_contract_still_lands_on_its_frozen_verdicts",
+      "ok": true,
+      "detail": {
+        "check": "the_frozen_v17_stub_controls_still_land_on_their_frozen_verdicts",
+        "task_set": "the v17 development tasks the frozen controls were written for",
+        "why": "the frozen control set names two v16 development tasks and their contract values, so it is replayed on that set, under the v17 development registry, to show the host contract (renderer, retry diagnostic, wiring) is unchanged; the registered tasks of this batch get their own control set below",
+        "runner_status": 0,
+        "controls": 13,
+        "controls_ok": true,
+        "api_calls": 0,
+        "verdicts": [
+          {
+            "control": "invalid_json",
+            "task": "django_sqlite_version_floor",
+            "ok": true
+          },
+          {
+            "control": "missing_field",
+            "task": "django_sqlite_version_floor",
+            "ok": true
+          },
+          {
+            "control": "extra_field",
+            "task": "django_sqlite_version_floor",
+            "ok": true
+          },
+          {
+            "control": "duplicate_key",
+            "task": "django_sqlite_version_floor",
+            "ok": true
+          },
+          {
+            "control": "wrong_type",
+            "task": "django_sqlite_version_floor",
+            "ok": true
+          },
+          {
+            "control": "missing_literal",
+            "task": "django_sqlite_version_floor",
+            "ok": true
+          },
+          {
+            "control": "artificially_over_long",
+            "task": "django_sqlite_version_floor",
+            "ok": true
+          },
+          {
+            "control": "diagnostic_used_by_model",
+            "task": "django_sqlite_version_floor",
+            "ok": true
+          },
+          {
+            "control": "diagnostic_ignored_still_fails",
+            "task": "django_sqlite_version_floor",
+            "ok": true
+          },
+          {
+            "control": "diagnostic_shortening_used_by_model",
+            "task": "django_sqlite_version_floor",
+            "ok": true
+          },
+          {
+            "control": "diagnostic_shortening_ignored_still_fails",
+            "task": "django_sqlite_version_floor",
+            "ok": true
+          },
+          {
+            "control": "one_character_tampered_output",
+            "task": "django_sqlite_version_floor",
+            "ok": true
+          },
+          {
+            "control": "well_formed_positive",
+            "task": "django_orderedset_reversed",
+            "ok": true
+          }
+        ],
+        "ok": true,
+        "stub_mode_status": 0
+      }
+    },
+    {
+      "check": "the_registered_tasks_pass_the_control_set_through_the_real_wiring",
+      "ok": true,
+      "detail": {
+        "controls": 27,
+        "failed": []
+      }
+    },
+    {
+      "check": "the_stub_is_zero_api",
+      "ok": true,
+      "detail": {
+        "api_calls": 0
+      }
+    },
+    {
+      "check": "a_local_pilot_produces_a_finalised_manifest_with_every_pre_registered_key",
+      "ok": true,
+      "detail": {
+        "pilot_status": 0,
+        "samples": 45,
+        "manifest_missing_keys": [],
+        "manifest_missing_extra_keys": [],
+        "v16_manifest_finalized": true,
+        "freeze_path": "integrations/openai_agents/V18_SEALED_CONFIRMATION_FREEZE_20261010.json",
+        "freeze_sha256": "438acbcf54c94a3d2d03b53055c955e581a977dd8fc69d4adeddce2820183fef",
+        "api_calls": 180
+      }
+    },
+    {
+      "check": "trigger_gate_fires_on_every_model_input_after_the_first",
+      "ok": true,
+      "detail": {
+        "check": "trigger_gate_fires_on_every_model_input_after_the_first",
+        "ok": true,
+        "samples_checked": 15,
+        "detail": [
+          {
+            "task": "autoreload_template_changed",
+            "repeat": 0,
+            "model_calls": 4,
+            "trigger_gate_calls": 4,
+            "expected_triggered_calls": 3,
+            "trigger_gate_triggered_calls": 3,
+            "trigger_gate_passthrough_calls": 1,
+            "trigger_gate_first_call_passthrough_calls": 1,
+            "trigger_gate_soft_limit_tokens": 1,
+            "ok": true
+          },
+          {
+            "task": "autoreload_template_changed",
+            "repeat": 1,
+            "model_calls": 4,
+            "trigger_gate_calls": 4,
+            "expected_triggered_calls": 3,
+            "trigger_gate_triggered_calls": 3,
+            "trigger_gate_passthrough_calls": 1,
+            "trigger_gate_first_call_passthrough_calls": 1,
+            "trigger_gate_soft_limit_tokens": 1,
+            "ok": true
+          },
+          {
+            "task": "autoreload_template_changed",
+            "repeat": 2,
+            "model_calls": 4,
+            "trigger_gate_calls": 4,
+            "expected_triggered_calls": 3,
+            "trigger_gate_triggered_calls": 3,
+            "trigger_gate_passthrough_calls": 1,
+            "trigger_gate_first_call_passthrough_calls": 1,
+            "trigger_gate_soft_limit_tokens": 1,
+            "ok": true
+          },
+          {
+            "task": "autoreload_template_changed",
+            "repeat": 3,
+            "model_calls": 4,
+            "trigger_gate_calls": 4,
+            "expected_triggered_calls": 3,
+            "trigger_gate_triggered_calls": 3,
+            "trigger_gate_passthrough_calls": 1,
+            "trigger_gate_first_call_passthrough_calls": 1,
+            "trigger_gate_soft_limit_tokens": 1,
+            "ok": true
+          },
+          {
+            "task": "autoreload_template_changed",
+            "repeat": 4,
+            "model_calls": 4,
+            "trigger_gate_calls": 4,
+            "expected_triggered_calls": 3,
+            "trigger_gate_triggered_calls": 3,
+            "trigger_gate_passthrough_calls": 1,
+            "trigger_gate_first_call_passthrough_calls": 1,
+            "trigger_gate_soft_limit_tokens": 1,
+            "ok": true
+          },
+          {
+            "task": "query_utils_unregister_lookup",
+            "repeat": 0,
+            "model_calls": 4,
+            "trigger_gate_calls": 4,
+            "expected_triggered_calls": 3,
+            "trigger_gate_triggered_calls": 3,
+            "trigger_gate_passthrough_calls": 1,
+            "trigger_gate_first_call_passthrough_calls": 1,
+            "trigger_gate_soft_limit_tokens": 1,
+            "ok": true
+          },
+          {
+            "task": "query_utils_unregister_lookup",
+            "repeat": 1,
+            "model_calls": 4,
+            "trigger_gate_calls": 4,
+            "expected_triggered_calls": 3,
+            "trigger_gate_triggered_calls": 3,
+            "trigger_gate_passthrough_calls": 1,
+            "trigger_gate_first_call_passthrough_calls": 1,
+            "trigger_gate_soft_limit_tokens": 1,
+            "ok": true
+          },
+          {
+            "task": "query_utils_unregister_lookup",
+            "repeat": 2,
+            "model_calls": 4,
+            "trigger_gate_calls": 4,
+            "expected_triggered_calls": 3,
+            "trigger_gate_triggered_calls": 3,
+            "trigger_gate_passthrough_calls": 1,
+            "trigger_gate_first_call_passthrough_calls": 1,
+            "trigger_gate_soft_limit_tokens": 1,
+            "ok": true
+          },
+          {
+            "task": "query_utils_unregister_lookup",
+            "repeat": 3,
+            "model_calls": 4,
+            "trigger_gate_calls": 4,
+            "expected_triggered_calls": 3,
+            "trigger_gate_triggered_calls": 3,
+            "trigger_gate_passthrough_calls": 1,
+            "trigger_gate_first_call_passthrough_calls": 1,
+            "trigger_gate_soft_limit_tokens": 1,
+            "ok": true
+          },
+          {
+            "task": "query_utils_unregister_lookup",
+            "repeat": 4,
+            "model_calls": 4,
+            "trigger_gate_calls": 4,
+            "expected_triggered_calls": 3,
+            "trigger_gate_triggered_calls": 3,
+            "trigger_gate_passthrough_calls": 1,
+            "trigger_gate_first_call_passthrough_calls": 1,
+            "trigger_gate_soft_limit_tokens": 1,
+            "ok": true
+          },
+          {
+            "task": "sitemap_callable_lastmod",
+            "repeat": 0,
+            "model_calls": 4,
+            "trigger_gate_calls": 4,
+            "expected_triggered_calls": 3,
+            "trigger_gate_triggered_calls": 3,
+            "trigger_gate_passthrough_calls": 1,
+            "trigger_gate_first_call_passthrough_calls": 1,
+            "trigger_gate_soft_limit_tokens": 1,
+            "ok": true
+          },
+          {
+            "task": "sitemap_callable_lastmod",
+            "repeat": 1,
+            "model_calls": 4,
+            "trigger_gate_calls": 4,
+            "expected_triggered_calls": 3,
+            "trigger_gate_triggered_calls": 3,
+            "trigger_gate_passthrough_calls": 1,
+            "trigger_gate_first_call_passthrough_calls": 1,
+            "trigger_gate_soft_limit_tokens": 1,
+            "ok": true
+          },
+          {
+            "task": "sitemap_callable_lastmod",
+            "repeat": 2,
+            "model_calls": 4,
+            "trigger_gate_calls": 4,
+            "expected_triggered_calls": 3,
+            "trigger_gate_triggered_calls": 3,
+            "trigger_gate_passthrough_calls": 1,
+            "trigger_gate_first_call_passthrough_calls": 1,
+            "trigger_gate_soft_limit_tokens": 1,
+            "ok": true
+          },
+          {
+            "task": "sitemap_callable_lastmod",
+            "repeat": 3,
+            "model_calls": 4,
+            "trigger_gate_calls": 4,
+            "expected_triggered_calls": 3,
+            "trigger_gate_triggered_calls": 3,
+            "trigger_gate_passthrough_calls": 1,
+            "trigger_gate_first_call_passthrough_calls": 1,
+            "trigger_gate_soft_limit_tokens": 1,
+            "ok": true
+          },
+          {
+            "task": "sitemap_callable_lastmod",
+            "repeat": 4,
+            "model_calls": 4,
+            "trigger_gate_calls": 4,
+            "expected_triggered_calls": 3,
+            "trigger_gate_triggered_calls": 3,
+            "trigger_gate_passthrough_calls": 1,
+            "trigger_gate_first_call_passthrough_calls": 1,
+            "trigger_gate_soft_limit_tokens": 1,
+            "ok": true
+          }
+        ]
+      }
+    },
+    {
+      "check": "mechanism_engages_on_unique_content_per_task",
+      "ok": true,
+      "detail": {
+        "check": "mechanism_engages_on_unique_content_per_task",
+        "ok": true,
+        "rule": "for every task on this no-duplicate shape: v21_outputs_elided > 0 and v21_bytes_saved > 0; a zero means the wiring did not take effect and no paid run may start",
+        "per_task": {
+          "autoreload_template_changed": {
+            "samples": 5,
+            "v21_outputs_considered": 30,
+            "v21_outputs_elided": 5,
+            "v21_lines_elided": 10,
+            "v21_bytes_saved": 590,
+            "v21_literal_guard_fallbacks": 0,
+            "v21_note_bytes": 100,
+            "exact_duplicate_replacements": 0
+          },
+          "query_utils_unregister_lookup": {
+            "samples": 5,
+            "v21_outputs_considered": 30,
+            "v21_outputs_elided": 10,
+            "v21_lines_elided": 10,
+            "v21_bytes_saved": 360,
+            "v21_literal_guard_fallbacks": 0,
+            "v21_note_bytes": 200,
+            "exact_duplicate_replacements": 0
+          },
+          "sitemap_callable_lastmod": {
+            "samples": 5,
+            "v21_outputs_considered": 30,
+            "v21_outputs_elided": 15,
+            "v21_lines_elided": 175,
+            "v21_bytes_saved": 7510,
+            "v21_literal_guard_fallbacks": 0,
+            "v21_note_bytes": 735,
+            "exact_duplicate_replacements": 0
+          }
+        },
+        "tasks_failing": [],
+        "total_outputs_elided": 30,
+        "total_bytes_saved": 8460,
+        "total_literal_guard_fallbacks": 0
+      }
+    },
+    {
+      "check": "literal_preservation_invariant_holds_on_the_real_payloads",
+      "ok": true,
+      "detail": {
+        "check": "literal_preservation_invariant_holds_on_the_real_payloads",
+        "ok": true,
+        "rule": "for every task and every model input: every registered literal's occurrence count after elision is >= its count before, and no note line written by the mechanism carries any registered literal",
+        "window_lines": 3,
+        "tasks_failing": [],
+        "detail": [
+          {
+            "task": "autoreload_template_changed",
+            "window_lines": 1,
+            "payloads": [
+              {
+                "call_index": 0,
+                "status": "no_elision",
+                "base_bytes": 3199,
+                "after_bytes": 3199,
+                "net_bytes_saved": 0,
+                "note_bytes": 0,
+                "outputs_considered": 1,
+                "outputs_elided": 0,
+                "lines_elided": 0,
+                "literal_counts_before": {
+                  "template_changed": 5,
+                  "django-15572": 1,
+                  "template_dir": 0,
+                  "file_path": 0
+                },
+                "literal_counts_after": {
+                  "template_changed": 5,
+                  "django-15572": 1,
+                  "template_dir": 0,
+                  "file_path": 0
+                },
+                "literals_lost": [],
+                "note_lines": 0,
+                "note_lines_carrying_a_literal": [],
+                "note_form_wellformed": true,
+                "ok": true
+              },
+              {
+                "call_index": 1,
+                "status": "no_elision",
+                "base_bytes": 3718,
+                "after_bytes": 3718,
+                "net_bytes_saved": 0,
+                "note_bytes": 0,
+                "outputs_considered": 2,
+                "outputs_elided": 0,
+                "lines_elided": 0,
+                "literal_counts_before": {
+                  "template_changed": 7,
+                  "django-15572": 1,
+                  "template_dir": 1,
+                  "file_path": 0
+                },
+                "literal_counts_after": {
+                  "template_changed": 7,
+                  "django-15572": 1,
+                  "template_dir": 1,
+                  "file_path": 0
+                },
+                "literals_lost": [],
+                "note_lines": 0,
+                "note_lines_carrying_a_literal": [],
+                "note_form_wellformed": true,
+                "ok": true
+              },
+              {
+                "call_index": 2,
+                "status": "engaged",
+                "base_bytes": 4347,
+                "after_bytes": 4229,
+                "net_bytes_saved": 118,
+                "note_bytes": 20,
+                "outputs_considered": 3,
+                "outputs_elided": 1,
+                "lines_elided": 2,
+                "literal_counts_before": {
+                  "template_changed": 11,
+                  "django-15572": 1,
+                  "template_dir": 4,
+                  "file_path": 3
+                },
+                "literal_counts_after": {
+                  "template_changed": 11,
+                  "django-15572": 1,
+                  "template_dir": 4,
+                  "file_path": 3
+                },
+                "literals_lost": [],
+                "note_lines": 0,
+                "note_lines_carrying_a_literal": [],
+                "note_form_wellformed": true,
+                "ok": true
+              }
+            ],
+            "ok": true
+          },
+          {
+            "task": "sitemap_callable_lastmod",
+            "window_lines": 1,
+            "payloads": [
+              {
+                "call_index": 0,
+                "status": "no_elision",
+                "base_bytes": 3570,
+                "after_bytes": 3570,
+                "net_bytes_saved": 0,
+                "note_bytes": 0,
+                "outputs_considered": 1,
+                "outputs_elided": 0,
+                "lines_elided": 0,
+                "literal_counts_before": {
+                  "get_latest_lastmod": 6,
+                  "django-16255": 1,
+                  "lastmod": 22,
+                  "items": 8
+                },
+                "literal_counts_after": {
+                  "get_latest_lastmod": 6,
+                  "django-16255": 1,
+                  "lastmod": 22,
+                  "items": 8
+                },
+                "literals_lost": [],
+                "note_lines": 0,
+                "note_lines_carrying_a_literal": [],
+                "note_form_wellformed": true,
+                "ok": true
+              },
+              {
+                "call_index": 1,
+                "status": "engaged",
+                "base_bytes": 6213,
+                "after_bytes": 6201,
+                "net_bytes_saved": 12,
+                "note_bytes": 20,
+                "outputs_considered": 2,
+                "outputs_elided": 1,
+                "lines_elided": 1,
+                "literal_counts_before": {
+                  "get_latest_lastmod": 6,
+                  "django-16255": 1,
+                  "lastmod": 44,
+                  "items": 14
+                },
+                "literal_counts_after": {
+                  "get_latest_lastmod": 6,
+                  "django-16255": 1,
+                  "lastmod": 44,
+                  "items": 14
+                },
+                "literals_lost": [],
+                "note_lines": 0,
+                "note_lines_carrying_a_literal": [],
+                "note_form_wellformed": true,
+                "ok": true
+              },
+              {
+                "call_index": 2,
+                "status": "engaged",
+                "base_bytes": 7611,
+                "after_bytes": 6121,
+                "net_bytes_saved": 1490,
+                "note_bytes": 127,
+                "outputs_considered": 3,
+                "outputs_elided": 2,
+                "lines_elided": 34,
+                "literal_counts_before": {
+                  "get_latest_lastmod": 7,
+                  "django-16255": 1,
+                  "lastmod": 48,
+                  "items": 15
+                },
+                "literal_counts_after": {
+                  "get_latest_lastmod": 7,
+                  "django-16255": 1,
+                  "lastmod": 48,
+                  "items": 15
+                },
+                "literals_lost": [],
+                "note_lines": 0,
+                "note_lines_carrying_a_literal": [],
+                "note_form_wellformed": true,
+                "ok": true
+              }
+            ],
+            "ok": true
+          },
+          {
+            "task": "query_utils_unregister_lookup",
+            "window_lines": 1,
+            "payloads": [
+              {
+                "call_index": 0,
+                "status": "no_elision",
+                "base_bytes": 2583,
+                "after_bytes": 2583,
+                "net_bytes_saved": 0,
+                "note_bytes": 0,
+                "outputs_considered": 1,
+                "outputs_elided": 0,
+                "lines_elided": 0,
+                "literal_counts_before": {
+                  "_unregister_lookup": 7,
+                  "django-15569": 1,
+                  "lookup_name": 5,
+                  "lookup": 26
+                },
+                "literal_counts_after": {
+                  "_unregister_lookup": 7,
+                  "django-15569": 1,
+                  "lookup_name": 5,
+                  "lookup": 26
+                },
+                "literals_lost": [],
+                "note_lines": 0,
+                "note_lines_carrying_a_literal": [],
+                "note_form_wellformed": true,
+                "ok": true
+              },
+              {
+                "call_index": 1,
+                "status": "engaged",
+                "base_bytes": 4577,
+                "after_bytes": 4541,
+                "net_bytes_saved": 36,
+                "note_bytes": 20,
+                "outputs_considered": 2,
+                "outputs_elided": 1,
+                "lines_elided": 1,
+                "literal_counts_before": {
+                  "_unregister_lookup": 9,
+                  "django-15569": 1,
+                  "lookup_name": 5,
+                  "lookup": 28
+                },
+                "literal_counts_after": {
+                  "_unregister_lookup": 9,
+                  "django-15569": 1,
+                  "lookup_name": 5,
+                  "lookup": 28
+                },
+                "literals_lost": [],
+                "note_lines": 0,
+                "note_lines_carrying_a_literal": [],
+                "note_form_wellformed": true,
+                "ok": true
+              },
+              {
+                "call_index": 2,
+                "status": "engaged",
+                "base_bytes": 5457,
+                "after_bytes": 5421,
+                "net_bytes_saved": 36,
+                "note_bytes": 20,
+                "outputs_considered": 3,
+                "outputs_elided": 1,
+                "lines_elided": 1,
+                "literal_counts_before": {
+                  "_unregister_lookup": 11,
+                  "django-15569": 1,
+                  "lookup_name": 5,
+                  "lookup": 42
+                },
+                "literal_counts_after": {
+                  "_unregister_lookup": 11,
+                  "django-15569": 1,
+                  "lookup_name": 5,
+                  "lookup": 42
+                },
+                "literals_lost": [],
+                "note_lines": 0,
+                "note_lines_carrying_a_literal": [],
+                "note_form_wellformed": true,
+                "ok": true
+              }
+            ],
+            "ok": true
+          }
+        ]
+      }
+    },
+    {
+      "check": "every_module_in_the_path_is_pinned_with_revision_aware_fail_closed",
+      "ok": true,
+      "detail": {
+        "check": "every_module_in_the_path_is_pinned_with_revision_aware_fail_closed",
+        "ok": true,
+        "modules": {
+          "experiments/runners/openai_agents_v18_registry.py": "04bc0ef41e78d15deafdaa568ab2094988d8b2068a13a2231e163164ebd4355f",
+          "experiments/runners/openai_agents_v17_live_contract.py": "b5be9165c8845579491e5541380f5f0766f97df77dfb933a12b26a1a1e3e1ca3",
+          "experiments/runners/run_openai_agents_v17_acquisition.py": "be0b97b4100711e726c85003933a6cf0357c3c2b5388442d28a4af69ae5fb45d",
+          "experiments/runners/openai_agents_structured_final_v16.py": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+          "experiments/runners/openai_agents_v18_sealed_registration.py": "174462d17f84f814bd3edb1747359a88225cc8d295d5f405c452563cc306128d",
+          "experiments/runners/run_openai_agents_api_experiment.py": "1cafd67b5b4d649381c737ff2e97d15d7cbba95709311d3516ccdb266c7e8708",
+          "experiments/runners/openai_agents_multitask_chain_v14.py": "bb2f5ad589e4ac0129a4cf01d2316e7f1cf7987e5dfd02e2f41aa72c7ebc1446",
+          "experiments/runners/openai_agents_v19_shape_dose.py": "6957a247bbc5df70e2922be336d6d95e7cd1bbef818538eaaa4578250bdafc52",
+          "experiments/runners/openai_agents_exact_duplicate_replay_v12.py": "2b511306fa433909c3ec72100be93adb9628a22937a7c502bfad8b9faac1f937",
+          "experiments/runners/openai_agents_evidence_safe_retention_v5.py": "8b67133f8780fa03e562dbf1052e8a95b19a90ff042cf293c1b1cb17e2426e56",
+          "experiments/runners/openai_agents_v20_chain.py": "41d4ba547da42e659c7381927ccacf86543b97c74fc499885d8aa7059fff9259",
+          "experiments/runners/openai_agents_v20_retention.py": "65650b10e8a6fb72e580245c8c0c9485b85874e4193dea5b421e8657abb0db2c",
+          "experiments/runners/openai_agents_v21_carrier_elision.py": "5c6fce44cfd79832fd14dd21ab97627638afe9b186a01d6ea8e9507a3efb12e2",
+          "experiments/runners/openai_agents_v22_window.py": "3496e9f3806d9a453f9fd1647ede279c99cd0aabb52e3ad055a310653ea6d999",
+          "experiments/runners/openai_agents_v22_window_k1.py": "cc87b195abb98d8ef4c0d27e6928c265ef054a79f8e695d3126a8c950917a962",
+          "experiments/runners/openai_agents_v22_chain.py": "3cc39594737039c6abee7aa6da78a242565186cefe93253f2ef8edb3631e12f0",
+          "experiments/runners/run_openai_agents_v23_v18_sealed_window_k1.py": "6cdf461ae9b8f2100fd1ec0f058adc6ba9f82d4361c551ad83fe6988740fa647"
+        },
+        "plan_named_modules": {
+          "experiments/runners/openai_agents_v18_registry.py": "04bc0ef41e78d15deafdaa568ab2094988d8b2068a13a2231e163164ebd4355f",
+          "experiments/runners/openai_agents_v17_live_contract.py": "b5be9165c8845579491e5541380f5f0766f97df77dfb933a12b26a1a1e3e1ca3",
+          "experiments/runners/run_openai_agents_v17_acquisition.py": "be0b97b4100711e726c85003933a6cf0357c3c2b5388442d28a4af69ae5fb45d",
+          "experiments/runners/openai_agents_structured_final_v16.py": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a"
+        },
+        "revision_ledger_entries": [
+          "experiments/runners/openai_agents_evidence_safe_retention_v5.py",
+          "experiments/runners/openai_agents_exact_duplicate_replay_v12.py",
+          "experiments/runners/openai_agents_multitask_chain_v14.py",
+          "experiments/runners/openai_agents_structured_final_v16.py",
+          "experiments/runners/openai_agents_v17_live_contract.py",
+          "experiments/runners/openai_agents_v18_registry.py",
+          "experiments/runners/openai_agents_v18_sealed_registration.py",
+          "experiments/runners/openai_agents_v19_shape_dose.py",
+          "experiments/runners/openai_agents_v20_chain.py",
+          "experiments/runners/openai_agents_v20_retention.py",
+          "experiments/runners/openai_agents_v21_carrier_elision.py",
+          "experiments/runners/openai_agents_v22_chain.py",
+          "experiments/runners/openai_agents_v22_window.py",
+          "experiments/runners/openai_agents_v22_window_k1.py",
+          "experiments/runners/run_openai_agents_api_experiment.py",
+          "experiments/runners/run_openai_agents_v17_acquisition.py",
+          "experiments/runners/run_openai_agents_v23_v18_sealed_window_k1.py"
+        ],
+        "unregistered_modules": [],
+        "drifted_modules": [],
+        "module_count": 17
+      }
+    },
+    {
+      "check": "the_single_occurrence_paths_the_note_rule_and_the_recency_rule_hold",
+      "ok": true,
+      "detail": {
+        "check": "the_single_occurrence_paths_the_note_rule_and_the_recency_rule_hold",
+        "ok": true,
+        "rule": "every task must keep the occurrence of the literal under test, must show the v5 lineage guard refusing a payload that loses it, must keep the newest tool group byte for byte and must write no note that carries a literal; at least two tasks must do it for a literal that occurs exactly once in their registered views",
+        "tasks_with_a_literal_that_occurs_exactly_once": [
+          "autoreload_template_changed",
+          "query_utils_unregister_lookup"
+        ],
+        "detail": {
+          "autoreload_template_changed": {
+            "single_occurrence_literals": [
+              "template_changed"
+            ],
+            "has_a_literal_that_occurs_exactly_once": true,
+            "literal_under_test": "template_changed",
+            "literal_occurrence_counts": {
+              "template_changed": 1,
+              "template_dir": 3,
+              "file_path": 3
+            },
+            "path_one_carrier_protected": {
+              "elided": true,
+              "lines_elided": 27,
+              "occurrences_before_in_the_output": 1,
+              "occurrences_after_in_the_output": 1,
+              "note_lines": 2,
+              "note_lines_carrying_a_literal": []
+            },
+            "path_two_guard_refuses_a_lost_occurrence": {
+              "carrier_loss_on_the_keep": [],
+              "carrier_loss_on_the_losing_payload": [
+                "template_changed"
+              ],
+              "guard_sees_the_loss": true
+            },
+            "newest_group_kept_verbatim": {
+              "newest_call_id": "real_autoreload_template_changed_2",
+              "recent_group_items_kept": 2,
+              "newest_kept_verbatim": true,
+              "newest_output_identical_to_the_read": true,
+              "newest_plan_entry": {
+                "call_id": "real_autoreload_template_changed_2",
+                "elided": false,
+                "reason": "most_recent_tool_group"
+              }
+            },
+            "real_payload_notes_carrying_a_literal": [],
+            "real_payload_outputs_elided": 1,
+            "v5_guard_is_the_frozen_one": "experiments.runners.openai_agents_evidence_safe_retention_v5",
+            "ok": true
+          },
+          "sitemap_callable_lastmod": {
+            "single_occurrence_literals": [],
+            "has_a_literal_that_occurs_exactly_once": false,
+            "literal_under_test": "get_latest_lastmod",
+            "literal_occurrence_counts": {
+              "get_latest_lastmod": 2,
+              "lastmod": 18,
+              "items": 7
+            },
+            "path_one_carrier_protected": {
+              "elided": true,
+              "lines_elided": 27,
+              "occurrences_before_in_the_output": 1,
+              "occurrences_after_in_the_output": 1,
+              "note_lines": 2,
+              "note_lines_carrying_a_literal": []
+            },
+            "path_two_guard_refuses_a_lost_occurrence": {
+              "carrier_loss_on_the_keep": [],
+              "carrier_loss_on_the_losing_payload": [
+                "get_latest_lastmod",
+                "lastmod"
+              ],
+              "guard_sees_the_loss": true
+            },
+            "newest_group_kept_verbatim": {
+              "newest_call_id": "real_sitemap_callable_lastmod_2",
+              "recent_group_items_kept": 2,
+              "newest_kept_verbatim": true,
+              "newest_output_identical_to_the_read": true,
+              "newest_plan_entry": {
+                "call_id": "real_sitemap_callable_lastmod_2",
+                "elided": false,
+                "reason": "most_recent_tool_group"
+              }
+            },
+            "real_payload_notes_carrying_a_literal": [],
+            "real_payload_outputs_elided": 2,
+            "v5_guard_is_the_frozen_one": "experiments.runners.openai_agents_evidence_safe_retention_v5",
+            "ok": true
+          },
+          "query_utils_unregister_lookup": {
+            "single_occurrence_literals": [
+              "_unregister_lookup"
+            ],
+            "has_a_literal_that_occurs_exactly_once": true,
+            "literal_under_test": "_unregister_lookup",
+            "literal_occurrence_counts": {
+              "_unregister_lookup": 1,
+              "lookup_name": 4,
+              "lookup": 12
+            },
+            "path_one_carrier_protected": {
+              "elided": true,
+              "lines_elided": 27,
+              "occurrences_before_in_the_output": 1,
+              "occurrences_after_in_the_output": 1,
+              "note_lines": 2,
+              "note_lines_carrying_a_literal": []
+            },
+            "path_two_guard_refuses_a_lost_occurrence": {
+              "carrier_loss_on_the_keep": [],
+              "carrier_loss_on_the_losing_payload": [
+                "_unregister_lookup",
+                "lookup"
+              ],
+              "guard_sees_the_loss": true
+            },
+            "newest_group_kept_verbatim": {
+              "newest_call_id": "real_query_utils_unregister_lookup_2",
+              "recent_group_items_kept": 2,
+              "newest_kept_verbatim": true,
+              "newest_output_identical_to_the_read": true,
+              "newest_plan_entry": {
+                "call_id": "real_query_utils_unregister_lookup_2",
+                "elided": false,
+                "reason": "most_recent_tool_group"
+              }
+            },
+            "real_payload_notes_carrying_a_literal": [],
+            "real_payload_outputs_elided": 1,
+            "v5_guard_is_the_frozen_one": "experiments.runners.openai_agents_evidence_safe_retention_v5",
+            "ok": true
+          }
+        }
+      }
+    },
+    {
+      "check": "protocol_matches_the_shape",
+      "ok": true,
+      "detail": {
+        "rounds": 3,
+        "read_calls": 3
+      }
+    },
+    {
+      "check": "one_read_per_turn_rule_matches_the_batching",
+      "ok": true,
+      "detail": {
+        "reads_per_round": 1
+      }
+    },
+    {
+      "check": "no_duplicate_and_no_merge_rules_present",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "check": "old_shape_wording_absent",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "check": "case_shape_matches_the_plan",
+      "ok": true,
+      "detail": {
+        "expected_model_calls": 4,
+        "tool_calls": 3
+      }
+    },
+    {
+      "check": "retry_diagnostic_still_byte_identical_to_v16",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "check": "four_conditions_still_identical_to_v16",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "check": "declared_literal_missing_from_the_line_still_rejected",
+      "ok": true,
+      "detail": {
+        "reason": "declared_fact_missing_from_rendered_answer"
+      }
+    },
+    {
+      "check": "over_160_still_rejected",
+      "ok": true,
+      "detail": {
+        "reason": "over_160_chars"
+      }
+    },
+    {
+      "check": "cap_arithmetic_written_into_the_gate_and_at_least_1_3x",
+      "ok": true,
+      "detail": {
+        "shape": "N3",
+        "rounds": 3,
+        "reads_per_round": 1,
+        "read_calls": 3,
+        "plan_order": [
+          0,
+          1,
+          2
+        ],
+        "views": 3,
+        "views_read_once_each": true,
+        "duplicate_content_by_construction": false,
+        "expected_requests_per_sample": 4,
+        "max_turns": 5,
+        "retry_budget_per_sample": 1,
+        "worst_case_requests_per_sample": 6,
+        "samples": 45,
+        "native_samples": 15,
+        "arms": [
+          "none",
+          "native_summary",
+          "pruner_v1"
+        ],
+        "repeats": 5,
+        "worst_case_model_calls": 270,
+        "summary_calls_worst_case": 30,
+        "worst_case_requests": 300,
+        "cap": 390,
+        "margin": 1.3,
+        "at_least_1_3": true,
+        "derivation": "READ_CALLS=3 => MAX_TURNS = 3+2 = 5 => worst case 6 per sample => 45x6 + 15x2 = 300 => 1.3x => 390"
+      }
+    },
+    {
+      "check": "trigger_gate_threshold_is_the_pre_registered_zero",
+      "ok": true,
+      "detail": {
+        "soft_limit_tokens_setting": 0
+      }
+    },
+    {
+      "check": "protection_window_is_the_k_pre_registered_for_this_configuration",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "k_in_force": 1,
+        "config_window": 1,
+        "declared_window_value": 1,
+        "effective_window_declaration": "self.v21_window_lines bound by the configuration class",
+        "filter_class": "LiteralCarrierElisionFilterK1",
+        "filter_class_window": 1,
+        "config_module": "experiments/runners/openai_agents_v22_window_k1.py",
+        "frozen_mechanism_default": 3
+      }
+    },
+    {
+      "check": "the_mechanism_module_is_untouched_and_its_default_window_is_still_three",
+      "ok": true,
+      "detail": {
+        "frozen_v21_default_window": 3,
+        "config_window": 1,
+        "config_module": "experiments/runners/openai_agents_v22_window_k1.py",
+        "k_in_force": 1
+      }
+    },
+    {
+      "check": "the_k_assertion_and_its_negative_control",
+      "ok": true,
+      "detail": {
+        "check": "the_window_is_pinned_to_k1_and_k2_is_refused",
+        "ok": true,
+        "k_written_in_this_module": 1,
+        "authorised_windows": [
+          3,
+          1,
+          0
+        ],
+        "k2_refused_by_the_configuration_module": true,
+        "k2_configuration_error": "K=2 is not pre-registered: the v22 plan authorises (3, 1, 0) and an interpolated window (for example K=2) may not be run without a new registration",
+        "k2_refused_by_import": true,
+        "k2_refused_by_this_runners_selector": true,
+        "k2_selector_error": "this batch runs at K=1 only: the v22 plan authorises (3, 1, 0) and this round pre-registered K=1, not K=2",
+        "filter_class_window": 1,
+        "frozen_mechanism_default_window": 3
+      }
+    },
+    {
+      "check": "elision_counters_are_persisted_in_the_sample_rows",
+      "ok": true,
+      "detail": {
+        "persisted": [
+          "v21_outputs_considered",
+          "v21_outputs_elided",
+          "v21_lines_elided",
+          "v21_bytes_saved",
+          "v21_literal_guard_fallbacks",
+          "v21_note_bytes"
+        ]
+      }
+    },
+    {
+      "check": "the_tool_documentation_is_unchanged_and_the_disclosure_is_written",
+      "ok": true,
+      "detail": {
+        "disclosure": "the plugin arm's read output may be elided: lines that carry no registered literal are removed and every maximal omitted run is replaced by exactly one explicit interval note of the form [elided n lines first-last], so the omission is declared and the omitted range is recoverable by re-issuing the read. Every registered literal keeps at least as many verbatim occurrences as it had before the elision; the reader tool's own description is identical in all three arms, because the frozen registry builds it once per task and v21 does not rewrite it for any arm, so 'returns those numbered lines verbatim' holds for every line that is kept. No silent omission occurs: nothing is removed without an interval note."
+      }
+    },
+    {
+      "check": "no_silent_omission_is_possible",
+      "ok": true,
+      "detail": {
+        "note_form": "[elided {count} lines {first}-{last}]",
+        "example": "[elided 4 lines 8-11]"
+      }
+    },
+    {
+      "check": "the_paid_path_installs_the_same_contexts_as_the_rehearsal",
+      "ok": true,
+      "detail": {
+        "paid_wiring": "with v23_chain_installed(): with v23_finalise_installed(): run_pilot(...)",
+        "why": "the rehearsal and the paid path must install the same context managers; a green gate over a parallel rehearsal is what shipped an incomplete manifest once"
+      }
+    },
+    {
+      "check": "the_paid_path_preserves_the_runner_bytes_and_matches_the_pin",
+      "ok": true,
+      "detail": {
+        "module": "experiments/runners/run_openai_agents_v23_v18_sealed_window_k1.py",
+        "digest": "6cdf461ae9b8f2100fd1ec0f058adc6ba9f82d4361c551ad83fe6988740fa647",
+        "pinned_digest": "6cdf461ae9b8f2100fd1ec0f058adc6ba9f82d4361c551ad83fe6988740fa647",
+        "matches_ledger": true,
+        "preserved_to": "C:\\Users\\LENOVO\\v21-artifact-preservation\\run_openai_agents_v23_v18_sealed_window_k1.py",
+        "preserved": true,
+        "k": 1,
+        "gate_reads_it_before_any_request": true
+      }
+    },
+    {
+      "check": "the_pre_registered_wording_is_written_and_the_forbidden_wording_is_recorded",
+      "ok": true,
+      "detail": {
+        "required_wording": "under this host configuration",
+        "forbidden_wording": [
+          "compression alone saved X percent",
+          "the four criteria are met",
+          "the retry tax is gone",
+          "the plugin saves about 12.5 percent of context"
+        ]
+      }
+    },
+    {
+      "check": "both_citation_flags_start_false",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "check": "the_frozen_batch_is_not_merged_with_the_v16_sealed_batch",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "check": "the_gate_assertions_can_fail",
+      "ok": true,
+      "detail": {
+        "assertion_c_rejects_a_zero_saving_sample": true,
+        "assertion_b_rejects_a_passthrough_sample": true,
+        "assertion_d_rejects_an_unregistered_module_set": true,
+        "assertion_e_rejects_an_output_that_loses_a_literal": true
+      }
+    }
+  ],
+  "ok": true,
+  "failed_checks": [],
+  "hard_assertions": {
+    "a_finalise_really_runs": true,
+    "b_trigger_gate_fires_every_call": true,
+    "c_mechanism_engages_on_unique_content": true,
+    "d_every_module_pinned": true,
+    "e_literal_invariant_holds_on_real_payloads": true,
+    "f_single_occurrence_paths_note_rule_and_recency": true
+  },
+  "per_sample_mechanism": [
+    {
+      "task": "autoreload_template_changed",
+      "repeat": 0,
+      "method": "native_summary",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 4,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 5435,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "autoreload_template_changed",
+      "repeat": 0,
+      "method": "none",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 0,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "autoreload_template_changed",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 3,
+      "trigger_gate_passthrough_calls": 1,
+      "trigger_gate_first_call_passthrough_calls": 1,
+      "trigger_gate_soft_limit_tokens": 1,
+      "persisted_v21_fields": [
+        "v21_outputs_considered",
+        "v21_outputs_elided",
+        "v21_lines_elided",
+        "v21_bytes_saved",
+        "v21_literal_guard_fallbacks",
+        "v21_note_bytes"
+      ],
+      "v21_outputs_considered": 6,
+      "v21_outputs_elided": 1,
+      "v21_lines_elided": 2,
+      "v21_bytes_saved": 118,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 20
+    },
+    {
+      "task": "autoreload_template_changed",
+      "repeat": 1,
+      "method": "native_summary",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 4,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 5435,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "autoreload_template_changed",
+      "repeat": 1,
+      "method": "none",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 0,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "autoreload_template_changed",
+      "repeat": 1,
+      "method": "pruner_v1",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 3,
+      "trigger_gate_passthrough_calls": 1,
+      "trigger_gate_first_call_passthrough_calls": 1,
+      "trigger_gate_soft_limit_tokens": 1,
+      "persisted_v21_fields": [
+        "v21_outputs_considered",
+        "v21_outputs_elided",
+        "v21_lines_elided",
+        "v21_bytes_saved",
+        "v21_literal_guard_fallbacks",
+        "v21_note_bytes"
+      ],
+      "v21_outputs_considered": 6,
+      "v21_outputs_elided": 1,
+      "v21_lines_elided": 2,
+      "v21_bytes_saved": 118,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 20
+    },
+    {
+      "task": "autoreload_template_changed",
+      "repeat": 2,
+      "method": "native_summary",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 4,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 5435,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "autoreload_template_changed",
+      "repeat": 2,
+      "method": "none",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 0,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "autoreload_template_changed",
+      "repeat": 2,
+      "method": "pruner_v1",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 3,
+      "trigger_gate_passthrough_calls": 1,
+      "trigger_gate_first_call_passthrough_calls": 1,
+      "trigger_gate_soft_limit_tokens": 1,
+      "persisted_v21_fields": [
+        "v21_outputs_considered",
+        "v21_outputs_elided",
+        "v21_lines_elided",
+        "v21_bytes_saved",
+        "v21_literal_guard_fallbacks",
+        "v21_note_bytes"
+      ],
+      "v21_outputs_considered": 6,
+      "v21_outputs_elided": 1,
+      "v21_lines_elided": 2,
+      "v21_bytes_saved": 118,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 20
+    },
+    {
+      "task": "autoreload_template_changed",
+      "repeat": 3,
+      "method": "native_summary",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 4,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 5435,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "autoreload_template_changed",
+      "repeat": 3,
+      "method": "none",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 0,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "autoreload_template_changed",
+      "repeat": 3,
+      "method": "pruner_v1",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 3,
+      "trigger_gate_passthrough_calls": 1,
+      "trigger_gate_first_call_passthrough_calls": 1,
+      "trigger_gate_soft_limit_tokens": 1,
+      "persisted_v21_fields": [
+        "v21_outputs_considered",
+        "v21_outputs_elided",
+        "v21_lines_elided",
+        "v21_bytes_saved",
+        "v21_literal_guard_fallbacks",
+        "v21_note_bytes"
+      ],
+      "v21_outputs_considered": 6,
+      "v21_outputs_elided": 1,
+      "v21_lines_elided": 2,
+      "v21_bytes_saved": 118,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 20
+    },
+    {
+      "task": "autoreload_template_changed",
+      "repeat": 4,
+      "method": "native_summary",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 4,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 5435,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "autoreload_template_changed",
+      "repeat": 4,
+      "method": "none",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 0,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "autoreload_template_changed",
+      "repeat": 4,
+      "method": "pruner_v1",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 3,
+      "trigger_gate_passthrough_calls": 1,
+      "trigger_gate_first_call_passthrough_calls": 1,
+      "trigger_gate_soft_limit_tokens": 1,
+      "persisted_v21_fields": [
+        "v21_outputs_considered",
+        "v21_outputs_elided",
+        "v21_lines_elided",
+        "v21_bytes_saved",
+        "v21_literal_guard_fallbacks",
+        "v21_note_bytes"
+      ],
+      "v21_outputs_considered": 6,
+      "v21_outputs_elided": 1,
+      "v21_lines_elided": 2,
+      "v21_bytes_saved": 118,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 20
+    },
+    {
+      "task": "query_utils_unregister_lookup",
+      "repeat": 0,
+      "method": "native_summary",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 4,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 5435,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "query_utils_unregister_lookup",
+      "repeat": 0,
+      "method": "none",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 0,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "query_utils_unregister_lookup",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 3,
+      "trigger_gate_passthrough_calls": 1,
+      "trigger_gate_first_call_passthrough_calls": 1,
+      "trigger_gate_soft_limit_tokens": 1,
+      "persisted_v21_fields": [
+        "v21_outputs_considered",
+        "v21_outputs_elided",
+        "v21_lines_elided",
+        "v21_bytes_saved",
+        "v21_literal_guard_fallbacks",
+        "v21_note_bytes"
+      ],
+      "v21_outputs_considered": 6,
+      "v21_outputs_elided": 2,
+      "v21_lines_elided": 2,
+      "v21_bytes_saved": 72,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 40
+    },
+    {
+      "task": "query_utils_unregister_lookup",
+      "repeat": 1,
+      "method": "native_summary",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 4,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 5435,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "query_utils_unregister_lookup",
+      "repeat": 1,
+      "method": "none",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 0,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "query_utils_unregister_lookup",
+      "repeat": 1,
+      "method": "pruner_v1",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 3,
+      "trigger_gate_passthrough_calls": 1,
+      "trigger_gate_first_call_passthrough_calls": 1,
+      "trigger_gate_soft_limit_tokens": 1,
+      "persisted_v21_fields": [
+        "v21_outputs_considered",
+        "v21_outputs_elided",
+        "v21_lines_elided",
+        "v21_bytes_saved",
+        "v21_literal_guard_fallbacks",
+        "v21_note_bytes"
+      ],
+      "v21_outputs_considered": 6,
+      "v21_outputs_elided": 2,
+      "v21_lines_elided": 2,
+      "v21_bytes_saved": 72,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 40
+    },
+    {
+      "task": "query_utils_unregister_lookup",
+      "repeat": 2,
+      "method": "native_summary",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 4,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 5435,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "query_utils_unregister_lookup",
+      "repeat": 2,
+      "method": "none",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 0,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "query_utils_unregister_lookup",
+      "repeat": 2,
+      "method": "pruner_v1",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 3,
+      "trigger_gate_passthrough_calls": 1,
+      "trigger_gate_first_call_passthrough_calls": 1,
+      "trigger_gate_soft_limit_tokens": 1,
+      "persisted_v21_fields": [
+        "v21_outputs_considered",
+        "v21_outputs_elided",
+        "v21_lines_elided",
+        "v21_bytes_saved",
+        "v21_literal_guard_fallbacks",
+        "v21_note_bytes"
+      ],
+      "v21_outputs_considered": 6,
+      "v21_outputs_elided": 2,
+      "v21_lines_elided": 2,
+      "v21_bytes_saved": 72,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 40
+    },
+    {
+      "task": "query_utils_unregister_lookup",
+      "repeat": 3,
+      "method": "native_summary",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 4,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 5435,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "query_utils_unregister_lookup",
+      "repeat": 3,
+      "method": "none",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 0,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "query_utils_unregister_lookup",
+      "repeat": 3,
+      "method": "pruner_v1",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 3,
+      "trigger_gate_passthrough_calls": 1,
+      "trigger_gate_first_call_passthrough_calls": 1,
+      "trigger_gate_soft_limit_tokens": 1,
+      "persisted_v21_fields": [
+        "v21_outputs_considered",
+        "v21_outputs_elided",
+        "v21_lines_elided",
+        "v21_bytes_saved",
+        "v21_literal_guard_fallbacks",
+        "v21_note_bytes"
+      ],
+      "v21_outputs_considered": 6,
+      "v21_outputs_elided": 2,
+      "v21_lines_elided": 2,
+      "v21_bytes_saved": 72,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 40
+    },
+    {
+      "task": "query_utils_unregister_lookup",
+      "repeat": 4,
+      "method": "native_summary",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 4,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 5435,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "query_utils_unregister_lookup",
+      "repeat": 4,
+      "method": "none",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 0,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "query_utils_unregister_lookup",
+      "repeat": 4,
+      "method": "pruner_v1",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 3,
+      "trigger_gate_passthrough_calls": 1,
+      "trigger_gate_first_call_passthrough_calls": 1,
+      "trigger_gate_soft_limit_tokens": 1,
+      "persisted_v21_fields": [
+        "v21_outputs_considered",
+        "v21_outputs_elided",
+        "v21_lines_elided",
+        "v21_bytes_saved",
+        "v21_literal_guard_fallbacks",
+        "v21_note_bytes"
+      ],
+      "v21_outputs_considered": 6,
+      "v21_outputs_elided": 2,
+      "v21_lines_elided": 2,
+      "v21_bytes_saved": 72,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 40
+    },
+    {
+      "task": "sitemap_callable_lastmod",
+      "repeat": 0,
+      "method": "native_summary",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 4,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 5435,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "sitemap_callable_lastmod",
+      "repeat": 0,
+      "method": "none",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 0,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "sitemap_callable_lastmod",
+      "repeat": 0,
+      "method": "pruner_v1",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 3,
+      "trigger_gate_passthrough_calls": 1,
+      "trigger_gate_first_call_passthrough_calls": 1,
+      "trigger_gate_soft_limit_tokens": 1,
+      "persisted_v21_fields": [
+        "v21_outputs_considered",
+        "v21_outputs_elided",
+        "v21_lines_elided",
+        "v21_bytes_saved",
+        "v21_literal_guard_fallbacks",
+        "v21_note_bytes"
+      ],
+      "v21_outputs_considered": 6,
+      "v21_outputs_elided": 3,
+      "v21_lines_elided": 35,
+      "v21_bytes_saved": 1502,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 147
+    },
+    {
+      "task": "sitemap_callable_lastmod",
+      "repeat": 1,
+      "method": "native_summary",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 4,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 5435,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "sitemap_callable_lastmod",
+      "repeat": 1,
+      "method": "none",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 0,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "sitemap_callable_lastmod",
+      "repeat": 1,
+      "method": "pruner_v1",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 3,
+      "trigger_gate_passthrough_calls": 1,
+      "trigger_gate_first_call_passthrough_calls": 1,
+      "trigger_gate_soft_limit_tokens": 1,
+      "persisted_v21_fields": [
+        "v21_outputs_considered",
+        "v21_outputs_elided",
+        "v21_lines_elided",
+        "v21_bytes_saved",
+        "v21_literal_guard_fallbacks",
+        "v21_note_bytes"
+      ],
+      "v21_outputs_considered": 6,
+      "v21_outputs_elided": 3,
+      "v21_lines_elided": 35,
+      "v21_bytes_saved": 1502,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 147
+    },
+    {
+      "task": "sitemap_callable_lastmod",
+      "repeat": 2,
+      "method": "native_summary",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 4,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 5435,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "sitemap_callable_lastmod",
+      "repeat": 2,
+      "method": "none",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 0,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "sitemap_callable_lastmod",
+      "repeat": 2,
+      "method": "pruner_v1",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 3,
+      "trigger_gate_passthrough_calls": 1,
+      "trigger_gate_first_call_passthrough_calls": 1,
+      "trigger_gate_soft_limit_tokens": 1,
+      "persisted_v21_fields": [
+        "v21_outputs_considered",
+        "v21_outputs_elided",
+        "v21_lines_elided",
+        "v21_bytes_saved",
+        "v21_literal_guard_fallbacks",
+        "v21_note_bytes"
+      ],
+      "v21_outputs_considered": 6,
+      "v21_outputs_elided": 3,
+      "v21_lines_elided": 35,
+      "v21_bytes_saved": 1502,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 147
+    },
+    {
+      "task": "sitemap_callable_lastmod",
+      "repeat": 3,
+      "method": "native_summary",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 4,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 5435,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "sitemap_callable_lastmod",
+      "repeat": 3,
+      "method": "none",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 0,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "sitemap_callable_lastmod",
+      "repeat": 3,
+      "method": "pruner_v1",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 3,
+      "trigger_gate_passthrough_calls": 1,
+      "trigger_gate_first_call_passthrough_calls": 1,
+      "trigger_gate_soft_limit_tokens": 1,
+      "persisted_v21_fields": [
+        "v21_outputs_considered",
+        "v21_outputs_elided",
+        "v21_lines_elided",
+        "v21_bytes_saved",
+        "v21_literal_guard_fallbacks",
+        "v21_note_bytes"
+      ],
+      "v21_outputs_considered": 6,
+      "v21_outputs_elided": 3,
+      "v21_lines_elided": 35,
+      "v21_bytes_saved": 1502,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 147
+    },
+    {
+      "task": "sitemap_callable_lastmod",
+      "repeat": 4,
+      "method": "native_summary",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 4,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 5435,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "sitemap_callable_lastmod",
+      "repeat": 4,
+      "method": "none",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 0,
+      "trigger_gate_triggered_calls": 0,
+      "trigger_gate_passthrough_calls": 0,
+      "trigger_gate_first_call_passthrough_calls": 0,
+      "trigger_gate_soft_limit_tokens": 0,
+      "persisted_v21_fields": [],
+      "v21_outputs_considered": 0,
+      "v21_outputs_elided": 0,
+      "v21_lines_elided": 0,
+      "v21_bytes_saved": 0,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 0
+    },
+    {
+      "task": "sitemap_callable_lastmod",
+      "repeat": 4,
+      "method": "pruner_v1",
+      "model_calls": 4,
+      "tool_calls": 3,
+      "api_request_attempts": 4,
+      "render_accepted": true,
+      "render_repair_calls": 0,
+      "exact_duplicate_replacements": 0,
+      "trigger_gate_calls": 4,
+      "trigger_gate_triggered_calls": 3,
+      "trigger_gate_passthrough_calls": 1,
+      "trigger_gate_first_call_passthrough_calls": 1,
+      "trigger_gate_soft_limit_tokens": 1,
+      "persisted_v21_fields": [
+        "v21_outputs_considered",
+        "v21_outputs_elided",
+        "v21_lines_elided",
+        "v21_bytes_saved",
+        "v21_literal_guard_fallbacks",
+        "v21_note_bytes"
+      ],
+      "v21_outputs_considered": 6,
+      "v21_outputs_elided": 3,
+      "v21_lines_elided": 35,
+      "v21_bytes_saved": 1502,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 147
+    }
+  ],
+  "v21_counters_per_task": {
+    "autoreload_template_changed": {
+      "samples": 5,
+      "v21_outputs_considered": 30,
+      "v21_outputs_elided": 5,
+      "v21_lines_elided": 10,
+      "v21_bytes_saved": 590,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 100,
+      "exact_duplicate_replacements": 0
+    },
+    "query_utils_unregister_lookup": {
+      "samples": 5,
+      "v21_outputs_considered": 30,
+      "v21_outputs_elided": 10,
+      "v21_lines_elided": 10,
+      "v21_bytes_saved": 360,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 200,
+      "exact_duplicate_replacements": 0
+    },
+    "sitemap_callable_lastmod": {
+      "samples": 5,
+      "v21_outputs_considered": 30,
+      "v21_outputs_elided": 15,
+      "v21_lines_elided": 175,
+      "v21_bytes_saved": 7510,
+      "v21_literal_guard_fallbacks": 0,
+      "v21_note_bytes": 735,
+      "exact_duplicate_replacements": 0
+    }
+  },
+  "literal_invariant_per_task": [
+    {
+      "task": "autoreload_template_changed",
+      "window_lines": 1,
+      "payloads": [
+        {
+          "call_index": 0,
+          "status": "no_elision",
+          "base_bytes": 3199,
+          "after_bytes": 3199,
+          "net_bytes_saved": 0,
+          "note_bytes": 0,
+          "outputs_considered": 1,
+          "outputs_elided": 0,
+          "lines_elided": 0,
+          "literal_counts_before": {
+            "template_changed": 5,
+            "django-15572": 1,
+            "template_dir": 0,
+            "file_path": 0
+          },
+          "literal_counts_after": {
+            "template_changed": 5,
+            "django-15572": 1,
+            "template_dir": 0,
+            "file_path": 0
+          },
+          "literals_lost": [],
+          "note_lines": 0,
+          "note_lines_carrying_a_literal": [],
+          "note_form_wellformed": true,
+          "ok": true
+        },
+        {
+          "call_index": 1,
+          "status": "no_elision",
+          "base_bytes": 3718,
+          "after_bytes": 3718,
+          "net_bytes_saved": 0,
+          "note_bytes": 0,
+          "outputs_considered": 2,
+          "outputs_elided": 0,
+          "lines_elided": 0,
+          "literal_counts_before": {
+            "template_changed": 7,
+            "django-15572": 1,
+            "template_dir": 1,
+            "file_path": 0
+          },
+          "literal_counts_after": {
+            "template_changed": 7,
+            "django-15572": 1,
+            "template_dir": 1,
+            "file_path": 0
+          },
+          "literals_lost": [],
+          "note_lines": 0,
+          "note_lines_carrying_a_literal": [],
+          "note_form_wellformed": true,
+          "ok": true
+        },
+        {
+          "call_index": 2,
+          "status": "engaged",
+          "base_bytes": 4347,
+          "after_bytes": 4229,
+          "net_bytes_saved": 118,
+          "note_bytes": 20,
+          "outputs_considered": 3,
+          "outputs_elided": 1,
+          "lines_elided": 2,
+          "literal_counts_before": {
+            "template_changed": 11,
+            "django-15572": 1,
+            "template_dir": 4,
+            "file_path": 3
+          },
+          "literal_counts_after": {
+            "template_changed": 11,
+            "django-15572": 1,
+            "template_dir": 4,
+            "file_path": 3
+          },
+          "literals_lost": [],
+          "note_lines": 0,
+          "note_lines_carrying_a_literal": [],
+          "note_form_wellformed": true,
+          "ok": true
+        }
+      ],
+      "ok": true
+    },
+    {
+      "task": "sitemap_callable_lastmod",
+      "window_lines": 1,
+      "payloads": [
+        {
+          "call_index": 0,
+          "status": "no_elision",
+          "base_bytes": 3570,
+          "after_bytes": 3570,
+          "net_bytes_saved": 0,
+          "note_bytes": 0,
+          "outputs_considered": 1,
+          "outputs_elided": 0,
+          "lines_elided": 0,
+          "literal_counts_before": {
+            "get_latest_lastmod": 6,
+            "django-16255": 1,
+            "lastmod": 22,
+            "items": 8
+          },
+          "literal_counts_after": {
+            "get_latest_lastmod": 6,
+            "django-16255": 1,
+            "lastmod": 22,
+            "items": 8
+          },
+          "literals_lost": [],
+          "note_lines": 0,
+          "note_lines_carrying_a_literal": [],
+          "note_form_wellformed": true,
+          "ok": true
+        },
+        {
+          "call_index": 1,
+          "status": "engaged",
+          "base_bytes": 6213,
+          "after_bytes": 6201,
+          "net_bytes_saved": 12,
+          "note_bytes": 20,
+          "outputs_considered": 2,
+          "outputs_elided": 1,
+          "lines_elided": 1,
+          "literal_counts_before": {
+            "get_latest_lastmod": 6,
+            "django-16255": 1,
+            "lastmod": 44,
+            "items": 14
+          },
+          "literal_counts_after": {
+            "get_latest_lastmod": 6,
+            "django-16255": 1,
+            "lastmod": 44,
+            "items": 14
+          },
+          "literals_lost": [],
+          "note_lines": 0,
+          "note_lines_carrying_a_literal": [],
+          "note_form_wellformed": true,
+          "ok": true
+        },
+        {
+          "call_index": 2,
+          "status": "engaged",
+          "base_bytes": 7611,
+          "after_bytes": 6121,
+          "net_bytes_saved": 1490,
+          "note_bytes": 127,
+          "outputs_considered": 3,
+          "outputs_elided": 2,
+          "lines_elided": 34,
+          "literal_counts_before": {
+            "get_latest_lastmod": 7,
+            "django-16255": 1,
+            "lastmod": 48,
+            "items": 15
+          },
+          "literal_counts_after": {
+            "get_latest_lastmod": 7,
+            "django-16255": 1,
+            "lastmod": 48,
+            "items": 15
+          },
+          "literals_lost": [],
+          "note_lines": 0,
+          "note_lines_carrying_a_literal": [],
+          "note_form_wellformed": true,
+          "ok": true
+        }
+      ],
+      "ok": true
+    },
+    {
+      "task": "query_utils_unregister_lookup",
+      "window_lines": 1,
+      "payloads": [
+        {
+          "call_index": 0,
+          "status": "no_elision",
+          "base_bytes": 2583,
+          "after_bytes": 2583,
+          "net_bytes_saved": 0,
+          "note_bytes": 0,
+          "outputs_considered": 1,
+          "outputs_elided": 0,
+          "lines_elided": 0,
+          "literal_counts_before": {
+            "_unregister_lookup": 7,
+            "django-15569": 1,
+            "lookup_name": 5,
+            "lookup": 26
+          },
+          "literal_counts_after": {
+            "_unregister_lookup": 7,
+            "django-15569": 1,
+            "lookup_name": 5,
+            "lookup": 26
+          },
+          "literals_lost": [],
+          "note_lines": 0,
+          "note_lines_carrying_a_literal": [],
+          "note_form_wellformed": true,
+          "ok": true
+        },
+        {
+          "call_index": 1,
+          "status": "engaged",
+          "base_bytes": 4577,
+          "after_bytes": 4541,
+          "net_bytes_saved": 36,
+          "note_bytes": 20,
+          "outputs_considered": 2,
+          "outputs_elided": 1,
+          "lines_elided": 1,
+          "literal_counts_before": {
+            "_unregister_lookup": 9,
+            "django-15569": 1,
+            "lookup_name": 5,
+            "lookup": 28
+          },
+          "literal_counts_after": {
+            "_unregister_lookup": 9,
+            "django-15569": 1,
+            "lookup_name": 5,
+            "lookup": 28
+          },
+          "literals_lost": [],
+          "note_lines": 0,
+          "note_lines_carrying_a_literal": [],
+          "note_form_wellformed": true,
+          "ok": true
+        },
+        {
+          "call_index": 2,
+          "status": "engaged",
+          "base_bytes": 5457,
+          "after_bytes": 5421,
+          "net_bytes_saved": 36,
+          "note_bytes": 20,
+          "outputs_considered": 3,
+          "outputs_elided": 1,
+          "lines_elided": 1,
+          "literal_counts_before": {
+            "_unregister_lookup": 11,
+            "django-15569": 1,
+            "lookup_name": 5,
+            "lookup": 42
+          },
+          "literal_counts_after": {
+            "_unregister_lookup": 11,
+            "django-15569": 1,
+            "lookup_name": 5,
+            "lookup": 42
+          },
+          "literals_lost": [],
+          "note_lines": 0,
+          "note_lines_carrying_a_literal": [],
+          "note_form_wellformed": true,
+          "ok": true
+        }
+      ],
+      "ok": true
+    }
+  ],
+  "registration": {
+    "path": "integrations/openai_agents/V18_SOURCE_REGISTRATION_20261010.json",
+    "sha256": "bea2648878c3b9299f63be45348dadf810b653bf644bd706995c6fef606b5c14",
+    "task_ids": [
+      "autoreload_template_changed",
+      "sitemap_callable_lastmod",
+      "query_utils_unregister_lookup"
+    ]
+  },
+  "freeze": {
+    "path": "integrations/openai_agents/V18_SEALED_CONFIRMATION_FREEZE_20261010.json",
+    "sha256": "438acbcf54c94a3d2d03b53055c955e581a977dd8fc69d4adeddce2820183fef"
+  },
+  "defect_view_round_disclosure": {
+    "autoreload_template_changed": {
+      "instance_id": "django__django-15572",
+      "defect_view_round": 3,
+      "defect_symbol": "template_changed",
+      "defect_file": "django/template/autoreload.py",
+      "defect_range": [
+        47,
+        54
+      ],
+      "is_the_newest_tool_group": true,
+      "consequence": "the defect view is the last read, so the mechanism keeps that tool group verbatim on every later model input; its literals are never at risk and no saving may be attributed to it",
+      "reported_as": "an explanatory fact of the task shape, disclosed before the batch and not claimed as a merit of the mechanism"
+    },
+    "sitemap_callable_lastmod": {
+      "instance_id": "django__django-16255",
+      "defect_view_round": 1,
+      "defect_symbol": "get_latest_lastmod",
+      "defect_file": "django/contrib/sitemaps/__init__.py",
+      "defect_range": [
+        165,
+        174
+      ],
+      "is_the_newest_tool_group": false,
+      "consequence": "the defect view is the first read, so it is elidable content on later model inputs under the literal invariant",
+      "reported_as": "an explanatory fact of the task shape, disclosed before the batch and not claimed as a merit of the mechanism"
+    },
+    "query_utils_unregister_lookup": {
+      "instance_id": "django__django-15569",
+      "defect_view_round": 1,
+      "defect_symbol": "_unregister_lookup",
+      "defect_file": "django/db/models/query_utils.py",
+      "defect_range": [
+        211,
+        219
+      ],
+      "is_the_newest_tool_group": false,
+      "consequence": "the defect view is the first read, so it is elidable content on later model inputs under the literal invariant",
+      "reported_as": "an explanatory fact of the task shape, disclosed before the batch and not claimed as a merit of the mechanism"
+    }
+  },
+  "module_hashes": {
+    "experiments/runners/openai_agents_v18_registry.py": "04bc0ef41e78d15deafdaa568ab2094988d8b2068a13a2231e163164ebd4355f",
+    "experiments/runners/openai_agents_v17_live_contract.py": "b5be9165c8845579491e5541380f5f0766f97df77dfb933a12b26a1a1e3e1ca3",
+    "experiments/runners/run_openai_agents_v17_acquisition.py": "be0b97b4100711e726c85003933a6cf0357c3c2b5388442d28a4af69ae5fb45d",
+    "experiments/runners/openai_agents_structured_final_v16.py": "22fa96a53c5aff5e372c4ef88787165e9e1f13e671b7ed0bafe5db2e2051612a",
+    "experiments/runners/openai_agents_v18_sealed_registration.py": "174462d17f84f814bd3edb1747359a88225cc8d295d5f405c452563cc306128d",
+    "experiments/runners/run_openai_agents_api_experiment.py": "1cafd67b5b4d649381c737ff2e97d15d7cbba95709311d3516ccdb266c7e8708",
+    "experiments/runners/openai_agents_multitask_chain_v14.py": "bb2f5ad589e4ac0129a4cf01d2316e7f1cf7987e5dfd02e2f41aa72c7ebc1446",
+    "experiments/runners/openai_agents_v19_shape_dose.py": "6957a247bbc5df70e2922be336d6d95e7cd1bbef818538eaaa4578250bdafc52",
+    "experiments/runners/openai_agents_exact_duplicate_replay_v12.py": "2b511306fa433909c3ec72100be93adb9628a22937a7c502bfad8b9faac1f937",
+    "experiments/runners/openai_agents_evidence_safe_retention_v5.py": "8b67133f8780fa03e562dbf1052e8a95b19a90ff042cf293c1b1cb17e2426e56",
+    "experiments/runners/openai_agents_v20_chain.py": "41d4ba547da42e659c7381927ccacf86543b97c74fc499885d8aa7059fff9259",
+    "experiments/runners/openai_agents_v20_retention.py": "65650b10e8a6fb72e580245c8c0c9485b85874e4193dea5b421e8657abb0db2c",
+    "experiments/runners/openai_agents_v21_carrier_elision.py": "5c6fce44cfd79832fd14dd21ab97627638afe9b186a01d6ea8e9507a3efb12e2",
+    "experiments/runners/openai_agents_v22_window.py": "3496e9f3806d9a453f9fd1647ede279c99cd0aabb52e3ad055a310653ea6d999",
+    "experiments/runners/openai_agents_v22_window_k1.py": "cc87b195abb98d8ef4c0d27e6928c265ef054a79f8e695d3126a8c950917a962",
+    "experiments/runners/openai_agents_v22_chain.py": "3cc39594737039c6abee7aa6da78a242565186cefe93253f2ef8edb3631e12f0",
+    "experiments/runners/run_openai_agents_v23_v18_sealed_window_k1.py": "6cdf461ae9b8f2100fd1ec0f058adc6ba9f82d4361c551ad83fe6988740fa647"
+  },
+  "mechanism": {
+    "arm": "pruner_v1",
+    "name": "literal_carrier_preserving_line_elision_v22_k1",
+    "schema": "openai_agents_v22_window_k1",
+    "composition_schema": "duplicate_then_retention_then_line_elision_k1",
+    "window_lines": 1,
+    "window_configuration": {
+      "k": 1,
+      "class_name": "LiteralCarrierElisionFilterK1",
+      "mechanism_instance": "literal_carrier_preserving_line_elision_v22_k1",
+      "mechanism_schema": "openai_agents_v22_window_k1",
+      "composition_schema": "duplicate_then_retention_then_line_elision_k1",
+      "evidence_schema": "openai_literal_carrier_elision_k1",
+      "config_module": "experiments/runners/openai_agents_v22_window_k1.py",
+      "base_module": "experiments/runners/openai_agents_v21_carrier_elision.py",
+      "base_window_lines": 3,
+      "declared_window_value": 1,
+      "effective_window_declaration": "self.v21_window_lines bound by the configuration class",
+      "note_form": "[elided {count} lines {first}-{last}]"
+    },
+    "window_is_the_only_variable": "the three v22 groups differ only in the window K; renderer, contract, four strict track conditions, 160 character bound, registry, read shape, arms, repeats, request cap and trigger gate threshold are identical, and no K may be changed after any saving number has been seen",
+    "rule": "the frozen v12 exact duplicate rule runs first; the v5 lineage evidence-safe selective retention then runs on the deduplicated list, with its registered-literal guard, its recovery-pointer requirement and its whole-payload fallback unchanged; the literal-carrier line elision then runs on that result, keeping verbatim every line that contains a registered literal or constraint phrase together with a fixed window of 1 lines before and after it, eliding every other line and replacing each maximal contiguous omitted run with exactly one note line of the form [elided n lines first-last]; the most recent tool group is kept verbatim. Any registered-literal occurrence loss, any non-reduction after the note overhead, or any exception sends the payload this stage received verbatim and is counted in v21_literal_guard_fallbacks",
+    "frozen_rule_module": "experiments/runners/openai_agents_exact_duplicate_replay_v12.py",
+    "retention_module": "experiments/runners/openai_agents_evidence_safe_retention_v5.py",
+    "v20_composite_module": "experiments/runners/openai_agents_v20_retention.py",
+    "mechanism_module": "experiments/runners/openai_agents_v21_carrier_elision.py",
+    "composite_module": "experiments/runners/openai_agents_v21_carrier_elision.py",
+    "config_module": "experiments/runners/openai_agents_v22_window_k1.py",
+    "chain_module": "experiments/runners/openai_agents_v22_chain.py",
+    "chain_blueprint": "experiments/runners/openai_agents_multitask_chain_v14.py",
+    "window_frozen": "the window was declared per K in the v22 pre-registration before any paid request; it may not be changed after any saving number is seen, and an unregistered window (for example K=2) may not be run at all",
+    "invariant": "for every registered literal and constraint phrase the number of verbatim occurrences after elision is greater than or equal to the number before it, per occurrence and not per distinct string, computed with the same v5 lineage _carrier_loss that already vetoed the older mechanism",
+    "fail_closed": "an output is kept verbatim whenever the mechanism cannot prove the invariant for the payload it would send; nothing is removed on the strength of an argument the mechanism cannot check, and the note lines it writes can never satisfy the invariant themselves",
+    "trigger_gate": {
+      "soft_limit_tokens": 0,
+      "policy": "the plugin arm's BudgetTriggeredFilter is installed with soft_limit_tokens=0, which the frozen class floors to 1 (trigger_gate_soft_limit_tokens therefore reports 1), so its condition last_estimated_tokens <= soft_limit_tokens is false for every non-empty payload and the gate fires on every model input after the first; the gate stays in place, keeps measuring each payload and keeps publishing its counters. The setting is inherited from v20 unchanged, so this round measures the window and does not re-measure the gate. Trigger policy stays symmetric_budget so the wrapper is not removed from the plugin arm.",
+      "arm_scope": "plugin arm only; the none and native_summary arms are untouched",
+      "comparability": "the three v22 groups are comparable to each other as a dose, and each is internally paired; none of them is comparable as a whole configuration to v16, v19, v20 or v21, and none of them may be pooled with another"
+    },
+    "counter_names": {
+      "considered": "v21_outputs_considered",
+      "elided_outputs": "v21_outputs_elided",
+      "elided_lines": "v21_lines_elided",
+      "bytes": "v21_bytes_saved",
+      "fallback": "v21_literal_guard_fallbacks",
+      "note_overhead": "v21_note_bytes"
+    },
+    "tool_output_disclosure": "the plugin arm's read output may be elided: lines that carry no registered literal are removed and every maximal omitted run is replaced by exactly one explicit interval note of the form [elided n lines first-last], so the omission is declared and the omitted range is recoverable by re-issuing the read. Every registered literal keeps at least as many verbatim occurrences as it had before the elision; the reader tool's own description is identical in all three arms, because the frozen registry builds it once per task and v21 does not rewrite it for any arm, so 'returns those numbered lines verbatim' holds for every line that is kept. No silent omission occurs: nothing is removed without an interval note.",
+    "tool_descriptions_unchanged": "the reader tool descriptions are byte-identical in all three arms; this mechanism does not rewrite them for the plugin arm, because doing so would make the prompt asymmetric and contaminate the paired comparison",
+    "forbidden_wording": [
+      "compression alone saved X percent",
+      "the four criteria are met",
+      "the retry tax is gone",
+      "the plugin saves about 12.5 percent of context"
+    ]
+  },
+  "paid_run_allowed": true,
+  "paid_run_allowed_rule": "true only when every check passes; a zero elision counter, an unregistered module digest or an incomplete finalised manifest writes false here and no paid run may start"
+}

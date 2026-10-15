@@ -1,0 +1,9 @@
+# V5 host-phase correction to the v4 preparation
+
+V4 stopped after27 real HTTP requests:2 completed samples plus a third investigation/closure loop hit the fixed body ceiling. Its original code,freeze,failed sample and ledger are retained. Inspection shows the stage_complete receipt remained visible; no evidence that it had been archived. The host close_research error on a repeated completed stage gave an ambiguous investigate-again message. This is a workflow-state correction,not a recovery policy/task difficulty/statistical change.
+
+V5 keeps the same task generator,development seeds/repeats,formal seeds/repeats,model,archive/recovery rules,public/private validation and all original bounds. A trusted source-free host phase note is supplied identically to all arms. Repeated close is idempotent: retain initial summary,report completed research and next implementation stage. Model still chooses summary/retrieve/reread; no forced recovery or hidden answers.
+
+New opt-in wrapper scopes patched Python configuration only within serial calls and restores original v4 globals afterwards. On-disk v4 files remain unchanged. Freeze binds wrapper source and candidate_version=v5-host-phase-only. Development predecessor summary SHA and remaining operation budget included:261 requests and USD3.0545512 remain; cumulative<=288/USD3.25. A new complete18-sample development matrix is necessary because version changed; original partial samples remain failed prior-version evidence. If remaining budget/quality admission fails,stop rather than grant a new ceiling. Formal45 remains ungenerated/unconsumed until natural gate passes.
+
+This corrects the initial speculative diagnosis: completed-stage receipt WAS visible. No retrospective reclassification of failed samples. New zeroAPI/test/review evidence before further paid requests. Formal broad-effect claims remain limited by only3 held-out task instances.

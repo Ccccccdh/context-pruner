@@ -1,0 +1,11 @@
+# V8 development screening protocol
+
+User approved docs/superpowers/specs/2026-10-15-agents-minimal-evidence-v8-design.md and direct execution. Only newV8files; previous candidates frozen. Four seeds401/409/419/421, B0/B1/B2 once each, rotation;12samples,16HTTP/sample,192total,24000wirebytes,USD2peak all-miss reservation; exclusive operation claim; infra/integrity/budget failure stops; no retry/replacement/expansion. Generated registry data only; key from existing environment, never saved/printed.
+
+All three arms have commonA1lifecycle, autonomous recovery disabled, identical tools/prompt/settings, ordinary full read_document. Newread_records B0returns full source, B1selected records fromsource, B2same selected records via verifiedarchive orsourcefallback. Newkind registry_record_evidence; source_version fullSHA,payload_sha256 returnedtextSHA. No answer calculation in tool. Origin/proof hostonly; freshcall_id; fullread fallback remains available.
+
+Offline gates: independent projection/source/sufficiency tests; fresh independent review; related regression; SDK controlled12PASS/108mockHTTP,8hostprepared/delivered,36B1/B2equalbodypairs,atleast50% response text and15%aggregate wire reductionB1/B0,source/schema/manifest/accounting/quality audit. Failure means no paid. Engineering mock scripts identical acrossB0/B1/B2; referenceanswers never used live.
+
+Natural screen includes allsamples whether newtool used ornot; no forced reads or selective resampling. Complete rawusage for input/output/total/hit/miss, dual frozenprices, quality, request counts, source validation/construction and prepared/delivered hosthits. No automatic hostcache→token or autonomous recovery attribution.
+
+Screen passes only complete/no unknown usage, B1/B2quality4/4, geometric meanB1/B0 totaltoken andbothprice ratios≤.90, andatleast3/4instances simultaneouslylower totaltoken andcost. Fixedprices compare ratios;iflow/high pricesnotproportionalbothmustpass. This is developmentselection,notnoninferiority orstablecostconfirmation. Failedgate archives andstops. Passedgate permitspreparing a separate confirmationproposal,notpaidconfirmation. Furtherinstance/taskfamily budgetsrequire separate reviewedprotocol. No automation.

@@ -1,0 +1,13 @@
+# V8 confirmation status
+
+FINAL:144/144complete andqualityPASS,1008realHTTP,0unknownusage/infra/unsent. Fresh audit and preregistered jointconfirmationPASS. B1vsB0aggregate total-token−24.51%,usagecost−16.63%;pairedgeomeanratio95%uppers.7655765token/.8734693cost. BothselectedarmsCPqualitydifference lower−7.40pp meets−10ppmargin. KnownUSD.256603218–.513206436,reservation6.898086.96archivehitsall delivered. Allprocessesclosed;no furtherqueueorautomation. Result:AGENTS_V8_CONFIRMATION_RESULT_20261015.md. Below retains historicalrunningcheckpoint;do notresume/relaunchconsumedclaim.
+
+User approved48heldoutinstances/144samples/USD30 andrequestedlaunch/continue. Liveconfirmationqueue started inforeground,exclusiveoperationclaim consumed. Runner: experiments/runners/run_agents_minimal_evidence_confirmation_v8.py;runroot:runs/agents-minimal-evidence-confirmation-v8-20261015. Current process session96877. Noautomation or secondqueue.
+
+All126distinct relatedtests passed;freshreview Importantfloatauditfix and regradedImportantobsoleteprotocolmetadata fix RED→GREEN. Finalfrozen mock144/144PASS1296HTTP0provider,96prepared/delivered,432B1/B2equalbodypairs,83.015%response text and24.085%aggregatewire reduction.28sourcesverified;13historytaskfilesbound,48seeds20001..20048nooverlap. Fullsyntheticegress inspected. ExistingV8candidate/tool/prompt unchanged.
+
+Caps:144samples,16HTTP/sample,2304total,24000wire,USD30highestpriceallmissreservation. Infra/integrity/budget/unknownusage stop;ordinaryqualityfailures retained;no retry/replacement/expansion. Monitorpaid.log/paid/summary.json;do not launchagain ordeleteclaim. Whenprocessfinishes,runfreshscopedaudit then frozenanalysis/analyze_agents_v8_confirmation.py. Full48pairs requiredforinference;incomplete meansnoconfirmation. Save results/completehashmanifest;verifypriorarchives;stopregardlessofoutcome.
+
+Frozenstatistics:CPalpha.025foreachB1/B2selectedsuccesslower vsbaselineupper1,margin.10;B1/B0pairedlogt95%upper ratio≤.90fortotal-token/bothcostprices;alljointlyrequired. Nointerimconclusionormethodswitch. Hostreuse secondary;notautonomousrecovery. Statisticalassumptions andsyntheticfamilylimitationsmustbereported.
+
+Deferredminor: newanalyzerheaderstill saysdevelopment/noinference; actualruntimeconfirmationoutputandprotocolarecorrect. Trustboundary:hostilelocaledits/deletingclaims/providersemanticdishonesty andgenericnumericalinputsoutsidefixed48taskcase arenotclaimscoveredhere; existinghash/schema/transportguardsretain ordinaryerrorchecks. Noinvoiceclaim.
